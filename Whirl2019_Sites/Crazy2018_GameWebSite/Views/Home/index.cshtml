@@ -1,0 +1,252 @@
+﻿@using Crazy2018_Sys_DBHelper;
+@{
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+
+    var roleInfo = ViewData["roleInfo"] as dt_manager_role;
+
+}
+@using Crazy2018_Sys_Common;
+@model dt_manager
+
+<style type="text/css">
+    body,
+    html {
+        height: 100%;
+        font-family: 'Roboto', sans-serif;
+    }
+
+    .slideshow {
+        position: relative;
+        z-index: 1;
+        height: 100%;
+        margin: 50px auto;
+    }
+
+        .slideshow * {
+            outline: none;
+        }
+
+        .slideshow .slider {
+            box-shadow: 0 20px 50px -25px black;
+        }
+
+        .slideshow .slider-track {
+            -webkit-transition: all 1s cubic-bezier(0.7, 0, 0.3, 1);
+            transition: all 1s cubic-bezier(0.7, 0, 0.3, 1);
+        }
+
+        .slideshow .item {
+            height: 100%;
+            position: relative;
+            z-index: 1;
+        }
+
+            .slideshow .item img {
+                width: 100%;
+                -webkit-transition: all 1s cubic-bezier(0.7, 0, 0.3, 1);
+                transition: all 1s cubic-bezier(0.7, 0, 0.3, 1);
+                -webkit-transform: scale(1.2);
+                transform: scale(1.2);
+            }
+
+            .slideshow .item.slick-active img {
+                -webkit-transform: scale(1);
+                transform: scale(1);
+            }
+</style>
+
+<!-- 動畫橫幅AD拖曳套件_A -->
+<div class="main-slick main-slider   " role="toolbar">
+    <div aria-live="polite" class="slick-list draggable">
+        <div class="slick-track" role="listbox" style="opacity: 1; width: 100%;">
+            @*<section class="lazy slider slick-initialized slick-slider slick-dotted" data-sizes="50vw">
+                    <button class="slick-prev slick-arrow " aria-label="Previous" type="button" style="">Previous</button>
+                    <div class="slick-list draggable ">
+                        <div class="slick-track " style="opacity: 1; width: 5709px;">
+
+                            <a href="http://localhost:58160/Home/GameInfo42" class="sbg slick-slide slick-current slick-active " style="background-image: url(../../image/img00_cn.jpg); width: 1903px; position: relative; left: 0px; top: 0px; z-index: 999; opacity: 1;" data-slick-index="0" aria-hidden="false" tabindex="0" role="tabpanel" id="slick-slide00" aria-describedby="slick-slide-control00"></a>
+                            <ul class="sbg slick-slide slick-current " style="background-image: url(../../image/img02_cn.jpg); width: 1903px; position: relative; left: -1903px; top: 0px; z-index: 998; opacity: 0; transition: opacity 500ms ease 0s;" data-slick-index="1" aria-hidden="true" tabindex="-1" role="tabpanel" id="slick-slide01" aria-describedby="slick-slide-control01"></ul>
+                            <ul class="sbg slick-slide slick-current " style="background-image: url(../../image/img03_cn.jpg); width: 1903px; position: relative; left: -3806px; top: 0px; z-index: 998; opacity: 0; transition: opacity 500ms ease 0s;" data-slick-index="2" aria-hidden="true" tabindex="-1" role="tabpanel" id="slick-slide02" aria-describedby="slick-slide-control02"></ul>
+                        </div>
+
+                    </div>
+                    <button class="slick-next slick-arrow" aria-label="Next" type="button" style="">Next</button><ul class="slick-dots" style="" role="tablist"><li class="slick-active" role="presentation"><button type="button" role="tab" id="slick-slide-control00" aria-controls="slick-slide00" aria-label="1 of 3" tabindex="0" aria-selected="true">1</button></li><li role="presentation" class=""><button type="button" role="tab" id="slick-slide-control01" aria-controls="slick-slide01" aria-label="2 of 3" tabindex="-1">2</button></li><li role="presentation" class=""><button type="button" role="tab" id="slick-slide-control02" aria-controls="slick-slide02" aria-label="3 of 3" tabindex="-1">3</button></li></ul>
+                </section>*@
+
+            <div class="htmleaf-container">
+                <div class="slideshow">
+                    <div class="slider">
+                        <div class="item  ">
+                            <img src="../../image/img00_cn.jpg" />
+                        </div>
+                        <div class="item">
+                            <img src="../../image/img02_cn.jpg" />
+                        </div>
+                        <div class="item">
+                            <img src="../../image/img03_cn.jpg" />
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- 頁面內容區 -->
+<div class="content content_index">
+    <div class="container">
+        <a id="game" class="container_margin_top"></a>
+        <ul class="text_intro">
+            <ul class="nav_game_thumb-mode"></ul>
+            <span class="top-deco" id="top-deco">Game</span>
+            <h2>游戏试玩</h2>
+            <hr style="margin-bottom: 4px;">
+            <div class="game_nav" style="transition: none 0s ease 0s; opacity: 1; max-width: 106.419%; min-width: 100%; margin-top: 0px; left: 0px; top: 0px; z-index: 10; position: relative;">
+                <ul class="game_nav_container row_flex-start">
+
+                    <li class="col-2_4 btn_all"><a class="language-list__item   btn-type" value="0" onclick="gettype(0)">全部</a></li>
+                    <li class="col-2_4 btn_hot"><a class="language-list__item  btn-type" value="1" onclick="gettype(1)">热门</a></li>
+                    <li class="col-2_4 btn_fish"><a class="language-list__item  btn-type" value="3" onclick="gettype(3)">欢乐捕鱼</a></li>
+                    <li class="col-2_4 btn_slot"><a class="language-list__item  btn-type" value="4" onclick="gettype(4)">电子游戏</a></li>
+                    <li class="col-2_4 btn_poker"><a class="language-list__item  btn-type" value="5" onclick="gettype(5)">电子竞技</a></li>
+                </ul>
+            </div>
+            <div class="games-list" id="gamelist">
+             
+
+
+            </div>
+        </ul>
+    </div>
+    <div class="container">
+        <form action="http://jiligames.com/plusplayer/entranceplus" method="post" id="sendMessageForm">
+            <input type="hidden" name="_token" value="bJP530bWr88IIvN7QjPVNLP37NniqHG1TeI4chPx">
+            <a id="contact" class="container_margin_top"></a>
+            <p><a href="http://jiligames.com/plusplayer/index.html#contact" class="btn_x"></a></p>
+            <div class="text_intro">
+                <span class="top-deco">联络我们</span>
+                <h2>联络我们</h2>
+                <hr>
+                <p>如果您对我们的产品有兴趣，请填写以下表格，我们会尽快与您联系</p>
+                <div class="row">
+                    <input type="text" class="col-6 m-col-12" placeholder="Name" name="username" id="ContactUserName">
+                    <input type="text" class="col-6 m-col-12" placeholder="E-mail" name="mail" id="ContactMail">
+                    <textarea class="col-12 m-col-12" name="message" rows="4" placeholder="Message" id="ContactMessage"></textarea>
+                    <input type="hidden" id="ContactNowLocale" value="zh-cn">
+                </div>
+                <p class="box_btn_container">
+                    <a type="button" class="btn_link col-3 sendMessage">
+                        送出
+                    </a>
+                </p>
+            </div>
+            <input type="hidden" name="action" value="sendMessage">
+        </form>
+
+    </div>
+</div>
+<!-- Btn Go Top -->
+<div class="box_go_top hide">
+    <a href="/Home/Index/entranceplus#" class="btn_go_top"></a>
+</div>
+<script>
+    //获取第三方游戏列表
+
+
+    getgamelist();
+    var thistype = "0";
+    function gettype(type) {
+
+        thistype = type;
+        console.log(thistype);
+        getgamelist();
+    }
+
+
+    function getgamelist() {
+
+        var data = {};
+        data.type = thistype;
+        data.gametypesea = "true";
+        console.log(data);
+        var imgstr = "";
+        $.ajax({
+            url: "/Home/GetAllgameinfo",
+            type: "Post",
+            dataType: "json",
+            data: data,
+            success: function (data) {
+
+                if (data) {
+
+                    if (data.Code == 0 && data.Code == "0") {
+                        console.log(data);
+                        if (data.Data.length > 0) {
+                            $("#gamelist").empty();
+                            for (var i = 0; i < data.Data.length; i++) {
+                                //添加option 对应Json对象名称
+
+                                if (data.Data[i].icon == null || data.Data[i].icon == "") {
+                                    imgstr = " <a href='/Home/GameInfo?gameid=" + data.Data[i].ID + "' class='games-list__game__image' style='background-image: url(\"../image/gameicon_loading.jpg \");'></a>";
+                                } else {
+                                    imgstr = " <a href='/Home/GameInfo?gameid=" + data.Data[i].ID + "' class='games-list__game__image' style='background-image: url(\"" + data.Data[i].icon + "\");'></a>";
+                                }
+                                var opt = "<div class='games-list__game' type='1' atype='2'>" +
+                                    " <div class='games-list__game__content'>" + imgstr +
+                                    " <div class='games-list__game__text'>" +
+
+                                    " <h4>" + data.Data[i].Name + "</h4>" +
+                                    " <p>" + data.Data[i].GameIntroduce +
+                                    " </p>" +
+                                    " <div class='games-list__game__text__buttons'>" +
+                                    "  <a href='/Home/GameInfo?gameid=" + data.Data[i].ID + "'><button class='games-list__game__text__gameinfo'>游戏介绍</button></a>" +
+                                    "  <a href='javascript: void(0)' onclick=showgame('" + data.Data[i].gameurl + "')><button class='games-list__game__text__tryit'>立即试玩</button></a>" +
+                                    " </div>" +
+                                    " </div>" +
+                                    " </div>" +
+                                    " </div>";
+                                $("#gamelist").append(opt);
+                            }
+                        } else {
+                            var selopt = "<p>无数据</p>";
+
+                            $('#gamelist').append(selopt);
+                        }//?param1=" + 1 + "&param2=" + 1 + "
+                    } else {
+                        eval(data.Message)
+                    }
+                } else {
+                    eval(data.Message)
+                }
+            }
+        });
+
+    }
+
+    function showgame(url) {
+       
+        var data = {};
+        $.ajax({
+            type: "post", url: '/Home/GetUser',
+            datatype: 'json',
+            data: data,
+            success: function (res) {
+                if (res.username != "") {
+
+                    var str = url + "?param1=" + res.username + "&param2=" + res.pwd;
+                    console.log(str);
+                   
+                    window.location.href=url + "?param1=" + res.username + "&param2=" + res.pwd;
+                }
+                else {
+
+                    loginshow();
+                }
+
+            }
+        });
+    }
+</script>
+

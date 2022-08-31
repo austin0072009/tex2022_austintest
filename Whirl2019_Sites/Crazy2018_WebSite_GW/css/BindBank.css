@@ -1,0 +1,121 @@
+﻿html,
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    width: 100%;
+    height: 100%;
+    background-color: #F6F5FA;
+}
+
+.BindBank {
+    width: 100%;
+    height: 100%;
+}
+
+header {
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    background-color: #1A7ECC;
+    color: #fff;
+}
+
+.prompt {
+    width: 100%;
+    height: 35px;
+    line-height: 35px;
+    font-size: 13px;
+    color: #1a7ecc;
+    background-color: #d3e5f2;
+    position: relative;
+}
+
+    .prompt img {
+        position: absolute;
+        top: 5px;
+        width: 6%;
+        left: 7%;
+    }
+
+    .prompt span {
+        margin-left: 15%;
+    }
+
+.formbox {
+    width: 100%;
+}
+
+.formCont {
+    width: 100%;
+    height: 50px;
+    background-color: white;
+    border-bottom: 2px solid #F6F5FA;
+    position: relative;
+    overflow: hidden;
+}
+
+    .formCont span {
+        display: block;
+        width: 21%;
+        height: 60%;
+        position: absolute;
+        top: 20%;
+        font-size: 14px;
+        border-right: 1px solid #C5C5C5;
+        text-align: center;
+    }
+
+    .formCont input.box {
+        position: absolute;
+        height: 100%;
+        width: 75%;
+        top: 0;
+        border: none;
+        left: 22%;
+        display: -webkit-box !important;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        word-break: break-all;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 3;
+        background: none;
+        -webkit-appearance: none;
+        outline: none;
+        border: 0px;
+    }
+
+.listBox {
+    width: 20%;
+    margin: auto;
+}
+
+.BtnBox {
+    width: 60%;
+    height: 50px;
+    background-color: #45A8EC;
+    margin: 20px 0px 20% 20%;
+    border-radius: 5px;
+    text-align: center;
+    line-height: 50px;
+    color: #fff;
+}
+
+.fanhui {
+    position: absolute;
+    top: 0;
+    width: 30px;
+    height: 50px;
+}
+
+    .fanhui img {
+        width: 100%;
+        height: 60%;
+        margin-top: 10px;
+        margin-left: 6px;
+    }

@@ -1,0 +1,372 @@
+﻿<!DOCTYPE html>
+<!-- saved from url=(0017)http://m.91y.com/ -->
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=750,target-densitydpi=device-dpi,user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <title>index</title>
+    <link href="~/91Resources/css/swiper.min.css" rel="stylesheet" />
+    <link href="~/91Resources/css/swiper.min.css" rel="stylesheet" type="text/css">
+    <link href="~/91Resources/css/91y_phone.css" rel="stylesheet" type="text/css">
+    <link href="~/91Resources/css/91y_public.css" rel="stylesheet" type="text/css">
+    <style type="text/css">
+
+        .swiper-container {
+            width: 750px;
+            height: 240px;
+            overflow: visible !important;
+        }
+
+            .swiper-container .swiper-wrapper .swiper-slide {
+                width: 480px;
+            }
+
+                .swiper-container .swiper-wrapper .swiper-slide img {
+                    width: 100%;
+                    height: 240px;
+                }
+
+            .swiper-container .swiper-wrapper .swiper-slide-prev {
+                margin-top: 18px;
+                height: 204px !important;
+            }
+
+                .swiper-container .swiper-wrapper .swiper-slide-prev img {
+                    height: 204px !important;
+                }
+
+            .swiper-container .swiper-wrapper .swiper-slide-next {
+                margin-top: 18px;
+                height: 204px !important;
+            }
+
+                .swiper-container .swiper-wrapper .swiper-slide-next img {
+                    height: 204px !important;
+                }
+
+            .swiper-container .swiper-wrapper .swiper-slide-active {
+                width: 480px;
+            }
+
+        .top {
+            background: url(/templets/default/20190813/images/top_img.jpg) no-repeat;
+            width: 100%;
+            height: 185px;
+        }
+    </style>
+    <script src="~/91Resources/js/hm.js"></script>
+    <script language="javascript" src="~/91Resources/js/jquery-1.7.1.min.js"></script>
+    <script language="javascript" src="~/91Resources/js/swiper.min.js"></script>
+    <script type="text/javascript">
+    var u = navigator.userAgent;
+        var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
+        var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+
+        var isMobile = {
+
+            Android: function () {
+                return navigator.userAgent.match(/Android/i) ? true : false;
+            },
+            BlackBerry: function () {
+                return navigator.userAgent.match(/BlackBerry/i) ? true : false;
+            },
+            iOS: function () {
+                return navigator.userAgent.match(/iPhone|iPad|iPod/i) ? true : false;
+            },
+            Windows: function () {
+                return navigator.userAgent.match(/IEMobile/i) ? true : false;
+            },
+            any: function () {
+                return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Windows());
+            },
+            PC: function () {
+                var userAgentInfo = navigator.userAgent;
+                var Agents = new Array("Android", "iPhone", "SymbianOS", "Windows Phone", "iPad", "iPod");
+                var flag = true;
+                for (var v = 0; v < Agents.length; v++) {
+                    if (userAgentInfo.indexOf(Agents[v]) > 0) {
+                        flag = false;
+                        break;
+                    }
+                }
+                return flag;
+            }
+        };
+
+        function getUrlParams(par) {
+            if (par == '')
+                return null;
+            var reg = new RegExp("(^|&)" + par + "=([^&]*)(&|$)");
+            var r = window.location.search.substr(1).match(reg);
+            if (r != null)
+                return r[2];
+
+            return null;
+        }
+
+        function loginout() {
+            sessionStorage.removeItem("userinfo");
+            window.location.href = "/Manage/OutLogin";
+        }
+
+
+        function isWeiXin() {
+            var ua = window.navigator.userAgent.toLowerCase();
+            if (ua.match(/MicroMessenger/i) == 'micromessenger') {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        function down() {
+            //判断微信
+            if (isWeiXin() && !isiOS) {
+                document.getElementById("top_wx").style.display = "block";
+                $(window).scroll(function () {
+                    if ($(window).scrollTop() > 120) {
+                        $('html').animate({ scrollTop: 0 }, 100);
+                    }
+                });
+            }
+        }
+
+        /**
+         * 登录后获取用户信息
+         */
+        function getUserInfo() {
+            var parinfo = getUrlParams('userinfo');
+            var userinfo = "";
+            if (parinfo != null) {
+                //登录数据写入sessionStorage
+                sessionStorage.setItem('userinfo', decodeURIComponent(parinfo));
+                userinfo = decodeURIComponent(parinfo);
+            } else
+                userinfo = sessionStorage.getItem("userinfo");
+
+            console.log(userinfo);
+            if (userinfo != null && userinfo != '' && userinfo != 'null' && userinfo != 'undefined') {
+                userinfo = $.parseJSON(userinfo);
+                if (typeof userinfo.headImg != 'undefined') {
+                    $("#headimg").attr("src", userinfo.headImg);
+                    $('#login').hide();
+                    $('#loginout').show();
+                }
+            }
+        }
+
+        function getDownlist() {
+            $.ajax({
+                url: "https://download.91y.com/api/do.ashx?a=getphonegamelist&t=" + Math.random(),
+                dataType: "jsonp",
+                jsonp: "jsonpcallback",
+                success: function (jsons) {
+                    //console.log(jsons);
+                    var obj = (typeof jsons == 'undefined' ? '' : jsons);
+                    var htmlct = 7, list = 'downteamlist', str = '', hurl = '', murl = ''; // 默认读取显示数据条数
+                    $.each(obj, function (i, e) {
+                        hurl = '';
+                        if (i < htmlct) {
+                            //<li><a href="#1"><img src="images/game/game-icon07.png"></a></li>
+                            if (isiOS && typeof e.iphoneURL != 'undefined') {
+                                hurl = e.iphoneURL;
+                            } else if (isAndroid && typeof e.androidURL != 'undefined') {
+                                hurl = e.androidURL;
+                            } else {
+                                hurl = 'javascript:alert("程序猿哥哥正在努力研发中，敬请期待。");';
+                            }
+                            if (hurl == '' || hurl == null) {
+                                hurl = "javascript:alert('程序猿哥哥正在努力研发中，敬请期待。');";
+                            }
+
+                            murl = typeof e.imgName != 'undefined' ? e.imgName : '';
+                            str += '<li><a onclick="down()" href="' + hurl + '"><img src="' + murl + '" /></a></li>';
+                        }
+                    });
+                    str += '<li class="more"><a href="/download/">MORE</a></li>';
+                    $('#' + list).html(str);
+
+                    if (isiOS) {
+                        $("#btndown").attr('href', '//apps.apple.com/cn/app/%E5%BF%AB%E4%B9%90%E4%BA%8C%E4%BA%BA%E9%BA%BB%E5%B0%86/id1435254766');
+                    }
+                    else if (isAndroid) {
+                        $("#btndown").attr('href', '//download.fuyuncc.com/phone/GameHall/2019032217214729959115/GameHall.apk');
+                    }
+                    else if (isMobile.PC() || isMobile.Windows) {
+                        $("#btndown").attr('href', '//download.fuyuncc.com/phone/GameHall/2019032217214729959115/GameHall.apk');
+                    }
+
+                }
+            });
+        }
+
+        //滚动监听显示回顶部
+        function jianting() {
+            $(window).scroll(function () {
+                // 滚动条距离顶部的距离 大于300px时
+                if ($(window).scrollTop() >= 150) {
+                    $(".bottom-nav").fadeIn(1000); // 开始淡入
+                } else {
+                    $(".bottom-nav").stop(true, true).fadeOut(1000); // 如果小于等于 300 淡出
+                }
+            });
+        }
+
+        $(document).ready(function () {
+            getDownlist();
+            getUserInfo();
+            $('.bottom-nav').hide();
+            jianting();
+        });</script>
+</head>
+<body>
+
+    <h1 style="text-align:center">找不到服务器</h1>
+
+    @*<div class="top" id="top_wx" style="display: none;"></div>
+    <div class="p-box">
+        <div class="top-gameld">
+            <div class="icon"><img src="~/91Resources/img/big.png"></div>
+            <div class="txt">
+                <p><b>91y游戏中心</b></p>
+                <p>要玩就来91y</p>
+            </div>
+            <a class="gameld-btn" id="btndown" href="http://download.fuyuncc.com/phone/GameHall/2019032217214729959115/GameHall.apk">下载游戏</a>
+            <!--<A href="" class="gameld-btn get">打开游戏</A>-->
+        </div>
+        <div class="p-top">
+            <div class="logo-tema clearfix">
+                <div class="user-head"><img id="headimg" src="~/91Resources/img/default-head.png"></div>
+                <div class="logo"></div>
+                <!--<a href="//member.91y.com/login/mlogin.html" class="login" id="login">登录/注册</a>-->
+                <a href="http://m.91y.com/login/" class="login" id="login">登录/注册</a>
+                <a class="login" onclick="loginout()" style="display: none" id="loginout">退出登录</a>
+            </div>
+            <div class="p-banner swiper-container swiper-container-horizontal">
+                <ul class="swiper-wrapper" style="transition-duration: 0ms; transform: translate3d(-3517px, 0px, 0px);">
+                    <li class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="0">
+                        <a href="http://m.91y.com/download/detail/index.html?name=GameHallios"><img src="~/91Resources/img/banner_01.png"></a>
+                    </li>
+                    <li class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="1">
+                        <a href="http://m.91y.com/download/detail/index.html?name=Dragonballfishing"><img src="~/91Resources/img/banner_02.png"></a>
+                    </li>
+                    <li class="swiper-slide swiper-slide-duplicate swiper-slide-duplicate-prev" data-swiper-slide-index="2">
+                        <a href="http://m.91y.com/download/detail/index.html?name=HappyFishkldwby"><img src="~/91Resources/img/banner_03.png"></a>
+                    </li>
+                    <li class="swiper-slide swiper-slide-duplicate swiper-slide-duplicate-active" data-swiper-slide-index="3">
+                        <a href="http://m.91y.com/download/detail/index.html?name=src608"><img src="~/91Resources/img/banner_05.png"></a>
+                    </li>
+                    <li class="swiper-slide swiper-slide-duplicate-next" data-swiper-slide-index="0">
+                        <a href="http://m.91y.com/download/detail/index.html?name=GameHallios"><img src="~/91Resources/img/banner_01.png"></a>
+                    </li>
+                    <li class="swiper-slide" data-swiper-slide-index="1">
+                        <a href="http://m.91y.com/download/detail/index.html?name=Dragonballfishing"><img src="~/91Resources/img/banner_02.png"></a>
+                    </li>
+                    <li class="swiper-slide swiper-slide-prev" data-swiper-slide-index="2">
+                        <a href="http://m.91y.com/download/detail/index.html?name=HappyFishkldwby"><img src="~/91Resources/img/banner_03.png"></a>
+                    </li>
+                    <li class="swiper-slide swiper-slide-active" data-swiper-slide-index="3">
+                        <a href="http://m.91y.com/download/detail/index.html?name=src608"><img src="~/91Resources/img/banner_05.png"></a>
+                    </li>
+                    <li class="swiper-slide swiper-slide-duplicate swiper-slide-next" data-swiper-slide-index="0">
+                        <a href="http://m.91y.com/download/detail/index.html?name=GameHallios"><img src="~/91Resources/img/banner_01.png"></a>
+                    </li>
+                    <li class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="1">
+                        <a href="http://m.91y.com/download/detail/index.html?name=Dragonballfishing"><img src="~/91Resources/img/banner_02.png"></a>
+                    </li>
+                    <li class="swiper-slide swiper-slide-duplicate swiper-slide-duplicate-prev" data-swiper-slide-index="2">
+                        <a href="http://m.91y.com/download/detail/index.html?name=HappyFishkldwby"><img src="~/91Resources/img/banner_03.png"></a>
+                    </li>
+                    <li class="swiper-slide swiper-slide-duplicate swiper-slide-duplicate-active" data-swiper-slide-index="3">
+                        <a href="http://m.91y.com/download/detail/index.html?name=src608"><img src="~/91Resources/img/banner_05.png"></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="p-topnav">
+            <a href="/Home/downpage">
+                <img src="~/91Resources/img/top_icon_download.png">
+                <span>下载</span>
+            </a>
+            <a href="/Home/Recharge">
+                <img src="~/91Resources/img/top_icon_topup.png">
+                <span>充值</span>
+            </a>
+            <a href="/Home/News">
+                <img src="~/91Resources/img/top_icon_news.png">
+                <span>新闻</span>
+            </a>
+            <a href="/Home/help">
+                <img src="~/91Resources/img/top_icon_help.png">
+                <span>帮助</span>
+            </a>
+        </div>
+        <dl class="p-dl">
+            <dt>
+                <h3>精选游戏</h3>
+            </dt>
+            <dd>
+                <ul class="game-list" id="downteamlist"><li><a onclick="down()" href="javascript:alert(" 程序猿哥哥正在努力研发中，敬请期待。");"=""><img src="~/91Resources/js/200720171205025715.jpg"></a></li><li><a onclick="down()" href="javascript:alert(" 程序猿哥哥正在努力研发中，敬请期待。");"=""><img src="~/91Resources/js/564720180912070348.jpg"></a></li><li><a onclick="down()" href="javascript:alert(" 程序猿哥哥正在努力研发中，敬请期待。");"=""><img src="~/91Resources/js/363520171206013804.jpg"></a></li><li><a onclick="down()" href="javascript:alert(" 程序猿哥哥正在努力研发中，敬请期待。");"=""><img src="~/91Resources/js/558020180411031445.jpg"></a></li><li><a onclick="down()" href="javascript:alert(" 程序猿哥哥正在努力研发中，敬请期待。");"=""><img src="~/91Resources/js/579220190826020728.jpg"></a></li><li><a onclick="down()" href="javascript:alert(" 程序猿哥哥正在努力研发中，敬请期待。");"=""><img src="~/91Resources/js/213920190429105639.jpg"></a></li><li><a onclick="down()" href="javascript:alert(" 程序猿哥哥正在努力研发中，敬请期待。");"=""><img src="~/91Resources/js/163120180514102655.jpg"></a></li><li class="more"><a href="http://m.91y.com/download/">MORE</a></li></ul>
+            </dd>
+        </dl>
+        <dl class="p-dl">
+            <dt>
+                <h3>新闻公告</h3>
+            </dt>
+            <dd>
+                <ul class="new-list">
+                    <li class="head"><a href="http://m.91y.com/news/xinwen/2601.html" title="&lt;strong&gt;下城区工商联党组书记、主席舒健一行莅临指导&lt;/strong&gt;"><span>推荐</span><strong>下城区工商联党组书记、主席舒健一行莅临指导</strong></a></li>
+                    <li><a href="http://m.91y.com/news/xinwen/2593.html" title="&lt;strong&gt;树立行业标杆，彰显榜样力量——我司获得“朝晖榜样”三项殊荣&lt;/strong&gt;"><strong>树立行业标杆，彰显榜样力量——我司获得“朝晖榜样”三项殊荣</strong></a></li>
+                    <li><a href="http://m.91y.com/news/xinwen/2591.html" title="&lt;strong&gt;我司荣获2018年度下城区“安康杯”竞赛先进单位称号&lt;/strong&gt;"><strong>我司荣获2018年度下城区“安康杯”竞赛先进单位称号</strong></a></li>
+                    <li><a href="http://m.91y.com/news/xinwen/2585.html" title="&lt;strong&gt;找到最大公约数、画出最大同心圆 ​——“浮云·同心荟”揭牌仪式隆重举行&lt;/strong&gt;"><strong>找到最大公约数、画出最大同心圆 ​——“浮云·同心荟”揭牌仪式隆重举行</strong></a></li>
+                    <li><a href="http://m.91y.com/news/xinwen/2577.html" title="&lt;strong&gt;筑梦杭州，圆满收官——我司香港大学生回顾在杭实习收获满满&lt;/strong&gt;"><strong>筑梦杭州，圆满收官——我司香港大学生回顾在杭实习收获满满</strong></a></li>
+                    <li><a href="http://m.91y.com/news/xinwen/2566.html" title="&lt;strong&gt;我司首届钱塘江增殖放流公益活动圆满举办&lt;/strong&gt;"><strong>我司首届钱塘江增殖放流公益活动圆满举办</strong></a></li>
+                    <li><a href="http://m.91y.com/news/xinwen/2565.html" title="&lt;strong&gt;中宣部副部长一行视察ChinaJoy 顺网科技助力中国数字娱乐产业蓬勃发展&lt;/strong&gt;"><strong>中宣部副部长一行视察ChinaJoy 顺网科技助力中国数字娱乐产业蓬勃发展</strong></a></li>
+                </ul>
+                <a href="http://m.91y.com/news/xinwen/" class="new-more">更多&gt;&gt;</a>
+            </dd>
+        </dl>
+        <!----------------------------------版权----------------------------------->
+       @Html.Partial("footer")
+    </div>
+
+    <script>var swiperShow = new Swiper(".swiper-container", {
+        allowTouchMove: true,
+        autoplay: {
+            delay: 5000,
+            disableOnInteraction: false
+        }
+        ,
+        delay: 5000,
+        slidesPerView: 'auto',
+        watchSlidesProgress: false,
+        slidesOffsetBefore: 81,
+        spaceBetween: 0,
+        initialSlide: 0,
+        resistanceRatio: 0,
+        loop: true,
+        pagination: {
+            el: '.swiper-pagination'
+        }
+    });
+
+    $(document).ready(function () {
+        $(".bottom-nav .index").addClass("on");
+    });
+
+    var _hmt = _hmt || [];
+    (function () {
+        var hm = document.createElement("script");
+        hm.src = "//hm.baidu.com/hm.js?64f9bb47cd627a8a4069b1e07b127e1f";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();</script>*@
+</body>
+</html>

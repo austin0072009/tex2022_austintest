@@ -1,0 +1,134 @@
+﻿@using Crazy2018_Sys_Common;
+@using Crazy2018_Sys_Entity;
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,initial-scale=1.0,user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <title>管理首页</title>
+    <link href="~/skin/default/style.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" charset="utf-8" src="~/scripts/jquery/jquery-1.11.2.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="~/js/layindex.js"></script>
+    <link href="~/js/bootstrap/bootstrap.css" rel="stylesheet" />
+    <script src="~/js/bootstrap/bootstrap.js"></script>
+    <script type="text/javascript" charset="utf-8" src="~/js/common.js"></script>
+
+
+    <script>
+        
+    </script>
+</head>
+<body class="mainbody">
+    <form id="form1" runat="server">
+        <!--导航栏-->
+        <div class="location">
+            <a href="javascript:history.back(-1);" class="back"><i></i><span>返回上一页</span></a>
+            <a class="home"><i></i><span>首页</span></a>
+            <i class="arrow"></i>
+            <span>管理中心</span>
+        </div>
+        <!--/导航栏-->
+        <!--内容-->
+        <div class="line10"></div>
+        <div class="nlist-1">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <span class="glyphicon glyphicon-signal"></span>  站点统计
+                </div>
+                <div class="panel-body">
+                    <div class="dashboard-stats">
+                        <div class="dashboard-stats-item" style="background-color: #fc8675;">
+                            <h2 class="m-top-none">@Model.totaltable</h2>
+                            <h5>当前总桌数</h5>
+                            <div class="stat-icon">
+                                <i style="font-weight:bolder" class="glyphicon glyphicon-gift"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="dashboard-stats">
+                        <div class="dashboard-stats-item" style="background-color: #6bafbd;">
+                            <h2 class="m-top-none">@Model.TodayliuWater</h2>
+                            <h5>当日总流水</h5>
+                            <div class="stat-icon">
+                                <i style="font-weight:bolder" class="glyphicon glyphicon-tint"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="dashboard-stats">
+                        <a style="text-decoration:none" href="/GameCore/UserAgentlog">
+                            <div class="dashboard-stats-item" style="background-color: #f3ce85;">
+                                <h2 class="m-top-none">@Model.Todaytax</h2>
+                                <h5>当日税收</h5>
+                                <div class="stat-icon">
+                                    <i style="font-weight:bolder" class="glyphicon glyphicon-signal"></i>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="dashboard-stats">
+                        <a style="text-decoration:none" href="/Business/StatisticsJackpot">
+                            <div class="dashboard-stats-item" style="background-color: #ea9999;">
+                                <h2 class="m-top-none">@Model.TotalJackpot</h2>
+                                <h5>总奖池</h5>
+                                <div class="stat-icon">
+                                    <i style="font-weight:bolder" class="glyphicon glyphicon-signal"></i>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        <div class="line10"></div>
+
+        <div class="nlist-2">
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <span class="glyphicon glyphicon-home"></span> 站点信息
+                </div>
+                <div class="panel-body">
+                    <ul>
+                        <li>站点名称：@Model.webname</li>
+                        <li>公司名称：@Model.webcompany</li>
+                        <li>网站域名：@Model.weburl</li>
+                        <li>安装目录：@Model.webpath</li>
+                        <li>网站管理目录：@Model.webmanagepath</li>
+                        <li>附件上传目录：@Model.filepath</li>
+                        <li>服务器名称：@Server.MachineName</li>
+                        <li>服务器IP：@Request.ServerVariables["LOCAL_ADDR"]</li>
+                        <li>NET框架版本：@Environment.Version.ToString()</li>
+                        <li>操作系统：@Environment.Version.ToString()</li>
+                        <li>IIS环境：@Request.ServerVariables["SERVER_SOFTWARE"]</li>
+                        <li>服务器端口：@Request.ServerVariables["SERVER_PORT"]</li>
+                        <li>目录物理路径：@Request.ServerVariables["APPL_PHYSICAL_PATH"]</li>
+                        <li>系统版本：V @Utils.GetVersion()</li>
+                       
+                        <li>升级通知：<asp:Literal ID="LitUpgrade" /></li>
+                    </ul>
+                </div>
+            </div>
+
+         
+        </div>
+        <div class="line20"></div>
+
+        <div class="nlist-3">
+            <ul>
+                <li><a onclick="parent.linkMenuTree(true, 'user_list');" class="icon-user" href="javascript:;"></a><span>会员管理</span></li>
+                <li><a onclick="parent.linkMenuTree(true, 'manager_list');" class="icon-manaer" href="javascript:;"></a><span>管理员</span></li>
+                <li><a onclick="parent.linkMenuTree(true, 'manager_log');" class="icon-log" href="javascript:;"></a><span>系统日志</span></li>
+            </ul>
+        </div>
+        <!--/内容-->
+
+    </form>
+</body>
+</html>
+

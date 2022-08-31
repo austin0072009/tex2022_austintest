@@ -1,0 +1,255 @@
+﻿
+<style>
+    .form-control {
+        width: 80%;
+    }
+</style>
+<div id="floatHead" class="toolbar-wrap">
+    <div class="toolbar">
+        <div class="box-wrap">
+            <a class="menu-btn"></a>
+            <div class="l-list">
+                <ul class="icon-list">
+                    <li>
+
+                        <a id="btnRecharge" class="btn glyphicon  glyphicon-qrcode btn-primary btn-lg" data-toggle="modal" data-target="#myModalRegold"><span style="padding-bottom: 7px;">充值</span></a>
+                    </li>
+
+                    <li><a onclick="ExportsearchData();" class="channel"><i></i><span>导出Excle</span></a></li>
+                    
+                </ul>
+                <div class="l-list">
+                    点卡类型:
+                    <select name="typereid" id="typereid" class="select">
+                        <option value="-1">-不限-</option>
+                    </select>
+                </div>
+                <div class="r-list">
+                    <input name="txtKeywords" placeholder="实体卡编码" type="text" id="txtKeywords" class="keyword">
+                    <a id="lbtnSearch" class="btn-search">查询</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--/工具栏-->
+<!--列表-->
+<div class="table-container">
+    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="ltable">
+        <thead>
+            <tr class="odd_bg">
+                <th>类型id</th>
+                <th>类型名称</th>
+                @* <th>实体卡名称</th>*@
+                @*<th>实体卡编码</th>
+                <th>实体卡密码</th>*@
+                <th>剩余数量</th>
+
+            </tr>
+        </thead>
+        <tbody id="MyTbodyGR"></tbody>
+    </table>
+
+</div>
+<!--/列表-->
+<!--内容底部-->
+<div class="line20"></div>
+<div class="pagelist">
+    <div class="l-btns">
+        <span>显示</span><input name="txtPageNum" type="text" id="txtPageNum" class="pagenum"><span>条/页</span>
+    </div>
+    <div id="PageContent" class="default">
+    </div>
+</div>
+<!--/内容底部-->
+<div style="width:100%;text-align: center;">
+    <span style="display: inline-block;padding: 4px 15px 0px 15px;color: #666;font-size:14px;">(注 :检索条件 实体卡编码)</span>
+</div>
+<div>
+</div>
+<div class="modal fade" id="myModalRegold" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+                <h4 class="modal-title" id="myModalLabel">
+                    实体卡充值
+                </h4>
+            </div>
+            <div class="modal-body">
+                <form class="bs-example bs-example-form" role="form">
+                    <input type="hidden" value="0" id="Id" />
+                    <div class="form-group">
+                        <label for="name">用户id</label>
+                        <input type="text" id="UserId_Re" name="UserId_Re" class="form-control" placeholder="用户id">
+
+                    </div>
+                    <div class="form-group">
+                        <label for="name">实体卡编码</label>
+                        <input type="text" id="CardNum_Re" name="CardNum_Re" class="form-control" placeholder="实体卡编码">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="name">实体卡密码</label>
+                        <input type="text" id="CardPwd_Re" name="CardPwd_Re" class="form-control" placeholder="实体卡密码">
+                    </div>
+
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button id="FormClose" type="button" class="btn btn-default" data-dismiss="modal">
+                    关闭
+                </button>
+                <button type="button" id="btnFormsubmitRe" class="btn btn-primary">
+                    提交
+                </button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
+<script>
+    var storagefirst = window.localStorage;
+    var MyPageNum8 = storagefirst["MyPageNum8"];
+    var id = "";
+    var txtPageNum = 10;
+    var Keywords = "";
+    var PageIndex = 1;
+    var $typeid = $("#typereid");
+    if (MyPageNum8 != "" && MyPageNum8 != null) {
+        txtPageNum = MyPageNum8
+    } else {
+        txtPageNum = txtPageNum
+    }
+    $("#txtPageNum").val(txtPageNum)
+    $("#lbtnSearch").click(function () {
+        var txtKeywords = $("#txtKeywords").val();
+        Keywords = txtKeywords;
+        GetList();
+    })
+    $("#txtPageNum").change(function () {
+        txtPageNum = $("#txtPageNum").val()
+        storagefirst["MyPageNum8"] = txtPageNum
+        PageIndex = 1;
+        //console.log(txtPageNum)
+        GetList();
+    })
+    $(".pagelist").on('click', 'a', function () {
+        //var lkl = $(this).attr("href");
+        //console.log(lkl)
+        var lkl2 = $(this).text();
+        if (lkl2 == "下一页»") {
+            PageIndex = parseInt(PageIndex) + 1
+            //console.log(PageIndex)
+        } else if (lkl2 == "«上一页") {
+            PageIndex = parseInt(PageIndex) - 1
+        } else {
+            PageIndex = lkl2
+        }
+        txtPageNum = $("#txtPageNum").val()
+        GetList()
+    })
+    GetList();
+    GetCardDetailsType();
+    function GetList() {
+        var data = {};
+        data.typeid = $typeid.val();
+        data.PageSize = txtPageNum;
+        data.PageIndex = PageIndex;
+        data.Keywords = Keywords
+        $.ajax({
+            type: "post", url: '/GameCore/GetCardGroup',
+            datatype: 'json',
+            data: data,
+            success: function (res) {
+                if (res) {
+                    console.log(res)
+                    $("#MyTbodyGR").empty();
+                    if (res.Code == 0 && res.Code == "0") {
+                        if (res.Data.length > 0) {
+                            for (var i = 0; i < res.Data.length; i++) {
+                                var str = $("#MyTbodyGR").html();
+                                str = "<tr class='One'>" +
+                                    "<td align='center'>" + res.Data[i].TypeId + "</td>" +
+                                    "<td align='center'>" + res.Data[i].Name + "</td>" +
+                                    //"<td align='center'>" + res.Data[i].CardNum + "</td>" +
+                                    //"<td align='center'>" + res.Data[i].PassWord + "</td>" +
+                                    "<td align='center'>" + res.Data[i].Number + "</td>" +
+
+
+                                    "</tr>"
+                                $('#MyTbodyGR').append(str);
+                            }
+                        } else {
+                            $("#MyTbodyGR").empty();
+                            var str = $("#MyTbodyGR").html();
+                            str = "<tr class='One'>" +
+                                "<td align='center'  colspan='8'>没有数据</td>"
+                            "</tr>"
+                            $('#MyTbodyGR').append(str);
+                        }
+                    } else {
+                        alert(res.Message)
+                    }
+                    var sthtml = $("#PageContent").html();
+                    $("#PageContent").empty();
+                    if (res.InnerHtml.length > 0) {
+                        sthtml = res.InnerHtml
+                        $('#PageContent').append(sthtml);
+                    }
+
+                } else {
+                    eval(res.Message)
+                }
+
+            }
+        })
+    }
+
+    function GetCardDetailsType() {
+        $("#typereid").append("");
+        $.ajax({
+            type: "post", url: '/GameCore/GetCardtypelist',
+            datatype: 'json',
+            success: function (res) {
+                var str = "";
+                for (var i = 0; i < res.Data.length; i++) {
+                    str += "<option value='" + res.Data[i].ID + "'>" + res.Data[i].Name + "</option>";
+
+                }
+                $("#typereid").append(str);
+            }
+        });
+    }
+
+
+    $("#btnFormsubmitRe").click(function () {
+
+        var UserId = $("#UserId_Re").val();
+        var CardNum = $("#CardNum_Re").val();
+        var CardPwd = $("#CardPwd_Re").val();
+
+        data = {};
+        data.UserId = UserId;
+        data.CardNum = CardNum;
+        data.CardPwd = CardPwd;
+        $.ajax({
+            type: "post", url: '/GameCore/RechargeCard',
+            datatype: 'json',
+            data: data,
+            success: function (res) {
+                console.log(res);
+                alert(res.Message);
+                
+
+            }
+        });
+    })
+
+    function ExportsearchData() {
+
+        isExport = 1;
+        window.open("/GameCore/GetChargeLogExportData?PageIndex=" + PageIndex + "&PageSize=" + txtPageNum + "&Keywords=" + Keywords + "&isExport=" + isExport );
+    }
+</script>

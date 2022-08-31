@@ -1,0 +1,48 @@
+﻿
+@{
+    ViewBag.Title = "新闻详情";
+}
+@using Crazy2018_Sys_Common;
+@using Crazy2018_Sys_ViewEntity;
+@using Crazy2018_Sys_DBHelper;
+@model tnotice
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, maximum-scale=1.0">
+    <meta name="viewport" content="width=750,target-densitydpi=device-dpi,user-scalable=no">
+    <meta content="telephone=no,email=no" name="format-detection">
+    <title>91y游戏中心_新闻资讯</title>
+    <meta name="keywords" content="下,城区,工商联,党组书记,、,主席,舒健,一行,">
+    <meta name="description" content="10月10日上午，下城区工商联党组书记、主席舒健，副主席沈叶芝、王华雄、陈瑛，办公室项明莅临我司走访调研并召开座谈会。 座谈会上，领导们听取了我司CEO对公司经营情况及企业">
+    <link href="~/91Resources/css/91y_phone.css" rel="stylesheet" type="text/css">
+    <link href="~/91Resources/css/91y_public.css" rel="stylesheet" type="text/css">
+    <script language="javascript" src="~/91Resources/js/jquery-1.7.1.min.js"></script>
+</head>
+<body>
+    <div class="p-box">
+    
+            <div class="newscot">
+                <div class="title"><h2>@Model.title</h2></div>
+                <div class="time">@Enum.GetName(typeof(TableUtil.NoticeType), int.Parse(Model.C_type))
+                <span>@Model.noticetime.Value.ToString("yyyy-MM-dd")</span></div>
+                <div class="txtcot">
+                    @Html.Raw(Model.content)
+
+                </div>
+            </div>
+        
+
+        <!----------------------------------版权----------------------------------->
+        @Html.Partial("footer")
+    </div>
+    <script type="text/javascript">
+    $(document).ready(function () {
+            $(".bottom-nav .news").addClass("on");
+        })</script>
+
+</body>
+</html>

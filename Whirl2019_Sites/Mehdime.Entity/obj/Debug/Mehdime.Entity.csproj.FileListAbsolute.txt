@@ -1,0 +1,12 @@
+C:\Users\Game\Desktop\Whirl2019_Sites\Mehdime.Entity\bin\Debug\Mehdime.Entity.dll.config
+C:\Users\Game\Desktop\Whirl2019_Sites\Mehdime.Entity\bin\Debug\Mehdime.Entity.dll
+C:\Users\Game\Desktop\Whirl2019_Sites\Mehdime.Entity\bin\Debug\Mehdime.Entity.pdb
+C:\Users\Game\Desktop\Whirl2019_Sites\Mehdime.Entity\bin\Debug\EntityFramework.dll
+C:\Users\Game\Desktop\Whirl2019_Sites\Mehdime.Entity\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Game\Desktop\Whirl2019_Sites\Mehdime.Entity\bin\Debug\EntityFramework.xml
+C:\Users\Game\Desktop\Whirl2019_Sites\Mehdime.Entity\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Game\Desktop\Whirl2019_Sites\Mehdime.Entity\obj\Debug\Mehdime.Entity.csproj.CoreCompileInputs.cache
+C:\Users\Game\Desktop\Whirl2019_Sites\Mehdime.Entity\obj\Debug\Mehdime.Entity.csproj.CopyComplete
+C:\Users\Game\Desktop\Whirl2019_Sites\Mehdime.Entity\obj\Debug\Mehdime.Entity.dll
+C:\Users\Game\Desktop\Whirl2019_Sites\Mehdime.Entity\obj\Debug\Mehdime.Entity.pdb
+C:\Users\Game\Desktop\Whirl2019_Sites\Mehdime.Entity\obj\Debug\Mehdime.Entity.csproj.AssemblyReference.cache

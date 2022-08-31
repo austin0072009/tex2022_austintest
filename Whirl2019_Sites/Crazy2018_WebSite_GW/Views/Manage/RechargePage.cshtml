@@ -1,0 +1,39 @@
+﻿
+@{
+    ViewBag.Title = "RechargePage";
+}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta id="viewport" name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=no,target-densitydpi=medium-dpi" />
+    <title>我的金币</title>
+    <link type="text/css" href="~/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="~/css/RechargePage.css">
+    <script src="~/js/jquery.min.js"></script>
+</head>
+
+<body>
+    <div class="RechargePageBox">
+        <header>
+            <div class="fanhui" onClick="JavaScript :history.back(1);">
+                <img src="~/img/fanhui.png" alt="">
+            </div>
+            我的金币
+        </header>
+        <div class="RechargePageCont">
+            <div class="RechargeBtn" onclick="window.location.href = '/Manage/Recharge'">
+                <span>充&nbsp;值</span>
+                <img src="~/img/gengduo.png" class="genduoImg"/>
+            </div>
+            @*<div class="RechargeBtn" onclick="window.location.href = '/Manage/withdraw'">
+                <span>提&nbsp;现</span>
+                <img src="~/img/gengduo.png" class="genduoImg" />
+            </div>*@
+        </div>
+    </div>
+</body>
+
+</html>

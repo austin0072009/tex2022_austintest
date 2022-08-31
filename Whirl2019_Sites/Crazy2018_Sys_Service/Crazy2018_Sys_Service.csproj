@@ -1,0 +1,190 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{67A9C8D9-3392-4A64-BE2B-82400464E3C2}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Crazy2018_Sys_Service</RootNamespace>
+    <AssemblyName>Crazy2018_Sys_Service</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.Extended, Version=6.0.0.0, Culture=neutral, PublicKeyToken=05b7e29bdd433584, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.Extended.6.1.0.168\lib\net45\EntityFramework.Extended.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data, Version=6.9.12.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySql.Data.6.9.12\lib\net45\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data.Entity.EF6, Version=6.9.12.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySql.Data.Entity.6.9.12\lib\net45\MySql.Data.Entity.EF6.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Configuration.Install" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Drawing.Design" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Agent\Useragent2020Service.cs" />
+    <Compile Include="BaseService.cs" />
+    <Compile Include="Club\CluballianceService.cs" />
+    <Compile Include="Club\ClubFundLogService.cs" />
+    <Compile Include="Club\ClubGoldLogService.cs" />
+    <Compile Include="Club\ClubService.cs" />
+    <Compile Include="Club\ClubUserGoldLogService.cs" />
+    <Compile Include="Club\DiamondChangeLogService.cs" />
+    <Compile Include="GameCore\AgentGoldlogService.cs" />
+    <Compile Include="GameCore\GoldChangeh5gameService.cs" />
+    <Compile Include="GameCore\GoldChangeLogService.cs" />
+    <Compile Include="GameCore\RechargeChannelService.cs" />
+    <Compile Include="GameCore\SysConfigService.cs" />
+    <Compile Include="GameCore\TableUserlogService.cs" />
+    <Compile Include="GameCore\TaxLogService.cs" />
+    <Compile Include="GameCore\tuserService.cs" />
+    <Compile Include="GameCore\UserAgentNewService.cs" />
+    <Compile Include="Game\ActiveCodeService.cs" />
+    <Compile Include="Game\CommoditService.cs" />
+    <Compile Include="Game\EmailService.cs" />
+    <Compile Include="Game\EntityCardService.cs" />
+    <Compile Include="Game\FeedBackService.cs" />
+    <Compile Include="Game\GameLogoService.cs" />
+    <Compile Include="Game\GameService.cs" />
+    <Compile Include="Game\GameUserService.cs" />
+    <Compile Include="Game\GUserAgentService.cs" />
+    <Compile Include="Game\H5winloseLogService.cs" />
+    <Compile Include="Game\GameUserInfoService.cs" />
+    <Compile Include="Game\InitialagencyInfoService.cs" />
+    <Compile Include="Game\NoticesEntityService.cs" />
+    <Compile Include="Game\RechargeChannelsService.cs" />
+    <Compile Include="Game\RoomConfigService.cs" />
+    <Compile Include="Game\RoomListService.cs" />
+    <Compile Include="Game\sc_base_gm.cs" />
+    <Compile Include="Game\TContactService.cs" />
+    <Compile Include="Game\TGameUserRank.cs" />
+    <Compile Include="Game\Ttablehandnumlog.cs" />
+    <Compile Include="Game\TUsergamehand.cs" />
+    <Compile Include="Game\TuserPrizeLogService.cs" />
+    <Compile Include="Game\TurnTablePrizeService.cs" />
+    <Compile Include="Game\JackpotService.cs" />
+    <Compile Include="Game\NoticeService.cs" />
+    <Compile Include="Game\ProfitService.cs" />
+    <Compile Include="Game\RechargeRecordService.cs" />
+    <Compile Include="Game\RoomService.cs" />
+    <Compile Include="Game\ShopManageService.cs" />
+    <Compile Include="Game\StatisticsGoldService.cs" />
+    <Compile Include="Game\TakeNowRecordService.cs" />
+    <Compile Include="Game\UserContactService.cs" />
+    <Compile Include="Game\UserRechargeLogService.cs" />
+    <Compile Include="Game\VisualTableService.cs" />
+    <Compile Include="Game\WhirlUserAgentService.cs" />
+    <Compile Include="Gmmgr\RedEnvelopesConfigService.cs" />
+    <Compile Include="h5Game\tgameinfoService.cs" />
+    <Compile Include="h5Game\tgoldchangh5gameService.cs" />
+    <Compile Include="h5Game\th5menuService.cs" />
+    <Compile Include="h5Game\tjackpotlogService.cs" />
+    <Compile Include="h5Game\tjackpotService.cs" />
+    <Compile Include="h5Game\tjackpotstocklogService.cs" />
+    <Compile Include="h5Game\tjackpotstockService.cs" />
+    <Compile Include="h5Game\tslotconfigService.cs" />
+    <Compile Include="h5Game\tuserh5Service.cs" />
+    <Compile Include="Manage\ManagerLogService.cs" />
+    <Compile Include="Manage\ManagerRoleService.cs" />
+    <Compile Include="Manage\ManageService.cs" />
+    <Compile Include="Manage\NavigationService.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Retail\retailchangeinfoService.cs" />
+    <Compile Include="Retail\retailconfigService.cs" />
+    <Compile Include="Retail\retailinfoService.cs" />
+    <Compile Include="SignalEntitiy2\cs_base_gm.cs" />
+    <Compile Include="SignalEntitiy2\sc_base_gm.cs" />
+    <Compile Include="SignalEntitiy\cs_base_gm.cs" />
+    <Compile Include="SignalEntitiy\sc_base_gm.cs" />
+    <Compile Include="SnsCenter\SnsUserInfoService.cs" />
+    <Compile Include="System\SiteConfigSerivice.cs" />
+    <Compile Include="System\UserAgentService.cs" />
+    <Compile Include="System\UserService.cs" />
+    <Compile Include="System\UserSnsService.cs" />
+    <Compile Include="System\VerifyCodeService.cs" />
+    <Compile Include="WebSite_GW\BankCardService.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Crazy2018_Sys_Common\Crazy2018_Sys_Common.csproj">
+      <Project>{1B9DA1CD-5FD2-43B4-AA3D-C3556102F21B}</Project>
+      <Name>Crazy2018_Sys_Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Crazy2018_Sys_DBHelper\Crazy2018_Sys_DBHelper.csproj">
+      <Project>{8D7712CD-9000-4C39-86DE-C6D2D7C850E5}</Project>
+      <Name>Crazy2018_Sys_DBHelper</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Crazy2018_Sys_Entity\Crazy2018_Sys_Entity.csproj">
+      <Project>{3711985E-A1C8-4E01-BF35-D2B51C27AFDC}</Project>
+      <Name>Crazy2018_Sys_Entity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Crazy2018_Sys_Interface\Crazy2018_Sys_Interface.csproj">
+      <Project>{B7558E3D-F636-4369-ACFD-6646E4B150C8}</Project>
+      <Name>Crazy2018_Sys_Interface</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Crazy2018_Sys_ViewEntity\Crazy2018_Sys_ViewEntity.csproj">
+      <Project>{727cba4b-a8ca-4ac1-9ce6-12ae24e83a1e}</Project>
+      <Name>Crazy2018_Sys_ViewEntity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Mehdime.Entity\Mehdime.Entity.csproj">
+      <Project>{E0F7D5F2-934C-49BC-9AEF-6FFC2D655B57}</Project>
+      <Name>Mehdime.Entity</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

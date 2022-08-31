@@ -1,0 +1,137 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
+    <title>问题反馈</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+    <script src="~/Scripts/jquery.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/js/layer/layer.js"></script>
+    <style>
+        span {
+            margin-left: 5%;
+            font-size: 15px;
+        }
+    </style>
+    <script>
+        $(function () {
+            var posturl = "http://www.danqinake.com/";
+            $("#submitbtn").click(function () {
+                var UserName = $("#UserName").val();
+                var tel = $("#tel").val();
+                var feedbacktype = $("#feedbacktype").val();
+                var content = $("#content").val();
+                if (UserName == "")
+                {
+                    alert("请输入姓名");
+                    return;
+                }
+                if (tel == "")
+                {
+                    alert("请输入手机");
+                    return;
+                }
+
+                $.ajax({
+                    type: "post", url: posturl + '/Game/SubmitFeedback',
+                    datatype: 'json',
+                    data: { UserName: UserName, tel: tel, feedbacktype: feedbacktype, content: content},
+                    success: function (res) {
+                        if (res.success) {
+                            alert(res.success);
+                            document.getElementById('form1').reset();
+                        } else {
+                            alert(res.msg);
+                        }
+                    }
+                });
+
+                
+            });
+
+
+        });
+        function uploadFile() {
+            var fileObj = $("#_inputfile")[0].files[0];
+            alert(JSON.stringify(fileObj));
+            $.ajax({
+                type: "post", url: '/Game/uploadFile',
+                datatype: 'json',
+                processData: false,
+                dataType: "json",
+                data: fileObj,
+
+                success: function (res) {
+                    $("#inputfile").val(res);
+                }
+            })
+
+
+
+
+        }
+
+    </script>
+</head>
+<body>
+    <form id="form1" enctype="multipart/form-data">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">
+                    问题反馈<span class="glyphicon glyphicon-send"></span>
+                </h3>
+            </div>
+            <div class="panel-body">
+                <div class="form-group">
+                    <label for="firstname" class="col-sm-2 control-label">姓名</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="UserName" name="UserName" placeholder="你的姓名">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="firstname" class="col-sm-2 control-label">电话</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="tel" name="tel" placeholder="请输入你的电话">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="firstname" class="col-sm-2 control-label">文件</label>
+                    <div class="col-sm-10">
+                        <input id="inputfile" type="hidden" name="inputfile" />
+                        <input type="file" name="_inputfile" accept="image/*,text/csv,text/plain,application/msword" id="_inputfile">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="firstname" class="col-sm-2 control-label">反馈类型</label>
+                    <div class="col-sm-10">
+                        <select id="feedbacktype" name="feedbacktype" class="form-control">
+                            <option value="1">BUG</option>
+                            <option value="2">俱乐部问题</option>
+                            <option value="3">举报作弊</option>
+                            <option value="4">充值反馈</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="firstname" class="col-sm-2 control-label">反馈内容</label>
+                    <div class="col-sm-10">
+                        <textarea class="form-control" id="content" name="content" placeholder="反馈内容" rows="3"></textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <button type="submit" id="submitbtn" class="btn btn-default">提交</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</body>
+</html>

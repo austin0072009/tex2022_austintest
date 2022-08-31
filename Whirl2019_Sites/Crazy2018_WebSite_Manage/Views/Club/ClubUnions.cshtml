@@ -1,0 +1,380 @@
+﻿
+@{
+    ViewBag.Title = "联盟管理";
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+}
+<style>
+    .layerbtn {
+        display: inline-block;
+        height: 20px;
+        line-height: 20px;
+        padding: 1px 10px 2px 9px;
+        background-color: #A9A9A9;
+        color: white;
+        white-space: nowrap;
+        text-align: center;
+        font-size: 10px;
+        border: none;
+        border-radius: 2px;
+        cursor: pointer;
+    }
+
+    .form-control {
+        width: 80%;
+        height: 22px;
+    }
+
+    th {
+        text-align: center;
+    }
+</style>
+<body onkeydown="keyLogin(event);" class="mainbody">
+    <!--导航栏-->
+    <div class="location">
+        <a href="javascript:history.back(-1);" class="back"><i></i><span>返回上一页</span></a>
+        <a href="/Home/Center" class="home"><i></i><span>首页</span></a>
+        <i class="arrow"></i>
+        <a href="/Club/ClubList"><span>联盟管理</span></a>
+        <i class="arrow"></i>
+        <span>联盟信息</span>
+    </div>
+    <!--/导航栏-->
+    <!--工具栏-->
+    <div id="floatHead" class="toolbar-wrap">
+        <div class="toolbar">
+            <div class="box-wrap">
+                <a class="menu-btn">
+                </a>
+                <div class="l-list">
+                 联盟：   <input name="txtKeywords" placeholder="联盟idx查询"  type="text" id="txtKeywords" class="input">
+                    <button type="button" style="height: 28px;padding: 3px 10px;background-color: lightgray;" id="lbtnSearch" class="btn btn-default btn-sm">查询</button>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <input id="hduid" value="hduid" type="hidden" />
+    <input id="sxtype" value="sxtype" type="hidden" />
+    <!--/工具栏-->
+    <!--列表-->
+    <div class="table-container">
+
+        <table width="100%" border="0" cellspacing="0" cellpadding="0" class="ltable">
+            <thead>
+                <tr class="odd_bg">
+                    <th>选择</th>
+                    @*<th>ID</th>*@
+                    <th>联盟id</th>
+                    <th>创建人</th>
+                    <th>联盟名称</th>
+                    <th>金币数</th>
+                    <th>钻石数</th>
+                    <th>是否搜索</th>
+                    <th>地区</th>
+                    <th>创建时间</th>
+
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody id="MyTbody"></tbody>
+        </table>
+    </div>
+
+    <div class="modal fade" id="myupdateModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                        &times;
+                    </button>
+                    <h4 class="modal-title">
+                        修改联盟信息
+                    </h4>
+                </div>
+                <div class="modal-body">
+                    <form class="bs-example bs-example-form" role="form">
+                        <input type="hidden" value="0" id="Id" />
+                        <div class="form-group">
+                            <label for="unionidx">联盟id</label>
+                            <input type="text" id="unionidx" oninput="value=value.replace(/[^\d]/g,'')" name="unionidx" class="form-control" placeholder="">
+                        </div>
+
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button id="FormClose" type="button" class="btn btn-default" data-dismiss="modal">
+                        关闭
+                    </button>
+                    <button type="button" id="btnFormsubmit" class="btn btn-primary">
+                        提交
+                    </button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal -->
+    </div>
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                        &times;
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel">
+                    </h4>
+                </div>
+                <div class="modal-body">
+                    <form class="bs-example bs-example-form" role="form">
+                        <input type="hidden" value="0" id="Id" />
+                        <div class="form-group">
+                            <label for="uniongold">金额</label>
+                            <input type="text" id="uniongold" oninput="value=value.replace(/[^\d]/g,'')" name="uniongold" class="form-control" placeholder="大于1的整数">
+                        </div>
+
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button id="FormClose" type="button" class="btn btn-default" data-dismiss="modal">
+                        关闭
+                    </button>
+                    <button type="button" id="btnAddsubmit" class="btn btn-primary">
+                        提交
+                    </button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal -->
+    </div>
+    <input type="hidden" id="thisid" />
+    <input type="hidden" id="retype" />
+
+
+    <!--/列表-->
+    <!--内容底部-->
+    <div class="line20"></div>
+    <div class="pagelist">
+        <div class="l-btns">
+            <span>显示</span><input name="txtPageNum" type="text" id="txtPageNum" class="pagenum"><span>条/页</span>
+        </div>
+        <div id="PageContent" class="default">
+
+        </div>
+    </div>
+    <!--/内容底部-->
+    <div style="width:100%;text-align: center;">
+        <span style="display: inline-block;padding: 4px 15px 0px 15px;color: #666;font-size:14px;">(注 : 1.俱乐部ID(输全),2.俱乐部名称 3.金币为俱乐部币)</span>
+    </div>
+    <script>
+        var storagefirst = window.localStorage;
+        var MytxtPageNum = storagefirst["MytxtPageNum"];
+        var PageIndex = 1;
+        var txtPageNum = 20;
+        var Keywords = "";
+        if (MytxtPageNum != "" && MytxtPageNum != null) {
+            txtPageNum = MytxtPageNum;
+        } else {
+            txtPageNum = txtPageNum;
+        }
+        GetList();
+        $("#txtPageNum").val(txtPageNum);
+
+        $("#lbtnSearch").click(function () {
+            Keywords = $("#txtKeywords").val();
+            txtPageNum = $("#txtPageNum").val();
+            PageIndex = 1;
+            GetList();
+        })
+        $("#txtPageNum").change(function () {
+            Keywords = $("#txtKeywords").val();
+            txtPageNum = $("#txtPageNum").val();
+            storagefirst["MytxtPageNum"] = txtPageNum
+            PageIndex = 1;
+            GetList();
+        })
+        $("#selectRobot").change(function () {
+            Keywords = $("#txtKeywords").val();
+            txtPageNum = $("#txtPageNum").val();
+            PageIndex = 1;
+            GetList();
+        })
+        function keyLogin(event) {
+            if (event.keyCode == 13)
+                document.getElementById("lbtnSearch").click();
+        }
+        $("#btnFormsubmit").click(function () {
+
+            var unionidx = $("#unionidx").val();
+            var thisid = $("#thisid").val();
+
+
+            if (unionidx == "") {
+                layer.tips('请输入联盟编号id', '#unionidx'); return;
+            }
+            var data = {};
+            data.newidx = unionidx;
+            data.thisid = thisid;
+            data.type = 2;
+
+            $.ajax({
+                url: "/Club/UpdateIdx",
+                type: "post",
+                data: data,
+                dataType: "json",
+                success: function (data) {
+                    layer.msg(data.Message, { icon: 1 });
+                    GetList();
+                    $('#myupdateModal').modal('hide');
+                }
+            });
+        });
+
+        $("#btnAddsubmit").click(function () {
+
+            var uniongold = $("#uniongold").val();
+            var thisid = $("#thisid").val();
+            var retype = $("#retype").val();
+            if (uniongold == "") {
+                layer.tips('请输入金额数量', '#uniongold'); return;
+            }
+            var data = {};
+            data.money = uniongold;
+            data.type = retype;
+            data.chargtype = 2;//1=俱乐部 2=联盟
+            data.idx = thisid;
+            console.log(data);
+            $.ajax({
+                url: "/Club/UpdateUnionGold",
+                type: "post",
+                data: data,
+                dataType: "json",
+                success: function (data) {
+                    layer.msg(data.Message, { icon: 1 });
+                    GetList();
+                    $('#myModal').modal('hide');
+                }
+            });
+
+        })
+        $("#PageContent").on("click", "a", function () {
+            var lkl2 = $(this).text();
+
+            if (lkl2 == "下一页»") {
+                PageIndex = parseInt(PageIndex) + 1
+            } else if (lkl2 == "«上一页") {
+                PageIndex = parseInt(PageIndex) - 1
+            } else {
+                PageIndex = lkl2
+            }
+            Keywords = $("#txtKeywords").val();
+            txtPageNum = $("#txtPageNum").val();
+            GetList();
+        })
+        function userCharge(type, uid) {
+
+            var des = "上分";
+            if (type == 2 || type == 4) {
+                des = "下分";
+            }
+            $("#sxtype").val(type);
+            $("#myModalLabel").text(des);
+
+            $("#txtmoney").val("");
+            $("#txtremarks").val("");
+            $("#hduid").val(uid);
+            $("#btnadd").click();
+
+            //var d = top.dialog({
+            //    title: des,
+            //    width: "550px",
+            //    url: '/Business/DialogCharge?type=' + type + "&uid=" + uid,
+            //    onclose: function () {
+            //        var trHtml = this.returnValue;
+
+            //        if (trHtml == true) {
+            //            GetList();
+            //            alert("充值成功!");
+            //        } else {
+            //            alert("充值失败!");
+            //        }
+            //    }
+            //}).showModal();
+        }
+        function GetList() {
+            var data = {};
+            data.PageIndex = PageIndex;
+            data.PageSize = txtPageNum;
+            data.Keywords = Keywords;
+            //console.log(data.Keywords)
+            $.ajax({
+                type: "post", url: '/Club/GetUnionData',
+                datatype: 'json',
+                data: data,
+                success: function (res) {
+                    console.log(res)
+
+                    if (res.Code == "0" && res.Code == 0) {
+                        if (res) {
+
+                            $("#MyTbody").empty();
+                            var str = $("#MyTbody").html();
+                            if (res.Data.length > 0) {
+                                for (var n = 0; n < res.Data.length; n++) {
+                                    str = "<tr>" +
+                                        "<td align='center'>" +
+                                        "<span class='checkall' style='vertical-align: middle;'>" +
+                                        "<input id='rptList_chkId_0' type='checkbox' name='rptList$ctl01$chkId'>" +
+                                        "</span>" +
+                                        "<input type='hidden' name='rptList' id='rptList' value=''>" +
+                                        "</td>" +
+                                        " <td align='center'>" + res.Data[n].idx + "</td>" +
+                                        "<td align='center'>" + res.Data[n].UserName + "</td>" +
+                                        "<td align='center'>" + res.Data[n].Title + "</td>" +
+                                        "<td align='center'>" + res.Data[n].gold/100 + "</td>" +
+                                        "<td align='center'>" + res.Data[n].diam/100 + "</td>" +
+                                        "<td align='center'>" + res.Data[n].search + "</td>" +
+                                        "<td align='center'>" + res.Data[n].Content + "</td>" +
+                                        "<td align='center'>" + res.Data[n].CreatTime + "</td>" +
+                                        "<td align='center'><a data-toggle='modal' data-target='#myModal' class='layerbtn' onclick=\"updatemodel('1','" + res.Data[n].idx + "')\" style='background-color:#548B54;'>上金币</a>" +
+                                        "<a data-toggle='modal' data-target='#myModal' class='layerbtn' onclick=\"updatemodel('2','" + res.Data[n].idx + "')\" style='background-color:#548B54;'>下金币</a>" +
+                                        //"<a data-toggle='modal' data-target='#myModal' class='layerbtn' onclick=\"updatemodel('3','" + res.Data[n].idx + "')\" style='background-color:#548B54;'>上钻石</a>" +
+                                        //"<a data-toggle='modal' data-target='#myModal' class='layerbtn' onclick=\"updatemodel('4','" + res.Data[n].idx + "')\" style='background-color:#548B54;'>下钻石</a>" +
+                                        "<a class='layerbtn'  href='ClubUnionsChlid?idx=" + res.Data[n].idx + "' style='background-color:#0078D7;margin-left:5px;margin-left:5px;color:#fff'>联盟成员</a>" +
+                                        "<a data-toggle='modal' data-target='#myupdateModal' class='layerbtn' onclick=\"updatemodel('2','" + res.Data[n].idx + "')\" style='background-color:#548B54;'>修改</a>" +
+                                        "</td>" +
+                                        "</tr>"
+                                    $('#MyTbody').append(str);
+                                    var sthtml = $("#PageContent").html();
+                                    $("#PageContent").empty();
+                                    if (res.InnerHtml.length > 0) {
+                                        sthtml = res.InnerHtml;
+                                        $('#PageContent').append(sthtml);
+                                    }
+                                }
+                            } else {
+                                $("#MyTbody").empty();
+                            }
+                        } else {
+                            eval(res)
+                        }
+                    } else {
+                        eval(res)
+                    }
+                }
+            })
+        }
+
+        ///修改idx
+        function updatemodel(type, idx) {
+            $("#thisid").val(idx);
+            var des = "";
+            if (type == 1) {
+                des = "上金币";
+            } else if (type == 2) {
+                des = "下金币";
+            } else if (type == 3) {
+                des = "上钻石";
+            } else { des = "下钻石" }
+            $("#myModalLabel").text(des);
+            $("#retype").val(type);
+        }
+    </script>
+</body>

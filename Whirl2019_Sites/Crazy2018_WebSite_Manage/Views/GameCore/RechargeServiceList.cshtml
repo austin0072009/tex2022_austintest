@@ -1,0 +1,712 @@
+﻿
+@{
+    ViewBag.Title = "充值人员管理";
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+}
+
+<style>
+    .odd_bg th {
+    text-align:center;
+    }
+    .delebtn {
+        background: #16a0d3;
+        border: none;
+        color: #fff;
+        cursor: pointer;
+        display: inline-block;
+        font-family: "Microsoft Yahei";
+        font-size: 12px;
+        height: 32px;
+        line-height: 32px;
+        margin: 0 1px 0 0;
+        padding: 0 20px;
+        border-radius:5px;
+    }
+    .body-div .form-group {
+    height:30px;
+    }
+</style>
+<body class="mainbody">
+    <form id="form1" runat="server">
+        <!--导航栏-->
+        <div class="location">
+            <a href="javascript:history.back(-1);" class="back"><i></i><span>返回上一页</span></a>
+            <a href="/Home/Center" class="home"><i></i><span>首页</span></a>
+            <i class="arrow"></i>
+            <a href="/GameCore/GameList"><span>游戏管理</span></a>
+            <i class="arrow"></i>
+            <span>桌子列表</span>
+        </div>
+        <!--/导航栏-->
+        <!--工具栏-->
+        <div id="floatHead" class="toolbar-wrap">
+            <div class="toolbar">
+                <div class="l-list">
+                    <ul class="icon-list">
+                        <li><a class="all" href="javascript:;" onclick="checkAll(this);"><i></i><span>全选</span></a></li>
+                        <li><a class="add" data-toggle="modal" data-target="#myaddModal"><i></i><span>增加人员</span></a></li>
+                        <li>
+                            <a id="btnDelete" class="del"><i></i><span>删除</span></a>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+        <!--/工具栏-->
+        <!--列表-->
+        <div class="table-container">
+
+            <table width="100%" border="0" cellspacing="0" cellpadding="0" class="ltable">
+                <thead>
+                    <tr class="odd_bg">
+                        <th>选择</th>
+                        @*<th>排序</th>*@
+                        <th>QQ</th>
+                        <th>手机号</th>
+                        <th>微信</th>
+                        <th>客服地址</th>
+                        <th>头像地址</th>
+                        <th>是否启用Office</th>
+                        <th>是否启用银行</th>
+                        <th>是否启用支付宝</th>
+                        <th>是否启用微信</th>
+                        <th>是否启用客服</th>
+                        <th>是否为官方充值</th>
+                        <th>描述</th>
+                        <th>操作</th>
+
+                    </tr>
+                </thead>
+                <tbody id="MyTbody"></tbody>
+            </table>
+
+        </div>
+        <!--/列表-->
+        <!--内容底部-->
+        <div class="line20"></div>
+        <div class="pagelist">
+            <div class="l-btns">
+                <span>显示</span><input onclick="" name="txtPageNum" type="text" id="txtPageNum" class="pagenum"><span>条/页</span>
+            </div>
+            <div id="PageContent" class="default">
+            </div>
+        </div>
+        <!--/内容底部-->
+        <div style="width:100%;text-align: center;">
+            <span style="display: inline-block;padding: 4px 15px 0px 15px;color: #666;font-size:14px;">(注 : 桌子名称)</span>
+        </div>
+        <div>
+        </div>
+    </form>
+    <span style="color:red"></span>
+    <div class="modal fade " id="myaddModal" tabindex="-1" role="dialog" aria-labelledby="myaddModal" aria-hidden="true">
+        <div class="modal-dialog">
+            <form class="" method="post" onsubmit="return validateForm()" action="/GameCore/GetRechServiceListAdd" enctype="multipart/form-data" role="form">
+                <div class="modal-content">
+
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                            &times;
+                        </button>
+                        <h4 class="modal-title" id="myModalLabel">增加人员：</h4>
+                    </div>
+
+                    <div class="modal-body body-div">
+                        @*<div class="form-group">
+                                <label for="sortnum" class="col-sm-2 control-label">排序：</label>
+                                <div class="col-sm-8">
+                                    <input name="sortnum" type="text" id="sortnum" class="input form-control" placeholder="排序" title="请输入序号">
+                                </div>
+                            </div>*@
+                        <div class="form-group">
+                            <label for="qq" class="col-sm-2 control-label">QQ：</label>
+                            <div class="col-sm-8">
+                                <input name="qq" type="text" id="qq" class="input form-control" placeholder="QQ号" title="请输入QQ">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone" class="col-sm-2 control-label">手机号码：</label>
+                            <div class="col-sm-8">
+                                <input name="phone" type="text" id="phone" class="input form-control" placeholder="手机号码" title="请输入手机号码">
+                            </div>
+
+                        </div>
+                        <div class="form-group">
+                            <label for="weixin" class="col-sm-2 control-label">微信：</label>
+                            <div class="col-sm-8">
+                                <input name="weixin" type="text" id="weixin" class="input form-control" placeholder="微信" title="请输入微信">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="ylurl" class="col-sm-2 control-label">义聊客服地址：</label>
+                            <div class="col-sm-8">
+                                <input name="ylurl" type="text" id="ylurl" class="input form-control" placeholder="客服地址" title="请输入客服地址">
+                            </div>
+                        </div>
+                        <div class="form-group" style="height:40px">
+
+                            <label for="reurl" class="col-sm-2 control-label">头像：</label>
+                            <label style="color:red">*请上传200*200尺寸的图片</label>
+                            <input id="reurl" type="hidden" name="reurl" />
+                            <input type="file" onchange="verificationPicFile(this,'2')" name="_reurl" accept="image/*" id="_reurl">
+                            <input type="hidden" name="reid" id="reid">
+                        </div>
+                        <div class="form-group">
+                            <label for="desc" class="col-sm-2 control-label">描述：</label>
+                            <div class="col-sm-8">
+                                <input name="desc" type="text" id="desc" class="input form-control" placeholder="描述" title="请输入描述">
+                            </div>
+
+                        </div>
+                        <div class="form-group">
+                            <label for="isOffice" class="col-sm-2 control-label">  是否启用Office:</label>
+                            <div class="col-sm-8">
+                                <select id="isOffice" name="isOffice" style="width:200px;" class="select">
+                                    <option value="true">是</option>
+                                    <option value="false">否</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="isBank" class="col-sm-2 control-label">  是否启用银行卡:</label>
+                            <div class="col-sm-8">
+                                <select id="isBank" name="isBank" style="width:200px;" class="select">
+                                    <option value="true">是</option>
+                                    <option value="false">否</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="isZhifubao" class="col-sm-2 control-label">  是否启用支付宝:</label>
+                            <div class="col-sm-8">
+
+                                <select id="isZhifubao" name="isZhifubao" style="width:200px;" class="select">
+                                    <option value="true">是</option>
+                                    <option value="false">否</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="isWeixin" class="col-sm-2 control-label">  是否启用微信:</label>
+                            <div class="col-sm-8">
+                                <select id="isWeixin" name="isWeixin" style="width:200px;" class="select">
+                                    <option value="true">是</option>
+                                    <option value="false">否</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="isopen" class="col-sm-2 control-label">  是否启用客服:</label>
+                            <div class="col-sm-8">
+                                <select id="isopen" name="isopen" style="width:200px;" class="select">
+                                    <option value="true">是</option>
+                                    <option value="false">否</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="isGF" class="col-sm-2 control-label">  是否为官方充值:</label>
+                            <div class="col-sm-8">
+                                <select id="isGF" name="isGF" style="width:200px;" class="select">
+                                    <option value="true">是</option>
+                                    <option value="false">否</option>
+                                </select>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                        <button type="submit" class="btn btn-primary" id="reinfobtn">提交</button>
+                    </div>
+
+                </div><!-- /.modal-content -->
+            </form>
+        </div><!-- /.modal -->
+    </div>
+    @* 修改 *@
+    <div class="modal fade " id="myreviseModal" tabindex="-1" role="dialog" aria-labelledby="myreviseModal" aria-hidden="true">
+        <div class="modal-dialog">
+            <form class="" method="post" onsubmit="return revisevalidateForm()" action="/GameCore/GetRechServiceListrevise" enctype="multipart/form-data" role="form">
+                <div class="modal-content">
+
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                            &times;
+                        </button>
+                        <h4 class="modal-title" id="myModalLabel">修改客服信息：</h4>
+                    </div>
+
+                    <div class="modal-body body-div">
+                        @*<div class="form-group">
+                                <label for="sortnum" class="col-sm-2 control-label">排序：</label>
+                                <div class="col-sm-8">
+                                    <input name="sortnum" type="text" id="sortnum" class="input form-control" placeholder="排序" title="请输入序号">
+                                </div>
+                            </div>*@
+                        <div class="form-group">
+                            <label for="qq" class="col-sm-2 control-label">QQ：</label>
+                            <div class="col-sm-8">
+                                <input name="qq" type="text" id="reqq" class="input form-control" placeholder="QQ号" title="请输入QQ">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone" class="col-sm-2 control-label">手机号码：</label>
+                            <div class="col-sm-8">
+                                <input name="phone" type="text" id="rephone" class="input form-control" placeholder="手机号码" title="请输入手机号码">
+                            </div>
+
+                        </div>
+                        <div class="form-group">
+                            <label for="weixin" class="col-sm-2 control-label">微信：</label>
+                            <div class="col-sm-8">
+                                <input name="weixin" type="text" id="reweixin" class="input form-control" placeholder="微信" title="请输入微信">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="ylurl" class="col-sm-2 control-label">义聊客服地址：</label>
+                            <div class="col-sm-8">
+                                <input name="ylurl" type="text" id="reylurl" class="input form-control" placeholder="客服地址" title="请输入客服地址">
+                            </div>
+                        </div>
+                        <div class="form-group" style="height:40px">
+
+                            <label for="reurl" class="col-sm-2 control-label">头像：</label>
+                            <label style="color:red">*请上传200*200尺寸的图片</label>
+                            <input id="rereurl" type="hidden" name="reurl" />
+                            <input type="file" onchange="verificationPicFile(this,'2')" name="_reurl" accept="image/*" id="_rereurl">
+                            <input type="hidden" name="rreid" id="rreid">
+                            <input type="hidden" name="reviseid" id="reviseid" />
+                        </div>
+                        <div class="form-group">
+                            <label for="redesc" class="col-sm-2 control-label">描述：</label>
+                            <div class="col-sm-8">
+                                <input name="desc" type="text" id="redesc" class="input form-control" placeholder="描述" title="请输入描述">
+                            </div>
+
+                        </div>
+                        <div class="form-group">
+                            <label for="reisOffice" class="col-sm-2 control-label">  是否启用Office:</label>
+                            <div class="col-sm-8">
+                                <select id="reisOffice" name="isOffice" style="width:200px;" class="select">
+                                    <option value="true">是</option>
+                                    <option value="false">否</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="reisBank" class="col-sm-2 control-label">  是否启用银行卡:</label>
+                            <div class="col-sm-8">
+                                <select id="reisBank" name="isBank" style="width:200px;" class="select">
+                                    <option value="true">是</option>
+                                    <option value="false">否</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="reisZhifubao" class="col-sm-2 control-label">  是否启用支付宝:</label>
+                            <div class="col-sm-8">
+
+                                <select id="reisZhifubao" name="isZhifubao" style="width:200px;" class="select">
+                                    <option value="true">是</option>
+                                    <option value="false">否</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="reisWeixin" class="col-sm-2 control-label">  是否启用微信:</label>
+                            <div class="col-sm-8">
+                                <select id="reisWeixin" name="isWeixin" style="width:200px;" class="select">
+                                    <option value="true">是</option>
+                                    <option value="false">否</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="reisopen" class="col-sm-2 control-label">  是否启用客服:</label>
+                            <div class="col-sm-8">
+                                <select id="reisopen" name="isopen" style="width:200px;" class="select">
+                                    <option value="true">是</option>
+                                    <option value="false">否</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="reisGF" class="col-sm-2 control-label">  是否为官方充值:</label>
+                            <div class="col-sm-8">
+                                <select id="reisGF" name="isGF" style="width:200px;" class="select">
+                                    <option value="true">是</option>
+                                    <option value="false">否</option>
+                                </select>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                        <button type="submit" class="btn btn-primary" id="rereinfobtn">提交</button>
+                    </div>
+
+                </div><!-- /.modal-content -->
+            </form>
+        </div><!-- /.modal -->
+    </div>
+
+    <script>
+
+
+
+
+        var storagefirst = window.localStorage;
+        var MyPageNum4 = storagefirst["MyPageNum4"];
+        var id = "";
+        var txtPageNum = 10;
+        var Keywords = "";
+        var PageIndex = 1;
+        var operation = "";
+        var text1 = "";
+        var $gameid = $("#gameid");
+        if (MyPageNum4 != "" && MyPageNum4 != null) {
+            MyPageNum4 = txtPageNum
+        } else {
+            txtPageNum = txtPageNum
+        }
+        $("#txtPageNum").val(txtPageNum)
+        $("#lbtnSearch").click(function () {
+            var txtKeywords = $("#txtKeywords").val();
+            Keywords = txtKeywords;
+            GetList();
+        })
+        $("#txtPageNum").change(function () {
+            txtPageNum = $("#txtPageNum").val()
+            storagefirst["MyPageNum4"] = txtPageNum
+            PageIndex = 1;
+            GetList();
+        })
+        $(".pagelist").on('click', 'a', function () {
+            var lkl2 = $(this).text();
+            if (lkl2 == "下一页»") {
+                PageIndex = parseInt(PageIndex) + 1
+                console.log(PageIndex)
+            } else if (lkl2 == "«上一页") {
+                PageIndex = parseInt(PageIndex) - 1
+            } else {
+                PageIndex = lkl2
+            }
+            txtPageNum = $("#txtPageNum").val()
+            GetGameList();
+        })
+
+
+        GetGameList();
+
+
+        var numID = [];//用于储存需要删除的ID
+        $("#btnDelete").click(function () {
+            numID = []
+            var num1 = {};
+            var on1 = $(".One");
+            for (var o = 0; o < on1.length; o++) {
+                var lkl3 = $(on1[o]).find(".checkall")
+                for (var ol = 0; ol < lkl3.length; ol++) {
+
+                    if (lkl3[ol].checked == true) {
+                        var lkl4 = $(on1[o]).find("#hidId").val();
+                        num1.id = lkl4
+                        numID.push(num1.id)
+
+                    }
+                }
+            }
+
+            var a, b;
+            a = numID;
+            b = a.join(",");
+            var ids = b;
+            var reid = getURLParameter("id");
+          
+            console.log(numID);
+            $.ajax({
+                url: "/GameCore/GetRechServiceListDel?Ids=" + ids + "&reid=" + reid,
+                type: "post",
+                contentType: "application/json",
+                dataType: "json",
+                success: function (data) {
+                    $("#MyTbody").empty();
+                    GetGameList();
+                }
+            })
+        })
+
+
+
+        function getURLParameter(name) {
+            return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search) || [null, ''])[1].replace(/\+/g, '%20')) || null;
+        }
+        function GetGameList() {
+            var reid = getURLParameter("id");
+            $("#reid").val(reid);
+            $("#rreid").val(reid);
+            var data = {};
+            data.id = reid;
+            $.ajax({
+                type: "post", url: '/GameCore/GetRechServiceListDataById',
+                datatype: 'json',
+                data: data,
+                async: false,
+                success: function (res) {
+                    var str = $("#MyTbody").html();
+                    if (res) {
+                        console.log(res)
+
+                        if (res != null) {
+                            for (var i = 0; i < res.length; i++) {
+                                str = "<tr class='One'>" +
+                                    "<td align='center'>" +
+                                    "<input type='hidden' name='hidId' id='hidId' value=" + i + ">" +
+                                    "<span class='checkall' style='vertical-align: middle;'>" +
+                                    "<input id='chkId' class='checkall' type='checkbox' name='chkId'></span>" +
+                                    "</td>" +
+                                    //"<td align='center'>" + res[i].sortnum + "</td>" +
+                                    "<td align='center'>" + res[i].qq + "</td>" +
+                                    "<td align='center'>" + res[i].phone + "</td>" +
+                                    "<td align='center'>" + res[i].weixin + "</td>" +
+                                    "<td align='center'>" + res[i].ylurl + "</td>" +
+                                    "<td align='center'>" + res[i].url + "</td>" +
+                                    "<td align='center'>" + res[i].isOffice + "</td>" +
+                                    "<td align='center'>" + res[i].isBank + "</td>" +
+                                    "<td align='center'>" + res[i].isZhifubao + "</td>" +
+                                    "<td align='center'>" + res[i].isWeixin + "</td>" +
+                                    "<td align='center'>" + res[i].isopen + "</td>" +
+                                    "<td align='center'>" + res[i].isGF + "</td>" +
+                                    "<td align='center'>" + res[i].desc + "</td>" +
+                                    "<td align='center'><a type='button' style='height:auto;' data-toggle='modal' data-target='#myreviseModal' class='btn' onclick='GetInfo(" + i + ")'>修改</a></td>" +
+                                    "</tr>"
+                                $('#MyTbody').append(str);
+                            }
+                        }
+
+
+
+                    } else {
+                        $("#gameid").empty();
+                        alert(res.Message)
+                    }
+
+                }
+            })
+        }
+
+        function GetInfo(id) {
+
+            var reid = getURLParameter("id");
+            $("#reviseid").val(id);
+            $("#reid").val(reid);
+            var data = {};
+            data.id = reid;
+            data.serid = id;
+            $.ajax({
+                type: "post", url: '/GameCore/GetRechServiceListDatainfoById',
+                datatype: 'json',
+                data: data,
+                async: false,
+                success: function (res) {
+                    var str = $("#MyTbody").html();
+                    if (res) {
+                        console.log(res)
+
+                        if (res != null) {
+                            $("#reqq").val(res.qq);
+                            $("#rephone").val(res.phone);
+                            $("#reweixin").val(res.weixin);
+                            $("#reylurl").val(res.ylurl);
+                            //$("#_rereurl").val(res.url);
+                            $("#redesc").val(res.desc);
+                            $('#reisOffice option[value=' + res.isOffice + ']').prop('selected', true);
+                            $('#reisBank option[value=' + res.isBank + ']').prop('selected', true);
+                            $('#reisZhifubao option[value=' + res.isZhifubao + ']').prop('selected', true);
+                            $('#reisWeixin option[value=' + res.isWeixin + ']').prop('selected', true);
+                            $('#reisopen option[value=' + res.isopen + ']').prop('selected', true);
+                            $('#reisGF option[value=' + res.isGF + ']').prop('selected', true);
+                            //$("#reisOffice").val(res.isOffice);
+                            //$("#reisBank").val(res.isBank);
+                            //$("#reisZhifubao").val(res.isZhifubao);
+                            //$("#reisWeixin").val(res.isWeixin);
+                            //$("#reisopen").val(res.isopen);
+                            //$("#reisGF").val(res.isGF);
+
+
+
+                        }
+
+
+
+                    } else {
+                        $("#gameid").empty();
+                        alert(res.Message)
+                    }
+
+                }
+            })
+        }
+
+        //$("#reinfobtn").click(function () {
+
+        //    //var desc = $("#desc").val();
+        //    //var reurl = $("#reurl").val();
+        //    //var qq = $("#qq").val();
+        //    //var phone = $("#phone").val();
+        //    //var weixin = $("#weixin").val();
+        //    //var ylurl = $("#ylurl").val();
+        //    //var isOffice = $("#isOffice").val();
+        //    //var isBank = $("#isBank").val();
+        //    //var isZhifubao = $("#isZhifubao").val();
+        //    //var isWeixin = $("#isWeixin").val();
+        //    //var isopen = $("#isopen").val();
+        //    //var isGF = $("#isGF").val();
+        //    //var reid = getURLParameter("id");
+        //    //data = {};
+        //    //data.id = reid;
+        //    //data.desc = desc;
+        //    //data.url = url;
+        //    //data.ylurl = ylurl;
+        //    //data.qq = qq;
+        //    //data.phone = phone;
+        //    //data.weixin = weixin;
+        //    //data.isOffice = isOffice == 1 ? "true" : "false";
+        //    //data.isBank = isBank == 1 ? "true" : "false";
+        //    //data.isZhifubao = isZhifubao == 1 ? "true" : "false";
+        //    //data.isWeixin = isWeixin == 1 ? "true" : "false";
+        //    //data.isopen = isopen == 1 ? "true" : "false";
+        //    //data.isGF = isGF == 1 ? "true" : "false";
+        //    //console.log(data);
+        //    //$.ajax({
+        //    //    type: "post", url: '/GameCore/GetRechServiceListAdd',
+        //    //    datatype: 'json',
+        //    //    data: data,
+        //    //    async: false,
+        //    //    success: function (res) {
+        //    //        if (res.Code != 1) {
+        //    //            alert(res.Message)
+        //    //        } else {
+        //    //            alert(res.Message);
+        //    //        }
+        //    //        $("#MyTbody").empty();
+        //            GetGameList();
+        //    //    }
+        //    //})
+
+        //})
+
+        function verificationPicFile(file, type) {
+            return true;
+            var filePath = file.value;
+            if (filePath) {
+                //读取图片数据
+                var filePic = file.files[0];
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    var data = e.target.result;
+                    //加载图片获取图片真实宽度和高度
+                    var image = new Image();
+                    image.onload = function () {
+                        var width = image.width;
+                        var height = image.height;
+                        //标题
+                        if (type == "2") {
+                            if (width == 200 | height == 200) {
+                                return true;
+                            } else {
+                                alert("文件尺寸应为：200*200！");
+                                file.value = "";
+                                return false;
+                            }
+                        }
+                    };
+                    image.src = data;
+                };
+                reader.readAsDataURL(filePic);
+            } else {
+                return false;
+            }
+        }
+        function validateForm() {
+            var qq = $("#qq").val();
+            var phone = $("#phone").val();
+            var wechat = $("#wechat").val();
+            var _url = $("#_reurl").val();
+            var desc = $("#desc").val();
+            var isGF = $("#isGF").val();
+            var ylurl = $("#ylurl").val();
+
+            if (qq == "") {
+                layer.msg('请输入QQ号码。');
+                return false;
+            }
+            if (phone == "") {
+                layer.msg('请输入手机号');
+                return false;
+            }
+            if (wechat == "") {
+                layer.msg('请输入微信');
+                return false;
+            }
+            if (_url == "") {
+                layer.msg('请选择头像图片');
+                return false;
+            }
+            if (desc == "") {
+                layer.msg('请输入描述');
+                return false;
+            }
+
+            if (isGF == "true") {
+                if (ylurl == "" || ylurl == null) {
+                    layer.msg("添加官方账号请输入客服地址");
+                    return false;
+                }
+            }
+            return true;
+        }
+        function revisevalidateForm() {
+            var qq = $("#reqq").val();
+            var phone = $("#rephone").val();
+            var wechat = $("#rewechat").val();
+            var _url = $("#_rereurl").val();
+            var desc = $("#redesc").val();
+            var isGF = $("#reisGF").val();
+            var ylurl = $("#reylurl").val();
+            if (qq == "") {
+                layer.msg('请输入QQ号码。');
+                return false;
+            }
+            if (phone == "") {
+                layer.msg('请输入手机号');
+                return false;
+            }
+            if (wechat == "") {
+                layer.msg('请输入微信');
+                return false;
+            }
+            if (_url == "") {
+                layer.msg('请选择头像图片');
+                return false;
+            }
+            if (desc == "") {
+                layer.msg('请输入描述');
+                return false;
+            }
+
+            if (isGF == "true") {
+                if (ylurl == "" || ylurl == null) {
+                    layer.msg("添加官方账号请输入客服地址");
+                    return false;
+                }
+            }
+            return true;
+        }
+
+    </script>
+
+</body>

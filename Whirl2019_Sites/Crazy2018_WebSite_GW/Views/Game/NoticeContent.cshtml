@@ -1,0 +1,92 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+    ViewBag.Title = "反伙牌告示";
+}
+<div class="col-lg-12 col-md-12 col-sm-12 center-notice">
+
+    <div class="titlelogo">
+        <img src="~/downpageimg/NoticeImgs/fhcardgaos.png" style="height:30px" />
+    </div>
+    <p class="pcenter h4" style="color:#746966;">伙牌冻结账号及奖励</p>
+    <p class="pcenter" style="color:#B57450;font-weight:700;margin-top:10px;font-size:15px">禁止行为 举例： 伙牌、过钱、刷JackPot彩池</p>
+    <p class="pleft " style="color:#7B4220;margin-top:15px;">※ 不允许选坐脚本插件的使用</p>
+    <p class="pleft " style="color:#7B4220;">※ 不允许HUD显示或其他软件辅助工具</p>
+    <p class="pleft " style="color:#7B4220;">※ 不允许保留/暂离座位登待玩家工具或脚本</p>
+    <p class="pleft " style="color:#524945;margin-top:15px">339游戏拥有强大的安全团队和技术，来识别违规行为，保护玩家的利益！</p>
+    <p class="pleft " style="color:#524945;margin-top:15px">如有疑虑，请提供详细说明。相关人员会替您进行重新查核；如有疑问请联系在线客服</p>
+    <div style="height:40px;margin:0 auto;text-align:center;margin-top:20px;">
+        <img src="~/downpageimg/NoticeImgs/newhbcard.png" style="height:30px" />
+    </div>
+    <div id="content_div"><div><p style="padding-top:20px;"><img src="../../downpageimg/NoticeImgs/hot.png" style="margin-bottom:15px;height:30px;"><span style="color:#B47251;padding-bottom:10px;font-weight:700;font-size:17px">&nbsp;04月17日冻结账号公告如下：</span></p><div style="color:#524945;margin:0auto;display:inline-block;height:auto;width:100%"><p style="width:36%;float:left;text-align:right;">本次冻结资金：</p><div style="width:63%;float:right;"><span style="font-size:20px">4502</span>元</div></div><div style="margin:0auto;display:inline-block;height:auto;width:100%"><p style="text-align:right;color:#524945;width:36%;float:left">违规冻结账号：</p><div style="width:63%;float:right;"><p style="color:#524945;">2772516&nbsp;&nbsp;&nbsp;黑子</p><p style="color:#524945;">2772654&nbsp;&nbsp;&nbsp;田野</p><p style="color:#524945;">5371654&nbsp;&nbsp;&nbsp;夜来香</p><p style="color:#524945;">6549254&nbsp;&nbsp;&nbsp;看海</p></div></div><div style="margin:0auto;display:inline-block;height:auto;width:auto;width:100%"><p style="text-align:right;color:#524945;width:36%;float:left">举报者：</p><div style="width:63%;float:right"><p style="color:#524945;">492****&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="padding-left:40px">全额发放</span></p></div></div></div><div><p style="padding-top:20px;"><img src="../../downpageimg/NoticeImgs/hot.png" style="margin-bottom:15px;height:30px;"><span style="color:#B47251;padding-bottom:10px;font-weight:700;font-size:17px">&nbsp;05月28日冻结账号公告如下：</span></p><div style="color:#524945;margin:0auto;display:inline-block;height:auto;width:100%"><p style="width:36%;float:left;text-align:right;">本次冻结资金：</p><div style="width:63%;float:right;"><span style="font-size:20px">4502</span>元</div></div><div style="margin:0auto;display:inline-block;height:auto;width:100%"><p style="text-align:right;color:#524945;width:36%;float:left">违规冻结账号：</p><div style="width:63%;float:right;"><p style="color:#524945;">2219874&nbsp;&nbsp;&nbsp;黑胡子₀₀</p><p style="color:#524945;">2320479&nbsp;&nbsp;&nbsp;商大的</p><p style="color:#524945;">4267825&nbsp;&nbsp;&nbsp;小飞侠</p></div></div><div style="margin:0auto;display:inline-block;height:auto;width:auto;width:100%"><p style="text-align:right;color:#524945;width:36%;float:left">举报者：</p><div style="width:63%;float:right"><p style="color:#524945;">235****&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="padding-left:40px">全额发放</span></p></div></div></div></div>
+</div>
+@*<script>
+    $(function () {
+        var content_str = "";
+        var content_p = "";
+        var content_jubao = "";
+        data = {};
+        data.typeid = 1;
+        $.ajax({
+            type: "post", url: '/Game/GetNoticeInfo',
+            datatype: 'json',
+            data: data,
+            success: function (res) {
+                if (res.Data != null) {
+                    $("#content_div").empty();
+                    console.log(res.Data);
+                    for (var i = 0; i < res.Data.length; i++) {
+                        content_p = "";
+                        content_jubao = "";
+                        for (var j = 0; j < res.Data[i].Vioinfo.length; j++) {
+
+                            if (res.Data[i].Vioinfo[j] != "") {
+                                content_p += "<p style='color:#524945;'>" + res.Data[i].Vioinfo[j].split(',')[0] + "&nbsp;&nbsp;&nbsp;" + res.Data[i].Vioinfo[j].split(',')[1] + "</p>";
+                            }
+                        }
+                        if (res.Data[i].Reportinfo.length == 0 && res.data[i].Reportinfo != "") {
+                            content_jubao += "<p style='color:#524945;'>" + res.Data[i].Reportinfo[0].substring(0, 3) + "****" + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style='padding-left:40px'>全额发放</span></p>";
+                        } else if (res.Data[i].Reportinfo.length > 0) {
+                            for (var n = 0; n < res.Data[i].Reportinfo.length; n++) {
+                                content_jubao += "<p style='color:#524945;'>" + res.Data[i].Reportinfo[0].substring(0, 3) + "****" + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style='padding-left:40px'>全额发放</span></p>";
+                            }
+                        }
+
+                        content_str += "<div><p style='padding-top:20px;'>" +
+                            "<img src=\"../../downpageimg/NoticeImgs/hot.png\" style='margin-bottom:15px;height:30px;'/>" +
+                            "<span style='color:#B47251;padding-bottom:10px;font-weight:700;font-size:17px'>&nbsp;" + res.Data[i].AnnouncementTime + "冻结账号公告如下：</span>" +
+                            "</p>" +
+                            "<div style='color:#524945;margin:0auto;display:inline-block;height:auto;width:100%'>" +
+                            "<p style='width:36%;float:left;text-align:right;'>" +
+                            "本次冻结资金：" +
+                            "</p>" +
+                            "<div style='width:63%;float:right;'>" +
+                            "<span style='font-size:20px'>" + res.Data[i].Frozenmoney + "</span>元" +
+                            "</div>" +
+                            "</div>" +
+                            "<div style='margin:0auto;display:inline-block;height:auto;width:100%'>" +
+                            "<p style='text-align:right;color:#524945;width:36%;float:left'>" +
+                            "违规冻结账号：" +
+                            "</p>" +
+                            "<div style='width:63%;float:right;'>" + content_p +
+                            "</div>" +
+                            "</div>" +
+                            "<div style='margin:0auto;display:inline-block;height:auto;width:auto;width:100%'>" +
+                            "<p style='text-align:right;color:#524945;width:36%;float:left'>" +
+                            "举报者：" +
+                            "</p>" +
+                            "<div style='width:63%;float:right'>" +
+                            content_jubao +
+                            "</div>" +
+                            "</div>" +
+                            "</div>";
+                    }
+                    $("#content_div").append(content_str);
+
+                }
+            }
+        })
+    })
+
+
+</script>*@

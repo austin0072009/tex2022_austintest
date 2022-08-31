@@ -1,0 +1,143 @@
+﻿<!DOCTYPE html>
+<!-- saved from url=(0059)http://m.91y.com/download/detail/index.html?name=GameHalldt -->
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=750,target-densitydpi=device-dpi,user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <title>游戏中心</title>
+    <link href="~/91Resources/css/91y_phone.css" rel="stylesheet" type="text/css">
+    <link href="~/91Resources/css/91y_public.css" rel="stylesheet" type="text/css">
+    <link href="~/91Resources/css/base.css" rel="stylesheet" />
+    <link href="~/91Resources/css/download.css" rel="stylesheet" />
+    <style type="text/css">
+
+        .top {
+            background: url(/templets/default/20190813/images/top_img.jpg) no-repeat;
+            width: 100%;
+            height: 185px;
+        }
+
+    </style>
+    <script language="javascript" src="~/91Resources/js/jquery-1.7.1.min.js"></script>
+    <script type="text/javascript">var u = navigator.userAgent;
+        var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
+        var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+
+        var isMobile = {
+
+            Android: function () {
+                return navigator.userAgent.match(/Android/i) ? true : false;
+            },
+            BlackBerry: function () {
+                return navigator.userAgent.match(/BlackBerry/i) ? true : false;
+            },
+            iOS: function () {
+                return navigator.userAgent.match(/iPhone|iPad|iPod/i) ? true : false;
+            },
+            Windows: function () {
+                return navigator.userAgent.match(/IEMobile/i) ? true : false;
+            },
+            any: function () {
+                return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Windows());
+            },
+            PC: function () {
+                var userAgentInfo = navigator.userAgent;
+                var Agents = new Array("Android", "iPhone", "SymbianOS", "Windows Phone", "iPad", "iPod");
+                var flag = true;
+                for (var v = 0; v < Agents.length; v++) {
+                    if (userAgentInfo.indexOf(Agents[v]) > 0) {
+                        flag = false;
+                        break;
+                    }
+                }
+                return flag;
+            }
+        };
+
+        function isWeiXin() {
+            var ua = window.navigator.userAgent.toLowerCase();
+            if (ua.match(/MicroMessenger/i) == 'micromessenger') {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        function down() {
+            //判断微信
+            if (isWeiXin() && !isiOS) {
+                document.getElementById("top_wx").style.display = "block";
+                $(window).scroll(function(){
+                    if ($(window).scrollTop()>120){
+                        $('html').animate({ scrollTop: 0 }, 100);
+                    }
+                });
+            }
+        }
+
+        function getUrlParams(par) {
+            if (par == '')
+                return null;
+            var reg = new RegExp("(^|&)" + par + "=([^&]*)(&|$)");
+            var r = window.location.search.substr(1).match(reg);
+            if (r != null)
+                return r[2];
+
+            return null;
+        }
+
+        $(document).ready(function () {
+           
+            $(".bottom-nav .download").addClass("on");
+        });</script>
+</head>
+<body>
+    <div class="top" id="top_wx" style="display: none;"></div>
+    <div class="p-box">
+        <div class="d-top-bg" id="gametop">
+            <p class="g-name">游戏大厅</p>
+            <p class="g-version"></p>
+            <span class="g-icon"><img class="topimg" src="~/91Resources/img/big.png"></span>
+            <a class="download-btn">下载游戏</a>
+        </div>
+        @*<div>
+            <p class="down-title tac">新天地游戏手机大厅</p>
+            <p class="down-tex tac">安卓&nbsp;&nbsp;&nbsp;安全下载</p>
+            <p class="down-ewm"><img src="~/91Resources/images/Android.png" width="142" height="142" class="r5"></p>
+        </div>*@
+
+        <div id="gamelist" class="down-cont clearfix">
+            <div style="margin-left:22%" class="down-li fl clearfix">
+                <div class="icon-box fl">
+                    <p class="icon">
+                       
+                        <img src="~/91Resources/img/big.png" width="100%" height="100%">
+                    </p>
+                    <div class="download-tip">
+                        <a onclick="alert('开发中...')" class="download-ios-btn"><i class="icon-color-ios"></i>IOS下载</a>
+                        <a class="download-and-btn">
+                            <i class="icon-color-and"></i>安卓下载
+                        </a>
+                    </div>
+                </div><div class="tex-box fr">
+                    <p class="tex-box-title">新天地游戏大厅</p>
+                    <p class="textGrey6 tac">要玩就来新天地 ，斗地主、麻将、捕鱼……您想要的棋牌游戏应有尽有</p><p class="textorange fs12 tac pt5 pb5">扫描二维码立即下载</p>
+                    <p class="tex-box-ewmimg">
+                         @*<img class="r5" src="~/91Resources/images/Android.png" style="max-width:138px;max-height:138px;">*@
+                    </p>
+                </div>
+            </div>
+        </div>
+
+
+        <!----------------------------------版权----------------------------------->
+        @Html.Partial("footer")
+    </div>
+
+</body>
+</html>

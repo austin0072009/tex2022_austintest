@@ -1,0 +1,120 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="chesscarddbModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.7" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="dt_channel_site">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="title" Type="varchar" MaxLength="100" />
+    <Property Name="build_path" Type="varchar" MaxLength="100" />
+    <Property Name="templet_path" Type="varchar" MaxLength="100" />
+    <Property Name="domain" Type="varchar" MaxLength="255" />
+    <Property Name="name" Type="varchar" MaxLength="255" />
+    <Property Name="logo" Type="varchar" MaxLength="255" />
+    <Property Name="company" Type="varchar" MaxLength="255" />
+    <Property Name="address" Type="varchar" MaxLength="255" />
+    <Property Name="tel" Type="varchar" MaxLength="30" />
+    <Property Name="fax" Type="varchar" MaxLength="30" />
+    <Property Name="email" Type="varchar" MaxLength="50" />
+    <Property Name="crod" Type="varchar" MaxLength="100" />
+    <Property Name="copyright" Type="longtext" />
+    <Property Name="seo_title" Type="varchar" MaxLength="255" />
+    <Property Name="seo_keyword" Type="varchar" MaxLength="255" />
+    <Property Name="seo_description" Type="varchar" MaxLength="255" />
+    <Property Name="is_default" Type="int" />
+    <Property Name="sort_id" Type="int" />
+  </EntityType>
+  <EntityType Name="dt_manager">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="role_id" Type="int" />
+    <Property Name="role_type" Type="int" />
+    <Property Name="user_name" Type="varchar" MaxLength="100" />
+    <Property Name="password" Type="varchar" MaxLength="100" />
+    <Property Name="salt" Type="varchar" MaxLength="20" />
+    <Property Name="real_name" Type="varchar" MaxLength="50" />
+    <Property Name="telephone" Type="varchar" MaxLength="30" />
+    <Property Name="email" Type="varchar" MaxLength="30" />
+    <Property Name="is_lock" Type="int" />
+    <Property Name="add_time" Type="datetime" Precision="0" />
+    <Property Name="IP" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="dt_manager_log">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="user_id" Type="int" />
+    <Property Name="user_name" Type="varchar" MaxLength="100" />
+    <Property Name="action_type" Type="varchar" MaxLength="100" />
+    <Property Name="remark" Type="varchar" MaxLength="255" />
+    <Property Name="user_ip" Type="varchar" MaxLength="30" />
+    <Property Name="add_time" Type="datetime" Precision="0" />
+    <Property Name="actionmodul" Type="varchar" MaxLength="255" />
+    <Property Name="backupsdata" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="dt_manager_role">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="role_name" Type="varchar" MaxLength="100" />
+    <Property Name="role_type" Type="int" />
+    <Property Name="is_sys" Type="int" />
+    <Property Name="role_value" Type="int" />
+  </EntityType>
+  <EntityType Name="dt_manager_role_value">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="role_id" Type="int" />
+    <Property Name="nav_name" Type="varchar" MaxLength="100" />
+    <Property Name="action_type" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="dt_navigation">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="parent_id" Type="int" />
+    <Property Name="channel_id" Type="int" />
+    <Property Name="nav_type" Type="varchar" MaxLength="50" />
+    <Property Name="name" Type="varchar" MaxLength="50" />
+    <Property Name="title" Type="varchar" MaxLength="100" />
+    <Property Name="sub_title" Type="varchar" MaxLength="100" />
+    <Property Name="icon_url" Type="varchar" MaxLength="255" />
+    <Property Name="link_url" Type="varchar" MaxLength="255" />
+    <Property Name="sort_id" Type="int" />
+    <Property Name="is_lock" Type="int" />
+    <Property Name="remark" Type="varchar" MaxLength="255" />
+    <Property Name="action_type" Type="varchar" MaxLength="255" />
+    <Property Name="is_sys" Type="int" />
+  </EntityType>
+  <Association Name="dt_manager_role_value_ibfk_1">
+    <End Role="dt_manager_role" Type="Self.dt_manager_role" Multiplicity="0..1" />
+    <End Role="dt_manager_role_value" Type="Self.dt_manager_role_value" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="dt_manager_role">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="dt_manager_role_value">
+        <PropertyRef Name="role_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="chesscarddbModelStoreContainer">
+    <EntitySet Name="dt_channel_site" EntityType="Self.dt_channel_site" Schema="chesscarddb" store:Type="Tables" />
+    <EntitySet Name="dt_manager" EntityType="Self.dt_manager" Schema="chesscarddb" store:Type="Tables" />
+    <EntitySet Name="dt_manager_log" EntityType="Self.dt_manager_log" Schema="chesscarddb" store:Type="Tables" />
+    <EntitySet Name="dt_manager_role" EntityType="Self.dt_manager_role" Schema="chesscarddb" store:Type="Tables" />
+    <EntitySet Name="dt_manager_role_value" EntityType="Self.dt_manager_role_value" Schema="chesscarddb" store:Type="Tables" />
+    <EntitySet Name="dt_navigation" EntityType="Self.dt_navigation" Schema="chesscarddb" store:Type="Tables" />
+    <AssociationSet Name="dt_manager_role_value_ibfk_1" Association="Self.dt_manager_role_value_ibfk_1">
+      <End Role="dt_manager_role" EntitySet="dt_manager_role" />
+      <End Role="dt_manager_role_value" EntitySet="dt_manager_role_value" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

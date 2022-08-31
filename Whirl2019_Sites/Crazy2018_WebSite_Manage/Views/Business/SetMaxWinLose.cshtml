@@ -1,0 +1,94 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,initial-scale=1.0,user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <title>充值金额</title>
+    <link href="~/skin/default/style.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="~/scripts/jquery/jquery-1.11.2.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="~/js/common.js"></script>
+    <script type="text/javascript">
+        var api = top.dialog.get(window); //获取父窗体对象
+        $(function () {
+            //设置按钮及事件
+            api.button([{
+                value: '确定',
+                callback: function () {
+                    submitForm();
+                },
+                autofocus: true
+            }, {
+                value: '取消',
+                callback: function () { }
+            }
+            ]);
+          
+            function getURLParameter(name) {
+                return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search) || [null, ''])[1].replace(/\+/g, '%20')) || null;
+            }
+            $("#hduid").val(getURLParameter("uid"))
+        });
+        var exp = /^[-+]?\d*$/;
+        //提交表单处理
+        function submitForm() {
+            var currDocument = $(document);
+            //验证表单
+            var MaxWin = $("#MaxWin").val();
+            var MaxLose = $("#MaxLose").val();
+            if (MaxWin == "" || MaxWin == null)
+            {
+                alert("请输入赢的最大值"); return;
+            }
+            if (MaxLose == "" || MaxLose == null) {
+                alert("请输入输的最大值"); return;
+            }
+
+            
+            var paraJson = {};
+            paraJson["maxlose"] = MaxLose;
+            paraJson["uid"] = $("#hduid").val();
+            paraJson["maxwin"] = MaxWin;
+            ajaxPostData("/Business/SetMaxWinLose2", paraJson, function (json) {
+                if (json.Code == "0" && json.Code == 0) {
+                    if (json.Message) {
+                        api.close(true).remove();
+                    }
+                    else {
+                        alert("充值失败");
+                    }
+                }
+            });
+            return false;
+        }
+       
+    </script>
+</head>
+
+<body>
+    <div class="div-content">
+        <input type="hidden" id="hduid" />
+
+        <dl>
+            <dt>最大输</dt>
+            <dd>
+                <input placeholder="整数、1元=1金币" type="text" id="MaxLose" class="input normal" maxlength="10" />
+                <span class="Validform_checktip">*</span>
+            </dd>
+        </dl>
+        <dl>
+            <dt>最大赢</dt>
+            <dd>
+                <input placeholder="整数、1元=1金币" type="text" id="MaxWin" class="input normal" maxlength="10" />
+                <span class="Validform_checktip">*</span>
+            </dd>
+        </dl>
+    </div>
+</body>
+</html>

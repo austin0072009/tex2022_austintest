@@ -1,0 +1,338 @@
+﻿
+
+@{
+    ViewBag.Title = "index";
+}
+@using Crazy2018_Sys_Common;
+@using Crazy2018_Sys_ViewEntity;
+@using Crazy2018_Sys_DBHelper;
+@model SnsUserInfo
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=750,target-densitydpi=device-dpi,user-scalable=no">
+    <!--<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, maximum-scale=1.0" />-->
+    <meta content="telephone=no,email=no" name="format-detection">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <title>游戏中心</title>
+    <link type="text/css" href="~/91Resources/css/nc.css" rel="stylesheet" disabled="">
+    <link href="~/91Resources/css/91y_phone.css" rel="stylesheet" type="text/css">
+    <link href="~/91Resources/css/91y_public.css" rel="stylesheet" type="text/css">
+    <script src="~/91Resources/js/hm.js"></script>
+    <script type="text/javascript" src="~/91Resources/js/nc.js"></script>
+
+    <script language="javascript" src="~/91Resources/js/jquery-1.7.1.min.js"></script>
+    <script type="text/javascript">
+
+        function showSecond() {
+            var vy = verifyPar();
+            if (vy) {
+                //显示下一步
+                $('#first').hide();
+                $('#second').show();
+            }
+        }
+
+        /**
+         * 更换账号
+         */
+        function changUser() {
+            $('#currinfo').hide();
+            $('#changeInput').show();
+            $('#changeU').focus();
+        }
+
+
+
+        /**
+         *
+         * 下单支付
+         * */
+        function orderPay() {
+            var rechargeData = sessionStorage.getItem("rechargeData");
+            if (rechargeData == null || rechargeData == 'null' || rechargeData == '') {
+                return false;
+            }
+            var rechargeCdata = sessionStorage.getItem("rechargeCdata");
+            if (rechargeCdata == null || rechargeCdata == 'null' || rechargeCdata == '') {
+                return false;
+            }
+
+            var postD = JSON.parse(rechargeData);
+            var postDext = JSON.parse(rechargeCdata);
+            if (typeof postDext['payOrderId'] != 'undefined')
+                postD['pay_OrderId'] = postDext['payOrderId'];
+
+            if (typeof postDext['payCenterOrderId'] != 'undefined')
+                postD['payCenter_OrderId'] = postDext['payCenterOrderId'];
+
+            if (typeof postDext['PayUserID'] != 'undefined')
+                postD['pay_UserID'] = postDext['PayUserID'];
+
+
+            $.ajax({
+                url: "https://pay.91y.com/api/do.ashx?a=rechargepay&t=" + Math.random(),
+                data: postD,
+                type: 'POST',
+                dataType: "jsonp",
+                jsonp: "jsonpcallback",
+                success: function (jsons) {
+                    var obj = (typeof jsons.data != 'undefined' && jsons.data != "") ? jsons.data : "";
+                    if (jsons.code == 200) {
+                        $("body").html(obj);
+                    } else if (jsons.code == 201) {
+                        window.location.href = obj;
+                    } else
+                        alert(jsons.msg + '(' + jsons.code + ')');
+
+                }
+            });
+
+        }
+
+        $(document).ready(function () {
+
+            $(".bottom-nav .topup").addClass("on");
+
+            getUserInfo();
+            /**
+             * 更换账号后，账号验证
+             */
+            $('#changeU').blur(function () {
+                var changeU = $(this).val();
+                if (changeU == '' || parseInt(changeU) <= 0) {
+                    $('#currinfo').show();
+                    $('#changeInput').hide();
+                    return false;
+                }
+
+                verifyUser(changeU);
+            });
+
+            /**
+             * 选择支付类型
+             */
+            $("#form li").unbind("click").click(function () {
+                $("#form").find('.on').removeClass('on');
+                $(this).addClass('on');
+                var Id = $(this).attr('Id');
+                var show = $('.choose_show').attr("data-key");
+                if (Id == 'dxID' && show == 0) {
+                    $('.choose_show').show();
+                    $('.choose_show').attr("data-key", "0");
+                } else {
+                    $('.choose_show').hide();
+                    $('#formtext').html($(this).html());
+                    $('.choose_show').attr("data-key", "0");
+                }
+            });
+
+            /**
+             * 选择短信支付类型
+             */
+            $(".choose_show p").unbind("click").click(function () {
+                var htf = $(this).html();
+                var id = $(this).attr("data-key");
+                if (htf != '' && parseInt(id) > 0) {
+                    $("#showTxt").html(htf);
+                    $("#formtext").html(htf);
+                    $("#dxID").attr("data-key", id);
+                    $('#dxID').attr("data-banId", $(this).attr("data-banId"));
+                    $('.choose_show').attr("data-key", "1").hide();
+                }
+            });
+
+            $('#fwtk,#xzd').click(function () {
+                var cls = $(this).attr('class');
+                if (cls == 'off') {
+                    $(this).removeClass('off')
+                } else {
+                    $(this).addClass('off')
+                }
+            });
+
+        });
+    </script>
+</head>
+<body>
+    <div class="p-box" style="">
+        <!--充值第一步-->
+        <div style="display:block;">
+            <div id="first" class="topup-top-bg">
+                <div class="t-user">
+                    <div class="uhead">
+                        <span class="vip">游戏会员</span>
+                        <img id="headimg" src="~/91Resources/images/head1_1.png">
+                    </div>
+                    <div class="uname">
+                        <b class="name nickname">@Session["phone"]</b>
+                        <span class="id gameid">ID:@Model.UserId</span>
+                    </div>
+                    <div class="data">
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0" class="data-table">
+                            <tbody>
+                                <tr>
+                                    <th>总充值</th>
+                                    <th>金币</th>
+                                </tr>
+                                <tr>
+                                    <td class="GoldEgg">@Model.TotalMoney</td>
+                                    <td class="Score">@Model.UserMoney</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="t-recharge">
+                    <div class="r-account">
+                        <em class="r-title">充值账号：</em>
+                        <span class="r-cot">
+                            <p id="currinfo"><span class="nickname_e">@Session["phone"]</span><a href="/Manage/OutLogin" class="r-change">更改账号</a></p>
+                            <p id="changeInput" style="display:none;"><input id="changeU" value="" type="text"></p>
+                        </span>
+                        <div class="recharge-tip js-ts" style="display:none"> 账号不存在</div>
+                    </div>
+
+                    <div class="r-account">
+                        <em class="r-title">账号充值：</em>
+                        <span class="r-cot">
+                            <p id="currinfo"><a href="/Manage/Recharge1?uid=@Model.UserMoney&rechargeType=6" class="r-change">账号充值</a></p>
+                            <p id="changeInput" style="display:none;"><input id="changeU" value="" type="text"></p>
+                        </span>
+                    </div>
+                    <div class="r-account">
+                        <em class="r-title">充值记录：</em>
+                        <span class="r-cot">
+                            <p id="currinfo"><a href="/Home/RechargeRecord" class="r-change">充值记录</a></p>
+                            <p id="changeInput" style="display:none;"><input id="changeU" value="" type="text"></p>
+                        </span>
+                    </div>
+                    <div class="r-account">
+                        <em class="r-title">密码设置：</em>
+                        <span class="r-cot">
+                            <p id="currinfo"><a href="/Home/findPwd" class="r-change">密码设置</a>
+                            <a href="/Home/ResetPayPwd" class="r-change">重置密码</a></p>
+                           
+                            <p id="changeInput" style="display:none;"><input id="changeU" value="" type="text"></p>
+                        </span>
+                    </div>
+                    <div class="r-account">
+                        <em class="r-title">我的战绩：</em>
+                        <span class="r-cot">
+                            <p id="currinfo"><a href="/Manage/AgentManageNew" class="r-change">查看战绩</a></p>
+                            <p id="changeInput" style="display:none;"><input id="changeU" value="" type="text"></p>
+                        </span>
+                    </div>
+                    <div class="r-account">
+                        <em class="r-title">红利领取：</em>
+                        <span class="r-cot">
+                            <p id="currinfo"><a href="/Manage/TuseragentlogManage" class="r-change">红利领取日志</a></p>
+                            <p id="changeInput" style="display:none;"><input id="changeU" value="" type="text"></p>
+                        </span>
+                    </div>
+                    <div class="r-account">
+                        <em class="r-title">税收日志：</em>
+                        <span class="r-cot">
+                            <p id="currinfo"><a href="/Manage/TtaxlogManage" class="r-change">税收日志</a></p>
+                            <p id="changeInput" style="display:none;"><input id="changeU" value="" type="text"></p>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <!--充值第一步end-->
+            <!--充值第二步-->
+            <div id="second" style="display:none;">
+                <div class="t-recharge">
+                    <div class="r-account">
+                        <em class="r-title">充值账号：</em>
+                        <span class="r-cot">
+                            <p class="nickname_e">91游戏王者(253244675)</p>
+                            <p style="display:none;"><input value="" type="text"></p>
+                        </span>
+                    </div>
+                    <div class="r-account">
+                        <em class="r-title">充值金额：</em>
+                        <span class="r-cot"><p id="rgrmb" class="r-amount">2</p></span>
+                    </div>
+                    <div class="r-account">
+                        <em class="r-title">充值方式：</em>
+                        <span class="r-cot">
+                            <ul class="r-choose-list" id="form">
+                                <li class="on" data-key="17" data-banid="alipay">支付宝</li>
+                                <li data-key="61" data-banid="wxh5">微信</li>
+                                <li data-key="dx" id="dxID" data-banid="" style="display: none;">
+                                    <span id="showTxt">短信</span><em class="choose"></em>
+                                    <div class="choose_show" style="display: none" data-key="0">
+                                        <p data-key="4" data-banid="MOBILE-NET">移动短信</p>
+                                        <p data-key="4" data-banid="LTMSG-NET">联通短信</p>
+                                        <p data-key="4" data-banid="TELMSG-NET">电信短信</p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </span>
+                    </div>
+                    <div class="agreement">
+                        <p>
+                            <em id="fwtk"></em>我已阅读并同意<a href="https://m.91y.com/help/sjguize/2340.html">《关于充值的特别提示和约定》</a>
+                        </p>
+                        <p><em id="xzd"></em>购买91游币时自动兑换为91y游戏中心道具</p>
+                    </div>
+                    <a class="recharge-btn" onclick="rechargeCreated()">立即充值</a>
+                </div>
+
+            </div>
+            <!--充值第二步end-->
+            <!--充值下单结果-->
+            <div id="result" style="display:none;">
+                <div class="t-recharge">
+                    <!-- <div class="r-results">
+                        <em class="r-results-icon"><img
+                                src="/templets/default/20190813/images/retrun_icon_01.png"></em>
+                        <p class="r-results-txt">充值成功</p>
+                    </div>-->
+                    <div class="r-account">
+                        <em class="r-title">充值方式：</em>
+                        <span class="r-cot"><p id="formtext">支付宝</p></span>
+                    </div>
+                    <div class="r-account">
+                        <em class="r-title">订单号：</em>
+                        <span class="r-cot"><p id="ordertrade"></p></span>
+                    </div>
+                    <div class="r-account">
+                        <em class="r-title">充值账号：</em>
+                        <span class="r-cot"><p id="payuser" class="nickname_e">91游戏王者(253244675)</p></span>
+                    </div>
+                    <div class="r-account">
+                        <em class="r-title">充值金额：</em>
+                        <span class="r-cot"><p><b class="yellow" id="rmb">2</b></p></span>
+                    </div>
+                    <div class="r-account">
+                        <em class="r-title">金币数量：</em>
+                        <span class="r-cot"><p>获得<b class="yellow" id="souce"></b>个金币，<span id="viptext"></span></p></span>
+                    </div>
+                    <a onclick="orderPay()" class="recharge-btn">确认提交</a>
+                </div>
+            </div>
+            <!--充值结果end-->
+            <!----------------------------------版权----------------------------------->
+            @Html.Partial("footer")
+        </div>
+    </div>
+
+    <script>
+    var _hmt = _hmt || [];
+        (function () {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?64f9bb47cd627a8a4069b1e07b127e1f";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();</script>
+</body>
+</html>

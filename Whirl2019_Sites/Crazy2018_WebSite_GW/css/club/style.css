@@ -1,0 +1,391 @@
+body,
+p,
+ul,
+ol,
+dl,
+li,
+dt,
+dd,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  padding: 0;
+  font-family: "PingFangHK-Regular", Helvetica, Arial, "PingFang SC", "Hiragino Sans GB", "Heiti SC", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
+  list-style: none;
+}
+
+a:hover,
+a:focus {
+  text-decoration: none;
+}
+
+input,
+img {
+  border: 0 none;
+  outline-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+@media screen and (min-width: 480px) and (max-width: 768px) {
+  html {
+    font-size: 6.5px
+  }
+
+  body {
+    background-color: #1c1c1c;
+    font-size: 0.16rem;
+  }
+}
+/*在小于480 像素的屏幕，微小屏幕，更低分辨率的手机*/
+@media screen and (min-width: 320px) and (max-width: 479px) {
+  html {
+    font-size: 5px
+  }
+
+  body {
+    background-color: #1c1c1c;
+    font-size: 0.16rem;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  html {
+    font-size: 4px
+  }
+
+  body {
+    background-color: #1c1c1c;
+    font-size: 0.16rem;
+  }
+}
+
+@media screen and (min-width: 769px) and (max-width: 1200px) {
+  html {
+    font-size: calc(100vw/ 120);
+  }
+
+  body {
+    background-color: #1c1c1c;
+    font-size: 0.16rem;   
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  html {
+    font-size: 10px;
+  }
+
+  body {
+    background-color: #1c1c1c;
+    font-size: 0.16rem;
+  }
+}
+
+@media screen and (min-width: 769px){
+  .store-header {
+    width: 120rem;
+    height: 10rem;
+    line-height: 10rem;
+    background-color: #1c1c1c;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+  }
+  .store-header img {
+    width: 8rem;
+    height: 8rem;
+    margin: 1rem;
+  }
+  .store-header h2 {
+    text-align: center;
+    color: #fedf9e;
+    font-size: 3.4rem;
+  }
+  .store-banner {
+    width: 120rem;
+    height: 34.5rem;
+    margin: 0 auto;
+  }
+  .store-banner img {
+    width: 100%;
+  }
+  .store-content {
+    display: flex;
+    width: 120rem;
+    min-height: 100rem;
+    margin: 0 auto;
+    justify-content: space-between;
+  }
+
+  .store-nav {
+    width: 35rem;
+    background-color: #3f3f3f;
+  }
+  .store-nav-ul {
+    display: block;
+  }
+  .store-nav-ul li {
+    width: 35rem;
+    height: 10rem;
+    line-height: 10rem;
+    text-align: center;
+    font-size: 3rem;
+    color: #cfcfcf;
+    border-bottom: 2px solid #313131;
+    cursor: pointer;
+  }
+  .store-nav-ul li.store-nav-first {
+    display: flex;
+    justify-content: center;
+    color: #cd9d5b;
+  }
+  .store-nav-ul li.active {
+    background: #C69D5F;
+    color: #313131
+  }
+  /* 跳转支付 */
+  .store-pay {
+    width: 84rem;
+  }
+  .store-pay-ul {
+    padding: 1rem;
+    background-color: #282828;
+  }
+  .store-pay-ul li {
+    margin-bottom: 1rem;
+    background-color: #313131;
+  }
+  .store-pay-ul a {
+    text-decoration: none;
+  }
+  .store-pay-li {
+    padding: 2rem 1.5rem;
+    display: flex;
+    /* justify-content: space-between; */
+  }
+  .store-pay-li img {
+    width: 9.7rem;
+    height: 9.7rem;
+  }
+  .store-pay-li-center {
+    width: 44rem;
+    margin-left: 2rem;
+  }
+  .store-pay-li-center .top {
+    display: flex;
+  }
+  .store-pay-li-center .top h3 {
+    color: #fff;
+    font-size: 3.4rem;
+    font-weight: bolder;
+    margin-top: 1rem;
+  }
+  .store-pay-li-center p {
+    color: #a2a2a2;
+    font-size: 2rem;
+    margin-top: .5rem;
+  }
+  .store-pay-li-center .discount {
+    width: 8.2rem;
+    height: 3.2rem;
+    background: url(../img/discount_bg.png) 100%;
+    margin: 2rem 0 0 1rem;
+    display: flex;
+  }
+  .store-pay-li-center .discount p {
+    color: #fff;
+    font-size: 2rem;
+    line-height: 2.2rem;
+    padding-left: .8rem;
+  }
+  .store-pay-li-center .discount span {
+    color: #fff;
+    padding-top: .8rem;
+  }
+  .store-pay-li-right {
+    width: 28rem;
+    display: flex;
+    justify-content: flex-end;
+    padding-top: 2rem;
+  }
+  .store-pay-li-right p {
+    /* width: 11rem; */
+    color: #cd9d5b;
+    font-size: 3rem;
+    line-height: 6rem;
+    margin-right: .5rem;
+  }
+  .store-pay-li-right button {
+    width: 12rem;
+    height: 5rem;
+    line-height: 5rem;
+    text-align: center;
+    background: #cd9d5b;
+    font-size: 2rem;
+    color: #313131;
+    text-decoration: none;
+    border: 0;
+    border-radius: 2.5rem;
+    margin-top: .5rem;
+    cursor: pointer;
+  }
+}
+@media screen and (max-width: 769px) {
+  .store-header {
+    height: 10rem;
+    line-height: 10rem;
+    background-color: #1c1c1c;
+    width: 100%;
+  }
+  .store-header img {
+    display: none;
+  }
+  .store-header h2 {
+    text-align: center;
+    color: #fedf9e;
+    font-size: 3.4rem;
+  }
+  .store-banner {
+    display: none;
+  }
+  .store-content {
+    display: block;
+    width: 100%;
+  }
+  .store-nav-ul li.store-nav-first {
+    display: none;
+  }
+  .store-nav {
+    width: 100%;
+    padding: 1.5rem 0;
+    background-color: #282828;
+  }
+  .store-nav ul {
+    padding: 0 1rem;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .store-nav ul li {
+    width: 30%;
+    height: 9rem;
+    margin: 0 1%;
+    background: url(../img/nav_bg.png) no-repeat;
+    background-size: cover;
+    margin-bottom: .6rem;
+    text-align: center;
+    font-weight: bolder;
+    color: #fff;
+    font-size: 3.5vw;
+    line-height: 9rem;
+    border: 0;
+    border-radius: 5rem;
+  }
+  .store-nav ul li:nth-child(3n) {
+    /* margin-right: 0; */
+  }
+  .store-pay {
+    width: 100%;
+    margin-top: 1rem;
+  }
+  .store-pay-ul {
+    padding: 0;
+    background-color: #282828;
+  }
+
+  .store-pay-ul li {
+    margin-bottom: 1rem;
+    background-color: #313131;
+  }
+  .store-pay-ul a {
+    text-decoration: none;
+  }
+  .store-pay-li {
+    padding: 2rem 1.5rem;
+    display: flex;
+    /* justify-content: space-between; */
+  }
+  .store-pay-li img {
+    width: 10rem;
+    height: 10rem;
+  }
+  .store-pay-li-center {
+    width: 40rem;
+    margin-left: 2rem;
+  }
+  .store-pay-li-center .top {
+    display: flex;
+  }
+  .store-pay-li-center .top h3 {
+    color: #fff;
+    font-size: 3.4rem;
+    font-weight: bolder;
+    margin-top: 1rem;
+  }
+  .store-pay-li-center p {
+    color: #a2a2a2;
+    font-size: 2rem;
+    margin-top: .5rem;
+  }
+  .store-pay-li-center .discount {
+    width: 10rem;
+    height: 3.2rem;
+    background: url(../img/discount_bg.png) 100%;
+    margin: 1.5rem 0 0 1rem;
+    display: flex;
+  }
+  .store-pay-li-center .discount p {
+    color: #fff;
+    font-size: 2rem;
+    line-height: 2.2rem;
+    padding-left: .8rem;
+  }
+  .store-pay-li-center .discount span {
+    color: #fff;
+    padding-top: .8rem;
+  }
+  .store-pay-li-right {
+    width: 28rem;
+    display: flex;
+    justify-content: flex-end;
+    padding-top: 2rem;
+  }
+  .store-pay-li-right p {
+    /* width: 11rem; */
+    color: #cd9d5b;
+    font-size: 3rem;
+    line-height: 6rem;
+    margin-right: .5rem;
+  }
+
+
+  .store-pay-li-center .top h3 {
+    font-size: 2.8rem;
+  }
+  .store-pay-li-center p {
+    font-size: 1.6rem;
+  }
+  .store-pay-li-center .discount span {
+    padding-top: 0;
+    line-height: 3.2rem;
+  }
+  .pay-button {
+    display: none;
+  }
+  .store-pay-li-right p {
+    padding-right: 2.5rem;
+    background: url(../img/icon_by.png) no-repeat;
+    background-size: 1.8rem;
+    background-position: right 1.2rem;
+  }
+  .store-nav-ul li.active {
+    background: #C69D5F;
+    color: #313131;
+    border-radius: 5rem;
+    height: 8.5rem;
+  }
+}   

@@ -1,0 +1,149 @@
+﻿
+@{
+    ViewBag.Title = "BankList";
+}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta id="viewport" name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=no,target-densitydpi=medium-dpi" />
+    <title>银行卡</title>
+    <link rel="stylesheet" href="~/css/BankList.css">
+    <script src="~/js/jquery-1.11.2.min.js"></script>
+</head>
+
+<body>
+    <div class="BankListBox">
+        <header>
+            <div class="fanhui" onClick="JavaScript :history.back(1);">
+                <img src="~/img/fanhui1.png" alt="">
+            </div>
+            银行卡
+            <div class="tianjia" onclick="window.location.href = '/Manage/BindBank'">
+                <img src="~/img/add.png" alt="">
+            </div>
+        </header>
+        <ul id="a" class="bankListCont">
+            @*<li onClick="JavaScript :history.back(1);">
+                <div class="bankIonfo">
+                    <div class="bank-logo"><img class="bankImgInfo" src="/img/gdbank.png"></div>
+                    <div class="bankIonfo-name">
+                        <span id="CarName">光大银行</span>
+                    </div>
+                </div>
+                <div class="bankNumber">
+                    <div class="numberInfo">
+                        <span>****</span>
+                        <span>****</span>
+                        <span>****</span>
+                        <span>3315</span>
+                    </div>
+                    <input type="hidden" name="cardno" value="123456789" />
+                </div>
+                <img class="backImg" src="~/img/gdbank1.png">
+            </li>*@
+        </ul>
+    </div>
+    <script>
+        var card = null;
+        var cardName = null;
+        var storagefirst = window.localStorage;
+        $(function () {
+            GetBankList();
+        })
+        function GetBankList() {
+            var data = {};
+            $.ajax({
+                type: "post", url: '/Manage/GetBankCards',
+                datatype: 'json',
+                data: data,
+                success: function (res) {
+                    // console.log(res)
+                    if (res) {
+                        for (var i in res) {
+                            //console.log(res[i].CardName)
+                            //console.log(res[i].CardName)
+                            if (res[i].CardName == "光大银行") {
+                                res[i].imgLog = "/img/gdbank.png"
+                                res[i].backImg = "/img/gdbank1.png"
+                                res[i].backColor = "#e8a731"
+                            } else if (res[i].CardName == "工商银行" || res[i].CardName == "中国工商银行") {
+                                res[i].imgLog = "/img/gsbank.png"
+                                res[i].backImg = "/img/gsbank1.png"
+                                res[i].backColor = "#d44354"
+                            } else if (res[i].CardName == "建设银行" || res[i].CardName == "中国建设银行") {
+                                res[i].imgLog = "/img/jsbank.png"
+                                res[i].backImg = "/img/jsbank1.png"
+                                res[i].backColor = "#4368a0"
+
+                            } else if (res[i].CardName == "中国银行") {
+                                res[i].imgLog = "/img/zgbank.png"
+                                res[i].backImg = "/img/zgbank1.png"
+                                res[i].backColor = "#c74d5a"
+
+                            } else if (res[i].CardName == "中国农业银行" || res[i].CardName == "农业银行") {
+                                res[i].imgLog = "/img/nybank.png"
+                                res[i].backImg = "/img/nybank1.png"
+                                res[i].backColor = "#286a66"
+                            } else if (res[i].CardName == "交通银行") {
+                                res[i].imgLog = "/img/jtbank.png"
+                                res[i].backImg = "/img/jtbank1.png"
+                                res[i].backColor = "#4268a0"
+
+                            } else if (res[i].CardName == "中国民生银行" || res[i].CardName == "民生银行") {
+                                res[i].imgLog = "/img/msbank.png"
+                                res[i].backImg = "/img/msbank1.png"
+                                res[i].backColor = "#59A472"
+
+                            } else if (res[i].CardName == "中国华夏银行" || res[i].CardName == "华夏银行") {
+                                res[i].imgLog = "/img/hxbank.png"
+                                res[i].backImg = "/img/hxbank1.png"
+                                res[i].backColor = "#E50012"
+                            } else if (res[i].CardName) {
+                                res[i].imgLog = "/img/gybank.png"
+                                res[i].backImg = "/img/gydank1.png"
+                                res[i].backColor = "#13227A"
+                            }
+                            var str = $(".bankListCont").html();
+                            str += "<li style='background-color:" + res[i].backColor + "'>" +
+                                    "<div class='bankIonfo'>" +
+                                        "<div class='bank-logo'><img class='bankImgInfo' src='" + res[i].imgLog + "'/></div>" +
+                                        "<div class='bankIonfo-name'>" +
+                                            "<span id='CarName'>" + res[i].CardName + "</span>" +
+                                        "</div>" +
+                                    "</div>" +
+                                    "<div class='bankNumber'>" +
+                                        "<div class='numberInfo'>" +
+                                            "<span>****</span>" +
+                                            "<span>****</span>" +
+                                            "<span>****</span>" +
+                                            "<span>" + res[i].CardNo.substr(res[i].CardNo.length - 4) + "</span>" +
+                                            "</div>" +
+                                        "<input type='hidden' name='cardno' value='" + res[i].CardNo + "'/>" +
+                                    "</div>" +
+                                    "<img class='backImg' src='" + res[i].backImg + "'/>" +
+                                "</li>"
+                            $(".bankListCont").html(str)
+                        }
+                    }
+                }
+            })
+        };
+
+        $("#a").on('click','li', function () {
+            var imgUrl = $(this).find(".bankImgInfo").attr('src');
+            card = $(this).find("input[name='cardno']").val()
+            cardName = $(this).find("#CarName").val()
+            storagefirst["cardNumber"] = card.substr(card.length - 4);
+            storagefirst["cardNumber2"] = card;
+            storagefirst["Yhangname"] = cardName;
+            storagefirst["imgUrl"] = imgUrl;
+            //window.location.href = "/Manage/withdraw"
+            window.history.back(1);
+        })
+    </script>
+</body>
+
+</html>

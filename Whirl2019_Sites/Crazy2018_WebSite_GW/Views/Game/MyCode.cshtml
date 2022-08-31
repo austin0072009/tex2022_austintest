@@ -1,0 +1,73 @@
+﻿
+@{
+    ViewBag.Title = "MyCode";
+}
+<!DOCTYPE html>
+<HTML>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="format-detection" content="telephone=no">
+    <meta id="viewport" name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=no,target-densitydpi=medium-dpi" />
+    <link rel="stylesheet" href="~/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/css/MyCode.css">
+    <link rel="stylesheet" href="~/css/public.css">
+    <script src="~/js/jquery-1.11.2.min.js"></script>
+    <script src="~/js/public.js"></script>
+    <title>我的二维码</title>
+</head>
+
+<body style="position:relative;">
+    <div class="bgheight">
+        <div class="BntContBox">
+            <div class="MyIdBtn MyIdBtn2" id="MyCodeBtn">我的二维码</div>
+            <div class="MyIdBtn" id="MyProxyBtn">代理记录</div>
+            <div class="MyIdBtn" id="MyBrokerageBtn">我的佣金</div>
+        </div>
+        <div class="ContBox">
+            <div class="MyIdImg">
+                @*<img src="" id="imgBox"/>*@
+                <div class="imgCont">
+                    <img src="" id="imgBox" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        $("#MyProxyBtn").click(function () {
+            window.location.href = "/Game/MyProxy";
+        })
+
+        $("#MyBrokerageBtn").click(function () {
+            window.location.href = "/Game/MyBrokerage";
+        })
+        GetIonfo()
+        function GetIonfo() {
+            var data = {};
+            $.ajax({
+                type: "post", url: '/Game/GetUserAgentInfo',
+                datatype: 'json',
+                data: data,
+                async: true,
+                beforeSend: function () {
+                    load2()
+                    //load();
+                },
+                complete: function () {
+                    loadEnd2()
+                    //loadEnd();
+                },
+                success: function (res) {
+                    console.log(res)
+                    if (res.Code == 0 || res.Code == "0") {
+                        $("#imgBox").attr('src', res.Data.QRPath)
+                    } else {
+                        Bomb2("获取数据失败", 1500);
+                    }
+                }
+            })
+        }
+    </script>
+</body>
+
+</HTML>

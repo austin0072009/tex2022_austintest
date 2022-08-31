@@ -1,0 +1,107 @@
+﻿
+@{
+    ViewBag.Title = "JoinEd";
+}
+@using Crazy2018_Sys_Common;
+@using Crazy2018_Sys_ViewEntity;
+@model SnsUserInfo
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=640">
+    <meta HTTP-EQUIV="pragma" CONTENT="no-cache">
+    <meta HTTP-EQUIV="Cache-Control" CONTENT="no-cache, must-revalidate">
+    <meta HTTP-EQUIV="expires" CONTENT="0">
+    <title>推广</title>
+    <link type="text/css" href="~/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="~/css/JoinEd.css">
+    <script src="~/js/jquery.min.js"></script>
+</head>
+
+<body>
+    <div class="JoinEdCont">
+        <div id="main_box">
+            <div class="ContBox" style="width:640px;height:90%;margin:0 auto;z-index: 50;">
+                <div id="performance_main">
+                    <div id="messageCont">
+                        <div id="message">
+                            <ul>
+                                <li>我的推荐码：<span>@Model.ActiveCode</span></li>
+                                <li>我的代理ID：<span id="AagentId">@Model.UserId</span></li>
+                                <li>手机号码：<span id="Uid">@Model.Mobile</span></li>
+                            </ul>
+                        </div>
+                        <p class="xuanchuan">分享到朋友圈、微信群、群发好友，让所有人都给你赚钱.</p>
+
+                        <div align="center"><button id="code2"></button></div>
+                        <div align="center" style="margin-top: 12px;"><span style="font-family: '微软雅黑';color: #D3CFC4;">点击按钮生成您的推广二维码</span></div>
+                        <div id="jiangli">
+                            <a class="reward">奖励规则</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="mengban">
+                <div id="tankuang">
+                    <div class="tankuangCont">
+                        <div class="tankuangContOne">
+                            <p id="Ptitle">推广规则</p>
+                            <div id="wanfa">
+                                <span id="wanfa1">1、推广等级:每人最多可以有3级推广，分为3级,第2级,第1级</span>
+                                <span id="wanfa2">2、推广数量:推广的人数没有限制</span>
+                                <span id="wanfa3">3、推广奖励金额:A级奖励10%,B级奖励5%。</span>
+                                <span id="wanfa4">4、奖励方式:每局押金的10%/5%直接计入推广人的推广奖励中(在我的奖励中可以提取)</span>
+                            </div>
+                            <div id="jieshi">
+                                <span>由于现在人数过多，金币兑换偶尔</span>
+                                <span>会有延迟，大家请放心，造成不便真的很抱歉。</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        var _sess = window.sessionStorage;
+        var userMessage = JSON.parse(_sess.getItem("userMessage"));
+        $(".reward").click(function () {
+            if ($("#mengban").css("display") == "none") {
+                $("#mengban").css({ "display": "block" })
+            }
+        })
+        $("#mengban").click(function () {
+            if ($("#mengban").css("display") == "block") {
+                $("#mengban").css({ "display": "none" })
+            }
+        })
+        $("#code2").click(function () {
+            window.location.href = "/Manage/Promotion";
+        })
+        $(function () {
+            Getinfo();
+        })
+        function Getinfo() {
+            var data = {};
+            $.ajax({
+                type: "post", url: '/Manage/GetAgentData',
+                datatype: 'json',
+                data: data,
+                success: function (res) {
+                    if (res) {
+                        //console.log(res)
+                        $("#AagentId").text(res.AagentId)
+                        $("#Uid").text(userMessage.phoneNum)
+                        $("#LevelCount").text(res.LevelCount)
+                        $("#OneR").text(res.ALevelCount)
+                        $("#TwoR").text(res.BLevelCount)
+                    }
+                }
+            })
+        }
+    </script>
+</body>
+
+</html>

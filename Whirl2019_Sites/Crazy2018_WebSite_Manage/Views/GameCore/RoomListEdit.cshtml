@@ -1,0 +1,712 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,initial-scale=1.0,user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <title>操作桌子</title>
+    <link href="~/scripts/artdialog/ui-dialog.css" rel="stylesheet" type="text/css" />
+    <link href="~/skin/default/style.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="~/scripts/jquery/jquery-1.11.2.min.js"></script>
+    <script type="text/javascript" src="~/scripts/jquery/Validform_v5.3.2_min.js"></script>
+
+    <script type="text/javascript" src="~/scripts/artdialog/dialog-plus-min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="~/js/laymain.js"></script>
+    <script type="text/javascript" charset="utf-8" src="~/js/common.js"></script>
+    <script type="text/javascript">
+      
+        function formSerialize(formdate)
+        {
+            var element = $("#form1");
+            if (!!formdate) {
+                for (var key in formdate) {
+                    var $id = element.find('#' + key);
+                    var value = $.trim(formdate[key]).replace(/&nbsp;/g, '');
+                    var type = $id.attr('type');
+                    if ($id.hasClass("select2-hidden-accessible")) {
+                        type = "select";
+                    }
+                    switch (type) {
+                        case "checkbox":
+                            if (value == "true") {
+                                $id.attr("checked", 'checked');
+                            } else {
+                                $id.removeAttr("checked");
+                            }
+                            break;
+                        case "select":
+                            $id.val(value).trigger("change");
+                            break;
+                        default:
+                            $id.val(value);
+                            break;
+                    }
+                };
+                return false;
+            }
+            var postdata = {};
+            element.find('input,select,textarea').each(function (r) {
+                var $this = $(this);
+                var id = $this.attr('id');
+                var type = $this.attr('type');
+                switch (type) {
+                    case "checkbox":
+                        postdata[id] = $this.is(":checked");
+                        break;
+                    default:
+                        var value = $this.val() == "" ? "&nbsp;" : $this.val();
+                        if (!$.request("keyValue")) {
+                            value = value.replace(/&nbsp;/g, '');
+                        }
+                        postdata[id] = value;
+                        break;
+                }
+            });
+        }
+        
+        function BindGamelevel()
+        {
+            var gameid = $("#gameid").val();
+           
+            if (gameid != "") {
+                $.post("/GameCore/GetRoomBygameId", { gameid: gameid }, function (data) {
+                    var optionhtml = "";
+                    $("#roomid").empty();
+                    if (data != null || data != "") {
+
+                        for (var i = 0; i < data.length; i++) {
+                            optionhtml += "<option value='" + data[i].Key + "'>" + data[i].Value + "</option>";
+                        }
+                        $("#roomid").append(optionhtml);
+                    }
+
+                });
+            }
+        }
+
+        $(function () {
+            //初始化表单验证
+         
+            $("#form1").initValidform();
+            BingTableInfo();
+            $("#gameid").change(function () {
+                BingTableInfo()
+                BindGamelevel();
+            });
+        });
+
+        function BingTableInfo() {
+           
+            var gameid = $("#gameid").val();
+            if (gameid == "51") { //  德州扑克 
+                $("#FoundTableInfo").empty();
+                var dzstr = "";
+                dzstr += "<dl><dt>玩家人数</dt><dd>";
+                dzstr += "<select style='width:200px;' name='numpertable' id='numpertable' class='select'>   ";
+                dzstr += " <option selected value='4'>4</option>                                 ";
+                dzstr += " <option value='5'>5</option>                                          ";
+                dzstr += "  <option value='6'>6</option>                                         ";
+                dzstr += "  <option value='7'>7</option>                                         ";
+                dzstr += "  <option value='8'>8</option>                                         ";
+                dzstr += "  <option value='9'>9</option>                                         ";
+                dzstr += " </select>                                                             ";
+                dzstr += " <span class='Validform_checktip'>*</span>                             ";
+                dzstr += " </dd>                                                                 ";
+                dzstr += "  </dl>                                                                ";
+                dzstr += "   <dl>                                                                ";
+                dzstr += "  <dt>总局数</dt>                                                    ";
+                dzstr += " <dd>                                                                  ";
+                dzstr += "   <select style='width:200px;' name='maxCount' id='maxCount' class='select'>";
+                dzstr += "       <option selected value='200'>200</option>                        ";
+                dzstr += "   </select>                                                           ";
+                dzstr += "    <span class='Validform_checktip'>*</span>                          ";
+                dzstr += "  </dd>                                                                ";
+                dzstr += "  </dl>                                                                ";
+                dzstr += "   <dl>                                              ";
+                dzstr += "       <dt>执行时间(分钟数)</dt>                     ";
+                dzstr += "       <dd>                                          ";
+                dzstr += "           <select style='width:200px;' name='Duration' id='Duration' class='select'>        ";
+                dzstr += "               <option selected value='30'>30</option> ";
+                dzstr += "               <option value='60'>60</option>          ";
+                dzstr += "               <option value='90'>90</option>          ";
+                dzstr += "               <option value='120'>120</option>        ";
+                dzstr += "           </select>                                   ";
+                dzstr += "           <span class='Validform_checktip'>*</span>   ";
+                dzstr += "       </dd>                                           ";
+                dzstr += "   </dl>                                               ";
+                dzstr += "   <dl>                                                ";
+                dzstr += "       <dt>最小大盲</dt>                                   ";
+                dzstr += "       <dd>                                            ";
+                dzstr += "           <select style='width:200px;' name='into' id='into' class='select'>";
+                dzstr += "               <option selected value='50'>50</option>";
+                dzstr += "               <option value='100'>100</option>         ";
+                dzstr += "               <option value='200'>200</option>         ";
+                dzstr += "               <option value='500'>500</option>       ";
+                dzstr += "           </select>                                ";
+                dzstr += "           <span class='Validform_checktip'>*</span>";
+                dzstr += "       </dd>              ";
+                dzstr += "   </dl>                  ";
+                dzstr += "   <dl>                                                ";
+                dzstr += "       <dt>带入倍数(0.5~4)</dt>                                   ";
+                dzstr += "       <dd>                                            ";
+                dzstr += "           <input type='number' name='intorate_min' id='intorate_min' /> ~          ";
+                dzstr += "               <input  type='number' name='intorate_max' id='intorate_max' />           ";
+                dzstr += "       </dd>              ";
+                dzstr += "   </dl>                  ";
+                dzstr += "   <dl>                                                ";
+                dzstr += "       <dt>底注</dt>                                   ";
+                dzstr += "       <dd>                                            ";
+                dzstr += "           <select style='width:200px;' name='baserate' id='baserate' class='select'>";
+                dzstr += "               <option selected value='1'>1</option>";
+                dzstr += "               <option value='2'>2</option>         ";
+                dzstr += "               <option value='5'>5</option>         ";
+                dzstr += "               <option value='10'>10</option>       ";
+                dzstr += "               <option value='20'>20</option>       ";
+                dzstr += "               <option value='40'>40</option>       ";
+                dzstr += "           </select>                                ";
+                dzstr += "           <span class='Validform_checktip'>*</span>";
+                dzstr += "       </dd>              ";
+                dzstr += "   </dl>                  ";
+                dzstr += "   <dl>                                                ";
+                dzstr += "       <dt>前注 </dt>                                   ";
+                dzstr += "       <dd>                                            ";
+                dzstr += "           <select style='width:200px;' name='pregamble' id='pregamble' class='select'>";
+                dzstr += "               <option selected value='1'>1</option>";
+                dzstr += "               <option value='2'>2</option>         ";
+                dzstr += "               <option value='4'>4</option>       ";
+                dzstr += "               <option value='8'>8</option>       ";
+                dzstr += "               <option value='16'>16</option>       ";
+                dzstr += "               <option value='20'>20</option>       ";
+                dzstr += "               <option value='40'>40</option>       ";
+                dzstr += "           </select>                                ";
+                dzstr += "           <span class='Validform_checktip'>*</span>";
+                dzstr += "       </dd>              ";
+                dzstr += "   </dl>                  ";
+
+                dzstr += "   <dl>                 ";
+                dzstr += "       <dt>游戏模式</dt>";
+                dzstr += "       <dd>             ";
+                dzstr += "           <select style='width:200px;' name='gametype' id='gametype' class='select'>      ";
+                dzstr += "               <option value='1'>正常模式</option>";
+                dzstr += "               <option value='2'>保险模式</option>";
+                dzstr += "               <option value='3'>延时看牌</option>";
+                dzstr += "           </select>                       ";
+                dzstr += "       </dd>                               ";
+                dzstr += "   </dl>                                   ";
+                dzstr += "   <dl>                   ";
+                dzstr += "       <dt>好友房密码</dt>";
+                dzstr += "       <dd>               ";
+                dzstr += "           <input  type='text' name='password' id='password' />             ";
+                dzstr += "       </dd>            ";
+                dzstr += "   </dl>                ";
+                dzstr += "   <dl>                                    ";
+                dzstr += "       <dt>开户视频</dt>                     ";
+                dzstr += "       <dd>                                ";
+                dzstr += "           <select style='width:200px;' name='openv' id='openv' class='select'>    ";
+                dzstr += "               <option value='0'>不开启</option>  ";
+                dzstr += "               <option value='1'>地址1</option>";
+                dzstr += "               <option value='2'>地址2</option>";
+                dzstr += "               <option value='3'>地址3</option>";
+                dzstr += "           </select>                                  ";
+                dzstr += "       </dd>                                          ";
+                dzstr += "   </dl>                                              ";
+                //dzstr += "   <dl>                 ";
+                //dzstr += "       <dd>             ";
+                //dzstr += "           <input  type='hidden' name='gps' id='gps' />             ";
+                //dzstr += "       </dd>                               ";
+                //dzstr += "   </dl>                                   ";
+                //dzstr += "   <dl>                 ";
+                //dzstr += "       <dd>             ";
+                //dzstr += "           <input  type='hidden' name='ip' id='ip' />             ";
+                //dzstr += "       </dd>                               ";
+                //dzstr += "   </dl>                                   ";
+                $("#FoundTableInfo").append(dzstr);
+
+              
+             
+            }
+            else if (gameid == "401") {//血战麻将
+                $("#FoundTableInfo").empty();
+                var mjstr = "";
+                mjstr += "<dl><dt>玩家人数</dt><dd>";
+                mjstr += "<select style='width:200px;' name='pc' id='pc' class='select'>   ";
+                mjstr += " <option selected value='2'>2</option>                                 ";
+                mjstr += " <option value='3'>3</option>                                          ";
+                mjstr += "  <option value='4'>4</option>                                         ";
+                mjstr += " </select>                                                             ";
+                mjstr += " <span class='Validform_checktip'>*</span>                             ";
+                mjstr += " </dd>                                                                 ";
+                mjstr += "  </dl>                                                                ";
+                mjstr += "   <dl>                                                                ";
+                mjstr += "  <dt>游戏类型</dt>                                                    ";
+                mjstr += " <dd>                                                                  ";
+                mjstr += "   <select style='width:200px;' name='mt' id='mt' class='select'>";
+                mjstr += "       <option selected value='2'>二房</option>                        ";
+                mjstr += "       <option value='3'>三房</option>                                 ";
+                mjstr += "   </select>                                                           ";
+                mjstr += "    <span class='Validform_checktip'>*</span>                          ";
+                mjstr += "  </dd>                                                                ";
+                mjstr += "  </dl>                                                                ";
+                mjstr += "  <dl>                                                                 ";
+                mjstr += "    <dt> 总局数</dt>                                                   ";
+                mjstr += "       <dd>                                                           ";
+                mjstr += "           <select style='width:200px;' name='maxCount' id='maxCount' class='select'>";
+                mjstr += "               <option selected value='200'>200</option>";
+                mjstr += "                                                        ";
+                mjstr += "           </select>                                    ";
+                mjstr += "           <span class='Validform_checktip'>*</span>    ";
+                mjstr += "       </dd>                                            ";
+                mjstr += "   </dl>                                                ";
+                mjstr += "   <dl>                                                 ";
+                mjstr += "       <dt>封顶好番</dt>                                ";
+                mjstr += "       <dd>                                             ";
+                mjstr += "           <select style='width:200px;' name='maxrate' id='maxrate' class='select'>  ";
+                mjstr += "               <option selected value='2'>2</option> ";
+                mjstr += "               <option value='4'>4</option>          ";
+                mjstr += "               <option value='8'>8</option>          ";
+                mjstr += "               <option value='10'>10</option>        ";
+                mjstr += "           </select>                                 ";
+                mjstr += "           <span class='Validform_checktip'>*</span> ";
+                mjstr += "       </dd>                                         ";
+                mjstr += "   </dl>                                             ";
+                mjstr += "   <dl>                                              ";
+                mjstr += "       <dt>执行时间(分钟数)</dt>                     ";
+                mjstr += "       <dd>                                          ";
+                mjstr += "           <select style='width:200px;' name='dura' id='dura' class='select'>        ";
+                mjstr += "               <option selected value='30'>30</option> ";
+                mjstr += "               <option value='60'>60</option>          ";
+                mjstr += "               <option value='90'>90</option>          ";
+                mjstr += "               <option value='120'>120</option>        ";
+                mjstr += "           </select>                                   ";
+                mjstr += "           <span class='Validform_checktip'>*</span>   ";
+                mjstr += "       </dd>                                           ";
+                mjstr += "   </dl>                                               ";
+                mjstr += "   <dl>                                                ";
+                mjstr += "       <dt>底注</dt>                                   ";
+                mjstr += "       <dd>                                            ";
+                mjstr += "           <select style='width:200px;' name='baserate' id='baserate' class='select'>";
+                mjstr += "               <option selected value='1'>1</option>";
+                mjstr += "               <option value='2'>2</option>         ";
+                mjstr += "               <option value='5'>5</option>         ";
+                mjstr += "               <option value='10'>10</option>       ";
+                mjstr += "               <option value='20'>20</option>       ";
+                mjstr += "               <option value='50'>50</option>       ";
+                mjstr += "           </select>                                ";
+                mjstr += "           <span class='Validform_checktip'>*</span>";
+                mjstr += "       </dd>              ";
+                mjstr += "   </dl>                  ";
+
+                mjstr += "   <dl>                   ";
+                mjstr += "       <dt>好友房密码</dt>";
+                mjstr += "       <dd>               ";
+                mjstr += "           <input  type='text' name='password' id='password' />             ";
+                mjstr += "       </dd>            ";
+                mjstr += "   </dl>                ";
+                mjstr += "   <dl>                 ";
+                mjstr += "       <dt>自摸加底</dt>";
+                mjstr += "       <dd>             ";
+                mjstr += "           <select style='width:200px;' name='moadd' id='moadd' class='select'>      ";
+                mjstr += "               <option value='1'>1</option>";
+                mjstr += "               <option value='2'>2</option>";
+                mjstr += "           </select>                       ";
+                mjstr += "       </dd>                               ";
+                mjstr += "   </dl>                                   ";
+                mjstr += "   <dl>                                    ";
+                mjstr += "       <dt>点杠花</dt>                     ";
+                mjstr += "       <dd>                                ";
+                mjstr += "           <select style='width:200px;' name='ganghu' id='ganghu' class='select'>    ";
+                mjstr += "               <option value='1'>点杠花一家</option>  ";
+                mjstr += "               <option value='2'>点杠花所有人</option>";
+                mjstr += "           </select>                                  ";
+                mjstr += "       </dd>                                          ";
+                mjstr += "   </dl>                                              ";
+                mjstr += "   <dl>                                               ";
+                mjstr += "       <dt>开启7张</dt>                               ";
+                mjstr += "       <dd>                                           ";
+                mjstr += "           <select style='width:200px;' name='seven' id='seven' class='select'>      ";
+                mjstr += "               <option value='1'>是</option>          ";
+                mjstr += "               <option selected value='0'>否</option> ";
+                mjstr += "           </select>                                  ";
+                mjstr += "       </dd>                                          ";
+                mjstr += "   </dl>                                              ";
+                mjstr += "   <dl>                                               ";
+                mjstr += "       <dt>开启天地胡</dt>                            ";
+                mjstr += "       <dd>                                           ";
+                mjstr += "           <select style='width:200px;' name='tiand' id='tiand' class='select'>      ";
+                mjstr += "               <option value='1'>是</option>          ";
+                mjstr += "               <option selected value='0'>否</option> ";
+                mjstr += "           </select>                                  ";
+                mjstr += "       </dd>                                          ";
+                mjstr += "   </dl>                                              ";
+                mjstr += "   <dl>                                               ";
+                mjstr += "       <dt>开启将对</dt>                              ";
+                mjstr += "       <dd>                                           ";
+                mjstr += "           <select style='width:200px;' name='jiangdui' id='jiangdui' class='select'>";
+                mjstr += "               <option value='1'>是</option>          ";
+                mjstr += "               <option selected value='0'>否</option> ";
+                mjstr += "           </select>                                  ";
+                mjstr += "       </dd>                                          ";
+                mjstr += "   </dl>                                              ";
+                mjstr += "   <dl>                                               ";
+                mjstr += "       <dt>开启换3</dt>                               ";
+                mjstr += "       <dd>                                           ";
+                mjstr += "           <select style='width:200px;' name='huang3' id='huang3' class='select'>    ";
+                mjstr += "               <option value='1'>是</option>         ";
+                mjstr += "               <option selected value='0'>否</option>";
+                mjstr += "           </select>                                 ";
+                mjstr += "       </dd>                                         ";
+                mjstr += "   </dl>                                             ";
+                mjstr += "   <dl>                                              ";
+                mjstr += "       <dt>开启门清中张</dt>                         ";
+                mjstr += "       <dd>                                          ";
+                mjstr += "           <select style='width:200px;' name='menzhong' id='menzhong' class='select'>";
+                mjstr += "               <option value='1'>是</option>                                               ";
+                mjstr += "               <option selected value='0'>否</option>";
+                mjstr += "           </select>";
+                mjstr += "       </dd>";
+                mjstr += "   </dl>";
+                //mjstr += "   <dl>                 ";
+                //mjstr += "       <dd>             ";
+                //mjstr += "           <input  type='hidden' name='gps' id='gps' />             ";
+                //mjstr += "       </dd>                               ";
+                //mjstr += "   </dl>                                   ";
+                //mjstr += "   <dl>                 ";
+                //mjstr += "       <dd>             ";
+                //mjstr += "           <input  type='hidden' name='ip' id='ip' />             ";
+                //mjstr += "       </dd>                               ";
+                //mjstr += "   </dl>                                   ";
+                $("#FoundTableInfo").append(mjstr);
+
+            }
+            else if (gameid == "52") {//扯旋
+                $("#FoundTableInfo").empty();
+                var cxstr = "";
+                cxstr += "<dl><dt>玩家人数</dt><dd>";
+                cxstr += "<select style='width:200px;' name='numpertable' id='numpertable' class='select'>   ";
+                cxstr += " <option selected value='4'>4</option>                                 ";
+                cxstr += " <option value='5'>5</option>                                          ";
+                cxstr += "  <option value='6'>6</option>                                         ";
+                cxstr += "  <option value='7'>7</option>                                         ";
+                cxstr += "  <option value='8'>8</option>                                         ";
+                cxstr += " </select>                                                             ";
+                cxstr += " <span class='Validform_checktip'>*</span>                             ";
+                cxstr += " </dd>                                                                 ";
+                cxstr += "  </dl>                                                                ";
+                cxstr += "   <dl>                                                                ";
+                cxstr += "  <dt>总局数</dt>                                                    ";
+                cxstr += " <dd>                                                                  ";
+                cxstr += "   <select style='width:200px;' name='maxCount' id='maxCount' class='select'>";
+                cxstr += "       <option selected value='200'>200</option>                        ";
+                cxstr += "   </select>                                                           ";
+                cxstr += "    <span class='Validform_checktip'>*</span>                          ";
+                cxstr += "  </dd>                                                                ";
+                cxstr += "  </dl>                                                                ";
+                cxstr += "   <dl>                                              ";
+                cxstr += "       <dt>执行时间(分钟数)</dt>                     ";
+                cxstr += "       <dd>                                          ";
+                cxstr += "           <select style='width:200px;' name='Duration' id='Duration' class='select'>        ";
+                cxstr += "               <option selected value='30'>30</option> ";
+                cxstr += "               <option value='60'>60</option>          ";
+                cxstr += "               <option value='90'>90</option>          ";
+                cxstr += "               <option value='120'>120</option>        ";
+                cxstr += "           </select>                                   ";
+                cxstr += "           <span class='Validform_checktip'>*</span>   ";
+                cxstr += "       </dd>                                           ";
+                cxstr += "   </dl>                                               ";
+                cxstr += "   <dl>                                                ";
+                cxstr += "       <dt>最小带入</dt>                                   ";
+                cxstr += "       <dd>                                            ";
+                cxstr += "           <select style='width:200px;' name='firstinto' id='firstinto' class='select'>";
+                cxstr += "               <option selected value='50'>50</option>";
+                cxstr += "               <option value='100'>100</option>         ";
+                cxstr += "               <option value='200'>200</option>         ";
+                cxstr += "               <option value='500'>500</option>       ";
+                cxstr += "           </select>                                ";
+                cxstr += "           <span class='Validform_checktip'>*</span>";
+                cxstr += "       </dd>              ";
+                cxstr += "   </dl>                  ";
+                cxstr += "   <dl>                                                ";
+                cxstr += "       <dt>底皮</dt>                                   ";
+                cxstr += "       <dd>                                            ";
+                cxstr += "           <select style='width:200px;' name='baserate' id='baserate' class='select'>";
+                cxstr += "               <option selected value='1'>1</option>";
+                cxstr += "               <option value='2'>2</option>         ";
+                cxstr += "               <option value='5'>5</option>         ";
+                cxstr += "               <option value='10'>10</option>       ";
+                cxstr += "               <option value='20'>20</option>       ";
+                cxstr += "               <option value='40'>40</option>       ";
+                cxstr += "           </select>                                ";
+                cxstr += "           <span class='Validform_checktip'>*</span>";
+                cxstr += "       </dd>              ";
+                cxstr += "   </dl>                  ";
+                cxstr += "   <dl>                                                ";
+                cxstr += "       <dt>对应底皮</dt>                                   ";
+                cxstr += "       <dd>                                            ";
+                cxstr += "           <select style='width:200px;' name='basemango' id='basemango' class='select'>";
+                cxstr += "               <option selected value='3'>3</option>";
+                cxstr += "               <option value='5'>5</option>         ";
+                cxstr += "               <option value='10'>10</option>       ";
+                cxstr += "               <option value='20'>20</option>       ";
+                cxstr += "               <option value='40'>40</option>       ";
+                cxstr += "               <option value='80'>80</option>       ";
+                cxstr += "           </select>                                ";
+                cxstr += "           <span class='Validform_checktip'>*</span>";
+                cxstr += "       </dd>              ";
+                cxstr += "   </dl>                  ";
+           
+          
+                cxstr += "   <dl>                 ";
+                cxstr += "       <dt>游戏模式</dt>";
+                cxstr += "       <dd>             ";
+                cxstr += "           <select style='width:200px;' name='gametype' id='gametype' class='select'>      ";
+                cxstr += "               <option value='1'>正常模式</option>";
+                cxstr += "               <option value='2'>地九王模式</option>";
+                cxstr += "           </select>                       ";
+                cxstr += "       </dd>                               ";
+                cxstr += "   </dl>                                   ";
+                cxstr += "   <dl>                   ";
+                cxstr += "       <dt>好友房密码</dt>";
+                cxstr += "       <dd>               ";
+                cxstr += "           <input  type='text' name='password' id='password' />             ";
+                cxstr += "       </dd>            ";
+                cxstr += "   </dl>                ";
+                cxstr += "   <dl>                                    ";
+                cxstr += "       <dt>开户视频</dt>                     ";
+                cxstr += "       <dd>                                ";
+                cxstr += "           <select style='width:200px;' name='openv' id='openv' class='select'>    ";
+                cxstr += "               <option value='0'>不开启</option>  ";
+                cxstr += "               <option value='1'>地址1</option>";
+                cxstr += "               <option value='2'>地址2</option>";
+                cxstr += "               <option value='3'>地址3</option>";
+                cxstr += "           </select>                                  ";
+                cxstr += "       </dd>                                          ";
+                cxstr += "   </dl>                                              ";
+                cxstr += "   <dl>                   ";
+                // cxstr += "       <dt> 揍芒</dt>";
+                cxstr += "       <dd>               ";
+                cxstr += "           <input value='1' type='hidden' name='IsZm' id='IsZm' />             ";
+                cxstr += "       </dd>            ";
+                cxstr += "   </dl>                ";
+                cxstr += "   <dl>                   ";
+                //  cxstr += "       <dt> 休芒</dt>";
+                cxstr += "       <dd>               ";
+                cxstr += "           <input value='1' type='hidden' name='IsXiu' id='IsXiu' />             ";
+                cxstr += "       </dd>            ";
+                cxstr += "   </dl>                ";
+                cxstr += "   <dl>                   ";
+                // cxstr += "       <dt> 手手芒</dt>";
+                cxstr += "       <dd>               ";
+                cxstr += "           <input value='1' type='hidden' name='IsSSM' id='IsSSM' />             ";
+                cxstr += "       </dd>            ";
+                cxstr += "   </dl>                ";
+                $("#FoundTableInfo").append(cxstr);
+
+            }
+            else {// 德州牛仔
+              
+                $("#FoundTableInfo").empty();
+                $("#FoundTableInfo").append("<p style='text-align: center;padding: 0 auto;margin: 0 auto;'>该游戏暂时无法创建房间！</p>");
+                $("#btnSubmit").attr("disabled", false);
+            }
+        }
+    </script>
+</head>
+
+<body class="mainbody">
+    <form id="form1"  runat="server">
+        <!--导航栏-->
+        <div class="location">
+            <a href="/GameCore/RoomList" class="back"><i></i><span>返回列表页</span></a>
+            <a href="/Home/Center" class="home"><i></i><span>首页</span></a>
+            <i class="arrow"></i>
+            <a href="/GameCore/RoomList"><span>游戏管理</span></a>
+            <i class="arrow"></i>
+            <span>操作桌子</span>
+        </div>
+        <div class="line10"></div>
+        <!--/导航栏-->
+        <!--内容-->
+        <div id="floatHead" class="content-tab-wrap">
+            <div class="content-tab">
+                <div class="content-tab-ul-wrap">
+                    <ul>
+                        <li><a class="selected" href="javascript:;">操作桌子信息</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <input type="hidden" id="Id" name="Id" />
+        <div class="tab-content" >
+            <dl>
+                <dt>游戏ID</dt>
+                <dd>
+                    <select name="gameid" id="gameid" class="select"></select>
+                </dd>
+            </dl>
+            <dl>
+                <dt>房间类型</dt>
+                <dd>
+                    <select style="width:200px;" name="roomid" id="roomid" class="select"></select>
+                </dd>
+            </dl>
+            @* 待动态加载 *@
+            <div id="FoundTableInfo">
+
+             
+
+            </div>
+        </div>
+        <!--/内容-->
+        <!--工具栏-->
+        <div class="page-footer">
+            <div class="btn-wrap" style="position: static;">
+                <input type="button" name="btnSubmit" onclick="submitform()"  value="提交保存" id="btnSubmit" class="btn">
+                <input name="btnReturn" type="button" value="返回上一页" class="btn yellow" onclick="javascript: history.back(-1);">
+            </div>
+        </div>
+        <!--/工具栏-->
+    </form>
+    <script>
+
+
+
+
+
+        var id = "";
+        //游戏ID列表参数
+        var txtPageNum = 100;
+        var Keywords = "";
+        var PageIndex = 1;
+        GetList();
+        //修改获取信息
+        $(function () {
+           
+            function getURLParameter(name) {
+                return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search) || [null, ''])[1].replace(/\+/g, '%20')) || null;
+            }
+            if (getURLParameter("id") != "" && getURLParameter("id") != null) {
+                id = getURLParameter("id");
+                var data = {};
+                data.id = id;
+                $.ajax({
+                    type: "post", url: '/GameCore/GetRoomInfoById',
+                    datatype: 'json',
+                    data: data,
+                    success: function (res) {
+                        formSerialize(res);
+                    }
+                })
+            } else {
+                id = "";
+
+            }
+        })
+       
+        function validate_form()
+        {
+            
+           
+
+            return true;
+        }
+
+        function GetList() {
+            var data = {};
+            data.typeid = "2";
+          
+            $.ajax({
+                type: "post", url: '/Business/GetGameInfoByType',
+                datatype: 'json',
+                data: data,
+                success: function (res) {
+                    if (res) {
+                        // console.log(res)
+                        $("#gameid").empty();
+                        if (res.Data.length > 0) {
+                            for (var i = 0; i < res.Data.length; i++)
+                            {
+                                var str = $("#gameid").html();
+                                str = "<option value='" + res.Data[i].ID + "'>" + res.Data[i].Name + "</option>"
+                                $('#gameid').append(str);
+                            }
+                            BindGamelevel();
+                        } else {
+                            $("#gameid").empty();
+                        }
+
+
+                    } else {
+                        $("#gameid").empty();
+                        alert(res.Message)
+                    }
+
+                }
+            })
+        }
+
+        function getRequest(urldata) {
+            var url = urldata;
+            var jsonList = {};
+
+            var strs = url.split("&");
+            for (var i = 0; i < strs.length; i++) {
+                jsonList[strs[i].split("=")[0]] = strs[i].split("=")[1];//如果出现乱码的话，可以用decodeURI()进行解码
+            }
+            return jsonList;
+        }
+        function submitform()
+        {
+            console.log($("#form1").serialize());
+            var valid = validate_form();
+            var data = {};
+            var datainfo = {};
+          
+            data.gameid = $("#gameid").val();
+            data.tableinfo = "";
+          
+            var obj = getRequest($("#form1").serialize());
+            if ($("#gameid").val() == "51") {
+                datainfo.cs_createtable_tex = obj;
+                data.tableinfo = obj;
+             
+            } else if ($("#gameid").val() == "52") {
+                datainfo.cs_createtable_whi = obj;
+                data.tableinfo = obj;
+            } else {
+                datainfo.cs_createtable_mj = obj;
+                data.tableinfo = obj;
+            }
+            var info = JSON.stringify(obj);
+            console.log(info);
+           data.tableinfo = info;
+            if (valid) {
+                $.ajax({
+                    type: "post", url: '/GameCore/SubmitTableEntity',
+                    datatype: 'json',
+                    data: data,
+                    success: function (res) {
+
+                        //console.log(res)
+                        if (res.Code == 0) {
+                            alert(res.Message);
+                            document.getElementById('form1').reset();
+                            //if (res) {
+                            //    window.location.href = '/GameCore/RoomList';
+                            //}
+                        } else {
+                            alert(res.Message);
+                        }
+                    }
+                })
+            }
+           
+        }
+    </script>
+</body>
+</html>

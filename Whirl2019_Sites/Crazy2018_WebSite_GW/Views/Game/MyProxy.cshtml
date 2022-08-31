@@ -1,0 +1,264 @@
+﻿
+@{
+    ViewBag.Title = "MyProxy";
+}
+<!DOCTYPE html>
+<HTML>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="format-detection" content="telephone=no">
+    <meta id="viewport" name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=no,target-densitydpi=medium-dpi" />
+    <link rel="stylesheet" href="~/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/css/MyProxy20171206.css">
+    <link rel="stylesheet" href="~/css/public.css">
+    <script src="~/js/jquery-1.11.2.min.js"></script>
+    <script src="~/js/public.js"></script>
+    <title>代理记录列表</title>
+</head>
+
+<body style="position:relative;">
+    <div class="bgheight">
+        @*<div class="BntContBox">
+                <div class="MyIdBtn" id="MyCodeBtn">我的二维码</div>
+                <div class="MyIdBtn MyIdBtn2" id="MyProxyBtn">代理记录</div>
+                <div class="MyIdBtn" id="MyBrokerageBtn">我的佣金</div>
+            </div>*@
+        <div class="ContBox">
+            @*<table class="table">
+                    <thead>
+                        <tr>
+                            <th>代理id</th>
+                            <th>总下注</th>
+                            <th>总收益</th>
+                            <th>今日下注</th>
+                            <th>今日收益</th>
+                            <th>昨日下注</th>
+                            <th>昨日收益</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tbodyCont"></tbody>
+                </table>*@
+            @*<div class="footer">
+                    <div class="footerbox">
+                        <div class="TotalContText">
+                            一共 <span class="TotalNum"></span>条
+                        </div>
+                        <div class="boxBtn">
+                            <div class="FirstPageBox" id="FirstPage">
+                                <img src="/img/diyiye.png">
+                            </div>
+                            <div class="FirstPageBox" id="PreviousPage">
+                                <img src="/img/shangyiye.png">
+                            </div>
+                            <div class="pageNum">
+                                <span class="current"></span>/<span class="total"></span>
+                            </div>
+                            <div class="FirstPageBox" id="NextPage">
+                                <img src="/img/xiayiye.png">
+                            </div>
+                            <div class="FirstPageBox" id="LastPage">
+                                <img src="/img/zuihouyiye.png">
+                            </div>
+                            <div class="SeekBox">
+                                <input type="number" name="name" id="jump" />
+                            </div>
+                            <div class="SeekBox2 btn btn-primary">跳转</div>
+                        </div>
+                    </div>
+                </div>*@
+            <div class="headBox">
+                <ul class="headul">
+                    <li>用户ID</li>
+                    <li>总下注</li>
+                    <li>总收益</li>
+                    <li>今日下注</li>
+                    <li>今日收益</li>
+                    <li>昨日下注</li>
+                    <li>昨日收益</li>
+                </ul>
+                <ul class="Contul" id="tbodyCont">
+                    @*<li>
+                        <div class="listCont">1213456
+                          <span class="imgBox2">
+                              <img src="~/img/daili12.png" alt="Alternate Text" />
+                          </span>
+                        </div>
+                        <div class="listCont">45895400</div>
+                        <div class="listCont">45895400</div>
+                        <div class="listCont">10000</div>
+                        <div class="listCont">10000</div>
+                        <div class="listCont">10000</div>
+                        <div class="listCont">10000</div>
+                    </li>*@
+                </ul>
+            </div>
+        </div>
+    </div>
+    <script>
+        var current = 1;
+        var total = 0;
+        GetList()
+        //$(".current").text(current);
+        //$(".total").text(total)
+        //$("#FirstPage").click(function () {
+        //    var one = $(".current").text();
+        //    if (one > 1 && one <= total) {
+        //        var ones = 1
+        //        current = ones
+        //        $(".current").text(current);
+        //        GetList()
+        //    } else {
+        //        Bomb2("已经是第一页")
+        //    }
+
+        //})
+
+        //$("#PreviousPage").click(function () {
+        //    var one = $(".current").text();
+        //    if (one > 1 && one <= total) {
+        //        var ones = parseInt(one) - 1
+        //        current = ones
+        //        $(".current").text(current);
+        //        GetList()
+        //    } else {
+        //        Bomb2("已经是第一页")
+        //    }
+
+        //})
+
+        //$("#NextPage").click(function () {
+
+        //    var one = $(".current").text();
+
+        //    if (one > 0 && one < total) {
+        //        var ones = parseInt(one) + 1
+        //        current = ones
+        //        $(".current").text(current);
+        //        GetList()
+        //    } else {
+        //        Bomb2("已经是最后一页")
+        //    }
+
+        //})
+        //$("#LastPage").click(function () {
+        //    var one = $(".current").text();
+        //    //console.log(one)
+        //    if (one > 0 && one < total) {
+        //        var ones = total
+        //        current = ones
+        //        $(".current").text(current);
+        //        GetList()
+        //    } else {
+        //        Bomb2("已经是最后一页")
+        //    }
+
+        //})
+        //$(".SeekBox2").click(function () {
+        //    var jump = $("#jump").val();
+        //    var one = $(".current").text();
+        //    console.log(jump)
+        //    if (jump > 0 && jump <= total) {
+        //        if (jump != one) {
+        //            current = jump
+        //            $(".current").text(current);
+        //            GetList()
+        //        } else {
+        //            Bomb2("已跳至当前页了")
+        //        }
+        //    } else {
+        //        Bomb2("跳转页数不能大于总页输或者小于1")
+        //    }
+
+        //})
+
+        //$("#MyCodeBtn").click(function () {
+        //    window.location.href = "/Game/MyCode";
+        //})
+        //$("#MyBrokerageBtn").click(function () {
+        //    window.location.href = "/Game/MyBrokerage";
+        //})
+
+        function GetList() {
+            var data = {};
+            data.PageSize = 100;
+            data.PageIndex = current
+            $.ajax({
+                type: "post", url: '/Game/GetUserAgentData',
+                datatype: 'json',
+                data: data,
+                async: true,
+                beforeSend: function () {
+                    load2()
+                    //load();
+                },
+                complete: function () {
+                    loadEnd2()
+                    //loadEnd();
+                },
+                success: function (res) {
+                    console.log(res)
+                    if (res.Code == 0 || res.Code == "0") {
+                        if (res) {
+                            //var totalOne = parseInt(res.TotalCount / data.PageSize);
+                            //console.log(totalOne)
+                            //if (totalOne < res.TotalCount / data.PageSize) {
+                            //    total = totalOne + 1
+                            //    // console.log(total)
+                            //} else {
+                            //    total = res.TotalCount / data.PageSize
+                            //    //console.log(total)
+                            //}
+
+                            //$(".total").text(total)
+                            //$(".current").text(res.PageIndex);
+                            //var str = $("#tbodyCont").html();
+                            //$(".TotalNum").text(res.TotalCount)
+                            $("#tbodyCont").empty();
+                           
+                            for (var i in res.Data) {
+                                if (res.Data[i].IsGeneralAgent == false) {
+                                    res.Data[i].Block = "display:block"
+                                    //$(".imgBox2").css({ "display": "block" })
+                                } else {
+                                    res.Data[i].Block = "display:none"
+                                    //$(".imgBox2").css({ "display": "none" })
+                                }
+                                //str = "  <tr style='text-align:center;'>" +
+                                //            "<td class='active'>" + res.Data[i].AgentId + "</td>" +
+                                //            "<td class='success'>" + res.Data[i].Bet + "</td>" +
+                                //            "<td class='warning '>" + res.Data[i].Tax + "</td>" +
+                                //            "<td class='danger'>" + res.Data[i].TodayBet + "</td>" +
+                                //            "<td class='info'>" + res.Data[i].TodayTax + "</td>" +
+                                //              "<td class='danger'>" + res.Data[i].YTDBet + "</td>" +
+                                //            "<td class='info'>" + res.Data[i].YTDTax + "</td>" +
+                                //        "</tr>"
+
+                                str = "<li>" +
+                                          "<div class='listCont'>" + res.Data[i].AgentId +
+                                               "<span class='imgBox2' style='"+res.Data[i].Block+"'>" +
+                                                    "<img src='/img/daili12.png' />"+
+                                               "</span>"+
+                                          "</div>" +
+                                          "<div class='listCont'>" + res.Data[i].Bet + "</div>" +
+                                          "<div class='listCont'>" + res.Data[i].Tax + "</div>" +
+                                          "<div class='listCont'>" + res.Data[i].TodayBet + "</div>" +
+                                          "<div class='listCont'>" + res.Data[i].TodayTax + "</div>" +
+                                          "<div class='listCont'>" + res.Data[i].YTDBet + "</div>" +
+                                          "<div class='listCont'>" + res.Data[i].YTDTax + "</div>" +
+                                      "</li>"
+                                // $("#tbodyCont").html(str)
+                                $('#tbodyCont').append(str);
+                            }
+
+                        }
+                    } else {
+                        Bomb2("获取数据失败", 1500);
+                    }
+                }
+            })
+        }
+    </script>
+</body>
+
+</HTML>

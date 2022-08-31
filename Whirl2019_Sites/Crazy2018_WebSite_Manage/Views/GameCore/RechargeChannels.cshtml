@@ -1,0 +1,301 @@
+﻿@using Crazy2018_Sys_Common;
+@using Crazy2018_Sys_Entity;
+@using Crazy2018_Sys_DBHelper;
+@{
+    ViewBag.Title = "充值通道";
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+}
+@model List<RechargeChannel>
+<style>
+    th {
+        text-align: center;
+    }
+
+    .layerbtn {
+        display: inline-block;
+        height: 20px;
+        line-height: 20px;
+        padding: 1px 10px 2px 9px;
+        background-color: #A9A9A9;
+        color: white;
+        white-space: nowrap;
+        text-align: center;
+        font-size: 10px;
+        border: none;
+        border-radius: 2px;
+        cursor: pointer;
+    }
+</style>
+<div class="mainbody">
+    <form id="form1" runat="server">
+        <!--导航栏-->
+        <div class="location">
+            <a href="javascript:history.back(-1);" class="back"><i></i><span>返回上一页</span></a>
+            <a href="/Home/Center" class="home"><i></i><span>首页</span></a>
+            <i class="arrow"></i>
+            <a href="/GameCore/RechargeChannels"><span>充值通道</span></a>
+            <i class="arrow"></i>
+            <span>充值通道</span>
+        </div>
+        <!--/导航栏-->
+        <!--工具栏-->
+        <div id="floatHead" class="toolbar-wrap">
+            <div class="toolbar">
+                <div class="box-wrap">
+                    <a class="menu-btn"></a>
+                    <div class="l-list">
+                        <ul class="icon-list">
+                            <li><a class="all" href="javascript:;" onclick="checkAll(this);"><i></i><span>全选</span></a></li>
+                            <li><a id="btnDelete" class="del"><i></i><span>删除</span></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <span>*客服请勿删除通道，关闭即可   测试通达会给机器人29984创建500订单</span>
+            </div>
+        </div>
+
+        <div class="table-container">
+            <table width="100%" border="0" cellspacing="0" cellpadding="0" class="ltable">
+                <tbody>
+                    <tr style="text-align:center" class="odd_bg">
+                        <th width="5%">操作</th>
+                        <th align="20%">通道名称</th>
+                        <th align="5%">通道代码</th>
+                        <th align="5%">通道类型</th>
+                        <th align="5%">描述</th>
+                        <th align="5%">测试通道</th>
+                        <th align="5%">充值等级</th>
+                        <th align="5%">是否启用</th>
+                        <th align="5%">优惠额度</th>
+                        <th>操作</th>
+                        <th>人员管理</th>
+                    </tr>
+                    @foreach (var item in Model)
+                    {
+                <tr class='One'>
+                    <td align="center">
+                        <input type="hidden" name='hidId' id='hidId' value='@item.ID'>
+                        <span class='checkall' style='vertical-align: middle;'>
+                            <input id='chkId' class='checkall' type='checkbox' name='chkId'>
+                        </span>
+                    </td>
+                    <td align="center">@item.ChannelName</td>
+                    <td align="center">@item.ChannelCode</td>
+                    <td align="center">@item.paytype</td>
+                    <td align="center">@item.dec</td>
+                    <td align="center"><a target="_blank" href="@(item.payurl + "&number=500&uid=29984")">测试通道</a></td>
+                    <td align="center">@item.minmoney  <button id="minmoneybtnmodel" class="btn btn-default  pull-right" data-toggle='modal' data-target='#myModalminmoney' onclick="btnminmoney('@item.ID','@item.minmoney')"><i></i><span>修改</span></button></td>
+                    <td align="center">@(item.isenable ? "是" : "否")</td>
+                    <td align="center">@item.Discount % <button id="minmoneybtnmodel" class="btn btn-default  pull-right" data-toggle='modal' data-target='#myModalDiscount' onclick="btnDiscount('@item.ID','@item.Discount')"><i></i><span>修改</span></button></td>
+                    <td align="center">
+                        @{
+                            if (item.isenable)
+                            {
+                                <a data-toggle='modal' data-target='#myModal' class='layerbtn' onclick="ChannelsEnable('0','@item.ID')" style='background-color:#548B54;'>关闭</a>
+                            }
+                            else
+                            {
+                                <a data-toggle='modal' data-target='#myModal' class='layerbtn' onclick="ChannelsEnable('1','@item.ID')" style='background-color:gray'>启用</a>
+                            }
+                        }
+                    </td>
+                    <td align="center">
+                        @{
+                            if (item.serviceList != null)
+                            {
+                                <a class='layerbtn' style="background-color:#ff6a00;color:#fff" href='/GameCore/RechargeServiceList?id=@item.ID'>人员管理</a>
+                            }
+                        }
+                    </td>
+                </tr>
+
+                    }
+                </tbody>
+            </table>
+
+        </div>
+        <!--/列表-->
+    </form>
+</div>
+<div class="modal fade" id="myModalminmoney" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+                <h4 class="modal-title" id="myModalLabel">
+                    修改充值等级
+                </h4>
+            </div>
+            <div class="modal-body">
+                <form class="bs-example bs-example-form" role="form">
+                    <input type="hidden" value="0" id="MoneyId" />
+                    <div class="form-group">
+                        <label for="minmoney">充值等级</label>
+                        <input type="text" id="MinmoneyInput" name="MinmoneyInput" class="form-control" style="width:80%" placeholder="充值等级">
+                    </div>
+                    <span style="color: #ff5a00;font-size: 10px;">注意：金额用逗号隔开--输入格式：200,300,400,500,600,700</span>
+                </form>
+
+            </div>
+            <div class="modal-footer">
+                <button id="FormClose" type="button" class="btn btn-default" data-dismiss="modal">
+                    关闭
+                </button>
+                <button type="button" id="btnFormsubmit" class="btn btn-primary">
+                    提交
+                </button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
+
+<div class="modal fade" id="myModalDiscount" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+                <h4 class="modal-title" id="myModalLabel">
+                    优惠额度设置
+                </h4>
+            </div>
+            <div class="modal-body">
+                <form class="bs-example bs-example-form" role="form">
+                    <input type="hidden" value="0" id="MId" />
+                    <div class="form-group">
+                        <label for="DiscountInput">优惠额度</label>
+                        <input type="text" id="DiscountInput" name="DiscountInput" class="form-control" style="width:80%" placeholder="优惠额度">
+                    </div>
+                    <span style="color: #ff5a00;font-size: 10px;">注意：优惠额度为 0~9 </span>
+                </form>
+
+            </div>
+            <div class="modal-footer">
+                <button id="FormClose" type="button" class="btn btn-default" data-dismiss="modal">
+                    关闭
+                </button>
+                <button type="button" id="btnDissubmit" class="btn btn-primary">
+                    提交
+                </button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
+<script>
+    function btnminmoney(monId, monlist) {
+         $("#MoneyId").val(monId);
+         $("#MinmoneyInput").val(monlist);
+       
+    }
+    
+    function btnDiscount(monId, disval) {
+        $("#MId").val(monId);
+        $("#DiscountInput").val(disval);
+
+    }
+    $("#btnFormsubmit").click(function () {
+
+        var mids, mlist;
+        mids=$("#MoneyId").val();
+        mlist = $("#MinmoneyInput").val();
+        if (mlist == "" || mlist == null) {
+            return alert("请输入充值金额！");
+        }
+        $.ajax({
+            url: "/GameCore/RechargeEdit?id=" + mids + "&moneylist="+mlist+"",
+            type: "post",
+            contentType: "application/json",
+            dataType: "json",
+            success: function (data) {
+                eval(data);
+                var PageIndex = $("#PageIndex").val();
+                window.location.href = "/GameCore/RechargeChannels?Keywords=" + $("#txtKeywords").val() + "&PageSize=" + $("#txtPageNum").val() + "&PageIndex=" + PageIndex;
+
+            }
+        })
+    })
+    $("#btnDissubmit").click(function () {
+
+        var mids, mlist;
+        mids = $("#MId").val();
+        disint = $("#DiscountInput").val();
+      
+        if (disint < 0 || disint>9) {
+            return alert("优惠金额在0~9！");
+        }
+        $.ajax({
+            url: "/GameCore/RechargeDiscountEdit?id=" + mids + "&disval=" + disint + "",
+            type: "post",
+            contentType: "application/json",
+            dataType: "json",
+            success: function (data) {
+                eval(data);
+                var PageIndex = $("#PageIndex").val();
+                window.location.href = "/GameCore/RechargeChannels?Keywords=" + $("#txtKeywords").val() + "&PageSize=" + $("#txtPageNum").val() + "&PageIndex=" + PageIndex;
+
+            }
+        })
+
+
+    })
+
+
+    function ChannelsEnable(type,cid)
+    {
+
+        $.ajax({
+            url: "/GameCore/ChannelsEnable?id=" + cid + "" + "&type=" + type + "",
+            type: "post",
+            contentType: "application/json",
+            dataType: "json",
+            success: function (data) {
+                if (data.success) {
+                    alert(data.msg);
+                    window.location.href = "/GameCore/RechargeChannels";
+                } else {
+                    alert(data.msg);
+                }
+            }
+        })
+    }
+
+    var isExport = 0;
+    var numID = [];//用于储存需要删除的ID
+    $("#btnDelete").click(function () {
+        numID = []
+        var num1 = {};
+        var on1 = $(".One");
+        for (var o = 0; o < on1.length; o++) {
+            var lkl3 = $(on1[o]).find(".checkall")
+            for (var ol = 0; ol < lkl3.length; ol++) {
+                //console.log(lkl3[ol].checked)
+                if (lkl3[ol].checked == true) {
+                    var lkl4 = $(on1[o]).find("#hidId").val();
+                    num1.id = lkl4
+                    numID.push(num1.id)
+
+                }
+            }
+        }
+        var a, b;
+        a = numID;
+        b = a.join(",");
+        var ids = b;
+        $.ajax({
+            url: "/GameCore/RechargeCDel?ids=" + ids + "",
+            type: "post",
+            contentType: "application/json",
+            dataType: "json",
+            success: function (data) {
+                eval(data);
+                var PageIndex = $("#PageIndex").val();
+                window.location.href = "/GameCore/RechargeChannels?Keywords=" + $("#txtKeywords").val() + "&PageSize=" + $("#txtPageNum").val() + "&PageIndex=" + PageIndex;
+
+            }
+        })
+    })
+</script>
+

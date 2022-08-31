@@ -1,0 +1,283 @@
+﻿<!DOCTYPE html>
+<!-- saved from url=(0045)http://m.91y.com/login/index.html?jp=recharge -->
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=750,target-densitydpi=device-dpi,user-scalable=no">
+    <!--<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, maximum-scale=1.0" />-->
+    <meta content="telephone=no,email=no" name="format-detection">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <title>游戏中心</title>
+    <link type="text/css" href="~/91Resources/css/nc.css" rel="stylesheet" disabled="">
+    <link href="~/91Resources/css/91y_phone.css" rel="stylesheet" type="text/css">
+    <link href="~/91Resources/css/91y_public.css" rel="stylesheet" type="text/css">
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <script language="javascript" src="~/91Resources/js/jquery-1.7.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.js"></script>
+    <script src="~/91Resources/js/um.js" id="AWSC_umidPCModule"></script>
+    <script src="~/91Resources/js/120.js" id="AWSC_uabModule"></script>
+    <script src="~/91Resources/js/hm.js"></script>
+    <script type="text/javascript" class="nc-required-js-1 nc-uab-script" src="~/91Resources/js/awsc.js"></script>
+    <link rel="stylesheet" href="~/css/Recharge1.css">
+    <script type="text/javascript" src="~/91Resources/js/nc.js"></script>
+    <script src="~/js/public.js"></script>
+
+</head>
+<body>
+    <form action="/Manage/AddRechargeRecord">
+
+        <!-- 此段必须要引入 -->
+        <div id="_umfp" style="display:inline;width:1px;height:1px;overflow:hidden"></div>
+        <!-- 引入结束 -->
+        <div class="p-box">
+            <div class="login-box">
+                <div class="logo"></div>
+                <div class="panel-group" id="accordion">
+                    <div class="PayCont">
+                        <header>
+                            <div class="fanhui" onClick="JavaScript :history.back(1);">
+
+                            </div>
+                            充值
+                        </header>
+                        <div class="PayContBox">
+                            <div class="imgLog"></div>
+                            <div class="moneyList">
+                                <ul class="moneyCnt">
+                                    <li class="Cnt">
+                                        ￥50
+                                        <div style="display:none;">50</div>
+                                    </li>
+                                    <li class="Cnt">
+                                        ￥100
+                                        <div style="display:none;">100</div>
+                                    </li>
+                                    <li class="Cnt">
+                                        ￥500
+                                        <div style="display:none;">500</div>
+                                    </li>
+                                    <li class="Cnt">
+                                        ￥1000
+                                        <div style="display:none;">1000</div>
+                                    </li>
+                                    <li class="Cnt">
+                                        ￥2000
+                                        <div style="display:none;">2000</div>
+                                    </li>
+                                    <li class="Cnt">
+                                        ￥5000
+                                        <div style="display:none;">5000</div>
+                                    </li>
+                                </ul>
+                                <div class="shuru">
+                                    <div class="shuruCont">
+                                        <input type="text" class="myinput" placeholder="请输入金额">
+                                    </div>
+                                    <span class="spanBox">(最少充值￥50)</span>
+                                </div>
+                            </div>
+                            @*<input class="quebtn2">确定</input>*@
+                            <input class="quebtn2" type="submit" value="确定" />
+                        </div>
+                    </div>
+                    @Html.Raw(ViewBag.msg)
+                </div>
+                <input type="hidden" id="number" value="0" name="number" />
+                <input type="hidden" id="rechargeType" value="1" name="rechargeType" />
+                <input type="hidden" id="uid" value="0" name="uid" />
+                <!----------------------------------版权----------------------------------->
+                @Html.Partial("footer")
+            </div>
+        </div>
+    </form>
+   
+    <script>
+        $(function () {
+            var uid = getUrlParams("userid");
+            var rtype = getUrlParams("rechargeType");
+
+            if (uid == null) uid = 0;
+            if (rtype == null) rtype = 1;
+
+            $("#uid").val(uid);
+            $("#rechargeType").val(rtype);
+
+        });
+        var storagefirst = window.localStorage;
+        //var cardNumber = storagefirst["cardNumber"];
+        //var name = storagefirst["name"];
+        var allzhifu = storagefirst["allzhifu"];
+        var moneyall = null;
+
+        $(".Cnt").click(function () {
+            var allLi = $(".moneyCnt li ");
+            // console.log(allLi)
+            for (var i = 0; i < allLi.size() ; i++) {
+                $(allLi[i]).css({
+                    "background": "#eee"
+                })
+                $(allLi[i]).css({
+                    "color": "#333"
+                });
+            }
+            $(this).css({
+                "background": "rgb(234, 36, 10)"
+            });
+            $(this).css({
+                "color": "rgb(255, 255, 255)"
+            });
+            $(".myinput").val('');
+           
+            if ($(this).css('background-color') == "rgb(234, 36, 10)") {
+                $("#number").val($(this).find('div').text());
+                //console.log(moneyall)
+                $(".quebtn2").css({
+                    "background-color": "rgb(18, 150, 219)"
+                })
+            } else {
+                $(".quebtn2").css({
+                    "background-color": "rgb(238, 238, 238)"
+                })
+            }
+
+        })
+
+        $(".myinput").keyup(function () {
+            var num = $(".myinput").val();
+            var allLi = $(".moneyCnt li ");
+            if (num.length > 0) {
+                $(".quebtn2").css({
+                    "background-color": "rgb(18, 150, 219)"
+                })
+                for (var i = 0; i < allLi.size() ; i++) {
+
+                    $(allLi[i]).css({
+                        "background": "#eee"
+                    })
+                    $(allLi[i]).css({
+                        "color": "#333"
+                    });
+                    moneyall = null
+                }
+            } else {
+                $(".quebtn2").css({
+                    "background-color": "rgb(238, 238, 238)"
+                })
+            }
+        })
+        //$(".quebtn2").click(function () {
+        //    $(".quebtn2").attr("disabled", true);
+        //    var data = {};
+        //    if(moneyall==null)
+        //        moneyall = $(".myinput").val();
+
+        //    var userid =getUrlParams("userid");
+        //    var rechargeType =getUrlParams("rechargeType");
+        //    if(userid==null) userid=0;
+        //    if(rechargeType==null) rechargeType=1;
+
+        //    var num = $(".myinput").val;
+        //    var num2 = $(".myinput").val();
+        //    var num3 = 200
+        //    //console.log(num2)
+        //    if ($(".quebtn2").css('background-color') == "rgb(18, 150, 219)") {
+        //        if (moneyall != null) {
+        //                    var data = {};
+        //                    data.number = moneyall;
+        //                    data.rechargeType = rechargeType;
+        //                    data.uid = userid;
+        //                    $.ajax({
+        //                        type: "post", url: '/Manage/AddRechargeRecord',
+        //                        datatype: 'json',
+        //                        data: data,
+        //                        success: function (res) {
+
+        //                            if (res.success) {
+        //                                alert(res.msg);
+        //                            } else {
+        //                                alert(res.msg);
+        //                            }
+        //                            $(".quebtn2").attr("disabled", false);
+        //                        }
+        //                    })
+        //        }
+        //    }
+        //})
+    </script>
+    <!-- 此段必须要引入 -->
+    <style type="text/css" class="nc-style">
+        .nc-container #nc_1_wrapper, .nc-container.tb-login #nc_1_wrapper {
+            width: 300px
+        }
+
+        .nc-container .imgCaptcha, .nc-container .clickCaptcha {
+            width: 298px;
+        }
+
+        .nc-container.tb-login .imgCaptcha, .nc-container.tb-login .clickCaptcha {
+            width: 300px;
+        }
+
+            .nc-container.tb-login .imgCaptcha .captcha-error, .nc-container.tb-login .clickCaptcha .captcha-error {
+                width: 292px;
+            }
+
+        .nc-container.tb-login .errloading, .nc-container .errloading {
+            width: 290px;
+        }
+    </style>
+    <!-- 引入结束 -->
+    <!-- 此段必须要引入 t为小时级别的时间戳 -->
+    <style type="text/css">
+
+        .nc-container #nc_1_wrapper, .nc-container.tb-login #nc_1_wrapper {
+            width: 690px;
+        }
+
+        .nc_scale {
+            width: 650px;
+            height: 90px;
+            margin: 15px auto;
+        }
+
+        .nc-container .nc_scale span {
+            width: 80px;
+            height: 90px;
+            line-height: 90px;
+        }
+
+        .nc-container .nc_scale .scale_text {
+            height: 90px;
+            line-height: 90px;
+            font-size: 30px;
+        }
+
+        .nc-container .nc_scale .btn_ok {
+            line-height: 90px;
+            font-size: 30px;
+        }
+
+        .nc_iconfont {
+            font-size: 30px;
+        }
+    </style>
+    <!-- 引入结束 -->
+    <script type="text/javascript">
+        $(function () {
+            $('#collapseFour').collapse({
+                toggle: false
+            })
+        });
+        $(function () { $('#collapseTwo').collapse('show') });
+        $(function () { $('#collapseThree').collapse('toggle') });
+        $(function () { $('#collapseOne').collapse('hide') });
+    </script>
+    <script></script>
+</body>
+</html>

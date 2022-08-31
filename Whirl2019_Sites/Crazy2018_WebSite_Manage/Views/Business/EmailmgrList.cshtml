@@ -1,0 +1,146 @@
+﻿@using Crazy2018_Sys_Common;
+@using Crazy2018_Sys_ViewEntity;
+@{
+    ViewBag.Title = "邮件管理";
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+}
+@model DataResults<EmailView>
+<style>
+    th {
+        text-align: center;
+    }
+</style>
+<script>
+    $(function () {
+        $(".pagelist").on('click', 'a', function () {
+
+            var PageIndex = $("#PageIndex").val();
+            var lkl2 = $(this).text();
+            if (lkl2 == "下一页»") {
+                PageIndex = parseInt(PageIndex) + 1
+
+            } else if (lkl2 == "«上一页") {
+                PageIndex = parseInt(PageIndex) - 1
+            } else {
+                PageIndex = lkl2
+            }
+            txtPageNum = $("#txtPageNum").val();
+            window.location.href = "/GameCore/EmailmgrList?Keywords=" + $("#txtKeywords").val() + "&PageSize=" + $("#txtPageNum").val() + "&PageIndex=" + PageIndex;
+        })
+
+
+        $("#txtPageNum").change(function () {
+            window.location.href = "/Business/EmailmgrList?Keywords=" + $("#txtKeywords").val() + "&PageSize=" + $(this).val();
+        })
+        $("#lbtnSearch").click(function () {
+            window.location.href = "/Business/EmailmgrList?Keywords=" + $("#txtKeywords").val() + "&PageSize=" + $("#txtPageNum").val();
+        });
+    })
+
+    //function RevokeTradenum(TradeNo, CState, IsLook) {
+    //    if (TradeNo != "") {
+    //        if (IsLook) {
+    //            layer.msg('邮件已经查看 或者已经领取啦！', { icon: 5 });
+    //        } else {
+    //            $.post("/Business/RevokeTradenum", { tradenum: TradeNo, CState: CState }, function (data) {
+
+    //                layer.msg(data.Message, { icon: 5 });
+
+    //            });
+    //        }
+    //    } else {
+    //        layer.msg('该交易号无效！', { icon: 5 });
+    //    }
+
+    //}
+
+
+</script>
+<div class="mainbody">
+    <form id="form1" runat="server">
+        <!--导航栏-->
+        <div class="location">
+            <a href="javascript:history.back(-1);" class="back"><i></i><span>返回上一页</span></a>
+            <a href="/Home/Center" class="home"><i></i><span>首页</span></a>
+            <i class="arrow"></i>
+            <a href="/Business/EmailmgrList"><span>邮件管理</span></a>
+            <i class="arrow"></i>
+            <span>邮件列表</span>
+        </div>
+        <!--/导航栏-->
+        <!--工具栏-->
+        <div id="floatHead" class="toolbar-wrap">
+            <div class="toolbar">
+                <div class="box-wrap">
+                    <a class="menu-btn"></a>
+                    <div class="l-list">
+                        <ul class="icon-list">
+                            <li><a class="add" href="/Business/EmailmgrEdit"><i></i><span>新增</span></a></li>
+                        </ul>
+                        <input name="txtKeywords" placeholder="用户id查询" oninput="value=value.replace(/[^\d]/g,'')" type="text" id="txtKeywords" value="@Model.Keywords" class="input">
+                        <button type="button" style="height: 28px;padding: 3px 10px;background-color: lightgray;" id="lbtnSearch" class="btn btn-default btn-sm">查询</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--/工具栏-->
+        <!--列表-->
+       
+        <div class="table-container">
+            <table width="100%" border="0" cellspacing="0" cellpadding="0" class="ltable">
+                <tbody>
+                    <tr class="odd_bg">
+                        <th width="10%">邮件标题</th>
+                        <th width="20%">邮件内容</th>
+                        <th width="5%">发送人</th>
+                        <th width="5%">发送人ID</th>
+                        <th width="5%">接收人</th>
+                        <th width="2%">接收ID</th>
+                        <th width="10%">交易号</th>
+                        <th width="3%">金币数量</th>
+                        <th width="5%">邮件状态</th>
+                        <th width="5%">邮件类型</th>
+                        <th width="5%">是否被查看</th>
+                        <th width="5%">邮件状态</th>
+                        <th width="5%">发送时间</th>
+                    </tr>
+                    @foreach (var item in Model.Data)
+                    {
+                    <tr>
+                        <td align="center">@item.Title</td>
+                        <td align="center">@item.Content</td>
+                        <td align="center">@item.FromUserName</td>
+                        <td align="center">@item.FromUserId</td>
+                        <td align="center">@item.ToUserName</td>
+
+                        <td align="center">@item.ToUserId</td>
+                        <td align="center">@item.TradeNo</td>
+                        <td align="center">@item.Coin</td>
+                        <td align="center">@(Enum.GetName(typeof(TableUtil.emailCState), item.CState))</td>
+                        <td align="center">@(Enum.GetName(typeof(TableUtil.EmailType), item.EmailType))</td>
+                        <td align="center">@(item.IsLook == true ? "是" : "否")</td>
+                        <td align="center">@(Enum.GetName(typeof(TableUtil.emailState), item.State))</td>
+                        <td align="center">@item.CreateDate</td>
+
+                    </tr>
+                    }
+                </tbody>
+            </table>
+
+        </div>
+        <!--/列表-->
+        <!--内容底部-->
+        <div class="line20"></div>
+        <div class="pagelist">
+            <div class="l-btns">
+                <span>显示</span><input name="txtPageNum" type="text" value="@Model.PageSize" id="txtPageNum" class="pagenum" onkeydown="return checkNumber(event);"><span>条/页</span>
+            </div>
+            <div id="PageContent" class="default">@Html.Raw(Model.InnerHtml)</div>
+            <input type="hidden" id="PageIndex" name="PageIndex" value="@Model.PageIndex" />
+        </div>
+        <!--/内容底部-->
+        <div style="width:100%;text-align: center;">
+            <span style="display: inline-block;padding: 4px 15px 0px 15px;color: #666;font-size:14px;">(注 : 发送人ID、接收人ID)</span>
+        </div>
+    </form>
+    </div>

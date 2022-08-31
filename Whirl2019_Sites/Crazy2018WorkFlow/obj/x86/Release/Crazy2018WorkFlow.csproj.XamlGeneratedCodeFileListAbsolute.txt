@@ -1,0 +1,4 @@
+obj\x86\Release\_Crazy2018WorkFlow.g.cs
+obj\x86\Release\Workflow1.g.cs
+obj\x86\Release\Crazy2018WorkFlow_Workflow1_BeforeInitializeComponentHelper.cs
+C:\Users\Game\Desktop\Whirl2019_Sites\Crazy2018WorkFlow\obj\x86\Release\Crazy2018WorkFlow_Workflow1_CompiledExpressionRoot.cs

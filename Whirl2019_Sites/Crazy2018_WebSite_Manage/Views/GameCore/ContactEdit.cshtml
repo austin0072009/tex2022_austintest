@@ -1,0 +1,180 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,initial-scale=1.0,user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <title>编辑联系方式</title>
+    <link href="~/scripts/artdialog/ui-dialog.css" rel="stylesheet" type="text/css" />
+    <link href="~/skin/default/style.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="~/scripts/jquery/jquery-1.11.2.min.js"></script>
+    <script type="text/javascript" src="~/scripts/jquery/Validform_v5.3.2_min.js"></script>
+
+    <script type="text/javascript" src="~/scripts/artdialog/dialog-plus-min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="~/js/laymain.js"></script>
+    <script type="text/javascript" charset="utf-8" src="~/js/common.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            //初始化表单验证
+            $("#form1").initValidform();
+        });
+    </script>
+</head>
+
+<body class="mainbody">
+    <form id="form1">
+        <!--导航栏-->
+        <div class="location">
+            <a href="/Business/GameList" class="back"><i></i><span>返回列表页</span></a>
+            <a href="/Home/Center " class="home"><i></i><span>首页</span></a>
+            <i class="arrow"></i>
+            <a href="/GameCore/Contact"><span>联系方式</span></a>
+            <i class="arrow"></i>
+            <span>修改联系方式</span>
+        </div>
+        <div class="line10"></div>
+        <!--/导航栏-->
+        <!--内容-->
+        <div id="floatHead" class="content-tab-wrap">
+            <div class="content-tab">
+                <div class="content-tab-ul-wrap">
+                    <ul>
+                        <li><a class="selected" href="javascript:;">编辑联系方式</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+      
+        <div class="tab-content">
+            <dl>
+                <dt>平台名称</dt>
+                <dd>
+                    <input name="平台名称" type="text" id="QQ" class="input normal" nullmsg="平台名称" errormsg="" sucmsg=" " style="width:495px;">
+                    <span class="Validform_checktip">*</span>
+                </dd>
+            </dl>
+            <dl>
+                <dt>下载地址</dt>
+                <dd>
+                    <input name="Wechat" type="text" id="Wechat" class="input normal" datatype="*" nullmsg="下载地址" errormsg="" sucmsg=" " style="width:493px;">
+                    <span class="Validform_checktip">*</span>
+                </dd>
+            </dl>
+            <dl>
+                <dt>官方号码</dt>
+                <dd>
+                    <input name="Phone" cols="20" id="Phone" class="input normal" nullmsg="官方号码" errormsg="" sucmsg=" " style="width:493px;">
+                    <span class="Validform_checktip">*</span>
+                </dd>
+            </dl>
+         
+        </div>
+        <!--/内容-->
+        <!--工具栏-->
+        <div class="page-footer">
+            <div class="btn-wrap" style="position: static;">
+                <input name="btnSubmit" type="button" value="提交保存" id="btnSubmit" class="btn">
+                <input name="btnReturn" type="button" value="返回上一页" class="btn yellow" onclick="javascript: history.back(-1);">
+            </div>
+        </div>
+        <!--/工具栏-->
+    </form>
+    <script>
+        var id = "";
+        var QQ = "";
+        var Wechat = "";
+        var Skype = "";
+        var Phone = "";
+        var Other1 = "";
+        var Other2 = "";
+        var Other3 = ""
+        var operation = "Add";
+        var OldId = "";
+      
+        $(function () {
+            $("#form1").initValidform();
+            function getURLParameter(name) {
+                return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search) || [null, ''])[1].replace(/\+/g, '%20')) || null;
+            }
+            if (getURLParameter("id") != "" && getURLParameter("id") != null && getURLParameter("operation") != "" && getURLParameter("operation") != null) {
+                id = getURLParameter("id");
+                operation = getURLParameter("operation");
+                if (operation == "Edit") {
+                    OldId = getURLParameter("id")
+                }
+                var data = {};
+                data.id = id;
+                $.ajax({
+                    type: "post", url: '/GameCore/GetContactById',
+                    datatype: 'json',
+                    data: data,
+                    success: function (res) {
+                        console.log(res)
+                        if (res.Data) {
+                            $("#QQ").val(res.Data.QQ);
+                            $("#Wechat").val(res.Data.Wechat);
+                            $("#Phone").val(res.Data.Phone);
+
+                        }
+                    }
+                })
+            } else {
+                id = "";
+            }
+        })
+        $("#btnSubmit").click(function () {
+            QQ = $("#QQ").val();
+            Wechat = $("#Wechat").val();
+            Phone = $("#Phone").val();
+            if (operation == "Edit") {
+                updatecontact();
+            } else {
+                Addcontact();
+            }
+           
+        })
+
+        function Addcontact() {
+            var data = {};
+            data.QQ = QQ
+            data.Wechat = Wechat;
+            data.Phone = Phone;
+            data.Id = OldId;
+            $.ajax({
+                type: "post", url: '/GameCore/AddContactData',
+                datatype: 'json',
+                data: data,
+                success: function (res) {
+
+                    alert(res.Message);
+                   
+                }
+            })
+        }
+
+        function updatecontact() {
+            var data = {};
+            data.QQ = QQ
+            data.Wechat = Wechat;
+            data.Phone = Phone;
+            data.ID = OldId;
+            $.ajax({
+                type: "post", url: '/GameCore/UpdataContact',
+                datatype: 'json',
+                data: data,
+                success: function (res) {
+                    console.log(res)
+                   
+                }
+            })
+        }
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,136 @@
+﻿@using Crazy2018_Sys_Common;
+@using Crazy2018_Sys_DBHelper;
+@{
+    Layout = null;
+}
+@model DataResults<dt_manager_log>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,initial-scale=1.0,user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <title>管理日志</title>
+    <link href="~/scripts/artdialog/ui-dialog.css" rel="stylesheet" type="text/css" />
+    <link href="~/skin/default/style.css" rel="stylesheet" type="text/css" />
+    <link href="~/css/pagination.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="~/scripts/jquery/jquery-1.11.2.min.js"></script>
+    <script type="text/javascript" src="~/scripts/artdialog/dialog-plus-min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="~/js/laymain.js"></script>
+    <script type="text/javascript" charset="utf-8" src="~/js/common.js"></script>
+    <script>
+
+    </script>
+</head>
+
+<body class="mainbody">
+    <form id="form1" runat="server">
+        <!--导航栏-->
+        <div class="location">
+            <a href="javascript:history.back(-1);" class="back"><i></i><span>返回上一页</span></a>
+            <a href="/Home/Center" class="home"><i></i><span>首页</span></a>
+            <i class="arrow"></i>
+            <span>管理日志</span>
+        </div>
+        <!--/导航栏-->
+        <!--工具栏-->
+
+
+        <div id="floatHead" class="toolbar-wrap">
+            <div class="toolbar">
+                <div class="box-wrap">
+                    <a class="menu-btn"></a>
+                    <div class="l-list">
+                        <ul class="icon-list">
+                            <li>
+                                <a onclick="return ExeNoCheckPostBack('btnDelete','删除7天前的管理日志，你确定吗?');" id="btnDelete" class="del" href="javascript:__doPostBack('btnDelete','')"><i></i><span>删除日志</span></a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="r-list">
+                        <input name="txtKeywords" type="text" id="txtKeywords" class="keyword" value="@Model.Keywords">
+                        <a id="lbtnSearch" class="btn-search" href="javascript:__doPostBack('lbtnSearch','')">查询</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--/工具栏-->
+        <!--列表-->
+        @*<div class="table-container">
+                <asp:Repeater ID="rptList" runat="server">
+                    <HeaderTemplate>
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0" class="ltable">
+                            <tr>
+                                <th width="10%">用户名</th>
+                                <th width="15%">操作类型</th>
+                                <th align="left">备注</th>
+                                <th align="left" width="15%">用户IP</th>
+                                <th align="left" width="16%">添加时间</th>
+                            </tr>
+                    </HeaderTemplate>
+                    <ItemTemplate>
+                        <tr>
+                            <td align="center">
+                                <a href="manager_log.aspx?keywords=<%# Eval(" user_name") %>"><%# Eval("user_name")%></a>
+                            </td>
+                            <td align="center">
+                                <a href="manager_log.aspx?keywords=<%# Eval(" action_type") %>"><%# Eval("action_type") %></a>
+                            </td>
+                            <td><%# Eval("remark") %></td>
+                            <td><%# Eval("user_ip") %></td>
+                            <td><%# Eval("add_time").ToString() %></td>
+                        </tr>
+                    </ItemTemplate>
+                    <FooterTemplate>
+                        <%#rptList.Items.Count == 0 ? "<tr><td align=\"center\" colspan=\"5\">暂无记录</td></tr>" : ""%>
+                        </table>
+                    </FooterTemplate>
+                </asp:Repeater>
+            </div>*@
+        <div class="table-container">
+
+            <table width="100%" border="0" cellspacing="0" cellpadding="0" class="ltable">
+                <tbody>
+                    <tr class="odd_bg">
+                        <th width="10%">用户名</th>
+                        <th width="15%">操作类型</th>
+                        <th align="left">备注</th>
+                        <th align="left" width="15%">用户IP</th>
+                        <th align="left" width="16%">添加时间</th>
+                    </tr>
+                    @foreach (var item in Model.Data)
+                    {
+                        <tr>
+                            <td align="center">
+                                <a href="ManagerLog?Keywords=@item.user_name">@item.user_name</a>
+                            </td>
+                            <td align="center">
+                                <a href="ManagerLog?Keywords=@item.action_type">@item.action_type</a>
+                            </td>
+                            <td>@item.remark</td>
+                            <td>@item.user_ip</td>
+                            <td>@item.add_time.Value.ToString("yyyy-MM-dd HH:mm:ss")</td>
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+
+        </div>
+        <!--/列表-->
+        <!--内容底部-->
+        <div class="line20"></div>
+        <div class="pagelist">
+            <div class="l-btns">
+                <span>显示</span><input name="txtPageNum" type="text" value="@Model.PageSize" id="txtPageNum" class="pagenum" onkeydown="return checkNumber(event);"><span>条/页</span>
+            </div>
+            <div id="PageContent" class="default">@Html.Raw(ViewBag.InnerHtml)</div>
+        </div>
+        <!--/内容底部-->
+        <div style="width:100%;text-align: center;">
+            <span style="display: inline-block;padding: 4px 15px 0px 15px;color: #666;font-size:14px;">(注 : 用户ID,等可以作为查询条件，在输入框中输入后点击查询)</span>
+        </div>
+    </form>
+</body>
+</html>
+

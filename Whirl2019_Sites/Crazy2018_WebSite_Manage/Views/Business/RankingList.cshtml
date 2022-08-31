@@ -1,0 +1,263 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+}
+    <style>
+        th{
+            text-align:center;
+        }
+    </style>
+
+<body class="mainbody">
+    <form id="form1" runat="server">
+        <!--导航栏-->
+        <div class="location">
+            <a href="javascript:history.back(-1);" class="back"><i></i><span>返回上一页</span></a>
+            <a href="/Home/Center" class="home"><i></i><span>首页</span></a>
+            <i class="arrow"></i>
+            <a href="/Business/RankingList"><span>输赢流水排名</span></a>
+            <i class="arrow"></i>
+            <span>流水排名</span>
+        </div>
+        <!--/导航栏-->
+        <!--工具栏-->
+        <input type="hidden" value="0" id="orderby" />
+        <div id="floatHead" class="toolbar-wrap">
+            <div class="toolbar">
+                <div class="box-wrap">
+                    <a class="menu-btn"></a>
+                    <div class="l-list">
+
+                        用户类型:
+                        <select name="isRobot" id="isRobot" class="select">
+                            <option value="-1">-请选择-</option>
+                            <option value="0">普通用户</option>
+                            <option value="1">机器人</option>
+                        </select>
+                        <input name="starttime" type="text" id="starttime" class="input" onclick="laydate()">
+                        <span>至</span>
+                        <input name="endtime" type="text" id="endtime" class="input" onclick="laydate()">
+                        <input name="txtKeywords" placeholder="用户id查询" oninput="value=value.replace(/[^\d]/g,'')" type="text" id="txtKeywords" class="input">
+                        <button type="button" style="height: 28px;padding: 3px 10px;background-color: lightgray;" id="lbtnSearch" class="btn btn-default btn-sm">查询</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!--/工具栏-->
+        <!--列表-->
+        <div class="table-container">
+
+            <table width="100%" border="0" cellspacing="0" cellpadding="0" class="ltable">
+                <thead>
+                    <tr class="odd_bg">
+                        <th width="5%">选择</th>
+                        <th width="10%">用户ID</th>
+                        <th width="20%">用户名称</th>
+
+                        <th width="20%">
+                            赢的总流水
+                            <span onclick="ClickoOrder('1')">
+                                <span class="glyphicon glyphicon-eject"></span>
+                            </span>
+                        </th>
+                        <th width="20%">
+                            输的总流水
+                            <span onclick="ClickoOrder('2')">
+                                <span class="glyphicon glyphicon-eject"></span>
+                            </span>
+                        </th>
+                        <th width="20%">
+                            输赢
+                            <span onclick="ClickoOrder('3')">
+                                <span class="glyphicon glyphicon-eject"></span>
+                            </span>
+                        </th>
+                        <th width="10%">是否机器人</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody id="MyTbody">
+                    <tr><td align="center" colspan="4">暂无记录</td></tr>
+                </tbody>
+            </table>
+
+        </div>
+        <!--/列表-->
+        <!--内容底部-->
+        <div class="line20"></div>
+        <div class="pagelist">
+            <div class="l-btns">
+                <span>显示</span><input name="txtPageNum" type="text" id="txtPageNum" class="pagenum"><span>条/页</span>
+            </div>
+            <div id="PageContent" class="default">
+            </div>
+        </div>
+        <!--/内容底部-->
+        <div style="width:100%;text-align: center;">
+            <span style="display: inline-block;padding: 4px 15px 0px 15px;color: #666;font-size:14px;">(注 : 用户ID(输入全))</span>
+        </div>
+    </form>
+    <script>
+        $(function () {
+
+           // GetNavList();
+
+
+        });
+        function ClickoOrder(type)
+        {
+            var orderby = $("#orderby").val();
+            var otype = "";
+            if (type=="1"&&orderby == type)
+                type = "1_1";
+            if (type == "2" && orderby == type)
+                type = "2_1";
+            if (type == "3" && orderby == type)
+                type = "3_1";
+            $("#orderby").val(type);
+            GetList();
+        }
+        var storagefirst = window.localStorage;
+        var MyPageNum5 = storagefirst["MyPageNum5"];
+        var txtPageNum = 10;
+        var Keywords = "";
+        var PageIndex = 1;
+        if (MyPageNum5 != "" && MyPageNum5 != null) {
+            txtPageNum = MyPageNum5
+        }
+        $("#txtPageNum").val(txtPageNum)
+        $("#lbtnSearch").click(function () {
+            var txtKeywords = $("#txtKeywords").val();
+            Keywords = txtKeywords;
+            GetList();
+        })
+        $("#txtPageNum").change(function () {
+            txtPageNum = $("#txtPageNum").val()
+            storagefirst["MyPageNum5"] = txtPageNum;
+            PageIndex = 1;
+            //console.log(txtPageNum)
+            GetList();
+        })
+        $(".pagelist").on('click', 'a', function () {
+            //var lkl = $(this).attr("href");
+            //console.log(lkl)
+            var lkl2 = $(this).text();
+            if (lkl2 == "下一页»") {
+                PageIndex = parseInt(PageIndex) + 1
+                //console.log(PageIndex)
+            } else if (lkl2 == "«上一页") {
+                PageIndex = parseInt(PageIndex) - 1
+            } else {
+                PageIndex = lkl2
+            }
+            txtPageNum = $("#txtPageNum").val()
+            GetList()
+        })
+        GetList();
+
+        function GetNavList() {
+            var data = {};
+            $.ajax({
+                type: "post", url: '/Business/GetGameInfo',
+                datatype: 'json',
+                data: data,
+                success: function (res) {
+                    //console.log(res.Code)
+                    if (res.Code == "0" && res.Code == 0) {
+                        if (res) {
+                            //$("#selectRobot").empty();
+                            // console.log(res)
+                            for (var j = 0; j < res.Data.length; j++) {
+
+                                var Nhtml = $("#GameId").html();
+                                Nhtml = "<option value=" + res.Data[j].Key + ">" + res.Data[j].Value + "</option>"
+                                $('#GameId').append(Nhtml);
+                            }
+                        } else {
+                            eval(res)
+                        }
+                    } else {
+                        eval(res)
+                    }
+                }
+            })
+        }
+
+        function losingWinningdetails(uid)
+        {
+            layer.open({
+                type: 2,
+                area: ['800px', '650px'],
+                fixed: false,
+                maxmin: true,
+                content: '/GameCore/UserlosingWinning?Keywords=' + userId
+            });
+        }
+
+        function GetList() {
+            var data = {};
+            //var GameId = $("#GameId").val();
+            data.PageSize = txtPageNum;
+            data.PageIndex = PageIndex;
+            data.Keywords = Keywords;
+            //data.GameId = GameId;
+            data.isRobot = $("#isRobot").val();
+            data.starttime = $("#starttime").val();
+            data.endtime = $("#starttime").val();
+            data.orderby = $("#orderby").val();
+            $.ajax({
+                type: "post", url: '/Business/GetGameRankData',
+                datatype: 'json',
+                data: data,
+                success: function (res) {
+                    if (res) {
+                        //console.log(res)
+                        $("#MyTbody").empty();
+                        $("#orderby").val(res.orderby);
+                        if (res.Data.length > 0) {
+                            for (var i = 0; i < res.Data.length; i++) {
+
+                                var str = $("#MyTbody").html();
+                                str = "<tr class='One'>" +
+                                    "<td align='center'>" +
+                                        "<span class='checkall' style='vertical-align: middle;'>" +
+                                            "<input id=chkId' class='checkall' type='checkbox' name='chkId'>" +
+                                        "</span>" +
+                                        "<input type='hidden' name='hidId' id='hidId' value='" + res.Data[i].UserID + "'>" +
+                                    "</td>" +
+                                    //?Keywords=" + $("#txtKeywords").val() + "&PageSize=" + $("#txtPageNum").val() + "&GameId=" + GameId + "&starttime=" + starttime + "&endtime=" + endtime
+                                   "<td align='center'><a  href='/GameCore/UserlosingWinning?Keywords=" + res.Data[i].UserID + "&PageSize=15&GameId=52&starttime=&endtime=' >" + res.Data[i].UserID + "</a></td>" +
+                                   "<td align='center'>" + res.Data[i].UserName + "</td>" +
+                                   "<td align='center'>" + res.Data[i].watergoldadd + "</td>" +
+                                   "<td align='center'>" + res.Data[i].watergoldreduce + "</td>" +
+                                   "<td align='center'>" + res.Data[i].winreduce + "</td>" +
+                                   "<td align='center'>" + res.Data[i].isRebot + "</td>" +
+                                "</tr>"
+                                $('#MyTbody').append(str);
+                            }
+                        } else {
+                            $("#MyTbody").empty();
+                            var str = $("#MyTbody").html();
+                            str = "<tr class='One'>" +
+                                        "<td align='center'  colspan='6'>没有数据</td>"
+                                  "</tr>"
+                            $('#MyTbody').append(str);
+                        }
+                        var sthtml = $("#PageContent").html();
+                        $("#PageContent").empty();
+                        if (res.InnerHtml.length > 0) {
+                            sthtml = res.InnerHtml
+                            $('#PageContent').append(sthtml);
+                        }
+
+                    } else {
+                        eval(res.Message)
+                    }
+
+                }
+            })
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,482 @@
+﻿@using Crazy2018_Sys_Common;
+@using Crazy2018_Sys_Entity;
+@using Crazy2018_Sys_DBHelper;
+@{
+    ViewBag.Title = "活动管理";
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+}
+@model DataResults<GameActivity>
+<style>
+    th {
+        text-align: center;
+    }
+
+    .form-control {
+        width: 80%;
+        height: 22px;
+    }
+
+    .layerbtn {
+        display: inline-block;
+        height: 20px;
+        line-height: 20px;
+        padding: 1px 10px 2px 9px;
+        background-color: #A9A9A9;
+        color: white;
+        white-space: nowrap;
+        text-align: center;
+        font-size: 10px;
+        border: none;
+        border-radius: 2px;
+        cursor: pointer;
+    }
+</style>
+<div class="mainbody">
+    <!--导航栏-->
+    <div class="location">
+        <a href="javascript:history.back(-1);" class="back"><i></i><span>返回上一页</span></a>
+        <a href="/Home/Center" class="home"><i></i><span>首页</span></a>
+        <i class="arrow"></i>
+        <a href="/GameCore/ActivityManage"><span>活动管理</span></a>
+        <i class="arrow"></i>
+        <span>活动管理</span>
+    </div>
+    <!--/导航栏-->
+    <!--工具栏-->
+    <div id="floatHead" class="toolbar-wrap">
+        <div class="toolbar">
+            <div class="box-wrap">
+                <a class="menu-btn"></a>
+                <div class="l-list">
+                    <ul class="icon-list">
+                        <li><a class="all" href="javascript:;" onclick="checkAll(this);"><i></i><span>全选</span></a></li>
+                        <li>
+                            <a id="btnadd" class="btn add btn-primary btn-lg" data-toggle="modal" data-target="#myModal"><i></i><span>添加</span></a>
+                        </li>
+                        <li><a id="btnDelete" class="del"><i></i><span>删除</span></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="table-container">
+        <table width="100%" border="0" cellspacing="0" cellpadding="0" class="ltable">
+            <tbody>
+                <tr style="text-align:center" class="odd_bg">
+                    <th width="5%">操作</th>
+                    <th align="20%">活动标题</th>
+                    <th align="5%">开始时间</th>
+                    <th align="5%">结束时间</th>
+                    <th align="5%">是否过期</th>
+                    <th align="5%">是否开启</th>
+                    <th align="5%">活动类型</th>
+                    <th align="5%">跳转类型</th>
+                    <th align="5%">红包界面</th>
+                    <th align="5%">跳转地址</th>
+                    <th align="5%">用户id</th>
+                    <th align="5%">标题图片</th>
+                    <th align="5%">内容图片</th>
+                    <th>操作</th>
+                    <th>用户新增</th>
+                </tr>
+                @foreach (var item in Model.Data)
+                {
+                    <tr class='One'>
+                        <td align="center">
+                            <input type="hidden" name='hidId' id='hidId' value='@item.ID'>
+                            <span class='checkall' style='vertical-align: middle;'>
+                                <input id='chkId' class='checkall' type='checkbox' name='chkId'>
+                            </span>
+                        </td>
+                        <td align="center">@item.Title</td>
+                        <td align="center">@item.StartTime</td>
+                        <td align="center">@item.EndTime</td>
+                        <td align="center">@(item.EndTime > DateTime.Now ? "未过期" : "活动已过期")</td>
+                        <td align="center">@(item.IsEnble ? "是" : "否")</td>
+                        <td align="center">@Enum.GetName(typeof(TableUtil.ActivityType), int.Parse(item.BackField))</td>
+                        <td align="center">@Enum.GetName(typeof(TableUtil.tType), item.Type)</td>
+                        <td align="center">@Enum.GetName(typeof(TableUtil.gType), item.gType)</td>
+                        <td align="center">@item.WebUrl</td>
+                        <td align="center">@item.UserIds</td>
+                        <td align="center"><a onclick="SeeActivityPic('@item.TitleUrl')">标题图片</a></td>
+                        <td align="center"><a onclick="SeeActivityPic('@item.PicUrl')">内容图片</a></td>
+
+                        <td align="center">
+                            @{
+                                if (item.IsEnble)
+                                {
+                                    <a class='layerbtn' onclick="ActivityEnable('0','@item.ID')" style='background-color:#548B54;'>关闭</a>
+                                }
+                                else
+                                {
+                                    <a class='layerbtn' onclick="ActivityEnable('1','@item.ID')" style='background-color:gray'>启用</a>
+                                }
+                            }
+                        </td>
+                        <td align="center">
+                            <a class="btn" data-toggle="modal" data-target="#actitiModal" style="height:20px" onclick="getactityid('@item.ID')">新增用户</a>
+                        </td>
+
+                    </tr>
+
+                }
+            </tbody>
+        </table>
+        @Html.Raw(ViewBag.msg)
+    </div>
+    <!--/列表-->
+
+
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div style="height:900px;" class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                        &times;
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel">
+                        活动设置
+                    </h4>
+                </div>
+                <form class="bs-example bs-example-form" method="post" onsubmit="return validateForm()" action="/GameCore/SubmitActivityManage" enctype="multipart/form-data" role="form">
+                    <div class="modal-body">
+                        <input type="hidden" value="0" id="ID" name="ID" />
+                        <input type="hidden" value="1000" id="Width" name="Width" />
+                        <input type="hidden" value="1400" id="Height" name="Height" />
+
+                        <input type="hidden" value="1000" id="TWidth" name="TWidth" />
+                        <input type="hidden" value="150" id="THeight" name="THeight" />
+                        <div class="form-group">
+                            <label for="name">活动标题</label>
+                            <input style="width:80%" type="text" id="Title" name="Title" class="form-control" placeholder="活动标题">
+                        </div>
+                        <div class="form-group">
+                            <label for="name">活动时间范围</label>
+                            <input name="StartTime" type="text" id="StartTime" class="form-control" onclick="laydate()">
+                            <span>至</span>
+                            <input name="EndTime" type="text" id="EndTime" class="form-control" onclick="laydate()">
+                        </div>
+                        <div class="form-group">
+                            <label for="name">活动类型</label>
+
+                            <select style="width:80%;height:40px;" id="BackField" name="BackField" class="form-control">
+                                <option value="0">普通活动</option>
+                                <option value="1">排行榜活动</option>
+                                <option value="51">俱乐部banner</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="name">跳转类型</label>
+
+                            <select style="width:80%;height:40px;" id="Type" name="Type" class="form-control">
+                                <option value="0">不跳转</option>
+                                <option value="1">跳转网页</option>
+                                <option value="2">跳转游戏内</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="name">红包界面</label>
+
+                            <select style="width:80%;height:40px;" id="gType" name="gType" class="form-control">
+                                <option value="1">红包界面</option>
+                                <option value="2">其他界面</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="name">跳转地址</label>
+                            <input style="width:80%" type="text" id="WebUrl" name="WebUrl" class="form-control" placeholder="跳转的地址">
+
+                        </div>
+                        <div class="form-group">
+                            <label for="name">用户id</label>
+                            <input style="width:80%" type="text" id="UserIds" name="UserIds" class="form-control" placeholder="可见活动用户">
+
+                        </div>
+                        <div class="form-group">
+                            <label for="name">标题图片</label>
+                            <label style="color:red">*请上传900*150尺寸的jpg图片</label>
+                            <input id="TPicUrl" type="hidden" name="TPicUrl" />
+                            <input type="file" onchange="verificationPicFile(this,'2')" name="_TPicUrl" accept="image/*" id="_TPicUrl">
+
+                        </div>
+                        <div class="form-group">
+                            <label for="name">内容图片</label>
+                            <label style="color:red">*请上传800*1400尺寸的jpg图片</label>
+                            <input id="PicUrl" type="hidden" name="PicUrl" />
+                            <input type="file" onchange="verificationPicFile(this,'1')" name="_PicUrl" accept="image/*" id="_PicUrl">
+
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button id="FormClose" type="button" class="btn btn-default" data-dismiss="modal">
+                            关闭
+                        </button>
+                        <button type="submit" id="btnFormsubmit" class="btn btn-primary">
+                            提交
+                        </button>
+                    </div>
+                </form>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal -->
+    </div>
+
+    <div class="modal fade" id="actitiModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myModalLabel">新增活动用户</h4>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal" role="form">
+                        <div class="form-group">
+                            <label for="Useridstext" >活动用户id</label>
+                            <input style="width:80%" type="text" id="Useridstext" name="UserWebUrl" class="form-control" placeholder="输入用户id">
+
+                        </div>
+                        <div class="form-group">
+                            <label for="name">跳转类型</label>
+
+                            <select style="width:80%;height:40px;" id="UserType" name="UserType" class="form-control">
+                                <option value="0">不跳转</option>
+                                <option value="1">跳转网页</option>
+                                <option value="2">跳转游戏内</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="name">红包界面</label>
+
+                            <select style="width:80%;height:40px;" id="UsergType" name="UsergType" class="form-control">
+                                <option value="1">红包界面</option>
+                                <option value="2">其他界面</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="name">跳转地址</label>
+                            <input style="width:80%" type="text" id="UserWebUrl" name="UserWebUrl" class="form-control" placeholder="跳转的地址">
+
+                        </div>
+                    </form>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <button type="button" class="btn btn-primary" id="nocitysubmit">提交更改</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal -->
+    </div>
+</div>
+<img id="thispic" style="display:none;max-width:680px;max-height:300px;" />
+<input type="hidden" id="gameactityid"/>
+<script>
+
+    $("#nocitysubmit").click(function () {
+        var users = $("#Useridstext").val();
+        var UserType = $("#UserType").val();
+        var UsergType = $("#UsergType").val();
+        var UserWebUrl = $("#UserWebUrl").val();
+
+        var data = {};
+        data.gameid = $("#gameactityid").val();
+        data.users = users;
+        data.Type = UserType;
+        data.gType = UsergType;
+        data.WebUrl = UserWebUrl;
+        console.log(data);
+        $.ajax({
+            type: "post", url: '/GameCore/SaveActityUser',
+            datatype: 'json',
+            data: data,
+            success: function (res) {
+
+                if (res.success) {
+                    if (res) {
+                        parent.alertMsg(res.msg);
+
+                    }
+                } else {
+                    parent.alertMsg(res.msg)
+                }
+            }
+        })
+
+
+    })
+    function getactityid(actityid) {
+        $("#gameactityid").val(actityid);
+        console.log(actityid);
+        console.log($("#gameactityid").val());
+    }
+
+    function SeeActivityPic(url) {
+        $("#thispic").attr('src', url);
+        layer.open({
+            type: 1,
+            title: false,
+            closeBtn: 0,
+            area: ['680px', '300px'],
+            skin: 'layui-layer-nobg', //没有背景色
+            shadeClose: true,
+            content: $('#thispic')
+        });
+    }
+
+
+    function validateForm() {
+        var Title = $("#Title").val();
+        var StartTime = $("#StartTime").val();
+        var EndTime = $("#EndTime").val();
+        var _PicUrl = $("#_PicUrl").val();
+          var _TPicUrl = $("#_TPicUrl").val();
+        if (Title == "") {
+            layer.msg('请输入活动标题。');
+            return false;
+        }
+        if (StartTime == "") {
+            layer.msg('请输入活动开始时间');
+            return false;
+        }
+        if (EndTime == "") {
+            layer.msg('请输入活动结束时间');
+            return false;
+        }
+         if (_TPicUrl == "") {
+            layer.msg('请选择标题图片');
+            return false;
+        }
+        if (_PicUrl == "") {
+            layer.msg('请选择活动图片');
+            return false;
+        }
+        return true;
+    }
+
+    function ActivityEnable(type, cid)
+    {
+        $.ajax({
+            url: "/GameCore/ActivityEnable?id=" + cid + "" + "&type=" + type + "",
+            type: "post",
+            contentType: "application/json",
+            dataType: "json",
+            success: function (data) {
+                if (data.success) {
+                    alert(data.msg);
+                    window.location.href = "/GameCore/ActivityManage";
+                } else {
+                    alert(data.msg);
+                }
+            }
+        })
+    }
+
+
+    ///保存用户
+    function SaveActityUser(gameid,userids) {
+        var data = {};
+        data.gameid = gameid;
+        data.userids = userids.replace(/，/g, ",").replace(/；/g, ";").replace(/;$/gi, ""); 
+        $.ajax({
+            type: "post", url: "/GameCore/SaveActivityUsers",
+            datatype: 'json',
+            data: data,
+            type: "post",
+            success: function (res) {
+
+                if (res.success) {
+                    if (res) {
+                        parent.alertMsg(res.msg);
+
+                    }
+                } else {
+                    parent.alertMsg(res.msg)
+                }
+            }
+        })
+
+    }
+
+
+
+
+    function verificationPicFile(file,type) {
+        return true;
+        var filePath = file.value;
+        if(filePath){
+            //读取图片数据
+            var filePic = file.files[0];
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                var data = e.target.result;
+                //加载图片获取图片真实宽度和高度
+                var image = new Image();
+                image.onload = function () {
+                    var width = image.width;
+                    var height = image.height;
+                    //标题
+                    if (type=="2") {
+                        if (width == 300 | height == 200) {
+                            return true;
+                        } else {
+                            alert("文件尺寸应为：600*200！");
+                            file.value = "";
+                            return false;
+                        }
+                    } else {
+                        if (width == 640 | height == 200) {
+                            return true;
+                        } else {
+                            alert("文件尺寸应为：640*200！");
+                            file.value = "";
+                            return false;
+                        }
+                    }
+                };
+                image.src= data;
+            };
+            reader.readAsDataURL(filePic);
+        }else{
+            return false;
+        }
+    }
+    var isExport = 0;
+    var numID = [];//用于储存需要删除的ID
+    $("#btnDelete").click(function () {
+        numID = []
+        var num1 = {};
+        var on1 = $(".One");
+        for (var o = 0; o < on1.length; o++) {
+            var lkl3 = $(on1[o]).find(".checkall")
+            for (var ol = 0; ol < lkl3.length; ol++) {
+                //console.log(lkl3[ol].checked)
+                if (lkl3[ol].checked == true) {
+                    var lkl4 = $(on1[o]).find("#hidId").val();
+                    num1.id = lkl4
+                    numID.push(num1.id)
+
+                }
+            }
+        }
+        var a, b;
+        a = numID;
+        b = a.join(",");
+        var ids = b;
+        $.ajax({
+            url: "/GameCore/ActivityDel?ids=" + ids + "",
+            type: "post",
+            contentType: "application/json",
+            dataType: "json",
+            success: function (data) {
+                eval(data);
+                var PageIndex = $("#PageIndex").val();
+                window.location.reload();
+
+            }
+        })
+    })
+</script>
+

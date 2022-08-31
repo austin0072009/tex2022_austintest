@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<c:Workflow1 xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:c="clr-namespace:Crazy2018WorkFlow;assembly=Crazy2018WorkFlow" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mca="clr-namespace:Microsoft.CSharp.Activities;assembly=System.Activities" xmlns:sads="http://schemas.microsoft.com/netfx/2010/xaml/activities/debugger" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Text</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>Microsoft.CSharp</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.ServiceModel.Activities</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>Crazy2018WorkFlow</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <c:Workflow1.Implementation>
+    <Sequence>
+      <Sequence.Variables>
+        <Variable x:TypeArguments="x:Int32" Default="2" Name="v1" />
+        <Variable x:TypeArguments="x:Int32" Default="3" Name="v2" />
+        <Variable x:TypeArguments="x:Int32" Name="v3">
+          <Variable.Default>
+            <mca:CSharpValue x:TypeArguments="x:Int32">v1+v2</mca:CSharpValue>
+          </Variable.Default>
+        </Variable>
+      </Sequence.Variables>
+      <WriteLine>
+        <InArgument x:TypeArguments="x:String">
+          <mca:CSharpValue x:TypeArguments="x:String">v3.ToString()</mca:CSharpValue>
+        </InArgument>
+      </WriteLine>
+      <Assign>
+        <Assign.To>
+          <OutArgument x:TypeArguments="x:Double">
+            <mca:CSharpReference x:TypeArguments="x:Double">argument3</mca:CSharpReference>
+          </OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="x:Double">
+            <mca:CSharpValue x:TypeArguments="x:Double">argument1+argument2</mca:CSharpValue>
+          </InArgument>
+        </Assign.Value>
+      </Assign>
+      <WriteLine>
+        <InArgument x:TypeArguments="x:String">
+          <mca:CSharpValue x:TypeArguments="x:String">argument3.ToString()</mca:CSharpValue>
+        </InArgument>
+      </WriteLine>
+      <sads:DebugSymbol.Symbol>9xRFzzRW64YG8Nnatx33nFu5zxt1vkZDOlxVc2Vyc1xHYW1lXERlc2t0b3BcV2hpcmwyMDE5X1NpdGVzXENyYXp5MjAxOFdvcmtGbG93XFdvcmtmbG93MS54YW1sCywDTQ4CAQEuMy42AgEKLzMvNgIBCTILMk0CAQI2BToRAgEiOwVGDgIBE0cFSxECAQs4CThUAgEjQwtDXAIBGz4LPloCARRJCUlbAgEM</sads:DebugSymbol.Symbol>
+    </Sequence>
+  </c:Workflow1.Implementation>
+</c:Workflow1>

@@ -1,0 +1,267 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="user-scalable=0">
+    <title></title>
+    <style type="text/css">
+
+        .top {
+            background: url(downpageimg/top_img.jpg) no-repeat;
+            width: 100%;
+            height: 185px;
+        }
+
+        .download-btn-two {
+            width: 330px;
+            height: 80px;
+            line-height: 80px;
+            font-size: 28px;
+            text-align: center;
+            display: inline-block;
+            margin: 0px auto;
+            color: #fff;
+            border-radius: 50px;
+            background: -moz-linear-gradient(left,#fa6146,#fa9246);
+            background: -webkit-gradient(linear,0 50%,100% 50%,from(#fa6146),to(#fa9246));
+            background: -webkit-linear-gradient(left,#fa6146,#fa9246);
+            background: -o-linear-gradient(left,#fa6146,#fa9246);
+            box-shadow: 0px 5px 15px #fbc5b9;
+        }
+
+        .iosimages .andredimage {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .weixin-tip {
+            display: none;
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.8);
+            filter: alpha(opacity=80);
+            height: 100%;
+            width: 100%;
+            z-index: 100;
+        }
+
+            .weixin-tip p {
+                text-align: center;
+                margin-top: 10%;
+                padding: 0 5%;
+            }
+    </style>
+    <script language="javascript" src="downpageimg/jquery-1.7.1.min.js"></script>
+    <script type="text/javascript" src="//res.cdn.openinstall.io/openinstall.js"></script>
+    <script type="text/javascript">
+
+        //openinstall初始化，初始化时将与openinstall服务器交互，应尽可能早的调用
+        /*web页面向app传递的json数据(json string/js Object)，应用被拉起或是首次安装时，通过相应的android/ios api可以获取此数据*/
+        var data = OpenInstall.parseUrlParams();//openinstall.js中提供的工具函数，解析url中的所有查询参数
+        //开发者也可通过其他方式设置绑定数据
+        //var data = "{\"testKey\":\"testValue\"}";//可以是json string
+        //var data = {"testKey":"testValue"};//也可以是js Object
+        new OpenInstall({
+            /*appKey必选参数，openinstall平台为每个应用分配的ID*/
+            appKey: "vj4iia",
+            /*可选参数，自定义android平台的apk下载文件名，只有apk在openinstall托管时才有效；个别andriod浏览器下载时，中文文件名显示乱码，请慎用中文文件名！*/
+            apkFileName: "OpenInstallDemo-v2-2.0.0.apk",
+            /*可选参数，是否优先考虑拉起app;某些android浏览器无法拉起app(或拉取体验不佳)的情况下，将使用H5遮罩的形式提示用户用其他浏览器打开*/
+            preferWakeup: false,
+            /*openinstall初始化完成的回调函数，可选*/
+            onready: function () {
+                var m = this, button = document.getElementById("Android"), iosbutton = document.getElementById("iosphone")
+                button.style.visibility = "visible";
+                iosbutton.style.visibility = "visible";
+
+                ///用法1：如app已安装，进入网页立即拉起app；用户点击某个按钮时再开始安装app
+                /*通过scheme拉起app(如果已在openinstall平台开启scheme启动功能)*/
+                if (getQueryString("GameID") != 1) {
+                    m.schemeWakeup();
+                }
+                /*用户点击某个按钮时(假定按钮id为downloadButton)，安装app*/
+                button.onclick = function () {
+
+                    m.install();
+                }
+
+                //用法2：用户点击某个按钮拉起app，等待设定时间后app尚未拉起，再安装app
+                m.schemeWakeup();
+                /*用户点击某个按钮时，安装app*/
+                if (isMobile.Android()) {
+                    button.onclick = function () {
+                        // 500毫秒后app尚未拉起，将安装app，可自定义超时时间，单位为毫秒
+                        m.wakeupOrInstall({ timeout: 500 });
+                    }
+                }
+                if (isMobile.iOS()) {
+                    iosbutton.onclick = function () {
+                        //500毫秒后app尚未拉起，将安装app，可自定义超时时间，单位为毫秒
+                        m.wakeupOrInstall({ timeout: 500 });
+                    }
+                }
+
+
+            }
+        }, data);
+
+        //获取参数的方法
+        function getQueryString(name) {
+            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+            var r = window.location.search.substr(1).match(reg);
+            if (r != null) return unescape(r[2]); return null;
+        }
+
+
+
+
+
+        //
+        var u = navigator.userAgent;
+        var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
+        var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+
+        var isMobile = {
+
+            Android: function () {
+                return navigator.userAgent.match(/Android/i) ? true : false;
+            },
+            BlackBerry: function () {
+                return navigator.userAgent.match(/BlackBerry/i) ? true : false;
+            },
+            iOS: function () {
+                return navigator.userAgent.match(/iPhone|iPad|iPod/i) ? true : false;
+            },
+            Windows: function () {
+                return navigator.userAgent.match(/IEMobile/i) ? true : false;
+            },
+            any: function () {
+                return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Windows());
+            },
+            PC: function () {
+                var userAgentInfo = navigator.userAgent;
+                var Agents = new Array("Android", "iPhone", "SymbianOS", "Windows Phone", "iPad", "iPod");
+                var flag = true;
+                for (var v = 0; v < Agents.length; v++) {
+                    if (userAgentInfo.indexOf(Agents[v]) > 0) {
+                        flag = false;
+                        break;
+                    }
+                }
+                return flag;
+            }
+        };
+
+        function isWeiXin() {
+            var ua = window.navigator.userAgent.toLowerCase();
+            if (ua.match(/MicroMessenger/i) == 'micromessenger') {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        function down(type) {
+            //判断微信
+            if (isWeiXin() && !isiOS) {
+                document.getElementById("top_wx").style.display = "block";
+                $(window).scroll(function () {
+                    if ($(window).scrollTop() > 120) {
+                        $('html').animate({ scrollTop: 0 }, 100);
+                    }
+                });
+            } else {
+                var para = getUrlParams("mobid");
+
+
+            }
+        }
+
+        function getUrlParams(par) {
+            if (par == '')
+                return null;
+            var reg = new RegExp("(^|&)" + par + "=([^&]*)(&|$)");
+            var r = window.location.search.substr(1).match(reg);
+            if (r != null)
+                return r[2];
+
+            return null;
+        }
+
+        var activecode;
+        $(document).ready(function () {
+
+            var winHeight = $(window).height();
+            var winwidth = $(window).width();
+            activecode = getQueryString("ActiveCode");
+            console.log(activecode);
+            $("#ActiveCode").html(activecode);
+            function is_weixin() {
+                var ua = navigator.userAgent.toLowerCase();
+                if (ua.match(/MicroMessenger/i) == "micromessenger") {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+            var isWeixin = is_weixin();
+
+            if (isWeixin) {
+                if (isMobile.iOS()) {
+                    $(".weixin-tip").css("height", winHeight);
+                    $(".iosimages").css("width", winwidth);
+                    $(".iosimages").show();
+                    $(".weixin-tip").show();
+                } else if (isMobile.Android()) {
+                    $(".weixin-tip").css("height", winHeight);
+                    $(".andredimage").css("width", winwidth);
+                    $(".andredimage").show();
+                    $(".weixin-tip").show();
+                }
+            }
+
+            $(".bottom-nav .download").addClass("on");
+        });
+
+
+      
+
+
+
+    </script>
+</head>
+<body style="background-repeat: no-repeat;background-size: 100% 100%;">
+
+
+    <img style="width:100%;height:40%;pointer-events:none" onclick="return false" src="downpageimg/head.jpg" />
+    <p style="text-align:center;font-size:50px;font-weight:800">339游戏</p>
+    <p style="text-align:center;font-size:34px;">在繁琐的工作中，抽一点时间享受生活！</p>
+    <div class="weixin-tip">
+        <p>
+            <img style="display:none" class="iosimages" alt="微信打开" src="downpageimg/AD5Zo.png" />
+            <img style="display:none" class="andredimage" alt="微信打开" src="downpageimg/ADnjf.png" />
+        </p>
+    </div>
+
+    <div class="top" id="top_wx" style="display: none;"></div>
+    <p style="text-align:center;font-size:34px;margin-top:20%;color: #9f9f99;">点击按钮下载游戏</p>
+    <div style="">
+        <a id="Android" download="true" style="height: 52px;margin-left:15%;display:block;margin-top:12%;" class="download-and-btn">
+
+            <img style="width:80%" onclick="return false" src="downpageimg/Android.png" />
+        </a>
+
+        <a id="iosphone" download="true" style="height: 52px;margin-left:15%;display:block;padding-top:100px;" class="download-ios-btn">
+
+            <img style="width:80%" onclick="return false" src="downpageimg/ios.png" />
+        </a>
+        <a id="superdown" download="true" style="height: 52px;margin-left:15%;display:block;padding-top:100px;" class="download-ios-btn">
+            <img style="width:80%" onclick="return false" src="downpageimg/superios.png" />
+        </a>
+
+    </div>
+    <p style="text-align:center;font-size:34px;margin-top:20%;color: #9f9f99;">需手动填写邀请码 <span id="ActiveCode" style="color:crimson;border:3px solid #ed143d;padding:8px"> </span></p>
+</body>
+</html>

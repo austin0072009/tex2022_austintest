@@ -1,0 +1,366 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="format-detection" content="telephone=no">
+    <meta id="viewport" name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=no,target-densitydpi=medium-dpi" />
+    <title>AgentManage</title>
+    <link type="text/css" href="~/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://www.jq22.com/jquery/1.4.4/jquery.min.js"></script>
+    <script src="https://libs.baidu.com/jquery/1.4.4/jquery.min.js"></script>
+    <link href="~/css/lyz.calendar.css" rel="stylesheet" type="text/css" />
+    <script src="~/js/lyz.calendar.min.js" type="text/javascript"></script>
+    <link href="~/css/AgentManage.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/css/public.css">
+    <script src="~/js/public.js"></script>
+</head>
+<body>
+    <div class="cont">
+        <div class="navBox">
+            <div class="BtnBox">
+                <button type="button" id="BackBtn" class="btn btn-danger">返回</button>
+            </div>
+        </div>
+        <div class="SearchBox">
+            <input id="txtBeginDate" placeholder="开始时间" />
+
+            <input id="txtEndDate" placeholder="结束时间" />
+
+            @*<select class="form-control" id="MySearch">
+                    <option>状态</option>
+                    <option>正常</option>
+                </select>*@
+            <input type="text" class="form-control myInput" id="Keywords" placeholder="请输入关键字">
+            <button type="button" id="SearchBtn" class="btn btn-primary">查询</button>
+        </div>
+        <div class="infoBox">
+            <span class="onespan">统计人数:</span>
+            <span class="twospan" id="proxy">123</span>
+            <span class="onespan">当前时间段，所有人合计总税收(金币):</span>
+            <span class="twospan" id="Amount">1,256,000.00</span>
+        </div>
+        <div class="ContBox">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th style="text-align:center; color:rgb(7, 135, 185)">会员ID</th>
+                        <th style="text-align:center;">总下注</th>
+                        <th style="text-align:center; color:rgb(7, 135, 185)">总收益</th>
+                        <th style="text-align:center;">今日下注</th>
+                        <th style="text-align:center; color:rgb(7, 135, 185)">今日收益</th>
+                        <th style="text-align:center;">昨日下注</th>
+                        <th style="text-align:center; color:rgb(7, 135, 185)">昨日收益</th>
+                    </tr>
+                </thead>
+                <tbody id="tbodyCont">
+                    @*<tr align="center">
+                            <td>245</td>
+                            <td>
+                                <div class="contY">
+                                    <span class="eitBtn">
+                                        <img src="~/img/bianji.png" />
+                                    </span>
+                                    <span>
+                                        牛牛
+                                    </span>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="contY1">
+                                    12334
+                                </div>
+                            </td>
+                            <td>2017.12.09</td>
+
+                        </tr>*@
+                </tbody>
+            </table>
+            <div class="footer">
+                <div class="footerbox">
+                    <div class="TotalContText">
+                        一共 <span class="TotalNum"></span>条
+                    </div>
+                    <div class="boxBtn">
+                        <div class="FirstPageBox" id="FirstPage">
+                            <img src="/img/diyiye.png">
+                        </div>
+                        <div class="FirstPageBox" id="PreviousPage">
+                            <img src="/img/shangyiye.png">
+                        </div>
+                        <div class="pageNum">
+                            <span class="current2"></span>/<span class="total"></span>
+                        </div>
+                        <div class="FirstPageBox" id="NextPage">
+                            <img src="/img/xiayiye.png">
+                        </div>
+                        <div class="FirstPageBox" id="LastPage">
+                            <img src="/img/zuihouyiye.png">
+                        </div>
+                        <div class="SeekBox">
+                            <input type="number" name="name" id="jump" />
+                        </div>
+                        <div class="SeekBox2 btn btn-primary">跳转</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        var PageIndex = 1;
+        var PageSize = 10;
+        var sTime = "";
+        var eTime = "";
+        var Keywords = "";
+
+        var current = 1;
+        var total = 0;
+
+
+        $(".current2").text(current);
+        $(".total").text(total)
+
+        $(function () {
+
+            $("#txtBeginDate").calendar({
+
+                controlId: "divDate",                                 // 弹出的日期控件ID，默认: $(this).attr("id") + "Calendar"
+
+                speed: 200,                                           // 三种预定速度之一的字符串("slow", "normal", or "fast")或表示动画时长的毫秒数值(如：1000),默认：200
+
+                complement: true,                                     // 是否显示日期或年空白处的前后月的补充,默认：true
+
+                readonly: true,                                       // 目标对象是否设为只读，默认：true
+
+                upperLimit: new Date(),                               // 日期上限，默认：NaN(不限制)
+
+                lowerLimit: new Date("2011/01/01"),                   // 日期下限，默认：NaN(不限制)
+
+                callback: function () {                               // 点击选择日期后的回调函数
+
+                }
+
+            });
+
+            $("#txtEndDate").calendar();
+
+        });
+
+        function SearchBtn() {
+            var BeginDate = $("#txtBeginDate").val();
+            var EndDate = $("#txtEndDate").val();
+            var Key = $("#Keywords").val();
+            sTime = BeginDate;
+            eTime = EndDate;
+            Keywords = Key
+            GetList()
+            console.log(BeginDate, EndDate)
+        }
+        $("#SearchBtn").click(function () {
+            SearchBtn();
+        })
+        GetList()
+
+        $("#FirstPage").click(function () {
+            var one = $(".current2").text();
+
+            if (one > 1 && one <= total) {
+                var ones = 1
+                current = ones
+                $(".current2").text(current);
+                var PageIndex2 = $(".current2").text()
+                var BeginDate = $("#txtBeginDate").val();
+                var EndDate = $("#txtEndDate").val();
+                var Key = $("#Keywords").val();
+                sTime = BeginDate;
+                eTime = EndDate;
+                Keywords = Key
+                PageIndex = PageIndex2
+                GetList()
+            } else {
+                Bomb2("已经是第一页")
+            }
+
+        })
+
+        $("#PreviousPage").click(function () {
+            var one = $(".current2").text();
+            if (one > 1 && one <= total) {
+                var ones = parseInt(one) - 1
+                current = ones
+                $(".current2").text(current)
+                var PageIndex2 = $(".current2").text()
+                var BeginDate = $("#txtBeginDate").val();
+                var EndDate = $("#txtEndDate").val();
+                var Key = $("#Keywords").val();
+                sTime = BeginDate;
+                eTime = EndDate;
+                Keywords = Key
+                PageIndex = PageIndex2
+
+                GetList()
+            } else {
+                Bomb2("已经是第一页")
+            }
+
+        })
+
+        $("#NextPage").click(function () {
+
+            var one = $(".current2").text();
+            console.log(one)
+            if (one > 0 && one < total) {
+                var ones = parseInt(one) + 1
+                current = ones
+
+                $(".current2").text(current)
+                var PageIndex2 = $(".current2").text()
+                var BeginDate = $("#txtBeginDate").val();
+                var EndDate = $("#txtEndDate").val();
+                var Key = $("#Keywords").val();
+                sTime = BeginDate;
+                eTime = EndDate;
+                Keywords = Key
+                PageIndex = PageIndex2
+
+                GetList()
+            } else {
+                Bomb2("已经是最后一页")
+            }
+
+        })
+        $("#LastPage").click(function () {
+            var one = $(".current2").text();
+            //console.log(one)
+            if (one > 0 && one < total) {
+                var ones = total
+                current = ones
+                $(".current2").text(current)
+                var PageIndex2 = $(".current2").text()
+                var BeginDate = $("#txtBeginDate").val();
+                var EndDate = $("#txtEndDate").val();
+                var Key = $("#Keywords").val();
+                sTime = BeginDate;
+                eTime = EndDate;
+                Keywords = Key
+                PageIndex = PageIndex2
+
+                GetList()
+            } else {
+                Bomb2("已经是最后一页")
+            }
+
+        })
+        $(".SeekBox2").click(function () {
+            var jump = $("#jump").val();
+            var one = $(".current2").text();
+            console.log(jump)
+            if (jump > 0 && jump <= total) {
+                if (jump != one) {
+                    current = jump
+                    $(".current2").text(current)
+                    var PageIndex2 = $(".current2").text()
+                    var BeginDate = $("#txtBeginDate").val();
+                    var EndDate = $("#txtEndDate").val();
+                    var Key = $("#Keywords").val();
+                    sTime = BeginDate;
+                    eTime = EndDate;
+                    Keywords = Key
+                    PageIndex = PageIndex2
+                    GetList()
+                } else {
+                    Bomb2("已跳至当前页了")
+                }
+            } else {
+                Bomb2("跳转页数不能大于总页输或者小于1")
+            }
+
+        })
+
+
+        function GetList() {
+            var data = {};
+            //data.userId = userId
+            data.PageIndex = PageIndex;
+            data.PageSize = PageSize;
+            data.sTime = sTime;
+            data.eTime = eTime;
+            data.Keywords = Keywords;
+
+            $.ajax({
+                type: "post", url: '/Game/GetUserAgentManageData',
+                datatype: 'json',
+                data: data,
+                async: true,
+                beforeSend: function () {
+                    load2()
+                    //load();
+                },
+                complete: function () {
+                    loadEnd2()
+                    //loadEnd();
+                },
+                success: function (res) {
+
+                    console.log(res)
+                    if (res.Code != -1) {
+                        if (res.Data) {
+                            $("#proxy").text("");
+                            $("#proxy").text(res.Data.AgentCount)
+                            $("#Amount").text(res.Data.TaxCount)
+                            if (res.Data.agents) {
+                                var totalOne = parseInt(res.TotalCount / data.PageSize);
+                                console.log(totalOne)
+                                if (totalOne < res.TotalCount / data.PageSize) {
+                                    total = totalOne + 1
+                                    // console.log(total)
+                                } else {
+                                    total = res.TotalCount / data.PageSize
+                                    //console.log(total)
+                                }
+
+                                $(".total").text(total)
+                                $(".current2").text(res.PageIndex);
+                                var str = $("#tbodyCont").html();
+                                $("#tbodyCont").empty();
+                                $(".TotalNum").text(res.TotalCount)
+
+                                for (var i in res.Data.agents) {
+                                    str = "  <tr style='text-align:center;'>" +
+                                                "<td class='active'>" + res.Data.agents[i].AgentId + "</td>" +
+                                                "<td class='success'>" + res.Data.agents[i].Bet + "</td>" +
+                                                "<td class='warning '>" + res.Data.agents[i].Tax + "</td>" +
+                                                "<td class='danger'>" + res.Data.agents[i].TodayBet + "</td>" +
+                                                "<td class='info'>" + res.Data.agents[i].TodayTax + "</td>" +
+                                                  "<td class='danger'>" + res.Data.agents[i].YTDBet + "</td>" +
+                                                "<td class='info'>" + res.Data.agents[i].YTDTax + "</td>" +
+                                            "</tr>"
+                                    // $("#tbodyCont").html(str)
+                                    $('#tbodyCont').append(str);
+                                }
+
+                            } else {
+                                Bomb2("没有列表数据")
+                            }
+                        } else {
+                            Bomb2("没有数据")
+                        }
+
+                    } else {
+                        Bomb2(res.Message)
+                    }
+                }
+            })
+        }
+        $("#BackBtn").click(function () {
+            window.location.href = "/Manage/userIfo";
+        })
+    </script>
+
+</body>
+</html>

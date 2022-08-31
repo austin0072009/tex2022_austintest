@@ -1,0 +1,365 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,initial-scale=1.0,user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <title>批量增加房间</title>
+    <link href="~/scripts/artdialog/ui-dialog.css" rel="stylesheet" type="text/css" />
+    <link href="~/skin/default/style.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="~/scripts/jquery/jquery-1.11.2.min.js"></script>
+    <script type="text/javascript" src="~/scripts/jquery/Validform_v5.3.2_min.js"></script>
+
+    <script type="text/javascript" src="~/scripts/artdialog/dialog-plus-min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="~/js/laymain.js"></script>
+    <script type="text/javascript" charset="utf-8" src="~/js/common.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            //初始化表单验证
+            $("#form1").initValidform();
+        });
+    </script>
+</head>
+
+<body class="mainbody">
+    <form id="form1" runat="server">
+        <!--导航栏-->
+        <div class="location">
+            <a href="/Business/RoomList" class="back"><i></i><span>返回列表页</span></a>
+            <a href="/Home/Center" class="home"><i></i><span>首页</span></a>
+            <i class="arrow"></i>
+            <a href="/Business/GameList"><span>游戏管理</span></a>
+            <i class="arrow"></i>
+            <span>批量增加房间</span>
+        </div>
+        <div class="line10"></div>
+        <!--/导航栏-->
+        <!--内容-->
+        <div id="floatHead" class="content-tab-wrap">
+            <div class="content-tab">
+                <div class="content-tab-ul-wrap">
+                    <ul>
+                        <li><a class="selected" href="javascript:;">批量增加房间</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="tab-content">
+
+            <dl>
+                <dt>游戏ID</dt>
+                <dd>
+                    <select name="gameid" id="gameid" class="select"></select>
+                </dd>
+            </dl>
+            <dl>
+                <dt>房间类型</dt>
+                <dd>
+                    <select style="width:200px;" name="roomid" id="roomid" class="select"></select>
+                </dd>
+            </dl>
+            <dl>
+                <dt>底皮</dt>
+                <dd>
+                    <select style='width:200px;' name='Baseskin' id='Baseskin' class='select'>
+
+                        <option selected value='1'>1</option>
+
+                        <option value='2'>2</option>
+
+                        <option value='5'>5</option>
+
+                        <option value='10'>10</option>
+
+                        <option value='20'>20</option>
+
+                        <option value='50'>50</option>
+
+                    </select>
+                    <span class="Validform_checktip">*</span>
+                </dd>
+            </dl>
+           
+            @*<dl>
+                <dt>最大人数</dt>
+                <dd>
+                    <select style='width:200px;' name='numpertable' id='numpertable' class='select'>
+
+                        <option selected value='4'>4</option>
+
+                        <option value='5'>5</option>
+
+                        <option value='6'>6</option>
+
+                        <option value='7'>7</option>
+
+                        <option value='8'>8</option>
+
+                        <option value='9'>9</option>
+
+                    </select>
+
+                    <span class="Validform_checktip">*</span>
+                </dd>
+            </dl>*@
+            <dl>
+                <dt>持续时间</dt>
+                <dd>
+                    <select style='width:200px;' name='lasttime' id='lasttime' class='select'>
+                        <option value='60'>60</option>
+                        <option value='90'>90</option>
+                        <option value='90'>90</option>
+                        <option value='120'>120</option>
+                        <option value='150'>150</option>
+                        <option value='180'>180</option>
+                    </select>
+
+                    <span class="Validform_checktip">*</span>
+                </dd>
+            </dl>
+            @*<dl>
+                <dt>最小带入</dt>
+                <dd>
+                    <select style='width:200px;' name='firstinto' id='firstinto' class='select'>
+                        <option selected value='50'>50</option>
+                        <option value='100'>100</option>
+                        <option value='200'>200</option>
+                        <option value='500'>500</option>
+                    </select>
+
+                    <span class="Validform_checktip">*</span>
+                </dd>
+            </dl>*@
+            @*<dl>
+                <dt>是否启用</dt>
+                <dd>
+                    <select name="isEnable" id="isEnable" class="select">
+                        <option value="1">是</option>
+                        <option value="0">否</option>
+                    </select>
+                </dd>
+            </dl>*@
+            <dl>
+                <dt>房间数量</dt>
+                <dd>
+                    <input name="roomnumbermin" type="text" id="roomnumbermin" class="input normal"  maxlength="3" value="1"  errormsg="" sucmsg=" " style="width:200px;">~
+                    <input name="roomnumbermax" type="text" id="roomnumbermax" class="input normal"  maxlength="3"  errormsg="" sucmsg=" " style="width:200px;">
+                    <span class="Validform_checktip">*</span>
+                </dd>
+            </dl>
+            @*<dl>
+                <dt>机器人数量</dt>
+                <dd>
+                    <input name="robotnumber" type="text" id="robotnumber" class="input normal" datatype="*0-9" maxlength="1" nullmsg="请填写机器人数量" errormsg="请填写0~9的机器人数量" sucmsg=" " style="width:493px;">
+                    <span class="Validform_checktip">*</span>
+                </dd>
+            </dl>*@
+            <dl>
+                <dt>房间人数</dt>
+                <dd>
+                    <input name="roompeoplenummin" type="text" id="roompeoplenummin" class="input normal"  maxlength="3" value="1" errormsg="" sucmsg=" " style="width:200px;">~
+                    <input name="roompeoplenumax" type="text" id="roompeoplenumax" class="input normal"  maxlength="3" errormsg="" sucmsg=" " style="width:200px;">
+                    <span class="Validform_checktip">*</span>
+                </dd>
+            </dl>
+            <dl>
+                <dt>围观人数</dt>
+                <dd>
+                    <input name="Lookonnummin" type="text" id="Lookonnummin" class="input normal" maxlength="3" value="1" errormsg="" sucmsg=" " style="width:200px;">~
+                    <input name="Lookonnummax" type="text" id="Lookonnummax" class="input normal" maxlength="3" errormsg="" sucmsg=" " style="width:200px;">
+                    <span class="Validform_checktip">*</span>
+                </dd>
+            </dl>
+        </div>
+        <!--/内容-->
+        <!--工具栏-->
+        <div class="page-footer">
+            <div class="btn-wrap" style="position: static;">
+                <input type="button" name="btnSubmit" value="提交保存" id="btnSubmit" class="btn">
+                <input name="btnReturn" type="button" value="返回上一页" class="btn yellow" onclick="javascript: history.back(-1);">
+            </div>
+        </div>
+        <!--/工具栏-->
+    </form>
+    <script>
+
+        var id = "";
+        var OldId = "";
+        //游戏ID列表参数
+        var txtPageNum = 100;
+        var Keywords = "";
+        var PageIndex = 1;
+        function GetList() {
+
+            var data = {};
+            data.PageSize = txtPageNum;
+            data.PageIndex = PageIndex;
+            data.Keywords = Keywords;
+            $.ajax({
+                type: "post", url: '/Business/GetGameInfoData',
+                datatype: 'json',
+                data: data,
+                success: function (res) {
+                    if (res) {
+                        // console.log(res)
+                        $("#gameid").empty();
+                        if (res.Data.length > 0) {
+                            for (var i = 0; i < res.Data.length; i++) {
+                                var str = $("#gameid").html();
+                                str = "<option value='" + res.Data[i].ID + "'>" + res.Data[i].Name + "</option>"
+                                $('#gameid').append(str);
+                            }
+                            BindGamelevel();
+                        } else {
+                            $("#gameid").empty();
+                        }
+
+
+                    } else {
+                        $("#gameid").empty();
+                        alert(res.Message)
+                    }
+
+                }
+            })
+           
+        }
+        function BindGamelevel() {
+            var gameid = $("#gameid").val();
+
+            if (gameid != "") {
+                $.post("/GameCore/GetRoomBygameId", { gameid: gameid }, function (data) {
+                    var optionhtml = "";
+                    $("#roomid").empty();
+                    if (data != null || data != "") {
+
+                        for (var i = 0; i < data.length; i++) {
+                            optionhtml += "<option value='" + data[i].Key + "'>" + data[i].Value + "</option>";
+                        }
+                        $("#roomid").append(optionhtml);
+                    }
+
+                });
+            }
+        }
+        GetList();
+   
+        $(function () {
+            //初始化表单验证
+
+            $("#form1").initValidform();
+          
+            $("#gameid").change(function () {
+           
+                BindGamelevel();
+            });
+        });
+
+        $("#btnSubmit").click(function () {
+
+            var data = {};
+         
+            var gameid = $("#gameid").val();   
+            var roomid = $("#roomid").val();  
+            var Baseskin = $("#Baseskin").val();  
+           
+            var lasttime = $("#lasttime").val();  
+            var roomnumbermin = $("#roomnumbermin").val();  
+            var roomnumbermax = $("#roomnumbermax").val();  
+            var roompeoplenummin = $("#roompeoplenummin").val();  
+            var roompeoplenumax = $("#roompeoplenumax").val();  
+            var Lookonnummin = $("#Lookonnummin").val();  
+            var Lookonnummax = $("#Lookonnummax").val();  
+            if (roomnumbermin == "" || roomnumbermax == "" || roompeoplenummin == "" || roompeoplenumax == "" || Lookonnummin == "" || Lookonnummax == "") {
+                alert("请完善房间信息！");
+            }
+            data.ID = id
+            data.gameid = gameid;
+            data.roomid = roomid;
+            data.Baseskin = Baseskin;
+           
+            data.lasttime = lasttime;
+            data.roomnumbermin = roomnumbermin;
+            data.roomnumbermax = roomnumbermax;
+            data.roompeoplenummin = roompeoplenummin;
+            data.roompeoplenumax = roompeoplenumax;
+            data.Lookonnummin = Lookonnummin;
+            data.Lookonnummax = Lookonnummax;
+            console.log(data);
+            $.ajax({
+                type: "post", url: '/Business/SaveRoomSetNumber',
+                datatype: 'json',
+                data: data,
+                success: function (res) {
+                    //console.log(res)
+                    if (res.success) {
+                        if (res) {
+                            alert(res.msg);
+                            window.location.href = '/Business/RoomSetNumberList';
+                        }
+                    } else {
+                        alert(res.Message)
+                    }
+                }
+            })
+
+      
+            //console.log(IsEnable)
+        })
+
+
+        $(function () {
+            function getURLParameter(name) {
+                return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search) || [null, ''])[1].replace(/\+/g, '%20')) || null;
+            }
+            if (getURLParameter("id") != "" && getURLParameter("id") != null && getURLParameter("operation") != "" && getURLParameter("operation") != null) {
+                id = getURLParameter("id");
+                operation = getURLParameter("operation");
+                if (operation == "Edit") {
+                    OldId = getURLParameter("id")
+                }
+               
+                var data = {};
+                data.id = id;
+                $.ajax({
+                    type: "post", url: '/Business/GetRoomSetDataById',
+                    datatype: 'json',
+                    data: data,
+                    success: function (res) {
+                        if (res.Data) {
+                            //alert(1);
+                          
+                            id = res.Data.ID;
+                            $("#gameid").val(res.Data.Gameid);
+                            $("#roomid").val(res.Data.Roomid);
+                            $("#Baseskin").val(res.Data.Baseskin);
+                            $("#lasttime").val(res.Data.LastTime);
+                            $("#roomnumbermin").val(res.Data.roomnumbermin);
+                            $("#roomnumbermax").val(res.Data.roomnumbermax);
+                            $("#roompeoplenummin").val(res.Data.roompeoplenummin);
+                            $("#roompeoplenumax").val(res.Data.roompeoplenumax);
+                            $("#Lookonnummin").val(res.Data.Lookonnummin);
+                            $("#Lookonnummax").val(res.Data.Lookonnummax);
+                          
+                        } else {
+                            alert(res.Message)
+                         
+                        }
+                    }
+                })
+            } else {
+                id = "";
+             
+
+            }
+        })
+
+    </script>
+</body>
+</html>

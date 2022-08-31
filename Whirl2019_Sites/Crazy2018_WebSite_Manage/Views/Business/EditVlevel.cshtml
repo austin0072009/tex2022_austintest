@@ -1,0 +1,85 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/skin/default/style.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="~/scripts/jquery/jquery-1.11.2.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="~/js/common.js"></script>
+    <title></title>
+    <script type="text/javascript">
+        var api = top.dialog.get(window); //获取父窗体对象
+        $(function () {
+            //设置按钮及事件
+            api.button([{
+                value: '确定',
+                callback: function () {
+                    submitForm();
+                },
+                autofocus: true
+            }, {
+                value: '取消',
+                callback: function () { }
+            }
+            ]);
+            function getURLParameter(name) {
+                return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search) || [null, ''])[1].replace(/\+/g, '%20')) || null;
+            }
+            //console.log(getURLParameter("uid"))
+            $("#hduid").val(getURLParameter("uid"))
+        });
+        var exp = /^(d{4})-(d{2})-(d{2}) (d{2}):(d{2}):(d{2})$/
+        //提交表单处理
+        function submitForm() {
+            var currDocument = $(document);
+            
+            var paraJson = {};
+            paraJson["uid"] = $("#hduid").val();
+            paraJson["level"] = $("#setvlevel").val();
+            ajaxPostData("/Business/SetVlevel", paraJson, function (json) {
+                debugger;
+                if (json.Code == "0" && json.Code == 0) {
+                    api.close(true).remove(); alert("操作成功!");
+                } else {
+                    alert(json.Message);
+                }
+            });
+
+            return false;
+        }
+    </script>
+</head>
+<body>
+    <div class="div-content">
+        <input type="hidden" id="hduid" value="<%=userid%>" />
+        <dl>
+            <dt>会员等级</dt>
+            <dd>
+                <select id="setvlevel">
+                    <option value="0">普通用户</option>
+                    <option value="1">普通代理VIP1</option>
+                    <option value="2">普通代理VIP2</option>
+                    <option value="3">普通代理VIP3</option>
+                    <option value="8">合伙人</option>
+                    <option value="9">第二级</option>
+                    <option value="10">创始人</option>
+                    <option value="18">主播</option>
+                    <option value="19">允许创建房间</option>
+                    <option value="20">允许添加机器人</option>
+
+                </select>
+            </dd>
+        </dl>
+        <div style="color:red;margin:10%">
+            <p>*[设房间代理]具有创建房间权限</p>
+            <br />
+            <p>*[设机器人代理]具有最高权限</p>
+            
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,370 @@
+﻿<!DOCTYPE html>
+<!-- saved from url=(0045)http://m.91y.com/login/index.html?jp=recharge -->
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=750,target-densitydpi=device-dpi,user-scalable=no">
+    <!--<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, maximum-scale=1.0" />-->
+    <meta content="telephone=no,email=no" name="format-detection">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <title>游戏中心</title>
+    <link type="text/css" href="~/91Resources/css/nc.css" rel="stylesheet" disabled="">
+    <link href="~/91Resources/css/91y_phone.css" rel="stylesheet" type="text/css">
+    <link href="~/91Resources/css/91y_public.css" rel="stylesheet" type="text/css">
+    <script src="~/91Resources/js/um.js" id="AWSC_umidPCModule"></script>
+    <script src="~/91Resources/js/120.js" id="AWSC_uabModule"></script>
+    <script src="~/91Resources/js/hm.js"></script>
+    <script type="text/javascript" class="nc-required-js-1 nc-uab-script" src="~/91Resources/js/awsc.js"></script>
+
+    <script type="text/javascript" src="~/91Resources/js/nc.js"></script>
+
+    <script language="javascript" src="~/91Resources/js/jquery-1.7.1.min.js"></script>
+    <script type="text/javascript">
+        var obj = {};
+        $(function () {
+            oBk();
+            if ($(document.body).outerWidth(true) > 641) {
+                $("#phoneorpc").css("overflow", "visible");
+            } else {
+                $("#phoneorpc").css("overflow", "hidden")
+            }
+            var userId = request("userID");
+            var password = request("password");
+            if (userId != null && userId != "" && password != null && password != "") {
+                loginBtn();
+            }
+            $("#imgObj").click(function () {
+                oBk();
+            });
+            $("#loginBtn").click(function () {
+                loginBtn();
+            });
+            $("#user").click(function () {
+                //var _sess = window.sessionStorage;
+                //var userMessage = JSON.parse(_sess.getItem("userMessage"));
+                if (obj.UserId) {
+                    window.location.href = "/Manage/userIfo";
+                } else {
+                    window.location.href = "/Manage/login";
+                }
+            })
+            $("#chonzhi").click(function () {
+                //var _sess = window.sessionStorage;
+                //var userMessage = JSON.parse(_sess.getItem("userMessage"));
+                if (obj.UserId) {
+                    window.location.href = "/Manage/RechargePage";
+                } else {
+                    window.location.href = "/Manage/login";
+                }
+            })
+            $("#rewardBtn").click(function () {
+                //var _sess = window.sessionStorage;
+                //var userMessage = JSON.parse(_sess.getItem("userMessage"));
+                if (obj.UserId) {
+                    window.location.href = "/Manage/JoinEd";
+                } else {
+                    window.location.href = "/Manage/login";
+                }
+            })
+            $("#ActivityBtn").click(function () {
+                if (obj.UserId) {
+                    window.location.href = "/Manage/ActivityList";
+                } else {
+                    window.location.href = "/Manage/login";
+                }
+            })
+            $(".wangji").click(function () {
+                window.location.href = "/Manage/registered";
+            })
+        });
+        function request(paras) {
+            var url = location.href;
+            var paraString = url.substring(url.indexOf("?") + 1, url.length).split("&");
+            var paraObj = {}
+            for (i = 0; j = paraString[i]; i++) {
+                paraObj[j.substring(0, j.indexOf("=")).toLowerCase()] = j.substring(j.indexOf("=") + 1, j.length);
+            }
+            var returnValue = paraObj[paras.toLowerCase()];
+            if (typeof (returnValue) == "undefined") {
+                return "";
+            } else {
+                return returnValue;
+            }
+        }
+        function oBk() {
+            var codeLength = 4; //验证码的长度
+            var selectChar = new Array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I',
+                'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'); //所有候选组成验证码的字符，当然也可以用中文的
+            var codes = []
+            for (var i = 0; i < codeLength; i++) {
+                var lkl = ''
+                var charIndex = Math.floor(Math.random() * 36);
+                lkl = selectChar[charIndex];
+                codes.push(lkl)
+            }
+            var code = codes.join('')
+            //console.log(code)
+            $("#imgObj").val(code)
+            //document.getElementById("imgObj").value=code
+        }
+
+        function loginBtn() {
+            var data = {};
+            var userId = request("userID");
+            var password1 = request("password");
+            //console.log(userId);
+            //console.log(password);
+            var lkl1 = $("#imgObj").val().toLowerCase();
+            var lkl2 = $("#imgObj").val();
+            var lkl3 = $("#VPwd").val();
+            var myPhone = $("#phone").val()
+            var password = $("#mypassword").val();
+            var phonereg = /^0?1[3|4|5|8|7|6][0-9]\d{8}$/;//手机
+            //console.log(lkl1)
+            // console.log(lkl2)
+            // console.log(lkl3)
+            if (userId == null || userId == "" || password1 == null || password1 == "") {
+                //if (!phonereg.test(myPhone)) {
+                //    alert('请填写正确的手机号码')
+                //    return false;
+                //}
+                if (password.length <= 0) {
+                    alert('请输入密码')
+                    return false;
+                }
+                if (lkl3 == lkl2 || lkl3 == lkl1) {
+                    $("#VPwd").val("")
+                } else {
+                    alert('请输入正确验证码')
+                    $("#VPwd").val("")
+                    return false;
+                }
+                data.phoneNum = myPhone;
+                data.password = password;
+                data.type = 0;
+
+            } else {
+                data.phoneNum = userId;
+                data.password = password1;
+                data.type = 1;
+            }
+
+            $.ajax({
+                type: "post", url: '/Manage/UserLogin',
+                datatype: 'json',
+                data: data,
+                success: function (res) {
+                    if (res === "登陆成功") {
+                        //var _session = window.sessionStorage;
+                        //_session.setItem('userMessage', JSON.stringify(data));
+
+                        GetUser();
+                    }
+                    else {
+                        alert(res)
+                    }
+                }
+            })
+        }
+        function GetUser() {
+            var data = {};
+            $.ajax({
+                type: "post", url: '/Manage/GetUserInfo',
+                datatype: 'json',
+                data: data,
+                success: function (res) {
+                    if (res) {
+                        //console.log(res);
+                        obj = res
+                        window.location.href = "/Home/Recharge"
+                        //$("#userId").text(res.UserId)
+                        //$("#myPhone").text(res.PhoneNum)
+                    }
+                }
+            })
+        }
+
+
+    </script>
+    <script type="text/javascript">
+        var isMobile = {
+
+            Android: function () {
+                return navigator.userAgent.match(/Android/i) ? true : false;
+            },
+            BlackBerry: function () {
+                return navigator.userAgent.match(/BlackBerry/i) ? true : false;
+            },
+            iOS: function () {
+                return navigator.userAgent.match(/iPhone|iPad|iPod/i) ? true : false;
+            },
+            Windows: function () {
+                return navigator.userAgent.match(/IEMobile/i) ? true : false;
+            },
+            any: function () {
+                return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Windows());
+            },
+            PC: function () {
+                var userAgentInfo = navigator.userAgent;
+                var Agents = new Array("Android", "iPhone", "SymbianOS", "Windows Phone", "iPad", "iPod");
+                var flag = true;
+                for (var v = 0; v < Agents.length; v++) {
+                    if (userAgentInfo.indexOf(Agents[v]) > 0) {
+                        flag = false;
+                        break;
+                    }
+                }
+                return flag;
+            }
+        };
+
+        function getUrlParams(par) {
+            if (par == '')
+                return null;
+            var reg = new RegExp("(^|&)" + par + "=([^&]*)(&|$)");
+            var r = window.location.search.substr(1).match(reg);
+            if (r != null)
+                return r[2];
+
+            return null;
+        }
+
+
+
+        $(document).ready(function () {
+            $(".js-zh,.js-mm").blur(function () {
+                var txt = $(this).val();
+                if (txt == '' || txt == null) {
+                    $(this).parent('li').find('.js-tip').fadeIn(2000).fadeOut(1000);
+                    //$(this).parent('li').find('.js-tip').fadeToggle(3000);
+                }
+            }).focus(function () {
+                $(this).parent('li').find('.js-tip').hide();
+            });
+        })</script>
+</head>
+<body>
+    <!-- 此段必须要引入 -->
+    <div id="_umfp" style="display:inline;width:1px;height:1px;overflow:hidden"></div>
+    <!-- 引入结束 -->
+    <div class="p-box">
+        <div class="login-box">
+            <div class="logo"></div>
+            <div class="content">
+                <ul>
+                    <li>
+                        <input type="text" id="phone" class="js-zh ipt" placeholder="请输入账号">
+                        <div class="recharge-tip js-tip" style="display:none;">请输入账号</div>
+                    </li>
+                    <li>
+                        <input type="password" id="mypassword" class="js-mm ipt" placeholder="请输入密码">
+                        <div class="recharge-tip js-tip" style="display:none;">请输入密码</div>
+                    </li>
+                    <li>
+                        <input type="text" style="width:100%" id="VPwd" class="js-mm ipt" placeholder="验证码">
+
+                        <input type="button" style="width:92px;height:92px;position:absolute;margin-top:-90px;margin-left:110%" class="time" id="imgObj" value="">
+
+                    </li>
+                </ul>
+            </div>
+
+            <a class="login-btn" onclick="loginBtn()">登录</a>
+            <a href="/Home/register/" class="register-btn">立即注册</a>
+            <!----------------------------------版权----------------------------------->
+            @Html.Partial("footer")
+        </div>
+    </div>
+    <!-- 此段必须要引入 -->
+    <style type="text/css" class="nc-style">
+        .nc-container #nc_1_wrapper, .nc-container.tb-login #nc_1_wrapper {
+            width: 300px
+        }
+
+        .nc-container .imgCaptcha, .nc-container .clickCaptcha {
+            width: 298px;
+        }
+
+        .nc-container.tb-login .imgCaptcha, .nc-container.tb-login .clickCaptcha {
+            width: 300px;
+        }
+
+            .nc-container.tb-login .imgCaptcha .captcha-error, .nc-container.tb-login .clickCaptcha .captcha-error {
+                width: 292px;
+            }
+
+        .nc-container.tb-login .errloading, .nc-container .errloading {
+            width: 290px;
+        }
+    </style>
+    <script>
+    var nc = new noCaptcha();
+        var nc_appkey = 'FFFF00000000016860BF'; // 应用标识,不可更改
+        var nc_scene = 'login'; //场景,不可更改
+        var nc_token = [nc_appkey, (new Date()).getTime(), Math.random()].join(':');
+        var nc_option = {
+            renderTo: '#dom_id', //渲染到该DOM ID指定的Div位置
+            appkey: nc_appkey,
+            scene: nc_scene,
+            token: nc_token,
+            callback: function (data) {// 校验成功回调
+                document.getElementById('csessionid').value = data.csessionid;
+                document.getElementById('sig').value = data.sig;
+                document.getElementById('token').value = nc_token;
+                document.getElementById('scene').value = nc_scene;
+            }
+        };
+        nc.init(nc_option);</script>
+    <!-- 引入结束 -->
+    <!-- 此段必须要引入 t为小时级别的时间戳 -->
+    <style type="text/css">
+
+        .nc-container #nc_1_wrapper, .nc-container.tb-login #nc_1_wrapper {
+            width: 690px;
+        }
+
+        .nc_scale {
+            width: 650px;
+            height: 90px;
+            margin: 15px auto;
+        }
+
+        .nc-container .nc_scale span {
+            width: 80px;
+            height: 90px;
+            line-height: 90px;
+        }
+
+        .nc-container .nc_scale .scale_text {
+            height: 90px;
+            line-height: 90px;
+            font-size: 30px;
+        }
+
+        .nc-container .nc_scale .btn_ok {
+            line-height: 90px;
+            font-size: 30px;
+        }
+
+        .nc_iconfont {
+            font-size: 30px;
+        }
+    </style>
+    <!-- 引入结束 -->
+    <script>
+    var _hmt = _hmt || [];
+        (function () {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?64f9bb47cd627a8a4069b1e07b127e1f";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();</script>
+    <script></script>
+</body>
+</html>

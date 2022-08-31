@@ -1,0 +1,222 @@
+﻿@using Crazy2018_Sys_Common;
+@using Crazy2018_Sys_ViewEntity;
+@using Crazy2018_Sys_ViewEntity.Game;
+@{
+    ViewBag.Title = "金币流向日志";
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+}
+@model DataResults<GoldChangelogView>
+<style>
+    th {
+        text-align: center;
+    }
+</style>
+<div onkeydown="keyLogin(event);" class="mainbody">
+    <form id="form1" runat="server">
+        <!--导航栏-->
+        <div class="location">
+            <a href="javascript:history.back(-1);" class="back"><i></i><span>返回上一页</span></a>
+            <a href="/Home/Center" class="home"><i></i><span>首页</span></a>
+            <i class="arrow"></i>
+            <a href="/GameCore/GoldChangelog"><span>金币流向日志</span></a>
+            <i class="arrow"></i>
+            <span>金币流向日志</span>
+        </div>
+        <!--/导航栏-->
+        <!--工具栏-->
+        <div id="floatHead" class="toolbar-wrap">
+            <div class="toolbar">
+                <div class="box-wrap">
+                    <a class="menu-btn"></a>
+                    <div class="l-list">
+                        <ul class="icon-list">
+                            <li><a class="all" href="javascript:;" onclick="checkAll(this);"><i></i><span>全选</span></a></li>
+                            <li>
+                                <a id="btnDelete" class="del"><i></i><span>删除</span></a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="l-list">
+
+                        <select name="ChangeType" id="ChangeType" class="select">
+                            <option value="">-请选择-</option>
+                            @{ var data = Enum.GetValues(typeof(TableUtil.GlodToType));}
+                            @for (int i = 0; i < data.Length; i++)
+                            {
+                                if (Model.ChangeType.Equals((int)data.GetValue(i)))
+                                {
+                                    <option selected value="@((int)data.GetValue(i))">@data.GetValue(i)</option>
+                                }
+                                else
+                                {
+                                    <option value="@((int)data.GetValue(i))">@data.GetValue(i)</option>
+                                }
+                            }
+                        </select>
+                       
+                        <input name="txtStartTime" type="text" id="txtStartTime" value="@Model.starttime" class="input" onclick="laydate()">
+                        <span>至</span>
+                        <input name="txtEndTime" type="text" id="txtEndTime" value="@Model.endtime" class="input" onclick="laydate()">
+                        <input name="txtKeywords" placeholder="用户id查询" oninput="value=value.replace(/[^\d]/g,'')" type="text" id="txtKeywords" value="@Model.Keywords" class="input">
+                        <button type="button" style="height: 28px;padding: 3px 10px;background-color: lightgray;" id="lbtnSearch" class="btn btn-default btn-sm">查询</button>
+                    </div>
+
+                   
+
+                </div>
+            </div>
+        </div>
+
+        <div class="table-container">
+            <table width="100%" border="0" cellspacing="0" cellpadding="0" class="ltable">
+                <tbody>
+                    <tr style="text-align:center" class="odd_bg">
+                        <th width="5%">操作</th>
+                        <th width="7%">用户ID</th>
+                        <th align="10%">用户名称</th>
+                        <th align="5%">流向类型</th>
+                        <th align="5%">收入/支出</th>
+                        <th align="10%">流向后</th>
+                        <th align="5%">房间号</th>
+                        <th align="5%">底皮</th>
+                        <th align="5%">总手数</th>
+                        <th width="5%">下注</th>
+                        <th align="5%">创建时间</th>
+                    </tr>
+                    @foreach (var item in Model.Data)
+                    {
+                        <tr class='One'>
+                            <td align="center">
+                                <input type="hidden" name='hidId' id='hidId' value='@item.Id'>
+                                <span class='checkall' style='vertical-align: middle;'>
+                                    <input id='chkId' class='checkall' type='checkbox' name='chkId'>
+                                </span>
+                            </td>
+                            <td align="center">@item.UserId</td>
+                            <td align="center">@item.UserName</td>
+                            <td align="center">
+                                @if (item.ChangeType == 12)
+                                {
+                                    <span style="color:red">大奖类型(@item.ChangeTypeName)</span>
+                                }
+                                else
+                                {
+                                    @item.ChangeTypeName
+                                }
+                            </td>
+                            <td align="center">
+                                @if (item.Gold <= 0)
+                                {
+                                    <span style="color:green">@item.Gold</span>
+                                }
+                                else
+                                {
+                                    <span style="color:red">@item.Gold</span>
+                                }
+                            </td>
+                            <td align="center">@item.AfterGold</td>
+                            <td align="center">@item.tableId</td>
+                            <td align="center">@item.dipi</td>
+                            <td align="center">@item.HandNum</td>
+                            <td align="center">@item.gamble</td>
+                            <td align="center">@item.CreateTime</td>
+
+                        </tr>
+
+                    }
+                        <tr>
+                            <td align="center">金额总计:</td>
+                            <td align="center"><strong>@Model.TotalMoney</strong></td>
+                        </tr>
+                </tbody>
+            </table>
+
+        </div>
+        <!--/列表-->
+        <!--内容底部-->
+        <div class="line20"></div>
+        <div class="pagelist">
+            <div class="l-btns">
+                <span>显示</span><input name="txtPageNum" type="text" value="@Model.PageSize" id="txtPageNum" class="pagenum" onkeydown="return checkNumber(event);"><span>条/页</span>
+            </div>
+            <div id="PageContent" class="default">@Html.Raw(Model.InnerHtml)</div>
+            <input type="hidden" id="PageIndex" name="PageIndex" value="@Model.PageIndex" />
+        </div>
+        <!--/内容底部-->
+        <div style="width:100%;text-align: center;">
+            <span style="display: inline-block;padding: 4px 15px 0px 15px;color: #666;font-size:14px;">(注 : 搜索请数据用户ID查询)</span>
+        </div>
+    </form>
+    </div>
+    <script>
+    $(function () {
+        //GetNavList();
+        $(".pagelist").on('click', 'a', function () {
+            var PageIndex = $("#PageIndex").val();
+            var lkl2 = $(this).text();
+            if (lkl2 == "下一页»") {
+                PageIndex = parseInt(PageIndex) + 1
+            } else if (lkl2 == "«上一页") {
+                PageIndex = parseInt(PageIndex) - 1
+            } else {
+                PageIndex = lkl2
+            }
+            var ChangeType = $("#ChangeType").val();
+            var starttime = $("#txtStartTime").val();
+            var endtime = $("#txtEndTime").val();
+            window.location.href = "/GameCore/GoldChangelog?Keywords=" + $("#txtKeywords").val() + "&PageSize=" + $(this).val() + "&PageIndex=" + PageIndex + "&ChangeType=" + "&starttime=" + starttime + "&endtime=" + endtime;
+        })
+
+        $("#txtPageNum").change(function () {
+            window.location.href = "/GameCore/GoldChangelog?Keywords=" + $("#txtKeywords").val() + "&PageSize=" + $(this).val();
+        });
+        $("#lbtnSearch").click(function () {
+            var ChangeType = $("#ChangeType").val();
+            var starttime = $("#txtStartTime").val();
+            var endtime = $("#txtEndTime").val();
+            window.location.href = "/GameCore/GoldChangelog?Keywords=" + $("#txtKeywords").val() + "&PageSize=" + $("#txtPageNum").val() + "&ChangeType=" + ChangeType +  "&starttime=" + starttime + "&endtime=" + endtime;
+        });
+    })
+
+    function keyLogin(event) {
+        if (event.keyCode == 13)
+            document.getElementById("lbtnSearch").click();
+    }
+
+
+    var numID = [];//用于储存需要删除的ID
+    $("#btnDelete").click(function () {
+        numID = []
+        var num1 = {};
+        var on1 = $(".One");
+        for (var o = 0; o < on1.length; o++) {
+            var lkl3 = $(on1[o]).find(".checkall")
+            for (var ol = 0; ol < lkl3.length; ol++) {
+                //console.log(lkl3[ol].checked)
+                if (lkl3[ol].checked == true) {
+                    var lkl4 = $(on1[o]).find("#hidId").val();
+                    num1.id = lkl4
+                    numID.push(num1.id)
+
+                }
+            }
+        }
+        var a, b;
+        a = numID;
+        b = a.join(",");
+        var ids = b;
+        $.ajax({
+            url: "/GameCore/GoldChangelogDel?ids=" + ids + "",
+            type: "post",
+            contentType: "application/json",
+            dataType: "json",
+            success: function (data) {
+                eval(data);
+                var PageIndex = $("#PageIndex").val();
+                window.location.href = "/GameCore/GoldChangelog?Keywords=" + $("#txtKeywords").val() + "&PageSize=" + $("#txtPageNum").val() + "&PageIndex=" + PageIndex;
+
+            }
+        })
+    })
+
+    </script>

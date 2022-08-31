@@ -1,0 +1,217 @@
+﻿
+@{
+    Layout = null;
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,initial-scale=1.0,user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <title>活动用户</title>
+    <link href="~/scripts/artdialog/ui-dialog.css" rel="stylesheet" type="text/css" />
+    <link href="~/skin/default/style.css" rel="stylesheet" type="text/css" />
+    <link href="~/css/pagination.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="~/scripts/jquery/jquery-1.11.2.min.js"></script>
+    <script type="text/javascript" src="~/scripts/artdialog/dialog-plus-min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="~/js/laymain.js"></script>
+    <script type="text/javascript" charset="utf-8" src="~/js/common.js"></script>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <!--导航栏-->
+        <div class="location">
+            <a href="javascript:history.back(-1);" class="back"><i></i><span>返回上一页</span></a>
+            <a href="/Home/Center" class="home"><i></i><span>首页</span></a>
+            <i class="arrow"></i>
+            <a href="/GameCore/ActivityManage"><span>活动管理</span></a>
+            <i class="arrow"></i>
+            <span>活动用户</span>
+        </div>
+        <!--/导航栏-->
+        <!--工具栏-->
+        <div id="floatHead" class="toolbar-wrap">
+            <div class="toolbar">
+                <div class="l-list">
+                    <ul class="icon-list">
+                        <li><a class="add" value="新增" id="actitbtn" data-toggle="modal" data-target="#actitiModal"><i></i><span>新增</span></a></li>
+                        <li>
+                            <input type="submit" name="actitbtn" value="新增" id="actitbtn" data-toggle="modal" data-target="#actitiModal" class="btn add" >
+                        </li>
+                    </ul>
+                </div>
+
+
+            </div>
+        </div>
+        <!--/工具栏-->
+        <!--列表-->
+        <div class="table-container">
+            <input id="actitygameid" class="hidden" type="hidden" />
+            <table width="100%" border="0" cellspacing="0" cellpadding="0" class="ltable">
+                <thead>
+                    <tr class="odd_bg " >
+                        <th class="text-center">排序</th>
+                        <th class="text-center">活动名称</th>
+                        <th class="text-center">用户id</th>
+                        <th class="text-center">用户名</th>
+                    </tr>
+                </thead>
+                <tbody id="MyTbody">
+                   
+                </tbody>
+            </table>
+
+        </div>
+        <!--/列表-->
+        <!--内容底部-->
+        <div class="line20"></div>
+        <div>
+        </div>
+    </form>
+    <div class="modal fade" id="actitiModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myModalLabel">新增活动用户</h4>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal" role="form">
+                        <div class="form-group">
+                            <label for="Useridstext" class="col-sm-2 control-label">活动用户id</label>
+                            <div class="col-sm-8">
+                                <textarea class="form-control" rows="3" id="Useridstext" placeholder="按格式输入用户id"></textarea>
+                                <span style="color:red">
+                                    如：123321,321652,......126542
+                                </span>
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <button type="button" class="btn btn-primary" id="nocitysubmit">提交更改</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal -->
+    </div>
+    <script>
+        var storagefirst = window.localStorage;
+        var MyPageNum8 = storagefirst["MyPageNum8"];
+        var id = "";
+        var txtPageNum = 10;
+        var Keywords = "";
+        var PageIndex = 1;
+        if (MyPageNum8 != "" && MyPageNum8 != null) {
+            txtPageNum = MyPageNum8
+        } else {
+            txtPageNum = txtPageNum
+        }
+        $("#txtPageNum").val(txtPageNum)
+        $("#lbtnSearch").click(function () {
+            var txtKeywords = $("#txtKeywords").val();
+            Keywords = txtKeywords;
+            GetList();
+        })
+        $("#txtPageNum").change(function () {
+            txtPageNum = $("#txtPageNum").val()
+            storagefirst["MyPageNum8"] = txtPageNum
+            PageIndex = 1;
+            //console.log(txtPageNum)
+            GetList();
+        })
+        $(".pagelist").on('click', 'a', function () {
+            //var lkl = $(this).attr("href");
+            //console.log(lkl)
+            var lkl2 = $(this).text();
+            if (lkl2 == "下一页»") {
+                PageIndex = parseInt(PageIndex) + 1
+                //console.log(PageIndex)
+            } else if (lkl2 == "«上一页") {
+                PageIndex = parseInt(PageIndex) - 1
+            } else {
+                PageIndex = lkl2
+            }
+            txtPageNum = $("#txtPageNum").val()
+            GetList()
+        })
+        GetList();
+        function getURLParameter(name) {
+            return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search) || [null, ''])[1].replace(/\+/g, '%20')) || null;
+        }
+        var gameid = "";
+      
+        function GetList() {
+           
+            var bodystr = "";
+            if (getURLParameter("gameid") != "" && getURLParameter("gameid") != null) {
+                gameid = getURLParameter("gameid");
+            }
+            $("#actitygameid").val(gameid);
+            var data = {};
+            data.gameid = gameid
+            $.ajax({
+                type: "post", url: '/GameCore/GetActityUser',
+                datatype: 'json',
+                data: data,
+                success: function (res) {
+                    if (res.Data != null) {
+                        $("#MyTbody").empty();
+                        console.log(res.Data);
+                        for (var i = 0; i < res.Data.length; i++) {
+                            bodystr += "<tr>" +
+                                "<td align ='center' > " + res.Data[i].Id + "</td>" +
+                                " <td align='center'>" + res.Data[i].GameName + "</td>" +
+                                " <td align='center'>" + res.Data[i].Userid + "</td>" +
+                                " <td align='center'>" + res.Data[i].UserName + "</td>" +
+                                "</tr>"
+                        }
+                        $("#MyTbody").append(bodystr);
+
+
+
+                    }
+                }
+            })
+
+        }
+        $("body").on("click", "#DeleteBtn", function () {
+            id = $(this).find("#hidId").val();
+            //console.log(id)
+            // GameInfo()
+        })
+
+        $("#nocitysubmit").click(function () {
+          
+            var users = $("#Useridstext").val();
+          
+            var data = {};
+            data.gameid = $("#actitygameid").val();
+            data.users = users.replace(/，/g, ",").replace(/；/g, ";").replace(/;$/gi, "");
+            console.log(data);
+            $.ajax({
+                type: "post", url: '/GameCore/SaveActityUser',
+                datatype: 'json',
+                data: data,
+                success: function (res) {
+
+                    if (res.success) {
+                        if (res) {
+                            parent.alertMsg(res.msg);
+
+                        }
+                    } else {
+                        parent.alertMsg(res.msg)
+                    }
+                }
+            })
+
+        })
+    </script>
+</body>
+</html>

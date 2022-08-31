@@ -1,0 +1,166 @@
+﻿
+@{
+    ViewBag.Title = "数据统计";
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+}
+<form id="form1" runat="server">
+    <!--导航栏-->
+    <div class="location">
+        <a href="javascript:history.back(-1);" class="back"><i></i><span>返回上一页</span></a>
+        <a href="/Home/Center" class="home"><i></i><span>首页</span></a>
+        <i class="arrow"></i>
+        <a href="/Business/Statistics"><span>注册人数统计</span></a>
+        <i class="arrow"></i>
+        <span>注册统计</span>
+    </div>
+    <!--/导航栏-->
+    <!--工具栏-->
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <div class="toolbar" style="width: 100%;">
+                <div class="box-wrap">
+
+                    <div style="width:30%" class="alert alert-info">统计数据稍有延时！</div>
+                    <div class="r-list" style="margin-right: 5%">
+                        <ul>
+
+                            <li>
+                                <label for="exampleInputEmail1">月份搜索</label>
+                                <label>
+                                    <a id="lbtnSearch" class="btn-search">查询</a>
+                                    <input name="txtStartTime" type="text" id="txtStartTime" class="input"
+                                           onclick="laydate({istime: true, format: 'YYYY-MM'})">
+                                </label>
+
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div style="width:98%;margin-left:1%" class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">
+                注册统计
+            </h3>
+        </div>
+        <div class="panel-body">
+            <div style="width:100%" id="registerstatistics">
+            </div>
+            <div style="width:100%" id="registermonthstatistics">
+            </div>
+        </div>
+    </div>
+</form>
+<script>
+    $(function () {
+
+        loadonemonthtodaystatistic();
+    });
+    $("#lbtnSearch").click(function () {
+        
+        loadonemonthtodaystatistic();
+    });
+    function loadonemonthtodaystatistic() {
+        var sTime = $("#txtStartTime").val();
+
+        $.post("/GameCore/GetMonthDayStatics", { type: "2", datetime: sTime }, function (data) {
+            regstermonthstatistics(data);
+        });
+        $.post("/GameCore/NowOnlineStatics", { type: "2" }, function (data) {
+            registerstatistics(data);
+        });
+    }
+
+
+    function regstermonthstatistics(data) {
+        if (data != null) {
+          
+            var categoriesJson = data.Categories;
+            var seriesJson = data.Series;
+            var nowDate = data.NowDate;
+            $('#registermonthstatistics').highcharts({
+                title: {
+                    text: '平台月注册人数统计'
+                },
+                xAxis: {
+                    categories: categoriesJson
+                },
+                yAxis: {
+                    min: 0,
+                    title: {
+                        text: '“' + nowDate + '”月注册人数 (人)'
+                    },
+                    plotLines: [{
+                        value: 0,
+                        width: 1,
+                        color: '#808080'
+                    }]
+                },
+                tooltip: {
+                    headerFormat: '<span style="font-size:10px">' + nowDate + '-{point.key}</span><table>',
+                    pointFormat:
+                        '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                        '<td style="padding:0"><b>{point.y} 人</b></td></tr>',
+                    footerFormat: '</table>',
+                    shared: true,
+                    useHTML: true
+                },
+                series: seriesJson
+            });
+        }
+
+    }
+    function registerstatistics(data) {
+        var series = [{ name: '当日时段注册人数统计', data: [] }];
+        if (data === '') {
+            for (var i = 0; i < 24; i++) {
+                series[0].data.push(0);
+            }
+        } else {
+            var items = data.split(',');
+            $.each(items, function (itemNo, item) {
+                series[0].data.push(parseFloat(item));
+            });
+        }
+
+        $('#registerstatistics').highcharts({
+            title: {
+                text: "平台日注册人数统计"
+            },
+            xAxis: {
+                categories: [
+                    '00~01', '01~02', '02~03', '03~04', '04~05', '05~06', '06~07', '07~08',
+                    '08~09', '09~10', '10~11', '11~12', '12~13', '13~14', '14~15', '15~16',
+                    '16~17', '17~18', '18~19', '19~20', '20~21', '21~22', '22~23', '23~00'
+                ]
+            },
+            yAxis: {
+                min: 0,
+                title: {
+                    text: '注册人数(人)'
+                },
+                plotLines: [
+                    {
+                        value: 0,
+                        width: 1,
+                        color: '#808080'
+                    }
+                ]
+            },
+            tooltip: {
+                headerFormat: '<span style="font-size:10px">{point.key}时</span><table>',
+                pointFormat:
+                    '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                    '<td style="padding:0"><b>{point.y} 人</b></td></tr>',
+                footerFormat: '</table>',
+                shared: true,
+                useHTML: true
+            },
+            series: series
+        });
+
+    }
+</script>

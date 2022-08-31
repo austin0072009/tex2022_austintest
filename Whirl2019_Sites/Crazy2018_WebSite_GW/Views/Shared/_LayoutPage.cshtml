@@ -1,0 +1,214 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>活动公告-@ViewBag.Title</title>
+    <script src="~/Scripts/jquery.min.js"></script>
+    <script src="~/downpageimg/jquery-1.7.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <link href="~/css/bootstrap.min.css" rel="stylesheet" />
+    <style>
+        html, body {
+            height: 100%;
+            color: #594B41;
+        }
+
+        .imgobject {
+            object-fit: cover;
+            object-position: center;
+            position: absolute;
+            z-index: -1;
+            min-width: 100% !important;
+            min-height: 100% !important;
+        }
+
+        /*.title {
+            position: fixed;
+            top: 120px;
+        }*/
+
+        .logotop {
+            margin-left: 5%;
+            margin-right: 15%;
+            margin-top: 5%;
+            width: 90%;
+        }
+
+        .center-notice {
+            margin-left: 2%;
+            margin-right: 15%;
+            margin-top: 8%;
+            width: 96%;
+            height: 90%;
+            overflow: auto;
+            overflow-x: hidden;
+        }
+
+        .titlelogo {
+            height: 35px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .pleft {
+            text-align: left;
+            margin: 0 auto;
+        }
+
+        .pcenter {
+            text-align: center;
+            margin: 0 auto;
+        }
+
+        .font35 {
+            font-size: 35px;
+        }
+
+        .font40 {
+            font-size: 40px;
+        }
+
+        .font45 {
+            font-size: 45px;
+        }
+
+        .noticebottom {
+            text-align: center;
+            color: #A7612E;
+            font-weight: 700;
+          
+        }
+
+        .imgsize {
+            background-size: contain;
+            background-repeat: no-repeat
+        }
+        .center-notice {
+            margin-left: 6%;
+            margin-right: 15%;
+            margin-top: 8%;
+            width: 88%;
+            height: 90%;
+            overflow: auto;
+            overflow-x: hidden;
+        }
+    </style>
+    <style>
+        .center-notice::-webkit-scrollbar-track {
+            background-color: #000;
+        }
+        /* 滚动条颜色 */
+        .center-notice::-webkit-scrollbar-thumb {
+            background-color: #A86030;
+        }
+
+        .thborder tr th {
+            border: none;
+            text-align: center;
+        }
+
+        .table-striped > tbody > tr:nth-of-type(odd) {
+            background-color: #F9F5EC;
+        }
+
+        .table-striped > tbody > tr:nth-of-type(even) {
+            background-color: #F4EAE0;
+        }
+
+        .table > tbody > tr > td {
+            border-top: none;
+        }
+
+        table {
+            border-collapse: separate;
+            border-spacing: 0 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container_div">
+        <img class="img-responsive" src="../../downpageimg/NoticeImgs/fhbg.jpg" />
+        <div class=" topleft">
+            <img src="~/downpageimg/NoticeImgs/Logo.png" class="img-responsive" />
+        </div>
+        <div class=" center">
+            @RenderBody()
+
+        </div>
+        <div class=" bottomleft">
+       <div class="noticebottom">
+                <p> 339游戏运营团队</p>
+                
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+<style>
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+    /*左上角：*/
+    .container_div {
+        position: relative;
+        max-width: 1080px;
+    }
+
+    .topleft {
+        position: absolute;
+        top: 2%;
+        left: 7%;
+        height: 4%;
+        width: auto;
+    }
+        .topleft img {
+            width: auto;
+            height:auto;
+            max-width: 100%;
+            max-height: 100%;
+        }
+
+    /*右上角：*/
+    .topright {
+        position: absolute;
+        top: 0px;
+        right: 7%;
+
+    }
+
+    /*左下角：*/
+    .bottomleft {
+        position: absolute;
+        bottom: 0px;
+        left: 35%;
+      height:4.3%;
+    }
+    /*右下角：*/
+    .bottomright {
+        position: absolute;
+        bottom: 8px;
+        right: 16px;
+        font-size: 18px;
+        text-align: center;
+    }
+    /*居中：*/
+    .center {
+        position: absolute;
+        left: 0;
+        top: 7%;
+        bottom: 3%;
+        width: 100%;
+        height:90%;
+        text-align: center;
+     
+        margin-top: -9px;
+    }
+
+</style>
+
+

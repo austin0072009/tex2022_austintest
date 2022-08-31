@@ -1,0 +1,290 @@
+﻿@using Crazy2018_Sys_Common;
+@using Crazy2018_Sys_ViewEntity;
+@{
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+}
+<style>
+    th {
+        text-align: center;
+    }
+</style>
+<body onkeydown="keyLogin(event);" class="mainbody">
+    <form id="form1" runat="server">
+        <!--导航栏-->
+        <div class="location">
+            <a href="javascript:history.back(-1);" class="back"><i></i><span>返回上一页</span></a>
+            <a href="/Home/Center" class="home"><i></i><span>首页</span></a>
+            <i class="arrow"></i>
+            <a href="/Business/ChargeLogList"><span>充值管理</span></a>
+            <i class="arrow"></i>
+            <span>充值日志列表</span>
+        </div>
+        <!--/导航栏-->
+        <!--工具栏-->
+        <div id="floatHead" class="toolbar-wrap">
+            <div class="toolbar">
+                <div class="box-wrap">
+                    <a class="menu-btn"></a>
+                    <div class="l-list">
+                        <ul class="icon-list">
+                            <li><a onclick="ExportsearchData();" class="channel"><i></i><span>导出</span></a></li>
+                        </ul>
+
+
+                        <select name="selectRobot" id="selectRobot" class="select">
+                            <option value="">全部</option>
+                            <option value="1">蚂蚁支付宝</option>
+                            <option value="2">蚂蚁微信</option>
+                            <option value="3">蚂蚁银联</option>
+                            <option value="4">支付宝转账跑分</option>
+                            <option value="5">支付宝H5转卡</option>
+                            <option value="6">支付宝扫码</option>
+                            <option value="7">支付宝原生</option>
+                            <option value="8">客服上分</option>
+                            <option value="9">客服下分</option>
+
+                            <option value="10">LB支付</option>
+                            <option value="11">聚合支付宝H5</option>
+                            <option value="12">捷士达支付宝</option>
+                            <option value="13">捷士达微信</option>
+                            <option value="14">捷士达银联快捷</option>
+                            <option value="15">捷士达银联扫码</option>
+                            <option value="16">捷士达在线网银</option>
+                        </select>
+                        用户类型:
+                        <select name="isRobot" id="isRobot" class="select">
+                            <option value="-1">-不限-</option>
+                            <option value="1">机器人</option>
+                            <option value="0">普通用户</option>
+                        </select>
+                        时间范围:
+                        <input name="txtStartTime" type="text" id="txtStartTime" class="input" onclick="laydate()">
+                        <span>至</span>
+                        <input name="txtEndTime" type="text" id="txtEndTime" class="input" onclick="laydate()">
+                        是否成功
+                        <select name="Rtype" id="Rtype" class="select">
+                            <option value="-1">全部</option>
+                            <option value="1">成功</option>
+                            <option value="0">失败</option>
+                        </select>
+
+                        <input name="txtKeywords" placeholder="用户id查询" oninput="value=value.replace(/[^\d]/g,'')" type="text" id="txtKeywords" class="input">
+                        <button type="button" style="height: 28px;padding: 3px 10px;background-color: lightgray;" id="lbtnSearch" class="btn btn-default btn-sm">查询</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!--/工具栏-->
+        <!--列表-->
+        <div class="table-container">
+
+            <table width="100%" border="0" cellspacing="0" cellpadding="0" class="ltable">
+                <thead>
+                    <tr class="odd_bg">
+                        <th>用户昵称</th>
+                        <th>充值时间</th>
+                        <th>充值数量</th>
+                        <th>充值通道</th>
+                        <th>订单号</th>
+                        <th>平台订单号</th>
+                        <th>状态</th>
+                        <th>平台状态</th>
+                        <th>充值用户ID</th>
+                        <th>备注</th>
+                    </tr>
+                </thead>
+                <tbody id="MyTbody"></tbody>
+                <tfoot id="tbfoot">
+                    <tr>
+                        <td align='center'>条件总计：</td>
+
+                        <td align='center'></td>
+                        <td align='center'><span id="zj"></span></td>
+                        <td align='center'></td>
+
+                        <td align='center'></td>
+
+                        <td align='center'></td>
+                    </tr>
+                </tfoot>
+            </table>
+
+        </div>
+        <!--/列表-->
+        <!--内容底部-->
+        <div class="line20"></div>
+        <div class="pagelist">
+            <div class="l-btns">
+                <span>显示</span><input name="txtPageNum" type="text" id="txtPageNum" class="pagenum"><span>条/页</span>
+            </div>
+            <div id="PageContent" class="default">
+
+            </div>
+        </div>
+        <!--/内容底部-->
+        <div style="width:100%;text-align: center;">
+            <span style="display: inline-block;padding: 4px 15px 0px 15px;color: #666;font-size:14px;">(注 :检索条件 1.用户ID(输全))</span>
+        </div>
+    </form>
+    <script>
+        var storagefirst = window.localStorage;
+        var MyPageNum11 = storagefirst["MyPageNum11"];
+        var lweq = $("#selectRobot").val();
+        var Keywords = ""
+        var PageIndex = 1;
+        var txtPageNum = 15;
+        var isrobot = $("#isrobot").val();
+        var starttime = "";
+        var endtime = "";
+        var Rtype = -1;
+        var isExport = 0;
+
+        if (MyPageNum11 != "" && MyPageNum11 != null) {
+            txtPageNum = MyPageNum11
+        } else {
+            txtPageNum = txtPageNum
+        }
+        $("#txtPageNum").val(txtPageNum);
+        GetList(); ZJ();
+        $("#lbtnSearch").click(function () {
+            Keywords = $("#txtKeywords").val();
+            txtPageNum = $("#txtPageNum").val();
+            starttime = $("#txtStartTime").val();
+            endtime = $("#txtEndTime").val();
+            Rtype = $("#Rtype").val();
+            isrobot = $("#isRobot").val();
+            PageIndex = 1;
+            GetList(); ZJ();
+        })
+        $("#txtPageNum").change(function () {
+            Keywords = $("#txtKeywords").val();
+            lweq = $("#selectRobot").val();
+            txtPageNum = $("#txtPageNum").val()
+            storagefirst["MyPageNum11"] = txtPageNum
+            PageIndex = 1;
+            isrobot = $("#isRobot").val();
+            GetList();
+        })
+        $("#selectRobot").change(function () {
+            lweq = $("#selectRobot").val();
+            Keywords = $("#txtKeywords").val();
+            txtPageNum = $("#txtPageNum").val();
+            PageIndex = 1;
+            GetList(); ZJ();
+        })
+        function keyLogin(event) {
+            if (event.keyCode == 13)
+                document.getElementById("lbtnSearch").click();
+        }
+        function ExportsearchData() {
+            isExport = 1;
+            var starttime = $("#txtStartTime").val();
+            var endtime = $("#txtEndTime").val();
+            var Rtype = $("#Rtype").val();
+            isrobot = $("#isRobot").val();
+            lweq = $("#selectRobot").val();
+
+            window.open("/Business/GetChargeLogExportData?PageIndex=" + $("#PageIndex").val() + "&PageSize=" + $("#txtPageNum").val() + "&Keywords=" + $("#txtKeywords").val() + "&starttime=" + starttime + "&endtime=" + endtime + "&isExport=" + isExport + "&Rtype=" + Rtype + "&selectKeywords=" + lweq + "&isRobot=" + isrobot);
+        }
+        //条件总计
+        function ZJ() {
+            var data = {};
+            data.Keywords = Keywords;
+            data.types =  lweq;
+            data.starttime = starttime;
+            data.endtime = endtime;
+            data.Rtype = Rtype;
+            data.isRobot = isrobot;
+            $.ajax({
+                type: "post", url: '/Business/ChargeZj',
+                datatype: 'json',
+                data: data,
+                success: function (res) {
+                   // alert(res);
+                    $("#zj").html(res);
+
+                }
+            })
+        }
+        function GetList() {
+            var data = {};
+            data.PageIndex = PageIndex;
+            data.PageSize = txtPageNum;
+            data.Keywords = Keywords;
+            data.selectKeywords = lweq;
+            data.starttime = starttime;
+            data.endtime = endtime;
+            data.isRobot = isrobot;
+            data.Rtype = Rtype;
+            $("#MyTbody").empty();
+            var str = $("#MyTbody").html();
+            $.ajax({
+                type: "post", url: '/Business/GetChargeLogData',
+                datatype: 'json',
+                data: data,
+                success: function (res) {
+                   
+                    if (res.Data != null) {
+                        if (res.Data.length > 0) {
+                            var score = 0;
+                            for (var i = 0; i < res.Data.length; i++) {
+                                score += res.Data[i].Money;
+                                str += "<tr>" +
+                                    " <td align='center'>" + res.Data[i].UserName + "</td>" +
+                                    "<td align='center'>" + res.Data[i].CreatTime + "</td>" +
+                                    "<td align='center'>" + res.Data[i].Money + "</td>" +
+                                    "<td align='center'>" + res.Data[i].RechargeType + "</td>" +
+                                    "<td align='center'>" + res.Data[i].OrderNum + "</td>" +
+                                    "<td align='center'>" + res.Data[i].CentreOrderNum + "</td>" +
+                                    "<td align='center'>" + res.Data[i]._orderState + "</td>" +
+                                    "<td align='center'>" + res.Data[i]._businessOrderState + "</td>" +
+                                    "<td align='center'>" + res.Data[i].FromUserid + "</td>" +
+                                    "<td align='center'>" + res.Data[i].Remark + "</td>" +
+                                    "</tr>"
+
+                            }
+                            str += "<tr>" +
+                                " <td align='center'>页总计：</td>" +
+                                "<td align='center'></td>" +
+                                "<td align='center'>" + score + "</td>" +
+                                "<td align='center'></td>" +
+                                "<td align='center'></td>" +
+                                "<td align='center'></td>" +
+                                "</tr>"
+                            $('#MyTbody').append(str);
+
+                            var sthtml = $("#PageContent").html();
+                            $("#PageContent").empty();
+                            if (res.InnerHtml.length > 0) {
+                                sthtml = res.InnerHtml
+                                $('#PageContent').append(sthtml);
+                            }
+                        } else {
+                            eval(res)
+                        }
+
+
+                    } else {
+                        eval(res)
+                    }
+                }
+            })
+        }
+        $("#PageContent").on("click", "a", function () {
+            var lkl2 = $(this).text();
+            if (lkl2 == "下一页»") {
+                PageIndex = parseInt(PageIndex) + 1
+            } else if (lkl2 == "«上一页") {
+                PageIndex = parseInt(PageIndex) - 1
+            } else {
+                PageIndex = lkl2
+            }
+            lweq = $("#selectRobot").val();
+            Keywords = $("#txtKeywords").val();
+            txtPageNum = $("#txtPageNum").val();
+            GetList();
+        })
+
+    </script>
+</body>

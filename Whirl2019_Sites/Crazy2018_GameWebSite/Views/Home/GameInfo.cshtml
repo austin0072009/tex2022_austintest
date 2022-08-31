@@ -1,0 +1,211 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+
+}
+
+
+<!-- 頁面內容區 -->
+<div class=" content_info">
+    <div class="container">
+        <div class="img-100" id="gameimg">
+            <div class="game_info_image" style="background-image: url(../../image/1.png);"></div>
+        </div>
+        <div class="game_info" id="gameinfo">
+            <div class="title-group" >
+
+
+                <h4 class="fz-A">冲锋野牛</h4>
+                <a href="http://jiligames.com/plusplayer/entranceplus#game" class="btn-more">
+                    <span>浏览其他游戏</span>
+                </a>
+            </div>
+            <p>
+                「免费游戏局数无上限、百搭加倍层层加！」
+                除了百搭赢分加倍，免费局数累积更是无上限，满满奖金立刻带着走！
+            </p>
+            <div class="box_btn_container">
+                <a href="https://uat-wbgame.dominowork.com/bfs/?ssoKey=6c6521680ca42c907a579b39929b64cab8751f2c&lang=zh-CN&demo=true&gameId=47&loginFrom=wb-gaming&gs=moc.semagilij.omed-tols&domain_platform=moc.semagilij.omed-tols&be=semagilij" target="_self" class="btn_link_yellow col-3" style="line-height: 43px; min-width: 150px; margin-top: 10px;">
+                    <span>立即试玩</span>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="spec-wrap" id="gamewrap">
+        <div class="wrap">
+            <div class="spec">
+                <ul>
+                    <li>
+                        <div>游戏类型</div>
+
+
+                        <div>老虎机</div>
+                    </li>
+                    <li>
+                        <div>发行时间</div>
+                        <div> 2020</div>
+                    </li>
+                    <li>
+                        <div>最大倍数</div>
+                        <div>  4000倍</div>
+                    </li>
+                    <li>
+                        <div>游戏特色</div>
+                        <div>
+                            <ul>
+                                ● 4x6盘面、4096种连线方式
+                                <br>● 高连线数，轻松连线拿大奖
+                                <br>● 免费游戏无限累积免费局数，搭配百搭加倍豪爽送
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <div>支援平台</div>
+                        <div class="platform">
+
+                            Window / Andriod / Mac / HTML5
+                        </div>
+                    </li>
+                    <li>
+                        <div>支援语系</div>
+                        <div class="lang-support">
+                            简体中文 / 繁體中文 / English / ไทย / Tiếng việt / Bahasa Indonesia
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="box_btn_container">
+        <a href="/Home/index" target="_self" class="btn_link btn-play col-3" style="line-height: 43px; min-width: 150px; margin-top: 10px;">
+            <span>回上一页</span>
+        </a>
+    </div>
+</div>
+
+<script>
+    GetGameInfo();
+     function getURLParameter(name) {
+                return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search) || [null, ''])[1].replace(/\+/g, '%20')) || null;
+    }
+
+    ///获取游戏信息
+
+    function GetGameInfo() {
+
+        var gameid = getURLParameter("gameid");
+        var data = {};
+        data.gameid = gameid;
+      
+        var imgstr = "";
+        var infostr = "";
+        var contstr = "";
+        $.ajax({
+            url: "/Home/GetGameInfo",
+            type: "Post",
+            dataType: "json",
+            data: data,
+            success: function (data) {
+
+                $('#gameimg').empty();
+                $('#gameinfo').empty();
+                $('#gamewrap').empty();
+                if (data) {
+                    console.log(data);
+                    if (data.icon == null || data.icon == "") {
+                        imgstr = "<div class='game_info_image' style='background-image: url(../../image/gameicon_loading.jpg);'></div>";
+
+                    } else {
+                        imgstr = "<div class='game_info_image' style='background-image: url(\"http://106.13.207.246:81/fordlc/icon\/" + data.icon + "\");'></div>";
+
+                    }
+                    infostr = "   <div class='title-group'>" +
+                        " <h4 class='fz-A'>" + data.name + "</h4>" +
+                        " <a href='/Home/index' class='btn-more'>" +
+                        "  <span>浏览其他游戏</span>" +
+                        " </a>" +
+                        " </div>" +
+                        " <p>" +data.desc+
+                        "</p>" +
+                        "  <div class='box_btn_container'>" +
+                        "  <a href='javascript:void()'  onclick=showgame('" + data.gameurl + "') target='_self' class='btn_link_yellow col-3' style='line-height: 43px; min-width: 150px; margin-top: 10px;'>" +
+                        "  <span>立即试玩</span>" +
+                        "  </a>" +
+                        "</div>";
+                    contstr = "  <div class='wrap'>"+
+                        "<div class='spec'><ul>"+
+                        "<li>" +
+                        "  <div>游戏类型</div>" +
+                        " <div>老虎机</div>" +
+                        "   </li>" +
+                        " <li>" +
+                        "<div>发行时间</div>" +
+                        "<div>2020</div>" +
+                        "</li>" +
+                        "<li>" +
+                        "<div>最大倍数</div>" +
+                        "<div>4000倍</div>" +
+                        "</li>" +
+                        "<li>" +
+                        "<div>游戏特色</div>" +
+                        "<div>" +
+                        "<ul>" +
+                        "●4x6盘面、4096种连线方式" +
+                        "<br>●高连线数，轻松连线拿大奖" +
+                        "<br>●免费游戏无限累积免费局数，搭配百搭加倍豪爽送" +
+                        "</ul>" +
+                        "</div>" +
+                        "</li>" +
+                        "<li>                                                    " +
+                        "<div>支援平台</div>                                 " +
+                        "<div class='platform'>" +
+
+                        "Window / Andriod / Mac / HTML5" +
+                        "</div>" +
+                        "</li>" +
+                        " <li>" +
+                        " <div>支援语系</div>" +
+                        "<div class='lang-support'>" +
+                        "   简体中文 / 繁體中文 / English / ไทย / Tiếng việt / Bahasa Indonesia" +
+                        " </div>" +
+                        "  </li></ul> </div></div>";
+
+
+                    $('#gameimg').append(imgstr);
+                    $('#gameinfo').append(infostr);
+                    $('#gamewrap').append(contstr);;
+
+                } else {
+                    var selopt = "<p>无数据</p>";
+
+                    $('#gameinfo').append(selopt);
+                }
+            }
+        });
+    }
+    function showgame(url) {
+
+        var data = {};
+        $.ajax({
+            type: "post", url: '/Home/GetUser',
+            datatype: 'json',
+            data: data,
+            success: function (res) {
+                if (res.username != "") {
+
+                    var str = url + "?param1=" + res.username + "&param2=" + res.pwd;
+                    console.log(str);
+
+                    window.location.href = url + "?param1=" + res.username + "&param2=" + res.pwd;
+                }
+                else {
+
+                    loginshow();
+                }
+
+            }
+        });
+    }
+</script>
+

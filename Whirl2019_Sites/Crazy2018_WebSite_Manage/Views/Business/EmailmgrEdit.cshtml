@@ -1,0 +1,112 @@
+﻿
+@{
+    ViewBag.Title = "发送邮件";
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+}
+    <script type="text/javascript">
+        $(function () {
+            //初始化表单验证
+            $("#form1").initValidform();
+        });
+
+        function SubmitForm()
+        {
+
+            $.ajax({
+                type: "post", url: '/Business/SubmitForm',
+                datatype: 'json',
+                data: $("#form1").serialize(),
+                success: function (res) {
+                    if (res.Code == 0) {
+                        layer.msg('提交成功！', { icon: 4 });
+                        document.getElementById('form1').reset();
+                    } else {
+                        layer.msg(res.Message, { icon: 5 });
+                    }
+                }
+            });
+        }
+
+
+
+
+    </script>
+    <div class="mainbody">
+        <form id="form1" method="post">
+            <!--导航栏-->
+            <div class="location">
+                <a href="/Business/EmailmgrList" class="back"><i></i><span>返回列表页</span></a>
+                <a href="/Home/Center" class="home"><i></i><span>首页</span></a>
+                <i class="arrow"></i>
+                <a href="/Business/EmailmgrList"><span>邮件管理</span></a>
+                <i class="arrow"></i>
+                <span>发送邮件</span>
+            </div>
+            <div class="line10"></div>
+            <!--/导航栏-->
+            <!--内容-->
+            <div id="floatHead" class="content-tab-wrap">
+                <div class="content-tab">
+                    <div class="content-tab-ul-wrap">
+                        <ul>
+                            <li><a class="selected" href="javascript:;">发送邮件内容</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-content">
+                <dl>
+                    <dt>标题</dt>
+                    <dd>
+                        <input name="Title" type="text" id="Title" class="input normal" datatype="*2-20" nullmsg="请设置标题" errormsg="标题范围在2-120位之间" sucmsg=" " style="width:495px;">
+                        <span class="Validform_checktip">*</span>
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>内容</dt>
+                    <dd>
+                        <textarea name="Content" rows="10" cols="20" id="Content" class="input normal" datatype="*" nullmsg="请设置内容" errormsg="内容范围在2-200位之间" sucmsg=" " style="width:493px;"></textarea>
+                        <span class="Validform_checktip">*</span>
+                    </dd>
+                </dl>
+
+                <dl>
+                    <dt>金币数量</dt>
+                    <dd>
+                        <input name="Coin" type="text" value="0" id="Coin" class="input normal" datatype="n" nullmsg="请输入数量" errormsg="请输入正确数字" sucmsg=" " style="width:495px;">
+                        <span class="Validform_checktip">*</span>
+                    </dd>
+                </dl>
+                @*<dl>
+                    <dt>钻石数量</dt>
+                    <dd>
+                        <input name="Diamond" type="text" value="0" id="Diamond" class="input normal" datatype="n" nullmsg="请输入数量" errormsg="请输入正确数字" sucmsg=" " style="width:495px;">
+                        <span class="Validform_checktip">*</span>
+                    </dd>
+                </dl>*@
+                <dl>
+                    <dt>用户ID</dt>
+                    <dd>
+                        <input name="sUserIds" type="text" id="sUserIds" class="input normal" sucmsg=" " style="width:495px;">
+                        <span class="Validform_checktip">例:1380552,1380553</span>
+                    </dd>
+                </dl>
+
+            </div>
+            <!--/内容-->
+            <!--工具栏-->
+            @*<div class="page-footer">
+                <div class="btn-wrap">
+                    <asp:Button ID="btnSubmit" runat="server" Text="发送邮件" CssClass="btn" OnClick="btnSubmit_Click" />
+                    <input name="btnReturn" type="button" value="返回上一页" class="btn yellow" onclick="javascript: history.back(-1);" />
+                </div>
+            </div>*@
+            <div class="page-footer">
+                <div class="btn-wrap" style="position: static;">
+                    <input type="button" name="btnSubmit" value="发送邮件" onclick="SubmitForm()" id="btnSubmit" class="btn">
+                    <input name="btnReturn" type="button" value="返回上一页" class="btn yellow" onclick="javascript: history.back(-1);">
+                </div>
+            </div>
+            <!--/工具栏-->
+        </form>
+        </div>

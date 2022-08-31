@@ -1,0 +1,323 @@
+﻿<!DOCTYPE html>
+<!-- saved from url=(0026)http://m.91y.com/register/ -->
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=750,target-densitydpi=device-dpi,user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <title>游戏中心</title>
+    <link type="text/css" href="~/91Resources/css/nc.css?t=1487563853054" rel="stylesheet" disabled="">
+    <link href="~/91Resources/css/91y_phone.css" rel="stylesheet" type="text/css">
+    <link href="~/91Resources/css/91y_public.css" rel="stylesheet" type="text/css">
+
+    <script type="text/javascript" src="~/91Resources/js/nc.js"></script>
+
+    <script language="javascript" src="~/91Resources/js/jquery-1.7.1.min.js"></script>
+    <script type="text/javascript">
+        var obj = {};
+        $(function () {
+            if ($(document.body).outerWidth(true) > 641) {
+                $("#phoneorpc").css("overflow", "visible");
+            } else {
+                $("#phoneorpc").css("overflow", "hidden")
+            }
+            GetUser();
+            $("#imgObj").click(function () {
+                var _this = this
+
+                var phone = $("#phone").val();
+                var phonereg = /^0?1[3|4|5|8|7|6][0-9]\d{8}$/;//手机
+                if (!phonereg.test(phone)) {
+                    alert('请填写正确的手机号码')
+                    return false;
+
+                }
+
+                var data = {};
+                data.phoneNum = phone;
+                $.ajax({
+                    type: "post", url: '/Manage/SendCode',
+                    datatype: 'json',
+                    data: data,
+                    success: function (res) {
+
+                        if (res) {
+                            if (res != "手机号码不正确") {
+                                if (res != "当前手机号码已经注册") {
+                                    if (res != "发送失败") {
+                                        settime(_this);
+                                    } else {
+                                        alert(res)
+                                    }
+                                } else {
+                                    alert(res)
+                                }
+                            } else {
+                                alert(res)
+                            }
+                        } else {
+                            alert(res)
+                        }
+                    }
+                })
+            })
+            $("#loginBtn").click(function () {
+                //var lkl1 = $("#imgObj").val().toLowerCase();
+                //var lkl2=$("#imgObj").val()
+                var verification = $("#VPwd").val()
+                var myPhone = $("#phone").val()
+                var password = $("#mypassword").val();
+                var passwordreg = /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{8,16}$/;
+                var phonereg = /^0?1[3|4|5|8|7|6][0-9]\d{8}$/;//手机
+                var recommend = $("#recommend").val() //获取推荐码推荐码
+                if (!phonereg.test(myPhone)) {
+                    alert('请填写正确的手机号码')
+                    return false;
+                }
+                if (password.length <= 0) {
+                    alert('请输入密码')
+                    return false;
+                }
+                if (recommend.length <= 0) {
+                    alert('请输入推荐码')
+                    return false;
+                }
+                if (recommend.length < 7) {
+                    alert('请输入正确的7位邀请码')
+                    return false;
+                }
+                if (!passwordreg.test(password)) {
+                    alert('密码格式错误，密码由8-16位数字+字母组成')
+                    return false;
+                }
+                if (verification.length <= 0) {
+                    alert("请填写验证码")
+                    return false;
+                }
+                var data = {};
+                data.Phone = myPhone;
+                data.Verification = verification;
+                data.Password = password;
+                data.recommend = recommend;
+                $.ajax({
+                    type: "post", url: '/Manage/RegisterCommit',
+                    datatype: 'json',
+                    data: data,
+                    success: function (res) {
+                        if (res) {
+                            if (res === "注册成功") {
+                                alert("注册成功")
+                                window.location.href = "/Manage/login";
+                            }
+                            else {
+                                alert(res)
+                            }
+                        }
+                    }
+                })
+            });
+            $("#user").click(function () {
+                //var _sess = window.sessionStorage;
+                //var userMessage = JSON.parse(_sess.getItem("userMessage"));
+                if (obj.UserId) {
+                    window.location.href = "/Manage/userIfo"
+                } else {
+                    window.location.href = "/Manage/login"
+                }
+            })
+            $("#chonzhi").click(function () {
+                //var _sess = window.sessionStorage;
+                //var userMessage = JSON.parse(_sess.getItem("userMessage"));
+                if (obj.UserId) {
+                    window.location.href = "/Manage/RechargePage";
+                } else {
+                    window.location.href = "/Manage/login";
+                }
+            })
+            $("#rewardBtn").click(function () {
+                //var _sess = window.sessionStorage;
+                //var userMessage = JSON.parse(_sess.getItem("userMessage"));
+                if (obj.UserId) {
+                    window.location.href = "/Manage/JoinEd";
+                } else {
+                    window.location.href = "/Manage/login";
+                }
+            })
+            $("#ActivityBtn").click(function () {
+                if (obj.UserId) {
+                    window.location.href = "/Manage/ActivityList";
+                } else {
+                    window.location.href = "/Manage/login";
+                }
+            })
+        });
+        function GetUser() {
+            var data = {};
+            $.ajax({
+                type: "post", url: '/Manage/GetUserInfo',
+                datatype: 'json',
+                data: data,
+                success: function (res) {
+                    if (res) {
+                        //console.log(res);
+                        obj = res
+                        //window.location.href = "/Manage/userIfo"
+                        //$("#userId").text(res.UserId)
+                        //$("#myPhone").text(res.PhoneNum)
+                    }
+                }
+            })
+        }
+        var countdown = 60;
+
+        function settime(obj) {
+            if (countdown == 0) {
+                obj.removeAttribute("disabled");
+                obj.value = "发送验证码";
+                countdown = 60;
+                return;
+            } else {
+                obj.setAttribute("disabled", true);
+                obj.value = "(" + countdown + ")后重发";
+                countdown--;
+            }
+            setTimeout(function () {
+                settime(obj)
+            }, 1000)
+        }
+    </script>
+</head>
+<body>
+    <!-- 此段必须要引入 -->
+    <div id="_umfp" style="display:inline;width:1px;height:1px;overflow:hidden"></div>
+    <!-- 引入结束 -->
+    <div class="p-box">
+        <div class="login-box">
+            <div class="logo"></div>
+            <!--第一步-->
+            <div class="content js-I">
+                <ul>
+                    <li>
+                        <input type="text" id="phone" class="ipt js-click" placeholder="请输入11位手机号码">
+                        <div class="recharge-tip js-tip" style="display:none;">请输入11位手机号码</div>
+                    </li>
+                    <li>
+                        <input type="password" id="mypassword" class="ipt js-click" placeholder="请输入8-16位字符以上的密码">
+                        <div class="recharge-tip js-tip" style="display:none;">请输入8-16个字符的字母、数字、特殊符号的组合</div>
+                    </li>
+                    <li>
+                        <input type="text" id="recommend" class="ipt js-click" placeholder="请输入推荐码">
+                        <div class="recharge-tip js-tip" style="display:none;">请输入推荐码</div>
+                    </li>
+                    <li>
+                        <input type="text"  id="VPwd" class="ipt yzm js-click" placeholder="请入输验证码">
+                        <input type="button" style="float:right" id="imgObj" class="ipt-btn" value="获取验证码">
+                        <div class="recharge-tip js-tip" style="display:none;">请输入短信验证码</div>
+                    </li>
+                    
+                </ul>
+            </div>
+            <a class="login-btn" id="loginBtn">注册</a>
+            <!--第一步end-->
+          
+       
+            
+            @*<a id="registerBtn" class="login-btn" style="display:none;" onclick="register()">提交</a>
+            <div class="agreement">
+                <p><em id="fw"></em>我已阅读并接受<a href="">《服务条款》</a></p>
+            </div>*@
+        </div>
+        <!----------------------------------版权----------------------------------->
+        @Html.Partial("footer")
+    </div>
+    <!-- 此段必须要引入 -->
+    <style type="text/css" class="nc-style">
+        .nc-container #nc_1_wrapper, .nc-container.tb-login #nc_1_wrapper {
+            width: 300px
+        }
+
+        .nc-container .imgCaptcha, .nc-container .clickCaptcha {
+            width: 298px;
+        }
+
+        .nc-container.tb-login .imgCaptcha, .nc-container.tb-login .clickCaptcha {
+            width: 300px;
+        }
+
+            .nc-container.tb-login .imgCaptcha .captcha-error, .nc-container.tb-login .clickCaptcha .captcha-error {
+                width: 292px;
+            }
+
+        .nc-container.tb-login .errloading, .nc-container .errloading {
+            width: 290px;
+        }
+    </style>
+    <script>var nc = new noCaptcha();
+    var nc_appkey = 'FFFF00000000016860BF'; // 应用标识,不可更改
+    var nc_scene = 'register'; //场景,不可更改
+    var nc_token = [nc_appkey, (new Date()).getTime(), Math.random()].join(':');
+    var nc_option = {
+        renderTo: '#dom_id', //渲染到该DOM ID指定的Div位置
+        appkey: nc_appkey,
+        scene: nc_scene,
+        token: nc_token,
+        callback: function (data) {// 校验成功回调
+            document.getElementById('csessionid').value = data.csessionid;
+            document.getElementById('sig').value = data.sig;
+            document.getElementById('token').value = nc_token;
+            document.getElementById('scene').value = nc_scene;
+        }
+    };
+    nc.init(nc_option);</script>
+    <!-- 引入结束 -->
+    <!-- 此段必须要引入 t为小时级别的时间戳 -->
+    <style type="text/css">
+
+        .nc-container #nc_1_wrapper, .nc-container.tb-login #nc_1_wrapper {
+            width: 690px;
+        }
+
+        .nc_scale {
+            width: 650px;
+            height: 90px;
+            margin: 15px auto;
+        }
+
+        .nc-container .nc_scale span {
+            width: 80px;
+            height: 90px;
+            line-height: 90px;
+        }
+
+        .nc-container .nc_scale .scale_text {
+            height: 90px;
+            line-height: 90px;
+            font-size: 30px;
+        }
+
+        .nc-container .nc_scale .btn_ok {
+            line-height: 90px;
+            font-size: 30px;
+        }
+
+        .nc_iconfont {
+            font-size: 30px;
+        }
+    </style>
+    <!-- 引入结束 -->
+    <script>var _hmt = _hmt || [];
+    (function () {
+        var hm = document.createElement("script");
+        hm.src = "//hm.baidu.com/hm.js?64f9bb47cd627a8a4069b1e07b127e1f";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();</script>
+    <script></script>
+</body>
+</html>

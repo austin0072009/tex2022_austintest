@@ -1,0 +1,171 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<HTML>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="format-detection" content="telephone=no">
+    <meta id="viewport" name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=no,target-densitydpi=medium-dpi" />
+    <link rel="stylesheet" href="~/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/css/MyBrokerage20171206.css">
+    <link rel="stylesheet" href="~/css/public.css">
+    <script src="~/js/jquery-1.11.2.min.js"></script>
+    <script src="~/js/public.js"></script>
+    <title>我的佣金</title>
+</head>
+
+<body style="position:relative;">
+    <div class="bgheight">
+        @*<div class="BntContBox">
+                <div class="MyIdBtn" id="MyCodeBtn">我的二维码</div>
+                <div class="MyIdBtn" id="MyProxyBtn">代理记录</div>
+                <div class="MyIdBtn MyIdBtn2" id="MyBrokerageBtn">我的佣金</div>
+            </div>*@
+        <div class="ContBox">
+            <div class="content">
+                <span>已领取:</span>
+                <span id="HistoryMoney"></span>
+            </div>
+            <div class="content1">
+                <div class="content1Img">
+                    <img src="~/img/jinbi.png" alt="Alternate Text" />
+                </div>
+                <div class="unaccalimed">
+                    <span id="MyMoney"></span>&nbsp;<span>未领取</span>
+                </div>
+                @*<span>已领取:</span>
+                    <span id="HistoryMoney"></span>*@
+            </div>
+            <div class="content3">
+                <span>总佣金:</span>
+                <span id="AllMoney"></span>
+            </div>
+            <div class="BtnBox">
+                <div class="ContBtn SeekBox2">
+                    <img src="~/img/linqu.png" alt="Alternate Text" />
+                </div>
+            </div>
+            <div class="content4">
+                领取规则：不足100金币不能领取,推荐不足三个好友不能领取
+            </div>
+            @*<div class="BrokerageCont">
+                    <div class="BrokerageBox">
+                        <div class="content">
+                            <span>总佣金:</span>
+                            <span id="AllMoney"></span>
+                        </div>
+                        <div class="content1">
+                            <span>已领取:</span>
+                            <span id="HistoryMoney"></span>
+                        </div>
+                        <div class="content1">
+                            <span>未领取:</span>
+                            <span id="MyMoney"></span>
+                        </div>
+                        <div class="content2">
+                            <div class="receiveCont">
+                                <div class="InputBox">
+                                    <input type="number" name="name" id="MyAmount" placeholder="剩余可领取佣金为4,000.00" />
+                                </div>
+                                <div class="SeekBox2 btn btn-primary">领取佣金</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>*@
+        </div>
+    </div>
+    <script>
+        var MyAmount = null;
+        //var userId = null;
+        //function getURLParameter(name) {
+        //    return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search) || [null, ''])[1].replace(/\+/g, '%20')) || null;
+        //}
+        //$("#MyProxyBtn").click(function () {
+        //    window.location.href = "/Game/MyProxy";
+        //})
+        //$("#MyCodeBtn").click(function () {
+        //    window.location.href = "/Game/MyCode";
+        //})
+
+        GetIonfo()
+        function GetIonfo() {
+            var data = {};
+            $.ajax({
+                type: "post", url: '/Game/GetUserAgentInfo',
+                datatype: 'json',
+                data: data,
+                async: true,
+                beforeSend: function () {
+                    load2()
+                    //load();
+                },
+                complete: function () {
+                    loadEnd2()
+                    //loadEnd();
+                },
+                success: function (res) {
+                    console.log(res)
+                    if (res.Code == 0 || res.Code == "0") {
+                        var allGold = res.Data.HistoryGold + res.Data.Gold
+                        $("#AllMoney").text(allGold)
+                        $("#HistoryMoney").text(res.Data.HistoryGold)
+                        $("#MyMoney").text(res.Data.Gold)
+                    } else {
+                        Bomb2("获取数据失败", 1500);
+                    }
+                }
+            })
+        }
+        $(".SeekBox2").click(function () {
+            MyAmount =$("#MyMoney").text();
+            //userId = getURLParameter("userId")
+            //console.log(MyMoney)
+            if (MyAmount >= 100) {
+               Receive()
+            } else {
+                Bomb2("最低领取100", 1500);
+            }
+
+        })
+        function Receive() {
+            var data = {};
+            //data.userId = userId
+            data.amount = MyAmount
+            $.ajax({
+                type: "post", url: '/Game/ReceiveProfit',
+                datatype: 'json',
+                data: data,
+                async: true,
+                beforeSend: function () {
+                    load2()
+                    //load();
+                },
+                complete: function () {
+                    loadEnd2()
+                    //loadEnd();
+                },
+                success: function (res) {
+                    console.log(res)
+                    if (res.Code != -1) {
+                        Bomb2(res.Message, 1500);
+                        setTimeout(function () {
+                            window.location.reload();
+                        }, 1000)
+
+                    } else {
+                        Bomb2(res.Message, 1500);
+                        setTimeout(function () {
+                            window.location.reload();
+                        }, 1000)
+                    }
+                }
+            })
+        }
+    </script>
+</body>
+
+</HTML>

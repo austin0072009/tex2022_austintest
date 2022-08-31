@@ -1,0 +1,213 @@
+﻿
+@{
+    Layout = null;
+}
+
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,initial-scale=1.0,user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <title>金币收支</title>
+    <link href="~/scripts/artdialog/ui-dialog.css" rel="stylesheet" type="text/css" />
+    <link href="~/skin/default/style.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="~/scripts/jquery/jquery-1.11.2.min.js"></script>
+    <script type="text/javascript" src="~/scripts/jquery/Validform_v5.3.2_min.js"></script>
+
+    <script type="text/javascript" src="~/scripts/artdialog/dialog-plus-min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="~/js/laymain.js"></script>
+    <script type="text/javascript" charset="utf-8" src="~/js/common.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            //初始化表单验证
+            $("#form1").initValidform();
+        });
+    </script>
+</head>
+
+<body class="mainbody">
+    <form id="form1">
+        <!--导航栏-->
+        <div class="location">
+            <a href="/Business/StatisticsJackpot" class="back"><i></i><span>返回列表页</span></a>
+            <a href="/Home/Center" class="home"><i></i><span>首页</span></a>
+            <i class="arrow"></i>
+            <a href=""><span>奖池修改</span></a>
+            <i class="arrow"></i>
+            <span>奖池修改</span>
+        </div>
+        <div class="line10"></div>
+        <!--/导航栏-->
+        <!--内容-->
+        <div id="floatHead" class="content-tab-wrap">
+            <div class="content-tab">
+                <div class="content-tab-ul-wrap">
+                    <ul>
+                        <li><a class="selected" href="javascript:;">编辑金币收支</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="tab-content">
+            <dl>
+                <dt>数据ID</dt>
+                <dd>
+                    <input name="txttitle" type="text" id="ID" class="input normal" style="width:495px;" readonly>
+                    <span class="Validform_checktip">*</span>
+                </dd>
+            </dl>
+            <dl>
+                <dt>游戏ID</dt>
+                <dd>
+                    <input name="txttitle" type="text" id="GameId" class="input normal" style="width:495px;" readonly>
+                    <span class="Validform_checktip">*</span>
+                </dd>
+            </dl>
+            <dl>
+                <dt>游戏名称</dt>
+                <dd>
+                    <input name="txttitle" type="text" id="GanmeName" class="input normal"  style="width:495px;" readonly>
+                    <span class="Validform_checktip">*</span>
+                </dd>
+            </dl>
+            <dl>
+                <dt>彩金</dt>
+                <dd>
+                    <input name="txt_type" type="text" id="handsel" class="input normal" style="width:493px;" readonly>
+                    <span class="Validform_checktip">*</span>
+                </dd>
+            </dl>
+            <dl>
+                <dt>当前奖池</dt>
+                <dd>
+                    <input name="txt_type" type="number" id="Jackpot" class="input normal"  style="width:493px;" datatype="/^[0-9]+.?[0-9]*$/" nullmsg="不能为空" errormsg="当前奖池为数字">
+                    <span class="Validform_checktip">*</span>
+                </dd>
+            </dl>
+            <dl>
+                <dt>场次ID</dt>
+                <dd>
+                    <input name="txt_type" type="number" id="roomid" class="input normal"  style="width:493px;"  datatype="/^[0-9]+.?[0-9]*$/" nullmsg="不能为空" errormsg="彩金为数字">
+                    <span class="Validform_checktip">*</span>
+                </dd>
+            </dl>
+            <dl>
+                <dt>历史总押金</dt>
+                <dd>
+                    <input name="txt_type" type="number" id="HistoryGambleall" class="input normal"style="width:493px;" datatype="/^[0-9]+.?[0-9]*$/" nullmsg="不能为空" errormsg="历史总押金为数字">
+                    <span class="Validform_checktip">*</span>
+                </dd>
+            </dl>
+            <dl>
+                <dt>历史总收益</dt>
+                <dd>
+                    <input name="txt_type" type="number" id="Income" class="input normal" style="width:493px;" datatype="/^[0-9]+.?[0-9]*$/" nullmsg="不能为空" errormsg="历史总收益为数字">
+                    <span class="Validform_checktip">*</span>
+                </dd>
+            </dl>
+            <dl>
+                <dt>税收</dt>
+                <dd>
+                    <input name="txt_type" type="number" id="Rax" class="input normal" style="width:493px;" datatype="/^[0-9]+.?[0-9]*$/" nullmsg="不能为空" errormsg="税收为数字">
+                    <span class="Validform_checktip">*</span>
+                </dd>
+            </dl>
+            <dl>
+                <dt>抽水</dt>
+                <dd>
+                    <input name="txt_type" type="number" id="Pump" class="input normal" style="width:493px;" datatype="/^[0-9]+.?[0-9]*$/" nullmsg="不能为空" errormsg="抽水为数字">
+                    <span class="Validform_checktip">*</span>
+                </dd>
+            </dl>
+            <dl>
+                <dt>放水(中奖大小)</dt>
+                <dd>
+                    
+                    <select style="width:493px;" name="Waterproof" id="Waterproof" class="select">
+                        <option value="0">全部限制</option>
+                        <option value="1">朵朵</option>
+                        <option value="2">朵朵、朵皇</option>
+                        <option value="3">朵朵、朵皇、天皇</option>
+                        <option value="10">皇家同花顺</option>
+                        <option value="11">皇家、同花顺</option>
+                        <option value="12">皇家、同花顺、四条</option>
+                    </select>
+                    <span class="Validform_checktip">*</span>
+                </dd>
+            </dl>
+        </div>
+        <!--/内容-->
+        <!--工具栏-->
+        <div class="page-footer">
+            <div class="btn-wrap" style="position: static;">
+                <input type="button" value="提交保存" id="btnSubmit" class="btn">
+                <input name="btnReturn" type="button" value="返回上一页" class="btn yellow" onclick="javascript: history.back(-1);">
+            </div>
+        </div>
+        <!--/工具栏-->
+    </form>
+    <script>
+        var id = "";
+        $(function () {
+            function getURLParameter(name) {
+                return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search) || [null, ''])[1].replace(/\+/g, '%20')) || null;
+            }
+
+            console.log(getURLParameter("GameId"))
+            $("#ID").val(getURLParameter("id"));
+            $("#GameId").val(getURLParameter("GameId"));
+            $("#GanmeName").val(getURLParameter("GanmeName"))
+            $("#handsel").val(getURLParameter("handsel"))
+            $("#Jackpot").val(getURLParameter("Jackpot"))
+            $("#roomid").val(getURLParameter("roomid"))
+            $("#HistoryGambleall").val(getURLParameter("HistoryGambleall"))
+            $("#Income").val(getURLParameter("Income"))
+            $("#Rax").val(getURLParameter("Rax"))
+            $("#Pump").val(getURLParameter("Pump"))
+            $("#Waterproof").val(getURLParameter("Waterproof"))
+        })
+        $(".btn").click(function () {
+           var id= $("#ID").val();
+           var GameId= $("#GameId").val();
+           var GanmeName = $("#GanmeName").val()
+           var handsel= $("#handsel").val()
+           var Jackpot = $("#Jackpot").val()
+           var roomid = $("#roomid").val()
+           var HistoryGambleall = $("#HistoryGambleall").val()
+           var Income = $("#Income").val()
+           var Rax = $("#Rax").val()
+           var Pump = $("#Pump").val()
+           var Waterproof = $("#Waterproof").val()
+            //var CardName = $("#CardName").val();
+           // console.log(name, cardNo, bankAddress, Location, userId);
+            var data = {};
+            data.ID = id;
+            data.GameId = GameId;
+            data.GanmeName = GanmeName;
+            data.Jackpot = Jackpot;
+            data.HistoryGambleall = HistoryGambleall;
+            data.Income = Income;
+            data.Rax = Rax;
+            data.Pump = Pump;
+            data.Waterproof = Waterproof;
+            data.handsel = handsel;
+            data.roomid = roomid;
+            $.ajax({
+                type: "post", url: '/Business/SaveJackpot',
+                datatype: 'json',
+                data: data,
+                success: function (res) {
+                    console.log(res)
+                    if (res) {
+                        if (res.Code == 0 || res.Code == "0") {
+                            parent.jsprint(res.Message, "/Business/StatisticsJackpot");
+                        } else {
+                            //parent.jsprint(res.Message, "/Business/StatisticsJackpot");
+                        }
+                    }
+                }
+            })
+        })
+    </script>
+</body>
+</html>

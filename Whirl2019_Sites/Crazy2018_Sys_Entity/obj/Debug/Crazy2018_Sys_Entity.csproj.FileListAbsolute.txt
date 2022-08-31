@@ -1,0 +1,5 @@
+C:\Users\Game\Desktop\Whirl2019_Sites\Crazy2018_Sys_Entity\bin\Debug\Crazy2018_Sys_Entity.dll
+C:\Users\Game\Desktop\Whirl2019_Sites\Crazy2018_Sys_Entity\bin\Debug\Crazy2018_Sys_Entity.pdb
+C:\Users\Game\Desktop\Whirl2019_Sites\Crazy2018_Sys_Entity\obj\Debug\Crazy2018_Sys_Entity.csproj.CoreCompileInputs.cache
+C:\Users\Game\Desktop\Whirl2019_Sites\Crazy2018_Sys_Entity\obj\Debug\Crazy2018_Sys_Entity.dll
+C:\Users\Game\Desktop\Whirl2019_Sites\Crazy2018_Sys_Entity\obj\Debug\Crazy2018_Sys_Entity.pdb

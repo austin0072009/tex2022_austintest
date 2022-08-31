@@ -1,0 +1,208 @@
+﻿html {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    position: relative;
+    overflow:hidden;
+}
+
+.cont {
+    width: 100%;
+    height: 100%;
+}
+
+.navBox {
+    width: 95%;
+    height: 80px;
+    background-color: #eee;
+    margin: auto;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    border-radius: 10px;
+}
+
+.ContBox {
+    width: 94%;
+    margin: auto;
+}
+
+.BtnBox {
+    float: right;
+    margin-top: 25px;
+    margin-right: 15px;
+}
+
+.SearchBox {
+    width: 95%;
+    min-height: 50px;
+    margin: auto;
+    margin-bottom: 15px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+    width: 20%;
+    float: left;
+}
+
+#txtBeginDate {
+    width: 170px;
+    padding: 7px 10px;
+    border: 1px solid #ccc;
+    margin-right: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+#txtEndDate {
+    width: 170px;
+    padding: 7px 10px;
+    border: 1px solid #ccc;
+    margin-right: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.form-control {
+    width: auto;
+    display: inline-block;
+}
+
+.infoBox {
+    width: 95%;
+    padding: 15px;
+    background-color: rgba(52, 155, 228, 0.25);
+    margin: auto;
+    margin-bottom: 15px;
+    border-radius: 10px;
+}
+
+.onespan {
+    font-size: 15px;
+    font-weight: 600;
+    color: #0580b7;
+}
+
+.twospan {
+    font-size: 15px;
+    color: #0580b7;
+}
+
+.contY {
+    padding: 5px;
+    /*background-color: #d9534f;*/
+    background-color: rgba(52, 155, 228, 0.25);
+    border-radius: 8px;
+    color: #0580b7;
+    font-size: 15px;
+    width: 70px;
+}
+
+.eitBtn {
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+}
+
+    .eitBtn img {
+        width: 100%;
+        height: 100%;
+    }
+
+.contY1 {
+    padding: 5px;
+    background-color: #d9534f;
+    border-radius: 8px;
+    color: #fff;
+    font-size: 15px;
+    width: 50px;
+}
+
+.footer {
+    position: absolute;
+    bottom: 10px;
+    width: 100%;
+    height: 35px;
+}
+
+.footerbox {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.TotalContText {
+    position: absolute;
+    font-size: 16px;
+    left: 0;
+    top: 5px;
+}
+
+    .TotalContText span {
+        color: red;
+    }
+
+.boxBtn {
+    width: 80%;
+    height: 100%;
+    margin: auto;
+}
+
+.FirstPageBox {
+    width: 20px;
+    height: 20px;
+    float: left;
+    margin-left: 10px;
+    margin-top: 5px;
+}
+
+    .FirstPageBox img {
+        width: 100%;
+        height: 100%;
+        display: block;
+    }
+
+.pageNum {
+    float: left;
+    margin-left: 15px;
+    font-size: 16px;
+    margin-top: 5px;
+}
+
+.SeekBox {
+    float: left;
+    width: 70px;
+    height: 35px;
+    border: 1px solid #d9d9d9;
+    border-radius: 5px;
+    margin-left: 9%;
+    overflow: hidden;
+}
+
+    .SeekBox input {
+        width: 100%;
+        height: 100%;
+        background: none;
+        outline: none;
+        border: 0px;
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+
+.SeekBox2 {
+    float: right;
+    width: 60px;
+    height: 35px;
+    border: 1px solid #d9d9d9;
+    border-radius: 5px;
+    text-align: center;
+}

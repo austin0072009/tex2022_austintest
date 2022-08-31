@@ -1,0 +1,74 @@
+﻿html,
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow:hidden;
+}
+
+.bgheight {
+    width: 100%;
+    height: 100%;
+    background: url(../img/dpage.jpg)no-repeat;
+    background-size: 100%100%;
+}
+
+    .bgheight img {
+        width: 100%;
+        margin: 0;
+        padding: 0;
+    }
+
+.BtnBox {
+    position: relative;
+    width: 200px;
+    height: 130px;
+    margin: auto;
+    top: 60%;
+}
+
+.ABtnBox {
+    width: 90%;
+    height: 55px;
+    margin: auto;
+    margin-bottom: 15px;
+}
+
+    .ABtnBox img {
+        width: 100%;
+    }
+
+.IBtnBox {
+    width: 90%;
+    height: 55px;
+    margin: auto;
+}
+
+    .IBtnBox img {
+        width: 100%;
+    }
+
+.OneCont {
+    width: 100%;
+    height: 30px;
+    position: relative;
+    top: 64%;
+    left: 15px;
+    font-size: 16px;
+    font-weight: 700;
+    background-image: -webkit-gradient(linear, 0 0, 0 bottom, from(#fff), to(#211a88));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.TwoCont {
+    position: relative;
+    top: 63%;
+    font-size: 13px;
+    padding-right: 15px;
+    padding-left: 15px;
+    background-image: -webkit-gradient(linear, 0 0, 0 bottom, from(#fff), to(#211a88));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}

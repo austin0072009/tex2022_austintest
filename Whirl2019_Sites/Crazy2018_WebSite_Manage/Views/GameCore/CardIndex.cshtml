@@ -1,0 +1,159 @@
+﻿@using Crazy2018_Sys_Common;
+@using Crazy2018_Sys_ViewEntity;
+@using Crazy2018_Sys_DBHelper;
+@{
+    ViewBag.Title = "实体卡类型管理";
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+}
+@model DataResults<tentitycardtype>
+<style>
+    th {
+        text-align: center;
+    }
+</style>
+<div class="mainbody">
+    <!--导航栏-->
+    <div class="location">
+        <a href="javascript:history.back(-1);" class="back"><i></i><span>返回上一页</span></a>
+        <a href="/Home/Center" class="home"><i></i><span>首页</span></a>
+        <i class="arrow"></i>
+        <a href="/GameCore/CardIndex"><span>实体卡管理</span></a>
+        <i class="arrow"></i>
+        <span>实体卡管理</span>
+    </div>
+
+    <ul id="myTab" class="nav nav-tabs">
+        @*<li>
+            <a href="#cardtype" data-toggle="tab" name="menu-ctrl">
+                实体卡库存
+            </a>
+        </li>*@
+        <li class="active">
+            <a href="#favorite">
+
+                实体卡列表
+            </a>
+        </li>
+        @*<li class="active">
+            <a href="#test-paper">
+
+                新增类型
+            </a>
+        </li>*@
+
+        <li>
+            <a href="#about">
+                新增实体卡
+            </a>
+        </li>
+        <li>
+            <a href="#info">
+                测试接口
+            </a>
+        </li>
+
+    </ul>
+
+    <div id="myTabContent" class="tab-content">
+        <div class="tab-pane fade" id="favorite"></div>
+        @*<div class="tab-pane fade" id="test-paper"></div>*@
+        <div class="tab-pane fade" id="about"></div>
+        <div class="tab-pane fade" id="info"></div>
+
+
+    </div>
+
+</div>
+
+
+<script type="text/javascript">
+    $(function () {
+
+            //准备tabs数据
+            var tabsData = [{
+                "id" : "favorite",
+                "url": "/GameCore/CardDetailsManage"
+            },
+                //{
+                //"id": "test-paper",
+                //"url": "/GameCore/CardtypeManage"
+                //},
+                {
+                "id": "about",
+                "url": "/GameCore/CardGenerate"
+                },{
+                    "id": "info",
+                    "url":"/GameCore/CardManage"
+
+                }];
+
+            //遍历json数组,循环添加a标签click事件:
+            $(tabsData).each(function(){
+                //console.info(this.id + "--->" + this.url);
+                $("a[href='#"+this.id+"']").bind('click',{
+                    id : this.id,
+                    url : this.url
+                },tabsHandler);
+            });
+            var pagenum = 0;
+            switch (getUrlParams("page")) {
+                case "2":
+                    pagenum = 1;
+                    break;
+                case "1":
+                    pagenum = 0;
+                    break;
+                case "3":
+                    pagenum = 2;
+                    break;
+                case "4":
+                    pagenum = 3;
+                    break;
+                default:
+                    pagenum = 0;
+                    break;
+            }
+        //    $('#myTab li:eq(' + pagenum + ') a').tab('show');
+        //$('#myTab li:eq(' + pagenum + ') a').click();
+
+        });
+        function tabsHandler(event) {
+            var data = event.data;
+            showTabs(data.id,data.url);
+            return false; //阻止默认a标签响应
+        }
+
+        /**
+         * 激活tab选项卡并使用ajax异步加载内容
+         * param {Object} tabsId
+         * param {Object} url
+         */
+        function showTabs(tabsId,url) {
+            $("a[href='#"+tabsId+"']").tab('show');
+            var $tabContent = $('#'+tabsId);
+            if($tabContent.length < 100) {
+                $tabContent.load(url);
+                //console.info(tabsId + ' load done!');
+            }
+        }
+
+    //依次为每个tab导航a标签添加单击事件
+    //$('a[href="#test-paper"]').click(function (e) {
+    //    showTabs('test-paper', '/GameCore/CardtypeManage');
+    //    e.preventDefault();
+    //});
+    //$('a[href="#favorite"]').click(function (e) {
+    //    showTabs('favorite', '/GameCore/CardDetailsManage');
+    //    e.preventDefault();
+    //});
+    //$('a[href="#about"]').click(function (e) {
+    //    showTabs('about', '/GameCore/CardGenerate');
+    //    e.preventDefault();
+    //});
+    function ExportsearchData(typeid) {
+      
+        isExport = 1;
+        window.open("/GameCore/GetChargeLogExportData?isExport=" + isExport + "&typeid=" + typeid);
+    }
+</script>
+

@@ -1,0 +1,50 @@
+﻿
+@using Crazy2018_Sys_Entity;
+@{
+    ViewBag.Title = "牌局输赢情况";
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+}
+@model  pokerlistview
+
+<script>
+    $(function () {
+
+
+
+    });
+</script>
+<div>
+    <div id="handpokerFrom" class="panel panel-default">
+        <div class="panel-body">
+            <table class="table table-hover">
+                <caption>手牌查看</caption>
+                <thead>
+                    <tr>
+                        <th>随机牌型</th>
+                        @foreach (var item in Model.randpokerlist)
+                        {
+
+                            <th>
+                                <img style="width:110px;height:152px;" src='@item' />
+
+                            </th>
+                        }
+                    </tr>
+                    <tr>
+                        <th>排序牌型</th>
+                        @foreach (var item in Model.pokerlist)
+                        {
+
+                            <th>
+                                <img style="width:110px;height:152px;" src='@item' />
+
+                            </th>
+                        }
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,305 @@
+﻿
+@{
+    ViewBag.Title = "help";
+}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=640">
+    <meta HTTP-EQUIV="pragma" CONTENT="no-cache">
+    <meta HTTP-EQUIV="Cache-Control" CONTENT="no-cache, must-revalidate">
+    <meta HTTP-EQUIV="expires" CONTENT="0">
+    <title>棋牌游戏-帮助</title>
+    <!--bootstrap相关-->
+    <script type="text/javascript" src="~/js/jquery.min.js"></script>
+    <link type="text/css" href="~/css/bootstrap.min.css" rel="stylesheet">
+    <!--首页样式表-->
+    <link type="text/css" href="~/css/help.css" rel="stylesheet">
+</head>
+<body ng-app="app" style="font-family:Microsoft YaHei">
+
+    <div id="bgheight" style="background-color:lightgray;background-image: url('/img/GW_bg.jpg'); width: 100%; height: 1000px;  background-repeat: no-repeat; background-size: cover; position: relative; z-index: 1;">
+
+        <!--导航条黑色背景-->
+        <div id="yeepay" style="height: 98px;width: 100%;background-color: #3f3028;position: fixed;z-index: 50;filter: alpha(opacity = 80);-moz-opacity: 0.8;-khtml-opacity: 0.8;opacity: 0.8;">
+            <!--头部按钮-->
+            <div ng-controller="indexCtrl" style="width:640px;height:60px;margin:0 auto;z-index: 50">
+
+                <a style="line-height:30px;float:right;text-align: center" id="chonzhi">
+                    <div id="labthree" style="height: 78px;width: 150px;position: relative"></div>
+                    <div style="position: absolute;top: 10px;margin-left: 15px">
+                        <span style="color:#ffbb00;font-size: 30px;">我的金币</span>
+                        <br /><span style="color:#9d7302;font-size:18px">MINEGOLD</span>
+                    </div>
+                </a>
+
+                <a href="/Manage/help" style="line-height:30px;float:right;margin-left:8px;text-align: center">
+                    <div id="labone" style="height: 78px;width: 150px;position: relative" class="nav_background"></div>
+                    <div style="position: absolute;top: 10px;margin-left: 15px">
+                        <span style="color:#ffbb00;font-size: 30px;">帮助中心</span>
+                        <br /><span style="color:#9d7302;font-size:18px">HELP</span>
+                    </div>
+                </a>
+
+                <a style="line-height:30px;float:right;margin-left:8px;text-align: center" id="user">
+                    <div id="labtwo" style="height: 78px;width: 150px;position: relative"></div>
+                    <div style="position: absolute;top: 10px;margin-left: 15px">
+                        <span style="color:#ffbb00;font-size: 30px;">个人中心</span>
+                        <br /><span style="color:#9d7302;font-size:18px">PERSONAL</span>
+                    </div>
+                </a>
+
+                <a href="/Manage/Index" style="line-height:30px;float:right;text-align: center">
+                    <div id="labthree" style="height: 78px;width: 150px;position: relative"></div>
+                    <div style="position: absolute;top: 10px;margin-left: 15px">
+                        <span style="color:#ffbb00;font-size: 30px;">官网首页</span>
+                        <br /><span style="color:#9d7302;font-size:18px">HOME</span>
+                    </div>
+                </a>
+
+            </div>
+
+            <!--下面的线条图-->
+            <div style="width:540px;height:20px;margin:auto;left:0;bottom:0;right:0;top:0px;z-index: 50;">
+                <div style="height:11px;width: 11px;background-image: url('/img/GW_dhfk_001.png');margin-left: 50px;float: left"></div>
+                <div style="height: 2px;width: 150px;background-color:#5f4d2a;float: left;margin-top: 5px;margin-left:-1px"></div>
+
+                <div style="height:11px;width: 11px;background-image: url('/img/GW_dhfk_001.png');float:left;margin-left:-1px"></div>
+                <div style="height: 2px;width: 150px;background-color:#5f4d2a;float: left;margin-top: 5px;margin-left:-1px"></div>
+
+                <div style="height:11px;width: 11px;background-image: url('/img/GW_dhfk_001.png');float:left;margin-left:-1px"></div>
+                <div style="height: 2px;width: 62px;background-color:#5f4d2a;float: left;margin-top: 5px;margin-left:-1px"></div>
+
+
+                <div style="height: 2px;width: 62px;background-color:#5f4d2a;float: left;margin-top: 5px;margin-left:-1px"></div>
+                <div style="height:11px;width: 11px;background-image: url('/img/GW_dhfk_001.png');float:left;margin-left:-1px"></div>
+            </div>
+        </div>
+        <!--正文-->
+        <div id="phoneorpc" style="width: 640px; height: 1136px; position: relative; margin: 0px auto; overflow: visible;">
+            <!--以上为ui-view -->
+            <div id="lz_news" style="margin-top:93px;position:absolute;">
+                <div id="lz_news_top">
+                    <div id="lz_news_top_log" style="background-image: url('/img/BZ_bzzx.png')"></div>
+                    <div id="lz_news_top_right" style="background-image: url('/img/GW_news_002.png')"></div>
+                    <div class="clear"></div>
+                </div>
+                <div id="lz_line">
+                    <div id="lz_line_1"></div>
+                    <div id="lz_line_2"></div>
+                    <div class="clear"></div>
+                </div>
+                <div class="row" style="width: 640px;margin: 0;background-color:#dcd5c8;min-height: 800px">
+                    <div id="accordion" class="panel-group">
+                        <div class="panel panel-default" style="background-color: #dcd5c8;border-bottom: 1px solid #9B8C70;margin-top: 20px">
+                            <a data-toggle="collapse" data-parent="#accordion" style="font-size: 18px;text-decoration:none;color:#665838;" class="collapsed">
+                                <div class="panel-heading" style="padding-left: 20px;padding-right: 20px">
+                                    常见问题 <img id="One" src="/img/BZ_jty.png" style="float: right">
+                                </div>
+                            </a>
+                            <div id="collapseOne" class="panel-collapse collapse">
+                                <div class="panel-body" style="padding-left: 20px;padding-right: 20px;background-color: #F2F2F2">
+                                    <div class="col-xs-12" style="color: #72afa0;font-size:16px;padding: 0px">
+                                        1、充值不到帐怎么办？
+                                    </div>
+                                    <div class="col-xs-12" style="padding: 0px;color: #b1b1b1;font-size:14px;text-indent:2em">
+                                        有可能是网络问题导致的不及时，请先耐心等待半个小时，如还未到帐请联系客服为您解决。
+                                    </div>
+                                    <div class="col-xs-12" style="padding: 0px;color: #72afa0;font-size:16px;">
+                                        2、充值的时候提示达到限额怎么办？
+                                    </div>
+                                    <div class="col-xs-12" style="padding: 0px;color: #b1b1b1;font-size:14px;text-indent:2em">
+                                        游戏中充值是没有限制的。当您充值提示已经达到限额，建议您查看您支付的渠道是否设置了交易限额。
+                                    </div>
+                                    <div class="col-xs-12" style="padding: 0px;color: #72afa0;font-size:16px;">
+                                        3、无法登录游戏怎么办？
+                                    </div>
+                                    <div class="col-xs-12" style="padding: 0px;color: #b1b1b1;font-size:14px;text-indent:2em">
+                                        登录异常的原因很多，建议您通过以下的方法操作，希望其中的方法可解决您的问题 1、 内存不足：尝试关闭其他软件、删除手机不用的软件，保证游戏有足够的内存正常运行。 2、 网络不稳定：建议使用Wifi环境进行游戏，因为2G/3G/4G网络连接并不是很稳定。
+                                        3、 客户端问题：将游戏删除后，登录官网下载最新版的客户端。有可能是版本太旧，或者是客户端文件被损坏了。
+                                    </div>
+                                    <div class="col-xs-12" style="padding: 0px;color: #72afa0;font-size:16px;">
+                                        4、为什么换了手机后数据都没有了？
+                                    </div>
+                                    <div class="col-xs-12" style="padding: 0px;color: #b1b1b1;font-size:14px;text-indent:2em">
+                                        更换手机后，您需要重新登录帐号才能找回之前的数据。在游戏大厅中点击头像进入个人中心，再点击切换帐号登录，输入之前的帐号密码即可找回数据。
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-default" style="background-color: #dcd5c8;border-bottom: 1px solid #9B8C70;margin-top: 0px">
+                        <a data-toggle="collapse" data-parent="#accordion" style="font-size: 18px;text-decoration:none;color:#665838" class="collapsed">
+                            <div class="panel-heading" style="padding-left: 20px;padding-right: 20px">
+                                账号服务 <img id="Two" src="/img/BZ_jty.png" style="float: right">
+                            </div>
+                        </a>
+                        <div id="collapseTwo" class="panel-collapse collapse">
+                            <div class="panel-body" style="padding-left: 20px;padding-right: 20px;background-color: #F2F2F2">
+                                <div class="col-xs-12" style="color: #72afa0;font-size:16px;padding: 0px">
+                                    1、邮件中的礼物放在哪里？
+                                </div>
+                                <div class="col-xs-12" style="padding: 0px;color: #b1b1b1;font-size:14px;text-indent:2em">
+                                    您在邮件中领取了好友赠送给您的礼物后，可以在背包界面中看到它们。
+                                </div>
+                                <div class="col-xs-12" style="padding: 0px;color: #72afa0;font-size:16px;">
+                                    2、金币用光了怎么办？
+                                </div>
+                                <div class="col-xs-12" style="padding: 0px;color: #b1b1b1;font-size:14px;text-indent:2em">
+                                    您可以在商城中通过钻石兑换到大量金币，也可以在免费金币中领取到救济金或一些奖励。
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-default" style="background-color: #dcd5c8;border-bottom: 1px solid #9B8C70;margin-top: 0px">
+                        <a data-toggle="collapse" data-parent="#accordion" style="font-size: 18px;text-decoration:none;color:#665838" class="collapsed">
+                            <div class="panel-heading" style="padding-left: 20px;padding-right: 20px">
+                                充值问题 <img id="Three" src="/img/BZ_jty.png" style="float: right">
+                            </div>
+                        </a>
+                        <div id="collapseThree" class="panel-collapse collapse" style="height: auto;">
+                            <div class="panel-body" style="padding-left: 20px;padding-right: 20px;background-color: #F2F2F2">
+                                <div class="col-xs-12" style="color: #72afa0;font-size:16px;padding: 0px">
+                                    1、我的帐号密码在哪设置？
+                                </div>
+                                <div class="col-xs-12" style="padding: 0px;color: #b1b1b1;font-size:14px;text-indent:2em">
+                                    为了让您可以更方便快捷的体验游戏的乐趣，我们在游戏之初就为您自动注册了帐号，你可以在个人中心中，修改您的帐号与密码以此完善您的帐号信息。
+                                </div>
+                                <div class="col-xs-12" style="padding: 0px;color: #72afa0;font-size:16px;">
+                                    2、我的邮件怎么突然没有了？
+                                </div>
+                                <div class="col-xs-12" style="padding: 0px;color: #b1b1b1;font-size:14px;text-indent:2em">
+                                    您的邮件数量是有上限的，如果超过这个数量上限就会自动删除掉，优先会删除掉您已经看过的邮件。
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-default" style="background-color: #dcd5c8;border-bottom: 1px solid #9B8C70;margin-top: 0px">
+                        <a data-toggle="collapse" data-parent="#accordion" style="font-size: 18px;text-decoration:none;color:#665838" class="collapsed">
+                            <div class="panel-heading" style="padding-left: 20px;padding-right: 20px">
+                                玩法介绍 <img id="Four" src="/img/BZ_jty.png" style="float: right">
+                            </div>
+                        </a>
+                        <div id="collapseFour" class="panel-collapse collapse" style="height: auto;">
+                            <div class="panel-body" style="padding-left: 20px;padding-right: 20px;background-color: #F2F2F2">
+                                <div class="col-xs-12" style="padding: 0px;color: #72afa0;font-size:16px;">
+                                    1、我的ID号在哪里能看到？
+                                </div>
+                                <div class="col-xs-12" style="padding: 0px;color: #b1b1b1;font-size:14px;text-indent:2em">
+                                    在游戏大厅中点击头像可进入个人中心，您只能在个人中心里才能看到您的ID号。
+                                </div>
+                                <div class="col-xs-12" style="padding: 0px;color: #72afa0;font-size:16px;">
+                                    2、绑定手机有什么用？
+                                </div>
+                                <div class="col-xs-12" style="padding: 0px;color: #b1b1b1;font-size:14px;text-indent:2em">
+                                    您通过绑定手机可以让您的帐号更加安全，比如找回帐号密码，身份识别等。
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div style="background-color: #dcd5c8;width: 100%;padding-bottom: 20px;padding-top: 20px">
+                <div style="height: 35px;width:490px;margin: 0 auto;background-image: url('/img/GW_kfdhd.png')">
+                    <div style="width: 140px;height:80px;margin: 0 auto;">
+                        <div style="float: left;background-image: url('/img/GW_kfdhtb.png');height: 27px;width: 27px;margin-top: 3px">
+
+                        </div>
+                        <div style="float: right;margin-top: -2px;margin-right: 0px;font-size:14px;color:#867d6d;">
+                            <span>人工客服电话</span>
+                            <br><span>400-000-0000</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="lz_bottom_line" style="margin: 0px;background-image:url('/img/GW_ztyy.png')"></div>
+        </div>
+    </div>
+
+    <div id="bottom">
+        <div id="bottom_1" style="position:relative;z-index:100;font-size: 18px;margin-top: 38px">
+            <a style="color:white;text-decoration: none" href="/Manage/present">公司介绍</a> |
+            <a style="color:white;text-decoration: none" href="/Manage/output">产品介绍</a> |
+            <!--<span style="color: white" id="BizQQWPA">联系我们</span> |-->
+            <a style="color:white;text-decoration: none" href="/Manage/contact">联系我们</a> |
+            <a style="color:white;text-decoration: none" id="ActivityBtn">活动中心</a> |
+            <a style="color:white;text-decoration: none" id="rewardBtn">推&nbsp;广</a>
+            <!-- |
+            <a style="color:white;text-decoration: none" target="_blank">商务合作</a> -->
+        </div>
+        <div id="bottom_2" style="margin-top: 12px;font-size: 14px;color:#b1bdc8">新天地网络公司</div>
+        <div id="bottom_3">蜀ICP备17071870号-1&nbsp;【2017】&nbsp;1606-436号Copyright&nbsp;2017&nbsp;版权所有</div>
+        <div class="clear"></div>
+    </div>
+    <script type="text/javascript">
+        var obj = {};
+        $(function () {
+            if ($(document.body).outerWidth(true) > 641) {
+                $("#phoneorpc").css("overflow", "visible");
+            } else {
+                $("#phoneorpc").css("overflow", "hidden")
+            }
+            GetUser()
+        });
+        function GetUser() {
+            var data = {};
+            $.ajax({
+                type: "post", url: '/Manage/GetUserInfo',
+                datatype: 'json',
+                data: data,
+                success: function (res) {
+                    if (res) {
+                        console.log(res);
+                        obj = res
+                        //$("#userId").text(res.UserId)
+                        //$("#myPhone").text(res.PhoneNum)
+                    }
+                }
+            })
+        }
+        $(".collapsed").click(function () {
+            var index = $(".panel-default").index(this);
+            $(this).siblings().slideToggle();
+            $(this).parent().siblings().children(".panel-collapse").slideUp();
+        })
+        $("#user").click(function () {
+            //var _sess = window.sessionStorage;
+            //var userMessage = JSON.parse(_sess.getItem("userMessage"));
+            if (obj.UserId) {
+                window.location.href = "/Manage/userIfo"
+            } else {
+                window.location.href = "/Manage/login"
+            }
+        })
+        $("#chonzhi").click(function () {
+            //var _sess = window.sessionStorage;
+            //var userMessage = JSON.parse(_sess.getItem("userMessage"));
+            if (obj.UserId) {
+                window.location.href = "/Manage/RechargePage";
+            } else {
+                window.location.href = "/Manage/login"
+            }
+        })
+        $("#rewardBtn").click(function () {
+            //var _sess = window.sessionStorage;
+            //var userMessage = JSON.parse(_sess.getItem("userMessage"));
+            if (obj.UserId) {
+                window.location.href = "/Manage/JoinEd";
+            } else {
+                window.location.href = "/Manage/login";
+            }
+        })
+        $("#ActivityBtn").click(function () {
+            if (obj.UserId) {
+                window.location.href = "/Manage/ActivityList";
+            } else {
+                window.location.href = "/Manage/login";
+            }
+        })
+    </script>
+</body>
+</html>

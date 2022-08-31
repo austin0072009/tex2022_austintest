@@ -1,0 +1,232 @@
+﻿html,
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    user-select: none;
+}
+
+body {
+    background: url(../img/BG2.jpg)no-repeat;
+    background-size: 100%100%;
+}
+
+input {
+    color: #fff;
+}
+
+    input::-webkit-input-placeholder {
+        color: #fff;
+    }
+
+.bgheight {
+    width: 100%;
+    height: 100%;
+}
+
+.phoneorpc {
+    position: relative;
+    width: 640px;
+    height: 100%;
+    margin: 0 auto;
+}
+
+.registeredBox {
+    width: 320px;
+    height: 270px;
+    border-radius: 10px;
+    background-color: rgba(47, 40, 105, 0.38823529411764707);
+    margin: auto;
+    position: relative;
+    top: 25%;
+    border: 2px solid #CDCDCD;
+}
+
+.Account {
+    width: 90%;
+    height: 45px;
+    margin: auto;
+    position: relative;
+    top: 35px;
+}
+
+.Account1 {
+    width: 90%;
+    height: 45px;
+    margin: auto;
+    position: relative;
+    top: 45px;
+}
+
+.Account2 {
+    width: 90%;
+    height: 45px;
+    margin: auto;
+    position: relative;
+    top: 55px;
+}
+
+.AccountBox {
+    width: 100%;
+    height: 100%;
+    background-color: #5B53A0;
+    border-radius: 8px;
+}
+
+.AccountLog {
+    float: left;
+    width: 25px;
+    height: 25px;
+    margin-top: 8px;
+    background-image: url(../img/zuce.png);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    margin-left: 15px;
+}
+
+.AccountLog1 {
+    float: left;
+    width: 25px;
+    height: 25px;
+    margin-top: 8px;
+    background-image: url(../img/pwd2.png);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    -moz-background-size: 100% 100%;
+    margin-left: 15px;
+}
+
+#MyAccountId {
+    float: left;
+    width: 60%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-left: 5px;
+    -webkit-appearance: none;
+    appearance: none;
+    outline: none;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    cursor: pointer;
+    border: none;
+    font-size: 13px;
+    border-radius: 8px;
+    background-color: #5B53A0;
+    color: #fff;
+}
+
+#MyPwd, #MyPwd1 {
+    float: left;
+    width: 60%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-left: 5px;
+    -webkit-appearance: none;
+    appearance: none;
+    outline: none;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    cursor: pointer;
+    border: none;
+    font-size: 13px;
+    border-radius: 8px;
+    background-color: #5B53A0;
+    color: #fff;
+}
+
+.verification {
+    position: absolute;
+    right: 6px;
+    top: 10px;
+    width: 25px;
+    height: 25px;
+    border-radius: 100%;
+    background-image: url(../img/Correct.png);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    -moz-background-size: 100% 100%;
+    display: none;
+}
+
+.verification1 {
+    position: absolute;
+    right: 6px;
+    top: 10px;
+    width: 25px;
+    height: 25px;
+    border-radius: 100%;
+    background-image: url(../img/wrong.png);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    -moz-background-size: 100% 100%;
+    display: none;
+}
+
+.verification2 {
+    position: absolute;
+    right: 6px;
+    top: 10px;
+    width: 25px;
+    height: 25px;
+    border-radius: 100%;
+    background-image: url(../img/Correct.png);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    -moz-background-size: 100% 100%;
+    display: none;
+}
+
+.verification3 {
+    position: absolute;
+    right: 6px;
+    top: 10px;
+    width: 25px;
+    height: 25px;
+    border-radius: 100%;
+    background-image: url(../img/wrong.png);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    -moz-background-size: 100% 100%;
+    display: none;
+}
+
+.BtnBox {
+    width: 100%;
+    height: 60px;
+    position: absolute;
+    bottom: 0;
+}
+
+.RegBtn {
+    -webkit-appearance: none;
+    appearance: none;
+    outline: none;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    cursor: pointer;
+    width: 110px;
+    height: 42px;
+    background-color: rgb(185, 185, 185);
+    border: none;
+    color: white;
+    margin: auto;
+    display: block;
+    font-weight: 700;
+    font-size: 18px;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+    .RegBtn img {
+        width: 100%;
+        height: 100%;
+        display: block;
+    }

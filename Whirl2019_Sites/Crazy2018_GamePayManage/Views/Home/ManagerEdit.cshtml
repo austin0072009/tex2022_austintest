@@ -1,0 +1,143 @@
+﻿@using Crazy2018_Sys_DBHelper;
+@{
+    Layout = null;
+}
+@model dt_manager
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,initial-scale=1.0,user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <title>编辑管理员</title>
+    <link href="~/scripts/artdialog/ui-dialog.css" rel="stylesheet" type="text/css" />
+    <link href="~/skin/default/style.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="~/scripts/jquery/jquery-1.11.2.min.js"></script>
+    <script type="text/javascript" src="~/scripts/jquery/Validform_v5.3.2_min.js"></script>
+    <script type="text/javascript" src="~/scripts/artdialog/dialog-plus-min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="~/js/laymain.js"></script>
+    <script type="text/javascript" charset="utf-8" src="~/js/common.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            //初始化表单验证
+            $("#form1").initValidform();
+            $(".single-checkbox").click(function () {
+                if ($(this).find("a").first().attr("class") == "selected") {
+                    $("#is_lock").val(0);
+                } else {
+                    $("#is_lock").val(1);
+                }
+            })
+        });
+    </script>
+</head>
+
+<body class="mainbody">
+    <form id="form1" action="ManagerSave" method="post">
+        <!--导航栏-->
+        <div class="location">
+            <a href="/Home/ManagerList" class="back"><i></i><span>返回列表页</span></a>
+            <a href="/Home/Center" class="home"><i></i><span>首页</span></a>
+            <i class="arrow"></i>
+            <a href="/Home/ManagerList"><span>管理员</span></a>
+            <i class="arrow"></i>
+            <span>编辑管理员</span>
+        </div>
+        <div class="line10"></div>
+        <!--/导航栏-->
+        <!--内容-->
+        <div id="floatHead" class="content-tab-wrap">
+            <div class="content-tab">
+                <div class="content-tab-ul-wrap">
+                    <ul>
+                        <li><a class="selected" href="javascript:;">管理员信息</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="tab-content">
+            <input type="hidden" id="id" name="id" value="@Model.id" />
+            <dl>
+                <dt>管理角色</dt>
+                <dd>
+                    <div class="rule-single-select single-select">
+                        <div class="boxwrap"><a class="select-tit" href="javascript:;"><span>请选择角色...</span><i></i></a><div class="select-items"><ul><li class="selected">请选择角色...</li><li>超级管理组</li><li>一级代理</li><li>二级代理</li></ul></div><i class="arrow"></i></div>
+                        <select name="role_id" id="role_id" datatype="*" errormsg="请选择管理员角色" sucmsg=" " style="display: none;">
+                            <option value="">请选择角色...</option>
+                            @foreach (var item in ViewBag.Role as List<dt_manager_role>)
+                            {
+                                if (item.id == Model.role_id)
+                                {
+                                    <option value="@item.id" selected="selected">@item.role_name</option>
+                                }
+                                else
+                                {
+                                    <option value="@item.id">@item.role_name</option>
+                                }
+
+                            }
+                        </select>
+                    </div>
+                </dd>
+            </dl>
+            <dl>
+                <dt>是否启用</dt>
+                <dd>
+                    <div class="rule-single-checkbox single-checkbox">
+                        <input type="hidden" id="is_lock" name="is_lock" value="@(Model.is_lock==null?0:1)" />
+                        @if (Model.is_lock == 0)
+                        {
+
+                            <input id="cbIsLock" value="1" type="checkbox" name="cbIsLock" checked="checked">
+                        }
+                        else
+                        {
+                            <input id="cbIsLock" value="0" type="checkbox" name="cbIsLock" >
+                        }
+
+                    </div>
+                    <span class="Validform_checktip">*不启用则无法使用该账户登录</span>
+                </dd>
+            </dl>
+            <dl>
+                <dt>用户名</dt>
+                <dd><input name="user_name" type="text" id="user_name" class="input normal" datatype="/^[a-zA-Z0-9\-\_]{2,50}$/" value="@Model.user_name" sucmsg=" "> <span class="Validform_checktip">*字母、下划线，不可修改</span></dd>
+            </dl>
+            <dl>
+                <dt>登录密码</dt>
+                <dd><input name="password" type="password" id="password" class="input normal" datatype="*6-20" nullmsg="请设置密码" value="@Model.password" errormsg="密码范围在6-20位之间" sucmsg=" " /> <span class="Validform_checktip">*</span></dd>
+            </dl>
+            <dl>
+                <dt>确认密码</dt>
+                <dd><input name="txtPassword1" type="password" id="txtPassword1" class="input normal" datatype="*" recheck="password" value="@Model.password" nullmsg="请再输入一次密码" errormsg="两次输入的密码不一致" sucmsg="" /> <span class="Validform_checktip">*</span></dd>
+            </dl>
+            <dl>
+                <dt>姓名</dt>
+                <dd><input name="real_name" type="text" id="real_name" value="@Model.real_name" class="input normal"></dd>
+            </dl>
+            <dl>
+                <dt>电话</dt>
+                <dd><input name="telephone" type="text" id="telephone" value="@Model.telephone" class="input normal"></dd>
+            </dl>
+            <dl>
+                <dt>邮箱</dt>
+                <dd><input name="email" type="text" id="email" value="@Model.email" class="input normal"></dd>
+            </dl>
+            <dl>
+                <dt>IP地址</dt>
+                <dd><input name="IP" type="text" id="IP" value="@Model.IP" class="input normal"></dd>
+            </dl>
+        </div>
+        <!--/内容-->
+        <!--工具栏-->
+        <div class="page-footer">
+            <div class="btn-wrap" style="position: static;">
+                <input type="submit" name="btnSubmit" value="提交保存" id="btnSubmit" class="btn">
+                <input name="btnReturn" type="button" value="返回上一页" class="btn yellow" onclick="javascript:history.back(-1);">
+            </div>
+        </div>
+        <!--/工具栏-->
+    </form>
+</body>
+</html>

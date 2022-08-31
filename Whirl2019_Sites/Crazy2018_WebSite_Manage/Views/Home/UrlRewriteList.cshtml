@@ -1,0 +1,127 @@
+﻿
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,initial-scale=1.0,user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <title>URL配置管理</title>
+    <link href="../../scripts/artdialog/ui-dialog.css" rel="stylesheet" type="text/css" />
+    <link href="../skin/default/style.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="../../scripts/jquery/jquery-1.11.2.min.js"></script>
+    <script type="text/javascript" src="../../scripts/artdialog/dialog-plus-min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="../js/laymain.js"></script>
+    <script type="text/javascript" charset="utf-8" src="../js/common.js"></script>
+</head>
+
+<body class="mainbody">
+    <form id="form1" runat="server">
+        <!--导航栏-->
+        <div class="location">
+            <a href="javascript:history.back(-1);" class="back"><i></i><span>返回上一页</span></a>
+            <a href="/Home/Center" class="home"><i></i><span>首页</span></a>
+            <i class="arrow"></i>
+            <span>系统管理</span>
+            <i class="arrow"></i>
+            <span>URL配置</span>
+        </div>
+        <!--/导航栏-->
+        <!--工具栏-->
+        <div id="floatHead" class="toolbar-wrap">
+            <div class="toolbar">
+                <div class="box-wrap">
+                    <a class="menu-btn"></a>
+                    <div class="l-list">
+                        <ul class="icon-list">
+                            <li><a class="add" href="/Home/UrlRewriteEdit"><i></i><span>新增</span></a></li>
+                            <li><a class="all" href="javascript:;" onclick="checkAll(this);"><i></i><span>全选</span></a></li>
+                            <li><a onclick="return ExePostBack('btnDelete','本操作会导致网站前台无法运作，是否继续？');" id="btnDelete" class="del" href="javascript:__doPostBack('btnDelete','')"><i></i><span>删除</span></a></li>
+                        </ul>
+                        <div class="menu-list">
+                            <div class="rule-single-select single-select">
+                                <div class="boxwrap"><a class="select-tit" href="javascript:;"><span></span><i></i></a><div class="select-items" style="display: none;"><ul></ul></div><i class="arrow" style="display: none;"></i></div>
+                                <select name="ddlChannel" onchange="javascript:setTimeout('__doPostBack(\'ddlChannel\',\'\')', 0)" id="ddlChannel" style="display: none;"></select>
+                            </div>
+                            <div class="rule-single-select single-select">
+                                <div class="boxwrap">
+                                    <a class="select-tit" href="javascript:;">
+                                        <span>所有类型</span>
+                                        <i></i>
+                                    </a>
+                                    <div class="select-items" style="display: none;">
+                                        <ul>
+                                            <li class="selected">所有类型</li>
+                                            <li>首页</li>
+                                            <li>列表页</li>
+                                            <li>栏目页</li>
+                                            <li>详细页</li>
+                                            <li>插件页</li>
+                                            <li>其它页</li>
+                                        </ul>
+                                    </div>
+                                    <i class="arrow" style="display: none;"></i>
+                                </div>
+                                <select name="ddlPageType" id="ddlPageType" style="display: none;">
+                                    <option selected="selected" value="">所有类型</option>
+                                    <option value="index">首页</option>
+                                    <option value="list">列表页</option>
+                                    <option value="category">栏目页</option>
+                                    <option value="detail">详细页</option>
+                                    <option value="plugin">插件页</option>
+                                    <option value="other">其它页</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--/工具栏-->
+        <!--列表-->
+        <div class="table-container">
+
+            <table width="100%" border="0" cellspacing="0" cellpadding="0" class="ltable">
+                <tbody>
+                    <tr class="odd_bg">
+                        <th width="8%" style="white-space:nowrap;word-break:break-all;">选择</th>
+                        <th align="left">调用名称</th>
+                        <th width="20%" align="left">源页面名称</th>
+                        <th width="18%" align="left">继承类名</th>
+                        <th width="15%" align="left">模板名称</th>
+                        <th width="10%" align="left" style="white-space:nowrap;word-break:break-all;">归属频道</th>
+                        <th width="8%" align="left" style="white-space:nowrap;word-break:break-all;">分页数量</th>
+                        <th width="8%" style="white-space:nowrap;word-break:break-all;">操作</th>
+                    </tr>
+
+                    <tr>
+                        <td align="center">
+                            <span class="checkall" style="vertical-align:middle;"><input id="rptList_chkId_0" type="checkbox" name="rptList$ctl01$chkId"></span>
+                            <input type="hidden" name="rptList$ctl01$hideName" id="rptList_hideName_0" value="index">
+                        </td>
+                        <td>index</td>
+                        <td>index.aspx</td>
+                        <td>Loach.Web.UI.Page.index</td>
+                        <td>index.html</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td align="center"><a href="url_rewrite_edit.aspx?action=Edit&amp;name=index">修改</a></td>
+                    </tr>
+
+
+                </tbody>
+            </table>
+
+        </div>
+        <!--/列表-->
+        <div class="aspNetHidden">
+            <input type="hidden" name="hidden" id="hiddenID" value="">
+            <input type="hidden" name="hidden1" id="hidden1ID" value="">
+        </div>
+    </form>
+</body>
+</html>

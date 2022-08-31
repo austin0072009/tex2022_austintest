@@ -1,0 +1,492 @@
+﻿
+@using Crazy2018_Sys_DBHelper;
+@using Crazy2018_Sys_Common;
+@{
+    ViewBag.Title = "提现审核";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var manager = Session[DTKeys.SESSION_ADMIN_INFO] as dt_manager;
+}
+
+
+<style type="text/css">
+    .StatusChangesBox {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(16, 16, 16, 0.44);
+        display: none;
+    }
+
+    .StatusCont {
+        width: 100%;
+        height: 100%;
+        position: relative;
+    }
+
+    .StatusBox {
+        position: absolute;
+        top: 30%;
+        left: 35%;
+        right: 35%;
+        width: 300px;
+        height: 180px;
+        background-color: #fff;
+        border-radius: 5px;
+    }
+
+    .titleCont {
+        width: 61%;
+        height: 55px;
+        margin: auto;
+        margin-top: 50px;
+    }
+
+        .titleCont dt {
+            float: left;
+            line-height: 35px;
+        }
+
+    .BtnBox {
+        width: 60%;
+        height: 55px;
+        margin: auto;
+    }
+
+    #btnSubmit2 {
+        float: left;
+        margin-top: 15px;
+    }
+
+    #btnSubmit {
+        float: right;
+        margin-top: 15px;
+    }
+
+    th {
+        text-align: center;
+    }
+
+    .layerbtn {
+        display: inline-block;
+        height: 26px;
+        line-height: 20px;
+        padding: 3px 10px 0 10px;
+        background-color: #009688;
+        color: white;
+        white-space: nowrap;
+        text-align: center;
+        font-size: 12px;
+        border: none;
+        border-radius: 2px;
+        cursor: pointer;
+    }
+</style>
+<body class="mainbody">
+
+    <form id="form1">
+        <!--导航栏-->
+        <div class="location">
+            <a href="javascript:history.back(-1);" class="back"><i></i><span>返回上一页</span></a>
+            <a href="/Home/Center" class="home"><i></i><span>首页</span></a>
+            <i class="arrow"></i>
+            <a href="/Business/TakenowToExamine"><span>提现审核</span></a>
+            <i class="arrow"></i>
+            <span>提现审核</span>
+        </div>
+        <!--/导航栏-->
+        <!--工具栏-->
+        <div id="floatHead" class="toolbar-wrap">
+            <div class="toolbar">
+                <div class="box-wrap">
+                    <a class="menu-btn"></a>
+                    <div class="l-list">
+                        <ul class="icon-list">
+                            <li><a onclick="ExportsearchData();" class="channel"><i></i><span>导出</span></a></li>
+                        </ul>
+
+                        <span>时间范围:</span>
+                        <input name="txtStartTime" type="text" id="txtStartTime" class="input" onclick="laydate()">
+                        <span>至</span>
+                        <input name="txtEndTime" type="text" id="txtEndTime" class="input" onclick="laydate()">
+
+                        <input name="txtKeywords" placeholder="用户id查询" oninput="value=value.replace(/[^\d]/g,'')" type="text" id="txtKeywords" class="input">
+                        <button type="button" style="height: 28px;padding: 3px 10px;background-color: lightgray;" id="lbtnSearch" class="btn btn-default btn-sm">查询</button>
+                    </div>
+                </div>
+            </div>
+            <!--/工具栏-->
+            <!--列表-->
+            <div class="table-container">
+                <table width="100%" border="0" cellspacing="0" cellpadding="0" class="ltable">
+                    <thead>
+                        <tr class="odd_bg">
+                            <th>编号</th>
+                            <th>用户ID</th>
+                            <th>提现账号</th>
+                            <th>提现方式</th>
+                            <th>姓名</th>
+                            <th>登录手机</th>
+                            <th>提现金额(RMB)</th>
+                            <th>提现状态</th>
+                            <th>是否扣除手续费</th>
+                            <th>申请时间</th>
+                            <th>应提现金额(RMB)</th>
+                            <th>应收手续费(RMB)</th>
+                            <th>备注</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody id="MyTbody"></tbody>
+                    <tfoot id="tbfoot">
+
+                        <tr>
+
+                            <td align='center'>条件总计：</td>
+
+                            <td align='center'></td>
+                            <td align='center'></td>
+                            <td align='center'></td>
+                            <td align='center'></td>
+                            <td align='center'></td>
+                            <td align='center'><span id="zj"></span></td>
+
+                            <td align='center'></td>
+                            <td align='center'></td>
+                            <td align='center'></td>
+                            <td align='center'></td>
+                            <td align='center'></td>
+                            <td align='center'></td>
+                            <td align='center'></td>
+                            <td align='center'></td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+            <!--/列表-->
+            <!--内容底部-->
+            <div class="line20"></div>
+            <div class="pagelist">
+                <div class="l-btns">
+                    <span>显示</span><input name="txtPageNum" type="text" id="txtPageNum" class="pagenum"><span>条/页</span>
+                </div>
+                <div id="PageContent" class="default">
+
+                </div>
+            </div>
+            <!--/内容底部-->
+            <div style="width:100%;text-align: center;">
+                <span style="display: inline-block;padding: 4px 15px 0px 15px;color: #666;font-size:14px;">(注 : 检索条件 1.用户ID,2.提现账号)</span>
+            </div>
+        </div>
+    </form>
+    <input type="hidden" id="CommodityType" />
+    <div class="StatusChangesBox">
+        <div class="StatusCont">
+            <div class="StatusBox">
+                <dl class="titleCont">
+                    <span style="margin-left:32%">确认处理?</span>
+
+                    @*<dd>
+                            <select id="CommodityType" class="select">
+                                <option value="0">申请提现</option>
+                                <option value="1">已扣除金币</option>
+                                <option value="2">已提现</option>
+                            </select>
+                        </dd>*@
+                </dl>
+                <div class="BtnBox">
+                    <input name="btnReturn" type="button" value="审核驳回" id="btnSubmit2" class="btn yellow">
+                    <input type="button" name="btnSubmit" value="审核通过" id="btnSubmit" class="btn">
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+    <script>
+        var playSound = function () {
+            var borswer = window.navigator.userAgent.toLowerCase();
+            if (borswer.indexOf("ie") >= 0) {
+                //IE内核浏览器
+
+                var strEmbed = '<embed name="embedPlay" src="/img/tips413.mp3" autostart="true" hidden="true" loop="false"></embed>';
+                if ($("body").find("embed").length <= 0)
+                    $("body").append(strEmbed);
+                var embed = document.embedPlay;
+
+                //浏览器不支持 audion，则使用 embed 播放
+                embed.volume = 100;
+                //embed.play();这个不需要
+            } else {
+                //非IE内核浏览器
+                var strAudio = "<audio id='audioPlay' src='/img/tips413.mp3' hidden='true'>";
+
+                if ($("#audioPlay").length <= 0) {
+                    $("body").append(strAudio);
+                }
+
+                var audio = document.getElementById("audioPlay");
+
+                //浏览器支持 audio
+                audio.play();
+            }
+        }
+    </script>
+
+    <script>
+
+        var Role = '@manager.role_id';
+
+        $(function () {
+
+            ticker.client.SendMsg = function (msg) {
+               
+                if (msg == Role) {
+                    console.log('你有新的订单！');
+                    playSound();
+                    GetWithdrawalsList();
+                }
+            }
+        });
+
+
+        function ExportsearchData()
+        {
+        isExport= 1;
+
+        window.open("/Business/GetTakeNowData2?PageIndex="+PageIndex+"&PageSize="+txtPageNum+"&Keywords="+Keywords+"&starttime="+starttime+"&endtime="+endtime+"&isExport="+isExport+"&ChangeType="+$("#ChangeType").val());
+
+        }
+
+        var storagefirst = window.localStorage;
+        var MyPageNum = storagefirst["MyPageNum"];
+        var Keywords = ""
+        var PageIndex = 1;
+        var txtPageNum = 15;
+        var isExport = 0;
+        var starttime = "";
+        var endtime = "";
+        var MyID = ""
+        if (MyPageNum != "" && MyPageNum != null) {
+        txtPageNum=MyPageNum
+        } else {
+        txtPageNum = txtPageNum
+        }
+        $("#txtPageNum").val(txtPageNum);
+
+
+        GetWithdrawalsList(); ZJ();
+
+        $("#lbtnSearch").click(function () {
+            Keywords = $("#txtKeywords").val();
+            txtPageNum = $("#txtPageNum").val();
+            starttime = $("#txtStartTime").val();
+            endtime = $("#txtEndTime").val();
+            PageIndex = 1;
+            GetWithdrawalsList(); ZJ();
+        });
+        $("#btnSubmit2").click(function()
+        {
+        //代表审核角色
+        if(@manager.role_id==10)
+        {
+        var data = {}
+        data.id = MyID;
+        data.state = 4;
+            $.ajax({
+                type: "post", url: '/Business/SetTakeNowState',
+                datatype: 'json',
+                data: data,
+                success: function (res) {
+                    console.log(res)
+                    if (res.Code == 0 && res.Code == "0") {
+                        $(".StatusChangesBox").css({ "display": "block" });
+                        parent.jsprint("保存成功", "/Business/TakenowToExamine");
+                    } else {
+                        parent.alert(res.Message);
+                        $(".StatusChangesBox").css({ "display": "none" })
+                    }
+                }
+            });
+        }
+        });
+
+
+        $("#txtPageNum,#ChangeType").change(function () {
+        Keywords = $("#txtKeywords").val();
+        txtPageNum = $("#txtPageNum").val();
+        storagefirst["MyPageNum"] = txtPageNum;
+        PageIndex = 1;
+        GetWithdrawalsList(); ZJ();
+        })
+
+
+        $("#PageContent").on("click", "a", function () {
+        var lkl2 = $(this).text();
+        if (lkl2 == "下一页»") {
+        PageIndex = parseInt(PageIndex) + 1
+        } else if (lkl2 == "«上一页") {
+        PageIndex = parseInt(PageIndex) - 1
+        } else {
+        PageIndex = lkl2;
+        }
+        lweq = $("#selectRobot").val();
+        Keywords = $("#txtKeywords").val();
+        txtPageNum = $("#txtPageNum").val();
+        GetWithdrawalsList();
+        })
+        //条件总计
+        function ZJ() {
+        var data = {};
+        data.Keywords = Keywords;
+        data.ChangeType = 0;
+        data.starttime = starttime;
+        data.endtime = endtime;
+
+        $.ajax({
+        type: "post", url: '/Business/TiXianZj',
+        datatype: 'json',
+        data: data,
+        success: function (res) {
+        // alert(res);
+        $("#zj").html(res);
+
+        }
+        })
+        }
+        function GetWithdrawalsList() {
+        var data = {};
+        data.PageIndex = PageIndex;
+        data.PageSize = txtPageNum;
+        data.Keywords = Keywords;
+        data.ChangeType = 0;
+        data.starttime = starttime;
+        data.endtime = endtime;
+        data.isExport = isExport;
+        $.ajax({
+            type: "post", url: '/Business/GetTakeNowToExamineData',
+            datatype: 'json',
+            data: data,
+            success: function (res) {
+
+                if (res.Code == "0" && res.Code == 0) {
+                    if (res) {
+                        $("#MyTbody").empty();
+                        var str = $("#MyTbody").html();
+                        var sto = "";
+                        var ECont = "";
+                        var isTax = "";
+                        if (res.Data.length > 0) {
+                            var score = 0;
+                            for (var n = 0; n < res.Data.length; n++) {
+                                score += res.Data[n].Amount;
+                                if (res.Data[n].State == 0)
+                                    ECont = "<span class='layerbtn' style='background-color: #009688;'>审核</span>";
+                                else
+                                    ECont = "未知状态";
+
+                                str += "<tr>" +
+                                    "<td align='center'>" + res.Data[n].ID + "</td>" + "<td align='center'>" + res.Data[n].UserId + "</td>" +
+                                    "<td align='center'>" + res.Data[n].account + "</td>" +
+                                    "<td align='center'>" + res.Data[n].AccountType + "</td>" +
+                                    " <td align='center'>" + res.Data[n].UserName + "</td>" +
+                                    " <td align='center'>" + res.Data[n].Mobile + "</td>" +
+                                    "<td align='center'>" + res.Data[n].Amount + "</td>" +
+                                    " <td align='center'>" + res.Data[n].StateName + "</td>" +
+                                    "<td align='center'>" + res.Data[n].isTax + "</td>" +
+                                    " <td align='center'>" + res.Data[n].CreatTime + "</td>" +
+                                    "  <td align='center'>" + res.Data[n].ActualAmount + "</td>" +
+                                    "  <td align='center'>" + res.Data[n].ServiceCharge + "</td>" +
+                                    " <td align='center'>" + res.Data[n].Remark + "</td>" +
+                                    "  <td align='center'>" +
+
+                                    "<a class='EditChanges'>" +
+                                    "" + ECont + "" +
+                                    "<input type='hidden' name='rptList' id='rptList' value='" + res.Data[n].ID + "'>" +
+                                    "<input type='hidden' name='rptList' id='StaterptList2' value='" + res.Data[n].State + "'>" +
+                                    "</a>" +
+                                    "</td>" +
+                                    "</tr>";
+                            }
+                            str += "<tr>" +
+                                "<td align='center'>页总计：</td>" +
+                                "<td align='center'></td>" +
+                                "<td align='center'></td>" +
+                                "<td align='center'></td>" +
+                                "<td align='center'></td>" +
+                                "<td align='center'></td>" +
+                                "<td align='center'>" + score + "</td>" +
+                                "<td align='center'></td>" +
+                                "<td align='center'></td>" +
+                                "<td align='center'></td>" +
+                                "<td align='center'></td>" +
+                                "<td align='center'></td>" +
+                                "<td align='center'></td>" +
+                                "<td align='center'></td>" +
+                                "<td align='center'>" +
+                                "</td>" +
+                                "</tr>";
+                            $('#MyTbody').append(str);
+                            var sthtml = $("#PageContent").html();
+                            $("#PageContent").empty();
+                            if (res.InnerHtml.length > 0) {
+                                sthtml = res.InnerHtml
+                                $('#PageContent').append(sthtml);
+                            }
+                        } else {
+                            var str = $("#MyTbody").html();
+                        }
+                    } else {
+                        eval(res)
+                    }
+                } else {
+                    eval(res)
+                }
+            }
+        })
+        }
+
+
+        $("body").on("click", '.EditChanges', function () {
+            var OneText = $(this).text();
+            MyID = $(this).find("#rptList").val();
+            var stateId = $(this).find("#StaterptList2").val();
+
+            if (OneText == "审核") {
+                //0 申请提现 1 已扣除金币 2 已提现 
+                $(".StatusChangesBox").css({ "display": "block" });
+                $("#CommodityType").val("3");
+            } else {
+                alert("此状态不能进行操作！");
+            }
+
+        });
+        $("#btnSubmit2").click(function () {
+        $(".StatusChangesBox").css({ "display": "none" });
+        })
+        $("#btnSubmit").click(function () {
+            var data = {}
+            data.id = MyID;
+            data.state = 3;
+            $.ajax({
+                type: "post", url: '/Business/SetTakeNowState',
+                datatype: 'json',
+                data: data,
+                success: function (res) {
+                    console.log(res)
+                    if (res.Code == 0 && res.Code == "0") {
+                        $(".StatusChangesBox").css({ "display": "block" });
+                        parent.jsprint("保存成功", "/Business/TakenowToExamine");
+                    } else {
+                        parent.alert(res.Message);
+                        $(".StatusChangesBox").css({ "display": "none" })
+                    }
+                }
+            });
+        });
+    </script>
+</body>

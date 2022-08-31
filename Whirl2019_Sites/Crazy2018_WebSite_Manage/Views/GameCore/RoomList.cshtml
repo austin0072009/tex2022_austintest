@@ -1,0 +1,705 @@
+﻿@{
+    ViewBag.Title = "数据统计";
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+}
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.10.0/css/bootstrap-select.min.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.10.0/js/bootstrap-select.min.js"></script>
+
+<style>
+    th {
+        text-align: center;
+    }
+
+    .cardinputwidth {
+        width: 80%;
+    }
+</style>
+<body class="mainbody">
+    <form id="form1" runat="server">
+        <!--导航栏-->
+        <div class="location">
+            <a href="javascript:history.back(-1);" class="back"><i></i><span>返回上一页</span></a>
+            <a href="/Home/Center" class="home"><i></i><span>首页</span></a>
+            <i class="arrow"></i>
+            <a href="/GameCore/GameList"><span>游戏管理</span></a>
+            <i class="arrow"></i>
+            <span>桌子列表</span>
+        </div>
+        <!--/导航栏-->
+        <!--工具栏-->
+        <div id="floatHead" class="toolbar-wrap">
+            <div class="toolbar">
+                <div class="l-list">
+                    <ul class="icon-list">
+                        <li><a class="all" href="javascript:;" onclick="checkAll(this);"><i></i><span>全选</span></a></li>
+                        <li><a class="add" href="/GameCore/RoomListEdit?operation=Add"><i></i><span>创建房间</span></a></li>
+                        <li>
+                            <a id="btnDelete" class="del"><i></i><span>解散</span></a>
+                        </li>
+                    </ul>
+                    游戏:
+                    <select name="gameid" id="gameid" class="select"></select>
+                    <input name="txtKeywords" placeholder="房间号" oninput="value=value.replace(/[^\d]/g,'')" type="text" id="txtKeywords" class="input">
+                    <button type="button" style="height: 28px;padding: 3px 10px;background-color: lightgray;" id="lbtnSearch" class="btn btn-default btn-sm">查询</button>
+                </div>
+
+            </div>
+        </div>
+        <!--/工具栏-->
+        <!--列表-->
+        <div class="table-container">
+
+            <table width="100%" border="0" cellspacing="0" cellpadding="0" class="ltable">
+                <thead>
+                    <tr class="odd_bg">
+                        <th>选择</th>
+                        <th>房间号</th>
+                        <th>游戏名称</th>
+
+                        <th>总局数</th>
+                        <th>已玩局数</th>
+                        <th>桌子状态</th>
+                        <th>时长</th>
+                        <th>最小带入</th>
+                        <th>底皮</th>
+                        <th>芒果分</th>
+
+                        <th>是否开启【地王】</th>
+                        <th>创建时间</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody id="MyTbody"></tbody>
+            </table>
+
+        </div>
+        <!--/列表-->
+        <!--内容底部-->
+        <div class="line20"></div>
+        <div class="pagelist">
+            <div class="l-btns">
+                <span>显示</span><input onclick="" name="txtPageNum" type="text" id="txtPageNum" class="pagenum"><span>条/页</span>
+            </div>
+            <div id="PageContent" class="default">
+            </div>
+        </div>
+        <!--/内容底部-->
+        <div style="width:100%;text-align: center;">
+            <span style="display: inline-block;padding: 4px 15px 0px 15px;color: #666;font-size:14px;">(注 : 桌子名称)</span>
+        </div>
+        <div>
+        </div>
+    </form>
+
+    <div class="modal fade " id="myModalSetCXCard" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog" style="width:70%">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                        &times;
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel">设置扯旋房间牌型：</h4>
+                </div>
+                <div class="modal-body">
+                    <form class="bs-example bs-example-form" role="form">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">房间号：</label>
+                            <input name="txtTablenum" type="text" id="txtTablenum" class="input " placeholder="房间号" title="指定房间号">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">  位置1牌型:</label>
+                            <input name="txtCards1" type="text" id="txtCards1" class="input cardinputwidth" title="逗号隔开，牌型如：404,406,108,204">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">  位置2牌型:</label>
+                            <input name="txtCards2" type="text" id="txtCards2" class="input cardinputwidth" title="逗号隔开，牌型如：404,406,108,204">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">  位置3牌型:</label>
+                            <input name="txtCards3" type="text" id="txtCards3" class="input cardinputwidth" title="逗号隔开，牌型如：404,406,108,204">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">  位置4牌型:</label>
+                            <input name="txtCards4" type="text" id="txtCards4" class="input cardinputwidth" title="逗号隔开，牌型如：404,406,108,204">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">  位置5牌型:</label>
+                            <input name="txtCards5" type="text" id="txtCards5" class="input cardinputwidth" title="逗号隔开，牌型如：404,406,108,204">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">  位置6牌型:</label>
+                            <input name="txtCards6" type="text" id="txtCards6" class="input cardinputwidth" title="逗号隔开，牌型如：404,406,108,204">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">  位置7牌型:</label>
+                            <input name="txtCards7" type="text" id="txtCards7" class="input cardinputwidth" title="逗号隔开，牌型如：404,406,108,204">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">  位置8牌型:</label>
+                            <input name="txtCards8" type="text" id="txtCards8" class="input cardinputwidth" title="逗号隔开，牌型如：404,406,108,204">
+                        </div>
+
+                        <span style="color:red">
+                            备注： 2张红Q 2张黑J 4张10 2张黑9 4张8 4张7 4张6 2张黑5 4张4 1张红桃3 2张红2<br />
+                            黑桃：104, 105, 106, 107, 108, 109, 110, 111  红桃：202, 203, 204, 206, 207, 208, 210, 212<br />
+                            梅花：304, 305, 306, 307, 308, 309, 310, 311  方块：402, 404, 406, 407, 408, 410, 412 大王：16
+                        </span>
+                        <span id="lblreturnAgent"></span>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button id="FormClose" type="button" class="btn btn-default" data-dismiss="modal">
+                        关闭
+                    </button>
+                    <button type="button" id="btnRoomCards" class="btn btn-primary">
+                        提交
+                    </button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal -->
+    </div>
+
+    <div class="modal fade " id="myModalSetDZCard" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog" style="width:70%">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                        &times;
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel">设置德州房间牌型：</h4>
+                </div>
+                <div class="modal-body">
+                    <form class="bs-example bs-example-form" role="form">
+                        <div class="form-group">
+                            <label for="DztxtTablenum">房间号：</label>
+                            <input name="DztxtTablenum" type="text" id="DztxtTablenum" class="input" placeholder="房间号" title="指定房间号">
+                            <input name="DzPublicPoker" type="text" id="DzPublicPoker" class="input" placeholder="公牌,逗号隔开" title="逗号隔开">
+                        </div>
+                        <div class="form-group">
+                            <label for="DztxtCards1">  位置1牌型:</label>
+                            <input name="DztxtCards1" type="text" id="DztxtCards1" class="input cardinputwidth" title="逗号隔开，牌型如：404,406">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="DztxtCards2">  位置2牌型:</label>
+                            <input name="DztxtCards2" type="text" id="DztxtCards2" class="input cardinputwidth" title="逗号隔开，牌型如：404,406">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="DztxtCards3">  位置3牌型:</label>
+                            <input name="DztxtCards3" type="text" id="DztxtCards3" class="input cardinputwidth" title="逗号隔开，牌型如：404,406">
+                        </div>
+                        <div class="form-group">
+                            <label for="DztxtCards4">  位置4牌型:</label>
+                            <input name="DztxtCards4" type="text" id="DztxtCards4" class="input cardinputwidth" title="逗号隔开，牌型如：404,406">
+                        </div>
+                        <div class="form-group">
+                            <label for="DztxtCards5">  位置5牌型:</label>
+                            <input name="DztxtCards5" type="text" id="DztxtCards5" class="input cardinputwidth" title="逗号隔开，牌型如：404,406">
+                        </div>
+                        <div class="form-group">
+                            <label for="DztxtCards6">  位置6牌型:</label>
+                            <input name="DztxtCards6" type="text" id="DztxtCards6" class="input cardinputwidth" title="逗号隔开，牌型如：404,406">
+                        </div>
+                        <div class="form-group">
+                            <label for="DztxtCards7">  位置7牌型:</label>
+                            <input name="DztxtCards7" type="text" id="DztxtCards7" class="input cardinputwidth" title="逗号隔开，牌型如：404,406">
+                        </div>
+                        <div class="form-group">
+                            <label for="DztxtCards8">  位置8牌型:</label>
+                            <input name="DztxtCards8" type="text" id="DztxtCards8" class="input cardinputwidth" title="逗号隔开，牌型如：404,406">
+                        </div>
+                        <div class="form-group">
+                            <label for="DztxtCards9">  位置9牌型:</label>
+                            <input name="DztxtCards9" type="text" id="DztxtCards9" class="input cardinputwidth" title="逗号隔开，牌型如：404,406">
+                        </div>
+                        <span style="color:red">
+
+                            黑桃：102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114  红桃：202, 203, 204, 205, 206, 207, 208, 209, 210, 211, 212, 213, 214<br />
+                            梅花：302, 303, 304, 305, 306, 307, 308, 309, 310, 311, 312, 313, 314  方块：402, 403, 404, 405, 406, 407, 408, 409, 410, 411, 412, 413, 414
+                        </span>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button id="FormClose" type="button" class="btn btn-default" data-dismiss="modal">
+                        关闭
+                    </button>
+                    <button type="button" id="DzbtnRoomCards" class="btn btn-primary">
+                        提交
+                    </button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal -->
+    </div>
+
+    <div class="modal fade " id="myModalSetMJCard" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog" style="width:70%">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                        &times;
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel">设置麻将房间牌型：</h4>
+                </div>
+                <div class="modal-body">
+                    <form class="bs-example bs-example-form" role="form">
+                        <div class="form-group">
+                            <label for="MahjongTablenum">房间号：</label>
+                            <input name="MahjongTablenum" type="text" id="MahjongTablenum" class="input" placeholder="房间号" title="指定房间号">
+                            <input name="MjPublicPoker" type="text" id="MjPublicPoker" class="input" placeholder="庄家的牌多一张牌" title="">
+                            <input name="MjbankerPos" type="text" id="MjbankerPos" maxlength="1" class="input" placeholder="庄家的位置" title=""> <span style="color:darkgray;">  四人：庄家位置 1~4；三人：庄家位置 1、2、4；二人：庄家位置 1、3；</span>
+                        </div>
+                        <div class="form-group">
+                            <label for="DztxtCards1">  位置1牌型:</label>
+                            <input name="MjtxtCards1" type="text" id="MjtxtCards1" style="width:75%" class="input" title="逗号隔开，牌型如：11,11,13,13">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="DztxtCards2">  位置2牌型:</label>
+                            <input name="MjtxtCards2" type="text" id="MjtxtCards2" style="width:75%" class="input" title="逗号隔开，牌型如：11,11,13,13">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="DztxtCards3">  位置3牌型:</label>
+                            <input name="MjtxtCards3" type="text" id="MjtxtCards3" style="width:75%" class="input" title="逗号隔开，牌型如：11,11,13,13">
+                        </div>
+                        <div class="form-group">
+                            <label for="DztxtCards4">  位置4牌型:</label>
+                            <input name="MjtxtCards4" type="text" id="MjtxtCards4" style="width:75%" class="input" title="逗号隔开，牌型如：11,11,13,13">
+                        </div>
+                        <span style="color:red">
+
+                            万：11, 11, 11, 11, 12, 12, 12, 12, 13, 13, 13, 13, 14, 14, 14, 14, 15, 15, 15, 15, 16, 16, 16, 16, 17, 17, 17, 17, 18, 18, 18, 18, 19, 19, 19, 19<br />
+                            筒：21, 21, 21, 21, 22, 22, 22, 22, 23, 23, 23, 23, 24, 24, 24, 24, 25, 25, 25, 25, 26, 26, 26, 26, 27, 27, 27, 27, 28, 28, 28, 28, 29, 29, 29, 29<br />
+                            条：31, 31, 31, 31, 32, 32, 32, 32, 33, 33, 33, 33, 34, 34, 34, 34, 35, 35, 35, 35, 36, 36, 36, 36, 37, 37, 37, 37, 38, 38, 38, 38, 39, 39, 39, 39
+                        </span>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button id="FormClose" type="button" class="btn btn-default" data-dismiss="modal">
+                        关闭
+                    </button>
+                    <button type="button" id="MjbtnRoomCards" class="btn btn-primary">
+                        提交
+                    </button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal -->
+    </div>
+
+  
+    <input type="hidden" id="tabnum" />
+    <script>
+        $(function () {
+            $('.lot-tagSelect').selectpicker();
+        })
+        $("#btnRoomCards").click(function () {
+            var tablenum = $("#txtTablenum").val();
+            var allCards = $("#txtCards1").val() + ';' + $("#txtCards2").val() + ';' + $("#txtCards3").val() + ';' + $("#txtCards4").val() + ';'
+                + $("#txtCards5").val() + ';' + $("#txtCards6").val() + ';' + $("#txtCards7").val() + ';' + $("#txtCards8").val();
+            if (tablenum != "") {
+                //添加机器人
+                $.post("/Business/SetRoomCards", { allCards: allCards, tablenum: tablenum }, function (data) {
+
+                    if (data.Code == 0) {
+                        var currAllCards = data.Message.split(";");
+                        $("#txtCards1").val(currAllCards[0]);
+                        $("#txtCards2").val(currAllCards[1]);
+                        $("#txtCards3").val(currAllCards[2]);
+                        $("#txtCards4").val(currAllCards[3]);
+                        $("#txtCards5").val(currAllCards[4]);
+                        $("#txtCards6").val(currAllCards[5]);
+                        $("#txtCards7").val(currAllCards[6]);
+                        $("#txtCards8").val(currAllCards[7]);
+
+                        alert("执行成功");
+                    } else {
+                        alert(data.Message);
+                    }
+
+                });
+            } else {
+                alert("房间号不能为空");
+            }
+
+        });
+        $("#DzbtnRoomCards").click(function () {
+            var tablenum = $("#DztxtTablenum").val();
+            var dzpublicpoker = $("#DzPublicPoker").val();
+            var allCards = $("#DztxtCards1").val() + ';' + $("#DztxtCards2").val() + ';' + $("#DztxtCards3").val() + ';' + $("#DztxtCards4").val() + ';'
+                + $("#DztxtCards5").val() + ';' + $("#DztxtCards6").val() + ';' + $("#DztxtCards7").val() + ';' + $("#DztxtCards8").val() + ';' + $("#DztxtCards9").val();
+            if (tablenum != "") {
+                //添加机器人
+                $.post("/Business/SetDzRoomCards", { allCards: allCards, tablenum: tablenum, dzppoker: dzpublicpoker, isAnchor: "0" }, function (data) {
+
+                    if (data.Code == 0) {
+                        var currAllCards = data.Message.split(";");
+                        $("#DzxtCards1").val(currAllCards[0]);
+                        $("#DztxtCards2").val(currAllCards[1]);
+                        $("#DztxtCards3").val(currAllCards[2]);
+                        $("#DztxtCards4").val(currAllCards[3]);
+                        $("#DztxtCards5").val(currAllCards[4]);
+                        $("#DztxtCards6").val(currAllCards[5]);
+                        $("#DztxtCards7").val(currAllCards[6]);
+                        $("#DztxtCards8").val(currAllCards[7]);
+                        $("#DztxtCards9").val(currAllCards[8]);
+                        alert("执行成功");
+                    } else {
+                        alert(data.Message);
+                    }
+
+                });
+            } else {
+                alert("房间号不能为空");
+            }
+        });
+        $("#MjbtnRoomCards").click(function () {
+            var tablenum = $("#MahjongTablenum").val();//房间号
+            var mjpublicpoker = $("#MjPublicPoker").val();//公牌
+            var allCards = $("#MjtxtCards1").val() + ';' + $("#MjtxtCards2").val() + ';' + $("#MjtxtCards3").val() + ';' + $("#MjtxtCards4").val();
+            var MjbankerPos = $("#MjbankerPos").val();
+
+            if (tablenum != "") {
+                //麻将配置
+                $.post("/Business/SetMjRoomCards", { allCards: allCards, tablenum: tablenum, mjppoker: mjpublicpoker, MjbankerPos: MjbankerPos }, function (data) {
+
+                    if (data.Code == 0) {
+                        var currAllCards = data.Message.split(";");
+                        $("#MjtxtCards1").val(currAllCards[0]);
+                        $("#MjtxtCards2").val(currAllCards[1]);
+                        $("#MjtxtCards3").val(currAllCards[2]);
+                        $("#MjtxtCards4").val(currAllCards[3]);
+                        alert("执行成功");
+                    } else {
+                        alert(data.Message);
+                    }
+
+                });
+            } else {
+                alert("房间号不能为空");
+            }
+        });
+       
+        function tablevaleget(tablenumber, stattype) {
+            if (stattype == "已开局") {
+
+                layer.msg("该游戏已开局！");
+            
+                return;
+
+            }
+            var data = {};
+            data.tableid = tablenumber;
+            $.ajax({
+                type: "post", url: '/GameCore/GetTablePNum',
+                dataType: "json",
+                data: data,
+                success: function (res) {
+                
+                    href = "RoomaAddRobot?tableid=" + tablenumber + "&status=" + stattype + "&tablepnum=" + res.tnum;
+                    window.location.replace(href);
+                }
+            });
+
+
+        }
+        function showsetcard(gamename, gamenumber) {
+
+            if (gamename == "血战麻将") {
+                $("#MahjongTablenum").val(gamenumber);
+            } else if (gamename == "扯旋") {
+                $("#txtTablenum").val(gamenumber);
+            } else if (gamename == "德州扑克") {
+                $("#DztxtTablenum").val(gamenumber);
+            }
+
+        }
+        function btnSeeHand(tablenumber, gameid) {
+
+            var Handtableid = tablenumber;
+            if (Handtableid == "") {
+                alert("请选择需查看的房间。"); return;
+            }
+            layer.open({
+                type: 2,
+                area: ['1000px', '350px'],
+                fixed: false,
+                maxmin: true,
+                content: '/Gmmgr/UserPokerList?tableid=' + Handtableid + '&gameid=' + gameid
+            });
+
+        }
+
+      
+        GetGameList();
+   
+
+        var storagefirst = window.localStorage;
+        var MyPageNum4 = storagefirst["MyPageNum4"];
+        var id = "";
+        var txtPageNum = 10;
+        var Keywords = "";
+        var PageIndex = 1;
+        var operation = "";
+        var text1 = "";
+        var $gameid = $("#gameid");
+        if (MyPageNum4 != "" && MyPageNum4 != null) {
+            MyPageNum4 = txtPageNum
+        } else {
+            txtPageNum = txtPageNum
+        }
+        $("#txtPageNum").val(txtPageNum)
+        $("#lbtnSearch").click(function () {
+            var txtKeywords = $("#txtKeywords").val();
+            Keywords = txtKeywords;
+            GetList();
+        })
+        $("#txtPageNum").change(function () {
+            txtPageNum = $("#txtPageNum").val()
+            storagefirst["MyPageNum4"] = txtPageNum
+            PageIndex = 1;
+            GetList();
+        })
+        $(".pagelist").on('click', 'a', function () {
+            var lkl2 = $(this).text();
+            if (lkl2 == "下一页»") {
+                PageIndex = parseInt(PageIndex) + 1
+                console.log(PageIndex)
+            } else if (lkl2 == "«上一页") {
+                PageIndex = parseInt(PageIndex) - 1
+            } else {
+                PageIndex = lkl2
+            }
+            txtPageNum = $("#txtPageNum").val()
+            GetList()
+        })
+
+        GetList();
+
+        function GetList() {
+            var data = {};
+            data.PageSize = txtPageNum;
+            data.PageIndex = PageIndex;
+            data.Keywords = Keywords;
+            data.gameid = $gameid.val();
+            var tablezt = "";
+            var tablesrtcard = "";
+            $.ajax({
+                type: "post", url: '/GameCore/GetTableInfoData',
+                datatype: 'json',
+                data: data,
+                success: function (res) {
+                    if (res.Code == 0 && res.Code == "0") {
+                        if (res) {
+                            console.log(res.Data);
+                            $("#MyTbody").empty();
+                            if (res.Data.length > 0) {
+                                for (var i = 0; i < res.Data.length; i++) {
+                                    //0已创建 1已开局 2已完结 3已解散
+                                    var str = $("#MyTbody").html();
+                                    if (res.Data[i].tableStatus == "已创建") {
+                                        tablezt = "<td align='center' style='color:#5BC0DE'>" + res.Data[i].tableStatus + "</td>";
+                                    } else if (res.Data[i].tableStatus == "已开局") {
+                                        tablezt = "<td align='center'  style='color:#5CB85C'>" + res.Data[i].tableStatus + "</td>";
+                                    } else if (res.Data[i].tableStatus == "已完结") {
+                                        tablezt = "<td align='center' style='color:#F0AD4E'>" + res.Data[i].tableStatus + "</td>";
+                                    } else {
+                                        tablezt = "<td align='center' style='color:#D9534F'>" + res.Data[i].tableStatus + "</td>";
+                                    }
+                                    if (res.RoleId == 1) {
+                                        if (res.Data[i].Gamename == "血战麻将") {
+                                            tablesrtcard = "<td align='center'><button  class='btn btn-warning' data-toggle='modal' data-target='#myModalSetMJCard' onclick='showsetcard(\"" + res.Data[i].Gamename + "\"," + res.Data[i].tableNum + ")'>麻将配牌 </button><button type='button'   class='btn btn-primary' onclick='btnSeeHand(" + res.Data[i].tableNum + ",401)'>查看手牌 </button><button type='button'  class='btn btn-primary'  onclick='tablevaleget(" + res.Data[i].tableNum + ",\"" + res.Data[i].tableStatus + "\")'>添加机器人</button>  </td>";// onclick='addrobot(" + res.Data[i].tableNum + ",401)'
+                                        } else if (res.Data[i].Gamename == "扯旋") {
+                                            tablesrtcard = "<td align='center'><button  class='btn btn-primary' data-toggle='modal' data-target='#myModalSetCXCard' onclick='showsetcard(\"" + res.Data[i].Gamename + "\"," + res.Data[i].tableNum + ")'>扯旋配牌 </button><button  type='button' class='btn btn-primary' onclick='btnSeeHand(" + res.Data[i].tableNum + ",52)'>查看手牌 </button> </td>";
+                                        } else if (res.Data[i].Gamename == "德州扑克") {
+                                            tablesrtcard = "<td align='center'><button  class='btn btn-Info' data-toggle='modal' data-target='#myModalSetDZCard' onclick='showsetcard(\"" + res.Data[i].Gamename + "\"," + res.Data[i].tableNum + ")'>德州配牌 </button><button type='button' class='btn btn-primary' onclick='btnSeeHand(" + res.Data[i].tableNum + ",51)'>查看手牌 </button>   </td>";
+                                        }
+                                    } else {
+                                        if (res.Data[i].Gamename == "血战麻将") {
+                                            tablesrtcard = "<td align='center'> <button type='button'  class='btn btn-primary' onclick='tablevaleget(" + res.Data[i].tableNum + ",\"" + res.Data[i].tableStatus + "\")'>添加机器人</button>  </td>";// onclick='addrobot(" + res.Data[i].tableNum + ",401)'
+                                        } else if (res.Data[i].Gamename == "扯旋") {
+                                            tablesrtcard = "<td align='center'></td>";
+                                        } else if (res.Data[i].Gamename == "德州扑克") {
+                                            tablesrtcard = "<td align='center'></td>";
+                                        }
+                                    }
+
+                                    str = "<tr class='One'>" +
+                                        "<td align='center'>" +
+                                        "<input type='hidden' name='hidId' id='hidId' value=" + res.Data[i].tableNum + ">" +
+                                        "<span class='checkall' style='vertical-align: middle;'>" +
+                                        "<input id='chkId' class='checkall' type='checkbox' name='chkId'></span>" +
+                                        "</td>" +
+
+                                        "<td align='center'>" + res.Data[i].tableNum + "</td>" +
+                                        "<td align='center'>" + res.Data[i].Gamename + "</td>" +
+                                        "<td align='center'>" + res.Data[i].maxCount + "</td>" +
+                                        "<td align='center'>" + res.Data[i].curCount + "</td>" +
+                                        tablezt +
+                                        "<td align='center'>" + res.Data[i].Duration + "</td>" +
+                                        "<td align='center'>" + res.Data[i].firstinto + "</td>" +
+                                        "<td align='center'>" + res.Data[i].baserate + "</td>" +
+                                        "<td align='center'>" + res.Data[i].JsonPara.basemango + "</td>" +
+                                        "<td align='center'>" + res.Data[i].JsonPara._IsDw + "</td>" +
+                                        "<td align='center'>" + res.Data[i].createTime + "</td>" +
+                                        tablesrtcard +
+
+                                        "</tr>"
+                                    $('#MyTbody').append(str);
+                                }
+                            } else {
+                                $("#MyTbody").empty();
+                                var str = $("#MyTbody").html();
+                                str = "<tr class='One'>" +
+                                    "<td align='center'  colspan='8'>没有数据</td>"
+                                "</tr>"
+                                $('#MyTbody').append(str);
+                            }
+                            var sthtml = $("#PageContent").html();
+                            $("#PageContent").empty();
+                            if (res.InnerHtml.length > 0) {
+                                sthtml = res.InnerHtml
+                                $('#PageContent').append(sthtml);
+                            }
+
+                        } else {
+                            alert(res.Message)
+                        }
+                    } else {
+                        alert(res.Message)
+                    }
+                }
+            })
+        }
+
+        var numID = [];//用于储存需要删除的ID
+        $("#btnDelete").click(function () {
+            numID = []
+            var num1 = {};
+            var on1 = $(".One");
+            for (var o = 0; o < on1.length; o++) {
+                var lkl3 = $(on1[o]).find(".checkall")
+                for (var ol = 0; ol < lkl3.length; ol++) {
+
+                    if (lkl3[ol].checked == true) {
+                        var lkl4 = $(on1[o]).find("#hidId").val();
+                        num1.id = lkl4
+                        numID.push(num1.id)
+
+                    }
+                }
+            }
+
+            var a, b;
+            a = numID;
+            b = a.join(",");
+            var ids = b;
+            var gameid = $("#gameid").val();
+            $.ajax({
+                url: "/GameCore/Deletetable?Id=" + ids + "&gameid=" + gameid,
+                type: "post",
+                contentType: "application/json",
+                dataType: "json",
+                success: function (data) {
+                    eval(data);
+                    var PageIndex = $("#PageIndex").val();
+                    GetList();
+                }
+            })
+        })
+
+
+
+
+        function GetGameList() {
+            var data = {};
+            data.typeid = "0";
+            $.ajax({
+                type: "post", url: '/Business/GetGameInfoByType',
+                datatype: 'json',
+                data: data,
+                async: false,
+                success: function (res) {
+                    if (res) {
+                        // console.log(res)
+                        $("#gameid").empty();
+                        if (res.Data.length > 0) {
+                            str = "<option value='-1'>全部</option>";
+                            $('#gameid').append(str);
+                            for (var i = 0; i < res.Data.length; i++) {
+                                var str = $("#gameid").html();
+                                str = "<option value='" + res.Data[i].ID + "'>" + res.Data[i].Name + "</option>"
+                                $('#gameid').append(str);
+                            }
+                        } else {
+                            $("#gameid").empty();
+                        }
+
+
+                    } else {
+                        $("#gameid").empty();
+                        alert(res.Message)
+                    }
+
+                }
+            })
+        }
+
+
+        function GameInfo1() {
+            var data = {};
+            data.Id = id
+            data.Name = "";
+            data.BaseRate = "";
+            data.gameid = "";
+            data.Min = "";
+            data.Max = "";
+            data.OnlineCount = "";
+            data.OpenTableCount = "";
+            data.IsEnable = "";
+            data.gameType = "";
+            data.operation = operation
+            //console.log(data.Id)
+            //console.log(data.operation)
+            $.ajax({
+                type: "post", url: '/GameCore/SaveRoomInfo',
+                datatype: 'json',
+                data: data,
+                success: function (res) {
+                    console.log(res)
+                    if (res.Code == 0 && res.Code == "0") {
+                        if (res) {
+                            alert(res.Message)
+                            window.location.reload();
+                        }
+                    } else {
+                        alert(res.Message)
+                    }
+                }
+            })
+        }
+        //添加机器人到房间并开始游戏
+        function addrobot(tableid, gameid) {
+            var data = {};
+            data.tableid = tableid;
+            data.gameid = gameid;
+
+            console.log(data);
+            $.ajax({
+                type: "post", url: '/GameCore/AddRobotjoinRoom',
+                dataType: "json",
+                data: data,
+                success: function (res) {
+
+                    layer.msg(res.msg);
+                }
+            });
+        }
+
+
+    </script>
+</body>

@@ -1,0 +1,859 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Afx.Data.Entity</name>
+    </assembly>
+    <members>
+        <member name="T:System.ComponentModel.DataAnnotations.NonClusteredAttribute">
+            <summary>
+            索引 Attribute
+            </summary>
+        </member>
+        <member name="M:System.ComponentModel.DataAnnotations.NonClusteredAttribute.#ctor">
+            <summary>
+            构造函数
+            </summary>
+        </member>
+        <member name="T:System.ComponentModel.DataAnnotations.DecimalAttribute">
+            <summary>
+            Decimal Attribute
+            </summary>
+        </member>
+        <member name="P:System.ComponentModel.DataAnnotations.DecimalAttribute.Precision">
+            <summary>
+            总长度
+            </summary>
+        </member>
+        <member name="P:System.ComponentModel.DataAnnotations.DecimalAttribute.Scale">
+            <summary>
+            小数位数
+            </summary>
+        </member>
+        <member name="M:System.ComponentModel.DataAnnotations.DecimalAttribute.#ctor(System.Int32,System.Int32)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="precision">总长度</param>
+            <param name="scale">小数位数</param>
+        </member>
+        <member name="P:Afx.Data.Entity.Schema.TableInfoModel.Name">
+            <summary>
+            表名
+            </summary>
+        </member>
+        <member name="P:Afx.Data.Entity.Schema.TableInfoModel.Comment">
+            <summary>
+            备注说明
+            </summary>
+        </member>
+        <member name="T:Afx.Data.Entity.Schema.BuildDatabase">
+            <summary>
+            用于更新数据库结构类型
+            </summary>
+        </member>
+        <member name="M:Afx.Data.Entity.Schema.BuildDatabase.#ctor(Afx.Data.Entity.Schema.IDatabaseSchema,Afx.Data.Entity.Schema.ITableSchema)">
+            <summary>
+            初始化
+            </summary>
+            <param name="databaseSchema">获取数据库结构信息接口</param>
+            <param name="tableSchema">表架构接口</param>
+        </member>
+        <member name="M:Afx.Data.Entity.Schema.BuildDatabase.Build``1">
+            <summary>
+            创建、更新数据库结构，添加 更新、删除索引， 列只增加，不修改，不删除
+            </summary>
+            <typeparam name="T">EntityContext</typeparam>
+        </member>
+        <member name="M:Afx.Data.Entity.Schema.BuildDatabase.Dispose">
+            <summary>
+            释放资源
+            </summary>
+        </member>
+        <member name="T:Afx.Data.Entity.Schema.BuildModel">
+            <summary>
+            根据数据库结构生成 EntityContext 与 model .cs 文件
+            </summary>
+        </member>
+        <member name="M:Afx.Data.Entity.Schema.BuildModel.#ctor(Afx.Data.Entity.Schema.IDatabaseSchema,Afx.Data.Entity.Schema.ITableSchema,Afx.Data.Entity.Schema.IDbContextSchema,Afx.Data.Entity.Schema.IModelSchema)">
+            <summary>
+            初始化
+            </summary>
+            <param name="databaseSchema"></param>
+            <param name="tableSchema"></param>
+            <param name="dbContextSchema"></param>
+            <param name="modelSchema"></param>
+        </member>
+        <member name="M:Afx.Data.Entity.Schema.BuildModel.#ctor(Afx.Data.Entity.Schema.IDatabaseSchema,Afx.Data.Entity.Schema.ITableSchema,Afx.Data.Entity.Schema.IModelSchema)">
+            <summary>
+            初始化
+            </summary>
+            <param name="databaseSchema"></param>
+            <param name="tableSchema"></param>
+            <param name="modelSchema"></param>
+        </member>
+        <member name="M:Afx.Data.Entity.Schema.BuildModel.Build(System.String,System.String)">
+            <summary>
+            生成 model .cs 文件
+            </summary>
+            <param name="namespase">.cs 文件命名空间</param>
+            <param name="dir">存放目录</param>
+        </member>
+        <member name="M:Afx.Data.Entity.Schema.BuildModel.Dispose">
+            <summary>
+            释放资源
+            </summary>
+        </member>
+        <member name="T:Afx.Data.Entity.Schema.ColumnInfoModel">
+            <summary>
+            列信息model
+            </summary>
+        </member>
+        <member name="P:Afx.Data.Entity.Schema.ColumnInfoModel.Order">
+            <summary>
+            列顺序位置
+            </summary>
+        </member>
+        <member name="P:Afx.Data.Entity.Schema.ColumnInfoModel.Name">
+            <summary>
+            列名
+            </summary>
+        </member>
+        <member name="P:Afx.Data.Entity.Schema.ColumnInfoModel.DataType">
+            <summary>
+            列数据类型
+            </summary>
+        </member>
+        <member name="P:Afx.Data.Entity.Schema.ColumnInfoModel.MaxLength">
+            <summary>
+            列最大长度
+            </summary>
+        </member>
+        <member name="P:Afx.Data.Entity.Schema.ColumnInfoModel.MinLength">
+            <summary>
+            列最小长度
+            </summary>
+        </member>
+        <member name="P:Afx.Data.Entity.Schema.ColumnInfoModel.IsNullable">
+            <summary>
+            是否可空
+            </summary>
+        </member>
+        <member name="P:Afx.Data.Entity.Schema.ColumnInfoModel.IsKey">
+            <summary>
+            是否主键
+            </summary>
+        </member>
+        <member name="P:Afx.Data.Entity.Schema.ColumnInfoModel.IsAutoIncrement">
+            <summary>
+            是否自增
+            </summary>
+        </member>
+        <member name="P:Afx.Data.Entity.Schema.ColumnInfoModel.Indexs">
+            <summary>
+            索引
+            </summary>
+        </member>
+        <member name="P:Afx.Data.Entity.Schema.ColumnInfoModel.Comment">
+            <summary>
+            备注说明
+            </summary>
+        </member>
+        <member name="P:Afx.Data.Entity.Schema.IndexModel.Name">
+            <summary>
+            索引名称
+            </summary>
+        </member>
+        <member name="P:Afx.Data.Entity.Schema.IndexModel.IsUnique">
+            <summary>
+            是否唯一索引
+            </summary>
+        </member>
+        <member name="P:Afx.Data.Entity.Schema.IndexModel.ColumnName">
+            <summary>
+            列名
+            </summary>
+        </member>
+        <member name="T:Afx.Data.Entity.Schema.DatabaseSchema">
+            <summary>
+            获取数据库结构信息
+            </summary>
+        </member>
+        <member name="P:Afx.Data.Entity.Schema.DatabaseSchema.Log">
+            <summary>
+            执行sql logs
+            </summary>
+        </member>
+        <member name="M:Afx.Data.Entity.Schema.DatabaseSchema.Exist">
+            <summary>
+            是否存在数据库
+            </summary>
+            <returns>true：存在，false：不存在</returns>
+        </member>
+        <member name="M:Afx.Data.Entity.Schema.DatabaseSchema.CreateDatabase">
+            <summary>
+            创建数据库
+            </summary>
+            <returns>true：创建成功，false：创建失败</returns>
+        </member>
+        <member name="M:Afx.Data.Entity.Schema.DatabaseSchema.DeleteDatabase">
+            <summary>
+            删除数据库
+            </summary>
+            <returns>true：删除成功，false：删除失败</returns>
+        </member>
+        <member name="M:Afx.Data.Entity.Schema.DatabaseSchema.Dispose">
+            <summary>
+            释放所有资源
+            </summary>
+        </member>
+        <member name="M:Afx.Data.Entity.Schema.DatabaseSchema.GetDatabase">
+            <summary>
+            获取数据库名称
+            </summary>
+            <returns>数据库名称</returns>
+        </member>
+        <member name="T:Afx.Data.Entity.Schema.DataTypeModel">
+            <summary>
+            数据库类型model
+            </summary>
+        </member>
+        <member name="P:Afx.Data.Entity.Schema.DataTypeModel.DbDataType">
+            <summary>
+            数据库类型
+            </summary>
+        </member>
+        <member name="P:Afx.Data.Entity.Schema.DataTypeModel.Type">
+            <summary>
+            C# 类型
+            </summary>
+        </member>
+        <member name="P:Afx.Data.Entity.Schema.DataTypeModel.NullableType">
+            <summary>
+             C# 可空类型
+            </summary>
+        </member>
+        <member name="T:Afx.Data.Entity.Schema.DbContextSchema">
+            <summary>
+            生成 DbContext
+            </summary>
+        </member>
+        <member name="M:Afx.Data.Entity.Schema.DbContextSchema.GetContextCode(System.String,System.Collections.Generic.List{System.String},System.String)">
+            <summary>
+            获取 DbContext .cs 文件的代码
+            </summary>
+            <param name="contextName">DbContext名称</param>
+            <param name="models">生成dbset的model 名称</param>
+            <param name="namespace">DbContext .cs 文件命名空间</param>
+            <returns>.cs 文件源代码</returns>
+        </member>
+        <member name="M:Afx.Data.Entity.Schema.DbContextSchema.GetPropertyCode(System.String)">
+            <summary>
+            获取 DbContext DbSet 代码
+            </summary>
+            <param name="model">DbSet model名称</param>
+            <returns>DbContext DbSet 源代码</returns>
+        </member>
+        <member name="M:Afx.Data.Entity.Schema.DbContextSchema.GetContextName(System.String)">
+            <summary>
+            获取DbContext名称
+            </summary>
+            <param name="database">数据库名称</param>
+            <returns>DbContext名称</returns>
+        </member>
+        <member name="M:Afx.Data.Entity.Schema.DbContextSchema.Dispose">
+            <summary>
+            释放资源
+            </summary>
+        </member>
+        <member name="M:Afx.Data.Entity.Schema.DbContextSchema.GetDbContextFormat">
+            <summary>
+            GetDbContextFormat
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Afx.Data.Entity.Schema.DbContextSchema.GetPropertyFormat">
+            <summary>
+            GetPropertyFormat
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Afx.Data.Entity.Schema.IBuildDatabase">
+            <summary>
+            更新数据库结构类型
+            </summary>
+        </member>
+        <member name="M:Afx.Data.Entity.Schema.IBuildDatabase.Build``1">
+            <summary>
+            创建、更新数据库结构，添加 更新、删除索引， 列只增加，不修改，不删除
+            </summary>
+            <typeparam name="T">EntityContext</typeparam>
+        </member>
+        <member name="T:Afx.Data.Entity.Schema.IBuildModel">
+            <summary>
+            根据数据库结构生成 EntityContext 与 model .cs 文件
+            </summary>
+        </member>
+        <member name="M:Afx.Data.Entity.Schema.IBuildModel.Build(System.String,System.String)">
+            <summary>
+            生成 model .cs 文件
+            </summary>
+            <param name="_namespase">.cs 文件命名空间</param>
+            <param name="dir">存放目录</param>
+        </member>
+        <member name="T:Afx.Data.Entity.Schema.IDatabaseSchema">
+            <summary>
+            获取数据库结构信息
+            </summary>
+        </member>
+        <member name="P:Afx.Data.Entity.Schema.IDatabaseSchema.Log">
+            <summary>
+            执行sql logs
+            </summary>
+        </member>
+        <member name="M:Afx.Data.Entity.Schema.IDatabaseSchema.Exist">
+            <summary>
+            是否存在数据库
+            </summary>
+            <returns>true：存在，false：不存在</returns>
+        </member>
+        <member name="M:Afx.Data.Entity.Schema.IDatabaseSchema.CreateDatabase">
+            <summary>
+            创建数据库
+            </summary>
+            <returns>true：创建成功，false：创建失败</returns>
+        </member>
+        <member name="M:Afx.Data.Entity.Schema.IDatabaseSchema.DeleteDatabase">
+            <summary>
+            删除数据库
+            </summary>
+            <returns>true：删除成功，false：删除失败</returns>
+        </member>
+        <member name="M:Afx.Data.Entity.Schema.IDatabaseSchema.GetDatabase">
+            <summary>
+            获取数据库名称
+            </summary>
+            <returns>数据库名称</returns>
+        </member>
+        <member name="T:Afx.Data.Entity.Schema.IDbContextSchema">
+            <summary>
+            生成 DbContext
+            </summary>
+        </member>
+        <member name="M:Afx.Data.Entity.Schema.IDbContextSchema.GetContextCode(System.String,System.Collections.Generic.List{System.String},System.String)">
+            <summary>
+            获取 DbContext .cs 文件的代码
+            </summary>
+            <param name="contextName">DbContext名称</param>
+            <param name="models">生成dbset的model 名称</param>
+            <param name="namespace">DbContext .cs 文件命名空间</param>
+            <returns>.cs 文件源代码</returns>
+        </member>
+        <member name="M:Afx.Data.Entity.Schema.IDbContextSchema.GetPropertyCode(System.String)">
+            <summary>
+            获取 DbContext DbSet 代码
+            </summary>
+            <param name="model">DbSet model名称</param>
+            <returns>DbContext DbSet 源代码</returns>
+        </member>
+        <member name="M:Afx.Data.Entity.Schema.IDbContextSchema.GetContextName(System.String)">
+            <summary>
+            获取DbContext名称
+            </summary>
+            <param name="database">数据库名称</param>
+            <returns>DbContext名称</returns>
+        </member>
+        <member name="T:Afx.Data.Entity.Schema.IModelSchema">
+            <summary>
+            获取model信息
+            </summary>
+        </member>
+        <member name="P:Afx.Data.Entity.Schema.IModelSchema.IsAutoModelName">
+            <summary>
+            是否自动修改类名，默认true
+            </summary>
+        </member>
+        <member name="P:Afx.Data.Entity.Schema.IModelSchema.IsAutoPropertyName">
+            <summary>
+            是否自动修改属性名，默认true
+            </summary>
+        </member>
+        <member name="M:Afx.Data.Entity.Schema.IModelSchema.GetModelCode(Afx.Data.Entity.Schema.TableInfoModel,System.Collections.Generic.List{Afx.Data.Entity.Schema.ColumnInfoModel},System.String)">
+            <summary>
+            获取 model .cs 文件源代码
+            </summary>
+            <param name="table">model名称</param>
+            <param name="columns">表列信息</param>
+            <param name="namespace">model 命名空间</param>
+            <returns>model .cs 文件源代码</returns>
+        </member>
+        <member name="M:Afx.Data.Entity.Schema.IModelSchema.GetAttributeCode(Afx.Data.Entity.Schema.ColumnInfoModel)">
+            <summary>
+            获取model属性标记源代码
+            </summary>
+            <param name="column">列信息</param>
+            <returns>model属性标记源代码</returns>
+        </member>
+        <member name="M:Afx.Data.Entity.Schema.IModelSchema.GetPropertyCode(Afx.Data.Entity.Schema.ColumnInfoModel)">
+            <summary>
+            获取model属性源代码
+            </summary>
+            <param name="column">列信息</param>
+            <returns>model属性源代码</returns>
+        </member>
+        <member name="M:Afx.Data.Entity.Schema.IModelSchema.GetPropertyType(Afx.Data.Entity.Schema.ColumnInfoModel)">
+            <summary>
+            获取model属性类型string
+            </summary>
+            <param name="column">列信息</param>
+            <returns>model属性类型string</returns>
+        </member>
+        <member name="M:Afx.Data.Entity.Schema.IModelSchema.GetModelName(System.String)">
+            <summary>
+            获取model名称
+            </summary>
+            <param name="table">表名</param>
+            <returns>model名称</returns>
+        </member>
+        <member name="M:Afx.Data.Entity.Schema.IModelSchema.GetPropertyName(System.String)">
+            <summary>
+            获取model属性名称
+            </summary>
+            <param name="column">列名</param>
+            <returns>model属性名称</returns>
+        </member>
+        <member name="T:Afx.Data.Entity.Schema.ITableSchema">
+            <summary>
+            表结构接口
+            </summary>
+        </member>
+        <member name="P:Afx.Data.Entity.Schema.ITableSchema.Log">
+            <summary>
+            执行的 sql logs
+            </summary>
+        </member>
+        <member name="M:Afx.Data.Entity.Schema.ITableSchema.GetTables">
+            <summary>
+            获取所有表
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Afx.Data.Entity.Schema.ITableSchema.CreateTable(Afx.Data.Entity.Schema.TableInfoModel,System.Collections.Generic.List{Afx.Data.Entity.Schema.ColumnInfoModel})">
+            <summary>
+            创建表
+            </summary>
+            <param name="table">表名</param>
+            <param name="columns">列信息</param>
+            <returns>是否创建成功</returns>
+        </member>
+        <member name="M:Afx.Data.Entity.Schema.ITableSchema.GetTableColumns(System.String)">
+            <summary>
+            获取表列信息
+            </summary>
+            <param name="table">表名</param>
+            <returns>列信息</returns>
+        </member>
+        <member name="M:Afx.Data.Entity.Schema.ITableSchema.AddColumn(System.String,Afx.Data.Entity.Schema.ColumnInfoModel)">
+            <summary>
+            添加列
+            </summary>
+            <param name="table">表名</param>
+            <param name="column">列信息</param>
+            <returns>是否添加成功</returns>
+        </member>
+        <member name="M:Afx.Data.Entity.Schema.ITableSchema.AddIndex(System.String,System.Collections.Generic.List{Afx.Data.Entity.Schema.IndexModel})">
+            <summary>
+            添加索引
+            </summary>
+            <param name="table">表名</param>
+            <param name="indexs">索引列</param>
+        </member>
+        <member name="M:Afx.Data.Entity.Schema.ITableSchema.AddIndex(System.String,Afx.Data.Entity.Schema.IndexModel)">
+            <summary>
+            添加索引
+            </summary>
+            <param name="table">表名</param>
+            <param name="index">索引列</param>
+            <returns>是否添加成功</returns>
+        </member>
+        <member name="M:Afx.Data.Entity.Schema.ITableSchema.AddIndex(System.String,System.String,System.Boolean,System.Collections.Generic.List{System.String})">
+            <summary>
+            添加索引
+            </summary>
+            <param name="table">表名</param>
+            <param name="indexName">索引名称</param>
+            <param name="isUnique">是否唯一索引</param>
+            <param name="columns">索引列</param>
+            <returns>是否添加成功</returns>
+        </member>
+        <member name="M:Afx.Data.Entity.Schema.ITableSchema.DeleteIndex(System.String,System.String)">
+            <summary>
+            删除索引
+            </summary>
+            <param name="table">表名</param>
+            <param name="index">索引名称</param>
+            <returns></returns>
+        </member>
+        <member name="M:Afx.Data.Entity.Schema.ITableSchema.GetModelType``1">
+            <summary>
+            获取所有model type
+            </summary>
+            <typeparam name="T"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:Afx.Data.Entity.Schema.ITableSchema.GetTableName(System.Type)">
+            <summary>
+            获取表名
+            </summary>
+            <param name="modelType">model type</param>
+            <returns>表名</returns>
+        </member>
+        <member name="M:Afx.Data.Entity.Schema.ITableSchema.GetModelColumns(System.Type,System.String)">
+            <summary>
+            获取model 属性列信息
+            </summary>
+            <param name="modelType">model type</param>
+            <param name="table">表名</param>
+            <returns>列信息</returns>
+        </member>
+        <member name="M:Afx.Data.Entity.Schema.ITableSchema.GetColumnInfo(System.Reflection.PropertyInfo,System.String)">
+            <summary>
+            获取列信息
+            </summary>
+            <param name="property">model 属性</param>
+            <param name="table">表名</param>
+            <returns>列信息</returns>
+        </member>
+        <member name="M:Afx.Data.Entity.Schema.ITableSchema.GetColumnType(System.Type,System.Int32,System.Int32)">
+            <summary>
+            获取列数据库类型
+            </summary>
+            <param name="propertyType">model 属性类型</param>
+            <param name="maxLength">类型最大长度</param>
+            <param name="minLength">类型最小长度</param>
+            <returns>列数据库类型</returns>
+        </member>
+        <member name="T:Afx.Data.Entity.Schema.ModelSchema">
+            <summary>
+            获取model信息
+            </summary>
+        </member>
+        <member name="P:Afx.Data.Entity.Schema.ModelSchema.IsAutoModelName">
+            <summary>
+            是否自动修改类名，默认true
+            </summary>
+        </member>
+        <member name="P:Afx.Data.Entity.Schema.ModelSchema.IsAutoPropertyName">
+            <summary>
+            是否自动修改属性名，默认true
+            </summary>
+        </member>
+        <member name="M:Afx.Data.Entity.Schema.ModelSchema.GetModelCode(Afx.Data.Entity.Schema.TableInfoModel,System.Collections.Generic.List{Afx.Data.Entity.Schema.ColumnInfoModel},System.String)">
+            <summary>
+            获取 model .cs 文件源代码
+            </summary>
+            <param name="table">model名称</param>
+            <param name="columns">表列信息</param>
+            <param name="namespace">model 命名空间</param>
+            <returns>model .cs 文件源代码</returns>
+        </member>
+        <member name="M:Afx.Data.Entity.Schema.ModelSchema.GetModelName(System.String)">
+            <summary>
+            获取model名称
+            </summary>
+            <param name="table">表名</param>
+            <returns>model名称</returns>
+        </member>
+        <member name="M:Afx.Data.Entity.Schema.ModelSchema.GetAttributeCode(Afx.Data.Entity.Schema.ColumnInfoModel)">
+            <summary>
+            获取model属性标记源代码
+            </summary>
+            <param name="column">列信息</param>
+            <returns>model属性标记源代码</returns>
+        </member>
+        <member name="M:Afx.Data.Entity.Schema.ModelSchema.GetPropertyName(System.String)">
+            <summary>
+            获取model属性名称
+            </summary>
+            <param name="column">列名</param>
+            <returns>model属性名称</returns>
+        </member>
+        <member name="M:Afx.Data.Entity.Schema.ModelSchema.GetPropertyCode(Afx.Data.Entity.Schema.ColumnInfoModel)">
+            <summary>
+            获取model属性源代码
+            </summary>
+            <param name="column">列信息</param>
+            <returns>model属性源代码</returns>
+        </member>
+        <member name="M:Afx.Data.Entity.Schema.ModelSchema.GetPropertyType(Afx.Data.Entity.Schema.ColumnInfoModel)">
+            <summary>
+            获取model属性类型string
+            </summary>
+            <param name="column">列信息</param>
+            <returns>model属性类型string</returns>
+        </member>
+        <member name="M:Afx.Data.Entity.Schema.ModelSchema.Dispose">
+            <summary>
+            释放资源
+            </summary>
+        </member>
+        <member name="M:Afx.Data.Entity.Schema.ModelSchema.GetModelFormat">
+            <summary>
+            GetDbContextFormat
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Afx.Data.Entity.Schema.ModelSchema.GetPropertyFormat">
+            <summary>
+            GetPropertyFormat
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Afx.Data.Entity.Schema.ModelSchema.GetPropertyAttribute">
+            <summary>
+            GetPropertyAttribute
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Afx.Data.Entity.Schema.TableSchema">
+            <summary>
+            表结构接口
+            </summary>
+        </member>
+        <member name="P:Afx.Data.Entity.Schema.TableSchema.Log">
+            <summary>
+            执行sql logs
+            </summary>
+        </member>
+        <member name="M:Afx.Data.Entity.Schema.TableSchema.GetTables">
+            <summary>
+            获取数据库所有表名
+            </summary>
+            <returns>数据库所有表名</returns>
+        </member>
+        <member name="M:Afx.Data.Entity.Schema.TableSchema.CreateTable(Afx.Data.Entity.Schema.TableInfoModel,System.Collections.Generic.List{Afx.Data.Entity.Schema.ColumnInfoModel})">
+            <summary>
+            创建数据库表
+            </summary>
+            <param name="table">表名</param>
+            <param name="columns">列信息</param>
+            <returns>是否成功</returns>
+        </member>
+        <member name="M:Afx.Data.Entity.Schema.TableSchema.AddColumn(System.String,Afx.Data.Entity.Schema.ColumnInfoModel)">
+            <summary>
+            添加列
+            </summary>
+            <param name="table">表名</param>
+            <param name="column">列信息</param>
+            <returns>是否成功</returns>
+        </member>
+        <member name="M:Afx.Data.Entity.Schema.TableSchema.AddIndex(System.String,System.Collections.Generic.List{Afx.Data.Entity.Schema.IndexModel})">
+            <summary>
+            添加索引
+            </summary>
+            <param name="table">表名</param>
+            <param name="indexs">索引列信息</param>
+        </member>
+        <member name="M:Afx.Data.Entity.Schema.TableSchema.AddIndex(System.String,Afx.Data.Entity.Schema.IndexModel)">
+            <summary>
+            添加索引
+            </summary>
+            <param name="table">表名</param>
+            <param name="index">索引列信息</param>
+            <returns>是否成功</returns>
+        </member>
+        <member name="M:Afx.Data.Entity.Schema.TableSchema.AddIndex(System.String,System.String,System.Boolean,System.Collections.Generic.List{System.String})">
+            <summary>
+            添加索引
+            </summary>
+            <param name="table">表名</param>
+            <param name="indexName">索引名称</param>
+            <param name="isUnique">是否唯一索引</param>
+            <param name="columns">列名</param>
+            <returns>是否成功</returns>
+        </member>
+        <member name="M:Afx.Data.Entity.Schema.TableSchema.DeleteIndex(System.String,System.String)">
+            <summary>
+            删除索引
+            </summary>
+            <param name="table">表名</param>
+            <param name="index">索引名称</param>
+            <returns>是否成功</returns>
+        </member>
+        <member name="M:Afx.Data.Entity.Schema.TableSchema.GetTableColumns(System.String)">
+            <summary>
+            获取表列信息
+            </summary>
+            <param name="table">表名</param>
+            <returns>列信息</returns>
+        </member>
+        <member name="M:Afx.Data.Entity.Schema.TableSchema.GetModelType``1">
+            <summary>
+            获取所有model type
+            </summary>
+            <typeparam name="T"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:Afx.Data.Entity.Schema.TableSchema.GetTableName(System.Type)">
+            <summary>
+            获取表名
+            </summary>
+            <param name="modelType">model type</param>
+            <returns>表名</returns>
+        </member>
+        <member name="M:Afx.Data.Entity.Schema.TableSchema.GetModelColumns(System.Type,System.String)">
+            <summary>
+            获取model 属性列信息
+            </summary>
+            <param name="modelType">model type</param>
+            <param name="table">表名</param>
+            <returns>列信息</returns>
+        </member>
+        <member name="M:Afx.Data.Entity.Schema.TableSchema.GetColumnInfo(System.Reflection.PropertyInfo,System.String)">
+            <summary>
+            获取列信息
+            </summary>
+            <param name="property">model 属性</param>
+            <param name="table">表名</param>
+            <returns>列信息</returns>
+        </member>
+        <member name="M:Afx.Data.Entity.Schema.TableSchema.GetColumnType(System.Type,System.Int32,System.Int32)">
+            <summary>
+            获取列数据库类型
+            </summary>
+            <param name="propertyType">model 属性类型</param>
+            <param name="maxLength">类型最大长度</param>
+            <param name="minLength">类型最小长度</param>
+            <returns>列数据库类型</returns>
+        </member>
+        <member name="M:Afx.Data.Entity.Schema.TableSchema.Dispose">
+            <summary>
+            释放资源
+            </summary>
+        </member>
+        <member name="T:Afx.Data.Entity.EntityContext">
+            <summary>
+            实体 Context
+            </summary>
+        </member>
+        <member name="M:Afx.Data.Entity.EntityContext.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the Microsoft.EntityFramework.DbContext class
+            </summary>
+            <param name="nameOrConnectionString">appsettingkey or connectionString</param>
+        </member>
+        <member name="M:Afx.Data.Entity.EntityContext.#ctor(System.Data.Common.DbConnection)">
+            <summary>
+            Initializes a new instance of the Microsoft.EntityFramework.DbContext class
+            </summary>
+            <param name="dbConnection">数据库链接，Context 被Dispose， dbConnection 也会被Dispose</param>
+        </member>
+        <member name="M:Afx.Data.Entity.EntityContext.RestConfiguration">
+            <summary>
+            重新设置Configuration
+            this.Configuration.AutoDetectChangesEnabled = true;
+            this.Configuration.EnsureTransactionsForFunctionsAndCommands = false;
+            this.Configuration.LazyLoadingEnabled = true;
+            this.Configuration.ProxyCreationEnabled = true;
+             this.Configuration.UseDatabaseNullSemantics = false;
+            this.Configuration.ValidateOnSaveEnabled = false;
+            </summary>
+        </member>
+        <member name="P:Afx.Data.Entity.EntityContext.IsTransaction">
+            <summary>
+            是否开启事务
+            </summary>
+        </member>
+        <member name="M:Afx.Data.Entity.EntityContext.BeginTransaction">
+            <summary>
+            开启事务
+            </summary>
+            <returns>Entity 事务</returns>
+        </member>
+        <member name="M:Afx.Data.Entity.EntityContext.BeginTransaction(System.Data.IsolationLevel)">
+            <summary>
+            开启事务
+            </summary>
+            <param name="isolationLevel">The System.Data.IsolationLevel to use.</param>
+            <returns>Entity 事务</returns>
+        </member>
+        <member name="M:Afx.Data.Entity.EntityContext.Commit">
+            <summary>
+            提交事务
+            </summary>
+        </member>
+        <member name="M:Afx.Data.Entity.EntityContext.Rollback">
+            <summary>
+            回滚事务
+            </summary>
+        </member>
+        <member name="P:Afx.Data.Entity.EntityContext.IsDisposed">
+            <summary>
+            是否已释放
+            </summary>
+        </member>
+        <member name="M:Afx.Data.Entity.EntityContext.ExecuteSqlCommand(System.String)">
+            <summary>
+            执行原生sql
+            </summary>
+            <param name="sql">sql 语句</param>
+            <returns>The number of rows affected.</returns>
+        </member>
+        <member name="M:Afx.Data.Entity.EntityContext.ExecuteSqlCommand(System.String,System.Object[])">
+            <summary>
+            执行原生sql
+            </summary>
+            <param name="sql">sql 语句</param>
+            <param name="parameters">sql 参数</param>
+            <returns>The number of rows affected.</returns>
+        </member>
+        <member name="M:Afx.Data.Entity.EntityContext.ExecuteSqlCommand(System.String,System.Collections.Generic.IEnumerable{System.Object})">
+            <summary>
+            执行原生sql
+            </summary>
+            <param name="sql">sql 语句</param>
+            <param name="parameters">sql 参数</param>
+            <returns>The number of rows affected.</returns>
+        </member>
+        <member name="P:Afx.Data.Entity.EntityContext.CommitCallbackList">
+            <summary>
+             commit or SaveChanges 成功之后执行action list
+            </summary>
+        </member>
+        <member name="F:Afx.Data.Entity.EntityContext.CommitCallbackError">
+            <summary>
+            CommitCallback throw Exception Action
+            </summary>
+        </member>
+        <member name="M:Afx.Data.Entity.EntityContext.AddCommitCallback(System.Action{Afx.Data.Entity.EntityContext,System.Int32})">
+            <summary>
+            添加 commit or SaveChanges 成功之后执行action
+            action 只执行一次
+            </summary>
+            <param name="action">需要执行的action</param>
+        </member>
+        <member name="M:Afx.Data.Entity.EntityContext.RemoveCommitCallback(System.Action{Afx.Data.Entity.EntityContext,System.Int32})">
+            <summary>
+            移除commit or SaveChanges 成功之后执行action
+            </summary>
+            <param name="action">需要执行的action</param>
+            <returns>移除成功返回true</returns>
+        </member>
+        <member name="M:Afx.Data.Entity.EntityContext.ClearCommitCallback">
+            <summary>
+            移除所有action
+            </summary>
+        </member>
+        <member name="M:Afx.Data.Entity.EntityContext.SaveChanges">
+            <summary>
+            SaveChanges
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Afx.Data.Entity.EntityContext.Dispose(System.Boolean)">
+            <summary>
+            Dispose
+            </summary>
+            <param name="disposing"></param>
+        </member>
+    </members>
+</doc>

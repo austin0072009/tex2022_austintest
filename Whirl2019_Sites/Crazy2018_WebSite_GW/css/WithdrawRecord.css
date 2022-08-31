@@ -1,0 +1,51 @@
+﻿th {
+    text-align: center;
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 35px;
+}
+
+.footerbox {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.TotalContText {
+    position: absolute;
+    font-size: 16px;
+    left: 10%;
+}
+
+    .TotalContText span {
+        color: red;
+    }
+
+.boxBtn {
+    width: 35%;
+    height: 100%;
+    margin: auto;
+}
+
+.FirstPageBox {
+    width: 20px;
+    height: 20px;
+    float: left;
+    margin-left: 10px;
+}
+
+    .FirstPageBox img {
+        width: 100%;
+        height: 100%;
+        display: block;
+    }
+
+.pageNum {
+    float: left;
+    margin-left: 15px;
+    font-size: 16px;
+}

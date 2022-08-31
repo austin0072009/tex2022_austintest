@@ -1,0 +1,156 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{727CBA4B-A8CA-4AC1-9CE6-12AE24E83A1E}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Crazy2018_Sys_ViewEntity</RootNamespace>
+    <AssemblyName>Crazy2018_Sys_ViewEntity</AssemblyName>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Agent\AgentCeoView.cs" />
+    <Compile Include="Api\VisualTablesInfo.cs" />
+    <Compile Include="BaseView.cs" />
+    <Compile Include="Club\ClubFundLogView.cs" />
+    <Compile Include="Club\ClubGoldLogView.cs" />
+    <Compile Include="Club\ClubllianceView.cs" />
+    <Compile Include="Club\ClubUserGoldLogView.cs" />
+    <Compile Include="Club\ClubView.cs" />
+    <Compile Include="Club\DiamondChangeLogView.cs" />
+    <Compile Include="CommodiyType.cs" />
+    <Compile Include="GameCore\AgentInsurancePoolView.cs" />
+    <Compile Include="GameCore\GameActityUserView.cs" />
+    <Compile Include="GameCore\GameActivityView.cs" />
+    <Compile Include="GameCore\EmailGiveGoldView.cs" />
+    <Compile Include="GameCore\GameTableInfoView.cs" />
+    <Compile Include="GameCore\GangCardStatistics.cs" />
+    <Compile Include="GameCore\limitdeviceView.cs" />
+    <Compile Include="GameCore\PayModel.cs" />
+    <Compile Include="GameCore\tentitycardtypeView.cs" />
+    <Compile Include="GameCore\tentitycardView.cs" />
+    <Compile Include="GameCore\tgameuserrankView.cs" />
+    <Compile Include="GameCore\tjackpotaddlogView.cs" />
+    <Compile Include="GameCore\tjackpotlogView.cs" />
+    <Compile Include="GameCore\ttablehandnumlogView.cs" />
+    <Compile Include="GameCore\tuseragent2019View.cs" />
+    <Compile Include="GameCore\tuseragentlogView.cs" />
+    <Compile Include="GameCore\userloginlogView.cs" />
+    <Compile Include="GameCore\UserLossStatistics.cs" />
+    <Compile Include="GameCore\UserSummaryEntity.cs" />
+    <Compile Include="GameCore\VisualTableView.cs" />
+    <Compile Include="Game\GameLogoView.cs" />
+    <Compile Include="Game\GameUserAgentManage.cs" />
+    <Compile Include="Game\GoldChangeh5gameView.cs" />
+    <Compile Include="Game\GoldChangelogView.cs" />
+    <Compile Include="Game\JackpotScene.cs" />
+    <Compile Include="Game\KeyValue.cs" />
+    <Compile Include="Game\NoticesEntityView.cs" />
+    <Compile Include="Game\RechargeServiceListView.cs" />
+    <Compile Include="Game\RoomConfigurationView.cs" />
+    <Compile Include="Game\RoomListView.cs" />
+    <Compile Include="Game\TaxlogView.cs" />
+    <Compile Include="Game\th5winloselogView.cs" />
+    <Compile Include="Game\TuserPrizeLogView.cs" />
+    <Compile Include="Game\TurnTablePrizeView.cs" />
+    <Compile Include="Game\UserAgentDataView.cs" />
+    <Compile Include="Game\ChargelogView.cs" />
+    <Compile Include="Game\CommodiyView.cs" />
+    <Compile Include="Game\EnumView.cs" />
+    <Compile Include="Game\EmailModel.cs" />
+    <Compile Include="Game\EmailView.cs" />
+    <Compile Include="Game\FeedBackView.cs" />
+    <Compile Include="Game\GameInfoModel.cs" />
+    <Compile Include="Game\GameInfoView.cs" />
+    <Compile Include="Game\GameUserAgentView.cs" />
+    <Compile Include="Game\GameUserView.cs" />
+    <Compile Include="Game\InitialagencyView.cs" />
+    <Compile Include="Game\JackpotView.cs" />
+    <Compile Include="Game\NoticeView.cs" />
+    <Compile Include="Game\OnlineInfoView.cs" />
+    <Compile Include="Game\RankView.cs" />
+    <Compile Include="Game\RechargeView.cs" />
+    <Compile Include="Game\RoomInfoView.cs" />
+    <Compile Include="Game\SetTakeNowModel.cs" />
+    <Compile Include="Game\ShopLogView.cs" />
+    <Compile Include="Game\StatisticsGoldView.cs" />
+    <Compile Include="Game\useragentView.cs" />
+    <Compile Include="Game\UseragnetlogView.cs" />
+    <Compile Include="Game\UserContactView.cs" />
+    <Compile Include="Gmmgr\AgentgoldlogView.cs" />
+    <Compile Include="Gmmgr\LoseWinview.cs" />
+    <Compile Include="Gmmgr\RedEnvelopesConfigView.cs" />
+    <Compile Include="Gmmgr\RedenvelopesLogView.cs" />
+    <Compile Include="Gmmgr\UserRechargelogView.cs" />
+    <Compile Include="Gmmgr\UserTableLogWinLosingView.cs" />
+    <Compile Include="H5Game\MenuView.cs" />
+    <Compile Include="H5Game\TjackpotLogView.cs" />
+    <Compile Include="H5Game\TjackpotStockLogView.cs" />
+    <Compile Include="H5Game\TotalRecordView.cs" />
+    <Compile Include="H5Game\TSlotConfigView.cs" />
+    <Compile Include="Retail\ReatilUserView.cs" />
+    <Compile Include="Retail\RetailChangeInfoView.cs" />
+    <Compile Include="Retail\RetailInfoView.cs" />
+    <Compile Include="SnsCenter\SnsUserInfo.cs" />
+    <Compile Include="statistics\dateEx.cs" />
+    <Compile Include="statistics\onedayTimeDailyBriefingInfo.cs" />
+    <Compile Include="statistics\RankUserSD.cs" />
+    <Compile Include="statistics\temtuseragent.cs" />
+    <Compile Include="UserAgent\ChildAgentList.cs" />
+    <Compile Include="UserAgent\GameUser.cs" />
+    <Compile Include="UserAgent\MyAgent.cs" />
+    <Compile Include="WebSite_GW\AgentView.cs" />
+    <Compile Include="WebSite_GW\RegistModel.cs" />
+    <Compile Include="WebSite_GW\TakeNowView.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WebSite_GW\BankCardView.cs" />
+    <Compile Include="WebSite_GW\BankTypeView.cs" />
+    <Compile Include="WebSite_GW\UserAgentView.cs" />
+    <Compile Include="WebSite_GW\UserView.cs" />
+    <Compile Include="WebSite_Manage\ManagerView.cs" />
+    <Compile Include="WebSite_Manage\NavView.cs" />
+    <Compile Include="WebSite_Manage\ProfitLogView.cs" />
+    <Compile Include="WebSite_Manage\RechargeChannelDto.cs" />
+    <Compile Include="WebSite_Manage\RoleModel.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

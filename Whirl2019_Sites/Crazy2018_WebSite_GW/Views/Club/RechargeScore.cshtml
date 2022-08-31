@@ -1,0 +1,351 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_ClubLayoutPage.cshtml";
+    ViewBag.Title = "VIP商城";
+}
+<link href="~/css/club/mdui.css" rel="stylesheet" />
+<link href="~/css/club/app.css" rel="stylesheet" />
+<script src="~/js/club/mdui.js"></script>
+<link href="~/css/club/bootstrap-table.min.css" rel="stylesheet" />
+@*Latest compiled and minified JavaScript*@
+<script src="https://unpkg.com/bootstrap-table@1.15.3/dist/bootstrap-table.min.js"></script>
+@* Latest compiled and minified Locales*@
+<script src="https://unpkg.com/bootstrap-table@1.15.3/dist/locale/bootstrap-table-zh-CN.min.js"></script>
+<style>
+    .divbg2 {
+        background-color: #1B1F42;
+       
+    }
+    .mdui-drawer {
+        width: 100%;
+    }
+    .paybtn {
+        width: 45%;
+        text-align: center;
+        height: 40px;
+        line-height: 30px;
+        float: left;
+        padding-left: 10px;
+        border-radius: 5px;
+        margin-left: 10px;
+        color: #DBB36D;
+        margin-bottom: 10px;
+        position: relative;
+        border: 2px solid #DBB36D;
+        /*  box-shadow: 0px 0px 5px 1px slategrey;*/
+        border-radius: 5px;
+        background-color: #1A1E41;
+    }
+
+        .paybtn span {
+            position: absolute;
+            right: 0px;
+            top: 0px;
+        }
+
+    .badge {
+        background-color: red;
+        color: #FFC64E;
+    }
+
+    .moneybtn {
+        /*box-shadow: 0px 0px 5px 1px slategrey;*/
+        background-color: #3F6A95;
+        width: 70%;
+        height: 45px;
+        border-radius: 5px;
+        margin-bottom: 20px;
+        color: #AED0F2;
+        position: relative;
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+        border: 1px solid transparent;
+        position:relative;
+    }
+    .spanleft {
+        color: #818181;
+        /*   position: absolute;
+        right: 0px;
+        top: 10px;*/
+        font-size: 30px;
+        height: 50px;
+        line-height: 42px;
+    }
+    .check {
+        box-shadow: 0px 0px 0px 0px transparent;
+        background-color: #DBB36D;
+        color: #000;
+        outline-color: #DBB36D;
+    }
+
+    #submitpay:hover {
+        outline-color: transparent;
+        outline-style: dashed;
+    }
+    .logul > li {
+        list-style: none;
+        height: 40px;
+        width: 100%;
+        line-height: 40px;
+        color: #fff;
+        border-bottom: 1px solid #333333;
+        box-shadow: 0px 0px 5px 1px slategrey;
+    }
+    .logul > li>span {
+        width:30%;
+        margin-right:2%;
+        float:left;
+    }
+    .servertable tr {
+        color: #ABCDED;
+        height: 40px;
+        line-height: 40px;
+        border-bottom: 1px solid #333333;
+    }
+    body {
+        background-color: #202753;
+        height:1080px;
+    }
+    .servertable > thead > tr > th {
+        text-align: center;
+        color: #535151;
+        background-color: #DBB36D;
+        border-bottom: 1px solid #303030;
+        border: none;
+    }
+    table tr:nth-child(odd) {
+        background: #3F6A95;
+    }
+    tbody > tr {
+        border: none;
+        background-color: #1e62a2;
+    }
+</style>
+
+<div class="articleCon" style="background-color:#202753">
+    <div class="row col-lg-12 divbg2" style="background-image: url(../../img/club/headbg.jpg); background-repeat: no-repeat; background-size: cover;height:85px">
+        <div class="col-lg-12" style="height:50px;margin-top:20px;">
+            <p style="text-align:center;font-size:18px; color:#D9AF6D;background-image:url(../../img/club/headtitle.png);width: 30%;background-size: contain;background-repeat: no-repeat;margin: 0 auto;height:40px"></p>
+            <span style="position:absolute;right:0px;bottom:15px;height:25px;
+width:auto;padding:1px 5px;color:#F9F9F9;border:1px solid #1A1D30;border-radius:5px;background-color:#1A1D30;" mdui-drawer="{target: '#left-paylog'}">支付记录</span>
+        </div>
+
+    </div>
+    <div class="row col-lg-12 divbg2">
+        <div class="col-lg-12 text-center">
+            <div class="headdiv" style="height:auto;padding:10px 0px;">
+                <div class="row" id="payDatadiv">
+
+                    @*<button class="paybtn check"><img src="~/img/club/wz.png" style="height:30px" />支付宝<span class="badge">+10%</span></button>
+                        <button class="paybtn"><img src="~/img/club/wz.png" style="height:30px" />微信<span class="badge">+10%</span></button>
+                        <button class="paybtn"><img src="~/img/club/wz.png" style="height:30px" />银行卡<span class="badge">+10%</span></button>
+                        <button class="paybtn"><img src="~/img/club/wz.png" style="height:30px" />支付宝H5<span class="badge">+10%</span></button>*@
+
+
+                </div>
+            </div>
+        </div>
+        <button id="morebtn" style="background-image: url(../../img/club/zhankai.png); z-index:10; background-color: transparent; background-repeat: no-repeat; background-size: contain; width: 8%; height: 15px;   position: absolute;  right: 46%; border: transparent;"></button>
+    </div>
+    <div class="row col-lg-12 " style="padding:30px 0px;" id="numberlist">
+
+        @*<button style="background-color: #D9AF6D;  width: 70%;  height: 45px;border-radius:10px;margin-bottom:20px;color:#333333;position:relative;" class="btn center-block">
+                1500钻石包
+                <span style="border: 15px solid #3DB036; border-left: 15px solid transparent;border-top: 15px solid transparent;border-bottom-right-radius: 10px; position: absolute; right: 0px; bottom: 0px;"></span>
+            </button>
+            <button style="background-color: #D9AF6D;  width: 70%;  height: 45px;border-radius:10px;margin-bottom:20px;color:#333333;position:relative;" class="btn center-block">
+                1500钻石包
+                <span style="border: 15px solid #3DB036; border-left: 15px solid transparent;border-top: 15px solid transparent;border-bottom-right-radius: 10px; position: absolute; right: 0px; bottom: 0px;"></span>
+            </button>
+            <button style="background-color: #D9AF6D;  width: 70%;  height: 45px;border-radius:10px;margin-bottom:20px;color:#333333;position:relative;" class="btn center-block">
+                1500钻石包
+                <span style="border: 15px solid #3DB036; border-left: 15px solid transparent;border-top: 15px solid transparent;border-bottom-right-radius: 10px; position: absolute; right: 0px; bottom: 0px;"></span>
+            </button>*@
+
+    </div>
+    <div class="row collg-12 divbg2">
+        <p style="background-color: #1B1B1A;box-shadow: 0px 0px 5px 1px slategrey;  width: 25%;margin-bottom:20px;color:#fff;margin-right:15%;margin-top:30px;" class="btn center-block" id="paymoney">
+
+        </p>
+    </div>
+
+    <div class="row collg-12">
+        <button style="background-image:url(../../img/club/subbtn.png);background-color:transparent;background-repeat:no-repeat;background-size:contain;  width: 70%;  height: 55px;border-radius:25px;margin-bottom:20px;color:#333333;position:relative;display: block;
+    margin-right: auto;
+    margin-left: auto;
+    border: transparent;" class="" id="submitpay">
+          
+        </button>
+    </div>
+</div>
+<div class="head-right">
+    <div class="mdui-drawer mdui-drawer-right mdui-drawer-close" id="left-paylog" style="background-color:#202753">
+        <p class="pcolor" style="background-color:#1B1F42">
+            <a><span mdui-drawer="{target: '#left-paylog'}"><i class="mdui-icon material-icons spanleft icon iconfont icon-icon-test11"></i></span></a>
+            <span style="color:#DBB36D">支付记录</span>
+
+        </p>
+
+        <table id="dataTable" class="servertable" style="border:none;width:100%">
+            <thead style="border-bottom:1px solid #303030">
+                <tr style="height:40px;color:#fff">
+                    <th data-field="fullname" data-sortable="true">时间</th>
+                    <th data-field="shortname" data-sortable="true">充值钻石</th>
+                    <th data-field="shortname" data-sortable="true">金额</th>
+
+                </tr>
+            </thead>
+            <tbody id="dataBody" class="servertable">
+                <tr>
+                    <td>2020/11/01</td>
+                    <td>1000 钻石</td>
+                    <td>100</td>
+                </tr>
+               
+            </tbody>
+            </table>
+          <span style="color:orangered;margin:0 auto;text-align:center;margin-top:50px;">*:只保留近七日的支付记录</span>
+    </div>
+</div>
+
+<script>
+
+    function getURLParameter(name) {
+        return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search) || [null, ''])[1].replace(/\+/g, '%20')) || null;
+    }
+
+    var uid = getURLParameter('uid');
+    var payurl = "";
+    var number = "";
+    GetList(false);
+    $("#paymoney").hide();
+    function GetList(ismore) {
+        var data = {};
+        data.PageIndex = 1;
+        data.PageSize = 20;
+        data.Keywords = "";
+
+        console.log(data)
+        $.ajax({
+            type: "post", url: '/Club/GetPayData',
+            datatype: 'json',
+            data: data,
+            success: function (res) {
+                console.log(res);
+                //console.log(res)
+                var str = $("#payDatadiv").html();
+                $("#payDatadiv").empty();
+          
+                if (res.Data.length<4) {
+                    $("#morebtn").hide();
+                }
+                for (var i in res.Data) {
+
+                    if (res.Data[i].Discount == 0) {
+                        str = "<button class='paybtn'  onclick='getnumberlist(" + res.Data[i].ID + ",\"" + res.Data[i].payurl + "\")'><img src='/img/club/" + res.Data[i].paytype + ".png' style='height:18px;margin-right:5px' />" + res.Data[i].payname + "</button>";
+
+                    } else {
+
+                        str = "<button class='paybtn'  onclick='getnumberlist(" + res.Data[i].ID + ",\"" + res.Data[i].payurl + "\")'><img src='/img/club/" + res.Data[i].paytype + ".png' style='height:18px;margin-right:5px' />" + res.Data[i].payname + "<span class='badge'>+" + res.Data[i].Discount + "%</span></button>";
+                    }
+
+                    $('#payDatadiv').append(str);
+                    if (ismore == false && i > 2) {
+                        console.log(i);
+                        break;
+                    }
+                }
+
+            }
+        })
+    }
+
+    $("#morebtn").click(function () {
+        console.log("true");
+        GetList(true);
+        $(this).hide();
+    })
+    function getnumberlist(id, purl) {
+        var data = {};
+        data.id = id;
+        payurl = purl;
+        $.ajax({
+            type: "post", url: '/Club/GetPayMoneList',
+            datatype: 'json',
+            data: data,
+            success: function (res) {
+                console.log(res)
+                var str = $("#numberlist").html();
+                $("#numberlist").empty();
+                for (var i in res) {
+                    console.log(res[i])
+                    str = "<button  class='moneybtn' value='" + res[i] + "'>" + res[i] * 10 + "钻石包<span style='color:#D91716;right:10px;float:right;display:none;position: absolute;bottom:10px;' class='spannumer'>(￥ "+res[i]+" )</span></button>";
+                    $('#numberlist').append(str);
+                }
+            }
+        })
+
+    }
+
+    $(document).on("click", ".paybtn", function () {
+        $(".paybtn").each(function (n, value) {
+            $(value).removeClass("check");
+        });
+        $(this).addClass("check");
+    })
+    $(document).on("click", ".moneybtn ", function () {
+        $(".moneybtn").each(function (n, value) {
+            $(value).removeClass("check");
+            $(value).children(".spannumer").hide();
+        });
+
+        $(this).children(".spannumer").show();
+        //$("#paymoney").html("￥ " + $(this).val());
+        $(this).addClass("check");
+        number = $(this).val() / 10; //支付接口是1：100 德州是1：10 所以金额除以10
+    })
+
+    $("#submitpay").click(function () {
+        if (uid != null || number != "") {
+            window.location.href = payurl + "&uid=" + uid + "&number=" + number;
+        } else {
+            alert("用户不存在，请联系客服！");
+        }
+    });
+    GetPaylog();
+    //获取支付记录
+    function GetPaylog () {
+        var data = {};
+        data.uid = uid;
+      
+        $.ajax({
+            type: "post", url: '/Club/GetPayLog',
+            datatype: 'json',
+            data: data,
+            success: function (res) {
+                console.log(res)
+                var str = $("#dataBody").html();
+                $("#dataBody").empty();
+                for (var i in res) {
+                
+                    str = " <tr><td>" + getFDate(res[i].CreatTime) + "</td><td>" + res[i].GoldCount / 10 + " 钻石</td><td>" + res[i].Number+"</td></tr>"
+                    $('#dataBody').append(str);
+                }
+            }
+        })
+
+    }
+    function getFDate(date) {
+        var d = eval('new ' + date.substr(1, date.length - 2));
+        console.log(d);
+        var ar_date = [d.getFullYear(), d.getMonth() + 1, d.getDate()];
+
+        for (var i = 0; i < ar_date.length; i++) ar_date[i] = dFormat(ar_date[i]);
+        return ar_date.join('-');
+    }
+    function dFormat(i) {
+        return i < 10 ? "0" + i.toString() : i;
+    }
+</script>

@@ -1,0 +1,169 @@
+﻿
+@{
+    ViewBag.Title = "Recharge";
+}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta id="viewport" name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=no,target-densitydpi=medium-dpi" />
+    <title>充值</title>
+    <link rel="stylesheet" href="~/css/Recharge.css">
+    <script src="~/js/jquery.min.js"></script>
+</head>
+
+<body>
+    @*<div class="PayCont">
+        <header>
+            <div class="fanhui" onClick="JavaScript :history.back(1);">
+                <img src="~/img/fanhui.png" alt="">
+            </div>
+            充值
+        </header>
+        <div class="PayContBox">
+            <div class="imgLog"></div>
+            <div class="ContBox">
+                <ul class="ContList">
+                    <li class="oneImg">
+                        <div class="selectImg">
+                            <img src="/img/select1.png" class="imgCnt">
+                        </div>
+                        <div class="selectCnt">
+                            <img src="./weixin.png" class="imgselect">
+                        </div>
+                        <div class="selectName">微信支付</div>
+                    </li>
+                    <li class="oneImg">
+                        <div class="selectImg">
+                            <img src="/img/select1.png" class="imgCnt">
+                        </div>
+                        <div class="selectCnt1">
+                        </div>
+                        <div class="selectName">支付宝支付</div>
+                    </li>
+                    <li class="oneImg" onclick="window.location.href = '/Home/BankList'">
+                            <div class="selectImg">
+                                <img src="/img/select1.png" class="imgCnt">
+                            </div>
+                            <div class="selectCnt2">
+                            </div>
+                            <div class="selectName">银行卡支付</div>
+                        </li>
+                </ul>
+            </div>
+            <div class="quebtn">确定</div>
+        </div>
+    </div>*@
+    <script>
+
+
+        $(function () {
+            var data = {};
+            data.amount = '@ViewBag.amount';
+            data.rechargeType = '@ViewBag.rechargeType';
+            data.payType = '@ViewBag.paytype';
+            data.comId = '@ViewBag.comId';
+            data.uid = '@ViewBag.uid';
+
+            $.ajax({
+                type: "post", url: '/Manage/AddRechargeRecord',
+                datatype: 'json',
+                data: data,
+                success: function (res) {
+                    alert(res);
+                    if (res) {
+                        //console.log(res);
+                        if (res != -1 || res != "-1") {
+                            window.location.href = res;
+                        } else {
+                            alert("充值失败")
+                        }
+                    }
+                }
+            })
+        })
+
+
+        var storagefirst = window.localStorage;
+        var allzhifu = null;
+        var uid = "";
+        var amount = "";
+        var rechargeType = "";
+        var payType = ""
+        var comId;
+        function getURLParameter(name) {
+            return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search) || [null, ''])[1].replace(/\+/g, '%20')) || null;
+        }
+
+        $(".oneImg").click(function () {
+            var allImg = $(".ContList li img");
+            //console.log(allImg)
+            for (var i = 0; i < allImg.size() ; i++) {
+                $(allImg[i]).attr("src", "/img/select1.png")
+            }
+            $(this).find('img').attr("src", "/img/select.png");
+            var imgurl = $(this).find('img').attr('src');
+            // console.log(imgurl)
+            if (imgurl == "/img/select.png") {
+                $(".quebtn").css({
+                    "background-color": "rgb(18, 150, 219)"
+                })
+                allzhifu = $(this).find('.selectName').text();
+            }
+        })
+        //$(".quebtn").click(function () {
+        //    if ($(".quebtn").css('background-color') == "rgb(18, 150, 219)") {
+        //        console.log(allzhifu)
+        //        if (allzhifu == "微信支付") {
+        //            payType="w"
+        //        } else if (allzhifu == "支付宝支付") {
+        //            payType = "z"
+        //        }
+        //        if (getURLParameter("uid")) {
+        //            uid = getURLParameter("uid");
+        //        }
+
+        //        if (getURLParameter("amount")) {
+        //            amount = getURLParameter("amount");
+        //        }
+        //        if (getURLParameter("rechargeType")) {
+        //            rechargeType = getURLParameter("rechargeType");
+        //        }
+        //        if (getURLParameter("comId")) {
+        //            comId = getURLParameter("comId");
+        //        }
+        //        if (getURLParameter("payType")) {
+        //            payType = getURLParameter("payType");
+        //        }
+        //        //storagefirst["allzhifu"] = allzhifu;
+        //        //window.location.href = "/Manage/Recharge1"
+        //        var data = {};
+        //        data.amount = amount;
+        //        data.rechargeType = rechargeType;
+        //        data.payType = payType;
+        //        data.comId = comId;
+        //        data.uid = uid
+        //        $.ajax({
+        //            type: "post", url: '/Manage/AddRechargeRecord',
+        //            datatype: 'json',
+        //            data: data,
+        //            success: function (res) {
+        //                if (res) {
+        //                    //console.log(res);
+        //                    if (res != -1 || res !="-1") {
+        //                        window.location.href = res;
+        //                    } else {
+        //                        alert("充值失败")
+        //                    }
+        //                }
+        //            }
+        //        })
+        //    }
+        //})
+
+    </script>
+</body>
+
+</html>

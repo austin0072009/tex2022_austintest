@@ -1,0 +1,168 @@
+﻿@using Crazy2018_Sys_Common;
+@using Crazy2018_Sys_ViewEntity;
+@{
+    ViewBag.Title = "充值日统计";
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+}
+@model DataResults<ChargelogDayStatistics>
+<style>
+    th {
+        text-align: center;
+    }
+</style>
+<div class="mainbody">
+    <form id="form1" runat="server">
+        <!--导航栏-->
+        <div class="location">
+            <a href="javascript:history.back(-1);" class="back"><i></i><span>返回上一页</span></a>
+            <a href="/Home/Center" class="home"><i></i><span>首页</span></a>
+            <i class="arrow"></i>
+            <a href="/Business/ChargeLogStatistics"><span>充值统计</span></a>
+            <i class="arrow"></i>
+            <span>充值统计</span>
+        </div>
+        <!--/导航栏-->
+        <!--工具栏-->
+        <div id="floatHead" class="toolbar-wrap">
+            <div class="toolbar">
+                <div class="box-wrap">
+                    <a class="menu-btn"></a>
+
+                    <div class="l-list">
+                        <ul class="icon-list">
+                            <li><a class="all" href="javascript:;" onclick="checkAll(this);"><i></i><span>全选</span></a></li>
+
+                        </ul>
+                    </div>
+                    <div class="l-list">
+                        <input name="txtStartTime" type="text" id="txtStartTime" value="@Model.starttime" class="input" onclick="laydate()">
+                        <span>至</span>
+                        <input name="txtEndTime" type="text" id="txtEndTime" class="input" value="@Model.endtime" onclick="laydate()">
+                        <span>快捷时间:</span>
+                        <select class="select" id="ChangeType" name="ChangeType">
+
+                            @{ var data = Enum.GetValues(typeof(TableUtil.TimeSlot));}
+                            @for (int i = 0; i < data.Length; i++)
+                            {
+                                if (Model.ChangeType.Equals((int)data.GetValue(i)))
+                                {
+                                    <option selected value="@((int)data.GetValue(i))">@data.GetValue(i)</option>
+                                }
+                                else
+                                {
+                                    <option value="@((int)data.GetValue(i))">@data.GetValue(i)</option>
+                                }
+                            }
+                        </select>
+                        <span>充值类型:</span>
+                        <select class="select" id="Rtype" name="Rtype">
+                            <option value="0">不限</option>
+                            @{ var Recharge = Enum.GetValues(typeof(TableUtil.RechargeType));}
+                            @for (int i = 0; i < Recharge.Length; i++)
+                            {
+                                if (Model.Rtype.Equals((int)Recharge.GetValue(i)))
+                                {
+                                    <option selected value="@((int)Recharge.GetValue(i))">@Recharge.GetValue(i)</option>
+                                }
+                                else
+                                {
+                                    <option value="@((int)Recharge.GetValue(i))">@Recharge.GetValue(i)</option>
+                                }
+                            }
+                        </select>
+                       
+                        <button type="button" style="height: 28px;padding: 3px 10px;background-color: lightgray;" id="lbtnSearch" class="btn btn-default btn-sm">查询</button>
+                        @*<a id="lbtnSearch" class="btn-search">查询</a>*@
+                    </div>
+
+                    <div class="r-list">
+                        
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="table-container">
+            <table width="100%" border="0" cellspacing="0" cellpadding="0" class="ltable">
+                <tbody>
+                    <tr style="text-align:center" class="odd_bg">
+                        <th width="5%">操作</th>
+                        <th width="7%">日期</th>
+                        <th align="20%">充值金额</th>
+                        <th align="5%">充值订单</th>
+                        <th align="5%">充值人数</th>
+                    </tr>
+                    @foreach (var item in Model.Data)
+                    {
+                        <tr class='One'>
+                            <td align="center">
+                                <input type="hidden" name='hidId' id='hidId' value='@item.CreatTime'>
+                                <span class='checkall' style='vertical-align: middle;'>
+                                    <input id='chkId' class='checkall' type='checkbox' name='chkId'>
+                                </span>
+                            </td>
+                            <td align="center">@item.CreatTime.ToLongDateString()</td>
+                            <td align="center">@item.Gold</td>
+                            <td align="center">@item.OrderNum</td>
+                            <td align="center">@item.UserNum</td>
+
+                        </tr>
+
+                    }
+                </tbody>
+            </table>
+
+        </div>
+        <!--/列表-->
+        <!--内容底部-->
+        <div class="line20"></div>
+        <div class="pagelist">
+            <div class="l-btns">
+                <span>显示</span><input name="txtPageNum" type="text" value="@Model.PageSize" id="txtPageNum" class="pagenum" onkeydown="return checkNumber(event);"><span>条/页</span>
+            </div>
+            <div id="PageContent" class="default">@Html.Raw(Model.InnerHtml)</div>
+            <input type="hidden" id="PageIndex" name="PageIndex" value="@Model.PageIndex" />
+        </div>
+        <!--/内容底部-->
+        <div style="width:100%;text-align: center;">
+            <span style="display: inline-block;padding: 4px 15px 0px 15px;color: #666;font-size:14px;">(注 : 搜索请数据用户ID查询)</span>
+        </div>
+    </form>
+</div>
+<script>
+    $(function () {
+
+        $(".pagelist").on('click', 'a', function () {
+            var PageIndex = $("#PageIndex").val();
+            var lkl2 = $(this).text();
+            if (lkl2 == "下一页»") {
+                PageIndex = parseInt(PageIndex) + 1
+            } else if (lkl2 == "«上一页") {
+                PageIndex = parseInt(PageIndex) - 1
+            } else {
+                PageIndex = lkl2
+            }
+            var ChangeType = $("#ChangeType").val();
+            var starttime = $("#txtStartTime").val();
+            var endtime = $("#txtEndTime").val();
+            var Rtype = $("#Rtype").val();
+            window.location.href = "/Business/ChargeLogStatistics?Keywords=&PageSize=" + $(this).val() + "&PageIndex=" + PageIndex + "&ChangeType=" + ChangeType + "&starttime=" + starttime + "&endtime=" + endtime + "&Rtype=" + Rtype;
+        })
+
+        $("#txtPageNum").change(function () {
+            window.location.href = "/Business/ChargeLogStatistics?Keywords=&PageSize=" + $(this).val();
+        })
+        $("#lbtnSearch").click(function () {
+            var ChangeType = $("#ChangeType").val();
+            var starttime = $("#txtStartTime").val();
+            var endtime = $("#txtEndTime").val();
+            var Rtype = $("#Rtype").val();
+            window.location.href = "/Business/ChargeLogStatistics?Keywords=&PageSize=" + $("#txtPageNum").val() + "&ChangeType=" + ChangeType + "&starttime=" + starttime + "&endtime=" + endtime + "&Rtype=" + Rtype;
+        });
+
+    })
+
+
+</script>
+

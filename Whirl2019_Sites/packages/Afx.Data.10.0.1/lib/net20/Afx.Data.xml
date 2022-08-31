@@ -1,0 +1,888 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Afx.Data</name>
+    </assembly>
+    <members>
+        <member name="T:Afx.Data.Database">
+            <summary>
+            数据库访问基类
+            </summary>
+        </member>
+        <member name="P:Afx.Data.Database.IsDisposed">
+            <summary>
+            资源是否释放
+            </summary>
+        </member>
+        <member name="P:Afx.Data.Database.ConnectionString">
+            <summary>
+            连接字符串
+            </summary>
+        </member>
+        <member name="P:Afx.Data.Database.IsOpenKeepConnection">
+            <summary>
+            是否开启保持连接
+            </summary>
+        </member>
+        <member name="P:Afx.Data.Database.ProviderFactory">
+            <summary>
+            DB 提供程序Factory
+            </summary>
+        </member>
+        <member name="P:Afx.Data.Database.CommandTimeout">
+            <summary>
+            （以秒为单位）
+            </summary>
+        </member>
+        <member name="P:Afx.Data.Database.Connection">
+            <summary>
+            IDbConnection
+            </summary>
+        </member>
+        <member name="P:Afx.Data.Database.Log">
+            <summary>
+            执行sql logs
+            </summary>
+        </member>
+        <member name="M:Afx.Data.Database.OnLog(System.String)">
+            <summary>
+            执行sql logs
+            </summary>
+        </member>
+        <member name="P:Afx.Data.Database.CommitCallbackList">
+            <summary>
+             commit or SaveChanges 成功之后执行action list
+            </summary>
+        </member>
+        <member name="P:Afx.Data.Database.CommitCallbackError">
+            <summary>
+            执行CommitCallback action 错误
+            </summary>
+        </member>
+        <member name="M:Afx.Data.Database.#ctor(System.Data.IDbConnection,System.Boolean)">
+            <summary>
+            初始化
+            </summary>
+            <param name="connection"></param>
+            <param name="isOwnsConnection"></param>
+        </member>
+        <member name="M:Afx.Data.Database.#ctor(System.String,System.Data.Common.DbProviderFactory)">
+            <summary>
+            初始化
+            </summary>
+            <param name="connectionString"></param>
+            <param name="providerFactory"></param>
+        </member>
+        <member name="M:Afx.Data.Database.AddCommitCallback(System.Action{Afx.Data.IDatabase})">
+            <summary>
+            添加 commit or SaveChanges 成功之后执行action
+            action 只执行一次
+            </summary>
+            <param name="action">需要执行的action</param>
+            <returns>添加成功，返回所在的位置</returns>
+        </member>
+        <member name="M:Afx.Data.Database.RemoveCommitCallback(System.Action{Afx.Data.IDatabase})">
+            <summary>
+            移除commit or SaveChanges 成功之后执行action
+            </summary>
+            <param name="action">需要执行的action</param>
+            <returns>移除成功返回true</returns>
+        </member>
+        <member name="M:Afx.Data.Database.ClearCommitCallback">
+            <summary>
+            移除所有action
+            </summary>
+        </member>
+        <member name="M:Afx.Data.Database.OpenKeepConnection">
+            <summary>
+            保持连接一直打开
+            </summary>
+        </member>
+        <member name="M:Afx.Data.Database.CloseKeepConnection">
+            <summary>
+            关闭连接一直打开
+            </summary>
+        </member>
+        <member name="M:Afx.Data.Database.EncodeParameterName(System.String)">
+            <summary>
+            参数化查询名称加前缀
+            </summary>
+            <param name="name"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Afx.Data.Database.EncodeColumn(System.String)">
+            <summary>
+            列名转义
+            </summary>
+            <param name="column"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Afx.Data.Database.CreateConnection">
+            <summary>
+            创建全新 DbConnection
+            </summary>
+            <returns>DbConnection</returns>
+        </member>
+        <member name="M:Afx.Data.Database.CreateCommand">
+            <summary>
+            创建全新 DbCommand
+            </summary>
+            <returns>DbCommand</returns>
+        </member>
+        <member name="M:Afx.Data.Database.CreateParameter">
+            <summary>
+            创建全新 DbParameter
+            </summary>
+            <returns>DbParameter</returns>
+        </member>
+        <member name="M:Afx.Data.Database.CreateParameter(System.String,System.Object)">
+            <summary>
+            创建全新 DbParameter
+            </summary>
+            <param name="name">ParameterName</param>
+            <param name="value">Value</param>
+            <returns>DbParameter</returns>
+        </member>
+        <member name="P:Afx.Data.Database.IsTransaction">
+            <summary>
+            是否开启事务
+            </summary>
+        </member>
+        <member name="M:Afx.Data.Database.BeginTransaction">
+            <summary>
+            开启事务
+            </summary>
+        </member>
+        <member name="M:Afx.Data.Database.BeginTransaction(System.Data.IsolationLevel)">
+            <summary>
+            开启事务
+            </summary>
+            <param name="isolationLevel">事务级别</param>
+        </member>
+        <member name="M:Afx.Data.Database.Commit">
+            <summary>
+            提交事务
+            </summary>
+        </member>
+        <member name="M:Afx.Data.Database.Rollback">
+            <summary>
+            回滚事务
+            </summary>
+        </member>
+        <member name="M:Afx.Data.Database.Query``1(System.String,System.Object,System.Nullable{System.Data.CommandType})">
+            <summary>
+            查询数据
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="sql"></param>
+            <param name="param">sql参数，model or dictionary string object or IEnumerable&lt;DbParameter&gt; or IEnumerable&lt;IDataParameter&gt; </param>
+            <param name="commandType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Afx.Data.Database.ExecuteNonQuery(System.String,System.Object,System.Nullable{System.Data.CommandType})">
+            <summary>
+            执行sql，返回影响行数
+            </summary>
+            <param name="sql">sql</param>
+            <param name="param">sql参数，model or dictionary string object or IEnumerable&lt;DbParameter&gt; or IEnumerable&lt;IDataParameter&gt;</param>
+            <param name="commandType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Afx.Data.Database.ExecuteScalar``1(System.String,System.Object,System.Nullable{System.Data.CommandType})">
+            <summary>
+            执行sql，返回第一行的第一列
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="sql"></param>
+            <param name="param">sql参数，model or dictionary string object or IEnumerable&lt;DbParameter&gt; or IEnumerable&lt;IDataParameter&gt;</param>
+            <param name="commandType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Afx.Data.Database.Dispose">
+            <summary>
+            释放资源
+            </summary>
+        </member>
+        <member name="M:Afx.Data.Database.GetSelectSqlByDic``1(System.Collections.Generic.Dictionary{System.String,System.Object})">
+            <summary>
+            获取表查询sql
+            </summary>
+            <typeparam name="T">数据库表对应model</typeparam>
+            <param name="whereDic"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Afx.Data.Database.GetSelectSql``1(System.Object)">
+            <summary>
+            获取表查询sql
+            </summary>
+            <typeparam name="T">数据库表对应model</typeparam>
+            <param name="whereParam">new { id=10, name= "1"}</param>
+            <returns></returns>
+        </member>
+        <member name="M:Afx.Data.Database.GetList``1(System.Object)">
+            <summary>
+            查询表数据
+            </summary>
+            <typeparam name="T">数据库表对应model</typeparam>
+            <param name="whereParam">new { id=10, name= "1"}</param>
+            <returns></returns>
+        </member>
+        <member name="M:Afx.Data.Database.GetList``1(System.String,System.Object)">
+            <summary>
+            查询表数据
+            </summary>
+            <typeparam name="T">数据库表对应model</typeparam>
+            <param name="whereSql">whereSql: id = @id OR name = @name </param>
+            <param name="whereParam">new { id=10, name= "1"}</param>
+            <returns></returns>
+        </member>
+        <member name="M:Afx.Data.Database.Get``1(System.Object)">
+            <summary>
+            查询表一行数据
+            </summary>
+            <typeparam name="T">数据库表对应model</typeparam>
+            <param name="whereParam">不能为空， new { id=10, name= "1"}</param>
+            <returns></returns>
+        </member>
+        <member name="M:Afx.Data.Database.Get``1(System.String,System.Object)">
+            <summary>
+            查询表一行数据
+            </summary>
+            <typeparam name="T">数据库表对应model</typeparam>
+            <param name="whereSql">不能为空，whereSql: id = @id OR name </param>
+            <param name="whereParam">new { id=10, name= "1"}</param>
+            <returns></returns>
+        </member>
+        <member name="M:Afx.Data.Database.GetInsertSqlByDic(System.String,System.Collections.Generic.Dictionary{System.String,System.Object})">
+            <summary>
+            GetInsertSqlByDic
+            </summary>
+            <param name="table"></param>
+            <param name="dic"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Afx.Data.Database.GetInsertSql(System.String,System.Collections.Generic.List{System.Reflection.PropertyInfo})">
+            <summary>
+            GetInsertSql
+            </summary>
+            <param name="table"></param>
+            <param name="propertyInfos"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Afx.Data.Database.Add``1(``0,System.String[])">
+            <summary>
+            添加数据
+            </summary>
+            <typeparam name="T">插入表</typeparam>
+            <param name="m">参数</param>
+            <param name="ignore">忽略插入列</param>
+            <returns></returns>
+        </member>
+        <member name="M:Afx.Data.Database.Add(System.String,System.Object)">
+            <summary>
+            添加数据
+            </summary>
+            <param name="table">插入表</param>
+            <param name="param"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Afx.Data.Database.GetUpdateSetSqlByDic(System.String,System.Collections.Generic.Dictionary{System.String,System.Object},System.Collections.Generic.Dictionary{System.String,System.Object}@)">
+            <summary>
+            GetUpdateSetSqlByDic
+            </summary>
+            <param name="table"></param>
+            <param name="dic"></param>
+            <param name="allParamDic"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Afx.Data.Database.GetUpdateSetSql(System.String,System.Object,System.Collections.Generic.Dictionary{System.String,System.Object}@)">
+            <summary>
+            GetUpdateSetSql
+            </summary>
+            <param name="table"></param>
+            <param name="setParam"></param>
+            <param name="allParamDic"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Afx.Data.Database.GetUpdateWhereSqlByDic(System.Collections.Generic.Dictionary{System.String,System.Object},System.Collections.Generic.Dictionary{System.String,System.Object}@)">
+            <summary>
+            GetUpdateWhereSqlByDic
+            </summary>
+            <param name="whereDic"></param>
+            <param name="allParamDic"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Afx.Data.Database.GetUpdateWhereSql(System.Object,System.Collections.Generic.Dictionary{System.String,System.Object}@)">
+            <summary>
+            GetUpdateWhereSql
+            </summary>
+            <param name="whereParam"></param>
+            <param name="allParamDic"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Afx.Data.Database.Update(System.String,System.Object,System.Object)">
+            <summary>
+            更新数据
+            </summary>
+            <param name="table">数据表</param>
+            <param name="setParam">set 参数</param>
+            <param name="whereParam">where参数</param>
+            <returns></returns>
+        </member>
+        <member name="M:Afx.Data.Database.Update``1(System.Object,System.Object)">
+            <summary>
+            更新数据
+            </summary>
+            <typeparam name="T">数据表</typeparam>
+            <param name="setParam">set 参数</param>
+            <param name="whereParam">where参数</param>
+            <returns></returns>
+        </member>
+        <member name="M:Afx.Data.Database.Update(System.String,System.Object,System.String,System.Object)">
+            <summary>
+            更新数据
+            </summary>
+            <param name="table">数据表</param>
+            <param name="setParam">set 参数</param>
+            <param name="whereSql">where sql</param>
+            <param name="whereParam">where参数</param>
+            <returns></returns>
+        </member>
+        <member name="M:Afx.Data.Database.Update``1(System.Object,System.String,System.Object)">
+            <summary>
+            更新数据
+            </summary>
+            <typeparam name="T">数据表</typeparam>
+            <param name="setParam">set 参数</param>
+            <param name="whereSql">where sql</param>
+            <param name="whereParam">where参数</param>
+            <returns></returns>
+        </member>
+        <member name="M:Afx.Data.Database.Update(System.String,System.String,System.Object,System.String,System.Object)">
+            <summary>
+            更新数据
+            </summary>
+            <param name="table">数据表</param>
+            <param name="setSql">set sql</param>
+            <param name="setParam">set 参数</param>
+            <param name="whereSql">where sql</param>
+            <param name="whereParam">where参数</param>
+            <returns></returns>
+        </member>
+        <member name="M:Afx.Data.Database.Update``1(System.String,System.Object,System.String,System.Object)">
+            <summary>
+            更新数据
+            </summary>
+            <typeparam name="T">数据表</typeparam>
+            <param name="setSql">set sql</param>
+            <param name="setParam">set 参数</param>
+            <param name="whereSql">where sql</param>
+            <param name="whereParam">where参数</param>
+            <returns></returns>
+        </member>
+        <member name="M:Afx.Data.Database.Delete(System.String,System.Object)">
+            <summary>
+            删除数据
+            </summary>
+            <param name="table">数据表</param>
+            <param name="whereParam">where参数</param>
+            <returns></returns>
+        </member>
+        <member name="M:Afx.Data.Database.Delete``1(System.Object)">
+            <summary>
+            删除数据
+            </summary>
+            <typeparam name="T">数据表</typeparam>
+            <param name="whereParam">where参数</param>
+            <returns></returns>
+        </member>
+        <member name="M:Afx.Data.Database.Delete(System.String,System.String,System.Object)">
+            <summary>
+            删除数据
+            </summary>
+            <param name="table">数据表</param>
+            <param name="whereSql">where sql</param>
+            <param name="whereParam">where参数</param>
+            <returns></returns>
+        </member>
+        <member name="M:Afx.Data.Database.Delete``1(System.String,System.Object)">
+            <summary>
+            删除数据
+            </summary>
+            <typeparam name="T">数据表</typeparam>
+            <param name="whereSql">where sql</param>
+            <param name="whereParam">where参数</param>
+            <returns></returns>
+        </member>
+        <member name="M:Afx.Data.Database.GetLikeValue(System.String,Afx.Data.DbLikeType)">
+            <summary>
+            添加匹配符%
+            </summary>
+            <param name="value"></param>
+            <param name="type"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Afx.Data.Database.GetOrderbyDic(System.String,System.Collections.Generic.List{System.Reflection.PropertyInfo})">
+            <summary>
+            校验排序列
+            </summary>
+            <param name="orderby"></param>
+            <param name="propertyInfos"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Afx.Data.Database.GetOrderby``1(System.String,System.String,System.String)">
+            <summary>
+            获取最终排序, order by id, name
+            </summary>
+            <typeparam name="T">排序model</typeparam>
+            <param name="orderby">排序: id desc, name asc</param>
+            <param name="defaultOrderby">默认排序: id desc</param>
+            <param name="tb"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Afx.Data.DbLikeType">
+            <summary>
+            like 查询
+            </summary>
+        </member>
+        <member name="F:Afx.Data.DbLikeType.Left">
+            <summary>
+            like '%ss'
+            </summary>
+        </member>
+        <member name="F:Afx.Data.DbLikeType.Right">
+            <summary>
+            like 'ss%'
+            </summary>
+        </member>
+        <member name="F:Afx.Data.DbLikeType.All">
+            <summary>
+            like '%ss%'
+            </summary>
+        </member>
+        <member name="T:Afx.Data.IDatabase">
+            <summary>
+            数据访问
+            </summary>
+        </member>
+        <member name="P:Afx.Data.IDatabase.IsDisposed">
+            <summary>
+            资源是否释放
+            </summary>
+        </member>
+        <member name="P:Afx.Data.IDatabase.ConnectionString">
+            <summary>
+            连接字符串
+            </summary>
+        </member>
+        <member name="P:Afx.Data.IDatabase.IsOpenKeepConnection">
+            <summary>
+            是否开启保持连接
+            </summary>
+        </member>
+        <member name="P:Afx.Data.IDatabase.ProviderFactory">
+            <summary>
+            DB 提供程序Factory
+            </summary>
+        </member>
+        <member name="P:Afx.Data.IDatabase.CommandTimeout">
+            <summary>
+            （以秒为单位）
+            </summary>
+        </member>
+        <member name="P:Afx.Data.IDatabase.Connection">
+            <summary>
+            IDbConnection
+            </summary>
+        </member>
+        <member name="P:Afx.Data.IDatabase.Log">
+            <summary>
+            执行sql logs
+            </summary>
+        </member>
+        <member name="P:Afx.Data.IDatabase.CommitCallbackList">
+            <summary>
+             commit or SaveChanges 成功之后执行action list
+            </summary>
+        </member>
+        <member name="P:Afx.Data.IDatabase.CommitCallbackError">
+            <summary>
+            执行CommitCallback action 错误
+            </summary>
+        </member>
+        <member name="M:Afx.Data.IDatabase.AddCommitCallback(System.Action{Afx.Data.IDatabase})">
+            <summary>
+            添加 commit or SaveChanges 成功之后执行action
+            action 只执行一次
+            </summary>
+            <param name="action">需要执行的action</param>
+            <returns>添加成功，返回所在的位置</returns>
+        </member>
+        <member name="M:Afx.Data.IDatabase.RemoveCommitCallback(System.Action{Afx.Data.IDatabase})">
+            <summary>
+            移除commit or SaveChanges 成功之后执行action
+            </summary>
+            <param name="action">需要执行的action</param>
+            <returns>移除成功返回true</returns>
+        </member>
+        <member name="M:Afx.Data.IDatabase.ClearCommitCallback">
+            <summary>
+            移除所有action
+            </summary>
+        </member>
+        <member name="M:Afx.Data.IDatabase.OpenKeepConnection">
+            <summary>
+            保持连接一直打开
+            </summary>
+        </member>
+        <member name="M:Afx.Data.IDatabase.CloseKeepConnection">
+            <summary>
+            关闭连接一直打开
+            </summary>
+        </member>
+        <member name="M:Afx.Data.IDatabase.EncodeParameterName(System.String)">
+            <summary>
+            参数化查询名称加前缀
+            </summary>
+            <param name="name"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Afx.Data.IDatabase.EncodeColumn(System.String)">
+            <summary>
+            列名转义
+            </summary>
+            <param name="column"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Afx.Data.IDatabase.CreateConnection">
+            <summary>
+            创建全新 DbConnection
+            </summary>
+            <returns>DbConnection</returns>
+        </member>
+        <member name="M:Afx.Data.IDatabase.CreateCommand">
+            <summary>
+            创建全新 DbCommand
+            </summary>
+            <returns>DbCommand</returns>
+        </member>
+        <member name="M:Afx.Data.IDatabase.CreateParameter">
+            <summary>
+            创建全新 DbParameter
+            </summary>
+            <returns>DbParameter</returns>
+        </member>
+        <member name="M:Afx.Data.IDatabase.CreateParameter(System.String,System.Object)">
+            <summary>
+            创建全新 DbParameter
+            </summary>
+            <param name="name">ParameterName</param>
+            <param name="value">Value</param>
+            <returns>DbParameter</returns>
+        </member>
+        <member name="P:Afx.Data.IDatabase.IsTransaction">
+            <summary>
+            是否开启事务
+            </summary>
+        </member>
+        <member name="M:Afx.Data.IDatabase.BeginTransaction">
+            <summary>
+            开启事务
+            </summary>
+        </member>
+        <member name="M:Afx.Data.IDatabase.BeginTransaction(System.Data.IsolationLevel)">
+            <summary>
+            开启事务
+            </summary>
+            <param name="isolationLevel">事务级别</param>
+        </member>
+        <member name="M:Afx.Data.IDatabase.Commit">
+            <summary>
+            提交事务
+            </summary>
+        </member>
+        <member name="M:Afx.Data.IDatabase.Rollback">
+            <summary>
+            回滚事务
+            </summary>
+        </member>
+        <member name="M:Afx.Data.IDatabase.Query``1(System.String,System.Object,System.Nullable{System.Data.CommandType})">
+            <summary>
+            查询数据
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="sql"></param>
+            <param name="param">sql参数，model or dictionary string object or IEnumerable&lt;DbParameter&gt; or IEnumerable&lt;IDataParameter&gt;</param>
+            <param name="commandType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Afx.Data.IDatabase.ExecuteNonQuery(System.String,System.Object,System.Nullable{System.Data.CommandType})">
+            <summary>
+            执行sql，返回影响行数
+            </summary>
+            <param name="sql">sql</param>
+            <param name="param">sql参数，model or dictionary string object or IEnumerable&lt;DbParameter&gt; or IEnumerable&lt;IDataParameter&gt;</param>
+            <param name="commandType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Afx.Data.IDatabase.ExecuteScalar``1(System.String,System.Object,System.Nullable{System.Data.CommandType})">
+            <summary>
+            执行sql，返回第一行的第一列
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="sql"></param>
+            <param name="param">sql参数，model or dictionary string object or IEnumerable&lt;DbParameter&gt; or IEnumerable&lt;IDataParameter&gt;</param>
+            <param name="commandType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Afx.Data.IDatabase.GetList``1(System.Object)">
+            <summary>
+            查询表数据
+            </summary>
+            <typeparam name="T">数据库表对应model</typeparam>
+            <param name="whereParam">new { id=10, name= "1"}</param>
+            <returns></returns>
+        </member>
+        <member name="M:Afx.Data.IDatabase.GetList``1(System.String,System.Object)">
+            <summary>
+            查询表数据
+            </summary>
+            <typeparam name="T">数据库表对应model</typeparam>
+            <param name="whereSql">whereSql: id = @id OR name = @name </param>
+            <param name="whereParam">new { id=10, name= "1"}</param>
+            <returns></returns>
+        </member>
+        <member name="M:Afx.Data.IDatabase.Get``1(System.Object)">
+            <summary>
+            查询表一行数据
+            </summary>
+            <typeparam name="T">数据库表对应model</typeparam>
+            <param name="whereParam">不能为空， new { id=10, name= "1"}</param>
+            <returns></returns>
+        </member>
+        <member name="M:Afx.Data.IDatabase.Get``1(System.String,System.Object)">
+            <summary>
+            查询表一行数据
+            </summary>
+            <typeparam name="T">数据库表对应model</typeparam>
+            <param name="whereSql">不能为空，whereSql: id = @id OR name </param>
+            <param name="whereParam">new { id=10, name= "1"}</param>
+            <returns></returns>
+        </member>
+        <member name="M:Afx.Data.IDatabase.Add``1(``0,System.String[])">
+            <summary>
+            添加数据
+            </summary>
+            <typeparam name="T">插入表</typeparam>
+            <param name="m">参数</param>
+            <param name="ignore">忽略插入列</param>
+            <returns></returns>
+        </member>
+        <member name="M:Afx.Data.IDatabase.Add(System.String,System.Object)">
+            <summary>
+            添加数据
+            </summary>
+            <param name="table">插入表</param>
+            <param name="param"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Afx.Data.IDatabase.Update(System.String,System.Object,System.Object)">
+            <summary>
+            更新数据
+            </summary>
+            <param name="table">数据表</param>
+            <param name="setParam">set 参数</param>
+            <param name="whereParam">where参数</param>
+            <returns></returns>
+        </member>
+        <member name="M:Afx.Data.IDatabase.Update``1(System.Object,System.Object)">
+            <summary>
+            更新数据
+            </summary>
+            <typeparam name="T">数据表</typeparam>
+            <param name="setParam">set 参数</param>
+            <param name="whereParam">where参数</param>
+            <returns></returns>
+        </member>
+        <member name="M:Afx.Data.IDatabase.Update(System.String,System.Object,System.String,System.Object)">
+            <summary>
+            更新数据
+            </summary>
+            <param name="table">数据表</param>
+            <param name="setParam">set 参数</param>
+            <param name="whereSql">where sql</param>
+            <param name="whereParam">where参数</param>
+            <returns></returns>
+        </member>
+        <member name="M:Afx.Data.IDatabase.Update``1(System.Object,System.String,System.Object)">
+            <summary>
+            更新数据
+            </summary>
+            <typeparam name="T">数据表</typeparam>
+            <param name="setParam">set 参数</param>
+            <param name="whereSql">where sql</param>
+            <param name="whereParam">where参数</param>
+            <returns></returns>
+        </member>
+        <member name="M:Afx.Data.IDatabase.Update(System.String,System.String,System.Object,System.String,System.Object)">
+            <summary>
+            更新数据
+            </summary>
+            <param name="table">数据表</param>
+            <param name="setSql">set sql</param>
+            <param name="setParam">set 参数</param>
+            <param name="whereSql">where sql</param>
+            <param name="whereParam">where参数</param>
+            <returns></returns>
+        </member>
+        <member name="M:Afx.Data.IDatabase.Update``1(System.String,System.Object,System.String,System.Object)">
+            <summary>
+            更新数据
+            </summary>
+            <typeparam name="T">数据表</typeparam>
+            <param name="setSql">set sql</param>
+            <param name="setParam">set 参数</param>
+            <param name="whereSql">where sql</param>
+            <param name="whereParam">where参数</param>
+            <returns></returns>
+        </member>
+        <member name="M:Afx.Data.IDatabase.Delete(System.String,System.Object)">
+            <summary>
+            删除数据
+            </summary>
+            <param name="table">数据表</param>
+            <param name="whereParam">where参数</param>
+            <returns></returns>
+        </member>
+        <member name="M:Afx.Data.IDatabase.Delete``1(System.Object)">
+            <summary>
+            删除数据
+            </summary>
+            <typeparam name="T">数据表</typeparam>
+            <param name="whereParam">where参数</param>
+            <returns></returns>
+        </member>
+        <member name="M:Afx.Data.IDatabase.Delete(System.String,System.String,System.Object)">
+            <summary>
+            删除数据
+            </summary>
+            <param name="table">数据表</param>
+            <param name="whereSql">where sql</param>
+            <param name="whereParam">where参数</param>
+            <returns></returns>
+        </member>
+        <member name="M:Afx.Data.IDatabase.Delete``1(System.String,System.Object)">
+            <summary>
+            删除数据
+            </summary>
+            <typeparam name="T">数据表</typeparam>
+            <param name="whereSql">where sql</param>
+            <param name="whereParam">where参数</param>
+            <returns></returns>
+        </member>
+        <member name="M:Afx.Data.IDatabase.GetLikeValue(System.String,Afx.Data.DbLikeType)">
+            <summary>
+            添加匹配符%
+            </summary>
+            <param name="value"></param>
+            <param name="type"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Afx.Data.IDatabase.GetOrderby``1(System.String,System.String,System.String)">
+            <summary>
+            获取最终排序, order by id, name
+            </summary>
+            <typeparam name="T">排序model</typeparam>
+            <param name="orderby">排序: id desc, name asc</param>
+            <param name="defaultOrderby">默认排序: id desc</param>
+            <param name="tb"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Afx.Data.IModelToParam">
+            <summary>
+            sql 参数 class 转换接口
+            </summary>
+        </member>
+        <member name="M:Afx.Data.IModelToParam.To(Afx.Data.IDatabase,System.Data.IDbCommand,System.String,System.Object)">
+            <summary>
+            sql 参数 class 转换
+            </summary>
+            <param name="db">IDatabase</param>
+            <param name="command">IDbCommand</param>
+            <param name="sql">sql</param>
+            <param name="parameters">sql 参数</param>
+        </member>
+        <member name="T:Afx.Data.IReaderToModel">
+            <summary>
+            IDataReader 读取结果转换成实体
+            </summary>
+        </member>
+        <member name="M:Afx.Data.IReaderToModel.To(System.Data.IDataReader)">
+            <summary>
+            转换实体
+            </summary>
+            <param name="reader">IDataReader</param>
+            <returns></returns>
+        </member>
+        <member name="T:Afx.Data.ModelToParam">
+            <summary>
+            sql 参数class 转换sqlParameter接口
+            </summary>
+        </member>
+        <member name="M:Afx.Data.ModelToParam.To(Afx.Data.IDatabase,System.Data.IDbCommand,System.String,System.Object)">
+            <summary>
+            sql 参数 class 转换
+            </summary>
+            <param name="db">IDatabase</param>
+            <param name="command">IDbCommand</param>
+            <param name="sql">sql</param>
+            <param name="parameters">sql 参数</param>
+        </member>
+        <member name="M:Afx.Data.DicToParam.To(Afx.Data.IDatabase,System.Data.IDbCommand,System.String,System.Object)">
+            <summary>
+            sql 参数 class 转换
+            </summary>
+            <param name="db">IDatabase</param>
+            <param name="command">IDbCommand</param>
+            <param name="sql">sql</param>
+            <param name="parameters">sql 参数</param>
+            <returns></returns>
+        </member>
+        <member name="T:Afx.Data.ReaderToModel">
+            <summary>
+            IDataReader 读取结果转换成实体
+            </summary>
+        </member>
+        <member name="M:Afx.Data.ReaderToModel.To(System.Data.IDataReader)">
+            <summary>
+            转换实体
+            </summary>
+            <param name="reader">IDataReader</param>
+            <returns></returns>
+        </member>
+        <member name="M:Afx.Data.ReaderToModel.GetOrdinal(System.Data.IDataReader,System.String)">
+            <summary>
+            获取列所在位置
+            </summary>
+            <param name="reader">IDataReader</param>
+            <param name="name"></param>
+            <returns>未找到返回-1</returns>
+        </member>
+        <member name="M:Afx.Data.ReaderToModel.GetBytes(System.Data.IDataReader,System.Int32)">
+            <summary>
+            读取byte[]
+            </summary>
+            <param name="reader"></param>
+            <param name="ordinal"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Afx.Data.ReaderToModel.GetChars(System.Data.IDataReader,System.Int32)">
+            <summary>
+            读取char[]
+            </summary>
+            <param name="reader"></param>
+            <param name="ordinal"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

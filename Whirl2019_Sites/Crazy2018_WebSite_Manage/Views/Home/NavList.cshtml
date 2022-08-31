@@ -1,0 +1,238 @@
+﻿@using System.Data;
+@using Crazy2018_Sys_Common;
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,initial-scale=1.0,user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <title>后台导航管理</title>
+    <link href="~/scripts/artdialog/ui-dialog.css" rel="stylesheet" type="text/css" />
+    <link href="~/skin/default/style.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="~/scripts/jquery/jquery-1.11.2.min.js"></script>
+    <script type="text/javascript" src="~/scripts/artdialog/dialog-plus-min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="~/js/laymain.js"></script>
+    <script type="text/javascript" charset="utf-8" src="~/js/common.js"></script>
+    <script>
+        //$(function () {
+        //    $("#btnDelete").click(function () {
+        //        var result = ExePostBack('btnDelete', '本操作会删除本导航及下属子导航，是否继续？')
+        //        if (result) {
+        //            var ids = "1,1,1,1,11";
+        //            $.ajax({
+        //                url: "/Home/NavDel?ids=" + ids + "",
+        //                type: "post",
+        //                contentType: "application/json",
+        //                dataType: "json",
+        //                success: function (data) {
+        //                    eval(data);
+        //                }
+        //            })
+        //        }
+        //    });
+
+        //})
+
+    </script>
+</head>
+
+<body class="mainbody">
+    <form id="form1">
+        <!--导航栏-->
+        <div class="location">
+            <a href="javascript:history.back(-1);" class="back"><i></i><span>返回上一页</span></a>
+            <a href="/Home/Center" class="home"><i></i><span>首页</span></a>
+            <i class="arrow"></i>
+            <span>后台导航管理</span>
+        </div>
+        <!--/导航栏-->
+        <!--工具栏-->
+        <div id="floatHead" class="toolbar-wrap">
+            <div class="toolbar">
+                <div class="box-wrap">
+                    <a class="menu-btn"></a>
+                    <div class="l-list">
+                        <ul class="icon-list">
+                            <li><a class="add" href="/Home/NavEdit?op=@DTEnums.ActionEnum.Add"><i></i><span>新增</span></a></li>
+                            <li>
+                                @*<a id="btnSave" class="save"><i></i><span>保存</span></a>*@
+                                @*<asp:LinkButton ID="btnSave" runat="server" CssClass="save" onclick="btnSave_Click"
+                                    ><i></i><span>保存</span></asp:LinkButton>*@
+                            </li>
+                            @*<li><a class="all" href="javascript:;" onclick="checkAll(this);"><i></i><span>全选</span></a></li>*@
+                            <li>
+                                <a class="del" id="btnDelete">
+                                    <i></i><span>删除</span>
+                                </a>
+                                @*<asp:LinkButton ID="btnDelete" runat="server" CssClass="del" OnClientClick="return ExePostBack('btnDelete','本操作会删除本导航及下属子导航，是否继续？');" onclick="btnDelete_Click"><i>
+                                    </i><span>删除</span></asp:LinkButton>*@
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--/工具栏-->
+        <!--列表-->
+        <div class="table-container">
+            <table width="100%" border="0" cellspacing="0" cellpadding="0" class="ltable">
+                <thead>
+                    <tr>
+                        <th width="6%">选择</th>
+                        <th width="8%">图标</th>
+                        <th align="left" width="12%">调用名称</th>
+                        <th align="left">标题</th>
+                        <th width="8%">显示</th>
+                        <th width="8%">默认</th>
+                        <th align="left" width="65">排序</th>
+                        <th width="12%">操作</th>
+                    </tr>
+                </thead>
+                @*@foreach (DataRow item in Model.Rows)
+                    {
+                        <tr>
+                            <td align="center">
+                                <input type="hidden" name="hidId" value="@item["id"]" />
+                                <input type="checkbox" class="checkall" disabled="@bool.Parse((Convert.ToInt32(item["is_sys"]) == 1).ToString())" />
+                            </td>
+                            <td></td>
+                            <td style="white-space:nowrap;word-break:break-all;overflow:hidden;">@item["name"]</td>
+                            <td style="white-space:nowrap;word-break:break-all;overflow:hidden;">
+                                <a href="/Home/NavEdit?op=@DTEnums.ActionEnum.Edit&id=@item["id"]">@item["title"]</a>
+                            </td>
+
+                            <td align="center">
+                                @if (Convert.ToInt32(item["is_lock"]) == 0)
+                                {
+                                    @Html.Raw("√")
+
+                                }
+                                else
+                                { @Html.Raw("×") }
+                            </td>
+                            <td align="center">
+                                @if (Convert.ToInt32(item["is_sys"]) == 1)
+                                {
+                                    @Html.Raw("√")
+                                }
+                                else
+                                { @Html.Raw("×") }
+
+                            </td>
+                            <td>
+                                <input type="text" value="@item["sort_id"]" class="sort" onkeydown="return checkNumber(event);" />
+                            <td align="center" style="white-space:nowrap;word-break:break-all;overflow:hidden;">
+                                <a href="NavEdit?op=@DTEnums.ActionEnum.Add.ToString()&id=@item["id"]">添加子级</a>
+                                <a href="NavEdit?op=@DTEnums.ActionEnum.Edit.ToString()&id=@item["id"]">修改</a>
+                            </td>
+                        </tr>
+                    }
+                    @if (Model.Rows.Count == 0)
+                    {
+                        <tr><td align=\"center\" colspan=\"8\">暂无记录</td></tr>
+                    }*@
+                <tbody id="MyTbody"></tbody>
+
+            </table>
+        </div>
+        <!--/列表-->
+    </form>
+    <script>
+        getNavList();
+        function getNavList() {
+            var data = {};
+            $.ajax({
+                type: "post", url: '/Home/GetNavData',
+                datatype: 'json',
+                data: data,
+                success: function (res) {
+                    //console.log(res)
+                    var str = $("#MyTbody").html();
+                    $("#MyTbody").empty();
+                    for (var i in res.Data) {
+                        if (res.Data[i].is_sys == 1) {
+                            var str1 = "disabled"
+                            var str4 = "√"
+                        } else {
+                            var str1 = ""
+                            var str4 = "×"
+                        }
+                        if (res.Data[i].class_layer == 1) {
+                            var str2 = "none"
+                        } else {
+                            var str2 = "inline-block"
+                        }
+                        if (res.Data[i].is_lock == 0) {
+                            var str3 = "√"
+                        } else {
+                            var str3 = "×"
+                        }
+                        str = "<tr class='One'>" +
+                            "<td align='center'>" +
+                                 "<input type='hidden' name='hidId' id='hidId' value=" + res.Data[i].id + ">" +
+                                 "<input type='checkbox' class='checkall' " + str1 + ">" +
+                             "</td>" +
+                             "<td></td>" +
+                             "<td style='white-space:nowrap;word-break:break-all;overflow:hidden;'>" + res.Data[i].name + "</td>" +
+                             "<td style='white-space:nowrap;word-break:break-all;overflow:hidden;'>" +
+                                 "<span style='display:inline-block;width:" + res.Data[i].width + "px'></span>" +
+                                 "<span class='folder-line' style='display:" + str2 + "'></span>" +
+                                 "<span class='folder-open'></span>" +
+                                 "<a href='NavEdit?op=Edit&id=" + res.Data[i].id + "'>" + res.Data[i].title + "</a>" +
+
+                             "</td>" +
+                             "<td align='center'>" + str3 + "</td>" +
+                             "<td align='center'>" + str4 + "</td>" +
+                             "<td><input type='text' value=" + res.Data[i].sort_id + " class='sort'/></td>" +
+                             "<td align='center' style='white-space:nowrap;word-break:break-all;overflow:hidden;'>" +
+                                  "<a href='NavEdit?op=Add&id=" + res.Data[i].id + "'>添加子级&nbsp;</a>" +
+                                  "<a href='NavEdit?op=Edit&id=" + res.Data[i].id + "'>修改</a>" +
+                             "</td>" +
+                         "</tr>"
+                        $('#MyTbody').append(str);
+                    }
+                }
+            })
+        }
+
+        $("body").on("click", 'tr', function () {
+
+        })
+        var numID = [];//用于储存需要删除的ID
+        $("#btnDelete").click(function () {
+            numID = []
+            var num1 = {};
+            var on1 = $(".One");
+            for (var o = 0; o < on1.length; o++) {
+                var lkl3 = $(on1[o]).find(".checkall")
+                for (var ol = 0; ol < lkl3.length; ol++) {
+                    //console.log(lkl3[ol].checked)
+                    if (lkl3[ol].checked == true) {
+                        var lkl4 = $(on1[o]).find("#hidId").val();
+                        num1.id = lkl4
+                        numID.push(num1.id)
+                    }
+                }
+            }
+            var a, b;
+            a = numID;
+            b = a.join(",");
+            //console.log(b)
+            var ids = b;
+            $.ajax({
+                url: "/Home/NavDel?ids=" + ids + "",
+                type: "post",
+                contentType: "application/json",
+                dataType: "json",
+                success: function (data) {
+                    eval(data)
+                }
+            })
+        })
+    </script>
+</body>
+</html>

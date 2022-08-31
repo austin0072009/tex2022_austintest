@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{3711985E-A1C8-4E01-BF35-D2B51C27AFDC}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Crazy2018_Sys_Entity</RootNamespace>
+    <AssemblyName>Crazy2018_Sys_Entity</AssemblyName>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BaseEntity.cs" />
+    <Compile Include="Game\GameActivity.cs" />
+    <Compile Include="Game\GameLogo.cs" />
+    <Compile Include="Game\InitialagencyInfo.cs" />
+    <Compile Include="Game\NoticesEntity.cs" />
+    <Compile Include="Game\ProfitLog.cs" />
+    <Compile Include="Game\RechargeChannel.cs" />
+    <Compile Include="Game\RechargeRecordEntity.cs" />
+    <Compile Include="Game\RoomConfiguration.cs" />
+    <Compile Include="Game\TakeNowRecordEntity.cs" />
+    <Compile Include="Game\TContact.cs" />
+    <Compile Include="Game\TEntityCard.cs" />
+    <Compile Include="Game\TEntityCardDetails.cs" />
+    <Compile Include="Game\TEntityCardType.cs" />
+    <Compile Include="Game\TSlotConfig.cs" />
+    <Compile Include="Game\UserAgentStatistics.cs" />
+    <Compile Include="Game\VisualTable.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="System\SiteConfig.cs" />
+    <Compile Include="System\UserAgentEntity.cs" />
+    <Compile Include="System\UserEntity.cs" />
+    <Compile Include="System\VerifyCodeEntity.cs" />
+    <Compile Include="WebSite_GW\BankCardEntity.cs" />
+    <Compile Include="WebSite_GW\BankTypeEntity.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

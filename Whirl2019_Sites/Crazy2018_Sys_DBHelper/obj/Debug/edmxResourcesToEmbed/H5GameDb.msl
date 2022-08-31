@@ -1,0 +1,1446 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="h5game_2021ModelStoreContainer" CdmEntityContainer="h5game_2021Entities">
+    <EntitySetMapping Name="bankcardentities">
+      <EntityTypeMapping TypeName="h5game_2021Model.bankcardentities">
+        <MappingFragment StoreEntitySet="bankcardentities">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="BankCardID" ColumnName="BankCardID" />
+          <ScalarProperty Name="CardType" ColumnName="CardType" />
+          <ScalarProperty Name="CardName" ColumnName="CardName" />
+          <ScalarProperty Name="BankAddress" ColumnName="BankAddress" />
+          <ScalarProperty Name="Location" ColumnName="Location" />
+          <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+          <ScalarProperty Name="CreatTime" ColumnName="CreatTime" />
+          <ScalarProperty Name="UserEntity_ID" ColumnName="UserEntity_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="banktypeentities">
+      <EntityTypeMapping TypeName="h5game_2021Model.banktypeentities">
+        <MappingFragment StoreEntitySet="banktypeentities">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="BankName" ColumnName="BankName" />
+          <ScalarProperty Name="CardType" ColumnName="CardType" />
+          <ScalarProperty Name="BinCode" ColumnName="BinCode" />
+          <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+          <ScalarProperty Name="CreatTime" ColumnName="CreatTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="gameuser">
+      <EntityTypeMapping TypeName="h5game_2021Model.gameuser">
+        <MappingFragment StoreEntitySet="gameuser">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="NickName" ColumnName="NickName" />
+          <ScalarProperty Name="PassportId" ColumnName="PassportId" />
+          <ScalarProperty Name="RetailId" ColumnName="RetailId" />
+          <ScalarProperty Name="HeadIcon" ColumnName="HeadIcon" />
+          <ScalarProperty Name="Sex" ColumnName="Sex" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="MobilePhoneNum" ColumnName="MobilePhoneNum" />
+          <ScalarProperty Name="PassportPwd" ColumnName="PassportPwd" />
+          <ScalarProperty Name="UserLevel" ColumnName="UserLevel" />
+          <ScalarProperty Name="ExpNum" ColumnName="ExpNum" />
+          <ScalarProperty Name="LoginNum" ColumnName="LoginNum" />
+          <ScalarProperty Name="FinalTime" ColumnName="FinalTime" />
+          <ScalarProperty Name="RecommendedId" ColumnName="RecommendedId" />
+          <ScalarProperty Name="Vip" ColumnName="Vip" />
+          <ScalarProperty Name="UserStatus" ColumnName="UserStatus" />
+          <ScalarProperty Name="MoneyScore" ColumnName="MoneyScore" />
+          <ScalarProperty Name="Birthday" ColumnName="Birthday" />
+          <ScalarProperty Name="RegisterTime" ColumnName="RegisterTime" />
+          <ScalarProperty Name="MobileType" ColumnName="MobileType" />
+          <ScalarProperty Name="IDCards" ColumnName="IDCards" />
+          <ScalarProperty Name="WeixinCode" ColumnName="WeixinCode" />
+          <ScalarProperty Name="PassportPwdTime" ColumnName="PassportPwdTime" />
+          <ScalarProperty Name="RedEnvCount" ColumnName="RedEnvCount" />
+          <ScalarProperty Name="RedCount" ColumnName="RedCount" />
+          <ScalarProperty Name="ClRedCount" ColumnName="ClRedCount" />
+          <ScalarProperty Name="alipayName" ColumnName="alipayName" />
+          <ScalarProperty Name="alipayNum" ColumnName="alipayNum" />
+          <ScalarProperty Name="BankUn" ColumnName="BankUn" />
+          <ScalarProperty Name="BankNum" ColumnName="BankNum" />
+          <ScalarProperty Name="BankName" ColumnName="BankName" />
+          <ScalarProperty Name="bPhone" ColumnName="bPhone" />
+          <ScalarProperty Name="aPhone" ColumnName="aPhone" />
+          <ScalarProperty Name="JlRedCount" ColumnName="JlRedCount" />
+          <ScalarProperty Name="BankProvince" ColumnName="BankProvince" />
+          <ScalarProperty Name="BankCity" ColumnName="BankCity" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="rechargechannels">
+      <EntityTypeMapping TypeName="h5game_2021Model.rechargechannels">
+        <MappingFragment StoreEntitySet="rechargechannels">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ChannelName" ColumnName="ChannelName" />
+          <ScalarProperty Name="ChannelCode" ColumnName="ChannelCode" />
+          <ScalarProperty Name="payurl" ColumnName="payurl" />
+          <ScalarProperty Name="dec" ColumnName="dec" />
+          <ScalarProperty Name="minmoney" ColumnName="minmoney" />
+          <ScalarProperty Name="paytype" ColumnName="paytype" />
+          <ScalarProperty Name="isenable" ColumnName="isenable" />
+          <ScalarProperty Name="payname" ColumnName="payname" />
+          <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+          <ScalarProperty Name="CreatTime" ColumnName="CreatTime" />
+          <ScalarProperty Name="serviceList" ColumnName="serviceList" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="IP" ColumnName="IP" />
+          <ScalarProperty Name="MachineCode" ColumnName="MachineCode" />
+          <ScalarProperty Name="MachineType" ColumnName="MachineType" />
+          <ScalarProperty Name="Lat" ColumnName="Lat" />
+          <ScalarProperty Name="Lng" ColumnName="Lng" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="smsrecord">
+      <EntityTypeMapping TypeName="h5game_2021Model.smsrecord">
+        <MappingFragment StoreEntitySet="smsrecord">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="SmsType" ColumnName="SmsType" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="MobilePhoneNum" ColumnName="MobilePhoneNum" />
+          <ScalarProperty Name="KeyNum" ColumnName="KeyNum" />
+          <ScalarProperty Name="Result" ColumnName="Result" />
+          <ScalarProperty Name="Time" ColumnName="Time" />
+          <ScalarProperty Name="DeviceID" ColumnName="DeviceID" />
+          <ScalarProperty Name="IP" ColumnName="IP" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tactivecode">
+      <EntityTypeMapping TypeName="h5game_2021Model.tactivecode">
+        <MappingFragment StoreEntitySet="tactivecode">
+          <ScalarProperty Name="Activecode" ColumnName="Activecode" />
+          <ScalarProperty Name="GenerateUserId" ColumnName="GenerateUserId" />
+          <ScalarProperty Name="UseUserId" ColumnName="UseUserId" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tactivity">
+      <EntityTypeMapping TypeName="h5game_2021Model.tactivity">
+        <MappingFragment StoreEntitySet="tactivity">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ImgUrl" ColumnName="ImgUrl" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Content" ColumnName="Content" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tagentgoldlog">
+      <EntityTypeMapping TypeName="h5game_2021Model.tagentgoldlog">
+        <MappingFragment StoreEntitySet="tagentgoldlog">
+          <ScalarProperty Name="Idx" ColumnName="Idx" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="BeforCoin" ColumnName="BeforCoin" />
+          <ScalarProperty Name="ActionCoin" ColumnName="ActionCoin" />
+          <ScalarProperty Name="AfterCoin" ColumnName="AfterCoin" />
+          <ScalarProperty Name="ActionType" ColumnName="ActionType" />
+          <ScalarProperty Name="SourceGameID" ColumnName="SourceGameID" />
+          <ScalarProperty Name="SourceUserId" ColumnName="SourceUserId" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="TableUserLogId" ColumnName="TableUserLogId" />
+          <ScalarProperty Name="IsHandel" ColumnName="IsHandel" />
+          <ScalarProperty Name="C_lv" ColumnName="_lv" />
+          <ScalarProperty Name="tnum" ColumnName="tnum" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tauthinfo">
+      <EntityTypeMapping TypeName="h5game_2021Model.tauthinfo">
+        <MappingFragment StoreEntitySet="tauthinfo">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="authname" ColumnName="authname" />
+          <ScalarProperty Name="authvalue" ColumnName="authvalue" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tautoeventlog">
+      <EntityTypeMapping TypeName="h5game_2021Model.tautoeventlog">
+        <MappingFragment StoreEntitySet="tautoeventlog">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="EventName" ColumnName="EventName" />
+          <ScalarProperty Name="Message" ColumnName="Message" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbanklog">
+      <EntityTypeMapping TypeName="h5game_2021Model.tbanklog">
+        <MappingFragment StoreEntitySet="tbanklog">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="OpDate" ColumnName="OpDate" />
+          <ScalarProperty Name="OpType" ColumnName="OpType" />
+          <ScalarProperty Name="OpCount" ColumnName="OpCount" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbarrage">
+      <EntityTypeMapping TypeName="h5game_2021Model.tbarrage">
+        <MappingFragment StoreEntitySet="tbarrage">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="BarrageContent" ColumnName="BarrageContent" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="BarrageType" ColumnName="BarrageType" />
+          <ScalarProperty Name="BarrageMoney" ColumnName="BarrageMoney" />
+          <ScalarProperty Name="tableId" ColumnName="tableId" />
+          <ScalarProperty Name="RoomId" ColumnName="RoomId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbetinginfo">
+      <EntityTypeMapping TypeName="h5game_2021Model.tbetinginfo">
+        <MappingFragment StoreEntitySet="tbetinginfo">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="BetCount" ColumnName="BetCount" />
+          <ScalarProperty Name="GameId" ColumnName="GameId" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tchatlog">
+      <EntityTypeMapping TypeName="h5game_2021Model.tchatlog">
+        <MappingFragment StoreEntitySet="tchatlog">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="BarrageContent" ColumnName="BarrageContent" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="BarrageType" ColumnName="BarrageType" />
+          <ScalarProperty Name="BarrageMoney" ColumnName="BarrageMoney" />
+          <ScalarProperty Name="tableId" ColumnName="tableId" />
+          <ScalarProperty Name="RoomId" ColumnName="RoomId" />
+          <ScalarProperty Name="GameId" ColumnName="GameId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tclub">
+      <EntityTypeMapping TypeName="h5game_2021Model.tclub">
+        <MappingFragment StoreEntitySet="tclub">
+          <ScalarProperty Name="idx" ColumnName="idx" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="childs" ColumnName="childs" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="limitcount" ColumnName="limitcount" />
+          <ScalarProperty Name="search" ColumnName="search" />
+          <ScalarProperty Name="manager" ColumnName="manager" />
+          <ScalarProperty Name="gold" ColumnName="gold" />
+          <ScalarProperty Name="diam" ColumnName="diam" />
+          <ScalarProperty Name="applyUserID" ColumnName="applyUserID" />
+          <ScalarProperty Name="Loc" ColumnName="Loc" />
+          <ScalarProperty Name="lv" ColumnName="lv" />
+          <ScalarProperty Name="closeapply" ColumnName="closeapply" />
+          <ScalarProperty Name="Content" ColumnName="Content" />
+          <ScalarProperty Name="applyGoldList" ColumnName="applyGoldList" />
+          <ScalarProperty Name="alliancid" ColumnName="alliancid" />
+          <ScalarProperty Name="fundnum" ColumnName="fundnum" />
+          <ScalarProperty Name="apply" ColumnName="apply" />
+          <ScalarProperty Name="tidlist" ColumnName="tidlist" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tcluballiance">
+      <EntityTypeMapping TypeName="h5game_2021Model.tcluballiance">
+        <MappingFragment StoreEntitySet="tcluballiance">
+          <ScalarProperty Name="idx" ColumnName="idx" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="childs" ColumnName="childs" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Content" ColumnName="Content" />
+          <ScalarProperty Name="limitcount" ColumnName="limitcount" />
+          <ScalarProperty Name="search" ColumnName="search" />
+          <ScalarProperty Name="manager" ColumnName="manager" />
+          <ScalarProperty Name="gold" ColumnName="gold" />
+          <ScalarProperty Name="diam" ColumnName="diam" />
+          <ScalarProperty Name="applyclubidx" ColumnName="applyclubidx" />
+          <ScalarProperty Name="lv" ColumnName="lv" />
+          <ScalarProperty Name="closeapply" ColumnName="closeapply" />
+          <ScalarProperty Name="clubid" ColumnName="clubid" />
+          <ScalarProperty Name="IsSupper" ColumnName="IsSupper" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tclubapplylog">
+      <EntityTypeMapping TypeName="h5game_2021Model.tclubapplylog">
+        <MappingFragment StoreEntitySet="tclubapplylog">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="applyType" ColumnName="applyType" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="applyTime" ColumnName="applyTime" />
+          <ScalarProperty Name="clubId" ColumnName="clubId" />
+          <ScalarProperty Name="ownClubId" ColumnName="ownClubId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tclubfundlog">
+      <EntityTypeMapping TypeName="h5game_2021Model.tclubfundlog">
+        <MappingFragment StoreEntitySet="tclubfundlog">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ClubId" ColumnName="ClubId" />
+          <ScalarProperty Name="fnum" ColumnName="fnum" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="ChangeType" ColumnName="ChangeType" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="BalanNum" ColumnName="BalanNum" />
+          <ScalarProperty Name="fundtotal" ColumnName="fundtotal" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tclubgoldlog">
+      <EntityTypeMapping TypeName="h5game_2021Model.tclubgoldlog">
+        <MappingFragment StoreEntitySet="tclubgoldlog">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ChangeType" ColumnName="ChangeType" />
+          <ScalarProperty Name="BeforeGold" ColumnName="BeforeGold" />
+          <ScalarProperty Name="Gold" ColumnName="Gold" />
+          <ScalarProperty Name="AfterGold" ColumnName="AfterGold" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="ClubId" ColumnName="ClubId" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tclublevel">
+      <EntityTypeMapping TypeName="h5game_2021Model.tclublevel">
+        <MappingFragment StoreEntitySet="tclublevel">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="type" ColumnName="type" />
+          <ScalarProperty Name="level" ColumnName="level" />
+          <ScalarProperty Name="diamond" ColumnName="diamond" />
+          <ScalarProperty Name="maxMember" ColumnName="maxMember" />
+          <ScalarProperty Name="maxadmin" ColumnName="maxadmin" />
+          <ScalarProperty Name="expireTime" ColumnName="expireTime" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="levelname" ColumnName="levelname" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tclubusergoldlog">
+      <EntityTypeMapping TypeName="h5game_2021Model.tclubusergoldlog">
+        <MappingFragment StoreEntitySet="tclubusergoldlog">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ClubId" ColumnName="ClubId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="BeforeGold" ColumnName="BeforeGold" />
+          <ScalarProperty Name="Gold" ColumnName="Gold" />
+          <ScalarProperty Name="AfterGold" ColumnName="AfterGold" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="ChangeType" ColumnName="ChangeType" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tcollectlog">
+      <EntityTypeMapping TypeName="h5game_2021Model.tcollectlog">
+        <MappingFragment StoreEntitySet="tcollectlog">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="sceneInfo" ColumnName="sceneInfo" />
+          <ScalarProperty Name="sceneUserInfo" ColumnName="sceneUserInfo" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="tnum" ColumnName="tnum" />
+          <ScalarProperty Name="infoId" ColumnName="infoId" />
+          <ScalarProperty Name="baserate" ColumnName="baserate" />
+          <ScalarProperty Name="gNum" ColumnName="gNum" />
+          <ScalarProperty Name="totalnum" ColumnName="totalnum" />
+          <ScalarProperty Name="WinUserId" ColumnName="WinUserId" />
+          <ScalarProperty Name="WinGold" ColumnName="WinGold" />
+          <ScalarProperty Name="seeNum" ColumnName="seeNum" />
+          <ScalarProperty Name="NoGiveupNum" ColumnName="NoGiveupNum" />
+          <ScalarProperty Name="maxPoker" ColumnName="maxPoker" />
+          <ScalarProperty Name="OwnSpair" ColumnName="OwnSpair" />
+          <ScalarProperty Name="OwnWin" ColumnName="OwnWin" />
+          <ScalarProperty Name="preG" ColumnName="preG" />
+          <ScalarProperty Name="PlayerList" ColumnName="PlayerList" />
+          <ScalarProperty Name="showCard" ColumnName="showCard" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tcommodity">
+      <EntityTypeMapping TypeName="h5game_2021Model.tcommodity">
+        <MappingFragment StoreEntitySet="tcommodity">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="introduce" ColumnName="introduce" />
+          <ScalarProperty Name="exchangeValue" ColumnName="exchangeValue" />
+          <ScalarProperty Name="commodityType" ColumnName="commodityType" />
+          <ScalarProperty Name="url" ColumnName="url" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="isEnable" ColumnName="isEnable" />
+          <ScalarProperty Name="commodityvValue" ColumnName="commodityvValue" />
+          <ScalarProperty Name="Discount" ColumnName="Discount" />
+          <ScalarProperty Name="ClubCount" ColumnName="ClubCount" />
+          <ScalarProperty Name="TableCount" ColumnName="TableCount" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tdiamondchangelog">
+      <EntityTypeMapping TypeName="h5game_2021Model.tdiamondchangelog">
+        <MappingFragment StoreEntitySet="tdiamondchangelog">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="BeforeGold" ColumnName="BeforeGold" />
+          <ScalarProperty Name="Gold" ColumnName="Gold" />
+          <ScalarProperty Name="AfterGold" ColumnName="AfterGold" />
+          <ScalarProperty Name="ChangeType" ColumnName="ChangeType" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="temail">
+      <EntityTypeMapping TypeName="h5game_2021Model.temail">
+        <MappingFragment StoreEntitySet="temail">
+          <ScalarProperty Name="TradeNo" ColumnName="TradeNo" />
+          <ScalarProperty Name="FromUserId" ColumnName="FromUserId" />
+          <ScalarProperty Name="ToUserId" ColumnName="ToUserId" />
+          <ScalarProperty Name="MailType" ColumnName="MailType" />
+          <ScalarProperty Name="Content" ColumnName="Content" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="Attach" ColumnName="Attach" />
+          <ScalarProperty Name="CState" ColumnName="CState" />
+          <ScalarProperty Name="IsLook" ColumnName="IsLook" />
+          <ScalarProperty Name="EmailType" ColumnName="EmailType" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="FromUserName" ColumnName="FromUserName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="temp_entityhistory">
+      <EntityTypeMapping TypeName="h5game_2021Model.temp_entityhistory">
+        <MappingFragment StoreEntitySet="temp_entityhistory">
+          <ScalarProperty Name="Key" ColumnName="Key" />
+          <ScalarProperty Name="Value" ColumnName="Value" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="temtuseragent">
+      <EntityTypeMapping TypeName="h5game_2021Model.temtuseragent">
+        <MappingFragment StoreEntitySet="temtuseragent">
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="Commission" ColumnName="Commission" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UserProfit" ColumnName="UserProfit" />
+          <ScalarProperty Name="pos1Count" ColumnName="pos1Count" />
+          <ScalarProperty Name="pos2Count" ColumnName="pos2Count" />
+          <ScalarProperty Name="pos5Count" ColumnName="pos5Count" />
+          <ScalarProperty Name="pos10Count" ColumnName="pos10Count" />
+          <ScalarProperty Name="pos20Count" ColumnName="pos20Count" />
+          <ScalarProperty Name="pos50Count" ColumnName="pos50Count" />
+          <ScalarProperty Name="GameId" ColumnName="GameId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tentitycard">
+      <EntityTypeMapping TypeName="h5game_2021Model.tentitycard">
+        <MappingFragment StoreEntitySet="tentitycard">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="AddName" ColumnName="AddName" />
+          <ScalarProperty Name="CardType" ColumnName="CardType" />
+          <ScalarProperty Name="CardNum" ColumnName="CardNum" />
+          <ScalarProperty Name="CardPrice" ColumnName="CardPrice" />
+          <ScalarProperty Name="TatolPrice" ColumnName="TatolPrice" />
+          <ScalarProperty Name="GoldPrice" ColumnName="GoldPrice" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tentitycarddetails">
+      <EntityTypeMapping TypeName="h5game_2021Model.tentitycarddetails">
+        <MappingFragment StoreEntitySet="tentitycarddetails">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tentitycardtype">
+      <EntityTypeMapping TypeName="h5game_2021Model.tentitycardtype">
+        <MappingFragment StoreEntitySet="tentitycardtype">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="AddName" ColumnName="AddName" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="CardNum" ColumnName="CardNum" />
+          <ScalarProperty Name="CardPrice" ColumnName="CardPrice" />
+          <ScalarProperty Name="TotalPrice" ColumnName="TotalPrice" />
+          <ScalarProperty Name="GoldPrice" ColumnName="GoldPrice" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="texchangelog">
+      <EntityTypeMapping TypeName="h5game_2021Model.texchangelog">
+        <MappingFragment StoreEntitySet="texchangelog">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="CommodityId" ColumnName="CommodityId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="isHandle" ColumnName="isHandle" />
+          <ScalarProperty Name="oddNumbers" ColumnName="oddNumbers" />
+          <ScalarProperty Name="expressNumbers" ColumnName="expressNumbers" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="commodityType" ColumnName="commodityType" />
+          <ScalarProperty Name="QRCodeUrl" ColumnName="QRCodeUrl" />
+          <ScalarProperty Name="exchangeCount" ColumnName="exchangeCount" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tgameinfo">
+      <EntityTypeMapping TypeName="h5game_2021Model.tgameinfo">
+        <MappingFragment StoreEntitySet="tgameinfo">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="modifyUser" ColumnName="modifyUser" />
+          <ScalarProperty Name="modifyTime" ColumnName="modifyTime" />
+          <ScalarProperty Name="Sort" ColumnName="Sort" />
+          <ScalarProperty Name="isHot" ColumnName="isHot" />
+          <ScalarProperty Name="desc" ColumnName="desc" />
+          <ScalarProperty Name="isopen" ColumnName="isopen" />
+          <ScalarProperty Name="type" ColumnName="type" />
+          <ScalarProperty Name="gameurl" ColumnName="gameurl" />
+          <ScalarProperty Name="port" ColumnName="port" />
+          <ScalarProperty Name="gameRule" ColumnName="gameRule" />
+          <ScalarProperty Name="icon" ColumnName="icon" />
+          <ScalarProperty Name="gameIntroduce" ColumnName="gameIntroduce" />
+          <ScalarProperty Name="isEnable" ColumnName="isEnable" />
+          <ScalarProperty Name="isEnableDesc" ColumnName="isEnableDesc" />
+          <ScalarProperty Name="deleteState" ColumnName="deleteState" />
+          <ScalarProperty Name="gameType" ColumnName="gameType" />
+          <ScalarProperty Name="gameIp" ColumnName="gameIp" />
+          <ScalarProperty Name="gamePort" ColumnName="gamePort" />
+          <ScalarProperty Name="platType" ColumnName="platType" />
+          <ScalarProperty Name="jdbType" ColumnName="jdbType" />
+          <ScalarProperty Name="IsRun" ColumnName="IsRun" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tgamelevelinfo">
+      <EntityTypeMapping TypeName="h5game_2021Model.tgamelevelinfo">
+        <MappingFragment StoreEntitySet="tgamelevelinfo">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Baserate" ColumnName="Baserate" />
+          <ScalarProperty Name="gameid" ColumnName="gameid" />
+          <ScalarProperty Name="C_min" ColumnName="_min" />
+          <ScalarProperty Name="C_max" ColumnName="_max" />
+          <ScalarProperty Name="onlineCount" ColumnName="onlineCount" />
+          <ScalarProperty Name="openTableCount" ColumnName="openTableCount" />
+          <ScalarProperty Name="gametype" ColumnName="gametype" />
+          <ScalarProperty Name="gametypeDesc" ColumnName="gametypeDesc" />
+          <ScalarProperty Name="isEnable" ColumnName="isEnable" />
+          <ScalarProperty Name="isEnableDesc" ColumnName="isEnableDesc" />
+          <ScalarProperty Name="deleteState" ColumnName="deleteState" />
+          <ScalarProperty Name="modifyUser" ColumnName="modifyUser" />
+          <ScalarProperty Name="modifyTime" ColumnName="modifyTime" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tgamerax">
+      <EntityTypeMapping TypeName="h5game_2021Model.tgamerax">
+        <MappingFragment StoreEntitySet="tgamerax">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="gameid" ColumnName="gameid" />
+          <ScalarProperty Name="levelid" ColumnName="levelid" />
+          <ScalarProperty Name="rax" ColumnName="rax" />
+          <ScalarProperty Name="modifyTime" ColumnName="modifyTime" />
+          <ScalarProperty Name="modifyUser" ColumnName="modifyUser" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tgameuserrank">
+      <EntityTypeMapping TypeName="h5game_2021Model.tgameuserrank">
+        <MappingFragment StoreEntitySet="tgameuserrank">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="TotalHand" ColumnName="TotalHand" />
+          <ScalarProperty Name="Rank" ColumnName="Rank" />
+          <ScalarProperty Name="RankType" ColumnName="RankType" />
+          <ScalarProperty Name="Prize" ColumnName="Prize" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="No" ColumnName="No" />
+          <ScalarProperty Name="GameId" ColumnName="GameId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tgangcardlog">
+      <EntityTypeMapping TypeName="h5game_2021Model.tgangcardlog">
+        <MappingFragment StoreEntitySet="tgangcardlog">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="TableLogIdx" ColumnName="TableLogIdx" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="Lng" ColumnName="Lng" />
+          <ScalarProperty Name="Lat" ColumnName="Lat" />
+          <ScalarProperty Name="C_win" ColumnName="_win" />
+          <ScalarProperty Name="Bet" ColumnName="Bet" />
+          <ScalarProperty Name="IP" ColumnName="IP" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tgoldchangelog">
+      <EntityTypeMapping TypeName="h5game_2021Model.tgoldchangelog">
+        <MappingFragment StoreEntitySet="tgoldchangelog">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="BeforeGold" ColumnName="BeforeGold" />
+          <ScalarProperty Name="Gold" ColumnName="Gold" />
+          <ScalarProperty Name="AfterGold" ColumnName="AfterGold" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="GameId" ColumnName="GameId" />
+          <ScalarProperty Name="IsRobot" ColumnName="IsRobot" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="gamble" ColumnName="gamble" />
+          <ScalarProperty Name="ChangeType" ColumnName="ChangeType" />
+          <ScalarProperty Name="JsonData" ColumnName="JsonData" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tgoldchangh5game">
+      <EntityTypeMapping TypeName="h5game_2021Model.tgoldchangh5game">
+        <MappingFragment StoreEntitySet="tgoldchangh5game">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="GoldType" ColumnName="GoldType" />
+          <ScalarProperty Name="Gold" ColumnName="Gold" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="GameId" ColumnName="GameId" />
+          <ScalarProperty Name="IsComplete" ColumnName="IsComplete" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tgoldstatistics">
+      <EntityTypeMapping TypeName="h5game_2021Model.tgoldstatistics">
+        <MappingFragment StoreEntitySet="tgoldstatistics">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="IsRobot" ColumnName="IsRobot" />
+          <ScalarProperty Name="TotalGold" ColumnName="TotalGold" />
+          <ScalarProperty Name="CurrentGold" ColumnName="CurrentGold" />
+          <ScalarProperty Name="LastGold" ColumnName="LastGold" />
+          <ScalarProperty Name="GameId" ColumnName="GameId" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="TimeInterval" ColumnName="TimeInterval" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="th5menu">
+      <EntityTypeMapping TypeName="h5game_2021Model.th5menu">
+        <MappingFragment StoreEntitySet="th5menu">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Parentid" ColumnName="Parentid" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Icon" ColumnName="Icon" />
+          <ScalarProperty Name="Isdisplay" ColumnName="Isdisplay" />
+          <ScalarProperty Name="Sort" ColumnName="Sort" />
+          <ScalarProperty Name="Url" ColumnName="Url" />
+          <ScalarProperty Name="CareatTime" ColumnName="CareatTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="th5winloselog">
+      <EntityTypeMapping TypeName="h5game_2021Model.th5winloselog">
+        <MappingFragment StoreEntitySet="th5winloselog">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Gold" ColumnName="Gold" />
+          <ScalarProperty Name="GameId" ColumnName="GameId" />
+          <ScalarProperty Name="IsRebate" ColumnName="IsRebate" />
+          <ScalarProperty Name="beforeGold" ColumnName="beforeGold" />
+          <ScalarProperty Name="afterGold" ColumnName="afterGold" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tjackpot">
+      <EntityTypeMapping TypeName="h5game_2021Model.tjackpot">
+        <MappingFragment StoreEntitySet="tjackpot">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="gameid" ColumnName="gameid" />
+          <ScalarProperty Name="jackpot" ColumnName="jackpot" />
+          <ScalarProperty Name="isEnable" ColumnName="isEnable" />
+          <ScalarProperty Name="isEnableDesc" ColumnName="isEnableDesc" />
+          <ScalarProperty Name="deleteState" ColumnName="deleteState" />
+          <ScalarProperty Name="modifyUser" ColumnName="modifyUser" />
+          <ScalarProperty Name="modifyTime" ColumnName="modifyTime" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="pump" ColumnName="pump" />
+          <ScalarProperty Name="waterproof" ColumnName="waterproof" />
+          <ScalarProperty Name="historygambleall" ColumnName="historygambleall" />
+          <ScalarProperty Name="income" ColumnName="income" />
+          <ScalarProperty Name="rax" ColumnName="rax" />
+          <ScalarProperty Name="handsel" ColumnName="handsel" />
+          <ScalarProperty Name="Desc" ColumnName="Desc" />
+          <ScalarProperty Name="levelid" ColumnName="levelid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tjackpotaddlog">
+      <EntityTypeMapping TypeName="h5game_2021Model.tjackpotaddlog">
+        <MappingFragment StoreEntitySet="tjackpotaddlog">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="GameId" ColumnName="GameId" />
+          <ScalarProperty Name="TableID" ColumnName="TableID" />
+          <ScalarProperty Name="Gold" ColumnName="Gold" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="RoomID" ColumnName="RoomID" />
+          <ScalarProperty Name="beforeGold" ColumnName="beforeGold" />
+          <ScalarProperty Name="afterGold" ColumnName="afterGold" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tjackpotlog">
+      <EntityTypeMapping TypeName="h5game_2021Model.tjackpotlog">
+        <MappingFragment StoreEntitySet="tjackpotlog">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="GameId" ColumnName="GameId" />
+          <ScalarProperty Name="RoomId" ColumnName="RoomId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Gold" ColumnName="Gold" />
+          <ScalarProperty Name="JackpotType" ColumnName="JackpotType" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="ChangeType" ColumnName="ChangeType" />
+          <ScalarProperty Name="tnum" ColumnName="tnum" />
+          <ScalarProperty Name="Owner" ColumnName="Owner" />
+          <ScalarProperty Name="IsSettlement" ColumnName="IsSettlement" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tjackpotstock">
+      <EntityTypeMapping TypeName="h5game_2021Model.tjackpotstock">
+        <MappingFragment StoreEntitySet="tjackpotstock">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="gameid" ColumnName="gameid" />
+          <ScalarProperty Name="isEnable" ColumnName="isEnable" />
+          <ScalarProperty Name="isEnableDesc" ColumnName="isEnableDesc" />
+          <ScalarProperty Name="deleteState" ColumnName="deleteState" />
+          <ScalarProperty Name="modifyUser" ColumnName="modifyUser" />
+          <ScalarProperty Name="modifyTime" ColumnName="modifyTime" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="pump" ColumnName="pump" />
+          <ScalarProperty Name="waterproof" ColumnName="waterproof" />
+          <ScalarProperty Name="historygambleall" ColumnName="historygambleall" />
+          <ScalarProperty Name="income" ColumnName="income" />
+          <ScalarProperty Name="rax" ColumnName="rax" />
+          <ScalarProperty Name="handsel" ColumnName="handsel" />
+          <ScalarProperty Name="stock" ColumnName="stock" />
+          <ScalarProperty Name="levelid" ColumnName="levelid" />
+          <ScalarProperty Name="outcomes" ColumnName="outcomes" />
+          <ScalarProperty Name="balanceScore" ColumnName="balanceScore" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tjackpotstocklog">
+      <EntityTypeMapping TypeName="h5game_2021Model.tjackpotstocklog">
+        <MappingFragment StoreEntitySet="tjackpotstocklog">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="GameId" ColumnName="GameId" />
+          <ScalarProperty Name="Levelid" ColumnName="Levelid" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="WinGold" ColumnName="WinGold" />
+          <ScalarProperty Name="JackpotScore" ColumnName="JackpotScore" />
+          <ScalarProperty Name="Income" ColumnName="Income" />
+          <ScalarProperty Name="Outcomes" ColumnName="Outcomes" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="RaxScore" ColumnName="RaxScore" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tjdbwagerlog">
+      <EntityTypeMapping TypeName="h5game_2021Model.tjdbwagerlog">
+        <MappingFragment StoreEntitySet="tjdbwagerlog">
+          <ScalarProperty Name="transferId" ColumnName="transferId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="gType" ColumnName="gType" />
+          <ScalarProperty Name="mType" ColumnName="mType" />
+          <ScalarProperty Name="bet" ColumnName="bet" />
+          <ScalarProperty Name="win" ColumnName="win" />
+          <ScalarProperty Name="netWin" ColumnName="netWin" />
+          <ScalarProperty Name="ipAddress" ColumnName="ipAddress" />
+          <ScalarProperty Name="gameDate" ColumnName="gameDate" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="IsSuccess" ColumnName="IsSuccess" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tlevellog">
+      <EntityTypeMapping TypeName="h5game_2021Model.tlevellog">
+        <MappingFragment StoreEntitySet="tlevellog">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="leveltype" ColumnName="leveltype" />
+          <ScalarProperty Name="levelTime" ColumnName="levelTime" />
+          <ScalarProperty Name="Money" ColumnName="Money" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tnotice">
+      <EntityTypeMapping TypeName="h5game_2021Model.tnotice">
+        <MappingFragment StoreEntitySet="tnotice">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="content" ColumnName="content" />
+          <ScalarProperty Name="noticetime" ColumnName="noticetime" />
+          <ScalarProperty Name="C_author" ColumnName="_author" />
+          <ScalarProperty Name="C_type" ColumnName="_type" />
+          <ScalarProperty Name="isStart" ColumnName="isStart" />
+          <ScalarProperty Name="TcPicUrl" ColumnName="TcPicUrl" />
+          <ScalarProperty Name="Width" ColumnName="Width" />
+          <ScalarProperty Name="Height" ColumnName="Height" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tonlineinfo">
+      <EntityTypeMapping TypeName="h5game_2021Model.tonlineinfo">
+        <MappingFragment StoreEntitySet="tonlineinfo">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="GameId" ColumnName="GameId" />
+          <ScalarProperty Name="GameType" ColumnName="GameType" />
+          <ScalarProperty Name="OnlineCount" ColumnName="OnlineCount" />
+          <ScalarProperty Name="RoomId" ColumnName="RoomId" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="GameModel" ColumnName="GameModel" />
+          <ScalarProperty Name="rCount" ColumnName="rCount" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="trank">
+      <EntityTypeMapping TypeName="h5game_2021Model.trank">
+        <MappingFragment StoreEntitySet="trank">
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="ScoreWin" ColumnName="ScoreWin" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="ScoreLost" ColumnName="ScoreLost" />
+          <ScalarProperty Name="records" ColumnName="records" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tredenvelopesconfig">
+      <EntityTypeMapping TypeName="h5game_2021Model.tredenvelopesconfig">
+        <MappingFragment StoreEntitySet="tredenvelopesconfig">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Money" ColumnName="Money" />
+          <ScalarProperty Name="Rate" ColumnName="Rate" />
+          <ScalarProperty Name="TaskType" ColumnName="TaskType" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tredenvelopeslog">
+      <EntityTypeMapping TypeName="h5game_2021Model.tredenvelopeslog">
+        <MappingFragment StoreEntitySet="tredenvelopeslog">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="BeforeCount" ColumnName="BeforeCount" />
+          <ScalarProperty Name="Money" ColumnName="Money" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="TaskType" ColumnName="TaskType" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tredenvelopesreceivelog">
+      <EntityTypeMapping TypeName="h5game_2021Model.tredenvelopesreceivelog">
+        <MappingFragment StoreEntitySet="tredenvelopesreceivelog">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="TaskId" ColumnName="TaskId" />
+          <ScalarProperty Name="Count" ColumnName="Count" />
+          <ScalarProperty Name="BeforeCount" ColumnName="BeforeCount" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="TaskType" ColumnName="TaskType" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tredenvelopestask">
+      <EntityTypeMapping TypeName="h5game_2021Model.tredenvelopestask">
+        <MappingFragment StoreEntitySet="tredenvelopestask">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="TaskName" ColumnName="TaskName" />
+          <ScalarProperty Name="TaskType" ColumnName="TaskType" />
+          <ScalarProperty Name="TaskCount" ColumnName="TaskCount" />
+          <ScalarProperty Name="RedEnvCount" ColumnName="RedEnvCount" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="troomcardtemp">
+      <EntityTypeMapping TypeName="h5game_2021Model.troomcardtemp">
+        <MappingFragment StoreEntitySet="troomcardtemp">
+          <ScalarProperty Name="tableNum" ColumnName="tableNum" />
+          <ScalarProperty Name="gameid" ColumnName="gameid" />
+          <ScalarProperty Name="roomid" ColumnName="roomid" />
+          <ScalarProperty Name="createTime" ColumnName="createTime" />
+          <ScalarProperty Name="maxCount" ColumnName="maxCount" />
+          <ScalarProperty Name="curCount" ColumnName="curCount" />
+          <ScalarProperty Name="allUserRecord" ColumnName="allUserRecord" />
+          <ScalarProperty Name="ownerId" ColumnName="ownerId" />
+          <ScalarProperty Name="tableStatus" ColumnName="tableStatus" />
+          <ScalarProperty Name="tableid" ColumnName="tableid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tserverconfig">
+      <EntityTypeMapping TypeName="h5game_2021Model.tserverconfig">
+        <MappingFragment StoreEntitySet="tserverconfig">
+          <ScalarProperty Name="ServerId" ColumnName="ServerId" />
+          <ScalarProperty Name="ServerName" ColumnName="ServerName" />
+          <ScalarProperty Name="ServerIP" ColumnName="ServerIP" />
+          <ScalarProperty Name="ServerPort" ColumnName="ServerPort" />
+          <ScalarProperty Name="InternalIP" ColumnName="InternalIP" />
+          <ScalarProperty Name="Priority" ColumnName="Priority" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tslotconfig">
+      <EntityTypeMapping TypeName="h5game_2021Model.tslotconfig">
+        <MappingFragment StoreEntitySet="tslotconfig">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="RoomID" ColumnName="RoomID" />
+          <ScalarProperty Name="Config" ColumnName="Config" />
+          <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+          <ScalarProperty Name="GameID" ColumnName="GameID" />
+          <ScalarProperty Name="Levelid" ColumnName="Levelid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tstatisticsgold">
+      <EntityTypeMapping TypeName="h5game_2021Model.tstatisticsgold">
+        <MappingFragment StoreEntitySet="tstatisticsgold">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="IsRobot" ColumnName="IsRobot" />
+          <ScalarProperty Name="TotalGold" ColumnName="TotalGold" />
+          <ScalarProperty Name="CurrentGold" ColumnName="CurrentGold" />
+          <ScalarProperty Name="LastGold" ColumnName="LastGold" />
+          <ScalarProperty Name="GameId" ColumnName="GameId" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="TimeInterval" ColumnName="TimeInterval" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tsysconfig">
+      <EntityTypeMapping TypeName="h5game_2021Model.tsysconfig">
+        <MappingFragment StoreEntitySet="tsysconfig">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Key" ColumnName="Key" />
+          <ScalarProperty Name="Val" ColumnName="Val" />
+          <ScalarProperty Name="Dec" ColumnName="Dec" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ttablegainlog">
+      <EntityTypeMapping TypeName="h5game_2021Model.ttablegainlog">
+        <MappingFragment StoreEntitySet="ttablegainlog">
+          <ScalarProperty Name="Idx" ColumnName="Idx" />
+          <ScalarProperty Name="MatchCode" ColumnName="MatchCode" />
+          <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+          <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+          <ScalarProperty Name="gameid" ColumnName="gameid" />
+          <ScalarProperty Name="C_isover" ColumnName="_isover" />
+          <ScalarProperty Name="gcount" ColumnName="gcount" />
+          <ScalarProperty Name="jackpot" ColumnName="jackpot" />
+          <ScalarProperty Name="ChildAgents" ColumnName="ChildAgents" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ttablehandnumlog">
+      <EntityTypeMapping TypeName="h5game_2021Model.ttablehandnumlog">
+        <MappingFragment StoreEntitySet="ttablehandnumlog">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="pos1Count" ColumnName="pos1Count" />
+          <ScalarProperty Name="pos2Count" ColumnName="pos2Count" />
+          <ScalarProperty Name="pos5Count" ColumnName="pos5Count" />
+          <ScalarProperty Name="pos10Count" ColumnName="pos10Count" />
+          <ScalarProperty Name="pos20Count" ColumnName="pos20Count" />
+          <ScalarProperty Name="pos50Count" ColumnName="pos50Count" />
+          <ScalarProperty Name="GameId" ColumnName="GameId" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ttablehistorylog">
+      <EntityTypeMapping TypeName="h5game_2021Model.ttablehistorylog">
+        <MappingFragment StoreEntitySet="ttablehistorylog">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="CreatTime" ColumnName="CreatTime" />
+          <ScalarProperty Name="plist" ColumnName="plist" />
+          <ScalarProperty Name="whirltlist" ColumnName="whirltlist" />
+          <ScalarProperty Name="textlist" ColumnName="textlist" />
+          <ScalarProperty Name="gameid" ColumnName="gameid" />
+          <ScalarProperty Name="RoomNum" ColumnName="RoomNum" />
+          <ScalarProperty Name="BigEndList" ColumnName="BigEndList" />
+          <ScalarProperty Name="mjlist" ColumnName="mjlist" />
+          <ScalarProperty Name="bg" ColumnName="bg" />
+          <ScalarProperty Name="uids" ColumnName="uids" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ttablelist">
+      <EntityTypeMapping TypeName="h5game_2021Model.ttablelist">
+        <MappingFragment StoreEntitySet="ttablelist">
+          <ScalarProperty Name="tableNum" ColumnName="tableNum" />
+          <ScalarProperty Name="gameid" ColumnName="gameid" />
+          <ScalarProperty Name="levelid" ColumnName="levelid" />
+          <ScalarProperty Name="createTime" ColumnName="createTime" />
+          <ScalarProperty Name="maxCount" ColumnName="maxCount" />
+          <ScalarProperty Name="curCount" ColumnName="curCount" />
+          <ScalarProperty Name="ownerId" ColumnName="ownerId" />
+          <ScalarProperty Name="tableStatus" ColumnName="tableStatus" />
+          <ScalarProperty Name="tableid" ColumnName="tableid" />
+          <ScalarProperty Name="Duration" ColumnName="Duration" />
+          <ScalarProperty Name="firstinto" ColumnName="firstinto" />
+          <ScalarProperty Name="baserate" ColumnName="baserate" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="minPlayerCount" ColumnName="minPlayerCount" />
+          <ScalarProperty Name="para" ColumnName="para" />
+          <ScalarProperty Name="data" ColumnName="data" />
+          <ScalarProperty Name="mjpara" ColumnName="mjpara" />
+          <ScalarProperty Name="ClubIdx" ColumnName="ClubIdx" />
+          <ScalarProperty Name="tname" ColumnName="tname" />
+          <ScalarProperty Name="manNum" ColumnName="manNum" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ttablelog">
+      <EntityTypeMapping TypeName="h5game_2021Model.ttablelog">
+        <MappingFragment StoreEntitySet="ttablelog">
+          <ScalarProperty Name="Idx" ColumnName="Idx" />
+          <ScalarProperty Name="MatchCode" ColumnName="MatchCode" />
+          <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+          <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+          <ScalarProperty Name="gameid" ColumnName="gameid" />
+          <ScalarProperty Name="C_isover" ColumnName="_isover" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ttableloglist">
+      <EntityTypeMapping TypeName="h5game_2021Model.ttableloglist">
+        <MappingFragment StoreEntitySet="ttableloglist">
+          <ScalarProperty Name="RoomId" ColumnName="RoomId" />
+          <ScalarProperty Name="ulist" ColumnName="ulist" />
+          <ScalarProperty Name="tulist" ColumnName="tulist" />
+          <ScalarProperty Name="CreatTime" ColumnName="CreatTime" />
+          <ScalarProperty Name="tdlist" ColumnName="tdlist" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ttablerecorkmjlog">
+      <EntityTypeMapping TypeName="h5game_2021Model.ttablerecorkmjlog">
+        <MappingFragment StoreEntitySet="ttablerecorkmjlog">
+          <ScalarProperty Name="Idx" ColumnName="Idx" />
+          <ScalarProperty Name="MatchCode" ColumnName="MatchCode" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="actions" ColumnName="actions" />
+          <ScalarProperty Name="HistoryId" ColumnName="HistoryId" />
+          <ScalarProperty Name="gameid" ColumnName="gameid" />
+          <ScalarProperty Name="RecordUser" ColumnName="RecordUser" />
+          <ScalarProperty Name="uids" ColumnName="uids" />
+          <ScalarProperty Name="TableInfo" ColumnName="TableInfo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ttableuserlog">
+      <EntityTypeMapping TypeName="h5game_2021Model.ttableuserlog">
+        <MappingFragment StoreEntitySet="ttableuserlog">
+          <ScalarProperty Name="Idx" ColumnName="Idx" />
+          <ScalarProperty Name="TableLogIdx" ColumnName="TableLogIdx" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="C_pos" ColumnName="_pos" />
+          <ScalarProperty Name="gold" ColumnName="gold" />
+          <ScalarProperty Name="C_cardList" ColumnName="_cardList" />
+          <ScalarProperty Name="gameid" ColumnName="gameid" />
+          <ScalarProperty Name="C_isover" ColumnName="_isover" />
+          <ScalarProperty Name="C_isWatch" ColumnName="_isWatch" />
+          <ScalarProperty Name="C_win" ColumnName="_win" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="trendIdx" ColumnName="trendIdx" />
+          <ScalarProperty Name="mystake" ColumnName="mystake" />
+          <ScalarProperty Name="Bet" ColumnName="Bet" />
+          <ScalarProperty Name="TaxString" ColumnName="TaxString" />
+          <ScalarProperty Name="levelid" ColumnName="levelid" />
+          <ScalarProperty Name="basegamle" ColumnName="basegamle" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ttaxlog">
+      <EntityTypeMapping TypeName="h5game_2021Model.ttaxlog">
+        <MappingFragment StoreEntitySet="ttaxlog">
+          <ScalarProperty Name="Idx" ColumnName="Idx" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="BeforCoin" ColumnName="BeforCoin" />
+          <ScalarProperty Name="ActionCoin" ColumnName="ActionCoin" />
+          <ScalarProperty Name="AfterCoin" ColumnName="AfterCoin" />
+          <ScalarProperty Name="ActionType" ColumnName="ActionType" />
+          <ScalarProperty Name="SourceGameID" ColumnName="SourceGameID" />
+          <ScalarProperty Name="SourceUserId" ColumnName="SourceUserId" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="TableUserLogId" ColumnName="TableUserLogId" />
+          <ScalarProperty Name="IsHandel" ColumnName="IsHandel" />
+          <ScalarProperty Name="C_lv" ColumnName="_lv" />
+          <ScalarProperty Name="SourceRoomID" ColumnName="SourceRoomID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ttradeinfo">
+      <EntityTypeMapping TypeName="h5game_2021Model.ttradeinfo">
+        <MappingFragment StoreEntitySet="ttradeinfo">
+          <ScalarProperty Name="TradeNo" ColumnName="TradeNo" />
+          <ScalarProperty Name="FromUserId" ColumnName="FromUserId" />
+          <ScalarProperty Name="ToUserId" ColumnName="ToUserId" />
+          <ScalarProperty Name="Coin" ColumnName="Coin" />
+          <ScalarProperty Name="TaxCoin" ColumnName="TaxCoin" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="TradeType" ColumnName="TradeType" />
+          <ScalarProperty Name="Diamond" ColumnName="Diamond" />
+          <ScalarProperty Name="TaxDiamond" ColumnName="TaxDiamond" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="turntablelevel">
+      <EntityTypeMapping TypeName="h5game_2021Model.turntablelevel">
+        <MappingFragment StoreEntitySet="turntablelevel">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="gold" ColumnName="gold" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="turntableprize">
+      <EntityTypeMapping TypeName="h5game_2021Model.turntableprize">
+        <MappingFragment StoreEntitySet="turntableprize">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="prizeurl" ColumnName="prizeurl" />
+          <ScalarProperty Name="probability" ColumnName="probability" />
+          <ScalarProperty Name="prizetype" ColumnName="prizetype" />
+          <ScalarProperty Name="levelid" ColumnName="levelid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tuser">
+      <EntityTypeMapping TypeName="h5game_2021Model.tuser">
+        <MappingFragment StoreEntitySet="tuser">
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="wechatName" ColumnName="wechatName" />
+          <ScalarProperty Name="Gold" ColumnName="Gold" />
+          <ScalarProperty Name="GoldA" ColumnName="GoldA" />
+          <ScalarProperty Name="LastLotinTime1" ColumnName="LastLotinTime1" />
+          <ScalarProperty Name="LastLotinTime2" ColumnName="LastLotinTime2" />
+          <ScalarProperty Name="RegTime" ColumnName="RegTime" />
+          <ScalarProperty Name="IP" ColumnName="IP" />
+          <ScalarProperty Name="Desc" ColumnName="Desc" />
+          <ScalarProperty Name="isRobot" ColumnName="isRobot" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="diamond" ColumnName="diamond" />
+          <ScalarProperty Name="isagent" ColumnName="isagent" />
+          <ScalarProperty Name="wechatHeadIcon" ColumnName="wechatHeadIcon" />
+          <ScalarProperty Name="Sex" ColumnName="Sex" />
+          <ScalarProperty Name="TotalMoney" ColumnName="TotalMoney" />
+          <ScalarProperty Name="totaldiamond" ColumnName="totaldiamond" />
+          <ScalarProperty Name="lockTime" ColumnName="lockTime" />
+          <ScalarProperty Name="winpercent" ColumnName="winpercent" />
+          <ScalarProperty Name="BankGold" ColumnName="BankGold" />
+          <ScalarProperty Name="vlevel" ColumnName="vlevel" />
+          <ScalarProperty Name="givecount" ColumnName="givecount" />
+          <ScalarProperty Name="MaxLose" ColumnName="MaxLose" />
+          <ScalarProperty Name="MaxWin" ColumnName="MaxWin" />
+          <ScalarProperty Name="MaxGold" ColumnName="MaxGold" />
+          <ScalarProperty Name="TotalGold" ColumnName="TotalGold" />
+          <ScalarProperty Name="showid" ColumnName="showid" />
+          <ScalarProperty Name="lat" ColumnName="lat" />
+          <ScalarProperty Name="lng" ColumnName="lng" />
+          <ScalarProperty Name="UserPassword" ColumnName="UserPassword" />
+          <ScalarProperty Name="IsTp" ColumnName="IsTp" />
+          <ScalarProperty Name="lv" ColumnName="lv" />
+          <ScalarProperty Name="IsJdb" ColumnName="IsJdb" />
+          <ScalarProperty Name="UpTotalAmount" ColumnName="UpTotalAmount" />
+          <ScalarProperty Name="RobotGameid" ColumnName="RobotGameid" />
+          <ScalarProperty Name="clublist" ColumnName="clublist" />
+          <ScalarProperty Name="clubpwd" ColumnName="clubpwd" />
+          <ScalarProperty Name="clubProtect" ColumnName="clubProtect" />
+          <ScalarProperty Name="Userremark" ColumnName="Userremark" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tuseragent2019">
+      <EntityTypeMapping TypeName="h5game_2021Model.tuseragent2019">
+        <MappingFragment StoreEntitySet="tuseragent2019">
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="Lv" ColumnName="Lv" />
+          <ScalarProperty Name="FUserID" ColumnName="FUserID" />
+          <ScalarProperty Name="GoldHistoryCommission" ColumnName="GoldHistoryCommission" />
+          <ScalarProperty Name="GoldCommission" ColumnName="GoldCommission" />
+          <ScalarProperty Name="QRPath" ColumnName="QRPath" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="HtmlUrl" ColumnName="HtmlUrl" />
+          <ScalarProperty Name="lastdealtime" ColumnName="lastdealtime" />
+          <ScalarProperty Name="watergoldadd" ColumnName="watergoldadd" />
+          <ScalarProperty Name="watergoldreduce" ColumnName="watergoldreduce" />
+          <ScalarProperty Name="childwater" ColumnName="childwater" />
+          <ScalarProperty Name="ChildAgents" ColumnName="ChildAgents" />
+          <ScalarProperty Name="TopUserID" ColumnName="TopUserID" />
+          <ScalarProperty Name="dealCardCount" ColumnName="dealCardCount" />
+          <ScalarProperty Name="SecondUserID" ColumnName="SecondUserID" />
+          <ScalarProperty Name="todayCardCount" ColumnName="todayCardCount" />
+          <ScalarProperty Name="TopUserGoldCommission" ColumnName="TopUserGoldCommission" />
+          <ScalarProperty Name="rate3" ColumnName="rate3" />
+          <ScalarProperty Name="GoldC_pot" ColumnName="GoldC_pot" />
+          <ScalarProperty Name="gameWinCount" ColumnName="gameWinCount" />
+          <ScalarProperty Name="gameLostCount" ColumnName="gameLostCount" />
+          <ScalarProperty Name="gameDrawCount" ColumnName="gameDrawCount" />
+          <ScalarProperty Name="WhirlCount" ColumnName="WhirlCount" />
+          <ScalarProperty Name="TexasCount" ColumnName="TexasCount" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tuseragent2020">
+      <EntityTypeMapping TypeName="h5game_2021Model.tuseragent2020">
+        <MappingFragment StoreEntitySet="tuseragent2020">
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="Role" ColumnName="Role" />
+          <ScalarProperty Name="PartnerID" ColumnName="PartnerID" />
+          <ScalarProperty Name="CEOID" ColumnName="CEOID" />
+          <ScalarProperty Name="GoldCHistory" ColumnName="GoldCHistory" />
+          <ScalarProperty Name="GoldC" ColumnName="GoldC" />
+          <ScalarProperty Name="GoldCH_P" ColumnName="GoldCH_P" />
+          <ScalarProperty Name="GoldCH_G" ColumnName="GoldCH_G" />
+          <ScalarProperty Name="lastdealtime" ColumnName="lastdealtime" />
+          <ScalarProperty Name="ChildAgents" ColumnName="ChildAgents" />
+          <ScalarProperty Name="rates" ColumnName="rates" />
+          <ScalarProperty Name="JackpotRate" ColumnName="JackpotRate" />
+          <ScalarProperty Name="GoldCH_P_R" ColumnName="GoldCH_P_R" />
+          <ScalarProperty Name="GoldCH_G_R" ColumnName="GoldCH_G_R" />
+          <ScalarProperty Name="GoldC_pot" ColumnName="GoldC_pot" />
+          <ScalarProperty Name="GoldCH_pot" ColumnName="GoldCH_pot" />
+          <ScalarProperty Name="GoldCH" ColumnName="GoldCH" />
+          <ScalarProperty Name="PotRates" ColumnName="PotRates" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tuseragentlog">
+      <EntityTypeMapping TypeName="h5game_2021Model.tuseragentlog">
+        <MappingFragment StoreEntitySet="tuseragentlog">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Gold" ColumnName="Gold" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="CreatTime" ColumnName="CreatTime" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tusercontact">
+      <EntityTypeMapping TypeName="h5game_2021Model.tusercontact">
+        <MappingFragment StoreEntitySet="tusercontact">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+          <ScalarProperty Name="PostCode" ColumnName="PostCode" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tusergamehand">
+      <EntityTypeMapping TypeName="h5game_2021Model.tusergamehand">
+        <MappingFragment StoreEntitySet="tusergamehand">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="GameId" ColumnName="GameId" />
+          <ScalarProperty Name="pos1Count" ColumnName="pos1Count" />
+          <ScalarProperty Name="pos2Count" ColumnName="pos2Count" />
+          <ScalarProperty Name="pos5Count" ColumnName="pos5Count" />
+          <ScalarProperty Name="pos10Count" ColumnName="pos10Count" />
+          <ScalarProperty Name="pos20Count" ColumnName="pos20Count" />
+          <ScalarProperty Name="pos50Count" ColumnName="pos50Count" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="gameWinCount" ColumnName="gameWinCount" />
+          <ScalarProperty Name="gameLostCount" ColumnName="gameLostCount" />
+          <ScalarProperty Name="gameDrawCount" ColumnName="gameDrawCount" />
+          <ScalarProperty Name="lastdealtime" ColumnName="lastdealtime" />
+          <ScalarProperty Name="FillingCount" ColumnName="FillingCount" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tuserinfoex">
+      <EntityTypeMapping TypeName="h5game_2021Model.tuserinfoex">
+        <MappingFragment StoreEntitySet="tuserinfoex">
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="clubpwd" ColumnName="clubpwd" />
+          <ScalarProperty Name="clubProtect" ColumnName="clubProtect" />
+          <ScalarProperty Name="Userremark" ColumnName="Userremark" />
+          <ScalarProperty Name="applyUsers" ColumnName="applyUsers" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="freeCount" ColumnName="freeCount" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tuserjackpot">
+      <EntityTypeMapping TypeName="h5game_2021Model.tuserjackpot">
+        <MappingFragment StoreEntitySet="tuserjackpot">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="C_jackpot" ColumnName="_jackpot" />
+          <ScalarProperty Name="updatetime" ColumnName="updatetime" />
+          <ScalarProperty Name="watergoldadd" ColumnName="watergoldadd" />
+          <ScalarProperty Name="watergoldreduce" ColumnName="watergoldreduce" />
+          <ScalarProperty Name="GoldHistoryCommission" ColumnName="GoldHistoryCommission" />
+          <ScalarProperty Name="HistoryGold" ColumnName="HistoryGold" />
+          <ScalarProperty Name="AllGoldBack" ColumnName="AllGoldBack" />
+          <ScalarProperty Name="AllGoldAdd" ColumnName="AllGoldAdd" />
+          <ScalarProperty Name="C_potRange" ColumnName="_potRange" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tuserprizelog">
+      <EntityTypeMapping TypeName="h5game_2021Model.tuserprizelog">
+        <MappingFragment StoreEntitySet="tuserprizelog">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="userId" ColumnName="userId" />
+          <ScalarProperty Name="createtime" ColumnName="createtime" />
+          <ScalarProperty Name="prizeid" ColumnName="prizeid" />
+          <ScalarProperty Name="turntableid" ColumnName="turntableid" />
+          <ScalarProperty Name="isgive" ColumnName="isgive" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tuserrechargelog">
+      <EntityTypeMapping TypeName="h5game_2021Model.tuserrechargelog">
+        <MappingFragment StoreEntitySet="tuserrechargelog">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="userid" ColumnName="userid" />
+          <ScalarProperty Name="money" ColumnName="money" />
+          <ScalarProperty Name="cointype" ColumnName="cointype" />
+          <ScalarProperty Name="fromtype" ColumnName="fromtype" />
+          <ScalarProperty Name="fromuserid" ColumnName="fromuserid" />
+          <ScalarProperty Name="fromadminid" ColumnName="fromadminid" />
+          <ScalarProperty Name="remarks" ColumnName="remarks" />
+          <ScalarProperty Name="createtime" ColumnName="createtime" />
+          <ScalarProperty Name="oldmoney" ColumnName="oldmoney" />
+          <ScalarProperty Name="currmoney" ColumnName="currmoney" />
+          <ScalarProperty Name="oldGold" ColumnName="oldGold" />
+          <ScalarProperty Name="currGold" ColumnName="currGold" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tusertempgoldlog">
+      <EntityTypeMapping TypeName="h5game_2021Model.tusertempgoldlog">
+        <MappingFragment StoreEntitySet="tusertempgoldlog">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="CurrentGold" ColumnName="CurrentGold" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tuservipfreecount">
+      <EntityTypeMapping TypeName="h5game_2021Model.tuservipfreecount">
+        <MappingFragment StoreEntitySet="tuservipfreecount">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="userid" ColumnName="userid" />
+          <ScalarProperty Name="vipid" ColumnName="vipid" />
+          <ScalarProperty Name="freecount" ColumnName="freecount" />
+          <ScalarProperty Name="createtime" ColumnName="createtime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tuservipinfo">
+      <EntityTypeMapping TypeName="h5game_2021Model.tuservipinfo">
+        <MappingFragment StoreEntitySet="tuservipinfo">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="userid" ColumnName="userid" />
+          <ScalarProperty Name="vipid" ColumnName="vipid" />
+          <ScalarProperty Name="expiredate" ColumnName="expiredate" />
+          <ScalarProperty Name="vipLv" ColumnName="vipLv" />
+          <ScalarProperty Name="cTable" ColumnName="cTable" />
+          <ScalarProperty Name="cClub" ColumnName="cClub" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tvipauth">
+      <EntityTypeMapping TypeName="h5game_2021Model.tvipauth">
+        <MappingFragment StoreEntitySet="tvipauth">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="vipid" ColumnName="vipid" />
+          <ScalarProperty Name="authid" ColumnName="authid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tvipinfo">
+      <EntityTypeMapping TypeName="h5game_2021Model.tvipinfo">
+        <MappingFragment StoreEntitySet="tvipinfo">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="viplevel" ColumnName="viplevel" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="commodid" ColumnName="commodid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tvisitlimit">
+      <EntityTypeMapping TypeName="h5game_2021Model.tvisitlimit">
+        <MappingFragment StoreEntitySet="tvisitlimit">
+          <ScalarProperty Name="ipport" ColumnName="ipport" />
+          <ScalarProperty Name="dateRecord" ColumnName="dateRecord" />
+          <ScalarProperty Name="unitRcord" ColumnName="unitRcord" />
+          <ScalarProperty Name="dateMaxLimit" ColumnName="dateMaxLimit" />
+          <ScalarProperty Name="unitMaxLimit" ColumnName="unitMaxLimit" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="userranking">
+      <EntityTypeMapping TypeName="h5game_2021Model.userranking">
+        <MappingFragment StoreEntitySet="userranking">
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="Score" ColumnName="Score" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="Items" ColumnName="Items" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="userrole">
+      <EntityTypeMapping TypeName="h5game_2021Model.userrole">
+        <MappingFragment StoreEntitySet="userrole">
+          <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+          <ScalarProperty Name="HeadImg" ColumnName="HeadImg" />
+          <ScalarProperty Name="Sex" ColumnName="Sex" />
+          <ScalarProperty Name="LvNum" ColumnName="LvNum" />
+          <ScalarProperty Name="ExperienceNum" ColumnName="ExperienceNum" />
+          <ScalarProperty Name="LifeNum" ColumnName="LifeNum" />
+          <ScalarProperty Name="LifeMaxNum" ColumnName="LifeMaxNum" />
+          <ScalarProperty Name="pos_x" ColumnName="pos_x" />
+          <ScalarProperty Name="pos_y" ColumnName="pos_y" />
+          <ScalarProperty Name="pos_z" ColumnName="pos_z" />
+          <ScalarProperty Name="scene_name" ColumnName="scene_name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

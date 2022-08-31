@@ -1,0 +1,44 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta id="viewport" name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=no,target-densitydpi=medium-dpi" />
+    <title></title>
+    <link href="~/css/Vpay.css" rel="stylesheet" />
+</head>
+<body>
+    <header>
+        <img src="~/img/vpay.jpg" />
+    </header>
+    <section>
+        <p>订单提交成功，请你尽快付款！</p>
+        <p>请您在提交订单后<span style="color: #DF8C4A;">5分钟</span>内完成支付，否则订单会自动取消</p>
+        <p>订单号：<span>@ViewBag.orderno</span></p>
+        <p>应付金额：<span style="color: #3CC53C;">@ViewBag.amount</span></p>
+    </section>
+    <footer>
+        <div id="QR-code"><img src="@ViewBag.QRCodeUrl" /></div>
+        <p>请使用微信 “扫一扫” 扫描二维码以完成支付</p>
+    </footer>
+    <script src="~/js/jquery.min.js"></script>
+    <script type="text/javascript">
+			var body_height = $(window).height();
+			var body_width = $(window).width();
+			var QRcode = $("#QR-code").width()
+			$("header").css({"height":body_height*0.1});
+			$("section").css({"height":body_height*0.3});
+			$("footer").css({ "height": body_height * 0.6 });
+			$("#QR-code").css({ "width": body_width * 0.4 });
+			$("#QR-code").css({ "height": body_width * 0.4 });
+			$("#QR-code>img").css({ "width": body_width * 0.4 });
+			$("#QR-code>img").css({ "height": body_width * 0.4 });
+    </script>
+</body>
+</html>

@@ -1,0 +1,122 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="chesscarddbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="dt_channel_site">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="title" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="build_path" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="templet_path" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="domain" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="logo" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="company" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="address" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="tel" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="fax" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="crod" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="copyright" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+    <Property Name="seo_title" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="seo_keyword" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="seo_description" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="is_default" Type="Int32" />
+    <Property Name="sort_id" Type="Int32" />
+  </EntityType>
+  <EntityType Name="dt_manager">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="role_id" Type="Int32" />
+    <Property Name="role_type" Type="Int32" />
+    <Property Name="user_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="password" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="salt" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="real_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="telephone" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="email" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="is_lock" Type="Int32" />
+    <Property Name="add_time" Type="DateTime" />
+    <Property Name="IP" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="dt_manager_role">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="role_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="role_type" Type="Int32" />
+    <Property Name="is_sys" Type="Int32" />
+    <Property Name="role_value" Type="Int32" />
+    <NavigationProperty Name="dt_manager_role_value" Relationship="Self.dt_manager_role_value_ibfk_1" FromRole="dt_manager_role" ToRole="dt_manager_role_value" />
+  </EntityType>
+  <EntityType Name="dt_manager_role_value">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="role_id" Type="Int32" />
+    <Property Name="nav_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="action_type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="dt_manager_role" Relationship="Self.dt_manager_role_value_ibfk_1" FromRole="dt_manager_role_value" ToRole="dt_manager_role" />
+  </EntityType>
+  <EntityType Name="dt_navigation">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="parent_id" Type="Int32" />
+    <Property Name="channel_id" Type="Int32" />
+    <Property Name="nav_type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="title" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="sub_title" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="icon_url" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="link_url" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="sort_id" Type="Int32" />
+    <Property Name="is_lock" Type="Int32" />
+    <Property Name="remark" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="action_type" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="is_sys" Type="Int32" />
+  </EntityType>
+  <Association Name="dt_manager_role_value_ibfk_1">
+    <End Role="dt_manager_role" Type="Self.dt_manager_role" Multiplicity="0..1" />
+    <End Role="dt_manager_role_value" Type="Self.dt_manager_role_value" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="dt_manager_role">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="dt_manager_role_value">
+        <PropertyRef Name="role_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="chesscarddbEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="dt_channel_site" EntityType="Self.dt_channel_site" />
+    <EntitySet Name="dt_manager" EntityType="Self.dt_manager" />
+    <EntitySet Name="dt_manager_role" EntityType="Self.dt_manager_role" />
+    <EntitySet Name="dt_manager_role_value" EntityType="Self.dt_manager_role_value" />
+    <EntitySet Name="dt_navigation" EntityType="Self.dt_navigation" />
+    <AssociationSet Name="dt_manager_role_value_ibfk_1" Association="Self.dt_manager_role_value_ibfk_1">
+      <End Role="dt_manager_role" EntitySet="dt_manager_role" />
+      <End Role="dt_manager_role_value" EntitySet="dt_manager_role_value" />
+    </AssociationSet>
+    <EntitySet Name="dt_manager_log" EntityType="chesscarddbModel.dt_manager_log" />
+  </EntityContainer>
+  <EntityType Name="dt_manager_log">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="user_id" Type="Int32" />
+    <Property Name="user_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="action_type" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="remark" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="user_ip" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="add_time" Type="DateTime" />
+    <Property Name="actionmodul" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="backupsdata" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+  </EntityType>
+</Schema>

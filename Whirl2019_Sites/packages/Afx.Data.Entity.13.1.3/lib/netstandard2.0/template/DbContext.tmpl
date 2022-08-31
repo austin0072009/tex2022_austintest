@@ -1,0 +1,31 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Collections;
+using System.Linq;
+using System.Text;
+using System.Data.Common;
+using System.Data.Entity;
+
+using Afx.Data.Entity;
+
+namespace {0}
+{{
+    public partial class {1}Context : EntityContext
+    {{
+        public {1}Context(string nameOrConnectionString)
+            : base(nameOrConnectionString)
+        {{
+            
+        }}
+
+        public {1}Context(DbConnection dbConnection)
+            : base(dbConnection)
+        {{
+            
+        }}
+
+        #region Models
+{2}
+        #endregion
+    }}
+}}

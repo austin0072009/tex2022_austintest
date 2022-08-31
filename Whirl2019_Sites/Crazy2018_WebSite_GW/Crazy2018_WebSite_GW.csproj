@@ -1,0 +1,653 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{11001E20-781F-4C8D-AA43-8D732B00BAB1}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Crazy2018_WebSite_GW</RootNamespace>
+    <AssemblyName>Crazy2018_WebSite_GW</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
+    <Use64BitIISExpress />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Autofac, Version=4.6.1.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.4.6.1\lib\net45\Autofac.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Autofac.Integration.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.Mvc5.4.0.2\lib\net45\Autofac.Integration.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="FluentScheduler, Version=5.3.0.0, Culture=neutral, PublicKeyToken=b76503528a14ebd1, processorArchitecture=MSIL">
+      <HintPath>..\packages\FluentScheduler.5.3.0\lib\net40\FluentScheduler.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.Agent.Intercept, Version=2.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.2.0.6\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.DependencyCollector, Version=2.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.DependencyCollector.2.2.0\lib\net45\Microsoft.AI.DependencyCollector.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.PerfCounterCollector, Version=2.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.PerfCounterCollector.2.2.0\lib\net45\Microsoft.AI.PerfCounterCollector.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.ServerTelemetryChannel, Version=2.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.2.2.0\lib\net45\Microsoft.AI.ServerTelemetryChannel.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.Web, Version=2.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Web.2.2.0\lib\net45\Microsoft.AI.Web.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.WindowsServer, Version=2.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.2.2.0\lib\net45\Microsoft.AI.WindowsServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.ApplicationInsights, Version=2.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.2.2.0\lib\net45\Microsoft.ApplicationInsights.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="MySql.Data, Version=6.9.12.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySql.Data.6.9.12\lib\net45\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data.Entity.EF6, Version=6.9.12.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySql.Data.Entity.6.9.12\lib\net45\MySql.Data.Entity.EF6.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Crazy2018_WebSite_Pay\Bin\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel" />
+    <Reference Include="System.Configuration.Install" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Drawing.Design" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System.Web.Razor">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.3\lib\net45\System.Web.Webpages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages.Deployment">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.3\lib\net45\System.Web.Webpages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages.Razor">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.3\lib\net45\System.Web.Webpages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Helpers">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="91Resources\apk\Android.png" />
+    <Content Include="91Resources\apk\iOS.png" />
+    <Content Include="91Resources\css\91y_phone.css" />
+    <Content Include="91Resources\css\91y_public.css" />
+    <Content Include="91Resources\css\base.css" />
+    <Content Include="91Resources\css\download.css" />
+    <Content Include="91Resources\css\nc.css" />
+    <Content Include="91Resources\css\swiper.min.css" />
+    <Content Include="91Resources\images\163120180514102655.jpg" />
+    <Content Include="91Resources\images\200720171205025715.jpg" />
+    <Content Include="91Resources\images\213920190429105639.jpg" />
+    <Content Include="91Resources\images\363520171206013804.jpg" />
+    <Content Include="91Resources\images\558020180411031445.jpg" />
+    <Content Include="91Resources\images\564720180912070348.jpg" />
+    <Content Include="91Resources\images\579020190403055852.jpg" />
+    <Content Include="91Resources\images\579220190826020728.jpg" />
+    <Content Include="91Resources\images\957520180411034153.jpg" />
+    <Content Include="91Resources\images\Android.png" />
+    <Content Include="91Resources\images\b_icon_download.png" />
+    <Content Include="91Resources\images\b_icon_download_on.png" />
+    <Content Include="91Resources\images\b_icon_help.png" />
+    <Content Include="91Resources\images\b_icon_help_on.png" />
+    <Content Include="91Resources\images\b_icon_index.png" />
+    <Content Include="91Resources\images\b_icon_index_on.png" />
+    <Content Include="91Resources\images\b_icon_news.png" />
+    <Content Include="91Resources\images\b_icon_news_on.png" />
+    <Content Include="91Resources\images\b_icon_topup.png" />
+    <Content Include="91Resources\images\b_icon_topup_on.png" />
+    <Content Include="91Resources\images\defaultpic.gif" />
+    <Content Include="91Resources\images\down_top_bg.png" />
+    <Content Include="91Resources\images\game_bg01.png" />
+    <Content Include="91Resources\images\game_bg02.png" />
+    <Content Include="91Resources\images\game_bg03.png" />
+    <Content Include="91Resources\images\game_bg04.png" />
+    <Content Include="91Resources\images\game_bg05.png" />
+    <Content Include="91Resources\images\game_bg06.png" />
+    <Content Include="91Resources\images\game_bg07.png" />
+    <Content Include="91Resources\images\game_bg08.png" />
+    <Content Include="91Resources\images\game_bg09.png" />
+    <Content Include="91Resources\images\get_read_02.png" />
+    <Content Include="91Resources\images\head1_1.png" />
+    <Content Include="91Resources\images\index_logo.png" />
+    <Content Include="91Resources\images\iOS.png" />
+    <Content Include="91Resources\images\login_logo.png" />
+    <Content Include="91Resources\images\page_top_bg.png" />
+    <Content Include="91Resources\images\p_service.png" />
+    <Content Include="91Resources\images\recd.png" />
+    <Content Include="91Resources\images\tip-bg.png" />
+    <Content Include="91Resources\images\topup_top_bg.png" />
+    <Content Include="91Resources\images\top_img.jpg" />
+    <Content Include="91Resources\img\163120180514102655.jpg" />
+    <Content Include="91Resources\img\200720171205025715.jpg" />
+    <Content Include="91Resources\img\213920190429105639.jpg" />
+    <Content Include="91Resources\img\363520171206013804.jpg" />
+    <Content Include="91Resources\img\558020180411031445.jpg" />
+    <Content Include="91Resources\img\564720180912070348.jpg" />
+    <Content Include="91Resources\img\579220190826020728.jpg" />
+    <Content Include="91Resources\img\AZ-btn-bg-a.png" />
+    <Content Include="91Resources\img\AZ-btn-bg.png" />
+    <Content Include="91Resources\img\banner_01.png" />
+    <Content Include="91Resources\img\banner_02.png" />
+    <Content Include="91Resources\img\banner_03.png" />
+    <Content Include="91Resources\img\banner_05.png" />
+    <Content Include="91Resources\img\big.png" />
+    <Content Include="91Resources\img\default-head.png" />
+    <Content Include="91Resources\img\game-icon01.png" />
+    <Content Include="91Resources\img\ios-btn-bg-a.png" />
+    <Content Include="91Resources\img\ios-btn-bg.png" />
+    <Content Include="91Resources\img\top_icon_download.png" />
+    <Content Include="91Resources\img\top_icon_help.png" />
+    <Content Include="91Resources\img\top_icon_news.png" />
+    <Content Include="91Resources\img\top_icon_topup.png" />
+    <Content Include="91Resources\img\tuiguang.jpg" />
+    <Content Include="91Resources\js\120.js" />
+    <Content Include="91Resources\js\awsc.js" />
+    <Content Include="91Resources\js\hm.js" />
+    <Content Include="91Resources\js\jquery-1.7.1.min.js" />
+    <Content Include="91Resources\js\nc.js" />
+    <Content Include="91Resources\js\swiper.min.js" />
+    <Content Include="91Resources\js\um.js" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Site.css" />
+    <Content Include="css\AgentManage.css" />
+    <Content Include="css\BankList.css" />
+    <Content Include="css\BindBank.css" />
+    <Content Include="css\bootstrap.min.css" />
+    <Content Include="css\bulletin.css" />
+    <Content Include="css\club\app.css" />
+    <Content Include="css\club\mdui.css" />
+    <Content Include="css\club\bootstrap-table.min.css" />
+    <Content Include="css\DownloadPage.css" />
+    <Content Include="css\findPwd.css" />
+    <Content Include="css\help.css" />
+    <Content Include="css\iconfont.css" />
+    <Content Include="css\index.css" />
+    <Content Include="css\JoinEd.css" />
+    <Content Include="css\LArea201708301.css" />
+    <Content Include="css\login.css" />
+    <Content Include="css\lyz.calendar.css" />
+    <Content Include="css\MyBrokerage20171206.css" />
+    <Content Include="css\MyBrokerage.css" />
+    <Content Include="css\MyBrokerage20171206.css" />
+    <Content Include="css\MyCode.css" />
+    <Content Include="css\MyProxy20171206.css" />
+    <Content Include="css\MyProxy.css" />
+    <Content Include="css\MyProxy20171206.css" />
+    <Content Include="css\news.css" />
+    <Content Include="css\present.css" />
+    <Content Include="css\Promotion.css" />
+    <Content Include="css\public.css" />
+    <Content Include="css\PublicizeRegistered.css" />
+    <Content Include="css\Recharge.css" />
+    <Content Include="css\Recharge1.css" />
+    <Content Include="css\RechargePage.css" />
+    <Content Include="css\RechargeRecord.css" />
+    <Content Include="css\registered.css" />
+    <Content Include="css\UserExtension.css" />
+    <Content Include="css\withdraw.css" />
+    <Content Include="css\WithdrawRecord.css" />
+    <Content Include="DownloadPage.html" />
+    <Content Include="downpageimg\Android.png" />
+    <Content Include="downpageimg\head.jpg" />
+    <Content Include="downpageimg\ios.png" />
+    <Content Include="downpageimg\jquery-1.7.1.min.js" />
+    <Content Include="downpageimg\NoticeImgs\bg.jpg" />
+    <Content Include="downpageimg\NoticeImgs\fanhuocard.png" />
+    <Content Include="downpageimg\NoticeImgs\fhbg.jpg" />
+    <Content Include="downpageimg\NoticeImgs\fhcardgaos.png" />
+    <Content Include="downpageimg\NoticeImgs\fzbxt.png" />
+    <Content Include="downpageimg\NoticeImgs\hb.png" />
+    <Content Include="downpageimg\NoticeImgs\hot.png" />
+    <Content Include="downpageimg\NoticeImgs\hua.png" />
+    <Content Include="downpageimg\NoticeImgs\jbs.png" />
+    <Content Include="downpageimg\NoticeImgs\juxing-1.png" />
+    <Content Include="downpageimg\NoticeImgs\Logo.png" />
+    <Content Include="downpageimg\NoticeImgs\MTT.png" />
+    <Content Include="downpageimg\NoticeImgs\newhbcard.png" />
+    <Content Include="downpageimg\NoticeImgs\number.png" />
+    <Content Include="downpageimg\NoticeImgs\re-2.png" />
+    <Content Include="downpageimg\NoticeImgs\warning.png" />
+    <Content Include="downpageimg\NoticeImgs\win.png" />
+    <Content Include="downpageimg\NoticeImgs\zhaomutitle.png" />
+    <Content Include="downpageimg\NoticeImgs\反伙牌效果图.jpg" />
+    <Content Include="downpageimg\NoticeImgs\锦标赛效果图.jpg" />
+    <Content Include="downpageimg\superios.png" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="img\01.jpg" />
+    <Content Include="img\02.jpg" />
+    <Content Include="img\03.jpg" />
+    <Content Include="img\04.jpg" />
+    <Content Include="img\1.png" />
+    <Content Include="img\1499060395650.jpg" />
+    <Content Include="img\1500280631889.jpg" />
+    <Content Include="img\20182903102907086.jpg" />
+    <Content Include="downpageimg\AD5Zo.png" />
+    <Content Include="img\add.png" />
+    <Content Include="downpageimg\ADnjf.png" />
+    <Content Include="img\android.png" />
+    <Content Include="img\background.jpg" />
+    <Content Include="img\beijin.png" />
+    <Content Include="img\BG2.jpg" />
+    <Content Include="img\bgtu.png" />
+    <Content Include="img\bianji.png" />
+    <Content Include="img\BZ_bzzx.png" />
+    <Content Include="img\BZ_jtx.png" />
+    <Content Include="img\BZ_jty.png" />
+    <Content Include="img\club\alipay.png" />
+    <Content Include="img\club\an.png" />
+    <Content Include="img\club\fx.png" />
+    <Content Include="img\club\headbg.jpg" />
+    <Content Include="img\club\headtitle.png" />
+    <Content Include="img\club\jt.png" />
+    <Content Include="img\club\subbtn.png" />
+    <Content Include="img\club\tb.png" />
+    <Content Include="img\club\upay.png" />
+    <Content Include="img\club\vippay.png" />
+    <Content Include="img\club\wxpay.png" />
+    <Content Include="img\club\wz.png" />
+    <Content Include="img\club\youjian.png" />
+    <Content Include="img\club\zhankai.png" />
+    <Content Include="img\Correct.png" />
+    <Content Include="img\CZ_and.png" />
+    <Content Include="img\CZ_grzx.png" />
+    <Content Include="img\diyiye.png" />
+    <Content Include="img\Dl_anzhm.png" />
+    <Content Include="img\Dl_anzhm1.png" />
+    <Content Include="img\Dl_anzi.png" />
+    <Content Include="img\Dl_rx.png" />
+    <Content Include="img\Dl_yhxx.png" />
+    <Content Include="img\Dl_zhmm.png" />
+    <Content Include="img\Dl_zhmm1.png" />
+    <Content Include="img\Dl_zi.png" />
+    <Content Include="img\dpage.jpg" />
+    <Content Include="img\fanhui.png" />
+    <Content Include="img\fanhui1.png" />
+    <Content Include="img\gdbank.png" />
+    <Content Include="img\gdbank1.png" />
+    <Content Include="img\gengduo.png" />
+    <Content Include="img\gsbank.png" />
+    <Content Include="img\gsbank1.png" />
+    <Content Include="img\GW_activity_001.png" />
+    <Content Include="img\GW_az.png" />
+    <Content Include="img\GW_dhd.png" />
+    <Content Include="img\GW_dhfk_001.png" />
+    <Content Include="img\GW_djd.png" />
+    <Content Include="img\GW_djjs.png" />
+    <Content Include="img\GW_djtb_001.png" />
+    <Content Include="img\GW_djtb_002.png" />
+    <Content Include="img\GW_djtb_003.png" />
+    <Content Include="img\GW_djtb_004.png" />
+    <Content Include="img\GW_dj_001.png" />
+    <Content Include="img\GW_dj_002.png" />
+    <Content Include="img\GW_dj_003.png" />
+    <Content Include="img\GW_ewm.jpg" />
+    <Content Include="img\GW_fgx_001.png" />
+    <Content Include="img\GW_ggz.png" />
+    <Content Include="img\GW_jt_right.png" />
+    <Content Include="img\GW_kfdhd.png" />
+    <Content Include="img\GW_kfdhtb.png" />
+    <Content Include="img\GW_news_001.png" />
+    <Content Include="img\GW_news_002.png" />
+    <Content Include="img\GW_pg.png" />
+    <Content Include="img\GW_ztyy.png" />
+    <Content Include="img\gybank.png" />
+    <Content Include="img\gybank2.png" />
+    <Content Include="img\gydank1.png" />
+    <Content Include="img\hedan2.png" />
+    <Content Include="img\hxbank.png" />
+    <Content Include="img\hxbank1.png" />
+    <Content Include="img\img3.jpg" />
+    <Content Include="img\iphone.png" />
+    <Content Include="img\jg.png" />
+    <Content Include="img\jinbi.png" />
+    <Content Include="img\jsbank.png" />
+    <Content Include="img\jsbank1.png" />
+    <Content Include="img\jtbank.png" />
+    <Content Include="img\jtbank1.png" />
+    <Content Include="img\linqu.png" />
+    <Content Include="img\lkl.png" />
+    <Content Include="img\logo3.png" />
+    <Content Include="img\msbank.png" />
+    <Content Include="img\msbank1.png" />
+    <Content Include="img\newchongzhi_biaoti.png" />
+    <Content Include="img\pwd.png" />
+    <Content Include="img\pwd2.png" />
+    <Content Include="img\QR.jpg" />
+    <Content Include="img\regist\logo.png" />
+    <Content Include="img\regist\关闭.png" />
+    <Content Include="img\regist\图层-3.jpg" />
+    <Content Include="img\regist\圆角矩形-1-拷贝.png" />
+    <Content Include="img\regist\密码.png" />
+    <Content Include="img\regist\手机.png" />
+    <Content Include="img\regist\眼睛.png" />
+    <Content Include="img\regist\网页注册.png" />
+    <Content Include="img\regist\闭眼-拷贝.png" />
+    <Content Include="img\regist\验证码.png" />
+    <Content Include="img\scewm.png" />
+    <Content Include="img\select.png" />
+    <Content Include="img\select1.png" />
+    <Content Include="img\shangyiye.png" />
+    <Content Include="img\tankuang.jpg" />
+    <Content Include="img\tuiguang.png" />
+    <Content Include="img\user.png" />
+    <Content Include="img\weixin2.png" />
+    <Content Include="img\wrong.png" />
+    <Content Include="img\xiayiye.png" />
+    <Content Include="img\yl.png" />
+    <Content Include="img\zgbank.png" />
+    <Content Include="img\zgbank1.png" />
+    <Content Include="img\zhifubao.png" />
+    <Content Include="img\zuce.png" />
+    <Content Include="img\zuihouyiye.png" />
+    <Content Include="img\queding.png" />
+    <Content Include="img\daili12.png" />
+    <Content Include="js\club\mdui.js" />
+    <Content Include="js\iconfont.js" />
+    <Content Include="js\jquery-1.11.2.min.js" />
+    <Content Include="js\jquery.min.js" />
+    <Content Include="js\LArea.js" />
+    <Content Include="js\LAreaData1.js" />
+    <Content Include="js\lyz.calendar.min.js" />
+    <Content Include="js\public.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="NLog.config" />
+    <Content Include="Cert\private_key.pem" />
+    <Content Include="Cert\public_key.pem" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
+    <None Include="Properties\PublishProfiles\FolderProfile1.pubxml" />
+    <None Include="Properties\PublishProfiles\FolderProfile2.pubxml" />
+    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\jquery-1.10.2.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <Content Include="Scripts\jquery.js" />
+    <Content Include="Scripts\jquery.min.js" />
+    <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="templets\default\20190813\images\game_bg01.png" />
+    <Content Include="templets\default\20190813\images\game_bg02.png" />
+    <Content Include="templets\default\20190813\images\game_bg03.png" />
+    <Content Include="templets\default\20190813\images\game_bg04.png" />
+    <Content Include="templets\default\20190813\images\game_bg05.png" />
+    <Content Include="templets\default\20190813\images\game_bg06.png" />
+    <Content Include="templets\default\20190813\images\game_bg07.png" />
+    <Content Include="templets\default\20190813\images\game_bg08.png" />
+    <Content Include="templets\default\20190813\images\game_bg09.png" />
+    <Content Include="templets\default\20190813\images\top-img.png" />
+    <Content Include="downpageimg\top_img.jpg" />
+    <Content Include="Views\Manage\back_index.txt" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\IocConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\ClubController.cs" />
+    <Compile Include="Controllers\GameController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Models\ConfigurationData.cs" />
+    <Compile Include="Models\CryptoBase.cs" />
+    <Compile Include="Models\FileResult.cs" />
+    <Compile Include="Models\H5PayInput.cs" />
+    <Compile Include="Models\HttpHelper.cs" />
+    <Compile Include="Models\RC4.cs" />
+    <Compile Include="PlannedTask.cs" />
+    <Compile Include="Filter\ManageFilter.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\CS_Send.cs" />
+    <Compile Include="Models\DataResult.cs" />
+    <Compile Include="Models\DESAlgorithmNew.cs" />
+    <Compile Include="Models\DesCopy.cs" />
+    <Compile Include="Models\RegisterModel.cs" />
+    <Compile Include="Models\SC_Send.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\web.config" />
+    <Content Include="packages.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="ApplicationInsights.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Views\Manage\bulletin.cshtml" />
+    <Content Include="Views\Manage\contact.cshtml" />
+    <Content Include="Views\Manage\findPwd.cshtml" />
+    <Content Include="Views\Manage\help.cshtml" />
+    <Content Include="Views\Manage\Index.cshtml" />
+    <Content Include="Views\Manage\login.cshtml" />
+    <Content Include="Views\Manage\news.cshtml" />
+    <Content Include="Views\Manage\output.cshtml" />
+    <Content Include="Views\Manage\present.cshtml" />
+    <Content Include="Views\Manage\registered.cshtml" />
+    <Content Include="Views\Manage\userIfo.cshtml" />
+    <Content Include="Views\Manage\BankList.cshtml" />
+    <Content Include="Views\Manage\BindBank.cshtml" />
+    <Content Include="Views\Manage\Recharge.cshtml" />
+    <Content Include="Views\Manage\Recharge1.cshtml" />
+    <Content Include="Views\Manage\RechargePage.cshtml" />
+    <Content Include="Views\Manage\withdraw.cshtml" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <None Include="Properties\PublishProfiles\config_website_GW.pubxml" />
+    <Content Include="Views\Manage\Promotion.cshtml" />
+    <Content Include="Views\Manage\JoinEd.cshtml" />
+    <Content Include="Views\Manage\RechargeRecord.cshtml" />
+    <Content Include="Views\Manage\WithdrawRecord.cshtml" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Manage\Activity.cshtml" />
+    <Content Include="Scripts\jquery-1.10.2.min.map" />
+    <Content Include="Views\Manage\ActivityList.cshtml" />
+    <Content Include="Views\Manage\PayPwd.cshtml" />
+    <Content Include="Views\Game\PublicizeRegistered.cshtml" />
+    <Content Include="Views\Game\DownloadPage.cshtml" />
+    <Content Include="Views\Game\MyProxy.cshtml" />
+    <Content Include="Views\Game\MyCode.cshtml" />
+    <Content Include="Views\Game\MyBrokerage.cshtml" />
+    <Content Include="Views\Manage\AgentManage.cshtml" />
+    <Content Include="Views\Game\UserExtension.cshtml" />
+    <Content Include="Views\Game\Feedback.cshtml" />
+    <Content Include="Views\Manage\TtaxlogManage.cshtml" />
+    <Content Include="Views\Manage\TuseragentlogManage.cshtml" />
+    <Content Include="Views\Manage\RegisteredLink.cshtml" />
+    <Content Include="Views\Manage\AgentManageNew.cshtml" />
+    <Content Include="Views\Shared\footer.cshtml" />
+    <Content Include="Views\Home\downpage.cshtml" />
+    <Content Include="Views\Home\downpagedetails.cshtml" />
+    <Content Include="Views\Home\gonggao.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\m_91login.cshtml" />
+    <Content Include="Views\Home\News.cshtml" />
+    <Content Include="Views\Home\Recharge.cshtml" />
+    <Content Include="Views\Home\register.cshtml" />
+    <Content Include="Views\Home\NewsDetails.cshtml" />
+    <Content Include="Views\Home\findPwd.cshtml" />
+    <Content Include="Views\Home\ResetPayPwd.cshtml" />
+    <Content Include="Views\Home\help.cshtml" />
+    <Content Include="Views\Home\RechargeRecord.cshtml" />
+    <Content Include="Views\Home\WxDownpagedetails.cshtml" />
+    <Content Include="Views\Game\NoticeList.cshtml" />
+    <Content Include="Views\Game\NoticeContent.cshtml" />
+    <Content Include="Views\Game\NoticeMTTContent.cshtml" />
+    <Content Include="Views\Shared\_LayoutPage.cshtml" />
+    <Content Include="Views\Manage\return_url.cshtml" />
+    <Content Include="Views\Home\gameregist.cshtml" />
+    <Content Include="Views\Game\NoticeWin.cshtml" />
+    <Content Include="Views\Game\NoticeRecruit.cshtml" />
+    <Content Include="Views\Game\Extension1.cshtml" />
+    <Content Include="Views\Game\Extension2.cshtml" />
+    <Content Include="Views\Game\Extension3.cshtml" />
+    <Content Include="Views\Shared\_LayoutExtension.cshtml" />
+    <Content Include="Views\Club\ClubHome.cshtml" />
+    <Content Include="Views\Shared\_ClubLayoutPage.cshtml" />
+    <Content Include="Views\Club\RechargeScore.cshtml" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Crazy2018_Sys_Common\Crazy2018_Sys_Common.csproj">
+      <Project>{1B9DA1CD-5FD2-43B4-AA3D-C3556102F21B}</Project>
+      <Name>Crazy2018_Sys_Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Crazy2018_Sys_DBHelper\Crazy2018_Sys_DBHelper.csproj">
+      <Project>{8D7712CD-9000-4C39-86DE-C6D2D7C850E5}</Project>
+      <Name>Crazy2018_Sys_DBHelper</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Crazy2018_Sys_Entity\Crazy2018_Sys_Entity.csproj">
+      <Project>{3711985E-A1C8-4E01-BF35-D2B51C27AFDC}</Project>
+      <Name>Crazy2018_Sys_Entity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Crazy2018_Sys_Interface\Crazy2018_Sys_Interface.csproj">
+      <Project>{B7558E3D-F636-4369-ACFD-6646E4B150C8}</Project>
+      <Name>Crazy2018_Sys_Interface</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Crazy2018_Sys_Service\Crazy2018_Sys_Service.csproj">
+      <Project>{67a9c8d9-3392-4a64-be2b-82400464e3c2}</Project>
+      <Name>Crazy2018_Sys_Service</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Crazy2018_Sys_ViewEntity\Crazy2018_Sys_ViewEntity.csproj">
+      <Project>{727cba4b-a8ca-4ac1-9ce6-12ae24e83a1e}</Project>
+      <Name>Crazy2018_Sys_ViewEntity</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>56534</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:56534/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>这台计算机上缺少此项目引用的 NuGet 程序包。使用“NuGet 程序包还原”可下载这些程序包。有关更多信息，请参见 http://go.microsoft.com/fwlink/?LinkID=322105。缺少的文件是 {0}。</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

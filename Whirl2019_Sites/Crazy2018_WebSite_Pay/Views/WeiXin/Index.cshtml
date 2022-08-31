@@ -1,0 +1,65 @@
+﻿@using Crazy2018_Pay;
+@{
+    Layout = null;
+    string wxJsparam = Model.wxJsParam == null ? string.Empty : Model.wxJsParam;
+    string total_fee = Model.total_fee == null ? string.Empty : Model.total_fee.ToString();
+    string UserId = Model.UserId == null ? string.Empty : Model.UserId.ToString();
+    string oddNum = Model.oddNum == null ? string.Empty : Model.oddNum;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>正在支付中</title>
+    <script src="~/js/jquery.min.js"></script>
+    <script>
+        function escape2Html(str) {
+            var arrEntities = { 'lt': '<', 'gt': '>', 'nbsp': ' ', 'amp': '&', 'quot': '"' };
+            return str.replace(/&(lt|gt|nbsp|amp|quot);/ig, function (all, t) { return arrEntities[t]; });
+        }
+        $(function () {
+            callpay();
+
+        });
+        function jsApiCall() {
+            var wxjsparam = escape2Html('@wxJsparam');
+            var UserId = escape2Html('@UserId');
+            var oddNum = escape2Html('@oddNum');
+            var total_fee = escape2Html('@total_fee');
+            var objectdata = $.parseJSON(wxjsparam);//微信只接收json对象而不是json 字符串
+            WeixinJSBridge.invoke(
+            'getBrandWCPayRequest',
+             objectdata,//josn串
+             function (res) {
+                 window.location.href = "/WeiXin/ReturnView?err_msg=" + res.err_msg;
+             }
+             );
+        }
+
+        function callpay(tal, openid) {
+            if (typeof WeixinJSBridge == "undefined") {
+                if (document.addEventListener) {
+                    document.addEventListener('WeixinJSBridgeReady', function () {
+                        jsApiCall();
+                    }, false);
+                }
+                else if (document.attachEvent) {
+                    document.attachEvent('WeixinJSBridgeReady', jsApiCall);
+                    document.attachEvent('onWeixinJSBridgeReady', jsApiCall);
+                } else {
+                    jsApiCall();
+                }
+            }
+            else {
+                jsApiCall();
+            }
+        }
+    </script>
+</head>
+<body>
+    <div> 
+    </div>
+</body>
+</html>

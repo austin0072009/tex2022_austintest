@@ -1,0 +1,50 @@
+﻿
+@{
+    ViewBag.Title = "DownloadPage";
+}
+<!DOCTYPE html>
+<HTML>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="format-detection" content="telephone=no">
+    <meta id="viewport" name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=no,target-densitydpi=medium-dpi" />
+    <link rel="stylesheet" href="~/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/css/DownloadPage.css">
+    <link rel="stylesheet" href="~/css/public.css">
+    <script src="~/js/jquery-1.11.2.min.js"></script>
+    <script src="~/js/public.js"></script>
+    <title>宣传下载</title>
+</head>
+
+<body style="position:relative;">
+    <div class="bgheight">
+        @*<img src="~/img/01.jpg"/>
+        <img src="~/img/02.jpg" id="ADownloadBtn"/>
+        <img src="~/img/03.jpg" id="IDownloadBtn"/>
+        <img src="~/img/04.jpg"/>*@
+        <div class="BtnBox">
+            <div class="ABtnBox" id="ADownloadBtn">
+                <img src="~/img/android.png"/>
+            </div>
+            <div class="IBtnBox" id="IDownloadBtn">
+                <img src="~/img/iphone.png" />
+            </div>
+        </div>
+        <div class="OneCont">游戏介绍:</div>
+        <div class="TwoCont">疯狂电玩城网络游戏是目前成长最快的在线电玩城平台，已经有最先进的游戏玩法以及丰富的游戏种类，将给你带来360度全方位的用户体验。</div>
+    </div>
+    <script>
+        $("#ADownloadBtn").click(function () {
+            // Bomb("敬请期待...", 1500)
+            window.location.href = "https://fir.im/d4c7 "
+        })
+        $("#IDownloadBtn").click(function () {
+            Bomb("敬请期待...",1500)
+        })
+
+    </script>
+    <color>red</color>
+</body>
+
+</HTML>

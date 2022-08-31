@@ -1,0 +1,616 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,initial-scale=1.0,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <title>系统参数设置</title>
+    <link href="~scripts/artdialog/ui-dialog.css" rel="stylesheet" type="text/css">
+    <link href="~/skin/default/style.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" charset="utf-8" src="~/scripts/jquery/jquery-1.11.2.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="~/scripts/jquery/Validform_v5.3.2_min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="~/scripts/artdialog/dialog-plus-min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="~/js/laymain.js"></script>
+    <script type="text/javascript" charset="utf-8" src="~/js/common.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            //初始化表单验证
+            $("#form1").initValidform();
+        });
+    </script>
+</head>
+
+<body class="mainbody">
+    <form method="post" action="./sys_config.aspx" id="form1">
+        <div class="aspNetHidden">
+            <input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwULLTE5NjIxMzc5NTYPFgIeE1ZhbGlkYXRlUmVxdWVzdE1vZGUCARYCAgEPZBYGAiUPDxYCHgRUZXh0ZWRkAisPD2QWAh4FdmFsdWUFBzB8MHwwfDBkAjcPD2QWAh8CBQcwfDB8MHwwZBgBBR5fX0NvbnRyb2xzUmVxdWlyZVBvc3RCYWNrS2V5X18WBQUMbWVtYmVyc3RhdHVzBQ1jb21tZW50c3RhdHVzBQlsb2dzdGF0dXMFCXdlYnN0YXR1cwUIZW1haWxzc2z3U4DKObpb25csX1dMoVjCRx0HEbbsGSY8gbdL4ObNcg==">
+        </div>
+
+        <!--导航栏-->
+        <div class="location">
+            <a href="javascript:history.back(-1);" class="back"><i></i><span>返回上一页</span></a>
+            <a href="/Home/Center" class="home"><i></i><span>首页</span></a>
+            <i class="arrow"></i>
+            <span>系统参数设置</span>
+        </div>
+        <div class="line10"></div>
+        <!--/导航栏-->
+        <!--内容-->
+        <div id="floatHead" class="content-tab-wrap" style="height: 42px;">
+            <div class="content-tab" style="width: 781px;">
+                <div class="content-tab-ul-wrap">
+                    <div class="tab-title"><span>系统基本信息</span><i></i></div><ul>
+                        <li><a class="selected" href="javascript:;">系统基本信息</a></li>
+                        <li><a href="javascript:;" class="">功能权限设置</a></li>
+                        <li><a href="javascript:;" class="">短信平台设置</a></li>
+                        <li><a href="javascript:;" class="">邮件发送设置</a></li>
+                        <li><a href="javascript:;" class="">文件上传设置</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!--主站基本信息-->
+        <div class="tab-content" style="display: block;">
+            <dl>
+                <dt>主站名称</dt>
+                <dd>
+                    <input name="webname" type="text" value="游戏管理系统" id="webname" class="input normal" datatype="*2-255" sucmsg=" ">
+                    <span class="Validform_checktip">*任意字符，控制在255个字符内</span>
+                </dd>
+            </dl>
+            <dl>
+                <dt>主站域名</dt>
+                <dd>
+                    <input name="weburl" type="text" value="http://www.1234567.com" id="weburl" class="input normal" datatype="url" sucmsg=" ">
+                    <span class="Validform_checktip">*以“http://”开头，不能绑定到频道分类</span>
+                </dd>
+            </dl>
+            <dl>
+                <dt>公司名称</dt>
+                <dd>
+                    <input name="webcompany" type="text" value="XX科技有限公司" id="webcompany" class="input normal">
+                </dd>
+            </dl>
+            <dl>
+                <dt>通讯地址</dt>
+                <dd>
+                    <input name="webaddress" type="text" id="webaddress" class="input normal">
+                </dd>
+            </dl>
+            <dl>
+                <dt>客服电话</dt>
+                <dd>
+                    <input name="webtel" type="text" id="webtel" class="input normal">
+                    <span class="Validform_checktip">*非必填，区号+电话号码</span>
+                </dd>
+            </dl>
+            <dl>
+                <dt>传真号码</dt>
+                <dd>
+                    <input name="webfax" type="text" value="-" id="webfax" class="input normal">
+                    <span class="Validform_checktip">*非必填，区号+传真号码</span>
+                </dd>
+            </dl>
+            <dl>
+                <dt>管理员邮箱</dt>
+                <dd>
+                    <input name="webmail" type="text" id="webmail" class="input normal">
+                </dd>
+            </dl>
+            <dl>
+                <dt>主站备案号</dt>
+                <dd>
+                    <input name="webcrod" type="text" id="webcrod" class="input normal">
+                </dd>
+            </dl>
+        </div>
+        <!--/网站基本信息-->
+        <!--功能权限设置-->
+        <div class="tab-content" style="display: none;">
+            <dl>
+                <dt>网站安装目录</dt>
+                <dd>
+                    <input name="webpath" type="text" value="/" id="webpath" class="input txt" datatype="*1-100">
+                    <span class="Validform_checktip">*根目录输入“/”，其它输入“/目录名/”</span>
+                </dd>
+            </dl>
+            <dl>
+                <dt>后台管理目录</dt>
+                <dd>
+                    <input name="webmanagepath" type="text" value="admin" id="webmanagepath" class="input txt" datatype="*1-100">
+                    <span class="Validform_checktip">*默认admin，其它请输入目录名，否则无法进入后台</span>
+                </dd>
+            </dl>
+            <dl>
+                <dt>URL重写开关</dt>
+                <dd>
+                    <div class="rule-multi-radio multi-radio">
+                        <div class="boxwrap"><a href="javascript:;">关闭</a><a href="javascript:;" class="selected">伪URL重写</a><a href="javascript:;">生成静态</a></div>
+                        <span id="staticstatus" style="display: none;">
+                            <input id="staticstatus_0" type="radio" name="staticstatus" value="0">
+                            <label for="staticstatus_0">关闭</label><input id="staticstatus_1" type="radio" name="staticstatus" value="1" checked="checked">
+                            <label for="staticstatus_1">伪URL重写</label><input id="staticstatus_2" type="radio" name="staticstatus" value="2">
+                            <label for="staticstatus_2">生成静态</label>
+                        </span>
+                    </div>
+                    <span class="Validform_checktip">*URL配置规则，点击这里查看说明</span>
+                </dd>
+            </dl>
+            <dl>
+                <dt>静态URL后缀</dt>
+                <dd>
+                    <input name="staticextension" type="text" value="html" id="staticextension" class="input small" datatype="*1-100">
+                    <span class="Validform_checktip">*扩展名，不包括“.”，访问或生成时将会替换此值，如：aspx、html</span>
+                </dd>
+            </dl>
+            <dl>
+                <dt>开启会员功能</dt>
+                <dd>
+                    <div class="rule-single-checkbox single-checkbox">
+                        <a href="javascript:;" class="selected"><i class="off">否</i><i class="on">是</i></a>
+                        <input id="memberstatus" type="checkbox" name="memberstatus" checked="checked" style="display: none;">
+                    </div>
+                    <span class="Validform_checktip">*关闭后关联会员的内容将失效</span>
+                </dd>
+            </dl>
+            <dl>
+                <dt>开启评论审核</dt>
+                <dd>
+                    <div class="rule-single-checkbox single-checkbox">
+                        <a href="javascript:;"><i class="off">否</i><i class="on">是</i></a>
+                        <input id="commentstatus" type="checkbox" name="commentstatus" style="display: none;">
+                    </div>
+                    <span class="Validform_checktip">*开启后评论将会审核才显示</span>
+                </dd>
+            </dl>
+            <dl>
+                <dt>开启管理日志</dt>
+                <dd>
+                    <div class="rule-single-checkbox single-checkbox">
+                        <a href="javascript:;" class="selected"><i class="off">否</i><i class="on">是</i></a>
+                        <input id="logstatus" type="checkbox" name="logstatus" checked="checked" style="display: none;">
+                    </div>
+                    <span class="Validform_checktip">*开启后将会记录管理员在后台的操作日志</span>
+                </dd>
+            </dl>
+            <dl>
+                <dt>是否开启网站</dt>
+                <dd>
+                    <div class="rule-single-checkbox single-checkbox">
+                        <a href="javascript:;" class="selected"><i class="off">否</i><i class="on">是</i></a>
+                        <input id="webstatus" type="checkbox" name="webstatus" checked="checked" style="display: none;">
+                    </div>
+                    <span class="Validform_checktip">*关闭后网站前台将不能访问</span>
+                </dd>
+            </dl>
+            <dl>
+                <dt>网站关闭原因</dt>
+                <dd>
+                    <textarea name="webclosereason" rows="2" cols="20" id="webclosereason" class="input">网站正在维护中，请稍候访问……</textarea>
+                    <span class="Validform_checktip">支持HTML</span>
+                </dd>
+            </dl>
+            <dl>
+                <dt>网站统计代码</dt>
+                <dd>
+                    <textarea name="webcountcode" rows="2" cols="20" id="webcountcode" class="input"></textarea>
+                    <span class="Validform_checktip">支持HTML</span>
+                </dd>
+            </dl>
+        </div>
+        <!--/功能权限设置-->
+        <!--手机短信设置-->
+        <div class="tab-content" style="display: none;">
+            <dl>
+                <dt>短信剩余数量</dt>
+                <dd>
+                    <span id="labSmsCount"></span>
+                    <span class="Validform_checktip">尚未申请？<a href="http://sms.Loach.net" target="_blank">请点击这里注册</a></span>
+                </dd>
+            </dl>
+            <dl>
+                <dt>短信API地址</dt>
+                <dd>
+                    <input name="smsapiurl" type="text" id="smsapiurl" class="input normal">
+                    <span class="Validform_checktip">*以“http://”开头</span>
+                </dd>
+            </dl>
+            <dl>
+                <dt>平台登录账户</dt>
+                <dd>
+                    <input name="smsusername" type="text" id="smsusername" class="input txt">
+                    <span class="Validform_checktip">*短信平台注册的用户名</span>
+                </dd>
+            </dl>
+            <dl>
+                <dt>平台登录密码</dt>
+                <dd>
+                    <input name="smspassword" type="password" id="smspassword" class="input txt" value="0|0|0|0">
+                    <span class="Validform_checktip">*短信平台注册的密码</span>
+                </dd>
+            </dl>
+            <dl>
+                <dt>短信平台说明</dt>
+                <dd>
+                    请不要使用系统默认账户test，因为它是公用的测试账号；<br>
+                    请在短信平台修改账户资料中绑定签名方可使用短信功能；<br>
+                    如果您尚未申请开通，<a href="http://sms.Loach.net" target="_blank">请点击这里注册</a>成功后填写您的用户名和密码均可正常使用。
+                </dd>
+            </dl>
+        </div>
+        <!--/手机短信设置-->
+        <!--邮件发送设置-->
+        <div class="tab-content" style="display: none;">
+            <dl>
+                <dt>SMTP服务器</dt>
+                <dd>
+                    <input name="emailsmtp" type="text" value="smtp.qq.com" id="emailsmtp" class="input normal" datatype="*0-100">
+                    <span class="Validform_checktip">*发送邮件的SMTP服务器地址</span>
+                </dd>
+            </dl>
+            <dl>
+                <dt>SSL加密连接</dt>
+                <dd>
+                    <div class="rule-single-checkbox single-checkbox">
+                        <a href="javascript:;" class="selected"><i class="off">否</i><i class="on">是</i></a>
+                        <input id="emailssl" type="checkbox" name="emailssl" checked="checked" style="display: none;">
+                    </div>
+                    <span class="Validform_checktip">*是否启用SSL加密连接</span>
+                </dd>
+            </dl>
+            <dl>
+                <dt>SMTP端口</dt>
+                <dd>
+                    <input name="emailport" type="text" value="25" id="emailport" class="input small" datatype="n">
+                    <span class="Validform_checktip">*SMTP服务器的端口，大部分服务商都支持25端口</span>
+                </dd>
+            </dl>
+            <dl>
+                <dt>发件人地址</dt>
+                <dd>
+                    <input name="emailfrom" type="text" value="123456@11.cn" id="emailfrom" class="input normal" datatype="e">
+                    <span class="Validform_checktip">*发件人的邮箱地址</span>
+                </dd>
+            </dl>
+            <dl>
+                <dt>邮箱账号</dt>
+                <dd>
+                    <input name="emailusername" type="text" value="123456@11.cn" id="emailusername" class="input normal" datatype="*0-100">
+                    <span class="Validform_checktip">*</span>
+                </dd>
+            </dl>
+            <dl>
+                <dt>邮箱密码</dt>
+                <dd>
+                    <input name="emailpassword" type="password" id="emailpassword" class="input normal" datatype="*0-100" value="0|0|0|0">
+                    <span class="Validform_checktip">*</span>
+                </dd>
+            </dl>
+            <dl>
+                <dt>发件人昵称</dt>
+                <dd>
+                    <input name="emailnickname" type="text" value="泥鳅软件" id="emailnickname" class="input normal" datatype="*0-50">
+                    <span class="Validform_checktip">*对方收到邮件时显示的昵称</span>
+                </dd>
+            </dl>
+        </div>
+        <!--/邮件发送设置-->
+        <!--上传配置-->
+        <div class="tab-content" style="display: none;">
+            <dl>
+                <dt>文件上传目录</dt>
+                <dd>
+                    <input name="filepath" type="text" value="upload" id="filepath" class="input txt" datatype="*2-100" sucmsg=" ">
+                    <span class="Validform_checktip">*文件保存的目录名，自动创建根目录下</span>
+                </dd>
+            </dl>
+            <dl>
+                <dt>文件保存方式</dt>
+                <dd>
+                    <div class="rule-single-select single-select">
+                        <div class="boxwrap">
+                            <a class="select-tit" href="javascript:;">
+                                <span>按年月/日/存入不同目录</span>
+                                <i></i>
+                            </a>
+                            <div class="select-items" style="display: none;">
+                                <ul>
+                                    <li>按年月日每天一个目录</li>
+                                    <li class="selected">按年月/日/存入不同目录</li>
+                                </ul>
+                            </div>
+                            <i class="arrow" style="display: none;"></i>
+                        </div>
+                        <select name="filesave" id="filesave" datatype="*" sucmsg=" " style="display: none;">
+                            <option value="1">按年月日每天一个目录</option>
+                            <option selected="selected" value="2">按年月/日/存入不同目录</option>
+
+                        </select>
+                    </div>
+                    <span class="Validform_checktip Validform_right"> </span>
+                </dd>
+            </dl>
+            <dl>
+                <dt>文件上传类型</dt>
+                <dd>
+                    <input name="fileextension" type="text" value="gif,jpg,png,bmp,rar,zip,doc,xls,txt" id="fileextension" class="input normal" datatype="*1-500">
+                    <span class="Validform_checktip">*以英文的逗号分隔开，如：“zip,rar”</span>
+                </dd>
+            </dl>
+            <dl>
+                <dt>视频上传类型</dt>
+                <dd>
+                    <input name="videoextension" type="text" value="flv,mp3,mp4,avi" id="videoextension" class="input normal" datatype="*1-500">
+                    <span class="Validform_checktip">*以英文的逗号分隔开，如：“mp4,flv”</span>
+                </dd>
+            </dl>
+            <dl>
+                <dt>附件上传大小</dt>
+                <dd>
+                    <input name="attachsize" type="text" value="51200" id="attachsize" class="input small" datatype="n"> KB
+                    <span class="Validform_checktip">*超过设定的文件大小不予上传，0不限制</span>
+                </dd>
+            </dl>
+            <dl>
+                <dt>视频上传大小</dt>
+                <dd>
+                    <input name="videosize" type="text" value="102400" id="videosize" class="input small" datatype="n"> KB
+                    <span class="Validform_checktip">*超过设定的文件大小不予上传，0不限制</span>
+                </dd>
+            </dl>
+            <dl>
+                <dt>图片上传大小</dt>
+                <dd>
+                    <input name="imgsize" type="text" value="10240" id="imgsize" class="input small" datatype="n"> KB
+                    <span class="Validform_checktip">*超过设定的图片大小不予上传，0不限制</span>
+                </dd>
+            </dl>
+            <dl>
+                <dt>图片最大尺寸</dt>
+                <dd>
+                    <input name="imgmaxheight" type="text" value="800" id="imgmaxheight" class="input small" datatype="n"> ×
+                    <input name="imgmaxwidth" type="text" value="800" id="imgmaxwidth" class="input small" datatype="n"> px
+                    <span class="Validform_checktip">*左边高度，右边宽度，超出自动裁剪，0为不受限制</span>
+                </dd>
+            </dl>
+            <dl>
+                <dt>缩略图生成尺寸</dt>
+                <dd>
+                    <input name="thumbnailheight" type="text" value="300" id="thumbnailheight" class="input small" datatype="n"> ×
+                    <input name="thumbnailwidth" type="text" value="300" id="thumbnailwidth" class="input small" datatype="n"> px
+                    <span class="Validform_checktip">*左边高度，右边宽度，0为不生成缩略图</span>
+                </dd>
+            </dl>
+            <dl>
+                <dt>图片水印类型</dt>
+                <dd>
+                    <div class="rule-multi-radio multi-radio">
+                        <div class="boxwrap">
+                            <a href="javascript:;">关闭水印</a>
+                            <a href="javascript:;">文字水印</a>
+                            <a href="javascript:;" class="selected">图片水印</a>
+                        </div>
+                        <span id="watermarktype" style="display: none;">
+                            <input id="watermarktype_0" type="radio" name="watermarktype" value="0">
+                            <label for="watermarktype_0">关闭水印</label>
+                            <input id="watermarktype_1" type="radio" name="watermarktype" value="1">
+                            <label for="watermarktype_1">文字水印</label>
+                            <input id="watermarktype_2" type="radio" name="watermarktype" value="2" checked="checked">
+                            <label for="watermarktype_2">图片水印</label>
+                        </span>
+                    </div>
+                </dd>
+            </dl>
+            <dl>
+                <dt>图片水印位置</dt>
+                <dd>
+                    <div class="rule-multi-radio multi-radio">
+                        <div class="boxwrap">
+                            <a href="javascript:;">左上</a>
+                            <a href="javascript:;">中上</a>
+                            <a href="javascript:;">右上</a>
+                            <a href="javascript:;">左中</a>
+                            <a href="javascript:;">居中</a>
+                            <a href="javascript:;">右中</a>
+                            <a href="javascript:;">左下</a>
+                            <a href="javascript:;">中下</a>
+                            <a href="javascript:;" class="selected">右下</a>
+                        </div>
+                        <span id="watermarkposition" style="display: none;">
+                            <input id="watermarkposition_0" type="radio" name="watermarkposition" value="1">
+                            <label for="watermarkposition_0">左上</label>
+                            <input id="watermarkposition_1" type="radio" name="watermarkposition" value="2">
+                            <label for="watermarkposition_1">中上</label><input id="watermarkposition_2" type="radio" name="watermarkposition" value="3">
+                            <label for="watermarkposition_2">右上</label><input id="watermarkposition_3" type="radio" name="watermarkposition" value="4">
+                            <label for="watermarkposition_3">左中</label><input id="watermarkposition_4" type="radio" name="watermarkposition" value="5">
+                            <label for="watermarkposition_4">居中</label><input id="watermarkposition_5" type="radio" name="watermarkposition" value="6">
+                            <label for="watermarkposition_5">右中</label><input id="watermarkposition_6" type="radio" name="watermarkposition" value="7">
+                            <label for="watermarkposition_6">左下</label><input id="watermarkposition_7" type="radio" name="watermarkposition" value="8">
+                            <label for="watermarkposition_7">中下</label><input id="watermarkposition_8" type="radio" name="watermarkposition" value="9" checked="checked">
+                            <label for="watermarkposition_8">右下</label>
+                        </span>
+                    </div>
+                </dd>
+            </dl>
+            <dl>
+                <dt>图片生成质量</dt>
+                <dd>
+                    <input name="watermarkimgquality" type="text" value="80" id="watermarkimgquality" class="input small" datatype="n">
+                    <span class="Validform_checktip">*只适用于加水印的jpeg格式图片.取值范围 0-100, 0质量最低, 100质量最高, 默认80</span>
+                </dd>
+            </dl>
+            <dl>
+                <dt>图片水印文件</dt>
+                <dd>
+                    <input name="watermarkpic" type="text" value="watermark.png" id="watermarkpic" class="input txt" datatype="s2-100">
+                    <span class="Validform_checktip">*需存放在站点目录下，如图片不存在将使用文字水印</span>
+                </dd>
+            </dl>
+            <dl>
+                <dt>水印透明度</dt>
+                <dd>
+                    <input name="watermarktransparency" type="text" value="5" id="watermarktransparency" class="input small" datatype="n">
+                    <span class="Validform_checktip">*取值范围1--10 (10为不透明)</span>
+                </dd>
+            </dl>
+            <dl>
+                <dt>水印文字</dt>
+                <dd>
+                    <input name="watermarktext" type="text" value="泥鳅软件" id="watermarktext" class="input txt" datatype="s2-100">
+                    <span class="Validform_checktip">*文字水印的内容</span>
+                </dd>
+            </dl>
+            <dl>
+                <dt>文字字体</dt>
+                <dd>
+                    <div class="rule-single-select up single-select">
+                        <div class="boxwrap">
+                            <a class="select-tit" href="javascript:;">
+                                <span>Tahoma</span><i></i>
+                            </a>
+                            <div class="select-items" style="display: none;">
+                                <ul>
+                                    <li>Arial</li>
+                                    <li>Arial Black</li>
+                                    <li>Batang</li>
+                                    <li>BatangChe</li>
+                                    <li>Comic Sans MS</li>
+                                    <li>Courier New</li>
+                                    <li>Dotum</li>
+                                    <li>DotumChe</li>
+                                    <li>Estrangelo Edessa</li>
+                                    <li>Franklin Gothic Medium</li>
+                                    <li>Gautami</li>
+                                    <li>Georgia</li>
+                                    <li>Gulim</li>
+                                    <li>GulimChe</li>
+                                    <li>Gungsuh</li>
+                                    <li>GungsuhChe</li>
+                                    <li>Impact</li>
+                                    <li>Latha</li>
+                                    <li>Lucida Console</li>
+                                    <li>Lucida Sans Unicode</li>
+                                    <li>Mangal</li>
+                                    <li>Marlett</li>
+                                    <li>Microsoft Sans Serif</li>
+                                    <li>MingLiU</li>
+                                    <li>MS Gothic</li>
+                                    <li>MS Mincho</li>
+                                    <li>MS PGothic</li>
+                                    <li>MS PMincho</li>
+                                    <li>MS UI Gothic</li>
+                                    <li>MV Boli</li>
+                                    <li>Palatino Linotype</li>
+                                    <li>PMingLiU</li>
+                                    <li>Raavi</li>
+                                    <li>Shruti</li>
+                                    <li>Sylfaen</li>
+                                    <li>Symbol</li>
+                                    <li>Tahoma</li>
+                                    <li>Times New Roman</li>
+                                    <li>Trebuchet MS</li>
+                                    <li>Tunga</li>
+                                    <li>Verdana</li>
+                                    <li>Webdings</li>
+                                    <li>Wingdings</li>
+                                    <li>仿宋_GB2312</li>
+                                    <li>宋体</li>
+                                    <li>新宋体</li>
+                                    <li>楷体_GB2312</li>
+                                    <li>黑体</li>
+                                </ul>
+                            </div>
+                            <i class="arrow" style="display: none;"></i>
+                        </div>
+                        <select name="watermarkfont" id="watermarkfont" style="display: none;">
+                            <option value="Arial">Arial</option>
+                            <option value="Arial Black">Arial Black</option>
+                            <option value="Batang">Batang</option>
+                            <option value="BatangChe">BatangChe</option>
+                            <option value="Comic Sans MS">Comic Sans MS</option>
+                            <option value="Courier New">Courier New</option>
+                            <option value="Dotum">Dotum</option>
+                            <option value="DotumChe">DotumChe</option>
+                            <option value="Estrangelo Edessa">Estrangelo Edessa</option>
+                            <option value="Franklin Gothic Medium">Franklin Gothic Medium</option>
+                            <option value="Gautami">Gautami</option>
+                            <option value="Georgia">Georgia</option>
+                            <option value="Gulim">Gulim</option>
+                            <option value="GulimChe">GulimChe</option>
+                            <option value="Gungsuh">Gungsuh</option>
+                            <option value="GungsuhChe">GungsuhChe</option>
+                            <option value="Impact">Impact</option>
+                            <option value="Latha">Latha</option>
+                            <option value="Lucida Console">Lucida Console</option>
+                            <option value="Lucida Sans Unicode">Lucida Sans Unicode</option>
+                            <option value="Mangal">Mangal</option>
+                            <option value="Marlett">Marlett</option>
+                            <option value="Microsoft Sans Serif">Microsoft Sans Serif</option>
+                            <option value="MingLiU">MingLiU</option>
+                            <option value="MS Gothic">MS Gothic</option>
+                            <option value="MS Mincho">MS Mincho</option>
+                            <option value="MS PGothic">MS PGothic</option>
+                            <option value="MS PMincho">MS PMincho</option>
+                            <option value="MS UI Gothic">MS UI Gothic</option>
+                            <option value="MV Boli">MV Boli</option>
+                            <option value="Palatino Linotype">Palatino Linotype</option>
+                            <option value="PMingLiU">PMingLiU</option>
+                            <option value="Raavi">Raavi</option>
+                            <option value="Shruti">Shruti</option>
+                            <option value="Sylfaen">Sylfaen</option>
+                            <option value="Symbol">Symbol</option>
+                            <option selected="selected" value="Tahoma">Tahoma</option>
+                            <option value="Times New Roman">Times New Roman</option>
+                            <option value="Trebuchet MS">Trebuchet MS</option>
+                            <option value="Tunga">Tunga</option>
+                            <option value="Verdana">Verdana</option>
+                            <option value="Webdings">Webdings</option>
+                            <option value="Wingdings">Wingdings</option>
+                            <option value="仿宋_GB2312">仿宋_GB2312</option>
+                            <option value="宋体">宋体</option>
+                            <option value="新宋体">新宋体</option>
+                            <option value="楷体_GB2312">楷体_GB2312</option>
+                            <option value="黑体">黑体</option>
+
+                        </select>
+                    </div>
+                    <input name="watermarkfontsize" type="text" value="12" id="watermarkfontsize" class="input small" datatype="n"> px
+                    <span class="Validform_checktip">*文字水印的字体和大小 </span>
+                </dd>
+            </dl>
+        </div>
+        <!--/上传配置-->
+        <!--/内容-->
+        <!--工具栏-->
+        <div class="page-footer">
+            <div class="btn-wrap" style="position: static;">
+                <input type="submit" name="btnSubmit" value="提交保存" id="btnSubmit" class="btn">
+                <input name="btnReturn" type="button" value="返回上一页" class="btn yellow" onclick="javascript:history.back(-1);">
+            </div>
+        </div>
+        <!--/工具栏-->
+
+        <div class="aspNetHidden">
+
+            <input type="hidden" name="hidden" id="hiddenID" value="591862C6">
+            <input type="hidden" name="hidden1" id="hidden1ID" value="">
+        </div>
+    </form>
+
+    <!-- Visual Studio Browser Link -->
+    <script type="application/json" id="__browserLink_initializationData">
+        {"appName":"Chrome","requestId":"d00a31793f7b48679843435bedb85196"}
+    </script>
+    <script type="text/javascript" src="http://localhost:2144/bb66a1c458db4170912276bbec44005e/browserLink" async="async"></script>
+    <!-- End Browser Link -->
+
+
+
+</body>
+</html>

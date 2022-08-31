@@ -1,0 +1,276 @@
+﻿
+@{
+    Layout = null;
+}
+@{
+    ViewBag.Title = "联系方式";
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+}
+<style>
+    .odd_bg th {
+        text-align: center;
+    }
+</style>
+
+<form id="form1" runat="server">
+    <!--导航栏-->
+    <div class="location">
+        <a href="javascript:history.back(-1);" class="back"><i></i><span>返回上一页</span></a>
+        <a href="/Home/Center" class="home"><i></i><span>首页</span></a>
+        <i class="arrow"></i>
+        <a href="/Business/GameList"><span>联系方式</span></a>
+        <i class="arrow"></i>
+        <span>联系方式列表</span>
+    </div>
+    <!--/导航栏-->
+    <!--工具栏-->
+    <div id="floatHead" class="toolbar-wrap">
+        <div class="toolbar">
+            <div class="l-list">
+                <ul class="icon-list">
+                    <li><a class="add" href="/GameCore/ContactEdit"><i></i><span>新增</span></a></li>
+
+                </ul>
+                @*是否启用：
+                <select name="gametypesea" id="gametypesea" class="select">
+
+                    <option value="true">是</option>
+                    <option value="false">否</option>
+                </select>*@
+                <input name="txtKeywords" type="text" id="txtKeywords" class="input">
+                <button type="button" style="height: 28px;padding: 3px 10px;background-color: lightgray;" id="lbtnSearch" class="btn btn-default btn-sm">查询</button>
+                @*<div class="" style="left:200px">
+                        <input name="txtKeywords" type="text" id="txtKeywords" class="keyword input">
+                        <a id="lbtnSearch" class="btn-search">查询</a>
+                    </div>*@
+            </div>
+
+
+
+
+
+
+
+        </div>
+    </div>
+    <!--/工具栏-->
+    <!--列表-->
+    <div class="table-container">
+        <table width="100%" border="0" cellspacing="0" cellpadding="0" class="ltable">
+            <thead>
+                <tr class="odd_bg" style="text-align:center;margin:0 auto">
+                    <th>ID</th>
+                    <th>软件名称</th>
+                    <th>下载地址</th>
+                    <th>官方账号</th>
+                    <th>创建时间</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody id="MyTbody">
+                <tr>
+                    <td align="center">QQ</td>
+                    <td align="center">微信</td>
+                    <td align="center">Skype</td>
+                    <td align="center">手机号码</td>
+                    <td align="center">其他1</td>
+                    <td align="center">其他2</td>
+                    <td align="center">其它3</td>
+                    <td align="center">2017/7/31 11:10:34</td>
+                    <td align="center">
+                        <a href="/Game/ContactEdit">修改</a>
+                        <a href="/Game/GameEdit">删除</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+    <!--/列表-->
+    <!--内容底部-->
+    <div class="line20"></div>
+    <div class="pagelist">
+        <div class="l-btns">
+            <span>显示</span><input name="txtPageNum" type="text" id="txtPageNum" class="pagenum"><span>条/页</span>
+        </div>
+        <div id="PageContent" class="default">
+        </div>
+    </div>
+    <!--/内容底部-->
+    <div style="width:100%;text-align: center;">
+        <span style="display: inline-block;padding: 4px 15px 0px 15px;color: #666;font-size:14px;">(注 :检索条件 游戏名字,游戏介绍，游戏规则)</span>
+    </div>
+    <div>
+    </div>
+</form>
+<script>
+    var storagefirst = window.localStorage;
+    var MyPageNum8 = storagefirst["MyPageNum8"];
+    var id = "";
+    var txtPageNum = 10;
+    var Keywords = "";
+    var gametypesea = "";
+    var PageIndex = 1;
+    if (MyPageNum8 != "" && MyPageNum8 != null) {
+        txtPageNum = MyPageNum8
+    } else {
+        txtPageNum = txtPageNum
+    }
+    $("#txtPageNum").val(txtPageNum)
+    $("#lbtnSearch").click(function () {
+        var txtKeywords = $("#txtKeywords").val();
+        Keywords = txtKeywords;
+        var txtgametypesea = $("#gametypesea").val();
+        gametypesea = txtgametypesea;
+        GetList();
+    })
+    $("#txtPageNum").change(function () {
+        txtPageNum = $("#txtPageNum").val()
+        storagefirst["MyPageNum8"] = txtPageNum
+        PageIndex = 1;
+        //console.log(txtPageNum)
+        GetList();
+    })
+    $(".pagelist").on('click', 'a', function () {
+        //var lkl = $(this).attr("href");
+        //console.log(lkl)
+        var lkl2 = $(this).text();
+        if (lkl2 == "下一页»") {
+            PageIndex = parseInt(PageIndex) + 1
+            //console.log(PageIndex)
+        } else if (lkl2 == "«上一页") {
+            PageIndex = parseInt(PageIndex) - 1
+        } else {
+            PageIndex = lkl2
+        }
+        txtPageNum = $("#txtPageNum").val()
+        GetList()
+    })
+    GetList();
+    function GetList() {
+        var typestr = "";
+        var data = {};
+        data.PageSize = txtPageNum;
+        data.PageIndex = PageIndex;
+        data.Keywords = Keywords;
+        data.gametypesea = gametypesea;
+        console.log(data);
+        $.ajax({
+            type: "post", url: '/GameCore/GetContactData',
+            datatype: 'json',
+            data: data,
+            success: function (res) {
+                if (res) {
+                    console.log(res)
+                    $("#MyTbody").empty();
+                    if (res.Code == 0 && res.Code == "0") {
+                        if (res.Data.length > 0) {
+                            console.log(res
+                            );
+                            for (var i = 0; i < res.Data.length; i++) {
+                              
+                                
+
+                                var str = $("#MyTbody").html();
+                                str = "<tr class='One'>" +
+                                    "<td align='center'>" + res.Data[i].ID + "</td>" +
+                                    "<td align='center'>" + res.Data[i].QQ + "</td>" +
+                                    "<td align='center'>" + res.Data[i].Wechat + "</td>" +
+                                    "<td align='center'>" + res.Data[i].Phone + "</td>" +
+                                    "<td align='center'>" + ChangeDateFormat(res.Data[i].CreatTime) + "</td>" +
+                                    " <td align='center'>" +
+                                    "<a href='/GameCore/ContactEdit?operation=Edit&amp;id=" + res.Data[i].ID + "'>修改&nbsp;</a>" +
+
+                                    "<a id='DeleteBtn'>删除&nbsp;" +
+                                    "<input type='hidden' name='hidId' id='hidId' value=" + res.Data[i].ID + ">" +
+                                    "</a>" +
+                                    "</td>"
+                                "</tr>"
+                                $('#MyTbody').append(str);
+                            }
+                        } else {
+                            $("#MyTbody").empty();
+                            var str = $("#MyTbody").html();
+                            str = "<tr class='One'>" +
+                                "<td align='center'  colspan='8'>没有数据</td>"
+                            "</tr>"
+                            $('#MyTbody').append(str);
+                        }
+                    } else {
+                        alert(res.Message)
+                    }
+                    var sthtml = $("#PageContent").html();
+                    $("#PageContent").empty();
+                    if (res.InnerHtml.length > 0) {
+                        sthtml = res.InnerHtml
+                        $('#PageContent').append(sthtml);
+                    }
+
+                } else {
+                    eval(res.Message)
+                }
+
+            }
+        })
+    }
+    $("body").on("click", "#DeleteBtn", function () {
+        id = $(this).find("#hidId").val();
+        //console.log(id)
+        var data = {};
+        data.id = id;
+        $.ajax({
+            type: "post", url: '/GameCore/DeleteContact',
+            datatype: 'json',
+            data: data,
+            success: function (res) {
+                // console.log(res)
+
+                alert(res.Message);
+                GetList();
+            }
+        })
+
+    })
+    function ChangeDateFormat(val) {
+        if (val != null) {
+            var date = new Date(parseInt(val.replace("/Date(", "").replace(")/", ""), 10));
+            //月份为0-11，所以+1，月份小bai于10时补个0
+            var month = date.getMonth() + 1 < 10 ? "0" + (date.getMonth() + 1) : date.getMonth() + 1;
+            var currentDate = date.getDate() < 10 ? "0" + date.getDate() : date.getDate();
+            return date.getFullYear() + "-" + month + "-" + currentDate;
+        }
+        return "";
+    }
+    ///添加
+    function GameInfo() {
+        var data = {};
+        //  data.ID = id
+        data.QQ = "";
+        data.Wechar = "";
+        data.Skype = "";
+        data.Phone = "";
+        data.orter = "";
+        data.operation = "Delete"
+        $.ajax({
+            type: "post", url: '/GameCore/AddContactData',
+            datatype: 'json',
+            data: data,
+            success: function (res) {
+                // console.log(res)
+                if (res.Code == 0 && res.Code == "0") {
+                    if (res) {
+                        alert(res.Message)
+                        window.location.reload();
+                    }
+                } else {
+                    alert(res.Message)
+                }
+            }
+        })
+    }
+
+        //禁用启用操作修改
+
+
+</script>
+

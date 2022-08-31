@@ -1,0 +1,146 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,initial-scale=1.0,user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <title>机器人设置</title>
+    <link href="~/skin/default/style.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="~/scripts/jquery/jquery-1.11.2.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="~/js/common.js"></script>
+    <script type="text/javascript">
+        var api = top.dialog.get(window); //获取父窗体对象
+        $(function () {
+            //设置按钮及事件
+            api.button([{
+                value: '确定',
+                callback: function () {
+                    submitForm();
+                },
+                autofocus: true
+            }, {
+                value: '取消',
+                callback: function () { }
+            }
+            ]);
+            $("#txtwinpercent,#txtlevel").keyup(function () {
+                var c = $(this);
+                if (/[^\d]/.test(c.val())) {
+                    var temp_amount = c.val().replace(/[^\d]/g, '');
+                    $(this).val(temp_amount);
+                }
+            });
+
+            function getURLParameter(name) {
+                return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search) || [null, ''])[1].replace(/\+/g, '%20')) || null;
+            }
+            //console.log(getURLParameter("uid"))
+            $("#hduid").val(getURLParameter("uid"))
+        });
+
+        var exp = new RegExp("^[0-9]*$");
+        //提交表单处理
+        function submitForm() {
+            var currDocument = $(document);
+            //验证表单
+
+            if ($("#txtwinpercent").val() == "") {
+                top.dialog({
+                    title: '提示',
+                    content: '获胜几率不能为空！',
+                    okValue: '确定',
+                    ok: function () { },
+                    onclose: function () {
+                        $("#txtwinpercent", currDocument).focus();
+                    }
+                }).showModal(api);
+                return false;
+            }
+
+            if (!exp.test($("#txtwinpercent").val())) {
+                top.dialog({
+                    title: '提示',
+                    content: '获胜几率格式错误！',
+                    okValue: '确定',
+                    ok: function () { },
+                    onclose: function () {
+                        $("#txtwinpercent", currDocument).focus();
+                    }
+                }).showModal(api);
+                return false;
+            }
+            //if (!exp.test($("#txtlevel").val())) {
+            //    top.dialog({
+            //        title: '提示',
+            //        content: '机器人等级格式错误！',
+            //        okValue: '确定',
+            //        ok: function () { },
+            //        onclose: function () {
+            //            $("#txtlevel", currDocument).focus();
+            //        }
+            //    }).showModal(api);
+            //    return false;
+            //}
+            var paraJson = {};
+            paraJson["uid"] = $("#hduid").val();
+
+            paraJson["level"] = $("#txtlevel").val();
+            paraJson["winpercent"] = $("#txtwinpercent").val();
+            ajaxPostData("/Business/DialogRobot", paraJson, function (json) {
+                debugger
+                alert(json.Message);
+                //if (json.Code == "0" && json.Code == 0) {
+                //    if (json.Message) {
+                //        api.close(true).remove();
+                //    }
+                //    else {
+                //        alertMsg("设置失败");
+                //    }
+                //}
+            });
+
+            return false;
+        }
+    </script>
+</head>
+
+<body>
+    <div class="div-content">
+        <input type="hidden" id="hduid" />
+        <input type="hidden" id="hduid2" />
+        @*<%--        <dl>
+            <dt>是否机器人</dt>
+            <dd>
+                <select id="slisrobot">
+                    <option value="0">普通会员</option>
+                    <option value="1" <%=(user.isRobot==1)?"selected='selected'":""%>>机器人</option>
+                </select>
+            </dd>
+        </dl>--%>*@
+        <dl>
+            <dt>设置胜率</dt>
+            <dd>
+                <input type="text" id="txtwinpercent" class="input normal" value="" />
+                <span class="Validform_checktip">*</span>
+            </dd>
+        </dl>
+        <dl>
+            <dt>机器人等级</dt>
+            <dd>
+                <input type="text" id="txtlevel" value="0" class="input normal" />
+                <span class="Validform_checktip">*</span>
+            </dd>
+        </dl>
+        <dl>
+            <dd><span style="color:red">*仅仅机器人可设置胜率！否则会设置失败！</span></dd>
+           
+        </dl>
+    </div>
+</body>
+</html>

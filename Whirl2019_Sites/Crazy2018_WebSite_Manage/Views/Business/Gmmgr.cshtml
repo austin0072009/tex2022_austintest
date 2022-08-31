@@ -1,0 +1,1289 @@
+﻿
+@{
+    ViewBag.Title = "GM控制";
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+}
+@using Crazy2018_Sys_Common;
+<style type="text/css">
+    .login-input {
+    }
+</style>
+<script>
+    var storagefirst = window.localStorage;
+    var givegolds2 = storagefirst["givegolds"];
+    var givegolds = "";
+    if (givegolds2 != "" || givegolds2 != null) {
+        givegolds = givegolds2;
+    } else {
+        givegolds = "";
+    }
+
+    $(function () {
+        getGameInfo();
+        getredisRegister();
+        givegold(0, givegolds);
+
+        ///清除所有用户贡献值
+        $("#clearAllContribuilt").click(function () {
+
+            $.ajax({
+                type: "post",
+                url: '/Business/ClearAllChild',
+                datatype: 'json',
+                success: function (data) {
+                    $("#loading").fadeOut();
+                    if (data.Code == 0) {
+                        alert("执行成功");
+                    }
+                    else {
+                        alert(data.Message);
+                    }
+                }
+            });
+            //$.post("/Business/ClearAllChild", {}, function (data) {
+            //    if (data.Code == 0) {
+            //        alert("执行成功");
+            //    }
+            //    else {
+            //        alert(data.Message);
+            //    }
+            //});
+        });
+
+
+
+
+        $("#createActiceCode").click(function () {
+
+            $.ajax({
+                type: "post", url: '/Business/SetActiveCode',
+                datatype: 'json',
+                success: function (res) {
+                    jsprint(res.Message);
+                }
+            });
+        });
+        /**开关机器人**/
+        $(".robot").change(function () {
+            if ($(this).find("a").first().attr("class") == "selected") {
+                $("#is_lock_robot").val(1);
+            } else {
+                $("#is_lock_robot").val(0);
+            }
+            var switch_type = 2;
+            var gameid = $("#selectGameInfo_robot").val();
+            var is_lock = $("#is_lock_robot").val();
+            swicthGame(switch_type, gameid, is_lock);
+        });
+        /**开关游戏注册**/
+        $(".gregist").change(function () {
+            if ($(this).find("a").first().attr("class") == "selected") {
+                $("#is_reg_robot").val(1);//开启
+            } else {
+                $("#is_reg_robot").val(0);//关闭
+            }
+            var is_lock = $("#is_reg_robot").val();
+            swicthGameRegist(is_lock);
+        });
+
+        $("#handrack").change(function () {
+
+            if ($(this).find("a").first().attr("class") == "selected") {
+                $("#is_open_rank").val(1);
+            } else {
+                $("#is_open_rank").val(0);
+            }
+            var data = {};
+            data.is_open = $("#is_open_rank").val();
+            $.ajax({
+                type: "post", url: '/Gmmgr/swichHandRack',
+                datatype: 'json',
+                data: data,
+                success: function (res) {
+                    parent.alertMsg(res.Message);
+                }
+            });
+        });
+
+
+        /**开关游戏**/
+        $(".game").change(function () {
+            if ($(this).find("a").first().attr("class") == "selected") {
+                $("#is_lock_game").val(1);
+            } else {
+                $("#is_lock_game").val(0);
+            }
+            var switch_type = 1;
+            var gameid = $("#selectGameInfo_game").val();
+            var is_lock = $("#is_lock_game").val();
+            swicthGame(switch_type, gameid, is_lock);
+        }),
+            $(".gameTwo").change(function () {
+                var setGiveGold = 1
+                var lockstate = $("#lockstate").val();
+                var isselected = $(this).children("a").attr("class");
+                console.log(lockstate);
+                if (lockstate == "1") {
+                    givegolds = false;
+                    $("#lockstate").val("0");
+                } else {
+                    givegolds = true;
+                    $("#lockstate").val("1");
+                }
+                storagefirst["givegolds"] = givegolds
+
+                givegold(setGiveGold, givegolds)
+            })
+
+
+
+        $("#btnrobot").click(function () {
+            var tableid = $("#tableid").val();
+            if (tableid != "") {
+                //添加机器人
+                $.post("/Business/AddThisTableRobot", { tableid: tableid }, function (data) {
+
+                    if (data.Code == 0) {
+                        alert(data.Message);
+                    } else {
+                        alert(data.Message);
+                    }
+                });
+            } else {
+                alert("房间号不能为空");
+            }
+        });
+        //watch_btnrobot
+        $("#watch_btnrobot").click(function () {
+            var tableid = $("#watch_tableid").val();
+            if (tableid != "") {
+                //添加机器人
+                $.post("/Business/AddTablewatchRobot", { tableid: tableid }, function (data) {
+
+                    if (data.Code == 0) {
+                        alert(data.Message);
+                    } else {
+                        alert(data.Message);
+                    }
+                });
+            } else {
+                alert("房间号不能为空");
+            }
+        });
+
+        $("#btnSetFAgent").click(function () {
+            var userId = $("#txtAuserId").val();
+            var fUserId = $("#txtFUserId").val();
+            if (userId != "" && fUserId != "") {
+                $.post("/Business/SetFAgent", { userId: userId, fUserId: fUserId }, function (data) {
+
+                    if (data.Code == 0) {
+                        alert("执行成功");
+                    } else {
+                        alert(data.Message);
+                    }
+
+                });
+            } else {
+                alert("用户ID不能为空");
+            }
+
+        });
+
+        $("#btnSetGeneralAgent").click(function () {
+            var userId = $("#txtUserId").val();
+            var activeCode = "";//$("#txtActiveCode").val();
+            if (userId != "") {
+                //添加机器人
+                $.post("/Business/SetGeneralAgent", { userId: userId, activeCode: activeCode }, function (data) {
+
+                    if (data.Code == 0) {
+                        alert("执行成功");
+                    } else {
+                        alert(data.Message);
+                    }
+
+                });
+            } else {
+                alert("玩家ID和推荐码不能为空");
+            }
+
+        });
+        $("#btnRoomCards").click(function () {
+            var tablenum = $("#txtTablenum").val();
+            var allCards = $("#txtCards1").val() + ';' + $("#txtCards2").val() + ';' + $("#txtCards3").val() + ';' + $("#txtCards4").val() + ';'
+                + $("#txtCards5").val() + ';' + $("#txtCards6").val() + ';' + $("#txtCards7").val() + ';' + $("#txtCards8").val();
+            if (tablenum != "") {
+                //添加机器人
+                $.post("/Business/SetRoomCards", { allCards: allCards, tablenum: tablenum }, function (data) {
+
+                    if (data.Code == 0) {
+                        var currAllCards = data.Message.split(";");
+                        $("#txtCards1").val(currAllCards[0]);
+                        $("#txtCards2").val(currAllCards[1]);
+                        $("#txtCards3").val(currAllCards[2]);
+                        $("#txtCards4").val(currAllCards[3]);
+                        $("#txtCards5").val(currAllCards[4]);
+                        $("#txtCards6").val(currAllCards[5]);
+                        $("#txtCards7").val(currAllCards[6]);
+                        $("#txtCards8").val(currAllCards[7]);
+
+                        alert("执行成功");
+                    } else {
+                        alert(data.Message);
+                    }
+
+                });
+            } else {
+                alert("房间号不能为空");
+            }
+
+        });
+
+        $("#DzbtnRoomCards").click(function () {
+            var tablenum = $("#DztxtTablenum").val();
+            var dzpublicpoker = $("#DzPublicPoker").val();
+            var allCards = $("#DztxtCards1").val() + ';' + $("#DztxtCards2").val() + ';' + $("#DztxtCards3").val() + ';' + $("#DztxtCards4").val() + ';'
+                + $("#DztxtCards5").val() + ';' + $("#DztxtCards6").val() + ';' + $("#DztxtCards7").val() + ';' + $("#DztxtCards8").val() + ';' + $("#DztxtCards9").val();
+            if (tablenum != "") {
+                //添加机器人
+                $.post("/Business/SetDzRoomCards", { allCards: allCards, tablenum: tablenum, dzppoker: dzpublicpoker, isAnchor: "0" }, function (data) {
+
+                    if (data.Code == 0) {
+                        var currAllCards = data.Message.split(";");
+                        $("#DzxtCards1").val(currAllCards[0]);
+                        $("#DztxtCards2").val(currAllCards[1]);
+                        $("#DztxtCards3").val(currAllCards[2]);
+                        $("#DztxtCards4").val(currAllCards[3]);
+                        $("#DztxtCards5").val(currAllCards[4]);
+                        $("#DztxtCards6").val(currAllCards[5]);
+                        $("#DztxtCards7").val(currAllCards[6]);
+                        $("#DztxtCards8").val(currAllCards[7]);
+                        $("#DztxtCards9").val(currAllCards[8]);
+                        alert("执行成功");
+                    } else {
+                        alert(data.Message);
+                    }
+
+                });
+            } else {
+                alert("房间号不能为空");
+            }
+        });
+        $("#btnSetUserRed").click(function () {
+            var redeUserId = $("#redeUserId").val();
+            var redtypeId = $("#redtypeId").val();
+            var redeGetcount = $("#redeGetcount").val();
+            var typecon = $("#redtypeIdcondition").val();
+            if (redeUserId == "") {
+                alert("请输入玩家Id");
+                return;
+            }
+            if (redeGetcount == "") {
+                alert("请输入获得次数");
+                return;
+            }
+            if (redtypeId == "0") {
+                alert("请选择红包类型");
+                return;
+            }
+            $.post("/Business/SetSetUserRedEnve", { uid: redeUserId, tid: redtypeId, gid: redeGetcount, typecon: typecon }, function (data) {
+                if (data.Code == 0)
+                    alert("执行成功");
+                else
+                    alert(data.Message);
+            });
+
+
+        });
+
+        $("#redtypeId2").change(function () {
+            var type = $("#redtypeId2").val();
+
+            $.post("/Business/GetRedeveCondition", { reTypeid: type }, function (data) {
+                if (data != null) {
+                    var str = "";
+                    $("#redtypeIdcondition2").empty();
+                    for (var i = 0; i < data.length; i++) {
+                        str += "<option value=" + data[i].Key + ">" + data[i].Value + "</option>";
+                    }
+                    $("#redtypeIdcondition2").append(str);
+                }
+            });
+        });
+        //redtypeIdcondition
+        $("#redtypeId").change(function () {
+            var type = $("#redtypeId").val();
+
+            $.post("/Business/GetRedeveCondition", { reTypeid: type }, function (data) {
+                if (data != null) {
+                    $("#redtypeIdcondition").empty();
+                    var str = "";
+                    for (var i = 0; i < data.length; i++) {
+                        str += "<option value=" + data[i].Key + ">" + data[i].Value + "</option>";
+                    }
+                    $("#redtypeIdcondition").append(str);
+                }
+            });
+        });
+        $("#btnSetUserRed2").click(function () {
+            var redeGetcount = $("#redeGetcount2").val();
+            var redtypeId = $("#redtypeId2").val();
+            var typecon = $("#redtypeIdcondition2").val();
+            if (redeGetcount == "") {
+                alert("请输入获得次数");
+                return;
+            }
+            if (redtypeId == "0") {
+                alert("请选择红包类型");
+                return;
+            }
+            $.post("/Business/SetSetUserRedEnve", { uid: -1, tid: redtypeId, gid: redeGetcount, typecon: typecon }, function (data) {
+                if (data.Code == 0)
+                    alert("执行成功");
+                else
+                    alert(data.Message);
+            });
+
+
+        });
+        $("#redeGetcount2").focus(function () {
+            layer.tips('此功能影响较大、请谨慎使用!', '#redeGetcount2', {
+                tips: [1, '#3595CC'],
+                time: 4000
+            });
+        });
+
+        $("#btnSeeHand").click(function () {
+            var Handtableid = $("#Handtableid").val();
+            var gameid = $("#HandCardGameInfo").val();
+            if (Handtableid == "") {
+                alert("请输入桌子号码。"); return;
+            }
+            if (gameid == 0 || gameid == "") {
+                alert("请选择游戏。"); return;
+            }
+            layer.open({
+                type: 2,
+                title: "房间：" + Handtableid,
+                shadeClose: true,
+                shade: 0.3,
+                shadeClose: false,
+                area: ['1000px', '350px'],
+                fixed: false,
+                maxmin: true,
+                content: '/Gmmgr/UserPokerList?tableid=' + Handtableid + '&gameid=' + gameid
+            });
+        });
+        //updateRobotnikeName
+        $("#updateRobotnikeName").click(function () {
+            var RobotId = $("#RobotId").val();
+            var RobotnikeName = $("#RobotnikeName").val();
+            if (RobotId == "") {
+                alert("机器人ID不能为空。"); return;
+            }
+            if (RobotnikeName == "") {
+                alert("昵称不能为空。"); return;
+            }
+            $.post("/Business/SetRobotnikeName", { RobotId: RobotId, RobotnikeName: RobotnikeName }, function (data) {
+                if (data.Code == 0)
+                    alert("执行成功");
+                else
+                    alert(data.Message);
+            });
+        });
+
+        $("#updateRobotPro").click(function () {
+            var RobotId = $("#winRobot").val();
+            var Winpercent = $("#probability").val();
+            if (RobotId == "") {
+                alert("机器人ID不能为空。"); return;
+            }
+            if (probability == "") {
+                alert("胜率不能为空。"); return;
+            }
+            $.post("/Business/SetRobotWinpercent", { RobotId: RobotId, Winpercent: Winpercent }, function (data) {
+                if (data.Code == 0)
+                    alert("执行成功");
+                else
+                    alert(data.Message);
+            });
+        });
+        $("#RefreshallRobot").click(function () {
+
+            $.post("/Business/SetRefreshallRobot", {}, function (data) {
+                if (data.Code == 0)
+                    alert("执行成功");
+                else
+                    alert(data.Message);
+            });
+        });
+        $("#SeeOnlinePeoplebtn").click(function () {
+            $.post("/Business/SeeOnlinePeople", {}, function (data) {
+                if (data.Code == 0) {
+                    alert("执行成功");
+                    $("#onlineNum").html(data.Message);
+                }
+                else
+                    alert(data.Message);
+            });
+
+        });
+
+        $("#btnRobotEdit").click(function () {
+            var robotId = $("#editRobotId").val();
+            if (robotId != "") {
+                location.href = "/Business/RobotEdit?uid=" + robotId;
+            } else {
+                alert("请输入机器人Id");
+            }
+        });
+
+
+        $("#noticedownserver").click(function ()
+        {
+            $.post("/Business/NoticeDownServer", {}, function (data) {
+                alert(data.Message);
+            });
+        });
+
+
+        $("#MjbtnRoomCards").click(function () {
+            var tablenum = $("#MahjongTablenum").val();//房间号
+            var mjpublicpoker = $("#MjPublicPoker").val();//公牌
+            var allCards = $("#MjtxtCards1").val() + ';' + $("#MjtxtCards2").val() + ';' + $("#MjtxtCards3").val() + ';' + $("#MjtxtCards4").val();
+            var MjbankerPos = $("#MjbankerPos").val();
+
+            if (tablenum != "") {
+                //麻将配置
+                $.post("/Business/SetMjRoomCards", { allCards: allCards, tablenum: tablenum, mjppoker: mjpublicpoker, MjbankerPos: MjbankerPos }, function (data) {
+
+                    if (data.Code == 0) {
+                        var currAllCards = data.Message.split(";");
+                        $("#MjtxtCards1").val(currAllCards[0]);
+                        $("#MjtxtCards2").val(currAllCards[1]);
+                        $("#MjtxtCards3").val(currAllCards[2]);
+                        $("#MjtxtCards4").val(currAllCards[3]);
+                        alert("执行成功");
+                    } else {
+                        alert(data.Message);
+                    }
+
+                });
+            } else {
+                alert("房间号不能为空");
+            }
+        });
+
+        //$("#btnrobot_addroom").click(function () {
+        //    var RobotId = $("#Robot_id").val();
+        //    var tableid = $("#tableid").val();
+        //    var seatnum = $("#seatnum").val();
+        //    if (RobotId == "") {
+        //        alert("机器人ID不能为空。"); return;
+        //    }
+        //    if (tableid == "") {
+        //        alert("房间号不能为空。"); return;
+        //    }
+        //    if (seatnum == "") {
+        //        seatnum = -1;
+        //    }
+        //    $.post("/Business/SetRobotAddRoom", { RobotId: RobotId, tableid: tableid, seatnum: seatnum }, function (data) {
+        //        if (data.Code == 0) {
+        //            $("#Robot_id").val("");
+        //            $("#tableid").val("");
+        //            $("#seatnum").val("");
+        //            alert("执行成功");
+        //        } else {
+        //            alert(data.Message);
+        //        }
+        //    });
+        //})
+
+        //$("#CreateUserCodeBtn").click(function ()
+        //{
+        //    var codeUserid = $("#code_UserId").val();
+        //    if (codeUserid == "") {
+        //        alert("用户Id。"); return;
+        //    }
+        //    $.post("/Business/SetUserCode", { codeUserid:codeUserid }, function (data) {
+        //        if (data.Code == 0)
+        //            alert("执行成功");
+        //        else
+        //            alert(data.Message);
+        //    });
+
+
+        //});
+
+
+    });
+
+
+    /**获取游戏信息**/
+    function getGameInfo() {
+        var data = {};
+        data.typeid = "2";
+        $.ajax({
+            type: "post", url: '/Business/GetGameInfoByType',
+            datatype: 'json',
+            data: data,
+            success: function (res) {
+                if (res.Code == "0" && res.Code == 0) {
+                    if (res) {
+                        var Nhtml = "";
+                        for (var j = 0; j < res.Data.length; j++) {
+
+                            Nhtml += "<option value=" + res.Data[j].ID + ">" + res.Data[j].Name + "</option>"
+
+                        }
+                        $("#selectGameInfo_robot").append(Nhtml);
+                        $("#selectGameInfo_game").append(Nhtml);
+                        $("#HandCardGameInfo").append(Nhtml);
+                    } else {
+                        eval(res)
+                    }
+                } else {
+                    eval(res)
+                }
+            }
+        })
+
+    }
+    /**开关游戏**/
+    function swicthGame(switch_type, gameid, is_lock) {
+        var data = {};
+        data.switch_type = switch_type;
+        data.gameid = gameid;
+        data.is_lock = is_lock;
+        $.ajax({
+            type: "post", url: '/Gmmgr/SwitchGame',
+            datatype: 'json',
+            data: data,
+            success: function (res) {
+                parent.alertMsg(res.Message);
+            }
+        })
+    }
+    /**开关游戏注册**/
+    function swicthGameRegist(is_lock) {
+        var data = {};
+        data.is_lock = is_lock;
+        $.ajax({
+            type: "post", url: '/Gmmgr/GameRegistIsopen',
+            datatype: 'json',
+            data: data,
+            success: function (res) {
+                parent.alertMsg(res.Message);
+            }
+        })
+    }
+    function givegold(setGiveGold, givegold) {
+        var data = {};
+        data.setGiveGold = setGiveGold;
+        data.givegold = givegold;
+
+
+        $.ajax({
+            type: "post", url: '/Gmmgr/GiveGold',
+            datatype: 'json',
+            data: data,
+            success: function (res) {
+
+                if (res) {
+                    if (res.Data.giveGold == false) {
+                        $(".gameTwo").find("a").removeClass("selected");
+                        $("#lockstate").val("0");
+
+                    } else {
+                        $(".gameTwo").find("a").addClass("selected");
+                        $("#lockstate").val("1");
+                    }
+                }
+            }
+        })
+    }
+
+    function getredisRegister() {
+        $.ajax({
+            type: "post", url: '/Gmmgr/GetRedisRegister',
+            datatype: 'json',
+            // data: data,
+            success: function (res) {
+                if (res.Code != -1) {
+                    $("#is_reg_robot").val(res.Code);
+                    //checked = "checked"
+                    if (res.Code == 1) {
+                     
+                        $('#switchReg').prop("checked", true);
+
+                    } else {
+                        document.getElementById("switchReg").removeAttr('checked'); 
+                    }
+
+                } else {
+                    parent.alertMsg(res.Code);
+                }
+
+
+
+            }
+        })
+    }
+
+
+</script>
+<form id="form1">
+    <!--导航栏-->
+    <div class="location">
+        <a href="javascript:history.back(-1);" class="back"><i></i><span>返回上一页</span></a>
+        <a href="/Home/Center" class="home"><i></i><span>首页</span></a>
+        <i class="arrow"></i>
+        <a href="/Home/ManagerList"><span>管理员</span></a>
+        <i class="arrow"></i>
+        <span>gm控制</span>
+    </div>
+    <!--/导航栏-->
+    <!--统计信息-->
+
+
+    <div class="tab-content">
+        <table>
+            <tbody>
+                <tr>
+                    <td>
+                        <dl>
+                            <dt>
+                                查看当前在线人数:
+                            </dt>
+                            <dd>
+
+                                <input name="SeeOnlinePeoplebtn" value="执行" id="SeeOnlinePeoplebtn" type="button" class="btn" style="width:120px;height:32px">
+                                &nbsp;&nbsp;&nbsp; 在线人数:<span id="onlineNum">0</span>
+                            </dd>
+                        </dl>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <dl>
+                            <dt>
+                                刷新所有机器人:
+                            </dt>
+                            <dd>
+
+                                <input name="RefreshallRobot" value="执行" id="RefreshallRobot" type="button" class="btn" style="width:120px;height:32px">
+
+                            </dd>
+                        </dl>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <dl>
+                            <dt>
+                                查看牌桌手牌:
+                            </dt>
+                            <dd>
+                                <input name="Handtableid" type="text" id="Handtableid" class="input" placeholder="房间号" title="房间号">
+                                <select name="HandCardGameInfo" id="HandCardGameInfo" class="select"></select>
+                                <input name="btnSeeHand" value="执行" id="btnSeeHand" type="button" class="btn" style="width:120px;height:32px">
+
+                            </dd>
+                        </dl>
+                    </td>
+                </tr>
+
+
+
+                @*<tr>
+            <td>
+                <dl>
+                    <dt>
+                        生成用户邀请码:
+                    </dt>
+                    <dd>
+                        <input name="code_UserId" type="text" id="code_UserId" class="input" placeholder="用户ID" title="用户ID">
+                        <input name="CreateUserCodeBtn" value="执行" id="CreateUserCodeBtn" type="button" class="btn" style="width:120px;height:32px">
+
+                    </dd>
+                </dl>
+            </td>
+        </tr>*@
+                @*<tr>
+            <td>
+                <dl>
+                    <dt>
+                        指定机器人添加到指定房间:
+                    </dt>
+                    <dd>
+                        <input name="Robot_id" type="text" id="Robot_id" class="input" placeholder="机器人Id" title="机器人id">
+                        <input name="tableid" type="text" id="tableid" class="input" placeholder="房间号" title="房间号">
+                        <input name="seatnum" type="text" id="seatnum" class="input" placeholder="座位号" title="座位号">
+                        <input type="submit" name="btnrobot_addroom" value="执行" id="btnrobot_addroom" class="btn" style="width:120px;">
+                        <span id="lblreturnAgent"></span>
+                    </dd>
+                </dl>
+            </td>
+        </tr>*@
+                <tr>
+                    <td>
+                        <dl>
+                            <dt>
+                                添加观战机器人:
+                            </dt>
+                            <dd>
+                                <input name="watch_tableid" type="text" id="watch_tableid" class="input" placeholder="房间号" title="房间号">
+                                <input type="button" name="watch_btnrobot" value="执行" id="watch_btnrobot" class="btn" style="width:120px;">
+                                <span id="lblreturnAgent"></span>
+                            </dd>
+                        </dl>
+                    </td>
+                </tr>
+                @*<tr>
+            <td>
+                <dl>
+                    <dt>
+                        设置机器人胜率:
+                    </dt>
+                    <dd>
+                        <input name="winRobot" type="text" id="winRobot" class="input" placeholder="机器人Id" title="机器人Id">
+                        <input name="probability" type="text" id="probability" class="input" placeholder="百分比" title="百分比">
+                        <input type="button" name="updateRobotPro" value="执行" id="updateRobotPro" class="btn" style="width:120px;">
+                        <span id="labPro"></span>
+                    </dd>
+                </dl>
+            </td>
+        </tr>*@
+                @*<tr>
+            <td>
+                <dl>
+                    <dt>
+                        设置机器人昵称:
+                    </dt>
+                    <dd>
+                        <input name="RobotId" type="text" id="RobotId" class="input" placeholder="机器人Id" title="机器人Id">
+                        <input name="RobotnikeName" type="text" id="RobotnikeName" class="input" placeholder="昵称" title="昵称">
+                        <input type="button" name="updateRobotnikeName" value="执行" id="updateRobotnikeName" class="btn" style="width:120px;">
+                        <span id="labPro"></span>
+                    </dd>
+                </dl>
+            </td>
+        </tr>*@
+                @*<tr>
+
+            <td>
+                <dl>
+                    <dt>
+                        批量更换头像:
+                    </dt>
+                    <dd>
+                        <input type="file" name="fileload" id="fileload" class="input" style="width:140px;">
+                        <input name="txtRobotId" type="text" id="txtRobotId" class="input" placeholder="起始机器人ID" title="起始机器人ID">
+                        <input name="updateNum" type="text" id="updateNum" class="input" placeholder="更新数目" title="更新数目">
+                        <input type="submit" name="btnUpdateRobot" value="执行" id="btnUpdateRobot" class="btn" style="width:120px;">
+                        <span id="txtState"></span>
+                    </dd>
+                </dl>
+            </td>
+        </tr>*@
+                <tr>
+                    <td>
+                        <dl>
+                            <dt>
+                                更新机器人信息:
+                            </dt>
+                            <dd>
+                                <input name="editRobotId" type="text" id="editRobotId" class="input" placeholder="机器人Id" title="机器人Id">
+                                <input type="button" name="btnRobotEdit" value="执行" src="/Business/RobotEdit" id="btnRobotEdit" class="btn" style="width:120px;">
+                            </dd>
+                        </dl>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <dl>
+                            <dt>
+                                生成推荐码:
+                            </dt>
+                            <dd>
+                                <input type="button" name="createActiceCode" value="执行" id="createActiceCode" class="btn" style="width:120px;">
+                                <span id="labPro"></span>
+                            </dd>
+                        </dl>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <dl>
+                            <dt>
+                                开关游戏机器人:
+                            </dt>
+                            <dd>
+                                <select name="selectGameInfo" id="selectGameInfo_robot" class="select"></select>
+                                <div class="rule-single-checkbox single-checkbox robot">
+                                    <input type="hidden" id="is_lock_robot" name="is_lock_robot" />
+                                    <input id="switchRobot" type="checkbox" name="switchRobot">
+                                </div>
+                                <span id="labPro"></span>
+                            </dd>
+                        </dl>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <dl>
+                            <dt>
+                                开关游戏注册:
+                            </dt>
+                            <dd>
+                                <div class="rule-single-checkbox single-checkbox gregist">
+                                    <input type="hidden" id="is_reg_robot" name="is_reg_robot" />
+                                    <input id="switchReg" type="checkbox" name="switchReg" checked>
+                                </div>
+                                <span id="labPro"></span>
+                            </dd>
+                        </dl>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <dl>
+                            <dt>
+                                开关手数排行榜:
+                            </dt>
+                            <dd>
+
+                                <div class="rule-single-checkbox single-checkbox handrack">
+                                    <input type="hidden" id="is_open_rank" name="is_open_rank" />
+                                    <input id="switchHandrack" type="checkbox" name="switchHandrack">
+                                </div>
+                                <span id="labPro"></span>
+                            </dd>
+                        </dl>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <dl>
+                            <dt>
+                                开关赠送金币:
+                            </dt>
+                            <dd>
+                                <div class="rule-single-checkbox single-checkbox gameTwo">
+                                    <input type="hidden" id="lockstate" name="lockstate" />
+                                    <input type="hidden" id="is_lock_givegold" name="is_lock_givegold" />
+                                    <input id="cbIsLock" type="checkbox" name="cbIsLock" checked="checked">
+                                </div>
+                                <span id="labPro"></span>
+                            </dd>
+                        </dl>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <dl>
+                            <dt>
+                                清除所有用户贡献值:
+                            </dt>
+                            <dd>
+                                <input type="button" name="clearAllContribuilt" value="执行" id="clearAllContribuilt" class="btn" style="width:120px;">
+                                <span id="labPro">注意：执行后会清除所有用户以往的贡献值</span>
+                            </dd>
+                        </dl>
+                    </td>
+                </tr>
+                @*<tr>
+            <td>
+                <dl>
+                    <dt>
+                        设置总代理:
+                    </dt>
+                    <dd>
+                        <input name="txtUserId" type="text" id="txtUserId" class="input" placeholder="玩家ID" title="玩家ID">
+
+                        <input type="button" name="btnSetGeneralAgent" value="执行" id="btnSetGeneralAgent" class="btn" style="width:120px;">
+                        <span id="lblreturnMinBull"></span>
+                    </dd>
+                </dl>
+            </td>
+        </tr>*@
+                <tr>
+                    <td>
+                        <dl>
+                            <dt>
+                                设置父级:
+                            </dt>
+                            <dd>
+                                <input name="txtAuserId" type="text" id="txtAuserId" class="input" placeholder="玩家ID" title="玩家ID">
+                                <input name="txtFUserId" type="text" id="txtFUserId" class="input" placeholder="父级ID" title="父级ID">
+                                <input type="submit" name="btnSetFAgent" value="执行" id="btnSetFAgent" class="btn" style="width:120px;">
+                                <span id="lblreturnMinBull"></span>
+                            </dd>
+                        </dl>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <dl>
+                            <dt>
+                                赠送玩家可抢红包次数:
+                            </dt>
+                            <dd>
+                                <input name="redeUserId" type="text" id="redeUserId" class="input" placeholder="玩家ID" title="玩家ID">
+
+                                <select name="redtypeId" id="redtypeId" class="select">
+                                    <option value="0">请选择</option>
+                                    @{ var data = Enum.GetValues(typeof(TableUtil.RedMoneyType));}
+                                    @for (int i = 0; i < data.Length; i++)
+                                    {
+                                        <option value="@((int)data.GetValue(i))">@data.GetValue(i)</option>
+                                    }
+                                </select>
+                                <select name="redtypeIdcondition" title="红包条件" id="redtypeIdcondition" class="select"></select>
+                                <input name="redeGetcount" type="text" id="redeGetcount" class="input" placeholder="获得次数" title="获得次数">
+                                <input type="submit" name="btnSetUserRed" value="执行" id="btnSetUserRed" class="btn" style="width:120px;">
+                            </dd>
+                        </dl>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <dl>
+                            <dt>
+                                赠送全部玩家可领红包个数:
+                            </dt>
+                            <dd>
+
+                                <select name="redtypeId2" id="redtypeId2" class="select">
+                                    <option value="0">请选择</option>
+                                    @{ var data2 = Enum.GetValues(typeof(TableUtil.RedMoneyType));}
+                                    @for (int i = 0; i < data2.Length; i++)
+                                    {
+                                        <option value="@((int)data2.GetValue(i))">@data2.GetValue(i)</option>
+                                    }
+                                </select>
+                                <select name="redtypeIdcondition2" title="红包条件" id="redtypeIdcondition2" class="select"></select>
+                                <input name="redeGetcount2" type="text" id="redeGetcount2" class="input" placeholder="获得次数" title="获得次数">
+                                <input type="submit" name="btnSetUserRed2" value="执行" id="btnSetUserRed2" class="btn" style="width:120px;">
+                            </dd>
+                        </dl>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <dl>
+                            <dt>设置活动板块内容</dt>
+                            <dd>
+                                <input type="submit" name="NocticeInfobtn" value="设置" id="NocticeInfobtn" data-toggle="modal" data-target="#NociceModal" class="btn" style="width:120px;">
+                            </dd>
+                        </dl>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <dl>
+                            <dt>通知客服端下载serverlist</dt>
+                            <dd>
+                                <input type="submit" name="notice" value="设置" id="noticedownserver"  class="btn" style="width:120px;">
+                            </dd>
+                        </dl>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <dl>
+                            <dt>
+                                设置打旋房间牌型:
+                            </dt>
+                            <dd>
+                                <input name="txtTablenum" type="text" id="txtTablenum" class="input" placeholder="房间号" title="指定房间号"><br /><br />
+                                位置1牌型:
+                                <input name="txtCards1" type="text" id="txtCards1" class="input" title="逗号隔开，牌型如：404,406,108,204">
+                                位置2牌型:
+                                <input name="txtCards2" type="text" id="txtCards2" class="input" title="逗号隔开，牌型如：404,406,108,204">
+                                位置3牌型:
+                                <input name="txtCards3" type="text" id="txtCards3" class="input" title="逗号隔开，牌型如：404,406,108,204">
+                                位置4牌型:
+                                <input name="txtCards4" type="text" id="txtCards4" class="input" title="逗号隔开，牌型如：404,406,108,204"><br /><br />
+                                位置5牌型:
+                                <input name="txtCards5" type="text" id="txtCards5" class="input" title="逗号隔开，牌型如：404,406,108,204">
+                                位置6牌型:
+                                <input name="txtCards6" type="text" id="txtCards6" class="input" title="逗号隔开，牌型如：404,406,108,204">
+                                位置7牌型:
+                                <input name="txtCards7" type="text" id="txtCards7" class="input" title="逗号隔开，牌型如：404,406,108,204">
+                                位置8牌型:
+                                <input name="txtCards8" type="text" id="txtCards8" class="input" title="逗号隔开，牌型如：404,406,108,204">
+
+                                <input type="button" name="btnRoomCards" value="执行" id="btnRoomCards" class="btn" style="width:120px;"><br />
+                                <span style="color:red">
+                                    备注： 2张红Q 2张黑J 4张10 2张黑9 4张8 4张7 4张6 2张黑5 4张4 1张红桃3 2张红2<br />
+                                    黑桃：104, 105, 106, 107, 108, 109, 110, 111  红桃：202, 203, 204, 206, 207, 208, 210, 212<br />
+                                    梅花：304, 305, 306, 307, 308, 309, 310, 311  方块：402, 404, 406, 407, 408, 410, 412 大王：16
+                                </span>
+                                <span id="lblreturnAgent"></span>
+                            </dd>
+                        </dl>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <dl>
+                            <dt>
+                                设置德州房间牌型:
+                            </dt>
+                            <dd>
+                                <input name="DztxtTablenum" type="text" id="DztxtTablenum" class="input" placeholder="房间号" title="指定房间号">
+                                <input name="DzPublicPoker" type="text" id="DzPublicPoker" class="input" placeholder="公牌,逗号隔开" title="逗号隔开">
+                                <br /><br />
+                                位置1牌型:
+                                <input name="DztxtCards1" type="text" id="DztxtCards1" class="input" title="逗号隔开，牌型如：404,406">
+                                位置2牌型:
+                                <input name="DztxtCards2" type="text" id="DztxtCards2" class="input" title="逗号隔开，牌型如：404,406">
+                                位置3牌型:
+                                <input name="DztxtCards3" type="text" id="DztxtCards3" class="input" title="逗号隔开，牌型如：404,406">
+                                位置4牌型:
+                                <input name="DztxtCards4" type="text" id="DztxtCards4" class="input" title="逗号隔开，牌型如：404,406"><br /><br />
+                                位置5牌型:
+                                <input name="DztxtCards5" type="text" id="DztxtCards5" class="input" title="逗号隔开，牌型如：404,406">
+                                位置6牌型:
+                                <input name="DztxtCards6" type="text" id="DztxtCards6" class="input" title="逗号隔开，牌型如：404,406">
+                                位置7牌型:
+                                <input name="DztxtCards7" type="text" id="DztxtCards7" class="input" title="逗号隔开，牌型如：404,406">
+                                位置8牌型:
+                                <input name="DztxtCards8" type="text" id="DztxtCards8" class="input" title="逗号隔开，牌型如：404,406">
+                                位置9牌型:
+                                <input name="DztxtCards9" type="text" id="DztxtCards9" class="input" title="逗号隔开，牌型如：404,406">
+                                <input type="button" name="DzbtnRoomCards" value="执行" id="DzbtnRoomCards" class="btn" style="width:120px;"><br />
+                                <span style="color:red">
+
+                                    黑桃：102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114  红桃：202, 203, 204, 205, 206, 207, 208, 209, 210, 211, 212, 213, 214<br />
+                                    梅花：302, 303, 304, 305, 306, 307, 308, 309, 310, 311, 312, 313, 314  方块：402, 403, 404, 405, 406, 407, 408, 409, 410, 411, 412, 413, 414
+                                </span>
+                            </dd>
+                        </dl>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <dl>
+                            <dt>
+                                设置麻将房间牌型:
+                            </dt>
+                            <dd>
+                                <input name="MahjongTablenum" type="text" id="MahjongTablenum" class="input" placeholder="房间号" title="指定房间号">
+                                <input name="MjPublicPoker" type="text" id="MjPublicPoker" class="input" placeholder="第一张庄家的牌，后面就是即将摸的牌" title="">
+                                <input name="MjbankerPos" type="text" id="MjbankerPos" maxlength="1" class="input" placeholder="庄家的位置" title=""> <span style="color:darkgray;">  四人：庄家位置 1~4；三人：庄家位置 1、2、4；二人：庄家位置 1、3；</span>
+                                <br /><br />
+                                位置1牌型:
+                                <input name="MjtxtCards1" type="text" id="MjtxtCards1" style="width:75%" class="input" title="逗号隔开，牌型如：11,11,13,13">  <br /><br />
+                                位置2牌型:
+                                <input name="MjtxtCards2" type="text" id="MjtxtCards2" style="width:75%" class="input" title="逗号隔开，牌型如：11,11,13,13">  <br /><br />
+                                位置3牌型:
+                                <input name="MjtxtCards3" type="text" id="MjtxtCards3" style="width:75%" class="input" title="逗号隔开，牌型如：11,11,13,13">  <br /><br />
+                                位置4牌型:
+                                <input name="MjtxtCards4" type="text" id="MjtxtCards4" style="width:75%" class="input" title="逗号隔开，牌型如：11,11,13,13">  <br /><br />
+                                <input type="button" name="MjbtnRoomCards" value="执行" id="MjbtnRoomCards" class="btn" style="width:120px;"><br />
+                                <span style="color:red">
+
+                                    万：11, 11, 11, 11, 12, 12, 12, 12, 13, 13, 13, 13, 14, 14, 14, 14, 15, 15, 15, 15, 16, 16, 16, 16, 17, 17, 17, 17, 18, 18, 18, 18, 19, 19, 19, 19<br />
+                                    筒：21, 21, 21, 21, 22, 22, 22, 22, 23, 23, 23, 23, 24, 24, 24, 24, 25, 25, 25, 25, 26, 26, 26, 26, 27, 27, 27, 27, 28, 28, 28, 28, 29, 29, 29, 29<br />
+                                    条：31, 31, 31, 31, 32, 32, 32, 32, 33, 33, 33, 33, 34, 34, 34, 34, 35, 35, 35, 35, 36, 36, 36, 36, 37, 37, 37, 37, 38, 38, 38, 38, 39, 39, 39, 39
+                                </span>
+                            </dd>
+                        </dl>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <!--/统计信息-->
+
+
+
+        <div class="aspNetHidden">
+            <input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="7E4CEEEA">
+            <input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="/wEdABAhqeY6Y4oCm5NicqUmgfsyf2M4yMlgWcf3B8RQE7Z+OycfkjyPSzb5rhJKHgInLSOePuYmwqik2ZpQ489Nuq/0L1LY0k+dG8ystEGIQ4y7Brdx5KiIbwB8982+F76X805sNfBGMTUTeqE2h86ceLy4ziEiVHbI7dGG2BvLaHBSg2DMKSmpxcegtZH59zzEfdjgZn0HaAT7oYvQCMa6ORUrAJJApZdZgg7JP6qThPqsh/Cosw10SLyuYDJLcNcWCgeL5khBt30k0aTpX284Rk0n2lja7OP7V/tvjiEZkUfe2DIzK0rwrZTQndKK9+aPasHTLCKl2l1FNi/Xc3HncM4gyTKcXTPChlWzvCI2xPD9AAiLSjWgYsOuhKy1uvfCZ3w=">
+        </div>
+
+        <!-- Visual Studio Browser Link -->
+        @*<script type="application/json" id="__browserLink_initializationData">
+                {"appName":"Chrome","requestId":"3a502289d8a24a6fa98e6fbd55ad92eb"}
+            </script>*@
+        @*<script type="text/javascript" src="http://localhost:1284/f2a5a6a93a9f45ddae0befba500d1c1a/browserLink" async="async"></script>*@
+        <!-- End Browser Link -->
+
+
+
+    </div>
+    @Html.Raw(ViewBag.msg)
+</form>
+<style>
+
+    .form-control {
+    height:20px;
+    }
+</style>
+<div class="modal fade" id="NociceModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">设置活动内容</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal" role="form">
+                    <div class="from-group" style="padding-bottom:45px">
+                        <label for="noticetype" class="col-sm-2 control-label">活动类型</label>
+                        <div class="col-sm-8">
+                            <select name="noticetype" id="noticetype" class="select">
+                                <option value="0">请选择</option>
+                                <option value="1">反伙牌</option>
+                                <option value="2">锦标赛</option>
+                            </select>
+                        </div>
+                    </div>
+                   
+                    <div class="form-group">
+                        <label for="TitleImgUrl" class="col-sm-2 control-label">标题图片地址</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="TitleImgUrl" placeholder="请输入标题图片地址">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="ContentImgUrl" class="col-sm-2 control-label">内容图片地址</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="ContentImgUrl" placeholder="请输入内容图片地址">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="Frozenmoney" class="col-sm-2 control-label">冻结资金</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="Frozenmoney" placeholder="请输入冻结资金">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="Vioinfo" class="col-sm-2 control-label">违规账号信息</label>
+                        <div class="col-sm-8">
+                         
+                            <textarea class="form-control" rows="3" id="Vioinfo" placeholder="请输入违规账号信息"></textarea>
+                            <span style="color:red">
+                                账号,昵称；账号,昵称；---如：123321,张三;321652,李四;......126542,王五;
+                            </span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="Reportinfo" class="col-sm-2 control-label">举报人信息</label>
+                        <div class="col-sm-8">
+
+                            <textarea class="form-control" rows="3" id="Reportinfo" placeholder="请输入举报人信息"></textarea>
+                            <span style="color:red">
+                                账号,昵称---如：123321;
+                            </span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="Matchinfos" class="col-sm-2 control-label">伙牌列表信息</label>
+                        <div class="col-sm-8">
+
+                            <textarea class="form-control" rows="3" id="Matchinfos" placeholder="请输入伙牌列表信息"></textarea>
+                            <span style="color:red">
+                                账号,昵称；账号,昵称；---如：123321,张三;321652,李四;......126542,王五;
+                            </span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="Partnerusers" class="col-sm-2 control-label">排名数据</label>
+                        <div class="col-sm-8">
+
+                            <textarea class="form-control" rows="3" id="Partnerusers" placeholder="请输入排名数据"></textarea>
+                            <span style="color:red">
+                                昵称,原排名,现排名,排名奖励；---如：张三,1,1,5000;李四,2,2,5000;王五,3,伙牌,0;赵六,4,3,5000;
+                            </span>
+                        </div>
+
+                    </div>
+                    <div class="form-group">
+                        <label for="AnnouncementTime" class="col-sm-2 control-label">公告时间</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="AnnouncementTime" placeholder="请输入公告时间">
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-primary" id="nocitysubmit">提交更改</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
+
+<script>
+    $("#Partnerusers").parent().parent(".form-group").attr("style", "display:none;");
+    $("#Matchinfos").parent().parent(".form-group").attr("style", "display:none;");
+    $("#nocitysubmit").click(function () {
+        var noticetype = $("#noticetype").val();
+        var TitleImgUrl = $("#TitleImgUrl").val();
+        var ContentImgUrl = $("#ContentImgUrl").val();
+        var AnnouncementTime = $("#AnnouncementTime").val();
+        var Frozenmoney = $("#Frozenmoney").val();
+        var Vioinfo = $("#Vioinfo").val();
+        var Reportinfo = $("#Reportinfo").val();
+        var Matchinfos = $("#Matchinfos").val();
+        var Partnerusers = $("#Partnerusers").val();
+        var data = {};
+        data.Type = noticetype;
+        data.TitleImgUrl = TitleImgUrl;
+        data.ContentImgUrl = ContentImgUrl;
+        data.AnnouncementTime = AnnouncementTime;
+        if (noticetype == 0 || noticetype == 1) {
+            data.Frozenmoney = Frozenmoney.replace(/，/g, ",").replace(/；/g, ";").replace(/;$/gi, ""); 
+            data.Vioinfo = Vioinfo.replace(/，/g, ",").replace(/；/g, ";").replace(/;$/gi, ""); 
+            data.Reportinfo = Reportinfo.replace(/，/g, ",").replace(/；/g, ";").replace(/;$/gi, ""); 
+        } else {
+            data.Matchinfos = Matchinfos.replace(/，/g, ",").replace(/；/g, ";").replace(/;$/gi, ""); 
+            data.Partnerusers = Partnerusers.replace(/，/g, ",").replace(/；/g, ";").replace(/;$/gi, ""); 
+        }
+        console.log(data);
+        console.log(Vioinfo);
+        console.log(Reportinfo);
+        $.ajax({
+            type: "post", url: '/Business/SaveNoticesEntity',
+            datatype: 'json',
+            data: data,
+            success: function (res) {
+               
+                if (res.success) {
+                    if (res) {
+                        parent.alertMsg(res.msg);
+                      
+                    }
+                } else {
+                    parent.alertMsg(res.msg)
+                }
+            }
+        })
+    })
+    $("#noticetype").change(function () {
+        var noticetype = $("#noticetype").val();
+    
+        if (noticetype == 1 || noticetype == 0) {
+            $("#Partnerusers").parent().parent(".form-group").attr("style", "display:none;");
+            $("#Matchinfos").parent().parent(".form-group").attr("style", "display:none;");
+            $("#Frozenmoney").parent().parent(".form-group").attr("style", "display:block;");
+            $("#Vioinfo").parent().parent(".form-group").attr("style", "display:block;");
+            $("#Reportinfo").parent().parent(".form-group").attr("style", "display:block;");
+        } else {
+            $("#Frozenmoney").parent().parent(".form-group").attr("style", "display:none;");
+            $("#Vioinfo").parent().parent(".form-group").attr("style", "display:none;");
+            $("#Reportinfo").parent().parent(".form-group").attr("style", "display:none;");
+            $("#Partnerusers").parent().parent(".form-group").attr("style", "display:block;");
+            $("#Matchinfos").parent().parent(".form-group").attr("style", "display:block;");
+        }
+    })
+</script>

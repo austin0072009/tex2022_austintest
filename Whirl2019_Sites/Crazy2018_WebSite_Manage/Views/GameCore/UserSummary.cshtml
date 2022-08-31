@@ -1,0 +1,128 @@
+﻿@using Crazy2018_Sys_Common;
+@using Crazy2018_Sys_ViewEntity;
+@{
+    ViewBag.Title = "用户汇总统计";
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+}
+<style>
+    th {
+        text-align: center;
+    }
+</style>
+<script>
+    binddata();
+    function binddata()
+    {
+        $.ajax({
+            url: "/GameCore/GetSysUserSummary",
+            type: "post",
+            contentType: "application/json",
+            dataType: "json",
+            success: function (data) {
+               
+                $(".UserRechargeNum").html(data.UserRechargeNum);
+                $(".UserRechargeTwoNum").html(data.UserRechargeTwoNum);
+                $(".RegisterUserNum").html(data.RegisterUserNum);
+                $(".RechargeUserZHRate").html(data.RechargeUserZHRate);
+                $(".UserRechargeLossNum").html(data.UserRechargeLossNum);
+                $(".UserRechargeLossRate").html(data.UserRechargeLossRate);
+                $(".RegisterUserThisMonth").html(data.RegisterUserThisMonth);
+                $(".RegisterUserRate").html(data.RegisterUserRate);
+                $(".DayRegisterUserMax").html(data.DayRegisterUserMax);
+                $(".ActiveUser").html(data.ActiveUser);
+                $(".UserOnlineAverageTime").html(data.UserOnlineAverageTime);
+                $(".ActiviteUserZHtRate").html(data.ActiviteUserZHtRate);
+                $(".LossUserNum").html(data.LossUserNum);
+                $(".LossUserRate").html(data.LossUserRate);
+                $(".MaxRechargeAmount").html(data.MaxRechargeAmount);
+                $(".TodayMaxRechargeAmount").html(data.TodayMaxRechargeAmount);
+                $(".RegisterUserAPRUValue").html(data.RegisterUserAPRUValue);
+                $(".RechargeUserAPRUValue").html(data.RechargeUserAPRUValue);
+            }
+        })
+
+
+
+    }
+</script>
+<div class="mainbody">
+    <!--导航栏-->
+    <div class="location">
+        <a href="javascript:history.back(-1);" class="back"><i></i><span>返回上一页</span></a>
+        <a href="/Home/Center" class="home"><i></i><span>首页</span></a>
+        <i class="arrow"></i>
+        <a href="/GameCore/UserSummary"><span>用户汇总统计</span></a>
+        <i class="arrow"></i>
+        <span>用户汇总统计</span>
+    </div>
+    <!--/导航栏-->
+
+    <table style="width:70%;margin-left:15%;margin-top:20px;" class="table">
+      
+        <tbody>
+            <tr>
+                <td>充值用户人数:</td>
+                <td><span class="UserRechargeNum"></span>人</td>
+                <td>二次充值人数:</td>
+                <td><span class="UserRechargeTwoNum"></span>人</td>
+            </tr>
+            <tr>
+                <td>注册用户总数:</td>
+                <td><span class="RegisterUserNum"></span>人</td>
+
+                <td>充值用户转换率:</td>
+                <td><span class="RechargeUserZHRate"></span></td>
+            </tr>
+
+            <tr>
+                <td>充值用户流失数:</td>
+                <td><span class="UserRechargeLossNum"></span>人</td>
+                <td>充值用户流失率:</td>
+                <td><span class="UserRechargeLossRate"></span></td>
+            </tr>
+
+            <tr>
+                <td>当月注册人数总数:</td>
+                <td><span class="RegisterUserThisMonth"></span>人</td>
+                <td>用户增长率:</td>
+                <td><span class="RegisterUserRate"></span> （当月用户增长数/总用户数）</td>
+            </tr>
+
+            <tr>
+                <td>日注册用户最高值:</td>
+                <td><span class="DayRegisterUserMax"></span>人</td>
+                <td>活跃用户:</td>
+                <td><span class="ActiveUser"></span>人</td>
+            </tr>
+
+            <tr>
+                <td>用户平均在线时长:</td>
+                <td><span class="UserOnlineAverageTime"></span>人</td>
+                <td>活跃用户转化率:</td>
+                <td><span class="ActiviteUserZHtRate"></span>（活跃用户数/总注册人数）</td>
+            </tr>
+
+            <tr>
+                <td>流失用户数:</td>
+                <td><span class="LossUserNum"></span>人</td>
+                <td>用户流失率:</td>
+                <td><span class="LossUserRate"></span>（流失用户数/总注册人数）</td>
+            </tr>
+
+            <tr>
+                <td>最高充值金额:</td>
+                <td><span class="MaxRechargeAmount"></span>元</td>
+                <td>今日最高充值金额:</td>
+                <td><span class="TodayMaxRechargeAmount"></span>元</td>
+            </tr>
+
+            <tr>
+                <td>注册用户人均APRU值:</td>
+                <td><span class="RegisterUserAPRUValue"></span></td>
+                <td>充值用户人均APRU值:</td>
+                <td><span class="RechargeUserAPRUValue"></span></td>
+            </tr>
+
+        </tbody>
+    </table>
+</div>

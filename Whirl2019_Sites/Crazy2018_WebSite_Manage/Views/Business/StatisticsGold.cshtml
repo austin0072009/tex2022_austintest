@@ -1,0 +1,254 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,initial-scale=1.0,user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <title>角色列表</title>
+    <link href="~/scripts/artdialog/ui-dialog.css" rel="stylesheet" type="text/css" />
+    <link href="~/skin/default/style.css" rel="stylesheet" type="text/css" />
+    <link href="~/css/pagination.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="~/scripts/jquery/jquery-1.11.2.min.js"></script>
+    <script type="text/javascript" src="~/scripts/artdialog/dialog-plus-min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="~/js/laymain.js"></script>
+    <script type="text/javascript" charset="utf-8" src="~/js/common.js"></script>
+    <script type="text/javascript" charset="utf-8" src="~/js/laydate.js"></script>
+    <script type="text/javascript" charset="utf-8" src="../../scripts/datepicker/WdatePicker.js"></script>
+    <script>
+        //$(function () {
+        //    $.ajax({
+        //        url: "statistics_gold.aspx/InitDropDownList", type: "post", contentType: "application/json", dataType: "json", success: function (data) {
+        //            for (var i in data.d)
+        //                console.log(data.d[i]);
+
+        //        }
+        //    });
+        //});
+
+        //window.setInterval(getuserCount, 3000);
+        //function getuserCount()
+        //{
+
+        //}
+    </script>
+</head>
+
+<body class="mainbody">
+    <form id="form1" runat="server">
+        <!--导航栏-->
+        <div class="location">
+            <a href="javascript:history.back(-1);" class="back"><i></i><span>返回上一页</span></a>
+            <a href="/Home/Center" class="index"><i></i><span>首页</span></a>
+            <i class="arrow"></i>
+            <a href=" "><span>金币收支统计</span></a>
+            <i class="arrow"></i>
+            <span>帐号列表</span>
+        </div>
+        <!--/导航栏-->
+        <!--工具栏-->
+      
+        <div id="floatHead" class="toolbar-wrap">
+            <div class="toolbar">
+                <div class="box-wrap">
+                    <a class="menu-btn"></a>
+                    <div class="l-list">
+                        <select name="selectGameInfo" id="selectGameInfo" class="select">
+                            <option selected="selected" value=" ">所有游戏</option>
+                        </select>
+                        <input name="txtStartTime" type="text" id="txtStartTime" class="input" onclick="laydate()">
+                        <span>至</span>
+                        <input name="txtEndTime" type="text" id="txtEndTime" class="input" onclick="laydate()">
+                    </div>
+                    <div class="r-list" style="margin-right: 5%">
+                        <ul>
+                            <li>
+                                <a id="lbtnSearch" class="btn-search">查询</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--/工具栏-->
+        <!--列表-->
+       
+        <div class="table-container">
+            <table width="100%" border="0" cellspacing="0" cellpadding="0" class="ltable">
+                <thead>
+                    <tr class="odd_bg">
+                        <th>ID</th>
+                        <th>金币收益</th>
+                        <th>统计时间</th>
+                        <th>游戏ID</th>
+                        <th>记录时间</th>
+                        <th>备注</th>
+                    </tr>
+                </thead>
+                <tbody id="MyTbody">
+                    @*<tr>
+                            <td align="center" colspan="4">暂无记录</td>
+                        </tr>*@
+                </tbody>
+            </table>
+        </div>
+        <!--/列表-->
+        <!--内容底部-->
+        <div class="line20"></div>
+        <div class="pagelist">
+            <div class="l-btns">
+                <span>显示</span><input name="txtPageNum" type="text" id="txtPageNum" class="pagenum"><span>条/页</span>
+            </div>
+            <div id="PageContent" class="default">
+
+            </div>
+        </div>
+        <!--/内容底部-->
+    </form>
+    <script>
+        var storagefirst = window.localStorage;
+        var MyPageNum1= storagefirst["MyPageNum1"];
+        var Start = "";
+        var End = "";
+        var Info = "";
+        var PageIndex = 1;
+        var txtPageNum = 10;
+        if (MyPageNum1 != "" && MyPageNum1 != null) {
+            txtPageNum = MyPageNum1
+        } else {
+            txtPageNum = txtPageNum
+        }
+
+        $("#txtPageNum").val(txtPageNum);
+
+        $(function () {
+            GetNavList()
+            GetList();
+        })
+        function GetNavList() {
+            var data = {};
+            $.ajax({
+                type: "post", url: '/Business/GetGameInfo',
+                datatype: 'json',
+                data: data,
+                success: function (res) {
+                    //console.log(res.Code)
+                    if (res.Code == "0" && res.Code == 0) {
+                        if (res) {
+                            //$("#selectRobot").empty();
+                            // console.log(res)
+                            for (var j = 0; j < res.Data.length; j++) {
+
+                                var Nhtml = $("#selectGameInfo").html();
+                                Nhtml = "<option value=" + res.Data[j].Key + ">" + res.Data[j].Value + "</option>"
+                                $('#selectGameInfo').append(Nhtml);
+                            }
+                        } else {
+                            eval(res)
+                        }
+                    } else {
+                        eval(res)
+                    }
+                }
+            })
+        }
+        $("#lbtnSearch").click(function () {
+            Start = $("#txtStartTime").val();
+            End = $("#txtEndTime").val();
+            Info = $("#selectGameInfo").val();
+            PageIndex = 1;
+            GetList();
+        })
+        $("#selectGameInfo").change(function () {
+            Info = $("#selectGameInfo").val();
+            Start = $("#txtStartTime").val();
+            End = $("#txtEndTime").val();
+            PageIndex = 1;
+            GetList();
+        })
+
+        $("#txtPageNum").change(function () {
+            Info = $("#selectGameInfo").val();
+            Start = $("#txtStartTime").val();
+            End = $("#txtEndTime").val();
+            txtPageNum = $("#txtPageNum").val()
+            storagefirst["MyPageNum1"] = txtPageNum
+            PageIndex = 1;
+            GetList();
+        })
+        $("#PageContent").on("click", "a", function () {
+            var lkl2 = $(this).text();
+            if (lkl2 == "下一页»") {
+                PageIndex = parseInt(PageIndex) + 1
+            } else if (lkl2 == "«上一页") {
+                PageIndex = parseInt(PageIndex) - 1
+            } else {
+                PageIndex = lkl2
+            }
+            Info = $("#selectGameInfo").val();
+            Start = $("#txtStartTime").val();
+            End = $("#txtEndTime").val();
+            txtPageNum = $("#txtPageNum").val()
+            GetList()
+        })
+
+        function GetList() {
+            var data = {};
+            data.PageIndex = PageIndex;
+            data.PageSize = txtPageNum;
+            data.sTime = Start;
+            data.eTime = End;
+            data.gameId = Info
+
+            $.ajax({
+                type: "post", url: '/Business/GetStatisticsGoldData',
+                datatype: 'json',
+                data: data,
+                success: function (res) {
+                    if (res.Code == "0" && res.Code == 0) {
+                        if (res) {
+                            // console.log(res)
+                            $("#MyTbody").empty();
+                            var str = $("#MyTbody").html();
+                            if (res.Data.length > 0) {
+                                for (var n = 0; n < res.Data.length; n++) {
+                                    str = "<tr>" +
+                                               " <td align='center'>" + res.Data[n].ID + "</td>" +
+                                                "<td align='center'>" + res.Data[n].TotalGold + "</td>" +
+                                                "<td align='center'>" + res.Data[n].TimeInterval + "</td>" +
+                                                "<td align='center'>" + res.Data[n].GameId + "</td>" +
+                                                "<td align='center'>" + res.Data[n].CreatTime + "</td>" +
+                                                "<td align='center'>" + res.Data[n].Remark + "</td>" +
+                                            "</tr>"
+                                    $('#MyTbody').append(str);
+                                    var sthtml = $("#PageContent").html();
+                                    $("#PageContent").empty();
+                                    if (res.InnerHtml.length > 0) {
+                                        sthtml = res.InnerHtml
+                                        $('#PageContent').append(sthtml);
+                                    }
+                                }
+                            } else {
+                                $("#MyTbody").empty();
+                                str = "<tr>" +
+                                         " <td align='center' colspan='6'> 暂无记录 </td>" +
+                                      "</tr>"
+                                $('#MyTbody').append(str);
+                            }
+                        } else {
+                            eval(res)
+                        }
+                    } else {
+                        eval(res)
+                    }
+                }
+            })
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,247 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,initial-scale=1.0,user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <title>充值日志</title>
+    <link href="~/scripts/artdialog/ui-dialog.css" rel="stylesheet" type="text/css" />
+    <link href="~/skin/default/style.css" rel="stylesheet" type="text/css" />
+    <link href="~/css/pagination.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="~/scripts/jquery/jquery-1.11.2.min.js"></script>
+    <script type="text/javascript" src="~/scripts/artdialog/dialog-plus-min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="~/js/laymain.js"></script>
+    <script type="text/javascript" charset="utf-8" src="~/js/common.js"></script>
+</head>
+<style type="text/css">
+    td img {
+        width: 35px;
+        height: 50px;
+    }
+
+    .Bomb {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0, 0, 0, 0.34901960784313724);
+        display: none;
+    }
+
+    .ImgBox {
+        width: 25%;
+        height: 85%;
+        margin: auto;
+        margin-top: 50px;
+    }
+
+        .ImgBox img {
+            width: 100%;
+        }
+
+    #lbtnSearch {
+        width: 80px;
+        height: 30px;
+        border: 1px solid #eee;
+        background-color: #fafafa;
+        display: block;
+        text-align: center;
+        line-height: 30px;
+    }
+</style>
+<body class="mainbody">
+    <form id="form1">
+        <!--导航栏-->
+        <div class="location">
+            <a href="javascript:history.back(-1);" class="back"><i></i><span>返回上一页</span></a>
+            <a href="/Home/Center" class="home"><i></i><span>首页</span></a>
+            <i class="arrow"></i>
+            <a href="/Business/Takenowlist"><span>代理管理</span></a>
+            <i class="arrow"></i>
+            <span>初始代理管理</span>
+        </div>
+        <!--/导航栏-->
+        <!--工具栏-->
+        <div id="floatHead" class="toolbar-wrap">
+            <div class="toolbar">
+                <div class="box-wrap">
+                    <a class="menu-btn"></a>
+                    <div class="l-list">
+
+                    </div>
+                    <div class="r-list">
+                        @*<input name="txtKeywords" type="text" id="txtKeywords" class="keyword">*@
+                        <div id="lbtnSearch">创建</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--/工具栏-->
+        <!--列表-->
+        <div class="table-container">
+            <table width="100%" border="0" cellspacing="0" cellpadding="0" class="ltable">
+                <thead>
+                    <tr class="odd_bg">
+                        <th>使用者ID</th>
+                        <th>初始码</th>
+                        <th>推广二维码</th>
+                        <th>创建时间</th>
+                        <th>备注</th>
+                    </tr>
+                </thead>
+                <tbody id="MyTbody"></tbody>
+            </table>
+        </div>
+        <!--/列表-->
+        <!--内容底部-->
+        <div class="line20"></div>
+        <div class="pagelist">
+            <div class="l-btns">
+                <span>显示</span><input name="txtPageNum" type="text" id="txtPageNum" class="pagenum"><span>条/页</span>
+            </div>
+            <div id="PageContent" class="default">
+
+            </div>
+        </div>
+        <!--/内容底部-->
+        <div style="width:100%;text-align: center;">
+            <span style="display: inline-block;padding: 4px 15px 0px 15px;color: #666;font-size:14px;">(注 : 检索条件 1.用户ID,2.提现账号)</span>
+        </div>
+    </form>
+    <div class="Bomb">
+        <div class="ImgBox">
+            <img id="TwoImg" src="" />
+        </div>
+    </div>
+
+    <script>
+        var storagefirst = window.localStorage;
+        var MyPageNum9 = storagefirst["MyPageNum9"];
+        var PageIndex = 1;
+        var txtPageNum = 10;
+        if (MyPageNum9 != "" && MyPageNum9 != null) {
+            txtPageNum=MyPageNum9
+        } else {
+            txtPageNum = txtPageNum
+        }
+        $("#txtPageNum").val(txtPageNum);
+
+
+
+        GetWithdrawalsList()
+        $("#txtPageNum").change(function () {
+            txtPageNum = $("#txtPageNum").val()
+            storagefirst["MyPageNum9"] = txtPageNum
+            PageIndex = 1;
+            GetWithdrawalsList()
+        })
+
+        $("#PageContent").on("click", "a", function () {
+            var lkl2 = $(this).text();
+            if (lkl2 == "下一页»") {
+                PageIndex = parseInt(PageIndex) + 1
+            } else if (lkl2 == "«上一页") {
+                PageIndex = parseInt(PageIndex) - 1
+            } else {
+                PageIndex = lkl2
+            }
+            lweq = $("#selectRobot").val();
+            //Keywords = $("#txtKeywords").val();
+            txtPageNum = $("#txtPageNum").val()
+            GetWithdrawalsList()
+        })
+
+
+
+
+        $("body").on("click", ".Mytr", function (e) {
+            var imgT = $(this).find(".Myimg")[0].src;
+            //console.log(imgT)
+            $(".Bomb").css({ "display": "block" })
+            $("#TwoImg").attr('src', imgT);
+        })
+
+        $(".Bomb").click(function () {
+            $(this).css({ "display": "none" })
+            $("#TwoImg").attr('src', "");
+        })
+
+        $(".ImgBox").click(function () {
+            $(".Bomb").css({ "display": "none" });
+            $("#TwoImg").attr('src', "");
+        })
+
+        $("#lbtnSearch").click(function () {
+            var data = {};
+            $.ajax({
+                type: "post", url: '/Business/CreateInitAgencyCode',
+                datatype: 'json',
+                data: data,
+                success: function (res) {
+                    //console.log(res)
+                    if (res.Code == 0 || res.Code == "0") {
+                        res.Code == 0
+                        alertMsg("创建成功");
+                        setTimeout(function () {
+                            window.location.reload();
+                        }, 1500)
+                    } else {
+                        alertMsg(res.Message);
+                    }
+                }
+            })
+        })
+        function GetWithdrawalsList() {
+            var data = {};
+            data.PageIndex = PageIndex;
+            data.PageSize = txtPageNum;
+            $.ajax({
+                type: "post", url: '/Business/GetInitAgencyData',
+                datatype: 'json',
+                data: data,
+                success: function (res) {
+                    console.log(res)
+                    if (res.Code == "0" && res.Code == 0) {
+                        if (res) {
+                            $("#MyTbody").empty();
+                            var str = $("#MyTbody").html();
+                            if (res.Data.length > 0) {
+                                for (var n = 0; n < res.Data.length; n++) {
+
+                                    str = "<tr>" +
+                                                "<td align='center'>" + res.Data[n].UserUserId + "</td>" +
+                                                "<td align='center'>" + res.Data[n].InitialaCode + "</td>" +
+                                                "<td align='center' class='Mytr'><img class='Myimg' src='" + res.Data[n].CodePath + "' /></td>" +
+                                                "<td align='center'>" + res.Data[n].CreatTime + "</td>" +
+                                                "<td align='center'>" + res.Data[n].Remark + "</td>" +
+                                           "</tr>"
+                                    $('#MyTbody').append(str);
+                                    var sthtml = $("#PageContent").html();
+                                    $("#PageContent").empty();
+                                    if (res.InnerHtml.length > 0) {
+                                        sthtml = res.InnerHtml
+                                        $('#PageContent').append(sthtml);
+                                    }
+                                }
+                            } else {
+                                var str = $("#MyTbody").html();
+                            }
+                        } else {
+                            alertMsg(res.Message);
+                        }
+                    } else {
+                        alertMsg(res.Message);
+                    }
+                }
+            })
+        }
+    </script>
+</body>
+</html>

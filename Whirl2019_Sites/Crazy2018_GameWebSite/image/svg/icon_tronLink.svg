@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 23.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="圖層_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 428 428" style="enable-background:new 0 0 428 428;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:#716DC1;}
+	.st1{fill:#FFFFFF;}
+</style>
+<g>
+	<path class="st0" d="M428,155.9V93c0-51.2-41.8-93-93-93H93C41.8,0,0,41.8,0,93v242c0,51.2,41.8,93,93,93h124L84,93L428,155.9z"/>
+	<polygon class="st0" points="142,161 249,428 329,428 342,325 	"/>
+	<path class="st0" d="M356.5,425.5c40.9-9.8,71.5-46.7,71.5-90.5v-7.9l-60.5,9.9L356.5,425.5z"/>
+	<polygon class="st0" points="161,138 352,292 428,231.4 428,185.9 	"/>
+	<polygon class="st0" points="428,294.6 428,271.9 392.5,300.5 	"/>
+	<polygon class="st1" points="428.5,271.5 428.5,231 428,231.4 428,271.9 	"/>
+	<polygon class="st1" points="428.5,186 428.5,156 428,155.9 428,185.9 	"/>
+	<polygon class="st1" points="428.5,327 428.5,294.5 428,294.6 428,327.1 	"/>
+</g>
+<path class="st1" d="M161,138l267,47.9v-30L84,93l133,335h32L142,161l200,164l-13,103h4c8.1,0,16-1,23.6-3l10.9-88l60.5-9.9v-32.5
+	l-35.5,5.9l35.5-28.6v-40.5L352,292L161,138z"/>
+</svg>

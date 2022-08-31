@@ -1,0 +1,172 @@
+﻿@using Crazy2018_Sys_Common;
+@using Crazy2018_Sys_ViewEntity;
+@using Crazy2018_Sys_DBHelper;
+@{
+    ViewBag.Title = "玩家领取红包记录";
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+}
+@model DataResults<RedenvelopesLogView>
+
+<style>
+    th {
+        text-align: center;
+    }
+
+    .form-control {
+        width: 80%;
+        height: 22px;
+    }
+</style>
+<div class="mainbody">
+    <!--导航栏-->
+    <div class="location">
+        <a href="javascript:history.back(-1);" class="back"><i></i><span>返回上一页</span></a>
+        <a href="/Home/Center" class="home"><i></i><span>首页</span></a>
+        <i class="arrow"></i>
+        <a href="/Gmmgr/GameUserQuery"><span>玩家查询</span></a>
+        <i class="arrow"></i>
+        <span>玩家查询</span>
+    </div>
+    <!--/导航栏-->
+    <!--工具栏-->
+
+    <div class="panel panel-danger">
+        <div class="panel-heading">
+            <h3 class="panel-title">JDB平台玩家操作</h3>
+        </div>
+        <div class="panel-body">
+
+            <table class="table">
+                <tbody>
+                    <tr>
+                        <td style="width:10%">
+                            <label for="name">玩家状态查询</label>
+                        </td>
+                        <td>
+                            <input type="text" class="form-control" id="UserId" placeholder="玩家id">
+                        </td>
+                        <td>
+                            <button type="button" id="userstateserch" class="btn btn-default">确定</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>踢出玩家</td>
+                        <td> <input type="text" class="form-control" id="tc_UserId" placeholder="玩家id"></td>
+                        <td>
+                            <button type="button" id="tc_userstateserch" class="btn btn-default">确定</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>踢出全部玩家</td>
+                        <td> <button type="button" id="tcqb_userstateserch" class="btn btn-default">确定</button></td>
+
+                    </tr>
+                    <tr>
+                        <td>玩家锁定限制</td>
+                        <td> <input type="text" class="form-control" id="wjsd_UserId" placeholder="玩家id"></td>
+                        <td>
+                            <select style="height:36px;" id="wjsd_state" class="form-control">
+                                <option value="2">限制</option>
+                                <option value="3">取消限制</option>
+                                <option value="4">锁定</option>
+                                <option value="5">取消锁定</option>
+                            </select>
+                        </td>
+                        <td>
+                            <button type="button" id="wjsd_userstateserch" class="btn btn-default">确定</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>玩家数据查询</td>
+                        <td> <input type="text" class="form-control" id="wjsjcx_UserId" placeholder="玩家id"></td>
+                        <td>
+                            <button type="button" id="wjsjcx_userstateserch" class="btn btn-default">确定</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script>
+
+        $(function () {
+
+            $("#userstateserch").click(function () {
+                var UserId = $("#UserId").val();
+                if (UserId == "") {
+                    alert("请输入玩家id"); return;
+                }
+
+                $.post("/H5Game/UserStateQuery", { UserId: UserId }, function (result) {
+                    if (result.success) {
+                        layer.open({
+                            type: 1,
+                            skin: 'layui-layer-rim', //加上边框
+                            area: ['420px', '240px'], //宽高
+                            content: result.data
+                        });
+                    }
+                });
+            });
+            $("#tc_userstateserch").click(function () {
+                var UserId = $("#tc_UserId").val();
+                if (UserId == "") {
+                    alert("请输入玩家id"); return;
+                }
+                $.post("/H5Game/UserLoginout", { UserId: UserId }, function (result) {
+                    layer.msg(result.msg);
+                });
+
+            });
+            $("#tcqb_userstateserch").click(function () {
+
+                layer.confirm('你确定踢出全部玩家？', {
+                    btn: ['是', '否'] //按钮
+                }, function () {
+                        $.post("/H5Game/UserLoginoutAlluser", { }, function (result) {
+                            layer.msg(result.msg);
+                        });
+                }, function () {
+                   
+                });
+
+
+            });
+
+            
+            $("#wjsd_userstateserch").click(function () {
+                var UserId = $("#wjsd_UserId").val();
+                var state = $("#wjsd_state").val();
+                if (UserId == "") {
+                    alert("请输入玩家id"); return;
+                }
+
+                $.post("/H5Game/UserStateLimit", { UserId: UserId, state: state }, function (result) {
+                    if (result.success) {
+                        layer.msg(result.msg);
+                    }
+                });
+            });
+
+
+            $("#wjsjcx_userstateserch").click(function () {
+                var UserId = $("#wjsjcx_UserId").val();
+                if (UserId == "") {
+                    alert("请输入玩家id"); return;
+                }
+
+                $.post("/H5Game/UserDataQuery", { UserId: UserId }, function (result) {
+                    if (result.success) {
+                        layer.open({
+                            type: 1,
+                            skin: 'layui-layer-rim', //加上边框
+                            area: ['520px', '340px'], //宽高
+                            content: result.msg
+                        });
+                    }
+                });
+            });
+        });
+
+    </script>
+

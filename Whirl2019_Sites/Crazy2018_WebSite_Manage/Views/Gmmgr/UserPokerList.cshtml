@@ -1,0 +1,48 @@
+﻿
+@using Crazy2018_Sys_Entity;
+@{
+    ViewBag.Title = "牌局";
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+}
+@model  List<UserPokerListView>
+
+<script>
+    $(function () {
+
+      
+
+    });
+</script>
+    <div>
+        <div id="handpokerFrom" class="panel panel-default">
+            <div class="panel-body">
+                <table class="table table-hover">
+                    <caption>手牌查看</caption>
+                    <thead>
+                        @*<tr>
+            <th>用户ID</th>
+            <th>用户名称</th>
+            <th>手牌</th>
+                       </tr>*@
+                        <tr>
+                            @foreach (var item in Model)
+                            {
+
+                            <th>
+                                @item.UserId <br />
+                                @item.UserName <br />
+                                <img style="max-width:110px;max-height:152px;" src='@item.handone' />
+                                <img style="max-width:110px;max-height:152px;" src='@item.handtwo' />
+
+                            </th>
+                            }
+                        </tr>
+                    </thead>
+                    <tbody>
+                       
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>

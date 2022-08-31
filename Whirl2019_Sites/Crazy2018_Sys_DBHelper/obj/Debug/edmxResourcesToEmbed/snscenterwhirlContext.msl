@@ -1,0 +1,119 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="snscenterwhirlModelStoreContainer" CdmEntityContainer="snscenterwhirlEntities">
+    <EntitySetMapping Name="limitdevice">
+      <EntityTypeMapping TypeName="snscenterwhirlModel.limitdevice">
+        <MappingFragment StoreEntitySet="limitdevice">
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="AppTime" ColumnName="AppTime" />
+          <ScalarProperty Name="DeviceID" ColumnName="DeviceID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="loguserlogin">
+      <EntityTypeMapping TypeName="snscenterwhirlModel.loguserlogin">
+        <MappingFragment StoreEntitySet="loguserlogin">
+          <ScalarProperty Name="LogType" ColumnName="LogType" />
+          <ScalarProperty Name="IPAddr" ColumnName="IPAddr" />
+          <ScalarProperty Name="LogTime" ColumnName="LogTime" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="LogID" ColumnName="LogID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="passportloginlog">
+      <EntityTypeMapping TypeName="snscenterwhirlModel.passportloginlog">
+        <MappingFragment StoreEntitySet="passportloginlog">
+          <ScalarProperty Name="LoginTime" ColumnName="LoginTime" />
+          <ScalarProperty Name="PassportID" ColumnName="PassportID" />
+          <ScalarProperty Name="DeviceID" ColumnName="DeviceID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="retailchangeinfo">
+      <EntityTypeMapping TypeName="snscenterwhirlModel.retailchangeinfo">
+        <MappingFragment StoreEntitySet="retailchangeinfo">
+          <ScalarProperty Name="desc" ColumnName="desc" />
+          <ScalarProperty Name="createtime" ColumnName="createtime" />
+          <ScalarProperty Name="score" ColumnName="score" />
+          <ScalarProperty Name="type" ColumnName="type" />
+          <ScalarProperty Name="retailid" ColumnName="retailid" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="retailconfig">
+      <EntityTypeMapping TypeName="snscenterwhirlModel.retailconfig">
+        <MappingFragment StoreEntitySet="retailconfig">
+          <ScalarProperty Name="playeramount" ColumnName="playeramount" />
+          <ScalarProperty Name="retailid" ColumnName="retailid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="retailinfo">
+      <EntityTypeMapping TypeName="snscenterwhirlModel.retailinfo">
+        <MappingFragment StoreEntitySet="retailinfo">
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="modefy" ColumnName="modefy" />
+          <ScalarProperty Name="createtime" ColumnName="createtime" />
+          <ScalarProperty Name="gold" ColumnName="gold" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="appid" ColumnName="appid" />
+          <ScalarProperty Name="appsecret" ColumnName="appsecret" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="snspassportlog">
+      <EntityTypeMapping TypeName="snscenterwhirlModel.snspassportlog">
+        <MappingFragment StoreEntitySet="snspassportlog">
+          <ScalarProperty Name="RegTime" ColumnName="RegTime" />
+          <ScalarProperty Name="RegPushTime" ColumnName="RegPushTime" />
+          <ScalarProperty Name="Mark" ColumnName="Mark" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="PassportID" ColumnName="PassportID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="snsuserinfo">
+      <EntityTypeMapping TypeName="snscenterwhirlModel.snsuserinfo">
+        <MappingFragment StoreEntitySet="snsuserinfo">
+          <ScalarProperty Name="WeixinCode" ColumnName="WeixinCode" />
+          <ScalarProperty Name="SID" ColumnName="SID" />
+          <ScalarProperty Name="ActiveDate" ColumnName="ActiveDate" />
+          <ScalarProperty Name="SendActiveDate" ColumnName="SendActiveDate" />
+          <ScalarProperty Name="ActiveCode" ColumnName="ActiveCode" />
+          <ScalarProperty Name="IDCards" ColumnName="IDCards" />
+          <ScalarProperty Name="RealName" ColumnName="RealName" />
+          <ScalarProperty Name="PwdType" ColumnName="PwdType" />
+          <ScalarProperty Name="Mail" ColumnName="Mail" />
+          <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+          <ScalarProperty Name="RetailUser" ColumnName="RetailUser" />
+          <ScalarProperty Name="RetailID" ColumnName="RetailID" />
+          <ScalarProperty Name="RegTime" ColumnName="RegTime" />
+          <ScalarProperty Name="RegType" ColumnName="RegType" />
+          <ScalarProperty Name="DeviceID" ColumnName="DeviceID" />
+          <ScalarProperty Name="PassportPwd" ColumnName="PassportPwd" />
+          <ScalarProperty Name="PassportID" ColumnName="PassportID" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="userloginlog">
+      <EntityTypeMapping TypeName="snscenterwhirlModel.userloginlog">
+        <MappingFragment StoreEntitySet="userloginlog">
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="Lng" ColumnName="Lng" />
+          <ScalarProperty Name="Lat" ColumnName="Lat" />
+          <ScalarProperty Name="MachineType" ColumnName="MachineType" />
+          <ScalarProperty Name="MachineCode" ColumnName="MachineCode" />
+          <ScalarProperty Name="IP" ColumnName="IP" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

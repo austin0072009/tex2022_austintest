@@ -1,0 +1,162 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,initial-scale=1.0,user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <title>交易查询</title>
+    <link href="~/scripts/artdialog/ui-dialog.css" rel="stylesheet" type="text/css" />
+    <link href="~/skin/default/style.css" rel="stylesheet" type="text/css" />
+    <link href="~/css/pagination.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="~/scripts/jquery/jquery-1.11.2.min.js"></script>
+    <script type="text/javascript" src="~/scripts/artdialog/dialog-plus-min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="~/js/laymain.js"></script>
+    <script type="text/javascript" charset="utf-8" src="~/js/common.js"></script>
+</head>
+
+<body class="mainbody">
+    <form id="form1" runat="server">
+        <!--导航栏-->
+        <div class="location">
+            <a href="javascript:history.back(-1);" class="back"><i></i><span>返回上一页</span></a>
+            <a href="/Home/Center" class="home"><i></i><span>首页</span></a>
+            <i class="arrow"></i>
+            <span>会员管理</span>
+            <i class="arrow"></i>
+            <span>交易查询</span>
+        </div>
+        <!--/导航栏-->
+        <!--工具栏-->
+        <div id="floatHead" class="toolbar-wrap">
+            <div class="toolbar list">
+                <div class="box-wrap">
+                    <a class="menu-btn"></a>
+                    <div class="l-list">
+                        <div class="menu-list">
+                            <span>生成者ID</span>
+                            <input name="txtFromUserId" type="text" id="txtFromUserId" class="input">
+                            <span>使用者ID</span><input name="txtToUserId" type="text" id="txtToUserId" class="input">
+                            <div class="rule-single-select single-select">
+                                <div class="boxwrap"><a class="select-tit" href="javascript:;"><span>使用状态</span><i></i></a><div class="select-items"><ul><li class="selected">使用状态</li><li>未使用</li><li>已使用</li></ul></div><i class="arrow"></i></div>
+                                <select name="ddlTradeState" onchange="javascript:setTimeout('__doPostBack(\'ddlTradeState\',\'\')', 0)" id="ddlTradeState" style="display: none;">
+                                    <option selected="selected" value="-1">使用状态</option>
+                                    <option value="0">未使用</option>
+                                    <option value="1">已使用</option>
+
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="r-list">
+                        <input name="txtKeywords" type="text" id="txtKeywords" class="keyword">
+                        <a id="lbtnSearch" class="btn-search" href="javascript:__doPostBack('lbtnSearch','')">查询</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--/工具栏-->
+        <!--列表-->
+        <div class="table-container">
+
+            <table width="100%" border="0" cellspacing="0" cellpadding="0" class="ltable">
+                <tbody>
+                    <tr class="odd_bg">
+                        <th>创建时间</th>
+                        <th>激活码</th>
+                        <th>生成者ID</th>
+                        <th>使用者ID</th>
+
+                    </tr>
+
+                    <tr>
+                        <td>2017/9/27 17:35:29</td>
+                        <td>A350943</td>
+                        <td>100006</td>
+                        <td>0</td>
+                    </tr>
+
+                    <tr class="odd_bg">
+                        <td>2017/9/27 17:34:53</td>
+                        <td>A572074</td>
+                        <td>100005</td>
+                        <td>0</td>
+                    </tr>
+
+                    <tr>
+                        <td>2017/9/27 17:32:58</td>
+                        <td>A559097</td>
+                        <td>100004</td>
+                        <td>0</td>
+                    </tr>
+
+                    <tr class="odd_bg">
+                        <td>2017/9/26 22:40:12</td>
+                        <td>A536168</td>
+                        <td>100001</td>
+                        <td>100006</td>
+                    </tr>
+
+                    <tr>
+                        <td>2017/9/26 22:38:58</td>
+                        <td>A703476</td>
+                        <td>100003</td>
+                        <td>0</td>
+                    </tr>
+
+                    <tr class="odd_bg">
+                        <td>2017/9/26 20:34:29</td>
+                        <td>A415853</td>
+                        <td>100002</td>
+                        <td>0</td>
+                    </tr>
+
+                    <tr>
+                        <td>2017/9/26 20:18:05</td>
+                        <td>A888888</td>
+                        <td>100001</td>
+                        <td>0</td>
+                    </tr>
+
+                    <tr class="odd_bg">
+                        <td>2017/9/26 19:54:44</td>
+                        <td>A88888800</td>
+                        <td>2147483647</td>
+                        <td>100003</td>
+                    </tr>
+
+                    <tr>
+                        <td>2017/9/26 19:54:44</td>
+                        <td>B888888</td>
+                        <td>2147483647</td>
+                        <td>0</td>
+                    </tr>
+
+                    <tr class="odd_bg">
+                        <td>2017/9/26 19:54:44</td>
+                        <td>C888888</td>
+                        <td>2147483647</td>
+                        <td>0</td>
+                    </tr>
+
+
+                </tbody>
+            </table>
+
+        </div>
+        <!--/列表-->
+        <!--内容底部-->
+        <div class="line20"></div>
+        <div class="pagelist">
+            <div class="l-btns">
+                <span>显示</span><input name="txtPageNum" type="text" value="10" onchange="javascript:setTimeout('__doPostBack(\'txtPageNum\',\'\')', 0)" onkeypress="if (WebForm_TextBoxKeyHandler(event) == false) return false;" id="txtPageNum" class="pagenum" onkeydown="return checkNumber(event);"><span>条/页</span>
+            </div>
+            <div id="PageContent" class="default"><span>共33记录</span><span class="disabled">«上一页</span><span class="current">1</span><a href="">下一页»</a></div>
+        </div><!--/内容底部-->
+    </form>
+</body>
+</html>

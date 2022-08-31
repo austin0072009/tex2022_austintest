@@ -1,0 +1,104 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="chesscarddbModelStoreContainer" CdmEntityContainer="chesscarddbEntities">
+    <EntitySetMapping Name="dt_channel_site">
+      <EntityTypeMapping TypeName="chesscarddbModel.dt_channel_site">
+        <MappingFragment StoreEntitySet="dt_channel_site">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="build_path" ColumnName="build_path" />
+          <ScalarProperty Name="templet_path" ColumnName="templet_path" />
+          <ScalarProperty Name="domain" ColumnName="domain" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="logo" ColumnName="logo" />
+          <ScalarProperty Name="company" ColumnName="company" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="tel" ColumnName="tel" />
+          <ScalarProperty Name="fax" ColumnName="fax" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="crod" ColumnName="crod" />
+          <ScalarProperty Name="copyright" ColumnName="copyright" />
+          <ScalarProperty Name="seo_title" ColumnName="seo_title" />
+          <ScalarProperty Name="seo_keyword" ColumnName="seo_keyword" />
+          <ScalarProperty Name="seo_description" ColumnName="seo_description" />
+          <ScalarProperty Name="is_default" ColumnName="is_default" />
+          <ScalarProperty Name="sort_id" ColumnName="sort_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="dt_manager">
+      <EntityTypeMapping TypeName="chesscarddbModel.dt_manager">
+        <MappingFragment StoreEntitySet="dt_manager">
+          <ScalarProperty Name="IP" ColumnName="IP" />
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="role_id" ColumnName="role_id" />
+          <ScalarProperty Name="role_type" ColumnName="role_type" />
+          <ScalarProperty Name="user_name" ColumnName="user_name" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="salt" ColumnName="salt" />
+          <ScalarProperty Name="real_name" ColumnName="real_name" />
+          <ScalarProperty Name="telephone" ColumnName="telephone" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="is_lock" ColumnName="is_lock" />
+          <ScalarProperty Name="add_time" ColumnName="add_time" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="dt_manager_role">
+      <EntityTypeMapping TypeName="chesscarddbModel.dt_manager_role">
+        <MappingFragment StoreEntitySet="dt_manager_role">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="role_name" ColumnName="role_name" />
+          <ScalarProperty Name="role_type" ColumnName="role_type" />
+          <ScalarProperty Name="is_sys" ColumnName="is_sys" />
+          <ScalarProperty Name="role_value" ColumnName="role_value" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="dt_manager_role_value">
+      <EntityTypeMapping TypeName="chesscarddbModel.dt_manager_role_value">
+        <MappingFragment StoreEntitySet="dt_manager_role_value">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="role_id" ColumnName="role_id" />
+          <ScalarProperty Name="nav_name" ColumnName="nav_name" />
+          <ScalarProperty Name="action_type" ColumnName="action_type" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="dt_navigation">
+      <EntityTypeMapping TypeName="chesscarddbModel.dt_navigation">
+        <MappingFragment StoreEntitySet="dt_navigation">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="parent_id" ColumnName="parent_id" />
+          <ScalarProperty Name="channel_id" ColumnName="channel_id" />
+          <ScalarProperty Name="nav_type" ColumnName="nav_type" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="sub_title" ColumnName="sub_title" />
+          <ScalarProperty Name="icon_url" ColumnName="icon_url" />
+          <ScalarProperty Name="link_url" ColumnName="link_url" />
+          <ScalarProperty Name="sort_id" ColumnName="sort_id" />
+          <ScalarProperty Name="is_lock" ColumnName="is_lock" />
+          <ScalarProperty Name="remark" ColumnName="remark" />
+          <ScalarProperty Name="action_type" ColumnName="action_type" />
+          <ScalarProperty Name="is_sys" ColumnName="is_sys" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="dt_manager_log">
+      <EntityTypeMapping TypeName="chesscarddbModel.dt_manager_log">
+        <MappingFragment StoreEntitySet="dt_manager_log">
+          <ScalarProperty Name="backupsdata" ColumnName="backupsdata" />
+          <ScalarProperty Name="actionmodul" ColumnName="actionmodul" />
+          <ScalarProperty Name="add_time" ColumnName="add_time" />
+          <ScalarProperty Name="user_ip" ColumnName="user_ip" />
+          <ScalarProperty Name="remark" ColumnName="remark" />
+          <ScalarProperty Name="action_type" ColumnName="action_type" />
+          <ScalarProperty Name="user_name" ColumnName="user_name" />
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

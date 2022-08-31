@@ -1,0 +1,142 @@
+﻿@using Crazy2018_Sys_Common;
+@using Crazy2018_Sys_ViewEntity;
+@using Crazy2018_Sys_DBHelper;
+@{
+    ViewBag.Title = "排行榜设置";
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+}
+
+<style>
+    th {
+        text-align: center;
+    }
+</style>
+<div class="mainbody">
+    <!--导航栏-->
+    <div class="location">
+        <a href="javascript:history.back(-1);" class="back"><i></i><span>返回上一页</span></a>
+        <a href="/Home/Center" class="home"><i></i><span>首页</span></a>
+        <i class="arrow"></i>
+        <a href="/GameCore/SetRangingList"><span>排行榜设置</span></a>
+        <i class="arrow"></i>
+        <span>排行榜设置</span>
+    </div>
+
+    <ul id="myTab" class="nav nav-tabs">
+
+        <li  class="active">
+            <a href="#cardtype">
+                红利排行榜
+            </a>
+        </li>
+        <li>
+            <a href="#test-paper">
+
+                大神排行榜
+            </a>
+        </li>
+        <li  >
+            <a href="#favorite">
+
+                高手排行榜
+            </a>
+        </li>
+    </ul>
+
+    <div id="myTabContent" class="tab-content">
+        <div class="tab-pane fade" id="cardtype"></div>
+
+        <div class="tab-pane fade" id="test-paper"></div>
+
+        <div class="tab-pane fade" id="favorite"></div>
+
+    </div>
+</div>
+
+
+<script type="text/javascript">
+    $(function () {
+
+        //准备tabs数据
+        var tabsData = [{
+            "id": "cardtype",
+            "url": "/GameCore/SetBonusRangingList"
+        }, {
+                "id": "test-paper",
+            "url": "/GameCore/SetGodRangingList"
+        }, {
+                "id": "favorite",
+            "url": "/GameCore/SetACERangingList"
+        }
+        ];
+
+        //遍历json数组,循环添加a标签click事件:
+        $(tabsData).each(function () {
+            $("a[href='#" + this.id + "']").bind('click', {
+                id: this.id,
+                url: this.url
+            }, tabsHandler);
+        });
+
+        var pagenum = 0;
+        
+        switch (getUrlParams("page")) {
+            case "2":
+                pagenum = 1;
+                break;
+            case "1":
+                pagenum = 0;
+                break;
+            case "3":
+                pagenum = 2;
+                break;
+            case "4":
+                pagenum = 3;
+                break;
+            default:
+                pagenum = 0;
+                break;
+        }
+        
+        //$('#myTab li:eq(' + pagenum + ') a').tab('show');
+        //$('#myTab li:eq(' + pagenum + ') a').click();
+        //console.log("kaishi");
+        //showTabs('cardtype', '/GameCore/SetBonusRangingList');
+        //$('a[href="#cardtype"]').click();
+    });
+
+        function tabsHandler(event) {
+            var data = event.data;
+            showTabs(data.id,data.url);
+            return false; //阻止默认a标签响应
+        }
+
+        /**
+         * 激活tab选项卡并使用ajax异步加载内容
+         * param {Object} tabsId
+         * param {Object} url
+         */
+        function showTabs(tabsId,url) {
+            $("a[href='#"+tabsId+"']").tab('show');
+            var $tabContent = $('#'+tabsId);
+            if($tabContent.length < 100) {
+                $tabContent.load(url);
+            }
+        }
+
+        //依次为每个tab导航a标签添加单击事件
+    //$('a[href="#cardtype"]').click(function(e) {
+    //        showTabs('cardtype', '/GameCore/SetBonusRangingList');
+    //        e.preventDefault();
+    //    });
+    //$('a[href="#test-paper"]').click(function (e) {
+    //    showTabs('test-paper', '/GameCore/SetGodRangingList');
+    //    e.preventDefault();
+    //});
+    //$('a[href="#favorite"]').click(function (e) {
+    //    showTabs('favorite', '/GameCore/SetACERangingList');
+    //    e.preventDefault();
+    //});
+
+</script>
+

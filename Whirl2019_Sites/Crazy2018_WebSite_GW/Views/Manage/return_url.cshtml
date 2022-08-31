@@ -1,0 +1,67 @@
+﻿@{
+    Layout = null;
+}
+@model Crazy2018_WebSite_GW.Models.SHPay
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta content="telephone=no" name="format-detection" />
+    <title>接收结果</title>
+    <link rel="stylesheet" href="https://apps.bdimg.com/libs/jquerymobile/1.4.5/jquery.mobile-1.4.5.min.css">
+    <script src="https://apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="https://apps.bdimg.com/libs/jquerymobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <script src="~/Scripts/jquery-form.js"></script>
+    <link href="~/Content/css/index.css" rel="stylesheet" />
+</head>
+
+<body>
+    <div data-role="page" style="background: #F7F7F7!important;">
+        <style type="text/css">
+            body {
+                font-family: 微软雅黑;
+            }
+        </style>
+        <div data-role="header" data-position="fixed" data-tap-toggle="false" class="Header">
+            接收结果
+        </div>
+        <div data-role="main">
+            <div class="ListBox" id="PageContent">
+                <div class="settings_set">
+                    订单号：@Model.orderid
+                </div>
+                <div class="settings_set">
+                    账号：@Model.name
+                </div>
+                <div class="settings_set">
+                    金额：@Model.money
+                </div>
+                <div class="settings_set">
+                    状态：@Model.State
+                </div>
+                <div class="settings_set">
+                    备注：@Model.memo
+                </div>
+            </div>
+
+            <script type="text/javascript">
+
+                $(document).on("pageshow", function () {
+                    //防止页面后退
+                    history.pushState(null, null, document.URL);
+                    window.addEventListener('popstate', function () {
+                        history.pushState(null, null, document.URL);
+                    });
+                })
+
+            </script>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,132 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+    ViewBag.Title = "MTT锦标赛";
+}
+<style>
+    .table > tbody > tr > td, .table > tbody > tr > th, .table > tfoot > tr > td, .table > tfoot > tr > th, .table > thead > tr > td, .table > thead > tr > th {
+        padding: 0;
+    }
+    .table > tbody > tr > td {
+    text-align:center;
+    }
+</style>
+@*<script>
+  
+    var tiimg = "";
+    var contentimg = "";
+    var huopailist = "";
+    var hdiv_str = "";
+    var teble_str = "";
+    var teble_huopai = "";
+    var teble_img = "";
+    $(function () {
+        data = {};
+        data.typeid = 2;
+        $.ajax({
+            type: "post", url: '/Game/GetNoticeInfo',
+            datatype: 'json',
+            data: data,
+            success: function (res) {
+                $("#head_div").empty();
+                $('#tbody_table').empty();
+                var hdiv = $("#head_div").html();
+                for (var i = 0; i < res.Data.length; i++) {
+                    if (res.Data[i]!="") {
+                    tiimg = res.Data[i].TitleImgUrl;
+                    contentimg = res.Data[i].ContentImgUrl;
+                    console.log(res.Data[i].Matchinfos.length);
+                        huopailist = "";
+                        for (var j = 0; j < res.Data[i].Matchinfos.length; j++) {
+                            if (res.Data[i].Matchinfos[j] != "") {
+
+
+                                huopailist += " <p style=' color:#524945;'>" + res.Data[i].Matchinfos[j].split(',')[0] + " &nbsp;&nbsp;&nbsp;" + res.Data[i].Matchinfos[j].split(',')[1] + "</p>";
+                            }
+                        }
+                        if (res.Data[i].Partnerusers != null) {
+                            for (var n = 0; n < res.Data[i].Partnerusers.length; n++) {
+                                if (res.Data[i].Partnerusers[n] != "") {
+                                    if (res.Data[i].Partnerusers[n].split(',')[2] == "伙牌") {
+                                        teble_huopai = " <b style='color:red'>伙牌</b>";
+                                        teble_img = " <img src=\"../../downpageimg/NoticeImgs/warning.png\" style='height: 20px' />";
+                                    } else {
+                                        teble_huopai = res.Data[i].Partnerusers[n].split(',')[2];
+                                        teble_img = res.Data[i].Partnerusers[n].split(',')[3];
+                                    }
+                                    teble_str += "  <tr>" +
+                                        " <td>" + res.Data[i].Partnerusers[n].split(',')[0] + "</td>" +
+                                        " <td>" + res.Data[i].Partnerusers[n].split(',')[1] + "</td> " +
+                                        " <td>" + teble_huopai + "</td> " +
+                                        " <td style = 'color:#B57253'>" + teble_img + "</td> " +
+                                        "  </tr>";
+                                }
+                            }
+                        }
+
+                    hdiv_str = "   <p style='padding - top: 10px; '>" +
+                        "<img src = '../../downpageimg/NoticeImgs/hot.png' style = 'margin-bottom:10px;height:30px' />" +
+                        "<span style='font-size:15px;color:#B47251;padding-bottom:10px;font-weight:700'>&nbsp;" + res.Data[i].AnnouncementTime + "冻结账号公告如下:</span></p>" +
+                        "<div style='background-image:url(\"../../downpageimg/NoticeImgs/juxing-1.png\");background-size: 100% 100%;display:inline-block;height:auto;width:100%;'>" +
+                        "<div style='margin:20px;'>" +
+                        "<div style='color:#524945;margin:0 auto;display: inline-block;height:auto;width:100%;'>" +
+                        "<p style='width:30%;float:left;text-align:right;'>" +
+                        " 赛 &nbsp;&nbsp;&nbsp;&nbsp; 事：" +
+                        " </p>" +
+                        " <div style='width:70%;float:right; text-align:left '>" +
+                        " <p style='color:#524945;'>高额俱乐部-6max-保底50000</p>" +
+                        " </div>" +
+                        "</div>" +
+                        "<div style='margin:0 auto;display: inline-block;height:auto;width:100%'>" +
+                        "<p style=' color:#524945;width:30%;float:left;text-align:right;'>" +
+                        "    伙牌玩家：" +
+                        " </p>" +
+                        " <div style='width:70%;float:right;text-align:left;'>" + huopailist +
+                        " </div>" +
+                        "</div>" +
+                        " </div>" +
+                        " </div>";
+                  
+                   
+                    res.Data[i].Matchinfos;
+                    res.Data[i].Partnerusers;
+                    $('#head_div').append(hdiv_str);
+                        $('#tbody_table').append(teble_str);
+                    }
+                }
+                $("#titleimg").attr("src", tiimg);
+                $("#contentimg").attr("src", contentimg);
+            }
+        })
+    })
+</script>*@
+
+        <div class="col-lg-12 col-md-12 col-sm-12 center-notice">
+
+            <div class="titlelogo">
+
+            <img src="~/downpageimg/NoticeImgs/MTT.png" style="height:30px" id="titleimg" />
+        </div>
+            <p class="pcenter " style="color:#746966;">伙牌封号冻结公告</p>
+
+            <div id="head_div">   <p style="padding - top: 10px; "><img src="../../downpageimg/NoticeImgs/hot.png" style="margin-bottom:10px;height:30px"><span style="font-size:15px;color:#B47251;padding-bottom:10px;font-weight:700">&nbsp;05月25日冻结账号公告如下:</span></p><div style="background-image:url(&quot;../../downpageimg/NoticeImgs/juxing-1.png&quot;);background-size: 100% 100%;display:inline-block;height:auto;width:100%;"><div style="margin:20px;"><div style="color:#524945;margin:0 auto;display: inline-block;height:auto;width:100%;"><p style="width:30%;float:left;text-align:right;"> 赛 &nbsp;&nbsp;&nbsp;&nbsp; 事： </p> <div style="width:70%;float:right; text-align:left "> <p style="color:#524945;">高额俱乐部-6max-保底50000</p> </div></div><div style="margin:0 auto;display: inline-block;height:auto;width:100%"><p style=" color:#524945;width:30%;float:left;text-align:right;">    伙牌玩家： </p> <div style="width:70%;float:right;text-align:left;"> <p style=" color:#524945;">2368638 &nbsp;&nbsp;&nbsp;佳佳牌手</p> <p style=" color:#524945;">2368803 &nbsp;&nbsp;&nbsp;凤舞九天</p> <p style=" color:#524945;">2368719 &nbsp;&nbsp;&nbsp;露娜</p> </div></div> </div> </div>   <p style="padding - top: 10px; "><img src="../../downpageimg/NoticeImgs/hot.png" style="margin-bottom:10px;height:30px"><span style="font-size:15px;color:#B47251;padding-bottom:10px;font-weight:700">&nbsp;05月21日冻结账号公告如下:</span></p><div style="background-image:url(&quot;../../downpageimg/NoticeImgs/juxing-1.png&quot;);background-size: 100% 100%;display:inline-block;height:auto;width:100%;"><div style="margin:20px;"><div style="color:#524945;margin:0 auto;display: inline-block;height:auto;width:100%;"><p style="width:30%;float:left;text-align:right;"> 赛 &nbsp;&nbsp;&nbsp;&nbsp; 事： </p> <div style="width:70%;float:right; text-align:left "> <p style="color:#524945;">高额俱乐部-6max-保底50000</p> </div></div><div style="margin:0 auto;display: inline-block;height:auto;width:100%"><p style=" color:#524945;width:30%;float:left;text-align:right;">    伙牌玩家： </p> <div style="width:70%;float:right;text-align:left;"> <p style=" color:#524945;">2368638 &nbsp;&nbsp;&nbsp;佳佳牌手</p> <p style=" color:#524945;">2368803 &nbsp;&nbsp;&nbsp;凤舞九天</p> <p style=" color:#524945;">2368719 &nbsp;&nbsp;&nbsp;露娜</p> </div></div> </div> </div></div>
+            <div>
+                <div style="height:50px;margin:0 auto;text-align:center;margin-top:20px;">
+                    <img src="~/downpageimg/NoticeImgs/number.png" style="height:25px" id="contentimg"/>
+                </div>
+                <table class="table table-striped ">
+                
+                    <thead style="color:#ffffff;background-color:#958A84;font-weight:700;margin-right:10px" class="thborder">
+                        <tr>
+                            <th>昵称</th>
+                            <th>原排名</th>
+                            <th>递延排名</th>
+                            <th>排名奖励</th>
+                        </tr>
+                    </thead>
+                    <tbody style="color:#544A41;" id="tbody_table">  <tr> <td>fff</td> <td>1</td>  <td>1</td>  <td style="color:#B57253">5000</td>   </tr>  <tr> <td>ssss</td> <td>2</td>  <td>2</td>  <td style="color:#B57253">5000</td>   </tr>  <tr> <td>001</td> <td>3</td>  <td>3</td>  <td style="color:#B57253">5000</td>   </tr>  <tr> <td>佳佳牌手</td> <td>4</td>  <td> <b style="color:red">伙牌</b></td>  <td style="color:#B57253"> <img src="../../downpageimg/NoticeImgs/warning.png" style="height: 20px"></td>   </tr>  <tr> <td>Pink</td> <td>5</td>  <td>4</td>  <td style="color:#B57253">5000</td>   </tr>  <tr> <td>此去经年</td> <td>6</td>  <td>5</td>  <td style="color:#B57253">5000</td>   </tr>  <tr> <td>凤舞九天</td> <td>7</td>  <td> <b style="color:red">伙牌</b></td>  <td style="color:#B57253"> <img src="../../downpageimg/NoticeImgs/warning.png" style="height: 20px"></td>   </tr>  <tr> <td>露娜</td> <td>8</td>  <td> <b style="color:red">伙牌</b></td>  <td style="color:#B57253"> <img src="../../downpageimg/NoticeImgs/warning.png" style="height: 20px"></td>   </tr>  <tr> <td>秋风</td> <td>9</td>  <td>6</td>  <td style="color:#B57253">5000</td>   </tr>  <tr> <td>冷0.0</td> <td>10</td>  <td>7</td>  <td style="color:#B57253">5000</td>   </tr>  <tr> <td>傲骨</td> <td>11</td>  <td>8</td>  <td style="color:#B57253">5000</td>   </tr></tbody>
+                </table>
+            </div>
+
+        </div>
+       

@@ -1,0 +1,173 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,initial-scale=1.0,user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <title>编辑银行卡</title>
+    <link href="~/scripts/artdialog/ui-dialog.css" rel="stylesheet" type="text/css" />
+    <link href="~/skin/default/style.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="~/scripts/jquery/jquery-1.11.2.min.js"></script>
+    <script type="text/javascript" src="~/scripts/jquery/Validform_v5.3.2_min.js"></script>
+
+    <script type="text/javascript" src="~/scripts/artdialog/dialog-plus-min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="~/js/laymain.js"></script>
+    <script type="text/javascript" charset="utf-8" src="~/js/common.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            //初始化表单验证
+            $("#form1").initValidform();
+        });
+    </script>
+</head>
+
+<body class="mainbody">
+    <form id="form1">
+        <!--导航栏-->
+        <div class="location">
+            <a href="/Business/UserBankList" class="back"><i></i><span>返回列表页</span></a>
+            <a href="/Home/Center" class="home"><i></i><span>首页</span></a>
+            <i class="arrow"></i>
+            <a href=""><span>用户银行</span></a>
+            <i class="arrow"></i>
+            <span>编辑银行</span>
+        </div>
+        <div class="line10"></div>
+        <!--/导航栏-->
+        <!--内容-->
+        <div id="floatHead" class="content-tab-wrap">
+            <div class="content-tab">
+                <div class="content-tab-ul-wrap">
+                    <ul>
+                        <li><a class="selected" href="javascript:;">编辑用户银行信息</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="tab-content">
+            <dl>
+                <dt>用户ID</dt>
+                <dd>
+                    <input name="txttitle" type="text" id="userId" class="input normal" datatype="*2-120" nullmsg="请设填写用户ID" errormsg="用户ID为用户用户游戏中的ID" style="width:495px;">
+                    <span class="Validform_checktip">*</span>
+                </dd>
+            </dl>
+            <dl>
+                <dt>银行卡号</dt>
+                <dd>
+                    <input name="txttitle" type="text" id="cardNo" class="input normal" datatype="/^([1-9]{1})(\d{15}|\d{18})$/" nullmsg="请设填写银行卡号" errormsg="银行卡号范围在16-19位整数之间" style="width:495px;">
+                    <span class="Validform_checktip">*</span>
+                </dd>
+            </dl>
+            <dl>
+                <dt>用户开户行</dt>
+                <dd>
+                    <input name="txt_type" type="text" id="CardName" class="input normal" datatype="*2-120" nullmsg="请填写用户开户行名称" style="width:493px;">
+                    <span class="Validform_checktip">*</span>
+                </dd>
+            </dl>
+            <dl>
+                <dt>姓名</dt>
+                <dd>
+                    <input name="txt_type" type="text" id="name" class="input normal" datatype="*2-120" nullmsg="请填写开户人的姓名" style="width:493px;">
+                    <span class="Validform_checktip">*</span>
+                </dd>
+            </dl>
+            <dl>
+                <dt>开户行地址</dt>
+                <dd>
+                    <input name="txt_type" type="text" id="bankAddress" class="input normal" datatype="*2-20" nullmsg="请设填写开户行地址" style="width:493px;">
+                    <span class="Validform_checktip">*</span>
+                </dd>
+            </dl>
+            <dl>
+                <dt>开户行区域</dt>
+                <dd>
+                    <input name="txt_type" type="text" id="Location" class="input" style="width:493px;">
+                   
+                </dd>
+            </dl>
+        </div>
+        <!--/内容-->
+        <!--工具栏-->
+        <div class="page-footer">
+            <div class="btn-wrap" style="position: static;">
+                <input type="submit" name="btnSubmit" value="提交保存" id="btnSubmit" class="btn">
+                <input name="btnReturn" type="button" value="返回上一页" class="btn yellow" onclick="javascript: history.back(-1);">
+            </div>
+        </div>
+        <!--/工具栏-->
+    </form>
+    <script>
+        var id = "";
+        function getURLParameter(name) {
+            return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search) || [null, ''])[1].replace(/\+/g, '%20')) || null;
+        }
+        //console.log(getURLParameter("id"))
+        if (getURLParameter("id") != "" && getURLParameter("id") != null) {
+            id = getURLParameter("id");
+            var data = {};
+            data.id = getURLParameter("id");
+
+            $.ajax({
+                type: "post", url: '/Business/GetCardById',
+                datatype: 'json',
+                data: data,
+                success: function (res) {
+                    console.log(res)
+                    if (res) {
+                        if (res.Code == 0) {
+                            $("#name").val(res.Data.UserName);
+                            $("#cardNo").val(res.Data.BankCardID);
+                            $("#bankAddress").val(res.Data.BankAddress);
+                            $("#Location").val(res.Data.Location);
+                            $("#userId").val(res.Data.UserID);
+                            $("#CardName").val(res.Data.CardName);
+                        }
+                    }
+                }
+            })
+        } else {
+            id = "";
+        }
+
+        $(".btn").click(function () {
+            var name = $("#name").val();
+            var cardNo = $("#cardNo").val();
+            var bankAddress = $("#bankAddress").val();
+            var Location = $("#Location").val();
+            var userId = $("#userId").val();
+            //var CardName = $("#CardName").val();
+            console.log(name, cardNo, bankAddress, Location, userId);
+            var data = {};
+            data.name = name;
+            data.cardNo = cardNo;
+            data.bankAddress = bankAddress;
+            data.Location = Location;
+            data.userId = userId;
+           
+            data.id = id
+            $.ajax({
+                type: "post", url: '/Business/SaveBankCard',
+                datatype: 'json',
+                data: data,
+                success: function (res) {
+                    console.log(res)
+                    if (res) {
+                        if (res.Code == 0 || res.Code == "0") {
+                            parent.jsprint(res.Message, "/Business/UserBankList");
+                        } else {
+                            parent.jsprint(res.Message, "/Business/UserBankEdit");
+                        }
+                    }
+                }
+            })
+        })
+    </script>
+</body>
+</html>

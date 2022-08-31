@@ -1,0 +1,453 @@
+﻿@using Crazy2018_Sys_DBHelper
+@using Crazy2018_Sys_Common
+@{
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+
+    <script type="text/javascript">
+        function InitPage()
+        {
+            //添加按钮(点击绑定)
+            $(".icon-btn").click(function () {
+                var fun = $(this).attr("action");
+                showUrlDialog(fun);
+            });
+
+
+            var id = "";
+            function getURLParameter(name) {
+                return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search) || [null, ''])[1].replace(/\+/g, '%20')) || null;
+            }
+            //console.log(getURLParameter("id"))
+            if (getURLParameter("id") != "" && getURLParameter("id") != null) {
+                id = getURLParameter("id");
+                var data = {};
+                data.userId = getURLParameter("id");
+                $.ajax({
+                    type: "post", url: '/Business/GetGameUserById',
+                    datatype: 'json',
+                    data: data,
+                    success: function (res) {
+                        // console.log(res)
+                        if (res.Code == "0") {
+                            if (res) {
+                                $("#hduserid1").text(res.Data.UserID);
+                                $("#hduserid").val(res.Data.UserID);
+                                $("#UserName").text(res.Data.UserName);
+                                $("#wechatName").text(res.Data.WechatName);
+                                $("#RegTime").text(res.Data.RegTime);
+                                $("#isagent").text(res.Data.IsAgent);
+                                $("#LastLotinTime1").text(res.Data.LastLotinTime);
+                                $("#lockTime").text(res.Data.LockTime);
+                                $("#winpercent").text(res.Data.WinPercent);
+                                $("#RobotLevel").text(res.Data.RobotLevel);
+                                $("#UserMoney").text(res.Data.UserMoney);
+                                $("#TotalMoney").text(res.Data.TotalMoney);
+                                $("#diamond").text(res.Data.Diamond);
+                                $("#totaldiamond").text(res.Data.TotalDiamond);
+                                $("#wechatHeadIcon").text(res.Data.WechatHeadIcon);
+                                $("#hduserid2").val(res.Data.RoleType);
+                                $("#PhoneNum").text(res.Data.PhoneNum);
+                               
+                                qw = res.Data.RoleType;
+                                uid = res.Data.UserID
+                                WechatName = res.Data.WechatName
+                                WechatHeadIcon = res.Data.WechatHeadIcon
+                                AgentId = res.Data.AgentId
+                            }
+                            if (res.Data.RoleType == 1) {
+                                $(".one").css({ "display": "inline-block;" })
+                                $(".two").css({ "display": "inline-block;" })
+                                $(".three").css({ "display": "inline-block;" })
+                                $(".four").css({ "display": "inline-block;" })
+                                $(".five").css({ "display": "inline-block;" })
+                                $(".six").css({ "display": "inline-block;" })
+                            } else {
+                                $(".one").css({ "display": "inline-block;" })
+                                $(".two").css({ "display": "none" })
+                                $(".three").css({ "display": "inline-block;" })
+                                $(".four").css({ "display": "none" })
+                                $(".five").css({ "display": "none" })
+                                $(".six").css({ "display": "none" })
+                            }
+                        }
+                    }
+                })
+            } else {
+                id = "";
+            }
+        }
+
+
+        var qw = "";
+        var uid = "";
+        var WechatName = "";
+        var WechatHeadIcon = "";
+        var AgentId=""
+        $(function () {
+            InitPage();
+        });
+        //创建窗口
+        function showUrlDialog(fun) {
+           
+            
+            if (fun == "chargemoney")//充值金币
+            {
+                userCharge(1, uid)
+            }
+            else if (fun == "chargediamond")//充值砖石
+            {
+                userCharge(2, uid)
+            }
+            else if (fun == "setagent")//设置代理
+            {
+                userAgent(uid);
+            }
+            else if (fun == "setrobot")//设置机器人
+            {
+                setUserRobot(uid);
+            }
+            else if (fun == "settime")//锁定账户
+            {
+                setlocktime(uid);
+            }
+            else if (fun == "setwechat") { //修改账户信息
+                setwechat(WechatName, WechatHeadIcon, AgentId,uid);
+            } else if (fun == "setvlevel") {
+                setvlevel(uid);
+            }else if (fun == "setlosewin")
+            {
+                setlosewin(uid);
+            } else if (fun == "setwithdrawLv") {
+                setwithdrawLv(uid);
+            }
+            else {
+                alert("参数错误");
+            }
+        }
+        function setlosewin(uid)
+        {
+            var d = top.dialog({
+                title: "设置最大输赢",
+                width: "550px",
+                url: '/Business/SetMaxWinLose?uid=' + uid,
+                onclose: function () {
+                    var trHtml = this.returnValue;
+
+                    if (trHtml == true) {
+                        alert("设置成功");
+                    }
+                }
+            }).showModal();
+        }
+
+        function setwithdrawLv(uid)
+        {
+            var d = top.dialog({
+                title: "设置兑换等级",
+                width: "550px",
+                url: '/Form/SetWithdraLv?uid=' + uid,
+                onclose: function () {
+                    var trHtml = this.returnValue;
+
+                    if (trHtml == true) {
+                        alert("设置成功");
+                    }
+                }
+            }).showModal();
+        }
+
+
+        function setvlevel(uid)
+        {
+            var d = top.dialog({
+                title: "修改会员等级",
+                width: "550px",
+                url: '/Business/EditVlevel?uid=' + uid,
+                onclose: function () {
+                    var trHtml = this.returnValue;
+                    
+                    if (trHtml==true) {
+                        alert("修改账户信息成功");
+                    }
+                }
+            }).showModal();
+        }
+        //充值
+        function userCharge(type, uid) {
+
+            var des = "充值金币";
+            if (type == 2) {
+                des = "充值砖石";
+            }
+            var d = top.dialog({
+                title: des,
+                width: "550px",
+                url: '/Business/DialogCharge?type=' + type + "&uid=" + uid,
+                onclose: function () {
+                    var trHtml = this.returnValue;
+                    InitPage();
+                    if (trHtml == true) {
+                        alert("充值成功!");
+                    } else {
+                        alert("充值失败!");
+                    }
+                }
+            }).showModal();
+        }
+        function userAgent(uid) {
+            //console.log(uid)
+            if (qw == 1) {
+                var d = top.dialog({
+                    title: "设置代理",
+                    width: "550px",
+                    url: '/Business/DialogAgent?uid=' + uid,
+                    onclose: function () {
+                        var trHtml = this.returnValue;
+                        if (trHtml.length > 0) {
+                            alert("设置成功");
+                        }
+                    }
+                }).showModal();
+            } else {
+                var d = top.dialog({
+                    title: "设置代理",
+                    width: "550px",
+                    url: '/Business/DialogAgent1?uid=' + uid,
+                    onclose: function () {
+                        var trHtml = this.returnValue;
+                        if (trHtml.length > 0) {
+                            alert("设置成功");
+                        }
+                    }
+                }).showModal();
+            }
+        }
+        function setUserRobot(uid) {
+            var d = top.dialog({
+                title: "设置机器人",
+                width: "550px",
+                url: '/Business/DialogRobot?uid=' + uid,
+                onclose: function () {
+                    var trHtml = this.returnValue;
+                    if (trHtml.length > 0) {
+                        alert("设置成功");
+                    }
+                }
+            }).showModal();
+        }
+        function setlocktime(uid) {
+            var d = top.dialog({
+                title: "锁定账户",
+                width: "550px",
+                url: '/Business/DialogLocktime?uid=' + uid,
+                onclose: function () {
+                    var trHtml = this.returnValue;
+                    if (trHtml.length > 0) {
+                        alert("账号锁定成功");
+                    }
+                }
+            }).showModal();
+        }
+        function setwechat(WechatName, WechatHeadIcon, AgentId,uid) {
+            var d = top.dialog({
+                title: "修改账户信息",
+                width: "550px",
+                url: '/Business/DialogWechat?WechatName=' + WechatName + "&WechatHeadIcon=" + WechatHeadIcon + "&AgentId=" + AgentId + "&uid=" + uid,
+                onclose: function () {
+                    var trHtml = this.returnValue;
+                    if (trHtml.length > 0) {
+                        alert("修改账户信息成功");
+                    }
+                }
+            }).showModal();
+        }
+    </script>
+</head>
+
+<body class="mainbody">
+    <form method="post" action="./user_edit.aspx" id="form1">
+        <!--导航栏-->
+        <div class="location">
+            <a href="/Business/UserList" class="back"><i></i><span>返回列表页</span></a>
+            <a href="/Home/Center" class="home"><i></i><span>首页</span></a>
+            <i class="arrow"></i>
+            <a href="/Business/UserList"><span>账号列表</span></a>
+            <i class="arrow"></i>
+            <span>编辑会员账号</span>
+        </div>
+        <div class="line10"></div>
+        <!--/导航栏-->
+        <!--内容-->
+        <div id="floatHead" class="content-tab-wrap" style="height: 42px;">
+            <div class="content-tab" style="width: 1134px;">
+                <div class="content-tab-ul-wrap">
+                    <div class="tab-title"><span>会员账户信息</span><i></i></div><ul>
+                        <li><a class="selected" href="javascript:;">会员账户信息</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="tab-content">
+            <table>
+                <tbody>
+                    <tr>
+                        <td>
+                            <dl>
+                                <dt>用户ID</dt>
+                                <dd id="hduserid1">
+                                    <input type="hidden" id="hduserid" value="0" style="">
+                                    <input type="hidden" id="hduserid2" value="0" style="">
+                                    0
+                                </dd>
+                            </dl>
+                        </td>
+                        <td>
+                            <dl>
+                                <dt>账户名</dt>
+                                <dd id="UserName"> </dd>
+                            </dl>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <dl>
+                                <dt>微信名</dt>
+                                <dd id="wechatName"></dd>
+                            </dl>
+                        </td>
+                        <td>
+                            <dl>
+                                <dt>注册时间</dt>
+                                <dd id="RegTime"></dd>
+                            </dl>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <dl>
+                                <dt>是否代理</dt>
+                                <dd id="isagent">否</dd>
+                            </dl>
+                        </td>
+                        <td>
+                            <dl>
+                                <dt>最近登陆时间</dt>
+                                <dd id="LastLotinTime1"></dd>
+                            </dl>
+                        </td>
+                    </tr>
+                    <tr>
+
+                        <td>
+                            <dl>
+                                <dt>锁定时间</dt>
+                                <dd id="lockTime"></dd>
+                            </dl>
+                        </td>
+                        <td>
+                            <dl>
+                                <dt>手机号</dt>
+                                <dd id="PhoneNum"></dd>
+
+                            </dl>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <dl>
+                                <dt>胜率百分比</dt>
+                                <dd id="winpercent">0</dd>
+                            </dl>
+                        </td>
+                        <td>
+                            <dl>
+                                <dt>机器人等级</dt>
+                                <dd id="RobotLevel">0</dd>
+                            </dl>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <dl>
+                                <dt>金币数</dt>
+                                <dd id="UserMoney">0</dd>
+                            </dl>
+                        </td>
+                        <td>
+                            <dl>
+                                <dt>总充值金币数</dt>
+                                <dd id="TotalMoney">0</dd>
+                            </dl>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <dl>
+                                <dt>钻石数</dt>
+                                <dd id="diamond">
+                                    0
+                                </dd>
+                            </dl>
+                        </td>
+                        <td>
+                            <dl>
+                                <dt>总充值钻石数</dt>
+                                <dd id="totaldiamond">0</dd>
+                            </dl>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <dl>
+                                <dt>头像地址</dt>
+                                <dd id="wechatHeadIcon">
+
+                                </dd>
+                            </dl>
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <dl>
+                                <dt>操作</dt>
+                                <dd>
+                                    @*<a class="icon-btn add one" action="chargemoney"><i></i><span>充值金币</span></a>*@
+                                    @*<a class="icon-btn add two" action="chargediamond"><i></i><span>充值钻石</span></a>
+                                      <a class="icon-btn edit three" action="setagent"><i></i><span>设置代理</span></a>*@
+                                    <a class="icon-btn edit four" action="setrobot"><i></i><span>设置胜率</span></a>
+                                    <a class="icon-btn lock five" action="settime"><i></i><span>锁定账户</span></a>
+                                    <a class="icon-btn lock six" action="setwechat"><i></i><span>修改账户信息</span></a>
+                                    <a class="icon-btn lock six" action="setvlevel"><i></i><span>设置代理</span></a>
+                                    <a class="icon-btn add there" action="setlosewin"><i></i><span>设置最大输赢</span></a>
+                                    <a class="icon-btn add seven" action="setwithdrawLv"><i></i><span>兑换等级设置</span></a>
+                                </dd>
+                            </dl>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <!--/内容-->
+        <!--工具栏-->
+        <div class="page-footer">
+            <div class="btn-wrap" style="position: static;">
+                <input name="btnReturn" type="button" value="返回上一页" class="btn yellow" onclick="javascript: history.back(-1);">
+            </div>
+        </div>
+        <!--/工具栏-->
+
+
+        <div class="aspNetHidden">
+
+            <input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="5EE1700E">
+        </div>
+    </form>
+</body>
+</html>

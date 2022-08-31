@@ -1,0 +1,227 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,initial-scale=1.0,user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <title>公告列表</title>
+    <link href="~/scripts/artdialog/ui-dialog.css" rel="stylesheet" type="text/css" />
+    <link href="~/skin/default/style.css" rel="stylesheet" type="text/css" />
+    <link href="~/css/pagination.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="~/scripts/jquery/jquery-1.11.2.min.js"></script>
+    <script type="text/javascript" src="~/scripts/artdialog/dialog-plus-min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="~/js/laymain.js"></script>
+    <script type="text/javascript" charset="utf-8" src="~/js/common.js"></script>
+</head>
+
+<body class="mainbody">
+    <form id="form1">
+        <!--导航栏-->
+        <div class="location">
+            <a href="javascript:history.back(-1);" class="back"><i></i><span>返回上一页</span></a>
+            <a href="/Home/Center" class="home"><i></i><span>首页</span></a>
+            <i class="arrow"></i>
+            <a href="/Business/UserBankList"><span>用户银行卡管理</span></a>
+            <i class="arrow"></i>
+            <span>用户银行卡列表</span>
+        </div>
+        <!--/导航栏-->
+        <!--工具栏-->
+        <div id="floatHead" class="toolbar-wrap">
+            <div class="toolbar">
+                <div class="box-wrap">
+                    <a class="menu-btn"></a>
+                    <div class="l-list">
+                        <ul class="icon-list">
+                            <li><a class="add" href="/Business/UserBankEdit"><i></i><span>新增</span></a></li>
+                            <li><a class="all" href="javascript:;" onclick="checkAll(this);"><i></i><span>全选</span></a></li>
+                            <li>
+                                <a id="btnDelete" class="del"><i></i><span>删除</span></a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="r-list">
+                        <input name="txtKeywords" type="text" id="txtKeywords" class="keyword">
+                        <a id="lbtnSearch" class="btn-search">查询</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--/工具栏-->
+        <!--列表-->
+        <div class="table-container">
+            <table width="100%" border="0" cellspacing="0" cellpadding="0" class="ltable">
+
+                <thead>
+                    <tr class="odd_bg">
+                        <th></th>
+                        <th>用户ID</th>
+                        <th>用户卡号</th>
+                        <th>用户开户行</th>
+                        <th>银行卡持有人姓名</th>
+                        <th>地址</th>
+                        <th>区域</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody id="MyTbody">
+
+                </tbody>
+            </table>
+
+        </div>
+        <!--/列表-->
+        <div class="line20"></div>
+        <div class="pagelist">
+            <div class="l-btns">
+                <span>显示</span><input name="txtPageNum" type="text" id="txtPageNum" class="pagenum"><span>条/页</span>
+            </div>
+            <div id="PageContent" class="default">
+            </div>
+        </div>
+
+        <div style="width:100%;text-align: center;">
+            <span style="display: inline-block;padding: 4px 15px 0px 15px;color: #666;font-size:14px;">(注 :检索条件 用户id 开户区域 开户人姓名)</span>
+        </div>
+    </form>
+    <script>
+        var storagefirst = window.localStorage;
+        var MyPageNum27 = storagefirst["MyPageNum27"];
+        var txtPageNum = 10;
+        var Keywords = "";
+        var PageIndex = 1;
+        if (MyPageNum27 != "" && MyPageNum27 != null) {
+            txtPageNum = MyPageNum27
+        } else {
+            txtPageNum = txtPageNum
+        }
+        $("#txtPageNum").val(txtPageNum)
+        GetList()
+        $("#lbtnSearch").click(function () {
+            var txtKeywords = $("#txtKeywords").val();
+            Keywords = txtKeywords;
+            GetList();
+        })
+        $("#txtPageNum").change(function () {
+            txtPageNum = $("#txtPageNum").val()
+            storagefirst["MyPageNum27"] = txtPageNum
+            PageIndex = 1;
+            //console.log(txtPageNum)
+            GetList();
+        })
+        $(".pagelist").on('click', 'a', function () {
+            //var lkl = $(this).attr("href");
+            //console.log(lkl)
+            var lkl2 = $(this).text();
+            if (lkl2 == "下一页»") {
+                PageIndex = parseInt(PageIndex) + 1
+                //console.log(PageIndex)
+            } else if (lkl2 == "«上一页") {
+                PageIndex = parseInt(PageIndex) - 1
+            } else {
+                PageIndex = lkl2
+            }
+            txtPageNum = $("#txtPageNum").val()
+            GetList()
+        })
+        function GetList() {
+            var data = {};
+            data.PageSize = txtPageNum;
+            data.PageIndex = PageIndex;
+            data.Keywords = Keywords
+            $.ajax({
+                type: "post", url: '/Business/GetCardData',
+                datatype: 'json',
+                data: data,
+                success: function (res) {
+                    if (res.Code == 0 && res.Code == "0") {
+                        if (res) {
+                            console.log(res)
+                            $("#MyTbody").empty();
+                            if (res.Data.length > 0) {
+                                for (var i = 0; i < res.Data.length; i++) {
+
+
+                                    var str = $("#MyTbody").html();
+                                    str = "<tr class='One'>" +
+                                        "<td align='center'>" +
+                                            "<span class='checkall' style='vertical-align: middle;'>" +
+                                                "<input id=chkId' class='checkall' type='checkbox' name='chkId'>" +
+                                            "</span>" +
+                                            "<input type='hidden' name='hidId' id='hidId' value='" + res.Data[i].ID + "'>" +
+                                        "</td>" +
+                                        "<td align='center'>" + res.Data[i].UserID + "</td>" +
+                                        "<td align='center'>" + res.Data[i].BankCardID + "</td>" +
+                                        "<td align='center'>" + res.Data[i].CardName + "</td>" +
+                                        "<td align='center'>" + res.Data[i].UserName + "</td>" +
+                                        "<td align='center'>" + res.Data[i].Location + "</td>" +
+                                        "<td align='center'>" + res.Data[i].BankAddress + "</td>" +
+                                        "<td align='center'>" +
+                                            "<a href='/Business/UserBankEdit?action=Edit&amp;id=" + res.Data[i].ID + "'>修改</a>" +
+                                        "</td>" +
+                                    "</tr>"
+                                    $('#MyTbody').append(str);
+                                }
+                            } else {
+                                $("#MyTbody").empty();
+                            }
+                            var sthtml = $("#PageContent").html();
+                            $("#PageContent").empty();
+                            if (res.InnerHtml.length > 0) {
+                                sthtml = res.InnerHtml
+                                $('#PageContent').append(sthtml);
+                            }
+
+                        } else {
+                            parent.alert(res.Message);
+                        }
+                    } else {
+                        parent.alert(res.Message);
+                    }
+                }
+            })
+        }
+        var numID = [];//用于储存需要删除的ID
+        $("#btnDelete").click(function () {
+            numID = []
+            var num1 = {};
+            var on1 = $(".One");
+            for (var o = 0; o < on1.length; o++) {
+                var lkl3 = $(on1[o]).find(".checkall")
+
+                for (var ol = 0; ol < lkl3.length; ol++) {
+                    //console.log(lkl3[ol].checked)
+                    if (lkl3[ol].checked == true) {
+                        var lkl4 = $(on1[o]).find("#hidId").val();
+                        num1.id = lkl4
+                        numID.push(num1.id)
+
+                    }
+                }
+            }
+            var a, b;
+            a = numID;
+            b = a.join(",");
+            console.log(b)
+            var ids = b;
+            $.ajax({
+                url: "/Business/deleteCard?id=" + ids + "",
+                type: "post",
+                contentType: "application/json",
+                dataType: "json",
+                success: function (data) {
+                    if (data) {
+                        eval(data)
+                    }
+                    GetList();
+                }
+            })
+        })
+    </script>
+</body>
+</html>

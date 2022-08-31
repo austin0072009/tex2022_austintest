@@ -1,0 +1,237 @@
+﻿html,
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+input[type="text"] {
+    -webkit-appearance: none;
+    font-size: 12px;
+}
+
+input[type="radio"]:checked, input[type="checkbox"]:checked {
+    -webkit-appearance: none;
+    border-color: #f67200;
+    background-color: #f67200;
+}
+
+input[type="radio"], input[type="checkbox"] {
+    -webkit-appearance: none;
+    position: relative;
+    width: 14px;
+    height: 14px;
+    border: 1px solid #e6e6e6;
+    -webkit-border-radius: 7px;
+    border-radius: 7px;
+    background-color: #fff;
+    vertical-align: middle;
+}
+
+input[type="checkbox"] {
+    -webkit-appearance: none;
+    position: relative;
+    width: 14px;
+    height: 14px;
+    border: 1px solid #e6e6e6;
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+    background-color: #fff;
+    vertical-align: middle;
+}
+
+.bgheight {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+/*.BntContBox {
+    float: left;
+    width: 20%;
+    height: 100%;
+    border-right: 1px solid #d9d9d9;
+}*/
+
+.ContBox {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    /*background: -webkit-gradient(to top,rgb(55,51,120),rgb(25,27,79),rgb(55,51,120));*/
+    /*background:-webkit-gradient(linear, 0 0, 0 bottom, from(rgb(25,27,79)), to(rgb(55,51,120)));*/
+    /*background: linear-gradient(to top,rgb(55,51,120),rgb(25,27,79),rgb(55,51,120));*/
+    /*background: linear-gradient( rgb(48,46,110), rgb(25,27,79),rgb(48,46,110));*/
+    background: url(../img/bgtu.png)no-repeat;
+    background-size: 100%100%;
+    position: relative;
+}
+
+/*.MyIdBtn {
+    width: 90%;
+    height: 45px;
+    margin: auto;
+    margin-top: 15px;
+    border-radius: 5px;
+    background-color: #bfb8b8;
+    text-align: center;
+    line-height: 45px;
+    color: #fff;
+}*/
+
+.MyIdBtn2 {
+    background-color: #8BC34A;
+}
+
+.table thead tr th {
+    text-align: center;
+}
+
+.table tbody tr td {
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+
+.footer {
+    position: absolute;
+    bottom: 10px;
+    width: 100%;
+    height: 35px;
+}
+
+.footerbox {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.TotalContText {
+    position: absolute;
+    font-size: 16px;
+    left: 10%;
+    top: 5px;
+}
+
+    .TotalContText span {
+        color: red;
+    }
+
+.boxBtn {
+    width: 58%;
+    height: 100%;
+    margin: auto;
+}
+
+.FirstPageBox {
+    width: 20px;
+    height: 20px;
+    float: left;
+    margin-left: 10px;
+    margin-top: 5px;
+}
+
+    .FirstPageBox img {
+        width: 100%;
+        height: 100%;
+        display: block;
+    }
+
+.pageNum {
+    float: left;
+    margin-left: 15px;
+    font-size: 16px;
+    margin-top: 5px;
+}
+
+.SeekBox {
+    float: left;
+    width: 80px;
+    height: 35px;
+    border: 1px solid #d9d9d9;
+    border-radius: 5px;
+    margin-left: 9%;
+    overflow: hidden;
+}
+
+    .SeekBox input {
+        width: 100%;
+        height: 100%;
+        background: none;
+        outline: none;
+        border: 0px;
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+
+.SeekBox2 {
+    float: right;
+    width: 60px;
+    height: 35px;
+    border: 1px solid #d9d9d9;
+    border-radius: 5px;
+    text-align: center;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+    margin-bottom: 0;
+    list-style: none;
+}
+
+.headBox {
+    width: 100%;
+    height: 55px;
+    text-align: center;
+    font-size: 17px;
+    line-height: 55px;
+}
+
+.headul {
+    width: 95%;
+    height: 55px;
+    margin: auto;
+}
+
+.headBox .headul li {
+    float: left;
+    height: 55px;
+    width: 14%;
+    color: #fff;
+    background-image: -webkit-gradient(linear, 0 0, 0 bottom, from(#fff), to(#211a88));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 700;
+}
+
+.Contul {
+    position: absolute;
+    top: 55px;
+    width: 100%;
+    text-align: center;
+    font-size: 17px;
+    line-height: 55px;
+    bottom: 5px;
+    overflow:auto;
+}
+
+    .Contul li {
+        width: 95%;
+        height: 55px;
+        border-radius: 10px;
+        border: 2px solid #5D5DB3;
+        margin: auto;
+        margin-bottom:8px;
+        overflow:hidden;
+    }
+    .listCont{
+        float:left;
+        width:14%;
+        height:100%;
+        text-align:center;
+        line-height:55px;
+        font-size:16px;
+        color:#fff;
+        font-weight:700;
+    }

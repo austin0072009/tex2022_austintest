@@ -1,0 +1,387 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="snscenterwhirlModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.7" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="limitdevice">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DeviceID" Type="varchar" MaxLength="50" />
+          <Property Name="AppTime" Type="datetime" Precision="0" />
+          <Property Name="Remark" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="loguserlogin">
+          <Key>
+            <PropertyRef Name="LogID" />
+          </Key>
+          <Property Name="LogID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserID" Type="bigint" />
+          <Property Name="LogTime" Type="datetime" Precision="0" />
+          <Property Name="IPAddr" Type="varchar" MaxLength="15" />
+          <Property Name="LogType" Type="smallint" />
+        </EntityType>
+        <EntityType Name="passportloginlog">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DeviceID" Type="varchar" MaxLength="50" />
+          <Property Name="PassportID" Type="varchar" MaxLength="50" />
+          <Property Name="LoginTime" Type="datetime" Precision="0" />
+        </EntityType>
+        <EntityType Name="retailchangeinfo">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="retailid" Type="int" Nullable="false" />
+          <Property Name="type" Type="tinyint" />
+          <Property Name="score" Type="bigint" />
+          <Property Name="createtime" Type="datetime" Precision="0" />
+          <Property Name="desc" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="retailconfig">
+          <Key>
+            <PropertyRef Name="retailid" />
+          </Key>
+          <Property Name="retailid" Type="int" Nullable="false" />
+          <Property Name="playeramount" Type="mediumtext" />
+        </EntityType>
+        <EntityType Name="retailinfo">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="appsecret" Type="varchar" MaxLength="64" />
+          <Property Name="appid" Type="varchar" MaxLength="64" />
+          <Property Name="name" Type="varchar" MaxLength="50" />
+          <Property Name="gold" Type="bigint" />
+          <Property Name="createtime" Type="datetime" Precision="0" />
+          <Property Name="modefy" Type="timestamp" Precision="0" />
+          <Property Name="status" Type="tinyint" />
+        </EntityType>
+        <EntityType Name="snspassportlog">
+          <Key>
+            <PropertyRef Name="PassportID" />
+          </Key>
+          <Property Name="PassportID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" Precision="0" />
+          <Property Name="Mark" Type="int" />
+          <Property Name="RegPushTime" Type="datetime" Precision="0" />
+          <Property Name="RegTime" Type="datetime" Precision="0" />
+        </EntityType>
+        <EntityType Name="snsuserinfo">
+          <Key>
+            <PropertyRef Name="SID" />
+          </Key>
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="PassportID" Type="varchar" MaxLength="32" />
+          <Property Name="PassportPwd" Type="varchar" MaxLength="50" />
+          <Property Name="DeviceID" Type="varchar" MaxLength="50" />
+          <Property Name="RegType" Type="smallint" />
+          <Property Name="RegTime" Type="datetime" Precision="0" />
+          <Property Name="RetailID" Type="varchar" MaxLength="50" />
+          <Property Name="RetailUser" Type="varchar" MaxLength="50" />
+          <Property Name="Mobile" Type="varchar" MaxLength="50" />
+          <Property Name="Mail" Type="varchar" MaxLength="50" />
+          <Property Name="PwdType" Type="int" />
+          <Property Name="RealName" Type="varchar" MaxLength="20" />
+          <Property Name="IDCards" Type="varchar" MaxLength="20" />
+          <Property Name="ActiveCode" Type="char" MaxLength="10" />
+          <Property Name="SendActiveDate" Type="datetime" Precision="0" />
+          <Property Name="ActiveDate" Type="datetime" Precision="0" />
+          <Property Name="SID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="WeixinCode" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="userloginlog">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" />
+          <Property Name="IP" Type="varchar" MaxLength="255" />
+          <Property Name="MachineCode" Type="varchar" MaxLength="255" />
+          <Property Name="MachineType" Type="bigint" />
+          <Property Name="Lat" Type="float" />
+          <Property Name="Lng" Type="float" />
+          <Property Name="CreateTime" Type="datetime" Precision="0" />
+        </EntityType>
+        <EntityContainer Name="snscenterwhirlModelStoreContainer">
+          <EntitySet Name="limitdevice" EntityType="Self.limitdevice" Schema="snscenterwhirl" store:Type="Tables" />
+          <EntitySet Name="loguserlogin" EntityType="Self.loguserlogin" Schema="snscenterwhirl" store:Type="Tables" />
+          <EntitySet Name="passportloginlog" EntityType="Self.passportloginlog" Schema="snscenterwhirl" store:Type="Tables" />
+          <EntitySet Name="retailchangeinfo" EntityType="Self.retailchangeinfo" Schema="snscenterwhirl" store:Type="Tables" />
+          <EntitySet Name="retailconfig" EntityType="Self.retailconfig" Schema="snscenterwhirl" store:Type="Tables" />
+          <EntitySet Name="retailinfo" EntityType="Self.retailinfo" Schema="snscenterwhirl" store:Type="Tables" />
+          <EntitySet Name="snspassportlog" EntityType="Self.snspassportlog" Schema="snscenterwhirl" store:Type="Tables" />
+          <EntitySet Name="snsuserinfo" EntityType="Self.snsuserinfo" Schema="snscenterwhirl" store:Type="Tables" />
+          <EntitySet Name="userloginlog" EntityType="Self.userloginlog" Schema="snscenterwhirl" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="snscenterwhirlModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="snscenterwhirlEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="limitdevice" EntityType="snscenterwhirlModel.limitdevice" />
+          <EntitySet Name="loguserlogin" EntityType="snscenterwhirlModel.loguserlogin" />
+          <EntitySet Name="passportloginlog" EntityType="snscenterwhirlModel.passportloginlog" />
+          <EntitySet Name="retailchangeinfo" EntityType="snscenterwhirlModel.retailchangeinfo" />
+          <EntitySet Name="retailconfig" EntityType="snscenterwhirlModel.retailconfig" />
+          <EntitySet Name="retailinfo" EntityType="snscenterwhirlModel.retailinfo" />
+          <EntitySet Name="snspassportlog" EntityType="snscenterwhirlModel.snspassportlog" />
+          <EntitySet Name="snsuserinfo" EntityType="snscenterwhirlModel.snsuserinfo" />
+          <EntitySet Name="userloginlog" EntityType="snscenterwhirlModel.userloginlog" />
+        </EntityContainer>
+        <EntityType Name="limitdevice">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DeviceID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AppTime" Type="DateTime" />
+          <Property Name="Remark" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="loguserlogin">
+          <Key>
+            <PropertyRef Name="LogID" />
+          </Key>
+          <Property Name="LogID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="Int64" />
+          <Property Name="LogTime" Type="DateTime" />
+          <Property Name="IPAddr" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="LogType" Type="Int16" />
+        </EntityType>
+        <EntityType Name="passportloginlog">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DeviceID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PassportID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LoginTime" Type="DateTime" />
+        </EntityType>
+        <EntityType Name="retailchangeinfo">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="retailid" Type="Int32" Nullable="false" />
+          <Property Name="type" Type="SByte" />
+          <Property Name="score" Type="Int64" />
+          <Property Name="createtime" Type="DateTime" />
+          <Property Name="desc" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="retailconfig">
+          <Key>
+            <PropertyRef Name="retailid" />
+          </Key>
+          <Property Name="retailid" Type="Int32" Nullable="false" />
+          <Property Name="playeramount" Type="String" MaxLength="16777215" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="retailinfo">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="appsecret" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="appid" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="gold" Type="Int64" />
+          <Property Name="createtime" Type="DateTime" />
+          <Property Name="modefy" Type="DateTime" />
+          <Property Name="status" Type="SByte" />
+        </EntityType>
+        <EntityType Name="snspassportlog">
+          <Key>
+            <PropertyRef Name="PassportID" />
+          </Key>
+          <Property Name="PassportID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CreateTime" Type="DateTime" />
+          <Property Name="Mark" Type="Int32" />
+          <Property Name="RegPushTime" Type="DateTime" />
+          <Property Name="RegTime" Type="DateTime" />
+        </EntityType>
+        <EntityType Name="snsuserinfo">
+          <Key>
+            <PropertyRef Name="SID" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="PassportID" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="PassportPwd" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DeviceID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="RegType" Type="Int16" />
+          <Property Name="RegTime" Type="DateTime" />
+          <Property Name="RetailID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="RetailUser" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Mobile" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Mail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PwdType" Type="Int32" />
+          <Property Name="RealName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="IDCards" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="ActiveCode" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="SendActiveDate" Type="DateTime" />
+          <Property Name="ActiveDate" Type="DateTime" />
+          <Property Name="SID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="WeixinCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="userloginlog">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" />
+          <Property Name="IP" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="MachineCode" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="MachineType" Type="Int64" />
+          <Property Name="Lat" Type="Single" />
+          <Property Name="Lng" Type="Single" />
+          <Property Name="CreateTime" Type="DateTime" />
+        </EntityType>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="snscenterwhirlModelStoreContainer" CdmEntityContainer="snscenterwhirlEntities">
+          <EntitySetMapping Name="limitdevice">
+            <EntityTypeMapping TypeName="snscenterwhirlModel.limitdevice">
+              <MappingFragment StoreEntitySet="limitdevice">
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="AppTime" ColumnName="AppTime" />
+                <ScalarProperty Name="DeviceID" ColumnName="DeviceID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="loguserlogin">
+            <EntityTypeMapping TypeName="snscenterwhirlModel.loguserlogin">
+              <MappingFragment StoreEntitySet="loguserlogin">
+                <ScalarProperty Name="LogType" ColumnName="LogType" />
+                <ScalarProperty Name="IPAddr" ColumnName="IPAddr" />
+                <ScalarProperty Name="LogTime" ColumnName="LogTime" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="LogID" ColumnName="LogID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="passportloginlog">
+            <EntityTypeMapping TypeName="snscenterwhirlModel.passportloginlog">
+              <MappingFragment StoreEntitySet="passportloginlog">
+                <ScalarProperty Name="LoginTime" ColumnName="LoginTime" />
+                <ScalarProperty Name="PassportID" ColumnName="PassportID" />
+                <ScalarProperty Name="DeviceID" ColumnName="DeviceID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="retailchangeinfo">
+            <EntityTypeMapping TypeName="snscenterwhirlModel.retailchangeinfo">
+              <MappingFragment StoreEntitySet="retailchangeinfo">
+                <ScalarProperty Name="desc" ColumnName="desc" />
+                <ScalarProperty Name="createtime" ColumnName="createtime" />
+                <ScalarProperty Name="score" ColumnName="score" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="retailid" ColumnName="retailid" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="retailconfig">
+            <EntityTypeMapping TypeName="snscenterwhirlModel.retailconfig">
+              <MappingFragment StoreEntitySet="retailconfig">
+                <ScalarProperty Name="playeramount" ColumnName="playeramount" />
+                <ScalarProperty Name="retailid" ColumnName="retailid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="retailinfo">
+            <EntityTypeMapping TypeName="snscenterwhirlModel.retailinfo">
+              <MappingFragment StoreEntitySet="retailinfo">
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="modefy" ColumnName="modefy" />
+                <ScalarProperty Name="createtime" ColumnName="createtime" />
+                <ScalarProperty Name="gold" ColumnName="gold" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="appid" ColumnName="appid" />
+                <ScalarProperty Name="appsecret" ColumnName="appsecret" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="snspassportlog">
+            <EntityTypeMapping TypeName="snscenterwhirlModel.snspassportlog">
+              <MappingFragment StoreEntitySet="snspassportlog">
+                <ScalarProperty Name="RegTime" ColumnName="RegTime" />
+                <ScalarProperty Name="RegPushTime" ColumnName="RegPushTime" />
+                <ScalarProperty Name="Mark" ColumnName="Mark" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="PassportID" ColumnName="PassportID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="snsuserinfo">
+            <EntityTypeMapping TypeName="snscenterwhirlModel.snsuserinfo">
+              <MappingFragment StoreEntitySet="snsuserinfo">
+                <ScalarProperty Name="WeixinCode" ColumnName="WeixinCode" />
+                <ScalarProperty Name="SID" ColumnName="SID" />
+                <ScalarProperty Name="ActiveDate" ColumnName="ActiveDate" />
+                <ScalarProperty Name="SendActiveDate" ColumnName="SendActiveDate" />
+                <ScalarProperty Name="ActiveCode" ColumnName="ActiveCode" />
+                <ScalarProperty Name="IDCards" ColumnName="IDCards" />
+                <ScalarProperty Name="RealName" ColumnName="RealName" />
+                <ScalarProperty Name="PwdType" ColumnName="PwdType" />
+                <ScalarProperty Name="Mail" ColumnName="Mail" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="RetailUser" ColumnName="RetailUser" />
+                <ScalarProperty Name="RetailID" ColumnName="RetailID" />
+                <ScalarProperty Name="RegTime" ColumnName="RegTime" />
+                <ScalarProperty Name="RegType" ColumnName="RegType" />
+                <ScalarProperty Name="DeviceID" ColumnName="DeviceID" />
+                <ScalarProperty Name="PassportPwd" ColumnName="PassportPwd" />
+                <ScalarProperty Name="PassportID" ColumnName="PassportID" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="userloginlog">
+            <EntityTypeMapping TypeName="snscenterwhirlModel.userloginlog">
+              <MappingFragment StoreEntitySet="userloginlog">
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="Lng" ColumnName="Lng" />
+                <ScalarProperty Name="Lat" ColumnName="Lat" />
+                <ScalarProperty Name="MachineType" ColumnName="MachineType" />
+                <ScalarProperty Name="MachineCode" ColumnName="MachineCode" />
+                <ScalarProperty Name="IP" ColumnName="IP" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="无" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

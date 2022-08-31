@@ -1,0 +1,144 @@
+﻿@{
+    Layout = null;
+}
+@using Crazy2018_Sys_Common;
+@using Crazy2018_Sys_ViewEntity;
+@using Crazy2018_Sys_ViewEntity.UserAgent;
+@model MyAgent
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <meta charset="UTF-8">
+    <meta name="format-detection" content="telephone=no">
+    <title>我的战绩</title>
+    <script src="~/js/jquery-1.11.2.min.js"></script>
+    <link type="text/css" href="~/css/bootstrap.min.css" rel="stylesheet">
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <link href="~/css/lyz.calendar.css" rel="stylesheet" type="text/css" />
+    <script src="~/js/lyz.calendar.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="~/css/public.css">
+    <script src="~/js/public.js"></script>
+
+</head>
+<body>
+    <div style="width:40%;margin:auto;">
+        <div class="panel panel-default">
+
+            <div class="panel-heading">
+
+                <h3 class="panel-title">
+                    <label class="">我的战绩</label>
+                    <input style="float:right" type="button" id="BackBtn" value="返回" class="btn btn-primary btn-sm" />
+
+                </h3>
+            </div>
+            <div class="panel-body">
+                <ul id="myTab" class="nav nav-tabs">
+                    <li class="active">
+                        <a href="#myagent" data-toggle="tab">我的玩家</a>
+                    </li>
+                    <li><a href="#twoagent" data-toggle="tab">二级代理</a></li>
+                    <li><a href="#thereagent"  data-toggle="tab">一级代理</a></li>
+                </ul>
+                <div id="myTabContent" class="tab-content">
+                    <div class="tab-pane fade in active" id="myagent">
+                        <table class="table">
+                            <caption>总人数：@Model.TotalMan   今日总贡献：@Model.TodayDevote    累计总贡献：@Model.TotalDevote</caption>
+                            <thead>
+                                <tr>
+                                    <th>玩家ID</th>
+                                    <th>玩家信息</th>
+                                    <th>总手数</th>
+                                    <th>今日贡献</th>
+                                    <th>累计贡献</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model.Therelevel)
+                                {
+                                <tr>
+                                    <td>@item.UserId</td>
+                                    <td>@item.UserName</td>
+                                    <td>@item.TotalHand</td>
+                                    <td>@item.TodayDevote</td>
+                                    <td>@item.TotalDevote</td>
+                                </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="tab-pane fade" id="twoagent">
+                        <table class="table">
+                            <caption>总人数：@Model.TotalMan   今日总贡献：@Model.TodayDevote    累计总贡献：@Model.TotalDevote</caption>
+                            <thead>
+                                <tr>
+                                    <th>玩家ID</th>
+                                    <th>玩家信息</th>
+                                    <th>总手数</th>
+                                    <th>今日贡献</th>
+                                    <th>累计贡献</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model.Twolevel)
+                                {
+                                <tr>
+                                    <td>@item.UserId</td>
+                                    <td>@item.UserName</td>
+                                    <td>@item.TotalHand</td>
+                                    <td>@item.TodayDevote</td>
+                                    <td>@item.TotalDevote</td>
+                                </tr>
+                                }
+
+
+                            </tbody>
+                        </table>
+                    </div>
+                   
+                    <div class="tab-pane fade" id="thereagent">
+                        <table class="table">
+                            <caption>总人数：@Model.TotalMan   今日总贡献：@Model.TodayDevote    累计总贡献：@Model.TotalDevote</caption>
+                            <thead>
+                                <tr>
+                                    <th>玩家ID</th>
+                                    <th>玩家信息</th>
+                                    <th>总手数</th>
+                                    <th>今日贡献</th>
+                                    <th>累计贡献</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model.Onelevel)
+                                {
+                                <tr>
+                                    <td>@item.UserId</td>
+                                    <td>@item.UserName</td>
+                                    <td>@item.TotalHand</td>
+                                    <td>@item.TodayDevote</td>
+                                    <td>@item.TotalDevote</td>
+                                </tr>
+                                }
+
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+<script type="text/javascript">
+    $(function () {
+        $('#myTab li:eq(0) a').tab('show');
+
+        $("#BackBtn").click(function () {
+            window.location.href = "/Home/Recharge";
+        });
+    });
+</script>

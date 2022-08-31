@@ -1,0 +1,163 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{B7558E3D-F636-4369-ACFD-6646E4B150C8}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Crazy2018_Sys_Interface</RootNamespace>
+    <AssemblyName>Crazy2018_Sys_Interface</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Agent\IUseragent2020Service.cs" />
+    <Compile Include="Club\IClubFundLogService.cs" />
+    <Compile Include="Club\ICluballianceService.cs" />
+    <Compile Include="Club\IClubGoldLogService.cs" />
+    <Compile Include="Club\IClubService.cs" />
+    <Compile Include="Club\IClubUserGoldLogService.cs" />
+    <Compile Include="Club\IDiamondChangeLogService.cs" />
+    <Compile Include="Enum.cs" />
+    <Compile Include="GameCore\IAgentGoldlogService.cs" />
+    <Compile Include="GameCore\IEntityCardService.cs" />
+    <Compile Include="GameCore\IGoldChangeh5gameService.cs" />
+    <Compile Include="GameCore\IGoldChangeLogService.cs" />
+    <Compile Include="GameCore\IRechargeChannelService.cs" />
+    <Compile Include="GameCore\ISysConfigService.cs" />
+    <Compile Include="GameCore\ITableUserlogService.cs" />
+    <Compile Include="GameCore\ITaxlogService.cs" />
+    <Compile Include="GameCore\ItuserService.cs" />
+    <Compile Include="GameCore\IUserAgentNewService.cs" />
+    <Compile Include="Game\IActiveCodeService.cs" />
+    <Compile Include="Game\ICommoditService.cs" />
+    <Compile Include="Game\IEmailService.cs" />
+    <Compile Include="Game\IFeedBackService.cs" />
+    <Compile Include="Game\IGameLogoService.cs" />
+    <Compile Include="Game\IGameService.cs" />
+    <Compile Include="Game\IGameUserInfoService.cs" />
+    <Compile Include="Game\IGameUserService.cs" />
+    <Compile Include="Game\IH5winloseLogService.cs" />
+    <Compile Include="Game\IInitialagencyInfoService.cs" />
+    <Compile Include="Game\INoticesEntityService.cs" />
+    <Compile Include="Game\IRechargeChannelsService.cs" />
+    <Compile Include="Game\IRoomConfigService.cs" />
+    <Compile Include="Game\IRoomListService.cs" />
+    <Compile Include="Game\ITContactService.cs" />
+    <Compile Include="Game\ITGameUserRank.cs" />
+    <Compile Include="Game\ITtablehandnumlog.cs" />
+    <Compile Include="Game\ITuserPrizeLogService.cs" />
+    <Compile Include="Game\ITurnTablePrizeService.cs" />
+    <Compile Include="Game\IJackpotService.cs" />
+    <Compile Include="Game\INoticeService.cs" />
+    <Compile Include="Game\IProfitService.cs" />
+    <Compile Include="Game\IRechargeRecordService.cs" />
+    <Compile Include="Game\IRoomService.cs" />
+    <Compile Include="Game\IShopManageService.cs" />
+    <Compile Include="Game\IStatisticsGoldService.cs" />
+    <Compile Include="Game\ITakeNowRecordService.cs" />
+    <Compile Include="Game\IGUserAgentService.cs" />
+    <Compile Include="Game\IUserContactService.cs" />
+    <Compile Include="Game\IUserRechargeLogService.cs" />
+    <Compile Include="Game\IVisualTableService.cs" />
+    <Compile Include="Game\IWhirlUserAgentService.cs" />
+    <Compile Include="Game\ITUsergamehand.cs" />
+    <Compile Include="Gmmgr\IRedEnvelopesConfigService.cs" />
+    <Compile Include="h5Game\ItgameinfoService.cs" />
+    <Compile Include="h5Game\Itgoldchangh5gameService.cs" />
+    <Compile Include="h5Game\Ith5menuService.cs" />
+    <Compile Include="h5Game\ItjackpotlogService.cs" />
+    <Compile Include="h5Game\ItjackpotService.cs" />
+    <Compile Include="h5Game\ItjackpotstocklogService.cs" />
+    <Compile Include="h5Game\ItjackpotstockService.cs" />
+    <Compile Include="h5Game\ItslotconfigService.cs" />
+    <Compile Include="h5Game\Ituserh5Service.cs" />
+    <Compile Include="IBaseService.cs" />
+    <Compile Include="IDependency.cs" />
+    <Compile Include="Manage\IManageLogService.cs" />
+    <Compile Include="Manage\IManagerRoleService.cs" />
+    <Compile Include="Manage\IManageService.cs" />
+    <Compile Include="Manage\INavigationService.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Retail\IretailchangeinfoService.cs" />
+    <Compile Include="Retail\IretailconfigService.cs" />
+    <Compile Include="Retail\IretailinfoService.cs" />
+    <Compile Include="SnsCenter\ISnsUserInfo.cs" />
+    <Compile Include="System\ISiteConfigSerivice.cs" />
+    <Compile Include="System\IUserAgentService.cs" />
+    <Compile Include="System\IUserService.cs" />
+    <Compile Include="System\IVerifyCodeService.cs" />
+    <Compile Include="WebSite_GW\IBankCardService.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Crazy2018_Sys_Common\Crazy2018_Sys_Common.csproj">
+      <Project>{1B9DA1CD-5FD2-43B4-AA3D-C3556102F21B}</Project>
+      <Name>Crazy2018_Sys_Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Crazy2018_Sys_DBHelper\Crazy2018_Sys_DBHelper.csproj">
+      <Project>{8D7712CD-9000-4C39-86DE-C6D2D7C850E5}</Project>
+      <Name>Crazy2018_Sys_DBHelper</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Crazy2018_Sys_Entity\Crazy2018_Sys_Entity.csproj">
+      <Project>{3711985E-A1C8-4E01-BF35-D2B51C27AFDC}</Project>
+      <Name>Crazy2018_Sys_Entity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Crazy2018_Sys_ViewEntity\Crazy2018_Sys_ViewEntity.csproj">
+      <Project>{727CBA4B-A8CA-4AC1-9CE6-12AE24E83A1E}</Project>
+      <Name>Crazy2018_Sys_ViewEntity</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

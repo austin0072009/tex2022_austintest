@@ -1,0 +1,292 @@
+﻿
+<style>
+    th {
+        text-align: center;
+    }
+</style>
+<div class="mainbody">
+
+
+    <!--/导航栏-->
+    <!--工具栏-->
+    <div id="floatHead_bonus" class="toolbar-wrap">
+        <div class="toolbar">
+            <div class="box-wrap">
+                <a class="menu-btn"></a>
+                <div class="l-list">
+                    <ul class="icon-list">
+                        <li><a class="all" href="javascript:;" onclick="checkAll(this);"><i></i><span>全选</span></a></li>
+                        <li>
+                            <a id="btnDelete_bonus" class="del"><i></i><span>删除</span></a>
+                        </li>
+                        <li>
+                            <a id="btnadd_bonus" class="btn add btn-primary btn-lg" data-toggle="modal" data-target="#myModal_bonus"><i></i><span>添加</span></a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="r-list">
+                    <input name="txtKeywords_bonus" placeholder="排行榜" type="text" id="txtKeywords_bonus" class="keyword">
+                    <a id="lbtnSearch_bonus" class="btn-search">查询</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="table-container">
+        <table width="100%" border="0" cellspacing="0" cellpadding="0" class="ltable">
+            <thead>
+                <tr class="odd_bg">
+                    <th width="10%">选择</th>
+                    <th width="10%">用户id</th>
+                    <th width="10%">用户名</th>
+                    <th width="10%">用户类型</th>
+                    <th width="10%">排名</th>
+                    <th width="10%">盈利</th>
+                    <th width="10%">奖励</th>
+                </tr>
+            </thead>
+            <tbody id="MyTbody_bonus"></tbody>
+
+        </table>
+
+    </div>
+    <!--/列表-->
+    <!--内容底部-->
+    <div class="line20"></div>
+    <div class="pagelist">
+        <div class="l-btns">
+            <span>显示</span><input name="txtPageNum_bonus" type="text" id="txtPageNum_bonus" class="pagenum" onkeydown="return checkNumber(event);"><span>条/页</span>
+        </div>
+        <div id="PageContent_bonus" class="default"></div>
+        <input type="hidden" id="PageIndex_bonus" name="PageIndex_bonus" />
+    </div>
+    <!--/内容底部-->
+    <div style="width:100%;text-align: center;">
+        <span style="display: inline-block;padding: 4px 15px 0px 15px;color: #666;font-size:14px;">(注 : 搜索请输入卡名称)</span>
+    </div>
+</div>
+
+<div class="modal fade" id="myModal_bonus" tabindex="-1" role="dialog" aria-labelledby="myModalLabel_bonus" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+                <h4 class="modal-title" id="myModalLabel_bonus">
+                    添加红利排行榜
+                </h4>
+            </div>
+            <div class="modal-body">
+                <form class="bs-example bs-example-form" role="form">
+                    <input type="hidden" value="0" id="Id_bonus" />
+                    <div class="form-group">
+                        <label for="name">用户id</label>
+                        <input type="text" id="UserId_bonus" name="UserId_bonus" class="form-control" placeholder="用户id" style="width:90%" oninput="value=value.replace(/[^\d]/g,'')">
+                    </div>
+                  
+                    <div class="form-group">
+                        <label for="name">排名</label>
+                        <input type="text" id="Rank_bonus" name="Rank_bonus" class="form-control" placeholder="排名" style="width:90%"  oninput="value=value.replace(/[^\d]/g,'')">
+                    </div>
+                    <div class="form-group">
+                        <label for="name">红利 <b style=" color: rgba(0,0,0,0.5)">红利必须小于上一名的红利</b></label>
+                        <input type="text" id="TotalHand_bonus" name="TotalHand_bonus" class="form-control" placeholder="红利越高排在越前" style="width:90%"  oninput="value=value.replace(/[^\d]/g,'')">
+                    </div>
+                   
+                    <div class="form-group">
+                        <label for="name">游戏id</label>
+                        <select id="GameId_bonus" name="GameId_bonus" class="form-control">
+                            <option value="51">德州扑克</option>
+                            <option value="52">扯旋</option>
+                            <option value="401">血战麻将</option>
+                        </select>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button id="FormClose_bonus" type="button" class="btn btn-default" data-dismiss="modal">
+                    关闭
+                </button>
+                <button type="button" id="btnFormsubmit_bonus" class="btn btn-primary">
+                    提交
+                </button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
+
+<script>
+    var storagefirst = window.localStorage;
+    var MytxtPageNum = storagefirst["MytxtPageNum"];
+    var PageIndex = 1;
+    var txtPageNum = 20;
+    var Keywords = "";
+    if (MytxtPageNum != "" && MytxtPageNum != null) {
+        txtPageNum = MytxtPageNum
+    } else {
+        txtPageNum = txtPageNum
+    }
+    GetBonusRangList();
+    $("#txtPageNum_bonus").val(txtPageNum);
+
+    $("#lbtnSearch_bonus").click(function () {
+        Keywords = $("#txtKeywords_bonus").val();
+        txtPageNum = $("#txtPageNum_bonus").val()
+        PageIndex = 1;
+        GetBonusRangList();
+    })
+    $("#txtPageNum_bonus").change(function () {
+        Keywords = $("#txtKeywords_bonus").val();
+        txtPageNum = $("#txtPageNum_bonus").val();
+        storagefirst["MytxtPageNum"] = txtPageNum
+        PageIndex = 1;
+        GetBonusRangList();
+    })
+    $("#selectRobot").change(function () {
+        Keywords = $("#txtKeywords_bonus").val();
+        txtPageNum = $("#txtPageNum_bonus").val();
+        PageIndex = 1;
+        GetBonusRangList();
+    })
+
+
+    $("#PageContent_bonus").on("click", "a", function () {
+        var lkl2 = $(this).text();
+
+        if (lkl2 == "下一页»") {
+            PageIndex = parseInt(PageIndex) + 1
+        } else if (lkl2 == "«上一页") {
+            PageIndex = parseInt(PageIndex) - 1
+        } else {
+            PageIndex = lkl2
+        }
+        Keywords = $("#txtKeywords_bonus").val();
+        txtPageNum = $("#txtPageNum_bonus").val()
+        GetBonusRangList();
+    })
+
+    $("#btnFormsubmit_bonus").click(function () {
+
+        var data = {};
+        data.UserId_bonus = $("#UserId_bonus").val();
+        data.GameId_bonus = $("#GameId_bonus").val();
+        data.Rank_bonus = $("#Rank_bonus").val();
+        data.TotalHand_bonus = $("#TotalHand_bonus").val();
+        console.log(data);
+        //添加红利排名
+        $.ajax({
+            type: "post",
+            url: '/GameCore/AddBonueRanging',
+            datatype: 'json',
+            data: data,
+            success: function (res) {
+                if (res.success) {
+                    $('#myModal_bonus').modal('hide');
+                    layer.msg(res.msg, { icon: 6 });
+                    GetBonusRangList();
+                }
+                else {
+                    layer.msg(res.msg, { icon: 6 });
+                    GetBonusRangList();
+                }
+
+            }
+        });
+
+    })
+    function GetBonusRangList() {
+        var data = {};
+        data.PageIndex = PageIndex;
+        data.PageSize = txtPageNum;
+        data.Keywords = Keywords;
+
+        $.ajax({
+            type: "post",
+            url: '/GameCore/GetBonusRankData',
+            datatype: 'json',
+            data: data,
+            success: function (res) {
+                if (res.Code == "0" && res.Code == 0) {
+                    if (res) {
+
+                        $("#MyTbody_bonus").empty();
+                        var str = $("#MyTbody_bonus").html();
+                        if (res.Data.length > 0) {
+                            for (var n = 0; n < res.Data.length; n++) {
+                                var opt = "";
+
+                                str = "<tr class='bonuslist'>" +
+                                    "<td align='center'>" +
+                                    "<span class='checkall' style='vertical-align: middle;'>" +
+                                    "<input id='chkId' class='checkall' type='checkbox' name='chkId'  value='" + res.Data[n].Id + "'>"+
+                                    "<input type='hidden' name='hidId' id='hidId' value='" + res.Data[n].Id + "'>" +
+                                    "</span>" +
+                                    
+                                    "</td>" +
+                                    "<td align='center'>" + res.Data[n].UserId + "</td>" +
+                                    "<td align='center'>" + res.Data[n].UserName + "</td>" +
+                                    "<td align='center'>" + res.Data[n].IsRobot + "</td>" +
+                                    "<td align='center'>" + res.Data[n].Rank + "</td>" +
+                                    "<td align='center'>" + res.Data[n].TotalHand + "</td>" +
+                                    "<td align='center'>" + res.Data[n].Prize + "</td>" +
+                                    "<td align='center'>" +
+                                    opt
+                                "</td>" +
+                                    "</tr>"
+                                $('#MyTbody_bonus').append(str);
+                                var sthtml = $("#PageContent_bonus").html();
+                                $("#PageContent_bonus").empty();
+                                if (res.InnerHtml.length > 0) {
+                                    sthtml = res.InnerHtml
+                                    $('#PageContent_bonus').append(sthtml);
+                                }
+                            }
+                        } else {
+                            $("#MyTbody_bonus").empty();
+                        }
+                    } else {
+                        eval(res)
+                    }
+                } else {
+                    eval(res)
+                }
+            }
+        })
+
+    }
+
+    var numID = [];//用于储存需要删除的ID
+    $("#btnDelete_bonus").click(function () {
+        numID = []
+        var num1 = {};
+        var on1 = $(".bonuslist");
+  
+        for (var o = 0; o < on1.length; o++) {
+            var lkl3 = $(on1[o]).find(".checkall")
+
+            for (var ol = 0; ol < lkl3.length; ol++) {
+                
+                if (lkl3[ol].checked == true) {
+                    var lkl4 = $(on1[o]).find("#hidId").val();
+                    num1.id = lkl4
+                    numID.push(num1.id)
+                }
+            }
+        }
+        var a, b;
+        a = numID;
+        b = a.join(",");
+        var ids = b;
+        $.ajax({
+            url: "/GameCore/DeleteGodorbonusrank?ids=" + ids + "",
+            type: "post",
+            contentType: "application/json",
+            dataType: "json",
+            success: function (data) {
+                GetBonusRangList();
+            }
+        })
+    })
+</script>
+

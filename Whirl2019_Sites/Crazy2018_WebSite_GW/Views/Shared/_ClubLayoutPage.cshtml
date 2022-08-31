@@ -1,0 +1,212 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>俱乐部-@ViewBag.Title</title>
+    <script src="~/Scripts/jquery.min.js"></script>
+    <script src="~/downpageimg/jquery-1.7.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <link href="~/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/css/iconfont.css" rel="stylesheet" />
+    <script src="~/js/iconfont.js"></script>
+    
+    <!--<link href="~/css/club/mdui.css" rel="stylesheet" />
+    <link href="~/css/club/app.css" rel="stylesheet" />
+    <script src="~/js/club/mdui.js"></script>-->
+    <!--<link href="~/css/club/bootstrap-table.min.css" rel="stylesheet" />-->
+    <!-- Latest compiled and minified JavaScript -->
+    <!--<script src="https://unpkg.com/bootstrap-table@1.15.3/dist/bootstrap-table.min.js"></script>-->
+    <!-- Latest compiled and minified Locales -->
+    <!--<script src="https://unpkg.com/bootstrap-table@1.15.3/dist/locale/bootstrap-table-zh-CN.min.js"></script>-->
+    <style>
+  /*      .divbg {
+            background-color: #111111;
+            height: 1080px;
+        }*/
+
+     
+        /*pre-scrollable*/
+    </style>
+    <style>
+        .hederdiv {
+            width: 50%;
+            text-align: center;
+            margin: 0 auto;
+            margin-bottom: 10px;
+        }
+
+        .divinput {
+            border: none;
+            background-color: #1B1B1B;
+        }
+
+        .formgroup {
+            margin-right: 15px;
+            margin-left: 15px;
+        }
+
+        .list-group .liitem {
+            background-color: #1B1B1A;
+            color: #fff;
+            position: relative;
+            border: solid 2px #1E1E1D;
+            border-top-width: 0px;
+            border-left: hidden;
+            border-right: hidden;
+        }
+
+        .spanright {
+            color: #818181;
+            position: absolute;
+            right: 0px;
+            top: 10px;
+            font-size: 30px;
+        }
+
+        .vipheadimg {
+            height: 40px;
+            width: 40px;
+            border-radius: 50%;
+            border: 1px solid #fff;
+            margin-top: 5px;
+            margin-right: 5px;
+        }
+
+        .lidivri {
+            float: right;
+            padding-right: 10px;
+            line-height: 40px;
+            color: #777777;
+        }
+
+        .list-group li:hover {
+            background: #282828;
+        }
+
+        .cspepohead {
+            height: 65px;
+            margin-top: 0px;
+            margin-right: 0px;
+        }
+
+        .list-group .titlespan {
+            font-size: 16px;
+            line-height: 40px;
+        }
+
+        .mdui-drawer {
+            width: 100%;
+        }
+
+        .spanleft {
+            color: #818181;
+            /*   position: absolute;
+        right: 0px;
+        top: 10px;*/
+            font-size: 30px;
+            height: 50px;
+            line-height: 42px;
+        }
+
+        .head-right div {
+            background-color: #282828;
+        }
+
+        .head-right .pcolor {
+            color: #DBCAB4;
+            height: 50px;
+            margin: 0 auto;
+            line-height: 50px;
+            font-size: 16px;
+            box-shadow: 0px 20px 20px -20px #262626;
+            background-color: #111111;
+            padding-left: 10px;
+        }
+
+            .head-right .pcolor span {
+                height: 50px;
+                text-align: left;
+                float: left;
+                line-height: 50px;
+            }
+
+        .table thead tr th {
+            text-align: center;
+            color: #ffffff;
+            background-color: #282828;
+            border-bottom: 1px solid #303030;
+            border-top: 0px;
+        }
+
+        .table > tbody > tr > td, .table > tbody > tr > th, .table > tfoot > tr > td, .table > tfoot > tr > th, .table > thead > tr > td, .table > thead > tr > th {
+            border-top: 1px solid #303030;
+        }
+
+        
+
+       
+
+        .bootstrap-table .fixed-table-container .table tbody tr.no-records-found td {
+            background-color: #282828;
+            color: #C0C0C0;
+            border: none;
+            border-top: 1px solid #303030;
+        }
+
+        .selectinput {
+            background-color: #343434;
+            border: none;
+            margin: 0 auto;
+            width: 80%;
+        }
+
+        .bootstrap-table .fixed-table-container .table thead th .sortable {
+            margin-right: 30px;
+        }
+
+        .bootstrap-table .fixed-table-container .fixed-table-body .fixed-table-loading {
+            background-color: #282828;
+            border: none;
+            color: #999999;
+        }
+
+       
+
+            tbody > tr > td {
+                border-top: 1px solid #303030;
+                border: none;
+            }
+
+        .bootstrap-table .fixed-table-container .fixed-table-body .fixed-table-loading {
+            top: 35px;
+            display: flex;
+            border-top: 1px solid #303030;
+        }
+
+        .titlespan2 {
+            margin-left: 20px;
+        }
+
+        .acaozuo {
+            float: right;
+            margin-right: 20px;
+            color: #DBCAB4;
+        }
+
+        .headdiv div {
+            color: #767676;
+        }
+    </style>
+
+</head>
+
+<body >
+    <div class=" container" style="height:1080px" >
+        @RenderBody()
+    </div>
+</body>
+</html>

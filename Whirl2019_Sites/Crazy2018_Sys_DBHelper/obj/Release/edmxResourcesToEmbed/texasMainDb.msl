@@ -1,0 +1,1515 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="texas_2021ModelStoreContainer" CdmEntityContainer="texas_2021Entities">
+    <EntitySetMapping Name="bankcardentities">
+      <EntityTypeMapping TypeName="texas_2021Model.bankcardentities">
+        <MappingFragment StoreEntitySet="bankcardentities">
+          <ScalarProperty Name="UserEntity_ID" ColumnName="UserEntity_ID" />
+          <ScalarProperty Name="CreatTime" ColumnName="CreatTime" />
+          <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+          <ScalarProperty Name="Location" ColumnName="Location" />
+          <ScalarProperty Name="BankAddress" ColumnName="BankAddress" />
+          <ScalarProperty Name="CardName" ColumnName="CardName" />
+          <ScalarProperty Name="CardType" ColumnName="CardType" />
+          <ScalarProperty Name="BankCardID" ColumnName="BankCardID" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="banktypeentities">
+      <EntityTypeMapping TypeName="texas_2021Model.banktypeentities">
+        <MappingFragment StoreEntitySet="banktypeentities">
+          <ScalarProperty Name="CreatTime" ColumnName="CreatTime" />
+          <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+          <ScalarProperty Name="BinCode" ColumnName="BinCode" />
+          <ScalarProperty Name="CardType" ColumnName="CardType" />
+          <ScalarProperty Name="BankName" ColumnName="BankName" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="gameuser">
+      <EntityTypeMapping TypeName="texas_2021Model.gameuser">
+        <MappingFragment StoreEntitySet="gameuser">
+          <ScalarProperty Name="BankCity" ColumnName="BankCity" />
+          <ScalarProperty Name="BankProvince" ColumnName="BankProvince" />
+          <ScalarProperty Name="JlRedCount" ColumnName="JlRedCount" />
+          <ScalarProperty Name="aPhone" ColumnName="aPhone" />
+          <ScalarProperty Name="bPhone" ColumnName="bPhone" />
+          <ScalarProperty Name="BankName" ColumnName="BankName" />
+          <ScalarProperty Name="BankNum" ColumnName="BankNum" />
+          <ScalarProperty Name="BankUn" ColumnName="BankUn" />
+          <ScalarProperty Name="alipayNum" ColumnName="alipayNum" />
+          <ScalarProperty Name="alipayName" ColumnName="alipayName" />
+          <ScalarProperty Name="ClRedCount" ColumnName="ClRedCount" />
+          <ScalarProperty Name="RedCount" ColumnName="RedCount" />
+          <ScalarProperty Name="RedEnvCount" ColumnName="RedEnvCount" />
+          <ScalarProperty Name="PassportPwdTime" ColumnName="PassportPwdTime" />
+          <ScalarProperty Name="WeixinCode" ColumnName="WeixinCode" />
+          <ScalarProperty Name="IDCards" ColumnName="IDCards" />
+          <ScalarProperty Name="MobileType" ColumnName="MobileType" />
+          <ScalarProperty Name="RegisterTime" ColumnName="RegisterTime" />
+          <ScalarProperty Name="Birthday" ColumnName="Birthday" />
+          <ScalarProperty Name="MoneyScore" ColumnName="MoneyScore" />
+          <ScalarProperty Name="UserStatus" ColumnName="UserStatus" />
+          <ScalarProperty Name="Vip" ColumnName="Vip" />
+          <ScalarProperty Name="RecommendedId" ColumnName="RecommendedId" />
+          <ScalarProperty Name="FinalTime" ColumnName="FinalTime" />
+          <ScalarProperty Name="LoginNum" ColumnName="LoginNum" />
+          <ScalarProperty Name="ExpNum" ColumnName="ExpNum" />
+          <ScalarProperty Name="UserLevel" ColumnName="UserLevel" />
+          <ScalarProperty Name="PassportPwd" ColumnName="PassportPwd" />
+          <ScalarProperty Name="MobilePhoneNum" ColumnName="MobilePhoneNum" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Sex" ColumnName="Sex" />
+          <ScalarProperty Name="HeadIcon" ColumnName="HeadIcon" />
+          <ScalarProperty Name="RetailId" ColumnName="RetailId" />
+          <ScalarProperty Name="PassportId" ColumnName="PassportId" />
+          <ScalarProperty Name="NickName" ColumnName="NickName" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="rechargechannels">
+      <EntityTypeMapping TypeName="texas_2021Model.rechargechannels">
+        <MappingFragment StoreEntitySet="rechargechannels">
+          <ScalarProperty Name="serviceList" ColumnName="serviceList" />
+          <ScalarProperty Name="CreatTime" ColumnName="CreatTime" />
+          <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+          <ScalarProperty Name="payname" ColumnName="payname" />
+          <ScalarProperty Name="isenable" ColumnName="isenable" />
+          <ScalarProperty Name="paytype" ColumnName="paytype" />
+          <ScalarProperty Name="minmoney" ColumnName="minmoney" />
+          <ScalarProperty Name="dec" ColumnName="dec" />
+          <ScalarProperty Name="payurl" ColumnName="payurl" />
+          <ScalarProperty Name="ChannelCode" ColumnName="ChannelCode" />
+          <ScalarProperty Name="ChannelName" ColumnName="ChannelName" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="Lng" ColumnName="Lng" />
+          <ScalarProperty Name="Lat" ColumnName="Lat" />
+          <ScalarProperty Name="MachineType" ColumnName="MachineType" />
+          <ScalarProperty Name="MachineCode" ColumnName="MachineCode" />
+          <ScalarProperty Name="IP" ColumnName="IP" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="smsrecord">
+      <EntityTypeMapping TypeName="texas_2021Model.smsrecord">
+        <MappingFragment StoreEntitySet="smsrecord">
+          <ScalarProperty Name="IP" ColumnName="IP" />
+          <ScalarProperty Name="DeviceID" ColumnName="DeviceID" />
+          <ScalarProperty Name="Time" ColumnName="Time" />
+          <ScalarProperty Name="Result" ColumnName="Result" />
+          <ScalarProperty Name="KeyNum" ColumnName="KeyNum" />
+          <ScalarProperty Name="MobilePhoneNum" ColumnName="MobilePhoneNum" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="SmsType" ColumnName="SmsType" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="snscenterwhirl_snsuserinfo">
+      <EntityTypeMapping TypeName="texas_2021Model.snscenterwhirl_snsuserinfo">
+        <MappingFragment StoreEntitySet="snscenterwhirl_snsuserinfo">
+          <ScalarProperty Name="WeixinCode" ColumnName="WeixinCode" />
+          <ScalarProperty Name="SID" ColumnName="SID" />
+          <ScalarProperty Name="ActiveDate" ColumnName="ActiveDate" />
+          <ScalarProperty Name="SendActiveDate" ColumnName="SendActiveDate" />
+          <ScalarProperty Name="ActiveCode" ColumnName="ActiveCode" />
+          <ScalarProperty Name="IDCards" ColumnName="IDCards" />
+          <ScalarProperty Name="RealName" ColumnName="RealName" />
+          <ScalarProperty Name="PwdType" ColumnName="PwdType" />
+          <ScalarProperty Name="Mail" ColumnName="Mail" />
+          <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+          <ScalarProperty Name="RetailUser" ColumnName="RetailUser" />
+          <ScalarProperty Name="RetailID" ColumnName="RetailID" />
+          <ScalarProperty Name="RegTime" ColumnName="RegTime" />
+          <ScalarProperty Name="RegType" ColumnName="RegType" />
+          <ScalarProperty Name="DeviceID" ColumnName="DeviceID" />
+          <ScalarProperty Name="PassportPwd" ColumnName="PassportPwd" />
+          <ScalarProperty Name="PassportID" ColumnName="PassportID" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tactivecode">
+      <EntityTypeMapping TypeName="texas_2021Model.tactivecode">
+        <MappingFragment StoreEntitySet="tactivecode">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="UseUserId" ColumnName="UseUserId" />
+          <ScalarProperty Name="GenerateUserId" ColumnName="GenerateUserId" />
+          <ScalarProperty Name="Activecode" ColumnName="Activecode" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tactivity">
+      <EntityTypeMapping TypeName="texas_2021Model.tactivity">
+        <MappingFragment StoreEntitySet="tactivity">
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="Content" ColumnName="Content" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="ImgUrl" ColumnName="ImgUrl" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tagentgoldlog">
+      <EntityTypeMapping TypeName="texas_2021Model.tagentgoldlog">
+        <MappingFragment StoreEntitySet="tagentgoldlog">
+          <ScalarProperty Name="tnum" ColumnName="tnum" />
+          <ScalarProperty Name="C_lv" ColumnName="_lv" />
+          <ScalarProperty Name="IsHandel" ColumnName="IsHandel" />
+          <ScalarProperty Name="TableUserLogId" ColumnName="TableUserLogId" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="SourceUserId" ColumnName="SourceUserId" />
+          <ScalarProperty Name="SourceGameID" ColumnName="SourceGameID" />
+          <ScalarProperty Name="ActionType" ColumnName="ActionType" />
+          <ScalarProperty Name="AfterCoin" ColumnName="AfterCoin" />
+          <ScalarProperty Name="ActionCoin" ColumnName="ActionCoin" />
+          <ScalarProperty Name="BeforCoin" ColumnName="BeforCoin" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Idx" ColumnName="Idx" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tauthinfo">
+      <EntityTypeMapping TypeName="texas_2021Model.tauthinfo">
+        <MappingFragment StoreEntitySet="tauthinfo">
+          <ScalarProperty Name="authvalue" ColumnName="authvalue" />
+          <ScalarProperty Name="authname" ColumnName="authname" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tautoeventlog">
+      <EntityTypeMapping TypeName="texas_2021Model.tautoeventlog">
+        <MappingFragment StoreEntitySet="tautoeventlog">
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="Message" ColumnName="Message" />
+          <ScalarProperty Name="EventName" ColumnName="EventName" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbanklog">
+      <EntityTypeMapping TypeName="texas_2021Model.tbanklog">
+        <MappingFragment StoreEntitySet="tbanklog">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="OpCount" ColumnName="OpCount" />
+          <ScalarProperty Name="OpType" ColumnName="OpType" />
+          <ScalarProperty Name="OpDate" ColumnName="OpDate" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbarrage">
+      <EntityTypeMapping TypeName="texas_2021Model.tbarrage">
+        <MappingFragment StoreEntitySet="tbarrage">
+          <ScalarProperty Name="RoomId" ColumnName="RoomId" />
+          <ScalarProperty Name="tableId" ColumnName="tableId" />
+          <ScalarProperty Name="BarrageMoney" ColumnName="BarrageMoney" />
+          <ScalarProperty Name="BarrageType" ColumnName="BarrageType" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="BarrageContent" ColumnName="BarrageContent" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbemail">
+      <EntityTypeMapping TypeName="texas_2021Model.tbemail">
+        <MappingFragment StoreEntitySet="tbemail">
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="EmailType" ColumnName="EmailType" />
+          <ScalarProperty Name="IsLook" ColumnName="IsLook" />
+          <ScalarProperty Name="CState" ColumnName="CState" />
+          <ScalarProperty Name="Attach" ColumnName="Attach" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="Content" ColumnName="Content" />
+          <ScalarProperty Name="MailType" ColumnName="MailType" />
+          <ScalarProperty Name="ToUserId" ColumnName="ToUserId" />
+          <ScalarProperty Name="FromUserId" ColumnName="FromUserId" />
+          <ScalarProperty Name="TradeNo" ColumnName="TradeNo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbetinginfo">
+      <EntityTypeMapping TypeName="texas_2021Model.tbetinginfo">
+        <MappingFragment StoreEntitySet="tbetinginfo">
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="GameId" ColumnName="GameId" />
+          <ScalarProperty Name="BetCount" ColumnName="BetCount" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tchatlog">
+      <EntityTypeMapping TypeName="texas_2021Model.tchatlog">
+        <MappingFragment StoreEntitySet="tchatlog">
+          <ScalarProperty Name="GameId" ColumnName="GameId" />
+          <ScalarProperty Name="RoomId" ColumnName="RoomId" />
+          <ScalarProperty Name="tableId" ColumnName="tableId" />
+          <ScalarProperty Name="BarrageMoney" ColumnName="BarrageMoney" />
+          <ScalarProperty Name="BarrageType" ColumnName="BarrageType" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="BarrageContent" ColumnName="BarrageContent" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tclub">
+      <EntityTypeMapping TypeName="texas_2021Model.tclub">
+        <MappingFragment StoreEntitySet="tclub">
+          <ScalarProperty Name="historylose" ColumnName="historylose" />
+          <ScalarProperty Name="losemax" ColumnName="losemax" />
+          <ScalarProperty Name="jackpot" ColumnName="jackpot" />
+          <ScalarProperty Name="inspot" ColumnName="inspot" />
+          <ScalarProperty Name="FreeModify" ColumnName="FreeModify" />
+          <ScalarProperty Name="clubIcon" ColumnName="clubIcon" />
+          <ScalarProperty Name="tidlist" ColumnName="tidlist" />
+          <ScalarProperty Name="apply" ColumnName="apply" />
+          <ScalarProperty Name="fundnum" ColumnName="fundnum" />
+          <ScalarProperty Name="alliancid" ColumnName="alliancid" />
+          <ScalarProperty Name="applyGoldList" ColumnName="applyGoldList" />
+          <ScalarProperty Name="Content" ColumnName="Content" />
+          <ScalarProperty Name="closeapply" ColumnName="closeapply" />
+          <ScalarProperty Name="lv" ColumnName="lv" />
+          <ScalarProperty Name="Loc" ColumnName="Loc" />
+          <ScalarProperty Name="applyUserID" ColumnName="applyUserID" />
+          <ScalarProperty Name="diam" ColumnName="diam" />
+          <ScalarProperty Name="gold" ColumnName="gold" />
+          <ScalarProperty Name="manager" ColumnName="manager" />
+          <ScalarProperty Name="search" ColumnName="search" />
+          <ScalarProperty Name="limitcount" ColumnName="limitcount" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="childs" ColumnName="childs" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="idx" ColumnName="idx" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tcluballiance">
+      <EntityTypeMapping TypeName="texas_2021Model.tcluballiance">
+        <MappingFragment StoreEntitySet="tcluballiance">
+          <ScalarProperty Name="inspot" ColumnName="inspot" />
+          <ScalarProperty Name="jackpot" ColumnName="jackpot" />
+          <ScalarProperty Name="IsSupper" ColumnName="IsSupper" />
+          <ScalarProperty Name="clubid" ColumnName="clubid" />
+          <ScalarProperty Name="closeapply" ColumnName="closeapply" />
+          <ScalarProperty Name="lv" ColumnName="lv" />
+          <ScalarProperty Name="applyclubidx" ColumnName="applyclubidx" />
+          <ScalarProperty Name="diam" ColumnName="diam" />
+          <ScalarProperty Name="gold" ColumnName="gold" />
+          <ScalarProperty Name="manager" ColumnName="manager" />
+          <ScalarProperty Name="search" ColumnName="search" />
+          <ScalarProperty Name="limitcount" ColumnName="limitcount" />
+          <ScalarProperty Name="Content" ColumnName="Content" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="childs" ColumnName="childs" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="idx" ColumnName="idx" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tclubapplylog">
+      <EntityTypeMapping TypeName="texas_2021Model.tclubapplylog">
+        <MappingFragment StoreEntitySet="tclubapplylog">
+          <ScalarProperty Name="message" ColumnName="message" />
+          <ScalarProperty Name="ownClubId" ColumnName="ownClubId" />
+          <ScalarProperty Name="clubId" ColumnName="clubId" />
+          <ScalarProperty Name="applyTime" ColumnName="applyTime" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="applyType" ColumnName="applyType" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tclubfundlog">
+      <EntityTypeMapping TypeName="texas_2021Model.tclubfundlog">
+        <MappingFragment StoreEntitySet="tclubfundlog">
+          <ScalarProperty Name="fundtotal" ColumnName="fundtotal" />
+          <ScalarProperty Name="BalanNum" ColumnName="BalanNum" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="ChangeType" ColumnName="ChangeType" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="fnum" ColumnName="fnum" />
+          <ScalarProperty Name="ClubId" ColumnName="ClubId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tclubgoldlog">
+      <EntityTypeMapping TypeName="texas_2021Model.tclubgoldlog">
+        <MappingFragment StoreEntitySet="tclubgoldlog">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="ClubId" ColumnName="ClubId" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="AfterGold" ColumnName="AfterGold" />
+          <ScalarProperty Name="Gold" ColumnName="Gold" />
+          <ScalarProperty Name="BeforeGold" ColumnName="BeforeGold" />
+          <ScalarProperty Name="ChangeType" ColumnName="ChangeType" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tclubjackpotlog">
+      <EntityTypeMapping TypeName="texas_2021Model.tclubjackpotlog">
+        <MappingFragment StoreEntitySet="tclubjackpotlog">
+          <ScalarProperty Name="allid" ColumnName="allid" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="tnum" ColumnName="tnum" />
+          <ScalarProperty Name="JackpotType" ColumnName="JackpotType" />
+          <ScalarProperty Name="Gold" ColumnName="Gold" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="clubid" ColumnName="clubid" />
+          <ScalarProperty Name="GameId" ColumnName="GameId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tclublevel">
+      <EntityTypeMapping TypeName="texas_2021Model.tclublevel">
+        <MappingFragment StoreEntitySet="tclublevel">
+          <ScalarProperty Name="levelname" ColumnName="levelname" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="expireTime" ColumnName="expireTime" />
+          <ScalarProperty Name="maxadmin" ColumnName="maxadmin" />
+          <ScalarProperty Name="maxMember" ColumnName="maxMember" />
+          <ScalarProperty Name="diamond" ColumnName="diamond" />
+          <ScalarProperty Name="level" ColumnName="level" />
+          <ScalarProperty Name="type" ColumnName="type" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tclubtaxlog">
+      <EntityTypeMapping TypeName="texas_2021Model.tclubtaxlog">
+        <MappingFragment StoreEntitySet="tclubtaxlog">
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="tnum" ColumnName="tnum" />
+          <ScalarProperty Name="totalgold" ColumnName="totalgold" />
+          <ScalarProperty Name="gold" ColumnName="gold" />
+          <ScalarProperty Name="allid" ColumnName="allid" />
+          <ScalarProperty Name="clubid" ColumnName="clubid" />
+          <ScalarProperty Name="gameid" ColumnName="gameid" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tclubusergoldlog">
+      <EntityTypeMapping TypeName="texas_2021Model.tclubusergoldlog">
+        <MappingFragment StoreEntitySet="tclubusergoldlog">
+          <ScalarProperty Name="ChangeType" ColumnName="ChangeType" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="AfterGold" ColumnName="AfterGold" />
+          <ScalarProperty Name="Gold" ColumnName="Gold" />
+          <ScalarProperty Name="BeforeGold" ColumnName="BeforeGold" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="ClubId" ColumnName="ClubId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tcollectlog">
+      <EntityTypeMapping TypeName="texas_2021Model.tcollectlog">
+        <MappingFragment StoreEntitySet="tcollectlog">
+          <ScalarProperty Name="showCard" ColumnName="showCard" />
+          <ScalarProperty Name="PlayerList" ColumnName="PlayerList" />
+          <ScalarProperty Name="preG" ColumnName="preG" />
+          <ScalarProperty Name="OwnWin" ColumnName="OwnWin" />
+          <ScalarProperty Name="OwnSpair" ColumnName="OwnSpair" />
+          <ScalarProperty Name="maxPoker" ColumnName="maxPoker" />
+          <ScalarProperty Name="NoGiveupNum" ColumnName="NoGiveupNum" />
+          <ScalarProperty Name="seeNum" ColumnName="seeNum" />
+          <ScalarProperty Name="WinGold" ColumnName="WinGold" />
+          <ScalarProperty Name="WinUserId" ColumnName="WinUserId" />
+          <ScalarProperty Name="totalnum" ColumnName="totalnum" />
+          <ScalarProperty Name="gNum" ColumnName="gNum" />
+          <ScalarProperty Name="baserate" ColumnName="baserate" />
+          <ScalarProperty Name="infoId" ColumnName="infoId" />
+          <ScalarProperty Name="tnum" ColumnName="tnum" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="sceneUserInfo" ColumnName="sceneUserInfo" />
+          <ScalarProperty Name="sceneInfo" ColumnName="sceneInfo" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tcommodity">
+      <EntityTypeMapping TypeName="texas_2021Model.tcommodity">
+        <MappingFragment StoreEntitySet="tcommodity">
+          <ScalarProperty Name="TableCount" ColumnName="TableCount" />
+          <ScalarProperty Name="ClubCount" ColumnName="ClubCount" />
+          <ScalarProperty Name="Discount" ColumnName="Discount" />
+          <ScalarProperty Name="commodityvValue" ColumnName="commodityvValue" />
+          <ScalarProperty Name="isEnable" ColumnName="isEnable" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="url" ColumnName="url" />
+          <ScalarProperty Name="commodityType" ColumnName="commodityType" />
+          <ScalarProperty Name="exchangeValue" ColumnName="exchangeValue" />
+          <ScalarProperty Name="introduce" ColumnName="introduce" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tdiamondchangelog">
+      <EntityTypeMapping TypeName="texas_2021Model.tdiamondchangelog">
+        <MappingFragment StoreEntitySet="tdiamondchangelog">
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="ChangeType" ColumnName="ChangeType" />
+          <ScalarProperty Name="AfterGold" ColumnName="AfterGold" />
+          <ScalarProperty Name="Gold" ColumnName="Gold" />
+          <ScalarProperty Name="BeforeGold" ColumnName="BeforeGold" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="temail">
+      <EntityTypeMapping TypeName="texas_2021Model.temail">
+        <MappingFragment StoreEntitySet="temail">
+          <ScalarProperty Name="FromUserName" ColumnName="FromUserName" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="EmailType" ColumnName="EmailType" />
+          <ScalarProperty Name="IsLook" ColumnName="IsLook" />
+          <ScalarProperty Name="CState" ColumnName="CState" />
+          <ScalarProperty Name="Attach" ColumnName="Attach" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="Content" ColumnName="Content" />
+          <ScalarProperty Name="MailType" ColumnName="MailType" />
+          <ScalarProperty Name="ToUserId" ColumnName="ToUserId" />
+          <ScalarProperty Name="FromUserId" ColumnName="FromUserId" />
+          <ScalarProperty Name="TradeNo" ColumnName="TradeNo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="temp_entityhistory">
+      <EntityTypeMapping TypeName="texas_2021Model.temp_entityhistory">
+        <MappingFragment StoreEntitySet="temp_entityhistory">
+          <ScalarProperty Name="Value" ColumnName="Value" />
+          <ScalarProperty Name="Key" ColumnName="Key" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="temtuseragent">
+      <EntityTypeMapping TypeName="texas_2021Model.temtuseragent">
+        <MappingFragment StoreEntitySet="temtuseragent">
+          <ScalarProperty Name="GameId" ColumnName="GameId" />
+          <ScalarProperty Name="pos50Count" ColumnName="pos50Count" />
+          <ScalarProperty Name="pos20Count" ColumnName="pos20Count" />
+          <ScalarProperty Name="pos10Count" ColumnName="pos10Count" />
+          <ScalarProperty Name="pos5Count" ColumnName="pos5Count" />
+          <ScalarProperty Name="pos2Count" ColumnName="pos2Count" />
+          <ScalarProperty Name="pos1Count" ColumnName="pos1Count" />
+          <ScalarProperty Name="UserProfit" ColumnName="UserProfit" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Commission" ColumnName="Commission" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tentitycard">
+      <EntityTypeMapping TypeName="texas_2021Model.tentitycard">
+        <MappingFragment StoreEntitySet="tentitycard">
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="GoldPrice" ColumnName="GoldPrice" />
+          <ScalarProperty Name="TatolPrice" ColumnName="TatolPrice" />
+          <ScalarProperty Name="CardPrice" ColumnName="CardPrice" />
+          <ScalarProperty Name="CardNum" ColumnName="CardNum" />
+          <ScalarProperty Name="CardType" ColumnName="CardType" />
+          <ScalarProperty Name="AddName" ColumnName="AddName" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tentitycarddetails">
+      <EntityTypeMapping TypeName="texas_2021Model.tentitycarddetails">
+        <MappingFragment StoreEntitySet="tentitycarddetails">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tentitycardtype">
+      <EntityTypeMapping TypeName="texas_2021Model.tentitycardtype">
+        <MappingFragment StoreEntitySet="tentitycardtype">
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="GoldPrice" ColumnName="GoldPrice" />
+          <ScalarProperty Name="TotalPrice" ColumnName="TotalPrice" />
+          <ScalarProperty Name="CardPrice" ColumnName="CardPrice" />
+          <ScalarProperty Name="CardNum" ColumnName="CardNum" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="AddName" ColumnName="AddName" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="texchangelog">
+      <EntityTypeMapping TypeName="texas_2021Model.texchangelog">
+        <MappingFragment StoreEntitySet="texchangelog">
+          <ScalarProperty Name="exchangeCount" ColumnName="exchangeCount" />
+          <ScalarProperty Name="QRCodeUrl" ColumnName="QRCodeUrl" />
+          <ScalarProperty Name="commodityType" ColumnName="commodityType" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="expressNumbers" ColumnName="expressNumbers" />
+          <ScalarProperty Name="oddNumbers" ColumnName="oddNumbers" />
+          <ScalarProperty Name="isHandle" ColumnName="isHandle" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="CommodityId" ColumnName="CommodityId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tfeedback">
+      <EntityTypeMapping TypeName="texas_2021Model.tfeedback">
+        <MappingFragment StoreEntitySet="tfeedback">
+          <ScalarProperty Name="fileurl" ColumnName="fileurl" />
+          <ScalarProperty Name="content" ColumnName="content" />
+          <ScalarProperty Name="tel" ColumnName="tel" />
+          <ScalarProperty Name="feedbacktype" ColumnName="feedbacktype" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tgameinfo">
+      <EntityTypeMapping TypeName="texas_2021Model.tgameinfo">
+        <MappingFragment StoreEntitySet="tgameinfo">
+          <ScalarProperty Name="IsRun" ColumnName="IsRun" />
+          <ScalarProperty Name="jdbType" ColumnName="jdbType" />
+          <ScalarProperty Name="platType" ColumnName="platType" />
+          <ScalarProperty Name="gamePort" ColumnName="gamePort" />
+          <ScalarProperty Name="gameIp" ColumnName="gameIp" />
+          <ScalarProperty Name="gameType" ColumnName="gameType" />
+          <ScalarProperty Name="deleteState" ColumnName="deleteState" />
+          <ScalarProperty Name="isEnableDesc" ColumnName="isEnableDesc" />
+          <ScalarProperty Name="isEnable" ColumnName="isEnable" />
+          <ScalarProperty Name="gameIntroduce" ColumnName="gameIntroduce" />
+          <ScalarProperty Name="icon" ColumnName="icon" />
+          <ScalarProperty Name="gameRule" ColumnName="gameRule" />
+          <ScalarProperty Name="port" ColumnName="port" />
+          <ScalarProperty Name="gameurl" ColumnName="gameurl" />
+          <ScalarProperty Name="type" ColumnName="type" />
+          <ScalarProperty Name="isopen" ColumnName="isopen" />
+          <ScalarProperty Name="desc" ColumnName="desc" />
+          <ScalarProperty Name="isHot" ColumnName="isHot" />
+          <ScalarProperty Name="Sort" ColumnName="Sort" />
+          <ScalarProperty Name="modifyTime" ColumnName="modifyTime" />
+          <ScalarProperty Name="modifyUser" ColumnName="modifyUser" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tgamelevelinfo">
+      <EntityTypeMapping TypeName="texas_2021Model.tgamelevelinfo">
+        <MappingFragment StoreEntitySet="tgamelevelinfo">
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="modifyTime" ColumnName="modifyTime" />
+          <ScalarProperty Name="modifyUser" ColumnName="modifyUser" />
+          <ScalarProperty Name="deleteState" ColumnName="deleteState" />
+          <ScalarProperty Name="isEnableDesc" ColumnName="isEnableDesc" />
+          <ScalarProperty Name="isEnable" ColumnName="isEnable" />
+          <ScalarProperty Name="gametypeDesc" ColumnName="gametypeDesc" />
+          <ScalarProperty Name="gametype" ColumnName="gametype" />
+          <ScalarProperty Name="openTableCount" ColumnName="openTableCount" />
+          <ScalarProperty Name="onlineCount" ColumnName="onlineCount" />
+          <ScalarProperty Name="C_max" ColumnName="_max" />
+          <ScalarProperty Name="C_min" ColumnName="_min" />
+          <ScalarProperty Name="gameid" ColumnName="gameid" />
+          <ScalarProperty Name="Baserate" ColumnName="Baserate" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tgamerax">
+      <EntityTypeMapping TypeName="texas_2021Model.tgamerax">
+        <MappingFragment StoreEntitySet="tgamerax">
+          <ScalarProperty Name="modifyUser" ColumnName="modifyUser" />
+          <ScalarProperty Name="modifyTime" ColumnName="modifyTime" />
+          <ScalarProperty Name="rax" ColumnName="rax" />
+          <ScalarProperty Name="levelid" ColumnName="levelid" />
+          <ScalarProperty Name="gameid" ColumnName="gameid" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tgamesummary">
+      <EntityTypeMapping TypeName="texas_2021Model.tgamesummary">
+        <MappingFragment StoreEntitySet="tgamesummary">
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="UserMoney" ColumnName="UserMoney" />
+          <ScalarProperty Name="robotMoney" ColumnName="robotMoney" />
+          <ScalarProperty Name="InsJackpotall" ColumnName="InsJackpotall" />
+          <ScalarProperty Name="jacketall" ColumnName="jacketall" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tgangcardlog">
+      <EntityTypeMapping TypeName="texas_2021Model.tgangcardlog">
+        <MappingFragment StoreEntitySet="tgangcardlog">
+          <ScalarProperty Name="IP" ColumnName="IP" />
+          <ScalarProperty Name="Bet" ColumnName="Bet" />
+          <ScalarProperty Name="C_win" ColumnName="_win" />
+          <ScalarProperty Name="Lat" ColumnName="Lat" />
+          <ScalarProperty Name="Lng" ColumnName="Lng" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="TableLogIdx" ColumnName="TableLogIdx" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tgoldchangelog">
+      <EntityTypeMapping TypeName="texas_2021Model.tgoldchangelog">
+        <MappingFragment StoreEntitySet="tgoldchangelog">
+          <ScalarProperty Name="tnum" ColumnName="tnum" />
+          <ScalarProperty Name="clubid" ColumnName="clubid" />
+          <ScalarProperty Name="JsonData" ColumnName="JsonData" />
+          <ScalarProperty Name="ChangeType" ColumnName="ChangeType" />
+          <ScalarProperty Name="gamble" ColumnName="gamble" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="IsRobot" ColumnName="IsRobot" />
+          <ScalarProperty Name="GameId" ColumnName="GameId" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="AfterGold" ColumnName="AfterGold" />
+          <ScalarProperty Name="Gold" ColumnName="Gold" />
+          <ScalarProperty Name="BeforeGold" ColumnName="BeforeGold" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tgoldchangh5game">
+      <EntityTypeMapping TypeName="texas_2021Model.tgoldchangh5game">
+        <MappingFragment StoreEntitySet="tgoldchangh5game">
+          <ScalarProperty Name="IsComplete" ColumnName="IsComplete" />
+          <ScalarProperty Name="GameId" ColumnName="GameId" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="Gold" ColumnName="Gold" />
+          <ScalarProperty Name="GoldType" ColumnName="GoldType" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tgoldstatistics">
+      <EntityTypeMapping TypeName="texas_2021Model.tgoldstatistics">
+        <MappingFragment StoreEntitySet="tgoldstatistics">
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="TimeInterval" ColumnName="TimeInterval" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="GameId" ColumnName="GameId" />
+          <ScalarProperty Name="LastGold" ColumnName="LastGold" />
+          <ScalarProperty Name="CurrentGold" ColumnName="CurrentGold" />
+          <ScalarProperty Name="TotalGold" ColumnName="TotalGold" />
+          <ScalarProperty Name="IsRobot" ColumnName="IsRobot" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="th5winloselog">
+      <EntityTypeMapping TypeName="texas_2021Model.th5winloselog">
+        <MappingFragment StoreEntitySet="th5winloselog">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="afterGold" ColumnName="afterGold" />
+          <ScalarProperty Name="beforeGold" ColumnName="beforeGold" />
+          <ScalarProperty Name="IsRebate" ColumnName="IsRebate" />
+          <ScalarProperty Name="GameId" ColumnName="GameId" />
+          <ScalarProperty Name="Gold" ColumnName="Gold" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tinsurjackpotlog">
+      <EntityTypeMapping TypeName="texas_2021Model.tinsurjackpotlog">
+        <MappingFragment StoreEntitySet="tinsurjackpotlog">
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="tnum" ColumnName="tnum" />
+          <ScalarProperty Name="JackpotType" ColumnName="JackpotType" />
+          <ScalarProperty Name="Gold" ColumnName="Gold" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="clubid" ColumnName="clubid" />
+          <ScalarProperty Name="GameId" ColumnName="GameId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tjackpot">
+      <EntityTypeMapping TypeName="texas_2021Model.tjackpot">
+        <MappingFragment StoreEntitySet="tjackpot">
+          <ScalarProperty Name="roomid" ColumnName="roomid" />
+          <ScalarProperty Name="handsel" ColumnName="handsel" />
+          <ScalarProperty Name="rax" ColumnName="rax" />
+          <ScalarProperty Name="income" ColumnName="income" />
+          <ScalarProperty Name="historygambleall" ColumnName="historygambleall" />
+          <ScalarProperty Name="waterproof" ColumnName="waterproof" />
+          <ScalarProperty Name="pump" ColumnName="pump" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="modifyTime" ColumnName="modifyTime" />
+          <ScalarProperty Name="modifyUser" ColumnName="modifyUser" />
+          <ScalarProperty Name="deleteState" ColumnName="deleteState" />
+          <ScalarProperty Name="isEnableDesc" ColumnName="isEnableDesc" />
+          <ScalarProperty Name="isEnable" ColumnName="isEnable" />
+          <ScalarProperty Name="jackpot" ColumnName="jackpot" />
+          <ScalarProperty Name="gameid" ColumnName="gameid" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tjackpotaddlog">
+      <EntityTypeMapping TypeName="texas_2021Model.tjackpotaddlog">
+        <MappingFragment StoreEntitySet="tjackpotaddlog">
+          <ScalarProperty Name="afterGold" ColumnName="afterGold" />
+          <ScalarProperty Name="beforeGold" ColumnName="beforeGold" />
+          <ScalarProperty Name="RoomID" ColumnName="RoomID" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="Gold" ColumnName="Gold" />
+          <ScalarProperty Name="TableID" ColumnName="TableID" />
+          <ScalarProperty Name="GameId" ColumnName="GameId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tjackpotlog">
+      <EntityTypeMapping TypeName="texas_2021Model.tjackpotlog">
+        <MappingFragment StoreEntitySet="tjackpotlog">
+          <ScalarProperty Name="IsSettlement" ColumnName="IsSettlement" />
+          <ScalarProperty Name="Owner" ColumnName="Owner" />
+          <ScalarProperty Name="tnum" ColumnName="tnum" />
+          <ScalarProperty Name="ChangeType" ColumnName="ChangeType" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="JackpotType" ColumnName="JackpotType" />
+          <ScalarProperty Name="Gold" ColumnName="Gold" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="RoomId" ColumnName="RoomId" />
+          <ScalarProperty Name="GameId" ColumnName="GameId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tjdbwagerlog">
+      <EntityTypeMapping TypeName="texas_2021Model.tjdbwagerlog">
+        <MappingFragment StoreEntitySet="tjdbwagerlog">
+          <ScalarProperty Name="IsSuccess" ColumnName="IsSuccess" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="gameDate" ColumnName="gameDate" />
+          <ScalarProperty Name="ipAddress" ColumnName="ipAddress" />
+          <ScalarProperty Name="netWin" ColumnName="netWin" />
+          <ScalarProperty Name="win" ColumnName="win" />
+          <ScalarProperty Name="bet" ColumnName="bet" />
+          <ScalarProperty Name="mType" ColumnName="mType" />
+          <ScalarProperty Name="gType" ColumnName="gType" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="transferId" ColumnName="transferId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tlevellog">
+      <EntityTypeMapping TypeName="texas_2021Model.tlevellog">
+        <MappingFragment StoreEntitySet="tlevellog">
+          <ScalarProperty Name="Money" ColumnName="Money" />
+          <ScalarProperty Name="levelTime" ColumnName="levelTime" />
+          <ScalarProperty Name="leveltype" ColumnName="leveltype" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tnotice">
+      <EntityTypeMapping TypeName="texas_2021Model.tnotice">
+        <MappingFragment StoreEntitySet="tnotice">
+          <ScalarProperty Name="Height" ColumnName="Height" />
+          <ScalarProperty Name="Width" ColumnName="Width" />
+          <ScalarProperty Name="TcPicUrl" ColumnName="TcPicUrl" />
+          <ScalarProperty Name="isStart" ColumnName="isStart" />
+          <ScalarProperty Name="C_type" ColumnName="_type" />
+          <ScalarProperty Name="C_author" ColumnName="_author" />
+          <ScalarProperty Name="noticetime" ColumnName="noticetime" />
+          <ScalarProperty Name="content" ColumnName="content" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tonlineinfo">
+      <EntityTypeMapping TypeName="texas_2021Model.tonlineinfo">
+        <MappingFragment StoreEntitySet="tonlineinfo">
+          <ScalarProperty Name="rCount" ColumnName="rCount" />
+          <ScalarProperty Name="GameModel" ColumnName="GameModel" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="RoomId" ColumnName="RoomId" />
+          <ScalarProperty Name="OnlineCount" ColumnName="OnlineCount" />
+          <ScalarProperty Name="GameType" ColumnName="GameType" />
+          <ScalarProperty Name="GameId" ColumnName="GameId" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="trank">
+      <EntityTypeMapping TypeName="texas_2021Model.trank">
+        <MappingFragment StoreEntitySet="trank">
+          <ScalarProperty Name="records" ColumnName="records" />
+          <ScalarProperty Name="ScoreLost" ColumnName="ScoreLost" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="ScoreWin" ColumnName="ScoreWin" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tredenvelopesconfig">
+      <EntityTypeMapping TypeName="texas_2021Model.tredenvelopesconfig">
+        <MappingFragment StoreEntitySet="tredenvelopesconfig">
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="TaskType" ColumnName="TaskType" />
+          <ScalarProperty Name="Rate" ColumnName="Rate" />
+          <ScalarProperty Name="Money" ColumnName="Money" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tredenvelopeslog">
+      <EntityTypeMapping TypeName="texas_2021Model.tredenvelopeslog">
+        <MappingFragment StoreEntitySet="tredenvelopeslog">
+          <ScalarProperty Name="TaskType" ColumnName="TaskType" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="Money" ColumnName="Money" />
+          <ScalarProperty Name="BeforeCount" ColumnName="BeforeCount" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tredenvelopesreceivelog">
+      <EntityTypeMapping TypeName="texas_2021Model.tredenvelopesreceivelog">
+        <MappingFragment StoreEntitySet="tredenvelopesreceivelog">
+          <ScalarProperty Name="TaskType" ColumnName="TaskType" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="BeforeCount" ColumnName="BeforeCount" />
+          <ScalarProperty Name="Count" ColumnName="Count" />
+          <ScalarProperty Name="TaskId" ColumnName="TaskId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tredenvelopestask">
+      <EntityTypeMapping TypeName="texas_2021Model.tredenvelopestask">
+        <MappingFragment StoreEntitySet="tredenvelopestask">
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="RedEnvCount" ColumnName="RedEnvCount" />
+          <ScalarProperty Name="TaskCount" ColumnName="TaskCount" />
+          <ScalarProperty Name="TaskType" ColumnName="TaskType" />
+          <ScalarProperty Name="TaskName" ColumnName="TaskName" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="troomcardtemp">
+      <EntityTypeMapping TypeName="texas_2021Model.troomcardtemp">
+        <MappingFragment StoreEntitySet="troomcardtemp">
+          <ScalarProperty Name="tableid" ColumnName="tableid" />
+          <ScalarProperty Name="tableStatus" ColumnName="tableStatus" />
+          <ScalarProperty Name="ownerId" ColumnName="ownerId" />
+          <ScalarProperty Name="allUserRecord" ColumnName="allUserRecord" />
+          <ScalarProperty Name="curCount" ColumnName="curCount" />
+          <ScalarProperty Name="maxCount" ColumnName="maxCount" />
+          <ScalarProperty Name="createTime" ColumnName="createTime" />
+          <ScalarProperty Name="roomid" ColumnName="roomid" />
+          <ScalarProperty Name="gameid" ColumnName="gameid" />
+          <ScalarProperty Name="tableNum" ColumnName="tableNum" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="troomlist">
+      <EntityTypeMapping TypeName="texas_2021Model.troomlist">
+        <MappingFragment StoreEntitySet="troomlist">
+          <ScalarProperty Name="States" ColumnName="States" />
+          <ScalarProperty Name="modifyTime" ColumnName="modifyTime" />
+          <ScalarProperty Name="modifyUser" ColumnName="modifyUser" />
+          <ScalarProperty Name="Createtime" ColumnName="Createtime" />
+          <ScalarProperty Name="Createuser" ColumnName="Createuser" />
+          <ScalarProperty Name="IsQcqm" ColumnName="IsQcqm" />
+          <ScalarProperty Name="IsDw" ColumnName="IsDw" />
+          <ScalarProperty Name="IsQm" ColumnName="IsQm" />
+          <ScalarProperty Name="IsZm" ColumnName="IsZm" />
+          <ScalarProperty Name="MinBring" ColumnName="MinBring" />
+          <ScalarProperty Name="Duration" ColumnName="Duration" />
+          <ScalarProperty Name="Autostart" ColumnName="Autostart" />
+          <ScalarProperty Name="PeopleNum" ColumnName="PeopleNum" />
+          <ScalarProperty Name="Pi" ColumnName="Pi" />
+          <ScalarProperty Name="IsEnable" ColumnName="IsEnable" />
+          <ScalarProperty Name="GametypeId" ColumnName="GametypeId" />
+          <ScalarProperty Name="Gamename" ColumnName="Gamename" />
+          <ScalarProperty Name="RoomDescribe" ColumnName="RoomDescribe" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Idx" ColumnName="Idx" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tserverconfig">
+      <EntityTypeMapping TypeName="texas_2021Model.tserverconfig">
+        <MappingFragment StoreEntitySet="tserverconfig">
+          <ScalarProperty Name="Priority" ColumnName="Priority" />
+          <ScalarProperty Name="InternalIP" ColumnName="InternalIP" />
+          <ScalarProperty Name="ServerPort" ColumnName="ServerPort" />
+          <ScalarProperty Name="ServerIP" ColumnName="ServerIP" />
+          <ScalarProperty Name="ServerName" ColumnName="ServerName" />
+          <ScalarProperty Name="ServerId" ColumnName="ServerId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tstatisticsgold">
+      <EntityTypeMapping TypeName="texas_2021Model.tstatisticsgold">
+        <MappingFragment StoreEntitySet="tstatisticsgold">
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="TimeInterval" ColumnName="TimeInterval" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="GameId" ColumnName="GameId" />
+          <ScalarProperty Name="LastGold" ColumnName="LastGold" />
+          <ScalarProperty Name="CurrentGold" ColumnName="CurrentGold" />
+          <ScalarProperty Name="TotalGold" ColumnName="TotalGold" />
+          <ScalarProperty Name="IsRobot" ColumnName="IsRobot" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tsysconfig">
+      <EntityTypeMapping TypeName="texas_2021Model.tsysconfig">
+        <MappingFragment StoreEntitySet="tsysconfig">
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="Dec" ColumnName="Dec" />
+          <ScalarProperty Name="Val" ColumnName="Val" />
+          <ScalarProperty Name="Key" ColumnName="Key" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ttablegainlog">
+      <EntityTypeMapping TypeName="texas_2021Model.ttablegainlog">
+        <MappingFragment StoreEntitySet="ttablegainlog">
+          <ScalarProperty Name="ChildAgents" ColumnName="ChildAgents" />
+          <ScalarProperty Name="jackpot" ColumnName="jackpot" />
+          <ScalarProperty Name="gcount" ColumnName="gcount" />
+          <ScalarProperty Name="C_isover" ColumnName="_isover" />
+          <ScalarProperty Name="gameid" ColumnName="gameid" />
+          <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+          <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+          <ScalarProperty Name="MatchCode" ColumnName="MatchCode" />
+          <ScalarProperty Name="Idx" ColumnName="Idx" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ttablehandnumlog">
+      <EntityTypeMapping TypeName="texas_2021Model.ttablehandnumlog">
+        <MappingFragment StoreEntitySet="ttablehandnumlog">
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="GameId" ColumnName="GameId" />
+          <ScalarProperty Name="pos50Count" ColumnName="pos50Count" />
+          <ScalarProperty Name="pos20Count" ColumnName="pos20Count" />
+          <ScalarProperty Name="pos10Count" ColumnName="pos10Count" />
+          <ScalarProperty Name="pos5Count" ColumnName="pos5Count" />
+          <ScalarProperty Name="pos2Count" ColumnName="pos2Count" />
+          <ScalarProperty Name="pos1Count" ColumnName="pos1Count" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ttablehistorylog">
+      <EntityTypeMapping TypeName="texas_2021Model.ttablehistorylog">
+        <MappingFragment StoreEntitySet="ttablehistorylog">
+          <ScalarProperty Name="allid" ColumnName="allid" />
+          <ScalarProperty Name="clubid" ColumnName="clubid" />
+          <ScalarProperty Name="uids" ColumnName="uids" />
+          <ScalarProperty Name="bg" ColumnName="bg" />
+          <ScalarProperty Name="mjlist" ColumnName="mjlist" />
+          <ScalarProperty Name="BigEndList" ColumnName="BigEndList" />
+          <ScalarProperty Name="RoomNum" ColumnName="RoomNum" />
+          <ScalarProperty Name="gameid" ColumnName="gameid" />
+          <ScalarProperty Name="textlist" ColumnName="textlist" />
+          <ScalarProperty Name="whirltlist" ColumnName="whirltlist" />
+          <ScalarProperty Name="plist" ColumnName="plist" />
+          <ScalarProperty Name="CreatTime" ColumnName="CreatTime" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ttablelist">
+      <EntityTypeMapping TypeName="texas_2021Model.ttablelist">
+        <MappingFragment StoreEntitySet="ttablelist">
+          <ScalarProperty Name="allId" ColumnName="allId" />
+          <ScalarProperty Name="cinto" ColumnName="cinto" />
+          <ScalarProperty Name="manNum" ColumnName="manNum" />
+          <ScalarProperty Name="tname" ColumnName="tname" />
+          <ScalarProperty Name="ClubIdx" ColumnName="ClubIdx" />
+          <ScalarProperty Name="mjpara" ColumnName="mjpara" />
+          <ScalarProperty Name="data" ColumnName="data" />
+          <ScalarProperty Name="para" ColumnName="para" />
+          <ScalarProperty Name="minPlayerCount" ColumnName="minPlayerCount" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="baserate" ColumnName="baserate" />
+          <ScalarProperty Name="firstinto" ColumnName="firstinto" />
+          <ScalarProperty Name="Duration" ColumnName="Duration" />
+          <ScalarProperty Name="tableid" ColumnName="tableid" />
+          <ScalarProperty Name="tableStatus" ColumnName="tableStatus" />
+          <ScalarProperty Name="ownerId" ColumnName="ownerId" />
+          <ScalarProperty Name="curCount" ColumnName="curCount" />
+          <ScalarProperty Name="maxCount" ColumnName="maxCount" />
+          <ScalarProperty Name="createTime" ColumnName="createTime" />
+          <ScalarProperty Name="levelid" ColumnName="levelid" />
+          <ScalarProperty Name="gameid" ColumnName="gameid" />
+          <ScalarProperty Name="tableNum" ColumnName="tableNum" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ttablelog">
+      <EntityTypeMapping TypeName="texas_2021Model.ttablelog">
+        <MappingFragment StoreEntitySet="ttablelog">
+          <ScalarProperty Name="C_isover" ColumnName="_isover" />
+          <ScalarProperty Name="gameid" ColumnName="gameid" />
+          <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+          <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+          <ScalarProperty Name="MatchCode" ColumnName="MatchCode" />
+          <ScalarProperty Name="Idx" ColumnName="Idx" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ttableloglist">
+      <EntityTypeMapping TypeName="texas_2021Model.ttableloglist">
+        <MappingFragment StoreEntitySet="ttableloglist">
+          <ScalarProperty Name="tdlist" ColumnName="tdlist" />
+          <ScalarProperty Name="CreatTime" ColumnName="CreatTime" />
+          <ScalarProperty Name="tulist" ColumnName="tulist" />
+          <ScalarProperty Name="ulist" ColumnName="ulist" />
+          <ScalarProperty Name="RoomId" ColumnName="RoomId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ttablerecorkmjlog">
+      <EntityTypeMapping TypeName="texas_2021Model.ttablerecorkmjlog">
+        <MappingFragment StoreEntitySet="ttablerecorkmjlog">
+          <ScalarProperty Name="TableInfo" ColumnName="TableInfo" />
+          <ScalarProperty Name="uids" ColumnName="uids" />
+          <ScalarProperty Name="RecordUser" ColumnName="RecordUser" />
+          <ScalarProperty Name="gameid" ColumnName="gameid" />
+          <ScalarProperty Name="HistoryId" ColumnName="HistoryId" />
+          <ScalarProperty Name="actions" ColumnName="actions" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="MatchCode" ColumnName="MatchCode" />
+          <ScalarProperty Name="Idx" ColumnName="Idx" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ttableuserlog">
+      <EntityTypeMapping TypeName="texas_2021Model.ttableuserlog">
+        <MappingFragment StoreEntitySet="ttableuserlog">
+          <ScalarProperty Name="basegamle" ColumnName="basegamle" />
+          <ScalarProperty Name="levelid" ColumnName="levelid" />
+          <ScalarProperty Name="TaxString" ColumnName="TaxString" />
+          <ScalarProperty Name="Bet" ColumnName="Bet" />
+          <ScalarProperty Name="mystake" ColumnName="mystake" />
+          <ScalarProperty Name="trendIdx" ColumnName="trendIdx" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="C_win" ColumnName="_win" />
+          <ScalarProperty Name="C_isWatch" ColumnName="_isWatch" />
+          <ScalarProperty Name="C_isover" ColumnName="_isover" />
+          <ScalarProperty Name="gameid" ColumnName="gameid" />
+          <ScalarProperty Name="C_cardList" ColumnName="_cardList" />
+          <ScalarProperty Name="gold" ColumnName="gold" />
+          <ScalarProperty Name="C_pos" ColumnName="_pos" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="TableLogIdx" ColumnName="TableLogIdx" />
+          <ScalarProperty Name="Idx" ColumnName="Idx" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ttaxlog">
+      <EntityTypeMapping TypeName="texas_2021Model.ttaxlog">
+        <MappingFragment StoreEntitySet="ttaxlog">
+          <ScalarProperty Name="SourceRoomID" ColumnName="SourceRoomID" />
+          <ScalarProperty Name="C_lv" ColumnName="_lv" />
+          <ScalarProperty Name="IsHandel" ColumnName="IsHandel" />
+          <ScalarProperty Name="TableUserLogId" ColumnName="TableUserLogId" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="SourceUserId" ColumnName="SourceUserId" />
+          <ScalarProperty Name="SourceGameID" ColumnName="SourceGameID" />
+          <ScalarProperty Name="ActionType" ColumnName="ActionType" />
+          <ScalarProperty Name="AfterCoin" ColumnName="AfterCoin" />
+          <ScalarProperty Name="ActionCoin" ColumnName="ActionCoin" />
+          <ScalarProperty Name="BeforCoin" ColumnName="BeforCoin" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Idx" ColumnName="Idx" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ttradeinfo">
+      <EntityTypeMapping TypeName="texas_2021Model.ttradeinfo">
+        <MappingFragment StoreEntitySet="ttradeinfo">
+          <ScalarProperty Name="TaxDiamond" ColumnName="TaxDiamond" />
+          <ScalarProperty Name="Diamond" ColumnName="Diamond" />
+          <ScalarProperty Name="TradeType" ColumnName="TradeType" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="TaxCoin" ColumnName="TaxCoin" />
+          <ScalarProperty Name="Coin" ColumnName="Coin" />
+          <ScalarProperty Name="ToUserId" ColumnName="ToUserId" />
+          <ScalarProperty Name="FromUserId" ColumnName="FromUserId" />
+          <ScalarProperty Name="TradeNo" ColumnName="TradeNo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="turntablelevel">
+      <EntityTypeMapping TypeName="texas_2021Model.turntablelevel">
+        <MappingFragment StoreEntitySet="turntablelevel">
+          <ScalarProperty Name="gold" ColumnName="gold" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="turntableprize">
+      <EntityTypeMapping TypeName="texas_2021Model.turntableprize">
+        <MappingFragment StoreEntitySet="turntableprize">
+          <ScalarProperty Name="levelid" ColumnName="levelid" />
+          <ScalarProperty Name="prizetype" ColumnName="prizetype" />
+          <ScalarProperty Name="probability" ColumnName="probability" />
+          <ScalarProperty Name="prizeurl" ColumnName="prizeurl" />
+          <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tuser">
+      <EntityTypeMapping TypeName="texas_2021Model.tuser">
+        <MappingFragment StoreEntitySet="tuser">
+          <ScalarProperty Name="clublist" ColumnName="clublist" />
+          <ScalarProperty Name="RobotGameid" ColumnName="RobotGameid" />
+          <ScalarProperty Name="UpTotalAmount" ColumnName="UpTotalAmount" />
+          <ScalarProperty Name="IsJdb" ColumnName="IsJdb" />
+          <ScalarProperty Name="lv" ColumnName="lv" />
+          <ScalarProperty Name="IsTp" ColumnName="IsTp" />
+          <ScalarProperty Name="UserPassword" ColumnName="UserPassword" />
+          <ScalarProperty Name="lng" ColumnName="lng" />
+          <ScalarProperty Name="lat" ColumnName="lat" />
+          <ScalarProperty Name="showid" ColumnName="showid" />
+          <ScalarProperty Name="TotalGold" ColumnName="TotalGold" />
+          <ScalarProperty Name="MaxGold" ColumnName="MaxGold" />
+          <ScalarProperty Name="MaxWin" ColumnName="MaxWin" />
+          <ScalarProperty Name="MaxLose" ColumnName="MaxLose" />
+          <ScalarProperty Name="givecount" ColumnName="givecount" />
+          <ScalarProperty Name="vlevel" ColumnName="vlevel" />
+          <ScalarProperty Name="BankGold" ColumnName="BankGold" />
+          <ScalarProperty Name="winpercent" ColumnName="winpercent" />
+          <ScalarProperty Name="lockTime" ColumnName="lockTime" />
+          <ScalarProperty Name="totaldiamond" ColumnName="totaldiamond" />
+          <ScalarProperty Name="TotalMoney" ColumnName="TotalMoney" />
+          <ScalarProperty Name="Sex" ColumnName="Sex" />
+          <ScalarProperty Name="wechatHeadIcon" ColumnName="wechatHeadIcon" />
+          <ScalarProperty Name="isagent" ColumnName="isagent" />
+          <ScalarProperty Name="diamond" ColumnName="diamond" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="isRobot" ColumnName="isRobot" />
+          <ScalarProperty Name="Desc" ColumnName="Desc" />
+          <ScalarProperty Name="IP" ColumnName="IP" />
+          <ScalarProperty Name="RegTime" ColumnName="RegTime" />
+          <ScalarProperty Name="LastLotinTime2" ColumnName="LastLotinTime2" />
+          <ScalarProperty Name="LastLotinTime1" ColumnName="LastLotinTime1" />
+          <ScalarProperty Name="GoldA" ColumnName="GoldA" />
+          <ScalarProperty Name="Gold" ColumnName="Gold" />
+          <ScalarProperty Name="wechatName" ColumnName="wechatName" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tuseragent2019">
+      <EntityTypeMapping TypeName="texas_2021Model.tuseragent2019">
+        <MappingFragment StoreEntitySet="tuseragent2019">
+          <ScalarProperty Name="TexasCount" ColumnName="TexasCount" />
+          <ScalarProperty Name="WhirlCount" ColumnName="WhirlCount" />
+          <ScalarProperty Name="gameDrawCount" ColumnName="gameDrawCount" />
+          <ScalarProperty Name="gameLostCount" ColumnName="gameLostCount" />
+          <ScalarProperty Name="gameWinCount" ColumnName="gameWinCount" />
+          <ScalarProperty Name="GoldC_pot" ColumnName="GoldC_pot" />
+          <ScalarProperty Name="rate3" ColumnName="rate3" />
+          <ScalarProperty Name="TopUserGoldCommission" ColumnName="TopUserGoldCommission" />
+          <ScalarProperty Name="todayCardCount" ColumnName="todayCardCount" />
+          <ScalarProperty Name="SecondUserID" ColumnName="SecondUserID" />
+          <ScalarProperty Name="dealCardCount" ColumnName="dealCardCount" />
+          <ScalarProperty Name="TopUserID" ColumnName="TopUserID" />
+          <ScalarProperty Name="ChildAgents" ColumnName="ChildAgents" />
+          <ScalarProperty Name="childwater" ColumnName="childwater" />
+          <ScalarProperty Name="watergoldreduce" ColumnName="watergoldreduce" />
+          <ScalarProperty Name="watergoldadd" ColumnName="watergoldadd" />
+          <ScalarProperty Name="lastdealtime" ColumnName="lastdealtime" />
+          <ScalarProperty Name="HtmlUrl" ColumnName="HtmlUrl" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="QRPath" ColumnName="QRPath" />
+          <ScalarProperty Name="GoldCommission" ColumnName="GoldCommission" />
+          <ScalarProperty Name="GoldHistoryCommission" ColumnName="GoldHistoryCommission" />
+          <ScalarProperty Name="FUserID" ColumnName="FUserID" />
+          <ScalarProperty Name="Lv" ColumnName="Lv" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tuseragent2020">
+      <EntityTypeMapping TypeName="texas_2021Model.tuseragent2020">
+        <MappingFragment StoreEntitySet="tuseragent2020">
+          <ScalarProperty Name="PotRates" ColumnName="PotRates" />
+          <ScalarProperty Name="GoldCH" ColumnName="GoldCH" />
+          <ScalarProperty Name="GoldCH_pot" ColumnName="GoldCH_pot" />
+          <ScalarProperty Name="GoldC_pot" ColumnName="GoldC_pot" />
+          <ScalarProperty Name="GoldCH_G_R" ColumnName="GoldCH_G_R" />
+          <ScalarProperty Name="GoldCH_P_R" ColumnName="GoldCH_P_R" />
+          <ScalarProperty Name="JackpotRate" ColumnName="JackpotRate" />
+          <ScalarProperty Name="rates" ColumnName="rates" />
+          <ScalarProperty Name="ChildAgents" ColumnName="ChildAgents" />
+          <ScalarProperty Name="lastdealtime" ColumnName="lastdealtime" />
+          <ScalarProperty Name="GoldCH_G" ColumnName="GoldCH_G" />
+          <ScalarProperty Name="GoldCH_P" ColumnName="GoldCH_P" />
+          <ScalarProperty Name="GoldC" ColumnName="GoldC" />
+          <ScalarProperty Name="GoldCHistory" ColumnName="GoldCHistory" />
+          <ScalarProperty Name="CEOID" ColumnName="CEOID" />
+          <ScalarProperty Name="PartnerID" ColumnName="PartnerID" />
+          <ScalarProperty Name="Role" ColumnName="Role" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tuseragentlog">
+      <EntityTypeMapping TypeName="texas_2021Model.tuseragentlog">
+        <MappingFragment StoreEntitySet="tuseragentlog">
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="CreatTime" ColumnName="CreatTime" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="Gold" ColumnName="Gold" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tusercontact">
+      <EntityTypeMapping TypeName="texas_2021Model.tusercontact">
+        <MappingFragment StoreEntitySet="tusercontact">
+          <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="PostCode" ColumnName="PostCode" />
+          <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tusergamehand">
+      <EntityTypeMapping TypeName="texas_2021Model.tusergamehand">
+        <MappingFragment StoreEntitySet="tusergamehand">
+          <ScalarProperty Name="tablenum" ColumnName="tablenum" />
+          <ScalarProperty Name="lastdealtime" ColumnName="lastdealtime" />
+          <ScalarProperty Name="todayCardCount" ColumnName="todayCardCount" />
+          <ScalarProperty Name="dealCardCount" ColumnName="dealCardCount" />
+          <ScalarProperty Name="FillingCount" ColumnName="FillingCount" />
+          <ScalarProperty Name="gameDrawCount" ColumnName="gameDrawCount" />
+          <ScalarProperty Name="gameLostCount" ColumnName="gameLostCount" />
+          <ScalarProperty Name="gameWinCount" ColumnName="gameWinCount" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="pos50Count" ColumnName="pos50Count" />
+          <ScalarProperty Name="pos20Count" ColumnName="pos20Count" />
+          <ScalarProperty Name="pos10Count" ColumnName="pos10Count" />
+          <ScalarProperty Name="pos5Count" ColumnName="pos5Count" />
+          <ScalarProperty Name="pos2Count" ColumnName="pos2Count" />
+          <ScalarProperty Name="pos1Count" ColumnName="pos1Count" />
+          <ScalarProperty Name="clubid" ColumnName="clubid" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tuserinfoex">
+      <EntityTypeMapping TypeName="texas_2021Model.tuserinfoex">
+        <MappingFragment StoreEntitySet="tuserinfoex">
+          <ScalarProperty Name="freeCount" ColumnName="freeCount" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="applyUsers" ColumnName="applyUsers" />
+          <ScalarProperty Name="Userremark" ColumnName="Userremark" />
+          <ScalarProperty Name="clubProtect" ColumnName="clubProtect" />
+          <ScalarProperty Name="clubpwd" ColumnName="clubpwd" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tuserjackpot">
+      <EntityTypeMapping TypeName="texas_2021Model.tuserjackpot">
+        <MappingFragment StoreEntitySet="tuserjackpot">
+          <ScalarProperty Name="C_potRange" ColumnName="_potRange" />
+          <ScalarProperty Name="AllGoldAdd" ColumnName="AllGoldAdd" />
+          <ScalarProperty Name="AllGoldBack" ColumnName="AllGoldBack" />
+          <ScalarProperty Name="HistoryGold" ColumnName="HistoryGold" />
+          <ScalarProperty Name="GoldHistoryCommission" ColumnName="GoldHistoryCommission" />
+          <ScalarProperty Name="watergoldreduce" ColumnName="watergoldreduce" />
+          <ScalarProperty Name="watergoldadd" ColumnName="watergoldadd" />
+          <ScalarProperty Name="updatetime" ColumnName="updatetime" />
+          <ScalarProperty Name="C_jackpot" ColumnName="_jackpot" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tuserprizelog">
+      <EntityTypeMapping TypeName="texas_2021Model.tuserprizelog">
+        <MappingFragment StoreEntitySet="tuserprizelog">
+          <ScalarProperty Name="isgive" ColumnName="isgive" />
+          <ScalarProperty Name="turntableid" ColumnName="turntableid" />
+          <ScalarProperty Name="prizeid" ColumnName="prizeid" />
+          <ScalarProperty Name="createtime" ColumnName="createtime" />
+          <ScalarProperty Name="userId" ColumnName="userId" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tuserrechargelog">
+      <EntityTypeMapping TypeName="texas_2021Model.tuserrechargelog">
+        <MappingFragment StoreEntitySet="tuserrechargelog">
+          <ScalarProperty Name="currGold" ColumnName="currGold" />
+          <ScalarProperty Name="oldGold" ColumnName="oldGold" />
+          <ScalarProperty Name="currmoney" ColumnName="currmoney" />
+          <ScalarProperty Name="oldmoney" ColumnName="oldmoney" />
+          <ScalarProperty Name="createtime" ColumnName="createtime" />
+          <ScalarProperty Name="remarks" ColumnName="remarks" />
+          <ScalarProperty Name="fromadminid" ColumnName="fromadminid" />
+          <ScalarProperty Name="fromuserid" ColumnName="fromuserid" />
+          <ScalarProperty Name="fromtype" ColumnName="fromtype" />
+          <ScalarProperty Name="cointype" ColumnName="cointype" />
+          <ScalarProperty Name="money" ColumnName="money" />
+          <ScalarProperty Name="userid" ColumnName="userid" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tusertempgoldlog">
+      <EntityTypeMapping TypeName="texas_2021Model.tusertempgoldlog">
+        <MappingFragment StoreEntitySet="tusertempgoldlog">
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="CurrentGold" ColumnName="CurrentGold" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tuservipfreecount">
+      <EntityTypeMapping TypeName="texas_2021Model.tuservipfreecount">
+        <MappingFragment StoreEntitySet="tuservipfreecount">
+          <ScalarProperty Name="createtime" ColumnName="createtime" />
+          <ScalarProperty Name="freecount" ColumnName="freecount" />
+          <ScalarProperty Name="vipid" ColumnName="vipid" />
+          <ScalarProperty Name="userid" ColumnName="userid" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tuservipinfo">
+      <EntityTypeMapping TypeName="texas_2021Model.tuservipinfo">
+        <MappingFragment StoreEntitySet="tuservipinfo">
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="cClub" ColumnName="cClub" />
+          <ScalarProperty Name="cTable" ColumnName="cTable" />
+          <ScalarProperty Name="vipLv" ColumnName="vipLv" />
+          <ScalarProperty Name="expiredate" ColumnName="expiredate" />
+          <ScalarProperty Name="vipid" ColumnName="vipid" />
+          <ScalarProperty Name="userid" ColumnName="userid" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tvipauth">
+      <EntityTypeMapping TypeName="texas_2021Model.tvipauth">
+        <MappingFragment StoreEntitySet="tvipauth">
+          <ScalarProperty Name="authid" ColumnName="authid" />
+          <ScalarProperty Name="vipid" ColumnName="vipid" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tvipinfo">
+      <EntityTypeMapping TypeName="texas_2021Model.tvipinfo">
+        <MappingFragment StoreEntitySet="tvipinfo">
+          <ScalarProperty Name="commodid" ColumnName="commodid" />
+          <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="viplevel" ColumnName="viplevel" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tvisitlimit">
+      <EntityTypeMapping TypeName="texas_2021Model.tvisitlimit">
+        <MappingFragment StoreEntitySet="tvisitlimit">
+          <ScalarProperty Name="unitMaxLimit" ColumnName="unitMaxLimit" />
+          <ScalarProperty Name="dateMaxLimit" ColumnName="dateMaxLimit" />
+          <ScalarProperty Name="unitRcord" ColumnName="unitRcord" />
+          <ScalarProperty Name="dateRecord" ColumnName="dateRecord" />
+          <ScalarProperty Name="ipport" ColumnName="ipport" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="userranking">
+      <EntityTypeMapping TypeName="texas_2021Model.userranking">
+        <MappingFragment StoreEntitySet="userranking">
+          <ScalarProperty Name="Items" ColumnName="Items" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="Score" ColumnName="Score" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="userrole">
+      <EntityTypeMapping TypeName="texas_2021Model.userrole">
+        <MappingFragment StoreEntitySet="userrole">
+          <ScalarProperty Name="scene_name" ColumnName="scene_name" />
+          <ScalarProperty Name="pos_z" ColumnName="pos_z" />
+          <ScalarProperty Name="pos_y" ColumnName="pos_y" />
+          <ScalarProperty Name="pos_x" ColumnName="pos_x" />
+          <ScalarProperty Name="LifeMaxNum" ColumnName="LifeMaxNum" />
+          <ScalarProperty Name="LifeNum" ColumnName="LifeNum" />
+          <ScalarProperty Name="ExperienceNum" ColumnName="ExperienceNum" />
+          <ScalarProperty Name="LvNum" ColumnName="LvNum" />
+          <ScalarProperty Name="Sex" ColumnName="Sex" />
+          <ScalarProperty Name="HeadImg" ColumnName="HeadImg" />
+          <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

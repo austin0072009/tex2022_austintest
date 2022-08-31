@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="ee523b4d303a448fa8df389ddd83bcc2" Name="Diagram1">
+        <EntityTypeShape EntityType="chesscarddbModel.dt_channel_site" Width="1.5" PointX="2.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="chesscarddbModel.dt_manager" Width="1.5" PointX="4.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="chesscarddbModel.dt_manager_role" Width="1.5" PointX="0.75" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="chesscarddbModel.dt_manager_role_value" Width="3.125" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="chesscarddbModel.dt_navigation" Width="1.5" PointX="6.75" PointY="4.75" IsExpanded="true" />
+        <AssociationConnector Association="chesscarddbModel.dt_manager_role_value_ibfk_1" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="chesscarddbModel.dt_manager_log" Width="1.5" PointX="7.375" PointY="0.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

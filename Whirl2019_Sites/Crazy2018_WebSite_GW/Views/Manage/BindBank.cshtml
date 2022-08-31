@@ -1,0 +1,190 @@
+﻿
+@{
+    ViewBag.Title = "BindBank";
+}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta id="viewport" name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=no,target-densitydpi=medium-dpi" />
+    <title>绑定银行卡</title>
+    <link rel="stylesheet" type="text/css" href="~/css/LArea201708301.css">
+    <link rel="stylesheet" type="text/css" href="~/css/BindBank.css">
+    <script src="~/js/jquery.min.js"></script>
+</head>
+
+<body>
+    <div class="BindBank">
+        <header>
+            <div class="fanhui" onClick="JavaScript :history.back(1);">
+                <img src="~/img/fanhui1.png" alt="">
+            </div>
+            绑定银行卡
+        </header>
+        <div class="prompt">
+            <img src="~/img/jg.png" alt="">
+            <span>请绑定持卡人本人的银行卡</span>
+        </div>
+        <div class="formbox">
+            <div class="formCont">
+                <span style="line-height: 32px;">持卡人</span>
+                <input class="box" type="text" name="" id="myName" placeholder="请输入姓名">
+            </div>
+            <div class="formCont">
+                <span style="line-height: 32px;">卡&emsp;号</span>
+                <input class="box" type="text" name="" id="mycord" placeholder="请输入正确的银行卡号">
+            </div>
+            <div class="formCont">
+                <span style="line-height: 32px;">开户行</span>
+                <input class="box" type="text" name="" id="myYh" placeholder="请输入正确的开户行">
+            </div>
+            <div class="formCont">
+                <span style="line-height: 32px;">地&emsp;区</span>
+                <input class="box" type="text" name="" id="Address" placeholder="请选择地区" readonly="readonly" onfocus="this.blur();" />
+                <input id="value1" type="hidden" value="20,234,504" />
+            </div>
+        </div>
+        <div class="BtnBox">完成</div>
+    </div>
+    <script src="~/Js/LAreaData1.js"></script>
+    <script src="~/Js/LArea.js"></script>
+    <script type="text/javascript">
+        var area1 = new LArea();
+        area1.init({
+            'trigger': '#Address', //触发选择控件的文本框，同时选择完毕后name属性输出到该位置
+            'valueTo': '#value1', //选择完毕后id属性输出到该位置
+            'keys': {
+                id: 'id',
+                name: 'name'
+            }, //绑定数据源相关字段 id对应valueTo的value属性输出 name对应trigger的value属性输出
+            'type': 1, //数据源类型
+            'data': LAreaData //数据源
+        });
+        //console.log(area1)
+        function Bank() {
+            //var self = $.trim(e.target.value)
+            var reg = /^(\d{16}|\d{19})$/; // 以19位数字开头，以19位数字结尾
+            var self = document.getElementById("mycord").value;
+
+            //console.log(self)
+            if (!reg.test(self)) {
+                return false;
+            }
+            var strBin = "10,18,30,35,37,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,58,60,62,65,68,69,84,87,88,94,95,98,99";
+
+            if (strBin.indexOf(self.substring(0, 2)) == -1) {
+                return false;
+            }
+            //Luhm校验（新）
+            var lastNum = self.substr(self.length - 1, 1);//取出最后一位（与luhm进行比较）
+            var first15Num = self.substr(0, self.length - 1);//前15或18位
+            var newArr = new Array();
+            for (var i = first15Num.length - 1; i > -1; i--) { //前15或18位倒序存进数组
+                newArr.push(first15Num.substr(i, 1));
+            }
+
+            var arrJiShu = new Array(); //奇数位*2的积 <9
+            var arrJiShu2 = new Array(); //奇数位*2的积 >9
+            var arrOuShu = new Array(); //偶数位数组
+            for (var j = 0; j < newArr.length; j++) {
+                if ((j + 1) % 2 == 1) {//奇数位
+                    if (parseInt(newArr[j]) * 2 < 9)
+                        arrJiShu.push(parseInt(newArr[j]) * 2);
+                    else
+                        arrJiShu2.push(parseInt(newArr[j]) * 2);
+                }
+                else //偶数位
+                    arrOuShu.push(newArr[j]);
+            }
+
+            var jishu_child1 = new Array();//奇数位*2 >9 的分割之后的数组个位数
+            var jishu_child2 = new Array();//奇数位*2 >9 的分割之后的数组十位数
+            for (var h = 0; h < arrJiShu2.length; h++) {
+                jishu_child1.push(parseInt(arrJiShu2[h]) % 10);
+                jishu_child2.push(parseInt(arrJiShu2[h]) / 10);
+            }
+            var sumJiShu = 0; //奇数位*2 < 9 的数组之和
+            var sumOuShu = 0; //偶数位数组之和
+            var sumJiShuChild1 = 0; //奇数位*2 >9 的分割之后的数组个位数之和
+            var sumJiShuChild2 = 0; //奇数位*2 >9 的分割之后的数组十位数之和
+            var sumTotal = 0;
+
+            for (var m = 0; m < arrJiShu.length; m++) {
+                sumJiShu = sumJiShu + parseInt(arrJiShu[m]);
+            }
+
+            for (var n = 0; n < arrOuShu.length; n++) {
+                sumOuShu = sumOuShu + parseInt(arrOuShu[n]);
+            }
+
+            for (var p = 0; p < jishu_child1.length; p++) {
+                sumJiShuChild1 = sumJiShuChild1 + parseInt(jishu_child1[p]);
+                sumJiShuChild2 = sumJiShuChild2 + parseInt(jishu_child2[p]);
+            }
+
+            //计算总和
+            sumTotal = parseInt(sumJiShu) + parseInt(sumOuShu) + parseInt(sumJiShuChild1) + parseInt(sumJiShuChild2);
+            //计算Luhm值
+            var k = parseInt(sumTotal) % 10 == 0 ? 10 : parseInt(sumTotal) % 10;
+            var luhm = 10 - k;
+            if (lastNum == luhm) {
+                return true;
+            } else {
+                return false;
+
+            }
+        }
+
+
+        $(".BtnBox").click(function () {
+            var name = $("#myName").val();
+            var cardNo = $("#mycord").val();
+            var bankAddress = $("#myYh").val();
+            var Location = $("#Address").val();
+            var reg = /^[\u4e00-\u9fa5]{2,4}$/i;
+            if (!reg.test(name)) {
+                alert("请填写正确的姓名！")
+                return false;
+            }
+
+            if (!Bank()) {
+                alert("您输入的银行卡有误！")
+                return false;
+            }
+
+            if (bankAddress.length < 0) {
+                alert("您输入的开户行有误！")
+                return false;
+            }
+            var data = {};
+            data.name = name;
+            data.cardNo = cardNo;
+            data.bankAddress = bankAddress;
+            data.Location = Location;
+            $.ajax({
+                type: "post", url: '/Manage/AddBankCardNo',
+                datatype: 'json',
+                data: data,
+                success: function (res) {
+                    //console.log(res);
+                    if (res === "添加成功") {
+                        alert(res)
+                        window.location.href = "/Manage/BankList"
+                    }
+                    else {
+                        alert(res)
+                    }
+                }
+            })
+        })
+
+
+    </script>
+</body>
+
+</html>
+
+
+

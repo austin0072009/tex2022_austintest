@@ -1,0 +1,73 @@
+﻿
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/skin/default/style.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="~/scripts/jquery/jquery-1.11.2.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="~/js/common.js"></script>
+    <script type="text/javascript">
+        var api = top.dialog.get(window); //获取父窗体对象
+        $(function () {
+            //设置按钮及事件
+            api.button([{
+                value: '确定',
+                callback: function () {
+                    submitForm();
+                },
+                autofocus: true
+            }, {
+                value: '取消',
+                callback: function () { }
+            }
+            ]);
+
+            function getURLParameter(name) {
+                return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search) || [null, ''])[1].replace(/\+/g, '%20')) || null;
+            }
+            $("#hduid").val(getURLParameter("uid"))
+        });
+        var exp = /^[-+]?\d*$/;
+        //提交表单处理
+        function submitForm() {
+            var currDocument = $(document);
+            //验证表单
+
+            var paraJson = {};
+            paraJson["lv"] = $("#UserlV").val();
+            paraJson["uid"] = $("#hduid").val();
+            
+            ajaxPostData("/Form/SetWithdraLvGm", paraJson, function (json) {
+                if (json.Code == "0" && json.Code == 0) {
+                    if (json.Message) {
+                        api.close(true).remove();
+                    }
+                    else {
+                        alert("设置失败");
+                    }
+                }
+            });
+            return false;
+        }
+
+    </script>
+</head>
+
+<body>
+    <div class="div-content">
+        <input type="hidden" id="hduid" />
+
+        <dl>
+            <dt>等级</dt>
+            <dd>
+                <select style="width:120px;" id="UserlV">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                </select>
+                <span class="Validform_checktip">*</span>
+            </dd>
+        </dl>
+    </div>
+</body>
+</html>

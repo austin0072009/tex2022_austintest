@@ -1,0 +1,288 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,initial-scale=1.0,user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <title>编辑场次</title>
+    <link href="~/scripts/artdialog/ui-dialog.css" rel="stylesheet" type="text/css" />
+    <link href="~/skin/default/style.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="~/scripts/jquery/jquery-1.11.2.min.js"></script>
+    <script type="text/javascript" src="~/scripts/jquery/Validform_v5.3.2_min.js"></script>
+
+    <script type="text/javascript" src="~/scripts/artdialog/dialog-plus-min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="~/js/laymain.js"></script>
+    <script type="text/javascript" charset="utf-8" src="~/js/common.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            //初始化表单验证
+            $("#form1").initValidform();
+        });
+    </script>
+</head>
+
+<body class="mainbody">
+    <form id="form1" runat="server">
+        <!--导航栏-->
+        <div class="location">
+            <a href="/Business/RoomList" class="back"><i></i><span>返回列表页</span></a>
+            <a href="/Home/Center" class="home"><i></i><span>首页</span></a>
+            <i class="arrow"></i>
+            <a href="/Business/GameList"><span>游戏管理</span></a>
+            <i class="arrow"></i>
+            <span>编辑场次</span>
+        </div>
+        <div class="line10"></div>
+        <!--/导航栏-->
+        <!--内容-->
+        <div id="floatHead" class="content-tab-wrap">
+            <div class="content-tab">
+                <div class="content-tab-ul-wrap">
+                    <ul>
+                        <li><a class="selected" href="javascript:;">编辑场次信息</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="tab-content">
+            <dl>
+                <dt>房间名称</dt>
+                <dd>
+                    <input name="name" type="text" id="name" class="input normal" datatype="*2-20" nullmsg="请设置房间名称" errormsg="" sucmsg=" " style="width:493px;">
+                    <span class="Validform_checktip">*</span>
+                </dd>
+            </dl>
+            <dl>
+                <dt>底分</dt>
+                <dd>
+                    <input name="baserate" type="text" id="baserate" class="input normal" datatype="n" nullmsg="请设置底分" errormsg="" sucmsg=" " style="width:493px;">
+                    <span class="Validform_checktip">*</span>
+                </dd>
+            </dl>
+            <dl>
+                <dt>游戏ID</dt>
+                <dd>
+                    <select name="gameid" id="gameid"  class="select">
+                        <option value="4">疯狂牛牛</option>
+                        <option value="5">ATT连环炮</option>
+                        <option value="41">牛牛时时彩</option>
+                        <option value="42">百人牛牛</option>
+                        <option value="401">成都麻将</option>
+                    </select>
+                </dd>
+            </dl>
+            <dl>
+                <dt>最低分</dt>
+                <dd>
+                    <input name="_min" type="text" id="_min" class="input normal" datatype="n" nullmsg="请设置最低分" errormsg="" sucmsg=" " style="width:493px;">
+                    <span class="Validform_checktip">*</span>
+                </dd>
+            </dl>
+            <dl>
+                <dt>最高分</dt>
+                <dd>
+                    <input name="_max" type="text" id="_max" class="input normal" datatype="n" nullmsg="请设置最高分" errormsg="" sucmsg=" " style="width:493px;">
+                    <span class="Validform_checktip">*</span>
+                </dd>
+            </dl>
+            <dl>
+                <dt>在线人数</dt>
+                <dd>
+                    <input name="onlineCount" type="text" id="onlineCount" class="input normal" datatype="n" nullmsg="请设置在线人数" errormsg="" sucmsg=" " style="width:493px;">
+                    <span class="Validform_checktip">*</span>
+                </dd>
+            </dl>
+            <dl>
+                <dt>桌子数量</dt>
+                <dd>
+                    <input name="openTableCount" type="text" id="openTableCount" class="input normal" datatype="n" nullmsg="请设置桌子数量" errormsg="" sucmsg=" " style="width:493px;">
+                    <span class="Validform_checktip">*</span>
+                </dd>
+            </dl>
+            <dl>
+                <dt>游戏类型</dt>
+                <dd>
+                    <input name="gametype" type="text" id="gametype" class="input normal" datatype="n" nullmsg="请填写游戏类型" errormsg="" sucmsg=" " style="width:493px;">
+                    <span class="Validform_checktip">*</span>
+                </dd>
+            </dl>
+            <dl>
+                <dt>是否启用</dt>
+                <dd>
+                    <select name="isEnable" id="isEnable"  class="select">
+                        <option value="1">是</option>
+                        <option value="0">否</option>
+                    </select>
+                </dd>
+            </dl>
+        </div>
+        <!--/内容-->
+        <!--工具栏-->
+        <div class="page-footer">
+            <div class="btn-wrap" style="position: static;">
+                <input type="button" name="btnSubmit" value="提交保存" id="btnSubmit" class="btn">
+                <input name="btnReturn" type="button" value="返回上一页" class="btn yellow" onclick="javascript: history.back(-1);">
+            </div>
+        </div>
+        <!--/工具栏-->
+    </form>
+    <script>
+        var id = "";
+        var Name = "";
+        var BaseRate = "";
+        var gameid = "";
+        var Min = "";
+        var Max = "";
+        var OnlineCount = "";
+        var OpenTableCount = "";
+        var IsEnable = "";
+        var gameType = "";
+        var operation = "Add"
+        //游戏ID列表参数
+        var txtPageNum = 100;
+        var Keywords = "";
+        var PageIndex = 1;
+        var OldId=""
+        //修改获取信息
+        $(function () {
+            function getURLParameter(name) {
+                return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search) || [null, ''])[1].replace(/\+/g, '%20')) || null;
+            }
+            if (getURLParameter("id") != "" && getURLParameter("id") != null && getURLParameter("operation") != "" && getURLParameter("operation") != null) {
+                id = getURLParameter("id");
+                operation = getURLParameter("operation");
+                if (operation == "Edit") {
+                    OldId = getURLParameter("id")
+                }
+                //console.log(id, operation)
+                var data = {};
+                data.id = id;
+                $.ajax({
+                    type: "post", url: '/Business/GetRoomInfoById',
+                    datatype: 'json',
+                    data: data,
+                    success: function (res) {
+                        //console.log(res)
+                        if (res.Data) {
+                            //alert(1);
+                            id = res.Data.Id;
+                            $("#name").val(res.Data.Name)
+                            $("#baserate").val(res.Data.BaseRate)
+                            $("#gameid").val(res.Data.gameid)
+                            $("#_min").val(res.Data.Min)
+                            $("#_max").val(res.Data.Max)
+                            $("#onlineCount").val(res.Data.OnlineCount)
+                            $("#openTableCount").val(res.Data.OpenTableCount)
+                            $("#gametype").val(res.Data.gameType)
+                            if (res.Data.IsEnable == true) {
+                                $("#isEnable").val("1")
+                            } else if (res.Data.IsEnable == false) {
+                                $("#isEnable").val("0")
+                            }
+
+
+                        } else {
+                            alert(res.Message)
+                        }
+                    }
+                })
+            } else {
+                id = "";
+
+            }
+        })
+        //获取游戏id请求
+        GetList();
+        function GetList() {
+            var data = {};
+            data.typeid = "2";
+          
+            $.ajax({
+                type: "post", url: '/Business/GetGameInfoByType',
+                datatype: 'json',
+                data: data,
+                success: function (res) {
+                    if (res) {
+                       // console.log(res)
+                        $("#gameid").empty();
+                        if (res.Data.length > 0) {
+                            for (var i = 0; i < res.Data.length; i++) {
+                                var str = $("#gameid").html();
+                                str = "<option value='" + res.Data[i].ID + "'>" + res.Data[i].Name + "</option>"
+                                $('#gameid').append(str);
+                            }
+                        } else {
+                            $("#gameid").empty();
+                        }
+
+
+                    } else {
+                        $("#gameid").empty();
+                        alert(res.Message)
+                    }
+
+                }
+            })
+        }
+
+        $("#btnSubmit").click(function () {
+            
+            Name = $("#name").val();
+            BaseRate = $("#baserate").val();
+            gameid = $("#gameid").val();
+            Min = $("#_min").val();
+            Max = $("#_max").val();
+            OnlineCount = $("#onlineCount").val();
+            OpenTableCount = $("#openTableCount").val();
+            gameType = $("#gametype").val();
+            IsEnable = $("#isEnable").val();
+           
+            if ($("#isEnable").val() == "1") {
+                IsEnable = true;
+            } else if ($("#isEnable").val() == "0") {
+                IsEnable = false;
+            }
+            GameInfo()
+            //console.log(IsEnable)
+        })
+
+        function GameInfo() {
+            var data = {};
+            data.Id = id
+            data.Name = Name;
+            data.BaseRate = BaseRate;
+            data.gameid = gameid;
+            data.Min = Min;
+            data.Max = Max;
+            data.OnlineCount = OnlineCount;
+            data.OpenTableCount = OpenTableCount;
+            data.IsEnable = IsEnable;
+            data.gameType = gameType;
+            data.operation = operation
+            data.OldId = OldId;
+            $.ajax({
+                type: "post", url: '/Business/SaveRoomInfo',
+                datatype: 'json',
+                data: data,
+                success: function (res) {
+                    //console.log(res)
+                    if (res.Code == 0 && res.Code == "0") {
+                        if (res) {
+                            alert(res.Message)
+                            window.location.href = '/Business/RoomList';
+                        }
+                    } else {
+                        alert(res.Message)
+                    }
+                }
+            })
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,222 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,initial-scale=1.0,user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <title>编辑公告</title>
+    <link href="~/scripts/artdialog/ui-dialog.css" rel="stylesheet" type="text/css" />
+    <link href="~/skin/default/style.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" charset="utf-8" src="~/scripts/jquery/jquery-1.11.2.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="~/scripts/jquery/Validform_v5.3.2_min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="~/scripts/artdialog/dialog-plus-min.js"></script>
+    <script type="text/javascript" src="~/scripts/webuploader/webuploader.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="~/js/uploader.js"></script>
+    <script type="text/javascript" charset="utf-8" src="~/js/laymain.js"></script>
+    <script type="text/javascript" charset="utf-8" src="~/js/common.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            //初始化表单验证
+        });
+    </script>
+</head>
+
+<body class="mainbody">
+    <form id="form1">
+        <!--导航栏-->
+        <div class="location">
+            <a href="/Business/NoticeList" class="back"><i></i><span>返回列表页</span></a>
+            <a href="/Home/Center" class="home"><i></i><span>首页</span></a>
+            <i class="arrow"></i>
+            <a href=""><span>商品管理</span></a>
+            <i class="arrow"></i>
+            <span>编辑商品</span>
+        </div>
+        <div class="line10"></div>
+        <!--/导航栏-->
+        <!--内容-->
+        <div id="floatHead" class="content-tab-wrap">
+            <div class="content-tab">
+                <div class="content-tab-ul-wrap">
+                    <ul>
+                        <li><a class="selected" href="javascript:;">编辑公告信息</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="tab-content">
+            <input type="hidden" id="id" name="id" />
+            <dl>
+                <dt>商品名称</dt>
+                <dd>
+                    <input name="Name" type="text" id="Name" class="input normal" datatype="*2-20" nullmsg="请设置标题" errormsg="标题范围在2-120位之间" style="width:495px;">
+                    <span class="Validform_checktip">*</span>
+                </dd>
+            </dl>
+            <dl>
+                <dt>商品介绍</dt>
+                <dd>
+                    <textarea name="Introduce" rows="10" cols="20" id="Introduce" class="input normal" datatype="*" nullmsg="请设置内容" errormsg="内容范围在2-200位之间" sucmsg=" " style="width:493px;"></textarea>
+                    <span class="Validform_checktip">*</span>
+                </dd>
+            </dl>
+            <dl>
+                <dt>商品类型</dt>
+                <dd>
+                    <select id="CommodityType" class="select">
+                    </select>
+                </dd>
+            </dl>
+            <dl>
+                <dt>是否启用</dt>
+                <dd>
+                    <select id="IsEnable" class="select">
+                        <option value="true">是</option>
+                        <option value="false">否</option>
+                    </select>
+                </dd>
+            </dl>
+            <dl>
+                <dt>兑换砖石</dt>
+                <dd>
+                    <input type="text"  id="ExchangeValue" name="ExchangeValue" value="0" class="input normal" data-type="n" nullmsg="请输入数量" errormsg="请输入正确数字" sucmsg=" " />
+                    <span class="Validform_checktip">*</span>
+                </dd>
+            </dl>
+            <dl>
+                <dt>商品价值</dt>
+                <dd>
+                    <input type="text" id="CommodityvValue" name="CommodityvValue" value="0" class="input normal" data-type="n" nullmsg="请输入数量" errormsg="请输入正确数字" sucmsg=" " />
+                    <span class="Validform_checktip">*</span>
+                </dd>
+            </dl>
+
+            <dl>
+                <dt>商品图片</dt>
+                <dd>
+                    <input type="text" id="ImgUrl" name="ImgUrl" maxlength="255" class="input normal upload-path" />
+                    @*<asp:TextBox ID="txtIconUrl" runat="server" maxlength="255" CssClass="input normal upload-path" />*@
+                    <div class="upload-box upload-img"></div>
+                </dd>
+            </dl>
+        </div>
+        <!--/内容-->
+        <!--工具栏-->
+        <div class="page-footer">
+            <div class="btn-wrap" style="position: static;">
+                <input type="submit" name="btnSubmit" value="提交保存" id="btnSubmit" class="btn">
+                <input name="btnReturn" type="button" value="返回上一页" class="btn yellow" onclick="javascript: history.back(-1);">
+            </div>
+        </div>
+        <!--/工具栏-->
+    </form>
+    <script>
+        function update()
+        {
+            var id = "";
+            function getURLParameter(name) {
+                return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search) || [null, ''])[1].replace(/\+/g, '%20')) || null;
+            }
+            //console.log(getURLParameter("id"))
+            if (getURLParameter("id") != "" && getURLParameter("id") != null) {
+                id = getURLParameter("id");
+                var data = {};
+                data.id = getURLParameter("id");
+
+                $.ajax({
+                    type: "post", url: '/Business/GetCommodiyById',
+                    datatype: 'json',
+                    data: data,
+                    success: function (res) {
+                        if (res) {
+                            $("#Name").val(res.Data.Name);
+                            $("#Introduce").val(res.Data.Introduce);
+                            $("#ExchangeValue").val(res.Data.ExchangeValue);
+                            $("#CommodityvValue").val(res.Data.CommodityvValue);
+                            $("#ImgUrl").val(res.Data.ImgUrl);
+                            $("#id").val(res.Data.id);
+                            $("#CommodityType").val(res.Data.CommodityType);
+                            $("#IsEnable").val(res.Data.IsEnable + "");
+                        }
+                    }
+                })
+            } else {
+                id = "";
+            }
+        }
+
+        $(function () {
+            GetNavList();
+           
+            $("#form1").initValidform();
+            $(".upload-img").InitUploader({ sendurl: "/Home/UpLoadFile", swf: "~/scripts/webuploader/uploader.swf" });
+        })
+        function GetNavList() {
+            var data = {};
+            $.ajax({
+                type: "post", url: '/Business/GetCommodiy',
+                datatype: 'json',
+                data: data,
+                success: function (res) {
+                    //console.log(res.Code)
+                    if (res.Code == "0" && res.Code == 0) {
+                        update();
+                        if (res) {
+                            //$("#selectRobot").empty();
+                            for (var j = 0; j < res.Data.length; j++) {
+
+                                var Nhtml = $("#CommodityType").html();
+                                Nhtml = "<option value=" + res.Data[j].Key + ">" + res.Data[j].Value + "</option>"
+                                $('#CommodityType').append(Nhtml);
+                            }
+                        } else {
+                            eval(res)
+                        }
+                       
+                    } else {
+                        eval(res)
+                    }
+                }
+            })
+        }
+
+
+        $(".btn").click(function () {
+            var Name = $("#Name").val();
+            var Introduce = $("#Introduce").val();
+            var ExchangeValue = $("#ExchangeValue").val();
+            var CommodityvValue = $("#CommodityvValue").val();
+            var ImgUrl = $("#ImgUrl").val();
+            var IsEnable = $("#IsEnable").val();
+            var id = $("#id").val();
+            var CommodityType = $("#CommodityType").val();
+            
+            //console.log(txttitle, txtType, slStatus, txtcontent);
+
+            var data = {};
+            data.Name = Name;
+            data.Introduce = Introduce;
+            data.ExchangeValue = ExchangeValue;
+            data.CommodityvValue = CommodityvValue;
+            data.ImgUrl = ImgUrl;
+            //console.log(data.ImgUrl);
+            data.IsEnable = IsEnable;
+            data.id = id;
+            data.CommodityType = CommodityType;
+            $.ajax({
+                type: "post", url: '/Business/SaveCommodit',
+                datatype: 'json',
+                data: data,
+                success: function (res) {
+                    parent.jsprint(res.Message, '/Business/OrderManage')
+                }
+            })
+        })
+    </script>
+</body>
+</html>

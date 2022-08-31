@@ -1,0 +1,240 @@
+﻿
+@{
+    ViewBag.Title = "index";
+}
+@using Crazy2018_Sys_Common;
+@using Crazy2018_Sys_ViewEntity;
+@using Crazy2018_Sys_DBHelper;
+@model List<tnotice>
+<!DOCTYPE html>
+<!-- saved from url=(0017)http://m.91y.com/ -->
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=750,target-densitydpi=device-dpi,user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <title>index</title>
+    <link href="~/91Resources/css/swiper.min.css" rel="stylesheet" />
+    <link href="~/91Resources/css/swiper.min.css" rel="stylesheet" type="text/css">
+    <link href="~/91Resources/css/91y_phone.css" rel="stylesheet" type="text/css">
+    <link href="~/91Resources/css/91y_public.css" rel="stylesheet" type="text/css">
+    <style type="text/css">
+
+        .swiper-container {
+            width: 750px;
+            height: 240px;
+            overflow: visible !important;
+        }
+
+            .swiper-container .swiper-wrapper .swiper-slide {
+                width: 480px;
+            }
+
+                .swiper-container .swiper-wrapper .swiper-slide img {
+                    width: 100%;
+                    height: 240px;
+                }
+
+            .swiper-container .swiper-wrapper .swiper-slide-prev {
+                margin-top: 18px;
+                height: 204px !important;
+            }
+
+                .swiper-container .swiper-wrapper .swiper-slide-prev img {
+                    height: 204px !important;
+                }
+
+            .swiper-container .swiper-wrapper .swiper-slide-next {
+                margin-top: 18px;
+                height: 204px !important;
+            }
+
+                .swiper-container .swiper-wrapper .swiper-slide-next img {
+                    height: 204px !important;
+                }
+
+            .swiper-container .swiper-wrapper .swiper-slide-active {
+                width: 480px;
+            }
+
+        .top {
+            background: url(/templets/default/20190813/images/top_img.jpg) no-repeat;
+            width: 100%;
+            height: 185px;
+        }
+    </style>
+    <script src="~/91Resources/js/hm.js"></script>
+    <script language="javascript" src="~/91Resources/js/jquery-1.7.1.min.js"></script>
+    <script language="javascript" src="~/91Resources/js/swiper.min.js"></script>
+    <script type="text/javascript">
+        var u = navigator.userAgent;
+        var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
+        var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+
+        var isMobile = {
+
+            Android: function () {
+                return navigator.userAgent.match(/Android/i) ? true : false;
+            },
+            BlackBerry: function () {
+                return navigator.userAgent.match(/BlackBerry/i) ? true : false;
+            },
+            iOS: function () {
+                return navigator.userAgent.match(/iPhone|iPad|iPod/i) ? true : false;
+            },
+            Windows: function () {
+                return navigator.userAgent.match(/IEMobile/i) ? true : false;
+            },
+            any: function () {
+                return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Windows());
+            },
+            PC: function () {
+                var userAgentInfo = navigator.userAgent;
+                var Agents = new Array("Android", "iPhone", "SymbianOS", "Windows Phone", "iPad", "iPod");
+                var flag = true;
+                for (var v = 0; v < Agents.length; v++) {
+                    if (userAgentInfo.indexOf(Agents[v]) > 0) {
+                        flag = false;
+                        break;
+                    }
+                }
+                return flag;
+            }
+        };
+
+        function getUrlParams(par) {
+            if (par == '')
+                return null;
+            var reg = new RegExp("(^|&)" + par + "=([^&]*)(&|$)");
+            var r = window.location.search.substr(1).match(reg);
+            if (r != null)
+                return r[2];
+
+            return null;
+        }
+
+        function loginout() {
+            sessionStorage.removeItem("userinfo");
+            window.location.href = "/Manage/OutLogin";
+        }
+
+
+        function isWeiXin() {
+            var ua = window.navigator.userAgent.toLowerCase();
+            if (ua.match(/MicroMessenger/i) == 'micromessenger') {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        function down() {
+            //判断微信
+            if (isWeiXin() && !isiOS) {
+                document.getElementById("top_wx").style.display = "block";
+                $(window).scroll(function () {
+                    if ($(window).scrollTop() > 120) {
+                        $('html').animate({ scrollTop: 0 }, 100);
+                    }
+                });
+            }
+        }
+
+        /**
+         * 登录后获取用户信息
+         */
+        function getUserInfo() {
+            var parinfo = getUrlParams('userinfo');
+            var userinfo = "";
+            if (parinfo != null) {
+                //登录数据写入sessionStorage
+                sessionStorage.setItem('userinfo', decodeURIComponent(parinfo));
+                userinfo = decodeURIComponent(parinfo);
+            } else
+                userinfo = sessionStorage.getItem("userinfo");
+
+            console.log(userinfo);
+            if (userinfo != null && userinfo != '' && userinfo != 'null' && userinfo != 'undefined') {
+                userinfo = $.parseJSON(userinfo);
+                if (typeof userinfo.headImg != 'undefined') {
+                    $("#headimg").attr("src", userinfo.headImg);
+                    $('#login').hide();
+                    $('#loginout').show();
+                }
+            }
+        }
+
+        function getDownlist() {
+            $.ajax({
+                url: "https://download.91y.com/api/do.ashx?a=getphonegamelist&t=" + Math.random(),
+                dataType: "jsonp",
+                jsonp: "jsonpcallback",
+                success: function (jsons) {
+                    //console.log(jsons);
+                    var obj = (typeof jsons == 'undefined' ? '' : jsons);
+                    var htmlct = 7, list = 'downteamlist', str = '', hurl = '', murl = ''; // 默认读取显示数据条数
+                    $.each(obj, function (i, e) {
+                        hurl = '';
+                        if (i < htmlct) {
+                            //<li><a href="#1"><img src="images/game/game-icon07.png"></a></li>
+                            if (isiOS && typeof e.iphoneURL != 'undefined') {
+                                hurl = e.iphoneURL;
+                            } else if (isAndroid && typeof e.androidURL != 'undefined') {
+                                hurl = e.androidURL;
+                            } else {
+                                hurl = 'javascript:alert("程序猿哥哥正在努力研发中，敬请期待。");';
+                            }
+                            if (hurl == '' || hurl == null) {
+                                hurl = "javascript:alert('程序猿哥哥正在努力研发中，敬请期待。');";
+                            }
+
+                            murl = typeof e.imgName != 'undefined' ? e.imgName : '';
+                            str += '<li><a onclick="down()" href="' + hurl + '"><img src="' + murl + '" /></a></li>';
+                        }
+                    });
+                    str += '<li class="more"><a href="/download/">MORE</a></li>';
+                    $('#' + list).html(str);
+
+                    if (isiOS) {
+                        $("#btndown").attr('href', '//apps.apple.com/cn/app/%E5%BF%AB%E4%B9%90%E4%BA%8C%E4%BA%BA%E9%BA%BB%E5%B0%86/id1435254766');
+                    }
+                    else if (isAndroid) {
+                        $("#btndown").attr('href', 'http://47.103.37.52/apk/daxuan.apk');
+                    }
+                    else if (isMobile.PC() || isMobile.Windows) {
+                        $("#btndown").attr('href', 'http://47.103.37.52/apk/daxuan.apk');
+                    }
+
+                }
+            });
+        }
+
+        //滚动监听显示回顶部
+        function jianting() {
+            $(window).scroll(function () {
+                // 滚动条距离顶部的距离 大于300px时
+                if ($(window).scrollTop() >= 150) {
+                    $(".bottom-nav").fadeIn(1000); // 开始淡入
+                } else {
+                    $(".bottom-nav").stop(true, true).fadeOut(1000); // 如果小于等于 300 淡出
+                }
+            });
+        }
+
+        $(document).ready(function () {
+            getDownlist();
+            getUserInfo();
+            $('.bottom-nav').hide();
+            jianting();
+        });</script>
+</head>
+<body>
+    <h1 style="text-align:center">找不到服务器</h1>
+</body>
+</html>

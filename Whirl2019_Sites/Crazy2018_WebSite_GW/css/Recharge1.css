@@ -1,0 +1,99 @@
+﻿html, body{
+    margin: 0;
+    padding: 0;
+}
+body{
+    width: 100%;
+    height: 100%;
+}
+.PayCont{
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    font-family: '微软雅黑', '黑体', '宋体', arial;
+}
+header{
+    width: 100%;
+    height: 50px;
+    border-bottom:1px solid #d9d9d9;
+    text-align: center;
+    line-height: 50PX;
+    font-size: 18px;
+    position: relative;
+}
+.fanhui{
+    position: absolute;
+    width:30px;
+    height: 50px; 
+}
+img{
+   width: 100%; 
+   height: 60%;
+   margin-top: 10px;
+   margin-left: 6px;
+}
+/*.imgLog{
+    width: 100px;
+    height: 100px;
+    background: url('/img/newchongzhi_biaoti.png');
+    background-size: 100% 100%;
+    margin: 30px 0px 0 35%;
+}*/
+.moneyList{
+    width:100%;
+    height: 170px;
+    margin-top: 25px;
+}
+.moneyCnt{
+    width: 90%;
+    list-style-type: none;
+    padding: 0;
+    position: relative;
+    margin: auto;
+    height: 110px;
+}
+.moneyCnt li{
+    float:left;
+    width: 45%;
+    height: 45px;
+    background-color: #eee;
+    margin-left: 3%;
+    margin-bottom:10px; 
+    text-align: center;
+    line-height: 45px;
+    border-radius: 5px;
+}
+.shuru{
+    width: 84%;
+    height: 50px;
+    margin: auto;
+}
+.shuruCont{
+    width: 50%;
+    height: 100%;
+    display: inline-block;
+}
+.shuruCont input{
+    background:none;
+    -webkit-appearance:none; 
+    outline:none;  
+    border:0px;  
+    border-bottom: 1px solid #d9d9d9;
+    padding-left: 5px;
+    width: 100%;
+    font-size:16px; 
+}
+.spanBox{
+    display: inline-block;
+}
+
+.quebtn2{
+    width: 45%;
+    height: 50px;
+    margin: 15% 27% 0 27%;
+    border-radius: 5px;
+    background-color: #eee;
+    line-height: 50px;
+    text-align: center;
+    color: #fff;
+}

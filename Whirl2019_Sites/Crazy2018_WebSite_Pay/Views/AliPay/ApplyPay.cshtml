@@ -1,0 +1,64 @@
+﻿@using Crazy2018_Pay;
+@model RequestBean
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>ApplyPay</title>
+</head>
+<body>
+    @{
+        <form id="epaySubmit" name="epaySubmit" method="post" action="@PayConfig.RequestUrl">
+            <input type="hidden" value="@Model.p1_usercode" name="p1_usercode" />
+            <!--商户号-->
+            <input type="hidden" value="@Model.p2_order" name="p2_order" />
+            <!--订单号-->
+            <input type="hidden" value="@Model.p3_money" name="p3_money" />
+            <!--金额-->
+            <input type="hidden" value="@Model.p4_returnurl" name="p4_returnurl" />
+            <!--回掉界面-->
+            <input type="hidden" value="@Model.p5_notifyurl" name="p5_notifyurl" />
+            <!--通知界面-->
+            <input type="hidden" value="@Model.p6_ordertime" name="p6_ordertime" />
+            <!--订单时间-->
+            <input type="hidden" value="@Model.p7_sign" name="p7_sign" />
+            <!--商户传递参数加密值-->
+            <input type="hidden" value="@Model.p8_signtype" name="p8_signtype" />
+            <!--签名验证方式-->
+            <input type="hidden" value="@Model.p9_paymethod" name="p9_paymethod" />
+            <!--商户支付方式-->
+            <input type="hidden" value="@Model.p10_paychannelnum" name="p10_paychannelnum" />
+            <input type="hidden" value="" name="p11_cardtype" />
+            <input type="hidden" value="" name="p12_channe" />
+            <input type="hidden" value="" name="p13_orderfailertime" />
+            <input type="hidden" value="" name="p15_customcontacttype" />
+            <input type="hidden" value="" name="p16_customcontact" />
+            <input type="hidden" value="" name="p21_pdesc" />
+            <input type="hidden" value="" name="p22_version" />
+            <input type="hidden" value="" name="p23_charset" />
+            <input type="hidden" value="" name="p24_remark" />
+            <!--支付通道编码-->
+            <input type="hidden" value="@Model.p14_customname" name="p14_customname" />
+            <!--客户名称-->
+            <input type="hidden" value="@Model.p17_customip" name="p17_customip" />
+            <!--客户端IP-->
+            <input type="hidden" value="@Model.p18_product" name="p18_product" />
+            <!--商品名称-->
+            <input type="hidden" value="@Model.p19_productcat" name="p19_productcat" />
+            <!--卡密-->
+            <input type="hidden" value="@Model.p20_productnum" name="p20_productnum" />
+            <!--卡号-->
+            <input type="hidden" value="@Model.p25_terminal" name="p25_terminal" />
+            <!--终端设备-->
+            <input type="hidden" value="@Model.p26_iswappay" name="p26_iswappay" />
+            <!--支付场景-->
+        </form>
+    }
+    <script>document.forms['epaySubmit'].submit();</script>
+</body>
+</html>

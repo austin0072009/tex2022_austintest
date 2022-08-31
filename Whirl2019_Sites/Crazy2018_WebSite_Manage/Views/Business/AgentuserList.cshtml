@@ -1,0 +1,105 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,initial-scale=1.0,user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <title>角色列表</title>
+    <link href="~/scripts/artdialog/ui-dialog.css" rel="stylesheet" type="text/css" />
+    <link href="~/skin/default/style.css" rel="stylesheet" type="text/css" />
+    <link href="~/css/pagination.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="~/scripts/jquery/jquery-1.11.2.min.js"></script>
+    <script type="text/javascript" src="~/scripts/artdialog/dialog-plus-min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="~/js/laymain.js"></script>
+    <script type="text/javascript" charset="utf-8" src="~/js/common.js"></script>
+</head>
+
+<body class="mainbody">
+    <form id="form1" runat="server">
+        <!--导航栏-->
+        <div class="location">
+            <a href="javascript:history.back(-1);" class="back"><i></i><span>返回上一页</span></a>
+            <a href="/Home/Center" class="home"><i></i><span>首页</span></a>
+            <i class="arrow"></i>
+            <a href="/Business/UserList"><span>会员管理</span></a>
+            <i class="arrow"></i>
+            <span>帐号列表</span>
+        </div>
+        <!--/导航栏-->
+        <!--工具栏-->
+        <div id="floatHead" class="toolbar-wrap" style="height: 47px;">
+            <div class="toolbar">
+                <div class="box-wrap">
+                    <a class="menu-btn"></a>
+
+                    <div class="r-list">
+                        <input name="txtKeywords" type="text" id="txtKeywords" class="keyword">
+                        <a id="lbtnSearch" class="btn-search" href="javascript:__doPostBack('lbtnSearch','')">查询</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--/工具栏-->
+        <!--列表-->
+        <div class="table-container">
+
+            <table width="100%" border="0" cellspacing="0" cellpadding="0" class="ltable">
+                <tbody>
+                    <tr class="odd_bg">
+                        <th width="30px">选择</th>
+                        <th>用户ID</th>
+                        <th>账户名</th>
+                        <th>微信名</th>
+                        <th>金币数</th>
+                        <th>钻石数</th>
+                        <th>总充值金币数</th>
+                        <th>总充值钻石数</th>
+                        <th>最近登陆时间</th>
+                        <th>注册时间</th>
+                        <th>IP地址</th>
+                        <th>是否机器人</th>
+                        <th>代理</th>
+                        <th>修改</th>
+                    </tr>
+
+                    <tr>
+                        <td align="center">
+                            <span class="checkall" style="vertical-align: middle;"><input id="rptList_chkId_0" type="checkbox" name="rptList$ctl01$chkId"></span>
+                            <input type="hidden" name="rptList$ctl01$hidId" id="rptList_hidId_0" value="1380586">
+                        </td>
+                        <td align="center">1380586</td>
+                        <td align="center"></td>
+                        <td align="center">1380586wechat</td>
+                        <td align="center">2000.0000</td>
+                        <td align="center">0</td>
+                        <td align="center">0.0000</td>
+                        <td align="center">0.0000</td>
+                        <td align="center">2017-10-16 16:40:16:8171</td>
+                        <td align="center">2017-10-16 16:40:16</td>
+                        <td align="center">171.221.128.93:19458</td>
+                        <td align="center">0</td>
+                        <td align="center">0</td>
+                        <td align="center"><a href="agentuser_edit.aspx?action=Edit&amp;id=1380586">修改</a></td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+        <!--/列表-->
+        <!--内容底部-->
+        <div class="line20"></div>
+        <div class="pagelist">
+            <div class="l-btns">
+                <span>显示</span><input name="txtPageNum" type="text" value="10" onchange="javascript:setTimeout('__doPostBack(\'txtPageNum\',\'\')', 0)" onkeypress="if (WebForm_TextBoxKeyHandler(event) == false) return false;" id="txtPageNum" class="pagenum" onkeydown="return checkNumber(event);"><span>条/页</span>
+            </div>
+            <div id="PageContent" class="default"><span>共29记录</span><span class="disabled">«上一页</span><span class="current">1</span><a>下一页»</a></div>
+        </div>
+        <!--/内容底部-->
+    </form>
+</body>
+</html>

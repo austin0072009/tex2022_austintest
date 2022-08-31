@@ -1,0 +1,252 @@
+﻿<div id="floatHead" class="toolbar-wrap">
+    <div class="toolbar">
+        <div class="box-wrap">
+            <a class="menu-btn"></a>
+            <div class="l-list">
+                <ul class="icon-list">
+                    <li><a class="all" href="javascript:;" onclick="checkAll(this);"><i></i><span>全选</span></a></li>
+                    <li>
+                        <a id="btnDelete" class="del"><i></i><span>删除</span></a>
+                    </li>
+                    <li>
+                        <a id="btnadd" class="btn add btn-primary btn-lg" data-toggle="modal" data-target="#myModal"><i></i><span>添加</span></a>
+                    </li>
+                </ul>
+            </div>
+            <div class="r-list">
+                <input name="txtKeywords" placeholder="排行榜" type="text" id="txtKeywords" class="keyword">
+                <a id="lbtnSearch" class="btn-search">查询</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<ul id="myTabroomlevel" class="nav nav-tabs">
+    <li class="active"><a href="#1roomlevel">1皮排行</a></li>
+    <li><a href="#2roomlevel">2皮排行</a></li>
+    <li><a href="#5roomlevel">5皮排行</a></li>
+    <li><a href="#10roomlevel">10皮排行</a></li>
+    <li><a href="#20roomlevel">20皮排行</a></li>
+    <li><a href="#50roomlevel">50皮排行</a></li>
+</ul>
+<div id="myTabroomlevelContent" class="tab-content">
+    <div class="tab-pane fade" id="1roomlevel"></div>
+
+    <div class="tab-pane fade" id="2roomlevel"></div>
+
+    <div class="tab-pane fade" id="5roomlevel"></div>
+
+    <div class="tab-pane fade" id="10roomlevel"></div>
+
+    <div class="tab-pane fade" id="20roomlevel"></div>
+
+    <div class="tab-pane fade" id="50roomlevel"></div>
+</div>
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+                <h4 class="modal-title" id="myModalLabel">
+                    添加高手排行榜
+                </h4>
+            </div>
+            <div class="modal-body">
+                <form class="bs-example bs-example-form" role="form">
+                    <input type="hidden" value="0" id="Id" />
+                    <div class="form-group">
+                        <label for="name">用户id</label>
+                        <input type="text" id="UserId" name="UserId" class="form-control" placeholder="用户id" style="width:90%" oninput="value=value.replace(/[^\d]/g,'')">
+
+                    </div>
+
+                    <div class="form-group">
+                        <label for="name">游戏id</label>
+                        <select id="GameId" name="GameId" class="form-control">
+                            <option value="51">德州扑克</option>
+                            <option value="52">扯旋</option>
+                            <option value="401">血战麻将</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="name">手数1</label>
+                        <input type="text" id="PosCount1" name="PosCount1" value="0" class="form-control" placeholder="手数1" style="width:90%" oninput="value=value.replace(/[^\d]/g,'')">
+                    </div>
+                    <div class="form-group">
+                        <label for="name">手数2</label>
+                        <input type="text" id="PosCount2" name="PosCount2" value="0" class="form-control" placeholder="手数5" style="width:90%" oninput="value=value.replace(/[^\d]/g,'')">
+                    </div>
+                    <div class="form-group">
+                        <label for="name">手数5</label>
+                        <input type="text" id="PosCount5" name="PosCount5"  value="0" class="form-control" placeholder="手数5" style="width:90%" oninput="value=value.replace(/[^\d]/g,'')">
+                    </div>
+                    <div class="form-group">
+                        <label for="name">手数10</label>
+                        <input type="text" id="PosCount10" name="PosCount10" value="0" class="form-control" placeholder="手数10" style="width:90%" oninput="value=value.replace(/[^\d]/g,'')">
+                    </div>
+                    <div class="form-group">
+                        <label for="name">手数20</label>
+                        <input type="text" id="PosCount20" name="PosCount20" value="0" class="form-control" placeholder="手数20" style="width:90%" oninput="value=value.replace(/[^\d]/g,'')">
+                    </div>
+                    <div class="form-group">
+                        <label for="name">手数50</label>
+                        <input type="text" id="PosCount50" name="PosCount50" value="0" class="form-control" placeholder="手数50" style="width:90%" oninput="value=value.replace(/[^\d]/g,'')">
+                    </div>
+
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button id="FormClose" type="button" class="btn btn-default" data-dismiss="modal">
+                    关闭
+                </button>
+                <button type="button" id="btnFormsubmit" class="btn btn-primary">
+                    提交
+                </button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
+
+<script type="text/javascript">
+    $(function () {
+
+        //准备tabs数据
+        var tabsData = [{
+            "id": "1roomlevel",
+            "url": "/GameCore/RoomHandRanking",
+            "level":"1"
+        }, {
+            "id": "2roomlevel",
+            "url": "/GameCore/RoomHandRanking",
+            "level": "2"
+        }, {
+            "id": "5roomlevel",
+            "url": "/GameCore/RoomHandRanking",
+            "level": "5"
+        }, {
+            "id": "10roomlevel",
+            "url": "/GameCore/RoomHandRanking",
+            "level": "10"
+        }, {
+            "id": "20roomlevel",
+            "url": "/GameCore/RoomHandRanking",
+            "level": "20"
+        }, {
+            "id": "50roomlevel",
+            "url": "/GameCore/RoomHandRanking",
+            "level": "50"
+        }
+        ];
+
+        //遍历json数组,循环添加a标签click事件:
+        $(tabsData).each(function () {
+           
+            $("a[href='#" + this.id + "']").bind('click', {
+                id: this.id,
+                url: this.url,
+                level: this.level
+            }, tabsHandler);
+        });
+
+
+        //$('#myTabroomlevel li:eq(' + pagenum + ') a').tab('show');
+        //$('#myTabroomlevel li:eq(' + pagenum + ') a').click();
+
+        //showTabs('1roomlevel', '/GameCore/RoomHandRanking?roomlevel=1',1);
+        //$('a[href="#1roomlevel"]').click();
+    });
+
+        function tabsHandler(event) {
+            var data = event.data;
+            showTabs(data.id, data.url, data.level);
+            return false; //阻止默认a标签响应
+        }
+
+        /**
+         * 激活tab选项卡并使用ajax异步加载内容
+         * param {Object} tabsId
+         * param {Object} url
+         */
+        function showTabs(tabsId,url,level) {
+            $("a[href='#" + tabsId + "']").tab('show');
+            var $tabContent = $('#' + tabsId);
+            if ($tabContent.length < 100) {
+                var dat = {};
+                dat.roomlevel = level;
+                $tabContent.load(url, dat);
+            }
+        }
+
+        //依次为每个tab导航a标签添加单击事件
+        $('a[href="#1roomlevel"]').click(function (e) {
+            $("#1roomlevel").siblings().empty();
+            
+            showTabs('1roomlevel', '/GameCore/RoomHandRanking',1);
+            e.preventDefault();
+    });
+
+    $('a[href="#2roomlevel"]').click(function (e) {
+        $("#2roomlevel").siblings().empty();
+        showTabs('2roomlevel', '/GameCore/RoomHandRanking', 2);
+        e.preventDefault();
+    });
+
+    $('a[href="#5roomlevel"]').click(function (e) {
+        $("#5roomlevel").siblings().empty();
+        showTabs('5roomlevel', '/GameCore/RoomHandRanking', 5);
+        e.preventDefault();
+    });
+
+    $('a[href="#10roomlevel"]').click(function (e) {
+        $("#10roomlevel").siblings().empty();
+        showTabs('10roomlevel', '/GameCore/RoomHandRanking', 10);
+        e.preventDefault();
+    });
+
+    $('a[href="#20roomlevel"]').click(function (e) {
+        $("#20roomlevel").siblings().empty();
+        showTabs('20roomlevel', '/GameCore/RoomHandRanking', 20);
+        e.preventDefault();
+    });
+
+    $('a[href="#50roomlevel"]').click(function (e) {
+        $("#50roomlevel").siblings().empty();
+        showTabs('50roomlevel', '/GameCore/RoomHandRanking', 50);
+        e.preventDefault();
+    });
+
+
+    $("#btnFormsubmit").click(function () {
+
+        var data = {};
+        data.UserId = $("#UserId").val();
+        data.GameId = $("#GameId").val();
+        data.PosCount1 = $("#PosCount1").val();
+        data.PosCount2 = $("#PosCount2").val();
+        data.PosCount5 = $("#PosCount5").val();
+        data.PosCount10 = $("#PosCount10").val();
+        data.PosCount20 = $("#PosCount20").val();
+        data.PosCount50 = $("#PosCount50").val();
+        $.ajax({
+            type: "post", url: '/GameCore/AddACERanging',
+            datatype: 'json',
+            data: data,
+            success: function (res) {
+                if (res.success) {
+                    $('#myModal').modal('hide');
+                    layer.msg(res.msg, { icon: 6 });
+                   
+                }
+                else {
+                    layer.msg(res.msg, { icon: 6 });
+                }
+            }
+        });
+
+    });
+
+</script>

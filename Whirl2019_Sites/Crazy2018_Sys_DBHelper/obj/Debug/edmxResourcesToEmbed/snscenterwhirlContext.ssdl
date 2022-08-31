@@ -1,0 +1,119 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="snscenterwhirlModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.7" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="limitdevice">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DeviceID" Type="varchar" MaxLength="50" />
+    <Property Name="AppTime" Type="datetime" Precision="0" />
+    <Property Name="Remark" Type="varchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="loguserlogin">
+    <Key>
+      <PropertyRef Name="LogID" />
+    </Key>
+    <Property Name="LogID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserID" Type="bigint" />
+    <Property Name="LogTime" Type="datetime" Precision="0" />
+    <Property Name="IPAddr" Type="varchar" MaxLength="15" />
+    <Property Name="LogType" Type="smallint" />
+  </EntityType>
+  <EntityType Name="passportloginlog">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DeviceID" Type="varchar" MaxLength="50" />
+    <Property Name="PassportID" Type="varchar" MaxLength="50" />
+    <Property Name="LoginTime" Type="datetime" Precision="0" />
+  </EntityType>
+  <EntityType Name="retailchangeinfo">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="retailid" Type="int" Nullable="false" />
+    <Property Name="type" Type="tinyint" />
+    <Property Name="score" Type="bigint" />
+    <Property Name="createtime" Type="datetime" Precision="0" />
+    <Property Name="desc" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="retailconfig">
+    <Key>
+      <PropertyRef Name="retailid" />
+    </Key>
+    <Property Name="retailid" Type="int" Nullable="false" />
+    <Property Name="playeramount" Type="mediumtext" />
+  </EntityType>
+  <EntityType Name="retailinfo">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="appsecret" Type="varchar" MaxLength="64" />
+    <Property Name="appid" Type="varchar" MaxLength="64" />
+    <Property Name="name" Type="varchar" MaxLength="50" />
+    <Property Name="gold" Type="bigint" />
+    <Property Name="createtime" Type="datetime" Precision="0" />
+    <Property Name="modefy" Type="timestamp" Precision="0" />
+    <Property Name="status" Type="tinyint" />
+  </EntityType>
+  <EntityType Name="snspassportlog">
+    <Key>
+      <PropertyRef Name="PassportID" />
+    </Key>
+    <Property Name="PassportID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CreateTime" Type="datetime" Precision="0" />
+    <Property Name="Mark" Type="int" />
+    <Property Name="RegPushTime" Type="datetime" Precision="0" />
+    <Property Name="RegTime" Type="datetime" Precision="0" />
+  </EntityType>
+  <EntityType Name="snsuserinfo">
+    <Key>
+      <PropertyRef Name="SID" />
+    </Key>
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="PassportID" Type="varchar" MaxLength="32" />
+    <Property Name="PassportPwd" Type="varchar" MaxLength="50" />
+    <Property Name="DeviceID" Type="varchar" MaxLength="50" />
+    <Property Name="RegType" Type="smallint" />
+    <Property Name="RegTime" Type="datetime" Precision="0" />
+    <Property Name="RetailID" Type="varchar" MaxLength="50" />
+    <Property Name="RetailUser" Type="varchar" MaxLength="50" />
+    <Property Name="Mobile" Type="varchar" MaxLength="50" />
+    <Property Name="Mail" Type="varchar" MaxLength="50" />
+    <Property Name="PwdType" Type="int" />
+    <Property Name="RealName" Type="varchar" MaxLength="20" />
+    <Property Name="IDCards" Type="varchar" MaxLength="20" />
+    <Property Name="ActiveCode" Type="char" MaxLength="10" />
+    <Property Name="SendActiveDate" Type="datetime" Precision="0" />
+    <Property Name="ActiveDate" Type="datetime" Precision="0" />
+    <Property Name="SID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="WeixinCode" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="userloginlog">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="int" />
+    <Property Name="IP" Type="varchar" MaxLength="255" />
+    <Property Name="MachineCode" Type="varchar" MaxLength="255" />
+    <Property Name="MachineType" Type="bigint" />
+    <Property Name="Lat" Type="float" />
+    <Property Name="Lng" Type="float" />
+    <Property Name="CreateTime" Type="datetime" Precision="0" />
+  </EntityType>
+  <EntityContainer Name="snscenterwhirlModelStoreContainer">
+    <EntitySet Name="limitdevice" EntityType="Self.limitdevice" Schema="snscenterwhirl" store:Type="Tables" />
+    <EntitySet Name="loguserlogin" EntityType="Self.loguserlogin" Schema="snscenterwhirl" store:Type="Tables" />
+    <EntitySet Name="passportloginlog" EntityType="Self.passportloginlog" Schema="snscenterwhirl" store:Type="Tables" />
+    <EntitySet Name="retailchangeinfo" EntityType="Self.retailchangeinfo" Schema="snscenterwhirl" store:Type="Tables" />
+    <EntitySet Name="retailconfig" EntityType="Self.retailconfig" Schema="snscenterwhirl" store:Type="Tables" />
+    <EntitySet Name="retailinfo" EntityType="Self.retailinfo" Schema="snscenterwhirl" store:Type="Tables" />
+    <EntitySet Name="snspassportlog" EntityType="Self.snspassportlog" Schema="snscenterwhirl" store:Type="Tables" />
+    <EntitySet Name="snsuserinfo" EntityType="Self.snsuserinfo" Schema="snscenterwhirl" store:Type="Tables" />
+    <EntitySet Name="userloginlog" EntityType="Self.userloginlog" Schema="snscenterwhirl" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

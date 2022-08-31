@@ -1,0 +1,1518 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="texas_2021Model.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.7" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="bankcardentities">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserID" Type="varchar" MaxLength="255" />
+    <Property Name="UserName" Type="varchar" MaxLength="255" />
+    <Property Name="BankCardID" Type="varchar" MaxLength="255" />
+    <Property Name="CardType" Type="int" />
+    <Property Name="CardName" Type="varchar" MaxLength="255" />
+    <Property Name="BankAddress" Type="varchar" MaxLength="255" />
+    <Property Name="Location" Type="varchar" MaxLength="255" />
+    <Property Name="IsDel" Type="bit" />
+    <Property Name="CreatTime" Type="datetime" Precision="0" />
+    <Property Name="UserEntity_ID" Type="int" />
+  </EntityType>
+  <EntityType Name="banktypeentities">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BankName" Type="varchar" MaxLength="255" />
+    <Property Name="CardType" Type="varchar" MaxLength="255" />
+    <Property Name="BinCode" Type="varchar" MaxLength="255" />
+    <Property Name="IsDel" Type="bit" />
+    <Property Name="CreatTime" Type="datetime" Precision="0" />
+  </EntityType>
+  <EntityType Name="gameuser">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="NickName" Type="varchar" MaxLength="255" />
+    <Property Name="PassportId" Type="varchar" MaxLength="255" />
+    <Property Name="RetailId" Type="varchar" MaxLength="255" />
+    <Property Name="HeadIcon" Type="varchar" MaxLength="255" />
+    <Property Name="Sex" Type="bit" />
+    <Property Name="Email" Type="varchar" MaxLength="255" />
+    <Property Name="MobilePhoneNum" Type="varchar" MaxLength="255" />
+    <Property Name="PassportPwd" Type="varchar" MaxLength="255" />
+    <Property Name="UserLevel" Type="smallint" />
+    <Property Name="ExpNum" Type="int" />
+    <Property Name="LoginNum" Type="int" />
+    <Property Name="FinalTime" Type="datetime" Precision="0" />
+    <Property Name="RecommendedId" Type="varchar" MaxLength="255" />
+    <Property Name="Vip" Type="tinyint" />
+    <Property Name="UserStatus" Type="int" />
+    <Property Name="MoneyScore" Type="int" />
+    <Property Name="Birthday" Type="varchar" MaxLength="255" />
+    <Property Name="RegisterTime" Type="datetime" Precision="0" />
+    <Property Name="MobileType" Type="tinyint" />
+    <Property Name="IDCards" Type="varchar" MaxLength="255" />
+    <Property Name="WeixinCode" Type="varchar" MaxLength="255" />
+    <Property Name="PassportPwdTime" Type="datetime" Precision="0" />
+    <Property Name="RedEnvCount" Type="int" />
+    <Property Name="RedCount" Type="int" />
+    <Property Name="ClRedCount" Type="int" />
+    <Property Name="alipayName" Type="varchar" MaxLength="255" />
+    <Property Name="alipayNum" Type="varchar" MaxLength="255" />
+    <Property Name="BankUn" Type="varchar" MaxLength="255" />
+    <Property Name="BankNum" Type="varchar" MaxLength="255" />
+    <Property Name="BankName" Type="varchar" MaxLength="255" />
+    <Property Name="bPhone" Type="varchar" MaxLength="255" />
+    <Property Name="aPhone" Type="varchar" MaxLength="255" />
+    <Property Name="JlRedCount" Type="int" />
+    <Property Name="BankProvince" Type="varchar" MaxLength="255" />
+    <Property Name="BankCity" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="rechargechannels">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="varchar" MaxLength="255" />
+    <Property Name="IP" Type="varchar" MaxLength="255" />
+    <Property Name="MachineCode" Type="varchar" MaxLength="255" />
+    <Property Name="MachineType" Type="int" />
+    <Property Name="Lat" Type="varchar" MaxLength="255" />
+    <Property Name="Lng" Type="varchar" MaxLength="255" />
+    <Property Name="CreateTime" Type="datetime" Precision="0" />
+    <Property Name="ChannelName" Type="varchar" MaxLength="255" />
+    <Property Name="ChannelCode" Type="varchar" MaxLength="255" />
+    <Property Name="payurl" Type="varchar" MaxLength="255" />
+    <Property Name="dec" Type="varchar" MaxLength="255" />
+    <Property Name="minmoney" Type="varchar" MaxLength="255" />
+    <Property Name="paytype" Type="varchar" MaxLength="255" />
+    <Property Name="isenable" Type="bit" />
+    <Property Name="payname" Type="varchar" MaxLength="255" />
+    <Property Name="IsDel" Type="bit" />
+    <Property Name="CreatTime" Type="datetime" Precision="0" />
+    <Property Name="serviceList" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="smsrecord">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="SmsType" Type="int" />
+    <Property Name="UserId" Type="int" />
+    <Property Name="MobilePhoneNum" Type="varchar" MaxLength="255" />
+    <Property Name="KeyNum" Type="varchar" MaxLength="255" />
+    <Property Name="Result" Type="varchar" MaxLength="255" />
+    <Property Name="Time" Type="datetime" Precision="0" />
+    <Property Name="DeviceID" Type="varchar" MaxLength="255" />
+    <Property Name="IP" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="snscenterwhirl_snsuserinfo">
+    <Key>
+      <PropertyRef Name="SID" />
+    </Key>
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="PassportID" Type="varchar" MaxLength="32" />
+    <Property Name="PassportPwd" Type="varchar" MaxLength="50" />
+    <Property Name="DeviceID" Type="varchar" MaxLength="50" />
+    <Property Name="RegType" Type="smallint" />
+    <Property Name="RegTime" Type="datetime" Precision="0" />
+    <Property Name="RetailID" Type="varchar" MaxLength="50" />
+    <Property Name="RetailUser" Type="varchar" MaxLength="50" />
+    <Property Name="Mobile" Type="varchar" MaxLength="50" />
+    <Property Name="Mail" Type="varchar" MaxLength="50" />
+    <Property Name="PwdType" Type="int" />
+    <Property Name="RealName" Type="varchar" MaxLength="20" />
+    <Property Name="IDCards" Type="varchar" MaxLength="20" />
+    <Property Name="ActiveCode" Type="char" MaxLength="10" />
+    <Property Name="SendActiveDate" Type="datetime" Precision="0" />
+    <Property Name="ActiveDate" Type="datetime" Precision="0" />
+    <Property Name="SID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="WeixinCode" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="tactivecode">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Activecode" Type="int" />
+    <Property Name="GenerateUserId" Type="int" />
+    <Property Name="UseUserId" Type="int" />
+    <Property Name="CreateDate" Type="datetime" Precision="0" />
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tactivity">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ImgUrl" Type="varchar" MaxLength="255" />
+    <Property Name="Title" Type="varchar" MaxLength="255" />
+    <Property Name="Content" Type="varchar" MaxLength="255" />
+    <Property Name="CreateDate" Type="datetime" Precision="0" />
+  </EntityType>
+  <EntityType Name="tagentgoldlog">
+    <Key>
+      <PropertyRef Name="Idx" />
+    </Key>
+    <Property Name="Idx" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="int" />
+    <Property Name="BeforCoin" Type="double" />
+    <Property Name="ActionCoin" Type="double" />
+    <Property Name="AfterCoin" Type="double" />
+    <Property Name="ActionType" Type="int" />
+    <Property Name="SourceGameID" Type="int" />
+    <Property Name="SourceUserId" Type="int" />
+    <Property Name="CreateDate" Type="datetime" Precision="0" />
+    <Property Name="TableUserLogId" Type="bigint" />
+    <Property Name="IsHandel" Type="bit" />
+    <Property Name="_lv" Type="int" />
+    <Property Name="tnum" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="tauthinfo">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="authname" Type="varchar" MaxLength="255" />
+    <Property Name="authvalue" Type="int" />
+  </EntityType>
+  <EntityType Name="tautoeventlog">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EventName" Type="varchar" MaxLength="255" />
+    <Property Name="Message" Type="varchar" MaxLength="255" />
+    <Property Name="CreateDate" Type="datetime" Precision="0" />
+  </EntityType>
+  <EntityType Name="tbanklog">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="OpDate" Type="varchar" MaxLength="255" />
+    <Property Name="OpType" Type="int" />
+    <Property Name="OpCount" Type="int" />
+    <Property Name="UserId" Type="int" />
+  </EntityType>
+  <EntityType Name="tbarrage">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="int" />
+    <Property Name="BarrageContent" Type="varchar" MaxLength="255" />
+    <Property Name="CreateTime" Type="datetime" Precision="0" />
+    <Property Name="BarrageType" Type="varchar" MaxLength="255" />
+    <Property Name="BarrageMoney" Type="int" />
+    <Property Name="tableId" Type="int" />
+    <Property Name="RoomId" Type="int" />
+  </EntityType>
+  <EntityType Name="tbemail">
+    <Key>
+      <PropertyRef Name="TradeNo" />
+    </Key>
+    <Property Name="TradeNo" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="FromUserId" Type="int" />
+    <Property Name="ToUserId" Type="int" />
+    <Property Name="MailType" Type="int" />
+    <Property Name="Content" Type="varchar" MaxLength="255" />
+    <Property Name="State" Type="int" />
+    <Property Name="CreateDate" Type="datetime" Precision="0" />
+    <Property Name="Attach" Type="longtext" />
+    <Property Name="CState" Type="int" />
+    <Property Name="IsLook" Type="bit" />
+    <Property Name="EmailType" Type="int" />
+    <Property Name="Title" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="tbetinginfo">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserID" Type="int" />
+    <Property Name="BetCount" Type="decimal" Precision="18" Scale="4" />
+    <Property Name="GameId" Type="int" />
+    <Property Name="CreateTime" Type="datetime" Precision="0" />
+  </EntityType>
+  <EntityType Name="tchatlog">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="int" />
+    <Property Name="BarrageContent" Type="varchar" MaxLength="255" />
+    <Property Name="CreateTime" Type="datetime" Precision="0" />
+    <Property Name="BarrageType" Type="varchar" MaxLength="255" />
+    <Property Name="BarrageMoney" Type="int" />
+    <Property Name="tableId" Type="int" />
+    <Property Name="RoomId" Type="int" />
+    <Property Name="GameId" Type="int" />
+  </EntityType>
+  <EntityType Name="tclub">
+    <Key>
+      <PropertyRef Name="idx" />
+    </Key>
+    <Property Name="idx" Type="int" Nullable="false" />
+    <Property Name="UserId" Type="int" />
+    <Property Name="State" Type="int" />
+    <Property Name="CreateDate" Type="datetime" Precision="0" />
+    <Property Name="childs" Type="longtext" />
+    <Property Name="Title" Type="varchar" MaxLength="255" />
+    <Property Name="limitcount" Type="int" />
+    <Property Name="search" Type="bit" />
+    <Property Name="manager" Type="bit" />
+    <Property Name="gold" Type="bigint" />
+    <Property Name="diam" Type="bigint" />
+    <Property Name="applyUserID" Type="longtext" />
+    <Property Name="Loc" Type="varchar" MaxLength="255" />
+    <Property Name="lv" Type="int" />
+    <Property Name="closeapply" Type="bit" />
+    <Property Name="Content" Type="varchar" MaxLength="255" />
+    <Property Name="applyGoldList" Type="longtext" />
+    <Property Name="alliancid" Type="int" />
+    <Property Name="fundnum" Type="bigint" />
+    <Property Name="apply" Type="longtext" />
+    <Property Name="tidlist" Type="longtext" />
+    <Property Name="clubIcon" Type="varchar" MaxLength="255" />
+    <Property Name="FreeModify" Type="int" />
+    <Property Name="inspot" Type="bigint" />
+    <Property Name="jackpot" Type="bigint" />
+    <Property Name="losemax" Type="bigint" />
+    <Property Name="historylose" Type="bigint" />
+  </EntityType>
+  <EntityType Name="tcluballiance">
+    <Key>
+      <PropertyRef Name="idx" />
+    </Key>
+    <Property Name="idx" Type="bigint" Nullable="false" />
+    <Property Name="UserId" Type="int" />
+    <Property Name="State" Type="int" />
+    <Property Name="CreateDate" Type="datetime" Precision="0" />
+    <Property Name="childs" Type="longtext" />
+    <Property Name="Title" Type="varchar" MaxLength="255" />
+    <Property Name="Content" Type="varchar" MaxLength="255" />
+    <Property Name="limitcount" Type="int" />
+    <Property Name="search" Type="bit" />
+    <Property Name="manager" Type="bit" />
+    <Property Name="gold" Type="bigint" />
+    <Property Name="diam" Type="bigint" />
+    <Property Name="applyclubidx" Type="longtext" />
+    <Property Name="lv" Type="int" />
+    <Property Name="closeapply" Type="bit" />
+    <Property Name="clubid" Type="int" />
+    <Property Name="IsSupper" Type="bit" />
+    <Property Name="jackpot" Type="bigint" />
+    <Property Name="inspot" Type="bigint" />
+  </EntityType>
+  <EntityType Name="tclubapplylog">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="int" />
+    <Property Name="applyType" Type="int" />
+    <Property Name="Status" Type="int" />
+    <Property Name="applyTime" Type="datetime" Precision="0" />
+    <Property Name="clubId" Type="bigint" />
+    <Property Name="ownClubId" Type="int" />
+    <Property Name="message" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="tclubfundlog">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ClubId" Type="int" />
+    <Property Name="fnum" Type="int" />
+    <Property Name="Price" Type="int" />
+    <Property Name="ChangeType" Type="int" />
+    <Property Name="UserId" Type="int" />
+    <Property Name="CreateTime" Type="datetime" Precision="0" />
+    <Property Name="BalanNum" Type="bigint" />
+    <Property Name="fundtotal" Type="bigint" />
+  </EntityType>
+  <EntityType Name="tclubgoldlog">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ChangeType" Type="int" />
+    <Property Name="BeforeGold" Type="double" />
+    <Property Name="Gold" Type="bigint" />
+    <Property Name="AfterGold" Type="bigint" />
+    <Property Name="CreateTime" Type="datetime" Precision="0" />
+    <Property Name="ClubId" Type="int" />
+    <Property Name="Remark" Type="varchar" MaxLength="255" />
+    <Property Name="UserId" Type="int" />
+  </EntityType>
+  <EntityType Name="tclubjackpotlog">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="GameId" Type="int" />
+    <Property Name="clubid" Type="int" />
+    <Property Name="UserId" Type="int" />
+    <Property Name="Gold" Type="bigint" />
+    <Property Name="JackpotType" Type="int" />
+    <Property Name="tnum" Type="int" />
+    <Property Name="CreateTime" Type="datetime" Precision="0" />
+    <Property Name="allid" Type="bigint" />
+  </EntityType>
+  <EntityType Name="tclublevel">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="type" Type="int" />
+    <Property Name="level" Type="int" />
+    <Property Name="diamond" Type="bigint" />
+    <Property Name="maxMember" Type="int" />
+    <Property Name="maxadmin" Type="int" />
+    <Property Name="expireTime" Type="int" />
+    <Property Name="CreateTime" Type="datetime" Precision="0" />
+    <Property Name="levelname" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="tclubtaxlog">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="gameid" Type="int" />
+    <Property Name="clubid" Type="int" />
+    <Property Name="allid" Type="int" />
+    <Property Name="gold" Type="bigint" />
+    <Property Name="totalgold" Type="bigint" />
+    <Property Name="tnum" Type="varchar" MaxLength="255" />
+    <Property Name="CreateTime" Type="datetime" Precision="0" />
+  </EntityType>
+  <EntityType Name="tclubusergoldlog">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ClubId" Type="int" />
+    <Property Name="UserId" Type="int" />
+    <Property Name="BeforeGold" Type="double" />
+    <Property Name="Gold" Type="bigint" />
+    <Property Name="AfterGold" Type="bigint" />
+    <Property Name="CreateTime" Type="datetime" Precision="0" />
+    <Property Name="Remark" Type="varchar" MaxLength="255" />
+    <Property Name="ChangeType" Type="int" />
+  </EntityType>
+  <EntityType Name="tcollectlog">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="sceneInfo" Type="varchar" MaxLength="5000" />
+    <Property Name="sceneUserInfo" Type="varchar" MaxLength="255" />
+    <Property Name="UserId" Type="int" />
+    <Property Name="CreateTime" Type="datetime" Precision="0" />
+    <Property Name="tnum" Type="int" />
+    <Property Name="infoId" Type="varchar" MaxLength="255" />
+    <Property Name="baserate" Type="int" />
+    <Property Name="gNum" Type="int" />
+    <Property Name="totalnum" Type="int" />
+    <Property Name="WinUserId" Type="int" />
+    <Property Name="WinGold" Type="bigint" />
+    <Property Name="seeNum" Type="int" />
+    <Property Name="NoGiveupNum" Type="int" />
+    <Property Name="maxPoker" Type="longtext" />
+    <Property Name="OwnSpair" Type="longtext" />
+    <Property Name="OwnWin" Type="bigint" />
+    <Property Name="preG" Type="int" />
+    <Property Name="PlayerList" Type="varchar" MaxLength="2000" />
+    <Property Name="showCard" Type="int" />
+  </EntityType>
+  <EntityType Name="tcommodity">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="255" />
+    <Property Name="introduce" Type="varchar" MaxLength="255" />
+    <Property Name="exchangeValue" Type="double" />
+    <Property Name="commodityType" Type="int" />
+    <Property Name="url" Type="varchar" MaxLength="255" />
+    <Property Name="CreateTime" Type="datetime" Precision="0" />
+    <Property Name="isEnable" Type="bit" />
+    <Property Name="commodityvValue" Type="float" />
+    <Property Name="Discount" Type="varchar" MaxLength="255" />
+    <Property Name="ClubCount" Type="int" />
+    <Property Name="TableCount" Type="int" />
+  </EntityType>
+  <EntityType Name="tdiamondchangelog">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="int" />
+    <Property Name="BeforeGold" Type="double" />
+    <Property Name="Gold" Type="double" />
+    <Property Name="AfterGold" Type="double" />
+    <Property Name="ChangeType" Type="int" />
+    <Property Name="CreateTime" Type="datetime" Precision="0" />
+    <Property Name="Remark" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="temail">
+    <Key>
+      <PropertyRef Name="TradeNo" />
+    </Key>
+    <Property Name="TradeNo" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="FromUserId" Type="int" />
+    <Property Name="ToUserId" Type="int" />
+    <Property Name="MailType" Type="int" />
+    <Property Name="Content" Type="varchar" MaxLength="255" />
+    <Property Name="State" Type="int" />
+    <Property Name="CreateDate" Type="datetime" Precision="0" />
+    <Property Name="Attach" Type="longtext" />
+    <Property Name="CState" Type="int" />
+    <Property Name="IsLook" Type="bit" />
+    <Property Name="EmailType" Type="int" />
+    <Property Name="Title" Type="varchar" MaxLength="255" />
+    <Property Name="FromUserName" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="temp_entityhistory">
+    <Key>
+      <PropertyRef Name="Key" />
+    </Key>
+    <Property Name="Key" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="Value" Type="longblob" />
+  </EntityType>
+  <EntityType Name="temtuseragent">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="UserID" Type="int" />
+    <Property Name="UserName" Type="varchar" MaxLength="255" />
+    <Property Name="Commission" Type="bigint" />
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserProfit" Type="bigint" />
+    <Property Name="pos1Count" Type="int" />
+    <Property Name="pos2Count" Type="int" />
+    <Property Name="pos5Count" Type="int" />
+    <Property Name="pos10Count" Type="int" />
+    <Property Name="pos20Count" Type="int" />
+    <Property Name="pos50Count" Type="int" />
+    <Property Name="GameId" Type="int" />
+  </EntityType>
+  <EntityType Name="tentitycard">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AddName" Type="varchar" MaxLength="255" />
+    <Property Name="CardType" Type="int" />
+    <Property Name="CardNum" Type="int" />
+    <Property Name="CardPrice" Type="decimal" Precision="10" Scale="0" />
+    <Property Name="TatolPrice" Type="decimal" Precision="10" Scale="0" />
+    <Property Name="GoldPrice" Type="decimal" Precision="10" Scale="0" />
+    <Property Name="CreateTime" Type="datetime" Precision="0" />
+  </EntityType>
+  <EntityType Name="tentitycarddetails">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tentitycardtype">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AddName" Type="varchar" MaxLength="255" />
+    <Property Name="Name" Type="varchar" MaxLength="255" />
+    <Property Name="CardNum" Type="int" />
+    <Property Name="CardPrice" Type="decimal" Precision="10" Scale="0" />
+    <Property Name="TotalPrice" Type="decimal" Precision="10" Scale="0" />
+    <Property Name="GoldPrice" Type="decimal" Precision="10" Scale="0" />
+    <Property Name="CreateTime" Type="datetime" Precision="0" />
+  </EntityType>
+  <EntityType Name="texchangelog">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="CommodityId" Type="int" />
+    <Property Name="UserId" Type="int" />
+    <Property Name="CreateTime" Type="datetime" Precision="0" />
+    <Property Name="isHandle" Type="bit" />
+    <Property Name="oddNumbers" Type="varchar" MaxLength="255" />
+    <Property Name="expressNumbers" Type="varchar" MaxLength="255" />
+    <Property Name="name" Type="varchar" MaxLength="255" />
+    <Property Name="commodityType" Type="int" />
+    <Property Name="QRCodeUrl" Type="varchar" MaxLength="255" />
+    <Property Name="exchangeCount" Type="int" />
+  </EntityType>
+  <EntityType Name="tfeedback">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserName" Type="varchar" MaxLength="255" />
+    <Property Name="CreateDate" Type="datetime" Precision="0" />
+    <Property Name="feedbacktype" Type="int" />
+    <Property Name="tel" Type="varchar" MaxLength="255" />
+    <Property Name="content" Type="varchar" MaxLength="255" />
+    <Property Name="fileurl" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="tgameinfo">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="255" />
+    <Property Name="modifyUser" Type="varchar" MaxLength="255" />
+    <Property Name="modifyTime" Type="datetime" Precision="0" />
+    <Property Name="Sort" Type="int" />
+    <Property Name="isHot" Type="int" />
+    <Property Name="desc" Type="varchar" MaxLength="255" />
+    <Property Name="isopen" Type="bit" />
+    <Property Name="type" Type="int" />
+    <Property Name="gameurl" Type="varchar" MaxLength="255" />
+    <Property Name="port" Type="int" />
+    <Property Name="gameRule" Type="varchar" MaxLength="255" />
+    <Property Name="icon" Type="varchar" MaxLength="255" />
+    <Property Name="gameIntroduce" Type="varchar" MaxLength="255" />
+    <Property Name="isEnable" Type="bit" />
+    <Property Name="isEnableDesc" Type="varchar" MaxLength="255" />
+    <Property Name="deleteState" Type="bit" />
+    <Property Name="gameType" Type="int" />
+    <Property Name="gameIp" Type="varchar" MaxLength="255" />
+    <Property Name="gamePort" Type="int" />
+    <Property Name="platType" Type="int" />
+    <Property Name="jdbType" Type="int" />
+    <Property Name="IsRun" Type="int" />
+  </EntityType>
+  <EntityType Name="tgamelevelinfo">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="255" />
+    <Property Name="Baserate" Type="int" />
+    <Property Name="gameid" Type="int" />
+    <Property Name="_min" Type="int" />
+    <Property Name="_max" Type="int" />
+    <Property Name="onlineCount" Type="int" />
+    <Property Name="openTableCount" Type="int" />
+    <Property Name="gametype" Type="int" />
+    <Property Name="gametypeDesc" Type="varchar" MaxLength="255" />
+    <Property Name="isEnable" Type="int" />
+    <Property Name="isEnableDesc" Type="varchar" MaxLength="255" />
+    <Property Name="deleteState" Type="int" />
+    <Property Name="modifyUser" Type="varchar" MaxLength="255" />
+    <Property Name="modifyTime" Type="datetime" Precision="0" />
+    <Property Name="Description" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="tgamerax">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="gameid" Type="int" />
+    <Property Name="levelid" Type="int" />
+    <Property Name="rax" Type="bigint" />
+    <Property Name="modifyTime" Type="datetime" Precision="0" />
+    <Property Name="modifyUser" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="tgamesummary">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="jacketall" Type="int" />
+    <Property Name="InsJackpotall" Type="int" />
+    <Property Name="robotMoney" Type="int" />
+    <Property Name="UserMoney" Type="int" />
+    <Property Name="CreateTime" Type="datetime" Precision="0" />
+  </EntityType>
+  <EntityType Name="tgangcardlog">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TableLogIdx" Type="bigint" />
+    <Property Name="UserID" Type="int" />
+    <Property Name="CreateDate" Type="datetime" Precision="0" />
+    <Property Name="Lng" Type="float" />
+    <Property Name="Lat" Type="float" />
+    <Property Name="_win" Type="bit" />
+    <Property Name="Bet" Type="bigint" />
+    <Property Name="IP" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="tgoldchangelog">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="int" />
+    <Property Name="BeforeGold" Type="double" />
+    <Property Name="Gold" Type="double" />
+    <Property Name="AfterGold" Type="double" />
+    <Property Name="CreateTime" Type="datetime" Precision="0" />
+    <Property Name="GameId" Type="int" />
+    <Property Name="IsRobot" Type="bit" />
+    <Property Name="Remark" Type="varchar" MaxLength="255" />
+    <Property Name="gamble" Type="int" />
+    <Property Name="ChangeType" Type="int" />
+    <Property Name="JsonData" Type="varchar" MaxLength="255" />
+    <Property Name="clubid" Type="int" />
+    <Property Name="tnum" Type="int" />
+  </EntityType>
+  <EntityType Name="tgoldchangh5game">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="int" />
+    <Property Name="GoldType" Type="int" />
+    <Property Name="Gold" Type="decimal" Precision="10" Scale="0" />
+    <Property Name="CreateTime" Type="datetime" Precision="0" />
+    <Property Name="GameId" Type="int" />
+    <Property Name="IsComplete" Type="int" />
+  </EntityType>
+  <EntityType Name="tgoldstatistics">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IsRobot" Type="bit" />
+    <Property Name="TotalGold" Type="bigint" />
+    <Property Name="CurrentGold" Type="bigint" />
+    <Property Name="LastGold" Type="bigint" />
+    <Property Name="GameId" Type="int" />
+    <Property Name="CreateTime" Type="datetime" Precision="0" />
+    <Property Name="TimeInterval" Type="varchar" MaxLength="255" />
+    <Property Name="Remark" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="th5winloselog">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Gold" Type="decimal" Precision="10" Scale="0" />
+    <Property Name="GameId" Type="int" />
+    <Property Name="IsRebate" Type="int" />
+    <Property Name="beforeGold" Type="decimal" Precision="10" Scale="0" />
+    <Property Name="afterGold" Type="decimal" Precision="10" Scale="0" />
+    <Property Name="CreateTime" Type="datetime" Precision="0" />
+    <Property Name="UserId" Type="int" />
+  </EntityType>
+  <EntityType Name="tinsurjackpotlog">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="GameId" Type="int" />
+    <Property Name="clubid" Type="int" />
+    <Property Name="UserId" Type="int" />
+    <Property Name="Gold" Type="bigint" />
+    <Property Name="JackpotType" Type="int" />
+    <Property Name="tnum" Type="int" />
+    <Property Name="CreateTime" Type="datetime" Precision="0" />
+  </EntityType>
+  <EntityType Name="tjackpot">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="gameid" Type="int" />
+    <Property Name="jackpot" Type="bigint" />
+    <Property Name="isEnable" Type="int" />
+    <Property Name="isEnableDesc" Type="varchar" MaxLength="255" />
+    <Property Name="deleteState" Type="int" />
+    <Property Name="modifyUser" Type="varchar" MaxLength="255" />
+    <Property Name="modifyTime" Type="datetime" Precision="0" />
+    <Property Name="Description" Type="varchar" MaxLength="255" />
+    <Property Name="pump" Type="int" />
+    <Property Name="waterproof" Type="int" />
+    <Property Name="historygambleall" Type="bigint" />
+    <Property Name="income" Type="bigint" />
+    <Property Name="rax" Type="bigint" />
+    <Property Name="handsel" Type="int" />
+    <Property Name="roomid" Type="int" />
+  </EntityType>
+  <EntityType Name="tjackpotaddlog">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="GameId" Type="int" />
+    <Property Name="TableID" Type="int" />
+    <Property Name="Gold" Type="bigint" />
+    <Property Name="CreateTime" Type="datetime" Precision="0" />
+    <Property Name="RoomID" Type="int" />
+    <Property Name="beforeGold" Type="bigint" />
+    <Property Name="afterGold" Type="bigint" />
+  </EntityType>
+  <EntityType Name="tjackpotlog">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="GameId" Type="int" />
+    <Property Name="RoomId" Type="int" />
+    <Property Name="UserId" Type="int" />
+    <Property Name="Gold" Type="bigint" />
+    <Property Name="JackpotType" Type="int" />
+    <Property Name="CreateTime" Type="datetime" Precision="0" />
+    <Property Name="ChangeType" Type="int" />
+    <Property Name="tnum" Type="int" />
+    <Property Name="Owner" Type="int" />
+    <Property Name="IsSettlement" Type="bit" />
+  </EntityType>
+  <EntityType Name="tjdbwagerlog">
+    <Key>
+      <PropertyRef Name="transferId" />
+    </Key>
+    <Property Name="transferId" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="UserId" Type="int" />
+    <Property Name="gType" Type="int" />
+    <Property Name="mType" Type="int" />
+    <Property Name="bet" Type="double" />
+    <Property Name="win" Type="double" />
+    <Property Name="netWin" Type="double" />
+    <Property Name="ipAddress" Type="varchar" MaxLength="255" />
+    <Property Name="gameDate" Type="datetime" Precision="0" />
+    <Property Name="CreateTime" Type="datetime" Precision="0" />
+    <Property Name="IsSuccess" Type="int" />
+  </EntityType>
+  <EntityType Name="tlevellog">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="int" />
+    <Property Name="leveltype" Type="int" />
+    <Property Name="levelTime" Type="datetime" Precision="0" />
+    <Property Name="Money" Type="bigint" />
+  </EntityType>
+  <EntityType Name="tnotice">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="title" Type="varchar" MaxLength="255" />
+    <Property Name="content" Type="varchar" MaxLength="2000" />
+    <Property Name="noticetime" Type="datetime" Precision="0" />
+    <Property Name="_author" Type="varchar" MaxLength="255" />
+    <Property Name="_type" Type="varchar" MaxLength="255" />
+    <Property Name="isStart" Type="int" />
+    <Property Name="TcPicUrl" Type="varchar" MaxLength="255" />
+    <Property Name="Width" Type="int" />
+    <Property Name="Height" Type="int" />
+  </EntityType>
+  <EntityType Name="tonlineinfo">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="GameId" Type="int" />
+    <Property Name="GameType" Type="int" />
+    <Property Name="OnlineCount" Type="int" />
+    <Property Name="RoomId" Type="int" />
+    <Property Name="CreateTime" Type="datetime" Precision="0" />
+    <Property Name="GameModel" Type="int" />
+    <Property Name="rCount" Type="int" />
+  </EntityType>
+  <EntityType Name="trank">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="int" Nullable="false" />
+    <Property Name="UserName" Type="varchar" MaxLength="255" />
+    <Property Name="ScoreWin" Type="int" />
+    <Property Name="CreateDate" Type="datetime" Precision="0" />
+    <Property Name="ScoreLost" Type="int" />
+    <Property Name="records" Type="longtext" />
+  </EntityType>
+  <EntityType Name="tredenvelopesconfig">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Money" Type="decimal" Precision="18" Scale="4" />
+    <Property Name="Rate" Type="decimal" Precision="18" Scale="4" />
+    <Property Name="TaskType" Type="int" />
+    <Property Name="CreateDate" Type="datetime" Precision="0" />
+  </EntityType>
+  <EntityType Name="tredenvelopeslog">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="int" />
+    <Property Name="BeforeCount" Type="varchar" MaxLength="255" />
+    <Property Name="Money" Type="int" />
+    <Property Name="CreateDate" Type="datetime" Precision="0" />
+    <Property Name="TaskType" Type="int" />
+  </EntityType>
+  <EntityType Name="tredenvelopesreceivelog">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="int" />
+    <Property Name="TaskId" Type="bigint" />
+    <Property Name="Count" Type="int" />
+    <Property Name="BeforeCount" Type="int" />
+    <Property Name="CreateDate" Type="datetime" Precision="0" />
+    <Property Name="TaskType" Type="int" />
+  </EntityType>
+  <EntityType Name="tredenvelopestask">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TaskName" Type="varchar" MaxLength="255" />
+    <Property Name="TaskType" Type="int" />
+    <Property Name="TaskCount" Type="int" />
+    <Property Name="RedEnvCount" Type="int" />
+    <Property Name="CreateDate" Type="datetime" Precision="0" />
+  </EntityType>
+  <EntityType Name="troomcardtemp">
+    <Key>
+      <PropertyRef Name="tableNum" />
+    </Key>
+    <Property Name="tableNum" Type="int" Nullable="false" />
+    <Property Name="gameid" Type="int" />
+    <Property Name="roomid" Type="int" />
+    <Property Name="createTime" Type="varchar" MaxLength="255" />
+    <Property Name="maxCount" Type="int" />
+    <Property Name="curCount" Type="int" />
+    <Property Name="allUserRecord" Type="longtext" />
+    <Property Name="ownerId" Type="int" />
+    <Property Name="tableStatus" Type="int" />
+    <Property Name="tableid" Type="int" />
+  </EntityType>
+  <EntityType Name="troomlist">
+    <Key>
+      <PropertyRef Name="Idx" />
+      <PropertyRef Name="Name" />
+    </Key>
+    <Property Name="Idx" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="RoomDescribe" Type="varchar" MaxLength="255" />
+    <Property Name="Gamename" Type="varchar" MaxLength="255" />
+    <Property Name="GametypeId" Type="varchar" MaxLength="255" />
+    <Property Name="IsEnable" Type="varchar" MaxLength="255" />
+    <Property Name="Pi" Type="varchar" MaxLength="255" />
+    <Property Name="PeopleNum" Type="varchar" MaxLength="255" />
+    <Property Name="Autostart" Type="varchar" MaxLength="255" />
+    <Property Name="Duration" Type="varchar" MaxLength="255" />
+    <Property Name="MinBring" Type="varchar" MaxLength="255" />
+    <Property Name="IsZm" Type="varchar" MaxLength="255" />
+    <Property Name="IsQm" Type="varchar" MaxLength="255" />
+    <Property Name="IsDw" Type="varchar" MaxLength="255" />
+    <Property Name="IsQcqm" Type="varchar" MaxLength="255" />
+    <Property Name="Createuser" Type="varchar" MaxLength="255" />
+    <Property Name="Createtime" Type="varchar" MaxLength="255" />
+    <Property Name="modifyUser" Type="varchar" MaxLength="255" />
+    <Property Name="modifyTime" Type="varchar" MaxLength="255" />
+    <Property Name="States" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="tserverconfig">
+    <Key>
+      <PropertyRef Name="ServerId" />
+    </Key>
+    <Property Name="ServerId" Type="int" Nullable="false" />
+    <Property Name="ServerName" Type="varchar" MaxLength="255" />
+    <Property Name="ServerIP" Type="varchar" MaxLength="255" />
+    <Property Name="ServerPort" Type="int" />
+    <Property Name="InternalIP" Type="varchar" MaxLength="255" />
+    <Property Name="Priority" Type="int" />
+  </EntityType>
+  <EntityType Name="tstatisticsgold">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IsRobot" Type="bit" />
+    <Property Name="TotalGold" Type="bigint" />
+    <Property Name="CurrentGold" Type="bigint" />
+    <Property Name="LastGold" Type="bigint" />
+    <Property Name="GameId" Type="int" />
+    <Property Name="CreateTime" Type="datetime" Precision="0" />
+    <Property Name="TimeInterval" Type="varchar" MaxLength="255" />
+    <Property Name="Remark" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="tsysconfig">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Key" Type="varchar" MaxLength="255" />
+    <Property Name="Val" Type="varchar" MaxLength="255" />
+    <Property Name="Dec" Type="varchar" MaxLength="255" />
+    <Property Name="CreateTime" Type="datetime" Precision="0" />
+  </EntityType>
+  <EntityType Name="ttablegainlog">
+    <Key>
+      <PropertyRef Name="Idx" />
+    </Key>
+    <Property Name="Idx" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MatchCode" Type="varchar" MaxLength="255" />
+    <Property Name="StartTime" Type="datetime" Precision="0" />
+    <Property Name="EndTime" Type="datetime" Precision="0" />
+    <Property Name="gameid" Type="int" />
+    <Property Name="_isover" Type="bit" />
+    <Property Name="gcount" Type="int" />
+    <Property Name="jackpot" Type="int" />
+    <Property Name="ChildAgents" Type="longtext" />
+  </EntityType>
+  <EntityType Name="ttablehandnumlog">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="pos1Count" Type="int" />
+    <Property Name="pos2Count" Type="int" />
+    <Property Name="pos5Count" Type="int" />
+    <Property Name="pos10Count" Type="int" />
+    <Property Name="pos20Count" Type="int" />
+    <Property Name="pos50Count" Type="int" />
+    <Property Name="GameId" Type="int" />
+    <Property Name="CreateTime" Type="datetime" Precision="0" />
+    <Property Name="UserId" Type="int" />
+    <Property Name="UserName" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="ttablehistorylog">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="CreatTime" Type="datetime" Precision="0" />
+    <Property Name="plist" Type="longtext" />
+    <Property Name="whirltlist" Type="longtext" />
+    <Property Name="textlist" Type="longtext" />
+    <Property Name="gameid" Type="int" />
+    <Property Name="RoomNum" Type="int" />
+    <Property Name="BigEndList" Type="varchar" MaxLength="2000" />
+    <Property Name="mjlist" Type="longtext" />
+    <Property Name="bg" Type="int" />
+    <Property Name="uids" Type="varchar" MaxLength="200" />
+    <Property Name="clubid" Type="int" />
+    <Property Name="allid" Type="int" />
+  </EntityType>
+  <EntityType Name="ttablelist">
+    <Key>
+      <PropertyRef Name="tableNum" />
+    </Key>
+    <Property Name="tableNum" Type="int" Nullable="false" />
+    <Property Name="gameid" Type="int" />
+    <Property Name="levelid" Type="int" />
+    <Property Name="createTime" Type="varchar" MaxLength="255" />
+    <Property Name="maxCount" Type="int" />
+    <Property Name="curCount" Type="int" />
+    <Property Name="ownerId" Type="int" />
+    <Property Name="tableStatus" Type="int" />
+    <Property Name="tableid" Type="int" />
+    <Property Name="Duration" Type="int" />
+    <Property Name="firstinto" Type="int" />
+    <Property Name="baserate" Type="int" />
+    <Property Name="password" Type="varchar" MaxLength="255" />
+    <Property Name="minPlayerCount" Type="int" />
+    <Property Name="para" Type="varchar" MaxLength="255" />
+    <Property Name="data" Type="varchar" MaxLength="255" />
+    <Property Name="mjpara" Type="varchar" MaxLength="255" />
+    <Property Name="ClubIdx" Type="int" />
+    <Property Name="tname" Type="varchar" MaxLength="255" />
+    <Property Name="manNum" Type="int" />
+    <Property Name="cinto" Type="bit" />
+    <Property Name="allId" Type="int" />
+  </EntityType>
+  <EntityType Name="ttablelog">
+    <Key>
+      <PropertyRef Name="Idx" />
+    </Key>
+    <Property Name="Idx" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MatchCode" Type="varchar" MaxLength="255" />
+    <Property Name="StartTime" Type="datetime" Precision="0" />
+    <Property Name="EndTime" Type="datetime" Precision="0" />
+    <Property Name="gameid" Type="int" />
+    <Property Name="_isover" Type="bit" />
+  </EntityType>
+  <EntityType Name="ttableloglist">
+    <Key>
+      <PropertyRef Name="RoomId" />
+    </Key>
+    <Property Name="RoomId" Type="int" Nullable="false" />
+    <Property Name="ulist" Type="longtext" />
+    <Property Name="tulist" Type="longtext" />
+    <Property Name="CreatTime" Type="datetime" Precision="0" />
+    <Property Name="tdlist" Type="longtext" />
+  </EntityType>
+  <EntityType Name="ttablerecorkmjlog">
+    <Key>
+      <PropertyRef Name="Idx" />
+    </Key>
+    <Property Name="Idx" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="MatchCode" Type="varchar" MaxLength="255" />
+    <Property Name="CreateTime" Type="datetime" Precision="0" />
+    <Property Name="actions" Type="longtext" />
+    <Property Name="HistoryId" Type="varchar" MaxLength="255" />
+    <Property Name="gameid" Type="int" />
+    <Property Name="RecordUser" Type="varchar" MaxLength="2000" />
+    <Property Name="uids" Type="varchar" MaxLength="255" />
+    <Property Name="TableInfo" Type="varchar" MaxLength="2000" />
+  </EntityType>
+  <EntityType Name="ttableuserlog">
+    <Key>
+      <PropertyRef Name="Idx" />
+    </Key>
+    <Property Name="Idx" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TableLogIdx" Type="bigint" />
+    <Property Name="UserID" Type="int" />
+    <Property Name="_pos" Type="int" />
+    <Property Name="gold" Type="decimal" Precision="18" Scale="4" />
+    <Property Name="_cardList" Type="longtext" />
+    <Property Name="gameid" Type="int" />
+    <Property Name="_isover" Type="bit" />
+    <Property Name="_isWatch" Type="int" />
+    <Property Name="_win" Type="bit" />
+    <Property Name="CreateDate" Type="datetime" Precision="0" />
+    <Property Name="trendIdx" Type="bigint" />
+    <Property Name="mystake" Type="varchar" MaxLength="255" />
+    <Property Name="Bet" Type="bigint" />
+    <Property Name="TaxString" Type="varchar" MaxLength="255" />
+    <Property Name="levelid" Type="int" />
+    <Property Name="basegamle" Type="int" />
+  </EntityType>
+  <EntityType Name="ttaxlog">
+    <Key>
+      <PropertyRef Name="Idx" />
+    </Key>
+    <Property Name="Idx" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="int" />
+    <Property Name="BeforCoin" Type="bigint" />
+    <Property Name="ActionCoin" Type="double" />
+    <Property Name="AfterCoin" Type="bigint" />
+    <Property Name="ActionType" Type="int" />
+    <Property Name="SourceGameID" Type="int" />
+    <Property Name="SourceUserId" Type="int" />
+    <Property Name="CreateDate" Type="datetime" Precision="0" />
+    <Property Name="TableUserLogId" Type="bigint" />
+    <Property Name="IsHandel" Type="bit" />
+    <Property Name="_lv" Type="int" />
+    <Property Name="SourceRoomID" Type="int" />
+  </EntityType>
+  <EntityType Name="ttradeinfo">
+    <Key>
+      <PropertyRef Name="TradeNo" />
+    </Key>
+    <Property Name="TradeNo" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="FromUserId" Type="int" />
+    <Property Name="ToUserId" Type="int" />
+    <Property Name="Coin" Type="bigint" />
+    <Property Name="TaxCoin" Type="bigint" />
+    <Property Name="State" Type="int" />
+    <Property Name="CreateDate" Type="datetime" Precision="0" />
+    <Property Name="TradeType" Type="int" />
+    <Property Name="Diamond" Type="bigint" />
+    <Property Name="TaxDiamond" Type="bigint" />
+  </EntityType>
+  <EntityType Name="turntablelevel">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="255" />
+    <Property Name="gold" Type="int" />
+  </EntityType>
+  <EntityType Name="turntableprize">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="255" />
+    <Property Name="price" Type="float" />
+    <Property Name="prizeurl" Type="varchar" MaxLength="255" />
+    <Property Name="probability" Type="float" />
+    <Property Name="prizetype" Type="int" />
+    <Property Name="levelid" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="tuser">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="int" Nullable="false" />
+    <Property Name="wechatName" Type="varchar" MaxLength="255" />
+    <Property Name="Gold" Type="bigint" />
+    <Property Name="GoldA" Type="decimal" Precision="18" Scale="4" />
+    <Property Name="LastLotinTime1" Type="varchar" MaxLength="255" />
+    <Property Name="LastLotinTime2" Type="varchar" MaxLength="255" />
+    <Property Name="RegTime" Type="datetime" Precision="0" />
+    <Property Name="IP" Type="varchar" MaxLength="255" />
+    <Property Name="Desc" Type="varchar" MaxLength="255" />
+    <Property Name="isRobot" Type="int" />
+    <Property Name="Status" Type="int" />
+    <Property Name="diamond" Type="bigint" />
+    <Property Name="isagent" Type="int" />
+    <Property Name="wechatHeadIcon" Type="varchar" MaxLength="255" />
+    <Property Name="Sex" Type="int" />
+    <Property Name="TotalMoney" Type="decimal" Precision="18" Scale="4" Nullable="false" />
+    <Property Name="totaldiamond" Type="bigint" />
+    <Property Name="lockTime" Type="varchar" MaxLength="30" />
+    <Property Name="winpercent" Type="int" />
+    <Property Name="BankGold" Type="bigint" />
+    <Property Name="vlevel" Type="int" />
+    <Property Name="givecount" Type="int" />
+    <Property Name="MaxLose" Type="bigint" />
+    <Property Name="MaxWin" Type="bigint" />
+    <Property Name="MaxGold" Type="bigint" />
+    <Property Name="TotalGold" Type="bigint" />
+    <Property Name="showid" Type="int" />
+    <Property Name="lat" Type="float" />
+    <Property Name="lng" Type="float" />
+    <Property Name="UserPassword" Type="varchar" MaxLength="255" />
+    <Property Name="IsTp" Type="int" />
+    <Property Name="lv" Type="int" />
+    <Property Name="IsJdb" Type="int" />
+    <Property Name="UpTotalAmount" Type="bigint" />
+    <Property Name="RobotGameid" Type="int" />
+    <Property Name="clublist" Type="longtext" />
+  </EntityType>
+  <EntityType Name="tuseragent2019">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="int" Nullable="false" />
+    <Property Name="Lv" Type="int" />
+    <Property Name="FUserID" Type="int" />
+    <Property Name="GoldHistoryCommission" Type="double" />
+    <Property Name="GoldCommission" Type="double" />
+    <Property Name="QRPath" Type="varchar" MaxLength="255" />
+    <Property Name="Code" Type="varchar" MaxLength="255" />
+    <Property Name="HtmlUrl" Type="varchar" MaxLength="255" />
+    <Property Name="lastdealtime" Type="datetime" Precision="0" />
+    <Property Name="watergoldadd" Type="bigint" />
+    <Property Name="watergoldreduce" Type="bigint" />
+    <Property Name="childwater" Type="bigint" />
+    <Property Name="ChildAgents" Type="longtext" />
+    <Property Name="TopUserID" Type="int" />
+    <Property Name="dealCardCount" Type="int" />
+    <Property Name="SecondUserID" Type="int" />
+    <Property Name="todayCardCount" Type="int" />
+    <Property Name="TopUserGoldCommission" Type="bigint" />
+    <Property Name="rate3" Type="varchar" MaxLength="255" />
+    <Property Name="GoldC_pot" Type="double" />
+    <Property Name="gameWinCount" Type="int" />
+    <Property Name="gameLostCount" Type="int" />
+    <Property Name="gameDrawCount" Type="int" />
+    <Property Name="WhirlCount" Type="varchar" MaxLength="255" />
+    <Property Name="TexasCount" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="tuseragent2020">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="int" Nullable="false" />
+    <Property Name="Role" Type="int" />
+    <Property Name="PartnerID" Type="int" />
+    <Property Name="CEOID" Type="int" />
+    <Property Name="GoldCHistory" Type="bigint" />
+    <Property Name="GoldC" Type="double" />
+    <Property Name="GoldCH_P" Type="bigint" />
+    <Property Name="GoldCH_G" Type="bigint" />
+    <Property Name="lastdealtime" Type="datetime" Precision="0" />
+    <Property Name="ChildAgents" Type="longtext" />
+    <Property Name="rates" Type="longtext" />
+    <Property Name="JackpotRate" Type="longtext" />
+    <Property Name="GoldCH_P_R" Type="int" />
+    <Property Name="GoldCH_G_R" Type="int" />
+    <Property Name="GoldC_pot" Type="double" />
+    <Property Name="GoldCH_pot" Type="double" />
+    <Property Name="GoldCH" Type="double" />
+    <Property Name="PotRates" Type="longtext" />
+  </EntityType>
+  <EntityType Name="tuseragentlog">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="int" />
+    <Property Name="Gold" Type="bigint" />
+    <Property Name="State" Type="int" />
+    <Property Name="CreatTime" Type="datetime" Precision="0" />
+    <Property Name="Type" Type="int" />
+  </EntityType>
+  <EntityType Name="tusercontact">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="255" />
+    <Property Name="Mobile" Type="varchar" MaxLength="255" />
+    <Property Name="PostCode" Type="varchar" MaxLength="255" />
+    <Property Name="Address" Type="varchar" MaxLength="255" />
+    <Property Name="UserId" Type="int" />
+    <Property Name="CreateTime" Type="datetime" Precision="0" />
+    <Property Name="UpdateTime" Type="datetime" Precision="0" />
+  </EntityType>
+  <EntityType Name="tusergamehand">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="varchar" MaxLength="36" Nullable="false" />
+    <Property Name="UserId" Type="int" />
+    <Property Name="clubid" Type="int" />
+    <Property Name="pos1Count" Type="decimal" Precision="18" Scale="4" />
+    <Property Name="pos2Count" Type="decimal" Precision="18" Scale="4" />
+    <Property Name="pos5Count" Type="decimal" Precision="18" Scale="4" />
+    <Property Name="pos10Count" Type="decimal" Precision="18" Scale="4" />
+    <Property Name="pos20Count" Type="decimal" Precision="18" Scale="4" />
+    <Property Name="pos50Count" Type="decimal" Precision="18" Scale="4" />
+    <Property Name="CreateTime" Type="datetime" Precision="0" />
+    <Property Name="gameWinCount" Type="int" />
+    <Property Name="gameLostCount" Type="int" />
+    <Property Name="gameDrawCount" Type="int" />
+    <Property Name="FillingCount" Type="int" />
+    <Property Name="dealCardCount" Type="int" />
+    <Property Name="todayCardCount" Type="int" />
+    <Property Name="lastdealtime" Type="datetime" Precision="0" />
+    <Property Name="tablenum" Type="int" />
+  </EntityType>
+  <EntityType Name="tuserinfoex">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="int" Nullable="false" />
+    <Property Name="clubpwd" Type="varchar" MaxLength="255" />
+    <Property Name="clubProtect" Type="int" />
+    <Property Name="Userremark" Type="longtext" />
+    <Property Name="applyUsers" Type="longtext" />
+    <Property Name="CreateTime" Type="datetime" Precision="0" />
+    <Property Name="freeCount" Type="int" />
+  </EntityType>
+  <EntityType Name="tuserjackpot">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="_jackpot" Type="longtext" />
+    <Property Name="updatetime" Type="datetime" Precision="0" />
+    <Property Name="watergoldadd" Type="bigint" />
+    <Property Name="watergoldreduce" Type="bigint" />
+    <Property Name="GoldHistoryCommission" Type="bigint" />
+    <Property Name="HistoryGold" Type="bigint" />
+    <Property Name="AllGoldBack" Type="bigint" />
+    <Property Name="AllGoldAdd" Type="bigint" />
+    <Property Name="_potRange" Type="longtext" />
+  </EntityType>
+  <EntityType Name="tuserprizelog">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="userId" Type="int" />
+    <Property Name="createtime" Type="datetime" Precision="0" />
+    <Property Name="prizeid" Type="int" />
+    <Property Name="turntableid" Type="int" />
+    <Property Name="isgive" Type="bit" />
+  </EntityType>
+  <EntityType Name="tuserrechargelog">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="userid" Type="int" />
+    <Property Name="money" Type="decimal" Precision="18" Scale="4" />
+    <Property Name="cointype" Type="int" />
+    <Property Name="fromtype" Type="int" />
+    <Property Name="fromuserid" Type="int" />
+    <Property Name="fromadminid" Type="int" />
+    <Property Name="remarks" Type="varchar" MaxLength="255" />
+    <Property Name="createtime" Type="datetime" Precision="0" />
+    <Property Name="oldmoney" Type="decimal" Precision="18" Scale="4" />
+    <Property Name="currmoney" Type="decimal" Precision="18" Scale="4" />
+    <Property Name="oldGold" Type="decimal" Precision="18" Scale="4" />
+    <Property Name="currGold" Type="decimal" Precision="18" Scale="4" />
+  </EntityType>
+  <EntityType Name="tusertempgoldlog">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserID" Type="int" Nullable="false" />
+    <Property Name="CurrentGold" Type="int" />
+    <Property Name="CreateDate" Type="datetime" Precision="0" />
+  </EntityType>
+  <EntityType Name="tuservipfreecount">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="userid" Type="int" />
+    <Property Name="vipid" Type="int" />
+    <Property Name="freecount" Type="int" />
+    <Property Name="createtime" Type="datetime" Precision="0" />
+  </EntityType>
+  <EntityType Name="tuservipinfo">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="userid" Type="int" />
+    <Property Name="vipid" Type="int" />
+    <Property Name="expiredate" Type="datetime" Precision="0" />
+    <Property Name="vipLv" Type="int" />
+    <Property Name="cTable" Type="int" />
+    <Property Name="cClub" Type="int" />
+    <Property Name="CreateTime" Type="datetime" Precision="0" />
+  </EntityType>
+  <EntityType Name="tvipauth">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="vipid" Type="int" />
+    <Property Name="authid" Type="int" />
+  </EntityType>
+  <EntityType Name="tvipinfo">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="viplevel" Type="int" />
+    <Property Name="name" Type="varchar" MaxLength="255" />
+    <Property Name="price" Type="float" />
+    <Property Name="commodid" Type="int" />
+  </EntityType>
+  <EntityType Name="tvisitlimit">
+    <Key>
+      <PropertyRef Name="ipport" />
+    </Key>
+    <Property Name="ipport" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="dateRecord" Type="longtext" />
+    <Property Name="unitRcord" Type="longtext" />
+    <Property Name="dateMaxLimit" Type="int" />
+    <Property Name="unitMaxLimit" Type="int" />
+  </EntityType>
+  <EntityType Name="userranking">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="int" Nullable="false" />
+    <Property Name="UserName" Type="varchar" MaxLength="255" />
+    <Property Name="Score" Type="int" />
+    <Property Name="CreateDate" Type="datetime" Precision="0" />
+    <Property Name="Items" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="userrole">
+    <Key>
+      <PropertyRef Name="RoleId" />
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="RoleId" Type="int" Nullable="false" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="RoleName" Type="varchar" MaxLength="255" />
+    <Property Name="HeadImg" Type="varchar" MaxLength="255" />
+    <Property Name="Sex" Type="bit" />
+    <Property Name="LvNum" Type="int" />
+    <Property Name="ExperienceNum" Type="int" />
+    <Property Name="LifeNum" Type="int" />
+    <Property Name="LifeMaxNum" Type="int" />
+    <Property Name="pos_x" Type="int" />
+    <Property Name="pos_y" Type="int" />
+    <Property Name="pos_z" Type="int" />
+    <Property Name="scene_name" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityContainer Name="texas_2021ModelStoreContainer">
+    <EntitySet Name="bankcardentities" EntityType="Self.bankcardentities" Schema="texas_2021" store:Type="Tables" />
+    <EntitySet Name="banktypeentities" EntityType="Self.banktypeentities" Schema="texas_2021" store:Type="Tables" />
+    <EntitySet Name="gameuser" EntityType="Self.gameuser" Schema="texas_2021" store:Type="Tables" />
+    <EntitySet Name="rechargechannels" EntityType="Self.rechargechannels" Schema="texas_2021" store:Type="Tables" />
+    <EntitySet Name="smsrecord" EntityType="Self.smsrecord" Schema="texas_2021" store:Type="Tables" />
+    <EntitySet Name="snscenterwhirl_snsuserinfo" EntityType="Self.snscenterwhirl_snsuserinfo" Schema="texas_2021" Table="snscenterwhirl.snsuserinfo" store:Type="Tables" />
+    <EntitySet Name="tactivecode" EntityType="Self.tactivecode" Schema="texas_2021" store:Type="Tables" />
+    <EntitySet Name="tactivity" EntityType="Self.tactivity" Schema="texas_2021" store:Type="Tables" />
+    <EntitySet Name="tagentgoldlog" EntityType="Self.tagentgoldlog" Schema="texas_2021" store:Type="Tables" />
+    <EntitySet Name="tauthinfo" EntityType="Self.tauthinfo" Schema="texas_2021" store:Type="Tables" />
+    <EntitySet Name="tautoeventlog" EntityType="Self.tautoeventlog" Schema="texas_2021" store:Type="Tables" />
+    <EntitySet Name="tbanklog" EntityType="Self.tbanklog" Schema="texas_2021" store:Type="Tables" />
+    <EntitySet Name="tbarrage" EntityType="Self.tbarrage" Schema="texas_2021" store:Type="Tables" />
+    <EntitySet Name="tbemail" EntityType="Self.tbemail" Schema="texas_2021" store:Type="Tables" />
+    <EntitySet Name="tbetinginfo" EntityType="Self.tbetinginfo" Schema="texas_2021" store:Type="Tables" />
+    <EntitySet Name="tchatlog" EntityType="Self.tchatlog" Schema="texas_2021" store:Type="Tables" />
+    <EntitySet Name="tclub" EntityType="Self.tclub" Schema="texas_2021" store:Type="Tables" />
+    <EntitySet Name="tcluballiance" EntityType="Self.tcluballiance" Schema="texas_2021" store:Type="Tables" />
+    <EntitySet Name="tclubapplylog" EntityType="Self.tclubapplylog" Schema="texas_2021" store:Type="Tables" />
+    <EntitySet Name="tclubfundlog" EntityType="Self.tclubfundlog" Schema="texas_2021" store:Type="Tables" />
+    <EntitySet Name="tclubgoldlog" EntityType="Self.tclubgoldlog" Schema="texas_2021" store:Type="Tables" />
+    <EntitySet Name="tclubjackpotlog" EntityType="Self.tclubjackpotlog" Schema="texas_2021" store:Type="Tables" />
+    <EntitySet Name="tclublevel" EntityType="Self.tclublevel" Schema="texas_2021" store:Type="Tables" />
+    <EntitySet Name="tclubtaxlog" EntityType="Self.tclubtaxlog" Schema="texas_2021" store:Type="Tables" />
+    <EntitySet Name="tclubusergoldlog" EntityType="Self.tclubusergoldlog" Schema="texas_2021" store:Type="Tables" />
+    <EntitySet Name="tcollectlog" EntityType="Self.tcollectlog" Schema="texas_2021" store:Type="Tables" />
+    <EntitySet Name="tcommodity" EntityType="Self.tcommodity" Schema="texas_2021" store:Type="Tables" />
+    <EntitySet Name="tdiamondchangelog" EntityType="Self.tdiamondchangelog" Schema="texas_2021" store:Type="Tables" />
+    <EntitySet Name="temail" EntityType="Self.temail" Schema="texas_2021" store:Type="Tables" />
+    <EntitySet Name="temp_entityhistory" EntityType="Self.temp_entityhistory" Schema="texas_2021" store:Type="Tables" />
+    <EntitySet Name="temtuseragent" EntityType="Self.temtuseragent" Schema="texas_2021" store:Type="Tables" />
+    <EntitySet Name="tentitycard" EntityType="Self.tentitycard" Schema="texas_2021" store:Type="Tables" />
+    <EntitySet Name="tentitycarddetails" EntityType="Self.tentitycarddetails" Schema="texas_2021" store:Type="Tables" />
+    <EntitySet Name="tentitycardtype" EntityType="Self.tentitycardtype" Schema="texas_2021" store:Type="Tables" />
+    <EntitySet Name="texchangelog" EntityType="Self.texchangelog" Schema="texas_2021" store:Type="Tables" />
+    <EntitySet Name="tfeedback" EntityType="Self.tfeedback" Schema="texas_2021" store:Type="Tables" />
+    <EntitySet Name="tgameinfo" EntityType="Self.tgameinfo" Schema="texas_2021" store:Type="Tables" />
+    <EntitySet Name="tgamelevelinfo" EntityType="Self.tgamelevelinfo" Schema="texas_2021" store:Type="Tables" />
+    <EntitySet Name="tgamerax" EntityType="Self.tgamerax" Schema="texas_2021" store:Type="Tables" />
+    <EntitySet Name="tgamesummary" EntityType="Self.tgamesummary" Schema="texas_2021" store:Type="Tables" />
+    <EntitySet Name="tgangcardlog" EntityType="Self.tgangcardlog" Schema="texas_2021" store:Type="Tables" />
+    <EntitySet Name="tgoldchangelog" EntityType="Self.tgoldchangelog" Schema="texas_2021" store:Type="Tables" />
+    <EntitySet Name="tgoldchangh5game" EntityType="Self.tgoldchangh5game" Schema="texas_2021" store:Type="Tables" />
+    <EntitySet Name="tgoldstatistics" EntityType="Self.tgoldstatistics" Schema="texas_2021" store:Type="Tables" />
+    <EntitySet Name="th5winloselog" EntityType="Self.th5winloselog" Schema="texas_2021" store:Type="Tables" />
+    <EntitySet Name="tinsurjackpotlog" EntityType="Self.tinsurjackpotlog" Schema="texas_2021" store:Type="Tables" />
+    <EntitySet Name="tjackpot" EntityType="Self.tjackpot" Schema="texas_2021" store:Type="Tables" />
+    <EntitySet Name="tjackpotaddlog" EntityType="Self.tjackpotaddlog" Schema="texas_2021" store:Type="Tables" />
+    <EntitySet Name="tjackpotlog" EntityType="Self.tjackpotlog" Schema="texas_2021" store:Type="Tables" />
+    <EntitySet Name="tjdbwagerlog" EntityType="Self.tjdbwagerlog" Schema="texas_2021" store:Type="Tables" />
+    <EntitySet Name="tlevellog" EntityType="Self.tlevellog" Schema="texas_2021" store:Type="Tables" />
+    <EntitySet Name="tnotice" EntityType="Self.tnotice" Schema="texas_2021" store:Type="Tables" />
+    <EntitySet Name="tonlineinfo" EntityType="Self.tonlineinfo" Schema="texas_2021" store:Type="Tables" />
+    <EntitySet Name="trank" EntityType="Self.trank" Schema="texas_2021" store:Type="Tables" />
+    <EntitySet Name="tredenvelopesconfig" EntityType="Self.tredenvelopesconfig" Schema="texas_2021" store:Type="Tables" />
+    <EntitySet Name="tredenvelopeslog" EntityType="Self.tredenvelopeslog" Schema="texas_2021" store:Type="Tables" />
+    <EntitySet Name="tredenvelopesreceivelog" EntityType="Self.tredenvelopesreceivelog" Schema="texas_2021" store:Type="Tables" />
+    <EntitySet Name="tredenvelopestask" EntityType="Self.tredenvelopestask" Schema="texas_2021" store:Type="Tables" />
+    <EntitySet Name="troomcardtemp" EntityType="Self.troomcardtemp" Schema="texas_2021" store:Type="Tables" />
+    <EntitySet Name="troomlist" EntityType="Self.troomlist" Schema="texas_2021" store:Type="Tables" />
+    <EntitySet Name="tserverconfig" EntityType="Self.tserverconfig" Schema="texas_2021" store:Type="Tables" />
+    <EntitySet Name="tstatisticsgold" EntityType="Self.tstatisticsgold" Schema="texas_2021" store:Type="Tables" />
+    <EntitySet Name="tsysconfig" EntityType="Self.tsysconfig" Schema="texas_2021" store:Type="Tables" />
+    <EntitySet Name="ttablegainlog" EntityType="Self.ttablegainlog" Schema="texas_2021" store:Type="Tables" />
+    <EntitySet Name="ttablehandnumlog" EntityType="Self.ttablehandnumlog" Schema="texas_2021" store:Type="Tables" />
+    <EntitySet Name="ttablehistorylog" EntityType="Self.ttablehistorylog" Schema="texas_2021" store:Type="Tables" />
+    <EntitySet Name="ttablelist" EntityType="Self.ttablelist" Schema="texas_2021" store:Type="Tables" />
+    <EntitySet Name="ttablelog" EntityType="Self.ttablelog" Schema="texas_2021" store:Type="Tables" />
+    <EntitySet Name="ttableloglist" EntityType="Self.ttableloglist" Schema="texas_2021" store:Type="Tables" />
+    <EntitySet Name="ttablerecorkmjlog" EntityType="Self.ttablerecorkmjlog" Schema="texas_2021" store:Type="Tables" />
+    <EntitySet Name="ttableuserlog" EntityType="Self.ttableuserlog" Schema="texas_2021" store:Type="Tables" />
+    <EntitySet Name="ttaxlog" EntityType="Self.ttaxlog" Schema="texas_2021" store:Type="Tables" />
+    <EntitySet Name="ttradeinfo" EntityType="Self.ttradeinfo" Schema="texas_2021" store:Type="Tables" />
+    <EntitySet Name="turntablelevel" EntityType="Self.turntablelevel" Schema="texas_2021" store:Type="Tables" />
+    <EntitySet Name="turntableprize" EntityType="Self.turntableprize" Schema="texas_2021" store:Type="Tables" />
+    <EntitySet Name="tuser" EntityType="Self.tuser" Schema="texas_2021" store:Type="Tables" />
+    <EntitySet Name="tuseragent2019" EntityType="Self.tuseragent2019" Schema="texas_2021" store:Type="Tables" />
+    <EntitySet Name="tuseragent2020" EntityType="Self.tuseragent2020" Schema="texas_2021" store:Type="Tables" />
+    <EntitySet Name="tuseragentlog" EntityType="Self.tuseragentlog" Schema="texas_2021" store:Type="Tables" />
+    <EntitySet Name="tusercontact" EntityType="Self.tusercontact" Schema="texas_2021" store:Type="Tables" />
+    <EntitySet Name="tusergamehand" EntityType="Self.tusergamehand" Schema="texas_2021" store:Type="Tables" />
+    <EntitySet Name="tuserinfoex" EntityType="Self.tuserinfoex" Schema="texas_2021" store:Type="Tables" />
+    <EntitySet Name="tuserjackpot" EntityType="Self.tuserjackpot" Schema="texas_2021" store:Type="Tables" />
+    <EntitySet Name="tuserprizelog" EntityType="Self.tuserprizelog" Schema="texas_2021" store:Type="Tables" />
+    <EntitySet Name="tuserrechargelog" EntityType="Self.tuserrechargelog" Schema="texas_2021" store:Type="Tables" />
+    <EntitySet Name="tusertempgoldlog" EntityType="Self.tusertempgoldlog" Schema="texas_2021" store:Type="Tables" />
+    <EntitySet Name="tuservipfreecount" EntityType="Self.tuservipfreecount" Schema="texas_2021" store:Type="Tables" />
+    <EntitySet Name="tuservipinfo" EntityType="Self.tuservipinfo" Schema="texas_2021" store:Type="Tables" />
+    <EntitySet Name="tvipauth" EntityType="Self.tvipauth" Schema="texas_2021" store:Type="Tables" />
+    <EntitySet Name="tvipinfo" EntityType="Self.tvipinfo" Schema="texas_2021" store:Type="Tables" />
+    <EntitySet Name="tvisitlimit" EntityType="Self.tvisitlimit" Schema="texas_2021" store:Type="Tables" />
+    <EntitySet Name="userranking" EntityType="Self.userranking" Schema="texas_2021" store:Type="Tables" />
+    <EntitySet Name="userrole" EntityType="Self.userrole" Schema="texas_2021" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

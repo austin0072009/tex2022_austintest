@@ -1,0 +1,240 @@
+﻿@using Crazy2018_Sys_Common;
+@using Crazy2018_Sys_ViewEntity;
+@using Crazy2018_Sys_DBHelper;
+@{
+    ViewBag.Title = "牌局输赢情况";
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+}
+@model DataResults<UserTableLogWinLosingView>
+<style>
+    th {
+        text-align: center;
+    }
+    .layerbtn {
+        display: inline-block;
+        height: 20px;
+        line-height: 20px;
+        padding: 1px 10px 2px 9px;
+        background-color: #A9A9A9;
+        color: white;
+        white-space: nowrap;
+        text-align: center;
+        font-size: 10px;
+        border: none;
+        border-radius: 2px;
+        cursor: pointer;
+    }
+</style>
+<div class="mainbody">
+    <!--导航栏-->
+    <div class="location">
+        <a href="javascript:history.back(-1);" class="back"><i></i><span>返回上一页</span></a>
+        <a href="/Home/Center" class="home"><i></i><span>首页</span></a>
+        <i class="arrow"></i>
+        <a href="/Gmmgr/RoomWinlosing"><span>牌局输赢情况</span></a>
+        <i class="arrow"></i>
+        <span>牌局输赢情况</span>
+    </div>
+
+
+    <!--/导航栏-->
+    <!--工具栏-->
+    <div id="floatHead" class="toolbar-wrap">
+        <div class="toolbar">
+            <div class="box-wrap">
+                <a class="menu-btn"></a>
+                <div class="l-list">
+                    <ul class="icon-list">
+                        <li><a class="all" href="javascript:;" onclick="checkAll(this);"><i></i><span>全选</span></a></li>
+
+                    </ul>
+                    用户类型:
+                    <select name="isRobot" id="isRobot" class="select">
+                        <option value="-1">不限</option>
+                        @{ var data = Enum.GetValues(typeof(TableUtil.UserType));}
+                        @for (int i = 0; i < data.Length; i++)
+                        {
+                            if (Model.isRobot == (int)data.GetValue(i))
+                            {
+                                <option selected value="@((int)data.GetValue(i))">@data.GetValue(i)</option>
+                            }
+                            else
+                            {
+                                <option value="@((int)data.GetValue(i))">@data.GetValue(i)</option>
+                            }
+                        }
+                    </select>
+                    <input name="txtStartTime" type="text" id="txtStartTime" value="@Model.starttime" class="input" onclick="laydate()">
+                    <span>至</span>
+                    <input name="txtEndTime" type="text" id="txtEndTime" value="@Model.endtime" class="input" onclick="laydate()">
+                    <input name="txtKeywords" placeholder="用户id/桌号查询" oninput="value=value.replace(/[^\d]/g,'')" type="text" id="txtKeywords" value="@Model.Keywords" class="input">
+                    <button type="button" style="height: 28px;padding: 3px 10px;background-color: lightgray;" id="lbtnSearch" class="btn btn-default btn-sm">查询</button>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+    <!--统计1   start-->
+    <div class="table-container">
+        <table width="100%" border="0" cellspacing="0" cellpadding="0" class="ltable">
+            <tbody>
+                <tr style="text-align:center" class="odd_bg">
+                    <th width="2%">选择</th>
+                    <th width="5%">用户ID</th>
+                    <th width="5%">用户名称</th>
+                    <th width="5%">桌号</th>
+                    <th width="5%">位置</th>
+                    <th width="5%">是否爆分</th>
+                    <th width="5%">输赢</th>
+                    <th width="5%">底皮</th>
+                    <th width="5%">码量</th>
+                    <th width="5%">结算时间</th>
+                    <th width="5%">查看牌</th>
+                </tr>
+                @foreach (var item in Model.Data)
+                {
+                    <tr class='One'>
+                        <td align="center">
+                            <input type="hidden" name='hidId' id='hidId' value='@item.Idx'>
+                            <span class='checkall' style='vertical-align: middle;'>
+                                <input id='chkId' class='checkall' type='checkbox' name='chkId'>
+                            </span>
+                        </td>
+                        <td align="center">@item.UserID</td>
+                        <td align="center">@item.UserName</td>
+
+                        <td align="center">@item.TableLogIdx</td>
+                        <td align="center">@(item.C_pos + "号位")</td>
+                        <td align="center">
+                            @if (item.C_isWatch == 1)
+                            {
+                                <span style="color:blueviolet">是</span>
+                            }
+                            else
+                            {
+                                <span>否</span>
+                            }
+                        </td>
+                        <td align="center">
+                            @if (item.C_win.Value)
+                            {
+                                <span style="color:red">@(item.C_win.Value == true ? "赢" : "输")</span>
+                            }
+                            else
+                            {
+                                <span style="color:green">@(item.C_win.Value == true ? "赢" : "输")</span>
+                            }
+                        </td>
+                        <td align="center">@item.Bet</td>
+                        <td align="center">@item.gold.Value.ToString("#0.00")</td>
+                        <td align="center">@item.CreateDate</td>
+                        <td align="center"><a class='layerbtn' onclick="seeHandPic('@item.C_cardList')" style='background-color:#548B54;'>查看牌</a></td>
+                    </tr>
+
+                }
+                <tr>
+                    <td align="center">赢 汇总金额</td>
+                    <td align="center"><strong>@Model.TotalMoney</strong></td>
+                </tr>
+                <tr>
+                    <td align="center">输 汇总金额</td>
+                    <td align="center"><strong>@Model.TotalNum</strong></td>
+                </tr>
+            </tbody>
+        </table>
+        <div id="thispic" style="display:none;">
+            <img id="handbrand" style="max-width:110px;max-height:152px;" />
+            <img id="handbrand2" style="max-width:110px;max-height:152px;" />
+            <img id="handbrand3" style="max-width:110px;max-height:152px;" />
+            <img id="handbrand4" style="max-width:110px;max-height:152px;" />
+        </div>
+    </div>
+    <!--/列表-->
+    <!--内容底部-->
+    <div class="line20"></div>
+    <div class="pagelist">
+        <div class="l-btns">
+            <span>显示</span><input name="txtPageNum" type="text" value="@Model.PageSize" id="txtPageNum" class="pagenum" onkeydown="return checkNumber(event);"><span>条/页</span>
+        </div>
+        <div id="PageContent" class="default">@Html.Raw(Model.InnerHtml)</div>
+        <input type="hidden" id="PageIndex" name="PageIndex" value="@Model.PageIndex" />
+    </div>
+    <!--统计一  end-->
+    <!--/内容底部-->
+    <div style="width:100%;text-align: center;">
+        <span style="display: inline-block;padding: 4px 15px 0px 15px;color: #666;font-size:14px;">(注 : 用户ID/桌子ID)</span>
+    </div>
+
+</div>
+
+<script>
+    var isRobot = -1;
+    var txtStartTime;
+    var txtEndTime;
+
+    $(function () {
+
+        $(".pagelist").on('click', 'a', function () {
+            var PageIndex = $("#PageIndex").val();
+            var lkl2 = $(this).text();
+            if (lkl2 == "下一页»") {
+                PageIndex = parseInt(PageIndex) + 1
+            } else if (lkl2 == "«上一页") {
+                PageIndex = parseInt(PageIndex) - 1
+            } else {
+                PageIndex = lkl2
+            }
+            isRobot = $("#isRobot").val();
+            txtStartTime = $("#txtStartTime").val();
+            txtEndTime = $("#txtEndTime").val();
+            window.location.href = "/Gmmgr/RoomWinlosing?Keywords=" + $("#txtKeywords").val() + "&PageSize=" + $(this).val() + "&PageIndex=" + PageIndex + "&isRobot=" + isRobot + "&starttime=" + txtStartTime + "&endtime=" + txtEndTime;
+        });
+
+        $("#txtPageNum").change(function () {
+            isRobot = $("#isRobot").val();
+            txtStartTime = $("#txtStartTime").val();
+            txtEndTime = $("#txtEndTime").val();
+            window.location.href = "/Gmmgr/RoomWinlosing?Keywords=" + $("#txtKeywords").val() + "&PageSize=" + $(this).val() + "&isRobot=" + isRobot + "&starttime=" + txtStartTime + "&endtime=" + txtEndTime;
+        });
+        $("#lbtnSearch").click(function () {
+            isRobot = $("#isRobot").val();
+            txtStartTime = $("#txtStartTime").val();
+            txtEndTime = $("#txtEndTime").val();
+            window.location.href = "/Gmmgr/RoomWinlosing?Keywords=" + $("#txtKeywords").val() + "&PageSize=" + $("#txtPageNum").val() + "&isRobot=" + isRobot + "&starttime=" + txtStartTime + "&endtime=" + txtEndTime;
+        });
+
+    })
+
+    function seeHandPic(poker)
+    {
+        var strpara = JSON.parse(poker);
+        if (strpara != null || strpara != "")
+        {
+            var arra = strpara.toString().split(',');
+
+            $("#handbrand").attr('src', "/img/whirl_card/" + arra[0]+".png");
+            $("#handbrand2").attr('src', "/img/whirl_card/" + arra[1] + ".png");
+            $("#handbrand3").attr('src', "/img/whirl_card/" + arra[2] + ".png");
+            $("#handbrand4").attr('src', "/img/whirl_card/" + arra[3] + ".png");
+            layer.open({
+                type: 1,
+                title: false,
+                closeBtn: 0,
+                area: ['455px', '152px'],
+                skin: 'layui-layer-nobg', //没有背景色
+                shadeClose: true,
+                content: $('#thispic')
+            });
+        }
+    }
+    function editentity(DeviceID, remark, Id)
+    {
+        $("#DeviceID").val(DeviceID);
+        $("#Id").val(Id);
+        $("#remark").val(remark);
+        $("#btnadd").click();
+    }
+
+</script>
+

@@ -1,0 +1,334 @@
+﻿
+@{
+    ViewBag.Title = "RechargeRecord";
+}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=640">
+    <meta HTTP-EQUIV="pragma" CONTENT="no-cache">
+    <meta HTTP-EQUIV="Cache-Control" CONTENT="no-cache, must-revalidate">
+    <meta HTTP-EQUIV="expires" CONTENT="0">
+    <title>充值记录</title>
+    <link type="text/css" href="~/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="~/css/login.css">
+    <link rel="stylesheet" href="~/css/RechargeRecord.css">
+    <script src="~/js/jquery.min.js"></script>
+</head>
+
+
+<body ng-app="app" style="font-family:Microsoft YaHei">
+
+    <div id="bgheight" style="background-color:lightgray;background-image: url('/img/GW_bg.jpg');width:100%;height:880px;background-repeat:no-repeat;background-size:cover;position: relative;z-index:1">
+
+        <!--导航条黑色背景-->
+        <div id="yeepay" style="height: 98px;width: 100%;background-color: #3f3028;position: fixed;z-index: 50;filter: alpha(opacity = 80);-moz-opacity: 0.8; -khtml-opacity: 0.8;opacity: 0.8;">
+            <!--头部按钮-->
+            <div ng-controller="indexCtrl" style="width:640px;height:60px;margin:0 auto;z-index: 50">
+
+                <a style="line-height:30px;float:right;text-align: center" id="chonzhi">
+                    <div id="labthree" style="height: 78px;width: 150px;position: relative"></div>
+                    <div style="position: absolute;top: 10px;margin-left: 15px">
+                        <span style="color:#ffbb00;font-size: 30px;">我的金币</span>
+                        <br /><span style="color:#9d7302;font-size:18px">MINEGOLD</span>
+                    </div>
+                </a>
+
+                <a href="/Manage/help" style="line-height:30px;float:right;margin-left:8px;text-align: center">
+                    <div id="labone" style="height: 78px;width: 150px;position: relative"></div>
+                    <div style="position: absolute;top: 10px;margin-left: 15px">
+                        <span style="color:#ffbb00;font-size: 30px;">帮助中心</span>
+                        <br /><span style="color:#9d7302;font-size:18px">HELP</span>
+                    </div>
+                </a>
+
+                <a style="line-height:30px;float:right;margin-left:8px;text-align: center" id="user">
+                    <div id="labtwo" style="height: 78px;width: 150px;position: relative" class="nav_background"></div>
+                    <div style="position: absolute;top: 10px;margin-left: 15px">
+                        <span style="color:#ffbb00;font-size: 30px;">个人中心</span>
+                        <br /><span style="color:#9d7302;font-size:18px">PERSONAL</span>
+                    </div>
+                </a>
+
+                <a href="/Manage/Index" style="line-height:30px;float:right;text-align: center">
+                    <div id="labthree" style="height: 78px;width: 150px;position: relative"></div>
+                    <div style="position: absolute;top: 10px;margin-left: 15px">
+                        <span style="color:#ffbb00;font-size: 30px;">官网首页</span>
+                        <br /><span style="color:#9d7302;font-size:18px">HOME</span>
+                    </div>
+                </a>
+
+            </div>
+
+            <!--下面的线条图-->
+            <div style="width:540px;height:20px;margin:auto;left:0;bottom:0;right:0;top:0px;z-index: 50;">
+                <div style="height:11px;width: 11px;background-image: url('/img/GW_dhfk_001.png');margin-left: 50px;float: left"></div>
+                <div style="height: 2px;width: 150px;background-color:#5f4d2a;float: left;margin-top: 5px;margin-left:-1px"></div>
+
+                <div style="height:11px;width: 11px;background-image: url('/img/GW_dhfk_001.png');float:left;margin-left:-1px"></div>
+                <div style="height: 2px;width: 150px;background-color:#5f4d2a;float: left;margin-top: 5px;margin-left:-1px"></div>
+
+                <div style="height:11px;width: 11px;background-image: url('/img/GW_dhfk_001.png');float:left;margin-left:-1px"></div>
+                <div style="height: 2px;width: 62px;background-color:#5f4d2a;float: left;margin-top: 5px;margin-left:-1px"></div>
+
+                <div style="height: 2px;width: 62px;background-color:#5f4d2a;float: left;margin-top: 5px;margin-left:-1px"></div>
+                <div style="height:11px;width: 11px;background-image: url('/img/GW_dhfk_001.png');float:left;margin-left:-1px"></div>
+            </div>
+        </div>
+        <!--正文-->
+        <div id="phoneorpc" style="width: 640px; height: 1016px; position: relative; margin: 0px auto; overflow: visible;">
+            <!--以上为ui-view -->
+            <div id="lz_news" style="margin-top:93px;position:absolute;" class="ng-scope">
+                <div id="lz_news_top">
+                    <div id="lz_news_top_log" style="background-image: url('/img/CZ_grzx.png');"></div>
+                    <div id="lz_news_top_right">退出登录</div>
+                    <div class="clear"></div>
+                </div>
+
+                <div id="lz_line">
+                    <div id="lz_line_1"></div>
+                    <div id="lz_line_2"></div>
+                    <div class="clear"></div>
+                </div>
+
+                <!-- uiView: undefined -->
+                <div class="ui-view ng-scope" style="min-height: 700px;background-color: #dcd5c8;padding-top: 78px">
+                    <div style="height: 48px;width: 640px;margin:0 auto" class="ng-scope">
+                        <div style="float:left;margin-left: 200px"><img src="/img/GW_djtb_001.png"></div>
+                        <div style="float:left"><img src="/img/Dl_yhxx.png"></div>
+                        <div style="float:left"><img src="/img/GW_djtb_002.png"></div>
+                    </div>
+                    <div class="clear ng-scope"></div>
+
+
+                    <div style="height:500px;margin-top: 18px;" class="ng-scope">
+                        <div style="height: 480px;width:120px;float: left;background-color: #efebe3;margin-top: 8px">
+                            <div style="color:#5a616c;font-size:18px;margin-left:15px;margin-top: 18px">充值记录：</div>
+                        </div>
+                        <div style="height: 500px;width:520px;float: left;background-color: #FFFFFF;border-left:2px solid #CAC8C4;position:relative;">
+
+                            <table class="table table-condensed">
+                                <thead>
+                                    <tr>
+                                        <th class="active">充值时间</th>
+                                        <th class="success">充值账号</th>
+                                        <th class="warning">类型</th>
+                                        <th class="danger">数量</th>
+                                        <th class="info">充值金额</th>
+                                    <tr>
+                                </thead>
+                                <tbody id="tbodyCont">
+                                    @*<tr style="text-align:center;">
+                                            <td class="active">2017-09-11 18:08:24</td>
+                                            <td class="success">17760555303</td>
+                                            <td class="warning">金币</td>
+                                            <td class="danger">1</td>
+                                            <td class="info">30</td>
+                                        </tr>*@
+                                </tbody>
+                            </table>
+                            <div class="footer">
+                                <div class="footerbox">
+                                    <div class="TotalContText">
+                                        一共 <span class="TotalNum"></span>条
+                                    </div>
+                                    <div class="boxBtn">
+                                        <div class="FirstPageBox" id="FirstPage">
+                                            <img src="~/img/diyiye.png" />
+                                        </div>
+                                        <div class="FirstPageBox" id="PreviousPage">
+                                            <img src="~/img/shangyiye.png" />
+                                        </div>
+                                        <div class="pageNum">
+                                            <span class="current"></span>/<span class="total"></span>
+                                        </div>
+                                        <div class="FirstPageBox" id="NextPage">
+                                            <img src="~/img/xiayiye.png" />
+                                        </div>
+                                        <div class="FirstPageBox" id="LastPage">
+                                            <img src="~/img/zuihouyiye.png" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="background-color: #dcd5c8;width: 100%;padding-bottom: 20px">
+                    <div style="height: 35px;width:490px;margin: 0 auto;background-image: url('/img/GW_kfdhd.png')">
+                        <div style="width: 140px;height:80px;margin: 0 auto;">
+                            <div style="float: left;background-image: url('/img/GW_kfdhtb.png');height: 27px;width: 27px;margin-top: 3px">
+
+                            </div>
+                            <div style="float: right;margin-top: -2px;margin-right: 0px;font-size:14px;color:#867d6d;">
+                                <span>人工客服电话</span>
+                                <br><span>400-000-0000</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="lz_bottom_line" style="background-image: url('/img/GW_ztyy.png'); margin: 0px"></div>
+            </div>
+        </div>
+    </div>
+    <div id="bottom">
+        <div id="bottom_1" style="position:relative;z-index:100;font-size: 18px;margin-top: 38px">
+            <a style="color:white;text-decoration: none" href="/Manage/present">公司介绍</a> |
+            <a style="color:white;text-decoration: none" href="/Manage/output">产品介绍</a> |
+            <!--<span style="color: white" id="BizQQWPA">联系我们</span> |-->
+            <a style="color:white;text-decoration: none" href="/Manage/contact">联系我们</a> |
+            <a style="color:white;text-decoration: none" href="/Manage/ActivityList">活动中心</a> |
+            <a style="color:white;text-decoration: none" id="rewardBtn">推&nbsp;广</a>
+            <!-- |
+            <a style="color:white;text-decoration: none" target="_blank">商务合作</a> -->
+        </div>
+        <div id="bottom_2" style="margin-top: 12px;font-size: 14px;color:#b1bdc8">新天地网络公司</div>
+        <div id="bottom_3">蜀ICP备17071870号-1&nbsp;【2017】&nbsp;1606-436号Copyright&nbsp;2017&nbsp;版权所有</div>
+        <div class="clear"></div>
+    </div>
+    <script type="text/javascript">
+        var current = 1;
+        var total = 0;
+
+        $(function () {
+            $(".current").text(current);
+            $(".total").text(total)
+            if ($(document.body).outerWidth(true) > 641) {
+                $("#phoneorpc").css("overflow", "visible");
+            } else {
+                $("#phoneorpc").css("overflow", "hidden")
+            }
+            GetRechargeRecord()
+        });
+        $("#user").click(function () {
+            var _sess = window.sessionStorage;
+            var userMessage = JSON.parse(_sess.getItem("userMessage"));
+            //console.log(userMessage)
+            if (userMessage != null && userMessage != "") {
+                window.location.href = "/Manage/userIfo";
+            } else {
+                window.location.href = "/Manage/login";
+            }
+        });
+        $("#chonzhi").click(function () {
+            var _sess = window.sessionStorage;
+            var userMessage = JSON.parse(_sess.getItem("userMessage"));
+            if (userMessage) {
+                window.location.href = "/Manage/RechargePage";
+            } else {
+                window.location.href = "/Manage/login";
+            }
+        })
+        $("#lz_news_top_right").click(function () {
+            var _sess = window.sessionStorage;
+            var userMessage = JSON.parse(_sess.getItem("userMessage"));
+            window.location.href = "/Manage/OutLogin";
+            var _session = window.sessionStorage;
+            _session.setItem('userMessage', JSON.stringify(""));
+        })
+        $("#rewardBtn").click(function () {
+            var _sess = window.sessionStorage;
+            var userMessage = JSON.parse(_sess.getItem("userMessage"));
+            if (userMessage) {
+                window.location.href = "/Manage/JoinEd";
+            } else {
+                window.location.href = "/Manage/login";
+            }
+        })
+
+        $("#FirstPage").click(function () {
+            var one = $(".current").text();
+            if (one > 1 && one <= total) {
+                var ones = 1
+                current = ones
+                GetRechargeRecord()
+
+            } else {
+                alert("已经是第一页")
+            }
+        })
+        $("#PreviousPage").click(function () {
+            var one = $(".current").text();
+            if (one > 1 && one <= total) {
+                var ones = parseInt(one) - 1
+                current = ones
+                GetRechargeRecord()
+            } else {
+                alert("已经是第一页")
+            }
+        })
+        $("#NextPage").click(function () {
+            var one = $(".current").text();
+            //console.log(one)
+            if (one > 0 && one < total) {
+                var ones = parseInt(one) + 1
+                current = ones
+                GetRechargeRecord()
+            } else {
+                alert("已经是最后一页")
+            }
+        })
+        $("#LastPage").click(function () {
+            var one = $(".current").text();
+            //console.log(one)
+            if (one > 0 && one < total) {
+                var ones = total
+                current = ones
+                GetRechargeRecord()
+            } else {
+                alert("已经是最后一页")
+            }
+        })
+        function GetRechargeRecord() {
+            var data = {};
+            data.pageIndex = current;
+            data.pageSize = 10
+            $.ajax({
+                type: "post", url: '/Manage/GetRechargeRecordData',
+                datatype: 'json',
+                data: data,
+                success: function (res) {
+                    if (res) {
+                        totalOne = parseInt(res.TotalCont / data.pageSize);
+                        if (totalOne < res.TotalCont / data.pageSize) {
+                            total = totalOne + 1
+                            // console.log(total)
+                        } else {
+                            total = res.TotalCont / data.pageSize
+                            //console.log(total)
+                        }
+
+                        $(".total").text(total)
+                        $(".current").text(res.PageIndex);
+                        console.log(res);
+                        var str = $("#tbodyCont").html();
+                        $("#tbodyCont").empty();
+                        $(".TotalNum").text(res.TotalCont)
+                        for (var i in res.Data) {
+                            str = "  <tr style='text-align:center;'>" +
+                                        "<td class='active'>" + res.Data[i].CreatTime + "</td>" +
+                                        "<td class='success'>" + res.Data[i].UserId + "</td>" +
+                                        "<td class='warning warning1'></td>" +
+                                        "<td class='danger'>" + res.Data[i].GoldCount + "</td>" +
+                                        "<td class='info'>" + res.Data[i].Number + "</td>" +
+                                    "</tr>"
+                            // $("#tbodyCont").html(str)
+                            $('#tbodyCont').append(str);
+                            //console.log(res.Data[i].RechargeType)
+                            if (res.Data[i].RechargeType == 1 || res.Data[i].RechargeType == '1') {
+                                $('.warning1').text('金币充值')
+                            } else if (res.Data[i].RechargeType == 2 || res.Data[i].RechargeType == '2') {
+                                $('.warning1').text('砖石充值')
+                            }
+                        }
+                    }
+                }
+            })
+        }
+    </script>
+</body>
+</html>

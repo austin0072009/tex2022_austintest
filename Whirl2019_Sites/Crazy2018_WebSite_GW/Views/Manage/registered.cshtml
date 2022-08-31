@@ -1,0 +1,363 @@
+﻿
+@{
+    ViewBag.Title = "registered";
+}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=640">
+    <meta HTTP-EQUIV="pragma" CONTENT="no-cache">
+    <meta HTTP-EQUIV="Cache-Control" CONTENT="no-cache, must-revalidate">
+    <meta HTTP-EQUIV="expires" CONTENT="0">
+    <title>棋牌游戏-注册</title>
+    <!--bootstrap相关-->
+    <script type="text/javascript" src="~/js/jquery.min.js"></script>
+    <link type="text/css" href="~/css/bootstrap.min.css" rel="stylesheet">
+    <!--首页样式表-->
+    <link type="text/css" href="~/css/index.css" rel="stylesheet">
+    <link href="~/css/registered.css" rel="stylesheet" type="text/css" />
+</head>
+<body ng-app="app" style="font-family:Microsoft YaHei">
+
+    <div id="bgheight" style="background-color:lightgray;background-image: url('/img/GW_bg.jpg');width:100%;height:880px;background-repeat:no-repeat;background-size:cover;position: relative;z-index:1">
+
+        <!--导航条黑色背景-->
+        <div id="yeepay" style="height: 98px;width: 100%;background-color: #3f3028;position: fixed;z-index: 50;filter: alpha(opacity = 80);-moz-opacity: 0.8;-khtml-opacity: 0.8;opacity: 0.8;">
+            <!--头部按钮-->
+            <div ng-controller="indexCtrl" style="width:640px;height:60px;margin:0 auto;z-index: 50">
+
+                <a style="line-height:30px;float:right;text-align: center" id="chonzhi">
+                    <div id="labthree" style="height: 78px;width: 150px;position: relative"></div>
+                    <div style="position: absolute;top: 10px;margin-left: 15px">
+                        <span style="color:#ffbb00;font-size: 30px;">我的金币</span>
+                        <br /><span style="color:#9d7302;font-size:18px">MINEGOLD</span>
+                    </div>
+                </a>
+
+                <a href="/Manage/help" style="line-height:30px;float:right;margin-left:8px;text-align: center">
+                    <div id="labone" style="height: 78px;width: 150px;position: relative"></div>
+                    <div style="position: absolute;top: 10px;margin-left: 15px">
+                        <span style="color:#ffbb00;font-size: 30px;">帮助中心</span>
+                        <br /><span style="color:#9d7302;font-size:18px">HELP</span>
+                    </div>
+                </a>
+
+                <a style="line-height:30px;float:right;margin-left:8px;text-align: center" id="user">
+                    <div id="labtwo" style="height: 78px;width: 150px;position: relative" class="nav_background"></div>
+                    <div style="position: absolute;top: 10px;margin-left: 15px">
+                        <span style="color:#ffbb00;font-size: 30px;">个人中心</span>
+                        <br /><span style="color:#9d7302;font-size:18px">PERSONAL</span>
+                    </div>
+                </a>
+
+                <a href="/Manage/Index" style="line-height:30px;float:right;text-align: center">
+                    <div id="labthree" style="height: 78px;width: 150px;position: relative"></div>
+                    <div style="position: absolute;top: 10px;margin-left: 15px">
+                        <span style="color:#ffbb00;font-size: 30px;">官网首页</span>
+                        <br /><span style="color:#9d7302;font-size:18px">HOME</span>
+                    </div>
+                </a>
+
+            </div>
+
+            <!--下面的线条图-->
+            <div style="width:540px;height:20px;margin:auto;left:0;bottom:0;right:0;top:0px;z-index: 50;">
+                <div style="height:11px;width: 11px;background-image: url('/img/GW_dhfk_001.png');margin-left: 50px;float: left"></div>
+                <div style="height: 2px;width: 150px;background-color:#5f4d2a;float: left;margin-top: 5px;margin-left:-1px"></div>
+
+                <div style="height:11px;width: 11px;background-image: url('/img/GW_dhfk_001.png');float:left;margin-left:-1px"></div>
+                <div style="height: 2px;width: 150px;background-color:#5f4d2a;float: left;margin-top: 5px;margin-left:-1px"></div>
+
+                <div style="height:11px;width: 11px;background-image: url('/img/GW_dhfk_001.png');float:left;margin-left:-1px"></div>
+                <div style="height: 2px;width: 62px;background-color:#5f4d2a;float: left;margin-top: 5px;margin-left:-1px"></div>
+
+                <div style="height: 2px;width: 62px;background-color:#5f4d2a;float: left;margin-top: 5px;margin-left:-1px"></div>
+                <div style="height:11px;width: 11px;background-image: url('/img/GW_dhfk_001.png');float:left;margin-left:-1px"></div>
+            </div>
+        </div>
+        <!--正文-->
+        <div id="phoneorpc" style="width: 640px; height: 1016px; position: relative; margin: 0px auto; overflow: visible;">
+            <!--以上为ui-view -->
+            <div id="lz_news" style="margin-top:93px;position:absolute;" class="ng-scope">
+                <div id="lz_news_top">
+                    <div id="lz_news_top_log" style="background-image: url('/img/CZ_grzx.png');"></div>
+                    <div id="lz_news_top_right"></div>
+                    <div class="clear"></div>
+                </div>
+
+                <div id="lz_line">
+                    <div id="lz_line_1"></div>
+                    <div id="lz_line_2"></div>
+                    <div class="clear"></div>
+                </div>
+
+                <!-- uiView: undefined -->
+                <div class="ui-view ng-scope" style="min-height: 700px;background-color: #dcd5c8;padding-top: 78px">
+                    <div style="height: 48px;width: 640px;margin:0 auto" class="ng-scope">
+                        <div style="float:left;margin-left: 200px"><img src="/img/GW_djtb_001.png"></div>
+                        <div style="float:left" class="regBox">注&nbsp;&nbsp;&nbsp;册</div>
+                        <div style="float:left"><img src="/img/GW_djtb_002.png"></div>
+                    </div>
+                    <div class="clear ng-scope"></div>
+
+                    <div style="background-color: #efebe3;height:385px;margin-top: 18px;padding-top:58px" class="ng-scope">
+
+                        <div style="margin-left: 50px">
+                            <div style="word-spacing:12px;float: left;width: 110px;text-align: right;font-size: 26px;margin-top: 8px;margin-right: 10px;color:#635f57;font-size:18px">
+                                账 号:
+                            </div>
+                            <input type="text" style="height: 50px;width:330px;color:#140f09;font-size:20px;margin-left: 18px;background-color:#c2b7a9"
+                                   placeholder="请输入手机号" id="phone">
+                        </div>
+
+
+                        <div style="margin-left: 50px;margin-top: 12px">
+                            <div style="word-spacing:12px;float: left;width: 110px;text-align: right;font-size: 26px;margin-top: 8px;margin-right: 10px;color:#635f57;font-size:18px">
+                                密 码:
+                            </div>
+                            <input type="password" style="height: 50px;width:330px;color:#140f09;font-size:20px;margin-left:18px;background-color:#c2b7a9"
+                                   placeholder="请输入密码" id="mypassword">
+                        </div>
+                        <div style="margin-left: 50px;margin-top: 12px">
+                            <div style="word-spacing:12px;float: left;width: 110px;text-align: right;font-size: 26px;margin-top: 8px;margin-right: 10px;color:#635f57;font-size:18px">
+                                推荐码:
+                            </div>
+                            <input type="password" style="height: 50px;width:330px;color:#140f09;font-size:20px;margin-left:18px;background-color:#c2b7a9"
+                                   placeholder="请输入推荐密码" id="recommend">
+                        </div>
+                        <div style="margin-left: 50px;margin-top: 12px">
+                            <div style="float: left;width: 110px;text-align: right;font-size: 26px;margin-top: 8px;margin-right: 10px;color:#635f57;font-size:18px">
+                                验证码:
+                            </div>
+                            <input type="text" style="height: 50px;width:200px;color:#140f09;font-size:20px;margin-left:18px;background-color:#c2b7a9"
+                                   placeholder="请输入验证码" id="VPwd">
+                            <!-- <img id="imgObj" alt="验证码" src="/code" ng-click="changeCode()"> -->
+                            <input type="button" id="imgObj" value="发送验证码" class="time">
+                        </div>
+
+
+                        <div style="margin-left: 50px;margin-top: 20px">
+                            <div style="float: left;background-image: url('/img/CZ_and.png');text-align:center;width: 201px;height:57px;margin-left: 135px"
+                                 id="loginBtn">
+                                <img src="/img/Dl_anzi.png" style="margin-top: 15px">
+                            </div>
+                            <a href="/Manage/findPwd" style="float:left;color:#8d7858;font-size:20px;margin-left: 10px;margin-top: 20px">
+                                忘记密码
+                            </a>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div style="background-color: #dcd5c8;width: 100%;padding-bottom: 20px">
+                    <div style="height: 35px;width:490px;margin: 0 auto;background-image: url('/img/GW_kfdhd.png')">
+                        <div style="width: 140px;height:80px;margin: 0 auto;">
+                            <div style="float: left;background-image: url('/img/GW_kfdhtb.png');height: 27px;width: 27px;margin-top: 3px">
+
+                            </div>
+                            <div style="float: right;margin-top: -2px;margin-right: 0px;font-size:14px;color:#867d6d;">
+                                <span>人工客服电话</span>
+                                <br><span>400-000-000</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="lz_bottom_line" style="background-image: url('/img/GW_ztyy.png'); margin: 0px"></div>
+            </div>
+        </div>
+    </div>
+    <div id="bottom">
+        <div id="bottom_1" style="position:relative;z-index:100;font-size: 18px;margin-top: 38px">
+            <a style="color:white;text-decoration: none" href="/Manage/present">公司介绍</a> |
+            <a style="color:white;text-decoration: none" href="/Manage/output">产品介绍</a> |
+            <!--<span style="color: white" id="BizQQWPA">联系我们</span> |-->
+            <a style="color:white;text-decoration: none" href="/Manage/contact">联系我们</a> |
+            <a style="color:white;text-decoration: none" id="ActivityBtn">活动中心</a> |
+            <a style="color:white;text-decoration: none" id="rewardBtn">推&nbsp;广</a>
+            <!-- |
+            <a style="color:white;text-decoration: none" target="_blank">商务合作</a> -->
+        </div>
+        <div id="bottom_2" style="margin-top: 12px;font-size: 14px;color:#b1bdc8">新天地网络公司</div>
+        <div id="bottom_3">蜀ICP备17071870号-1&nbsp;【2017】&nbsp;1606-436号Copyright&nbsp;2017&nbsp;版权所有</div>
+        <div class="clear"></div>
+    </div>
+    <script type="text/javascript">
+        var obj = {};
+        $(function () {
+            if ($(document.body).outerWidth(true) > 641) {
+                $("#phoneorpc").css("overflow", "visible");
+            } else {
+                $("#phoneorpc").css("overflow", "hidden")
+            }
+            GetUser();
+        });
+        function GetUser() {
+            var data = {};
+            $.ajax({
+                type: "post", url: '/Manage/GetUserInfo',
+                datatype: 'json',
+                data: data,
+                success: function (res) {
+                    if (res) {
+                        //console.log(res);
+                        obj = res
+                        //window.location.href = "/Manage/userIfo"
+                        //$("#userId").text(res.UserId)
+                        //$("#myPhone").text(res.PhoneNum)
+                    }
+                }
+            })
+        }
+        var countdown = 60;
+
+        function settime(obj) {
+            if (countdown == 0) {
+                obj.removeAttribute("disabled");
+                obj.value = "发送验证码";
+                countdown = 60;
+                return;
+            } else {
+                obj.setAttribute("disabled", true);
+                obj.value = "(" + countdown + ")后重发";
+                countdown--;
+            }
+            setTimeout(function () {
+                settime(obj)
+            }, 1000)
+        }
+        $("#imgObj").click(function () {
+            var _this = this
+
+            var phone = $("#phone").val();
+            var phonereg = /^0?1[3|4|5|8|7|6][0-9]\d{8}$/;//手机
+            if (!phonereg.test(phone)) {
+                alert('请填写正确的手机号码')
+                return false;
+
+            }
+
+            var data = {};
+            data.phoneNum = phone;
+            $.ajax({
+                type: "post", url: '/Manage/SendCode',
+                datatype: 'json',
+                data: data,
+                success: function (res) {
+
+                    if (res) {
+                        if (res != "手机号码不正确") {
+                            if (res != "当前手机号码已经注册") {
+                                if (res != "发送失败") {
+                                    settime(_this);
+                                } else {
+                                    alert(res)
+                                }
+                            } else {
+                                alert(res)
+                            }
+                        } else {
+                            alert(res)
+                        }
+                    } else {
+                        alert(res)
+                    }
+                }
+            })
+        })
+        $("#loginBtn").click(function () {
+            //var lkl1 = $("#imgObj").val().toLowerCase();
+            //var lkl2=$("#imgObj").val()
+            var verification = $("#VPwd").val()
+            var myPhone = $("#phone").val()
+            var password = $("#mypassword").val();
+            var passwordreg = /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{8,16}$/;
+            var phonereg = /^0?1[3|4|5|8|7|6][0-9]\d{8}$/;//手机
+            var recommend = $("#recommend").val() //获取推荐码推荐码
+            if (!phonereg.test(myPhone)) {
+                alert('请填写正确的手机号码')
+                return false;
+            }
+            if (password.length <= 0) {
+                alert('请输入密码')
+                return false;
+            }
+            if (recommend.length <= 0) {
+                alert('请输入推荐码')
+                return false;
+            }
+            if (recommend.length < 7) {
+                alert('请输入正确的7位邀请码')
+                return false;
+            }
+            if (!passwordreg.test(password)) {
+                alert('密码格式错误，密码由8-16位数字+字母组成')
+                return false;
+            }
+            if (verification.length <= 0) {
+                alert("请填写验证码")
+                return false;
+            }
+            var data = {};
+            data.Phone = myPhone;
+            data.Verification = verification;
+            data.Password = password;
+            data.recommend = recommend;
+            $.ajax({
+                type: "post", url: '/Manage/RegisterCommit',
+                datatype: 'json',
+                data: data,
+                success: function (res) {
+                    if (res) {
+                        if (res === "注册成功") {
+                            alert("注册成功")
+                            window.location.href = "/Manage/login";
+                        }
+                        else {
+                            alert(res)
+                        }
+                    }
+                }
+            })
+        });
+        $("#user").click(function () {
+            //var _sess = window.sessionStorage;
+            //var userMessage = JSON.parse(_sess.getItem("userMessage"));
+            if (obj.UserId) {
+                window.location.href = "/Manage/userIfo"
+            } else {
+                window.location.href = "/Manage/login"
+            }
+        })
+        $("#chonzhi").click(function () {
+            //var _sess = window.sessionStorage;
+            //var userMessage = JSON.parse(_sess.getItem("userMessage"));
+            if (obj.UserId) {
+                window.location.href = "/Manage/RechargePage";
+            } else {
+                window.location.href = "/Manage/login";
+            }
+        })
+        $("#rewardBtn").click(function () {
+            //var _sess = window.sessionStorage;
+            //var userMessage = JSON.parse(_sess.getItem("userMessage"));
+            if (obj.UserId) {
+                window.location.href = "/Manage/JoinEd";
+            } else {
+                window.location.href = "/Manage/login";
+            }
+        })
+        $("#ActivityBtn").click(function () {
+            if (obj.UserId) {
+                window.location.href = "/Manage/ActivityList";
+            } else {
+                window.location.href = "/Manage/login";
+            }
+        })
+    </script>
+</body>
+
+
+</html>

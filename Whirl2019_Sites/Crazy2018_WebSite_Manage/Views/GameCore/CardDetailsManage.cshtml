@@ -1,0 +1,480 @@
+﻿
+
+<style>
+    .layerbtn {
+        display: inline-block;
+        height: 20px;
+        line-height: 20px;
+        padding: 1px 10px 2px 9px;
+        background-color: #A9A9A9;
+        color: white;
+        white-space: nowrap;
+        text-align: center;
+        font-size: 10px;
+        border: none;
+        border-radius: 2px;
+        cursor: pointer;
+    }
+
+    th {
+        text-align: center;
+    }
+
+    .form-control {
+        width: 80%;
+    }
+</style>
+
+
+
+<!--/导航栏-->
+<!--工具栏-->
+<div id="floatHead" class="toolbar-wrap">
+    <div class="toolbar">
+        <div class="box-wrap">
+            <a class="menu-btn"></a>
+            <div class="l-list">
+                <ul class="icon-list">
+
+                    <li><a class="all" href="javascript:;" onclick="checkAll(this);"><i></i><span>全选</span></a></li>
+                    <li>
+                        <a id="btnDelete" class="del"><i></i><span>删除</span></a>
+                    </li>
+                    @*<li>
+                      
+                        <a id="btnRecharge" class="btn badoo btn-primary btn-lg" data-toggle="modal" data-target="#myModalRe"><i></i><span>充值</span></a>
+                    </li>*@
+                </ul>
+                点卡类型:
+                <select name="typeid" id="typeid" class="select">
+                    <option value="-1">-不限-</option>
+
+
+                </select>
+                是否过期：
+                <select name="IsExpiraval" id="IsExpiraval" class="select">
+                    <option value="-1">-不限-</option>
+                    <option value="1">已过期</option>
+                    <option value="0">未过期</option>
+
+                </select>
+                是否使用：
+                <select name="IsUseval" id="IsUseval" class="select">
+                    <option value="-1">-不限-</option>
+                    <option value="1">已使用</option>
+                    <option value="0">未使用</option>
+
+
+                </select>
+                <input name="txtKeywords" placeholder="点卡id、 编号" type="text" id="txtKeywords" class="input">
+                <button type="button" style="height: 28px;padding: 3px 10px;background-color: lightgray;" id="lbtnSearch" class="btn btn-default btn-sm">查询</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+<!--/工具栏-->
+<!--列表-->
+<div class="table-container">
+
+    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="ltable">
+        <thead>
+            <tr class="odd_bg">
+                <th width="30px">选择</th>
+                <th>点卡ID</th>
+                <th>点卡名</th>
+                <th>点卡类型</th>
+                <th>卡号</th>
+                <th>密码</th>
+                <th>点卡金额</th>
+                <th>金币数</th>
+                <th>创建时间</th>
+                <th>有效时间</th>
+                <th>是否过期</th>
+                <th>是否使用</th>
+                @*  <th>数量</th>*@
+                <th>使用者</th>
+                <th>使用时间</th>
+            </tr>
+        </thead>
+        <tbody id="MyTbody"></tbody>
+    </table>
+
+</div>
+<!--/列表-->
+<!--内容底部-->
+<div class="line20"></div>
+<div class="pagelist">
+    <div class="l-btns">
+        <span>显示</span><input name="txtPageNum" type="text" id="txtPageNum" class="pagenum"><span>条/页</span>
+    </div>
+    <div id="PageContent" class="default">
+
+    </div>
+</div>
+<!--/内容底部-->
+<div style="width:100%;text-align: center;">
+    <span style="display: inline-block;padding: 4px 15px 0px 15px;color: #666;font-size:14px;">(注 : 1.用户ID(输全),2.微信名称3.用户名称)</span>
+</div>
+
+
+<div class="modal fade" id="myModal_update" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+                <h4 class="modal-title" id="update_card">
+                    点卡信息
+                </h4>
+            </div>
+            <div class="modal-body">
+                <div>
+                    <form role="form">
+                        <div class="form-group">
+                            <label for="name">名称</label>
+                            <input type="text" id="CardName_up" name="CardName_up" class="form-control" placeholder="点卡名称">
+                        </div>
+                        <div class="form-group">
+                            <label for="name">点卡类型</label>
+                            <select name="CardType_up" id="CardType_up" class="select"> </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="name">卡价格</label>
+                            <input type="text" id="CardPrice_up" name="CardPrice_up" class="form-control" placeholder="请输入点卡金额">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="name">金币数量</label>
+                            <input type="text" id="GoldPrice_up" name="GoldPrice_up" class="form-control" placeholder="请输入金币数量">
+                        </div>
+                        <div class="form-group">
+                            <label for="name">有效时间</label>
+                            <input name="ExpirationTime" class="form-control" type="text" id="ExpirationTime" onclick="laydate()">
+                        </div>
+                        <div class="form-group">
+                            <label for="name">是否使用</label>
+                            <select name="IsUse" id="IsUse" class="select">
+                                <option value="1">已使用</option>
+                                <option value="0">未使用</option>
+                            </select>
+
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">
+                    关闭
+                </button>
+                <button type="button" id="update_submitbtn" class="btn btn-primary">
+                    提交
+                </button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
+
+<script>
+
+    var card_id;
+    var $typeid = $("#typeid");
+    var storagefirst = window.localStorage;
+    var MytxtPageNum = storagefirst["MytxtPageNum"];
+    var PageIndex = 1;
+    var txtPageNum = 20;
+    var Keywords = "";
+    var isExpira = $("#IsExpiraval").val();
+    var Isuse = $("#IsUseval").val();
+
+    if (MytxtPageNum != "" && MytxtPageNum != null) {
+        txtPageNum = MytxtPageNum
+    } else {
+        txtPageNum = txtPageNum
+    }
+    GetList();
+    GetCardDetailsType();
+    $("#txtPageNum").val(txtPageNum);
+
+    $("#lbtnSearch").click(function () {
+        Keywords = $("#txtKeywords").val();
+        txtPageNum = $("#txtPageNum").val();
+        isExpira = $("#IsExpiraval").val();
+        Isuse = $("#IsUseval").val();
+        PageIndex = 1;
+        GetList();
+    })
+    $("#txtPageNum").change(function () {
+        Keywords = $("#txtKeywords").val();
+        txtPageNum = $("#txtPageNum").val();
+        isExpira = $("#IsExpiraval").val();
+        Isuse = $("#IsUseval").val();
+        storagefirst["MytxtPageNum"] = txtPageNum;
+        PageIndex = 1;
+        GetList();
+    })
+    $("#selectRobot").change(function () {
+        Keywords = $("#txtKeywords").val();
+        txtPageNum = $("#txtPageNum").val();
+        isExpira = $("#IsExpiraval").val();
+        Isuse = $("#IsUseval").val();
+        PageIndex = 1;
+        GetList();
+    })
+
+    function keyLogin(event) {
+        if (event.keyCode == 13)
+            document.getElementById("lbtnSearch").click();
+    }
+
+    $("#PageContent").on("click", "a", function () {
+        var lkl2 = $(this).text();
+
+        if (lkl2 == "下一页»") {
+            PageIndex = parseInt(PageIndex) + 1
+        } else if (lkl2 == "«上一页") {
+            PageIndex = parseInt(PageIndex) - 1
+        } else {
+            PageIndex = lkl2
+        }
+        Keywords = $("#txtKeywords").val();
+        txtPageNum = $("#txtPageNum").val();
+        isExpira = $("#IsExpiraval").val();
+        Isuse = $("#IsUseval").val();
+        GetList();
+    })
+
+    function GetList() {
+        var data = {};
+        data.PageIndex = PageIndex;
+        data.PageSize = txtPageNum;
+        data.Keywords = Keywords;
+        data.typeid = $typeid.val();
+        data.IsExpiration = isExpira;
+        data.Isuse = Isuse;
+       
+        
+        console.log(data)
+        $.ajax({
+            type: "post", url: '/GameCore/GetEntityCardData',
+            datatype: 'json',
+            data: data,
+            success: function (res) {
+                console.log(res);
+                if (res.Code == "0" && res.Code == 0) {
+                    if (res) {
+                        
+
+                        $("#MyTbody").empty();
+                        var str = $("#MyTbody").html();
+                        if (res.Data.length > 0) {
+                            for (var n = 0; n < res.Data.length; n++) {
+                                
+                                var opt = "";
+                                var exp = "";
+                                var use = "";
+                                if (res.Data[n].IsExpiration == "已过期") {
+                                    exp = "<td align='center' style='color:red'>" + res.Data[n].IsExpiration + "</td>";
+                                } else {
+                                    exp = "<td align='center' style='color:#075ff7'>" + res.Data[n].IsExpiration + "</td>";
+                                }
+                                if (res.Data[n].IsUse == "已使用") {
+                                    use = "<td align='center' style='color:red'>" + res.Data[n].IsUse + "</td>";
+                                } else {
+                                    use = "<td align='center' style='color:#075ff7'>" + res.Data[n].IsUse + "</td>";
+                                }
+                                var datacard = JSON.stringify(res.Data[n]);
+                                //opt += "<a class='layerbtn' style='color: white;' onclick='updatecard(" + datacard + ")'>修改</a>" +
+                                //    "&nbsp;&nbsp;<a class='layerbtn' onclick=\"carddelete('" + res.Data[n].Id + "')\" style='background-color:#f75207;'>删除</a>&nbsp;&nbsp;</a>";
+
+                                str = "<tr class='odd_data'>" +
+                                    "<td align='center'>" +
+                                    "<span class='checkall' style='vertical-align: middle;'>" +
+                                    "<input id=chkId' class='checkall' type='checkbox' name='chkId'>" +
+                                    "</span>" +
+                                    "<input type='hidden' name='hidId' id='hidId' value='" + res.Data[n].Id + "'>" +
+                                    "</td>" +
+
+
+                                    "<td align='center'>" + res.Data[n].Id + "</td>" +
+                                    "<td align='center'>" + res.Data[n].AddName + "</td>" +
+                                    "<td align='center'>" + res.Data[n].TypeName + "</td>" +
+                                    "<td align='center'>" + res.Data[n].CardNum + "</td>" +
+                                    "<td align='center'>" + res.Data[n].PassWord + "</td>" +
+                                    "<td align='center'>" + res.Data[n].CardPrice + "</td>" +
+
+                                    "<td align='center'>" + res.Data[n].GoldPrice + "</td>" +
+                                    "<td align='center'>" + res.Data[n].CreateTime + "</td>" +
+                                    "<td align='center'>" + res.Data[n].ExpirationTime + "</td>" +
+                                    exp + use +
+                                 //   "<td align='center'>" + res.Data[n].Number + "</td>" +
+                                    "<td align='center'>" +
+                                   //  GetCardUser(res.Data[n].Id, res.Data[n].CardNum,res.Data[n].PassWord ) //获取使用该卡的用户 和使用时间
+                                   // opt
+                                "</td>" +
+                                    "</tr>"
+                                $('#MyTbody').append(str);
+                                var sthtml = $("#PageContent").html();
+                                $("#PageContent").empty();
+                                if (res.InnerHtml.length > 0) {
+                                    sthtml = res.InnerHtml
+                                    $('#PageContent').append(sthtml);
+                                }
+                            }
+                        } else {
+                            $("#MyTbody").empty();
+                        }
+                    } else {
+                        eval(res)
+                    }
+                } else {
+                    eval(res)
+                }
+            }
+        })
+    }
+
+
+    var numID = [];//用于储存需要删除的ID
+    $("#btnDelete").click(function () {
+        numID = []
+        var num1 = {};
+        var on1 = $(".odd_data");
+        for (var o = 0; o < on1.length; o++) {
+            var lkl3 = $(on1[o]).find(".checkall")
+            for (var ol = 0; ol < lkl3.length; ol++) {
+                //console.log(lkl3[ol].checked)
+                if (lkl3[ol].checked == true) {
+                    var lkl4 = $(on1[o]).find("#hidId").val();
+                    num1.id = lkl4
+                    numID.push(num1.id)
+                }
+            }
+        }
+        var a, b;
+        a = numID;
+        b = a.join(",");
+        console.log(b)
+        var ids = b;
+        $.ajax({
+            url: "/GameCore/DeleteEntityCard?ids=" + ids + "",
+            type: "post",
+            contentType: "application/json",
+            dataType: "json",
+            success: function (data) {
+                GetList();
+            }
+        })
+    })
+
+    ///删除
+    function carddelete(cardid) {
+
+        $.ajax({
+            url: "/GameCore/DeleteEntityCard?ids=" + cardid + "",
+            type: "post",
+            contentType: "application/json",
+            dataType: "json",
+            success: function (data) {
+                GetList();
+            }
+        })
+      
+    }
+    function updatecard(data) {
+        $('#myModal_update').modal('show');
+        $('#CardName_up').val(data.AddName);
+        $('#CardType_up').val(data.TypeId);
+        $('#CardPrice_up').val(data.CardPrice);
+        $('#TatolPrice_up').val(data.TatolPrice);
+        $('#GoldPrice_up').val(data.GoldPrice);
+        $('#ExpirationTime').val(data.ExpirationTime);
+        
+        $("#IsUse").find("option[text='" + data.IsUse + "']").attr("selected", true);
+        card_id = data.Id;
+      
+
+    }
+
+    $("#update_submitbtn").click(function () {
+        //var cardname = $('#CardName_up').val();
+        //var cardprice = $('#CardPrice_up').val();
+        //var tatolprice = $('#TatolPrice_up').val();
+        //var goldrice = $('#GoldPrice_up').val();
+        //var cardtype = $('#CardType_up').val();
+        //console.log(cardname + cardprice);
+        datalist = {};
+        datalist.cardid = card_id;//卡id
+        datalist.cardname = $('#CardName_up').val();//卡名称
+        datalist.cardprice = $('#CardPrice_up').val();//卡价格
+       // datalist.tatolprice = $('#TatolPrice_up').val();//总价格
+        datalist.goldrice = $('#GoldPrice_up').val();//金币数量
+        datalist.cardtype = $('#CardType_up').val();//卡类型
+        datalist.IsUse = $("#IsUse").val();//是否使用
+        datalist.ExpirationTime = $("#ExpirationTime").val();//过期时间
+        $.ajax({
+            type: "post",
+            url: "/GameCore/UpdateCardData",
+            dataType: "json",
+            data: datalist,
+            success: function (data) {
+                $('#myModal_update').modal('hide');
+                layer.msg(data.Message, { icon: 6 });
+                GetList();
+            }
+        })
+
+
+    })
+
+    function GetCardDetailsType() {
+        $("#typeid").append("");
+        $("#CardType_up").append("");
+        $.ajax({
+            type: "post", url: '/GameCore/GetCardtypelist',
+            datatype: 'json',
+            success: function (res) {
+                var str = "";
+                for (var i = 0; i < res.Data.length; i++) {
+                    str += "<option value='" + res.Data[i].ID + "'>" + res.Data[i].Name + "</option>";
+                
+                }
+                $("#typeid").append(str);
+                $("#CardType_up").append(str);
+               
+            }
+        });
+    }
+
+
+
+    //function GetCardUser(carid,carnum,carpwd) {
+    
+    //    var data = {}; 
+    //    data.cardid = carid;
+    //    data.cardnumber = carnum;
+    //    data.cardpwd = carpwd;
+    //    var list;
+    //    $.ajax({
+    //        url: "/GameCore/GetCardUser",
+    //        type: "post",
+    //        data: data,
+    //        dataType: "json",
+    //        async: false,
+    //        success: function (data) {
+    //            list = data.Message;
+    //            if (list == null || list == undefined || list == "") {
+    //                list = " ";
+    //            }
+    //        }
+    //    });
+    //    return list;
+    //}
+</script>
+
+
+
+
+
+   

@@ -1,0 +1,140 @@
+﻿
+@{
+    ViewBag.Title = "withdraw";
+}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta id="viewport" name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=no,target-densitydpi=medium-dpi" />
+    <title>提现申请</title>
+    <link type="text/css" href="~/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="~/css/withdraw.css">
+    <script src="~/js/jquery.min.js"></script>
+</head>
+<body>
+    <div class="withdrawBox">
+        <header>
+            <div class="fanhui" onClick="JavaScript :history.back(-1);">
+                <img src="~/img/fanhui.png" alt="">
+            </div>
+            提现
+        </header>
+        <div class="cardNumber" onClick="window.location.href = '/Manage/BankList'">
+            <div class="cardLog">
+                <img src="" class="cardLogImg" />
+            </div>
+            <span class="cardNumber1">请选择银行卡</span>
+            <input type="hidden" id="cardNum2" value="" />
+            <span class="cardName"></span>
+        </div>
+        <div class="formCont">
+            <span style="line-height: 32px;">金额</span>
+            <input class="box" type="text" name="" id="myphone" placeholder="请输入金额">
+        </div>
+        <div class="queding">确定</div>
+    </div>
+    <script type="text/javascript">
+        var storagefirst = window.localStorage;
+        var Yhangname = storagefirst["Yhangname"];
+        var cardNumber = storagefirst["cardNumber"];
+        var cardNumber2 = storagefirst["cardNumber2"];
+        var imgUrl = storagefirst["imgUrl"];
+        $(function () {
+            var numer1 = $('.box').val();
+            if (numer1.length > 0) {
+                //console.log(numer1.length)
+                $(".queding").css({
+                    "background-color": "rgb(18, 150, 219)"
+                })
+            } else {
+                $(".queding").css({
+                    "background-color": "rgb(238, 238, 238)"
+                })
+            }
+            //console.log(numer1.length)
+            //console.log(carNumber);
+            //console.log(cardNum2)
+        })
+        if (cardNumber2 != "" && cardNumber2 != null) {
+            $("#cardNum2").val(cardNumber2)
+        }
+        if (Yhangname != '' && Yhangname != null) {
+            $(".cardNumber1").text('')
+            $(".cardNumber1").text(Yhangname)
+        }
+        if (cardNumber != "" && cardNumber != null) {
+            $(".cardName").text('')
+            $(".cardName").text(cardNumber)
+        }
+        if (imgUrl != "" && imgUrl != null) {
+            $('.cardLog').css({ 'display': 'block' });
+            $(".cardLogImg").attr("src", imgUrl)
+        }
+        $('.fanhui').click(function () {
+            storagefirst["Yhangname"] = '';
+            storagefirst["cardNumber"] = '';
+            storagefirst["imgUrl"] = '';
+            storagefirst["cardNumber2"] = '';
+        })
+
+        $('.box').keyup(function () {
+            var numer1 = $('.box').val();
+            if (numer1.length > 0) {
+                //console.log(numer1.length)
+                $(".queding").css({
+                    "background-color": "rgb(18, 150, 219)"
+                })
+            } else {
+                $(".queding").css({
+                    "background-color": "rgb(238, 238, 238)"
+                })
+                console.log(numer1.length)
+            }
+        })
+        $(".queding").click(function () {
+            var rgb = $(this).css('background-color');
+            if (rgb == "rgb(18, 150, 219)") {
+                var data = {};
+                var lklnone = $("#myphone").val();
+                var card2 = $("#cardNum2").val()
+                var reg = /^[0-9]+.?[0-9]*$/;
+                if (lklnone < 100) {
+                    alert('错误操作，最低提现金额为100')
+                    return false;
+                }
+                //if (reg.test(card2)) {
+                //    alert('错误操作')
+                //    return false;
+                //}
+                if (card2 <= 0) {
+                    alert('错误操作，请选择银行卡')
+                    return false;
+                }
+                data.amount = lklnone;
+                data.bankCard = card2
+                $.ajax({
+                    type: "post", url: '/Manage/TakeNow',
+                    datatype: 'json',
+                    data: data,
+                    success: function (res) {
+                        if (res) {
+                            if (res) {
+                                if (res == "提现申请提交成功") {
+                                    alert(res)
+                                    window.location.href = "/Manage/userIfo";
+                                } else {
+                                    alert(res)
+                                }
+                            }
+                        }
+                    }
+                })
+            }else{
+                alert('请输提现金额，最低提现金额为100元')
+            }
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,222 @@
+﻿
+@{
+    ViewBag.Title = "发布公告";
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+}
+
+<script type="text/javascript">
+    $(function () {
+
+        //$('#txtcontent').summernote({
+        //     height: '500',
+        //     width: '1000',
+        //     lang: 'zh-CN'
+        //    });
+             
+            //初始化表单验证
+            //$("#form1").initValidform();
+        });
+</script>
+
+<body class="mainbody">
+    <form id="form1" enctype="multipart/form-data">
+        <!--导航栏-->
+        <div class="location">
+            <a href="/Business/NoticeList" class="back"><i></i><span>返回列表页</span></a>
+            <a href="/Home/Center" class="home"><i></i><span>首页</span></a>
+            <i class="arrow"></i>
+            <a href=""><span>公告管理</span></a>
+            <i class="arrow"></i>
+            <span>编辑公告</span>
+        </div>
+        <div class="line10"></div>
+        <!--/导航栏-->
+        <!--内容-->
+        <div id="floatHead" class="content-tab-wrap">
+            <div class="content-tab">
+                <div class="content-tab-ul-wrap">
+                    <ul>
+                        <li><a class="selected" href="javascript:;">编辑公告信息</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="tab-content">
+            <dl>
+                <dt>标题</dt>
+                <dd>
+                    <input name="txttitle" type="text" id="txttitle" class="input normal" datatype="*2-20" nullmsg="请设置标题" errormsg="标题范围在2-120位之间" style="width:495px;">
+                    <span class="Validform_checktip">*</span>
+                </dd>
+            </dl>
+            <dl>
+                <dt>类型</dt>
+                <dd>
+                    <select id="txt_type" name="txt_type" style="width:100px;" class="select">
+                        <option value="1">公告</option>
+                        <option value="2">停服公告</option>
+                        <option value="3">新闻</option>
+                        <option value="4">弹窗公告</option>
+                    </select>
+
+                </dd>
+            </dl>
+            <dl>
+                <dt>是否启用</dt>
+                <dd>
+                    <select id="sl_status" style="width:100px;" class="select">
+                        <option value="1">是</option>
+                        <option value="0">否</option>
+                    </select>
+                </dd>
+            </dl>
+            <dl id="tc">
+                <dt>弹窗公告图片</dt>
+                <dd>
+                    <input id="Width" name="Width" value="1000" type="hidden" />
+                    <input id="Height" name="Height" value="1200" type="hidden" />
+                    <input type="file" name="_PicUrl" accept="image/*" id="_PicUrl">
+                    <span>建议选择1000 * 1200的图片上传</span>
+                </dd>
+            </dl>
+            <dl>
+                <dt>内容</dt>
+                <dd>
+                    <textarea name="txtcontent" rows="10" cols="20" id="txtcontent" class="input normal" datatype="*" nullmsg="请设置内容" errormsg="内容范围在2-200位之间" sucmsg=" " style="width:700px;height:380px;"></textarea>
+                </dd>
+            </dl>
+        </div>
+        <!--/内容-->
+        <!--工具栏-->
+        <div class="page-footer">
+            <div class="btn-wrap" style="position: static;">
+                <input type="submit" name="btnSubmit" value="提交保存" id="btnSubmit" class="btn">
+                <input name="btnReturn" type="button" value="返回上一页" class="btn yellow" onclick="window.location.href = '/Business/NoticeList'">
+            </div>
+        </div>
+        <!--/工具栏-->
+    </form>
+    <script>
+
+        $("#txt_type").change(function () {
+            var value = $(this).val();
+            if (value == 4) {
+                $("#tc").css("display", "block");
+            } else {
+                 $("#tc").css("display", "none");
+            }
+        })
+
+
+        var id = "";
+        function getURLParameter(name) {
+            return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search) || [null, ''])[1].replace(/\+/g, '%20')) || null;
+        }
+        //console.log(getURLParameter("id"))
+        if (getURLParameter("id") != "" && getURLParameter("id") != null) {
+            id = getURLParameter("id");
+            var data = {};
+            data.id = getURLParameter("id");
+
+            $.ajax({
+                type: "post", url: '/Business/GetNoticeById',
+                datatype: 'json',
+                data: data,
+                success: function (res) {
+                    //console.log(res)
+                    if (res) {
+                        $("#txttitle").val(res.Data.title);
+                        $("#txt_type").val(res.Data.C_type);
+                        $("#sl_status").val(res.Data.isStart);
+                        $("#txtcontent").val(res.Data.content);
+                        if (res.Data.C_type == 4) {
+                            $("#tc").css("display", "block");
+                        }
+                        //$("#txtcontent").summernote("code", res.Data.content);
+                    } else {
+                        parent.alert(res.Message);
+                    }
+                }
+            })
+        } else {
+            id = "";
+        }
+
+        $("#btnSubmit").click(function () {
+            var txttitle = $("#txttitle").val();
+            var txtType = $("#txt_type").val();
+            var Width = $("#Width").val();
+            var Height = $("#Height").val();
+
+
+            var slStatus = $("#sl_status").val();
+            var txtcontent = $("#txtcontent").val(); //$("#txtcontent").summernote('code');
+            var turls = document.getElementById("_PicUrl").files[0];
+
+            var formData = new FormData();
+            formData.append("_TPicUrl", turls);
+            formData.append("id", id);
+            formData.append("title", txttitle);
+            formData.append("content", txtcontent);
+            formData.append("C_type", txtType);
+            formData.append("isStart", slStatus);
+            formData.append("_TPicUrl", turls);
+            formData.append("Width", Width);
+            formData.append("Height", Height);
+
+
+            //alert(turls); return;
+            //var data = {};
+            //data.id = id;
+            //data.title = txttitle;
+            //data.content = txtcontent;
+            //data.C_type = txtType;
+            //data.isStart = slStatus;
+            //data._TPicUrl = turls;
+
+            $.ajax({
+                type: "post", url: '/Business/NoticeSave',
+                dataType: 'json',
+                contentType: false,
+                processData: false,
+                data: formData,
+                success: function (res) {
+                    eval(res)
+                }
+            })
+        })
+
+
+        function verificationPicFile(file) {
+
+            var filePath = file.value;
+            if (filePath) {
+                //读取图片数据
+                var filePic = file.files[0];
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    var data = e.target.result;
+                    //加载图片获取图片真实宽度和高度
+                    var image = new Image();
+                    image.onload = function () {
+                        var width = image.width;
+                        var height = image.height;
+                        if (width == 600 | height == 200) {
+                            return true;
+                        } else {
+                            return true;
+                            alert("文件尺寸应为：600*200！");
+                            file.value = "";
+                            return false;
+                        }
+                    };
+                    image.src = data;
+                };
+                reader.readAsDataURL(filePic);
+            } else {
+                return false;
+            }
+        }
+    </script>
+</body>

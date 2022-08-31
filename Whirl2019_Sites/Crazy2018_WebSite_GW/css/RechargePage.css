@@ -1,0 +1,52 @@
+﻿html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+}
+
+.RechargePageBox {
+    width: 100%;
+    height: 100%;
+}
+
+header {
+    width: 100%;
+    height: 50px;
+    border-bottom: 1px solid #d9d9d9;
+    text-align: center;
+    line-height: 50PX;
+    font-size: 18px;
+    position: relative;
+}
+
+.fanhui {
+    position: absolute;
+    width: 30px;
+    height: 50px;
+}
+
+    .fanhui img {
+        width: 100%;
+        height: 60%;
+        margin-left: 6px;
+    }
+
+.RechargePageCont {
+    width: 100%;
+}
+
+.RechargeBtn {
+    width: 90%;
+    height: 50px;
+    margin:auto;
+    border-bottom:1px  solid #d9d9d9;
+    line-height:50px;
+    font-size:17px;
+}
+.genduoImg{
+    width:20px;
+    display:block;
+    float:right;
+    margin-top:15px;
+}

@@ -1,0 +1,185 @@
+﻿@using Crazy2018_Sys_DBHelper
+@using Crazy2018_Sys_Common
+@{
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+}
+@model RobotModel
+<body class="mainbody">
+
+    <form method="post" action="/Business/SaveRobotMsg" id="form1">
+        @Html.Raw(ViewBag.msg)
+        <!--导航栏-->
+        <div class="location">
+            <a href="/Business/Gmmgr" class="back"><i></i><span>返回列表页</span></a>
+            <a href="/Home/Center" class="home"><i></i><span>首页</span></a>
+            <i class="arrow"></i>
+            <a href="/Business/Gmmgr"><span>GM控制</span></a>
+            <i class="arrow"></i>
+            <span>编辑机器人账号</span>
+        </div>
+        <div class="line10"></div>
+        <!--/导航栏-->
+        <!--内容-->
+        <div id="floatHead" class="content-tab-wrap" style="height: 42px;">
+            <div class="content-tab" style="width: 1134px;">
+                <div class="content-tab-ul-wrap">
+                    <div class="tab-title"><span>机器人信息</span><i></i></div><ul>
+                        <li><a class="selected" href="javascript:;">机器人信息</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="tab-content">
+            <table>
+                <tbody>
+                    <tr>
+                        <td>
+                            <dl>
+                                <dt>用户ID</dt>
+                                <dd id="hduserid1">
+                                    <input type="text" disabled value="@Model.User.UserID" name="_UserID" class="input" id="_UserID">
+                                    <input type="hidden" value="@Model.User.UserID" name="UserID" class="input" id="UserID">
+                                </dd>
+                            </dl>
+                        </td>
+                        <td>
+                            <dl>
+                                <dt>头像</dt>
+                                <dd>
+
+                                    <input type="text" placeholder="图片 501.jpg" value="@Model.User.wechatHeadIcon" name="wechatHeadIcon" class="input" id="wechatHeadIcon">
+                                </dd>
+                            </dl>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <dl>
+                                <dt>机器人昵称</dt>
+                                <dd id="wechatName">
+
+                                    <input name="wechatName" value="@Model.User.wechatName" type="text" id="wechatName" class="input" placeholder="昵称" title="昵称">
+                                </dd>
+                            </dl>
+                        </td>
+                        <td>
+                            <dl>
+                                <dt>胜率</dt>
+                                <dd>
+                                    <input name="winpercent" value="@Model.User.winpercent" type="text" id="winpercent" class="input" placeholder="百分比" title="百分比">
+                                </dd>
+                            </dl>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <dl>
+                                <dt>赢的手数</dt>
+                                <dd id="wechatName">
+
+                                    <input name="gameWinCount" value="@Model.agentuser.gameWinCount" type="text" id="gameWinCount" class="input" placeholder="赢的手数" title="赢的手数">
+                                </dd>
+                            </dl>
+                        </td>
+                        <td>
+                            <dl>
+                                <dt>输的手数</dt>
+                                <dd>
+                                    <input name="gameLostCount" value="@Model.agentuser.gameLostCount" type="text" id="gameLostCount" class="input" placeholder="输的手数" title="输的手数">
+                                </dd>
+                            </dl>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <dl>
+                                <dt>平局的手数</dt>
+                                <dd id="wechatName">
+
+                                    <input name="gameDrawCount" value="@Model.agentuser.gameDrawCount" type="text" id="gameDrawCount" class="input" placeholder="平局的手数" title="平局的手数">
+                                </dd>
+                            </dl>
+                        </td>
+                        <td>
+                            <dl>
+                                <dt>翻牌数</dt>
+                                <dd>
+                                    <input name="dealCardCount" value="@Model.agentuser.dealCardCount" type="text" id="dealCardCount" class="input" placeholder="翻牌数" title="翻牌数">
+                                </dd>
+                            </dl>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <dl>
+                                <dt>1皮手数</dt>
+                                <dd id="wechatName">
+
+                                    <input name="pos1Count" value="@Model.agentuser.pos1Count" type="text" id="pos1Count" class="input" placeholder="1皮手数" title="1皮手数">
+                                </dd>
+                            </dl>
+                        </td>
+                        <td>
+                            <dl>
+                                <dt>2皮手数</dt>
+                                <dd>
+                                    <input name="pos2Count" value="@Model.agentuser.pos2Count" type="text" id="pos2Count" class="input" placeholder="2皮手数" title="2皮手数">
+                                </dd>
+                            </dl>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <dl>
+                                <dt>5皮手数</dt>
+                                <dd id="wechatName">
+
+                                    <input name="pos5Count" value="@Model.agentuser.pos5Count" type="text" id="pos5Count" class="input" placeholder="5皮手数" title="5皮手数">
+                                </dd>
+                            </dl>
+                        </td>
+                        <td>
+                            <dl>
+                                <dt>10皮手数</dt>
+                                <dd>
+                                    <input name="pos10Count" value="@Model.agentuser.pos10Count" type="text" id="pos10Count" class="input" placeholder="10皮手数" title="10皮手数">
+                                </dd>
+                            </dl>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <dl>
+                                <dt>20皮手数</dt>
+                                <dd id="wechatName">
+
+                                    <input name="pos20Count" value="@Model.agentuser.pos20Count" type="text" id="pos20Count" class="input" placeholder="20皮手数" title="20皮手数">
+                                </dd>
+                            </dl>
+                        </td>
+                        <td>
+                            <dl>
+                                <dt>50皮手数</dt>
+                                <dd>
+                                    <input name="pos50Count" value="@Model.agentuser.pos50Count" type="text" id="pos50Count" class="input" placeholder="50皮手数" title="50皮手数">
+                                </dd>
+                            </dl>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <!--/内容-->
+        <!--工具栏-->
+        <div class="page-footer">
+            <div class="btn-wrap" style="position: static;">
+                <input type="submit" name="btnSubmit" value="提交保存" id="btnSubmit" class="btn">
+                <input name="btnReturn" type="button" value="返回上一页" class="btn yellow" onclick="window.location.href = '/Business/NoticeList'">
+            </div>
+        </div>
+        <!--/工具栏-->
+    </form>
+   
+</body>
+

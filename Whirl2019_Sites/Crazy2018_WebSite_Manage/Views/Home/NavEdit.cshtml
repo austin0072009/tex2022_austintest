@@ -1,0 +1,211 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,initial-scale=1.0,user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <title>编辑后台导航</title>
+    <link href="~/scripts/artdialog/ui-dialog.css" rel="stylesheet" type="text/css" />
+    <link href="~/skin/default/style.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" charset="utf-8" src="~/scripts/jquery/jquery-1.11.2.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="~/scripts/jquery/Validform_v5.3.2_min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="~/scripts/artdialog/dialog-plus-min.js"></script>
+    <script type="text/javascript" src="~/scripts/webuploader/webuploader.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="~/js/uploader.js"></script>
+    <script type="text/javascript" charset="utf-8" src="~/js/laymain.js"></script>
+    <script type="text/javascript" charset="utf-8" src="~/js/common.js"></script>
+
+    <script type="text/javascript">
+        $(function () {
+            //初始化表单验证
+            $("#form1").initValidform();
+            //初始化上传控件
+            $(".upload-img").InitUploader({ sendurl: "/Home/UpLoadFile", swf: "~/scripts/webuploader/uploader.swf" });
+
+
+            $(".single-checkbox").click(function () {
+                if ($(this).find("a").first().attr("class") == "selected") {
+                    $("#is_lock").val(1);
+                } else {
+                    $("#is_lock").val(0);
+                }
+            })
+        });
+    </script>
+</head>
+
+<body class="mainbody">
+    <form id="form1"  action="NavSave" method="post">
+        <input type="hidden" name="id" id="id" value="@ViewBag.EditModel.id" />
+        <!--导航栏-->
+        <div class="location">
+            <a href="/Home/NavList" class="back"><i></i><span>返回列表页</span></a>
+            <a href="/Home/Center" class="home"><i></i><span>首页</span></a>
+            <i class="arrow"></i>
+            <a href="/Home/NavList"><span>导航列表</span></a>
+            <i class="arrow"></i>
+            <span>编辑后台导航</span>
+        </div>
+        <div class="line10"></div>
+        <!--/导航栏-->
+        <!--内容-->
+        <div id="floatHead" class="content-tab-wrap">
+            <div class="content-tab">
+                <div class="content-tab-ul-wrap">
+                    <ul>
+                        <li><a class="selected" href="javascript:;">基本信息</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="tab-content">
+            <dl>
+                <dt>上级导航</dt>
+                <dd>
+                    <div class="rule-single-select single-select">
+                        <select id="parent_id" name="parent_id" style="display: none;">
+
+
+                            @foreach (SelectListItem item in ViewBag.SelectList as List<SelectListItem>)
+                            {
+                                if (item.Selected)
+                                {
+                                    <option value="@item.Value" selected="selected">@item.Text</option>
+                                }
+                                else
+                                {
+                                    <option value="@item.Value">@item.Text</option>
+                                }
+                            }
+                        </select>
+                    </div>
+                </dd>
+                @*<dd>
+                    <div class="rule-single-select single-select">
+                        <div class="boxwrap"><a class="select-tit" href="javascript:;"><span>无父级导航</span><i></i></a><div class="select-items" style="display: none;"><ul><li class="selected">无父级导航</li><li>新闻资讯</li><li>　├ 内容管理</li><li>　├ 栏目类别</li><li>内容管理</li><li>站点管理</li><li>　├ 公告管理</li><li>　　├ 公告列表</li><li>　　├ 邮件管理</li><li>　├ 充值管理</li><li>　　├ 充值日志</li><li>　　├ 商城管理</li><li>　　├ 提现日志</li><li>　├ 会员管理</li><li>　　├ 帐号列表</li><li>　　├ 用户排行</li><li>　　├ 每日注册统计</li><li>　　├ 上线玩家统计</li><li>　　├ 激活码查询</li><li>　　├ GM控制</li><li>　　├ 区服统计</li><li>　　├ 代理账号列表</li><li>　　├ 反馈意见</li><li>　├ 游戏管理</li><li>　　├ 奖池统计</li><li>　　├ 金币收支</li><li>　　├ 游戏列表</li><li>　　├ 场次列表</li><li>控制面板</li><li>　├ 站点设置</li><li>　├ 界面管理</li><li>　　├ 后台导航管理</li><li>　├ 系统用户</li><li>　　├ 管理员管理</li><li>　　├ 角色管理</li><li>　　├ 管理日志</li></ul></div><i class="arrow" style="display: none;"></i></div>
+                        <select name="ddlParentId" id="ddlParentId" style="display: none;">
+                            <option value="0">无父级导航</option>
+                            <option value="31">新闻资讯</option>
+                            <option value="32">　├ 内容管理</option>
+                            <option value="33">　├ 栏目类别</option>
+                        </select>
+                    </div>
+                </dd>*@
+            </dl>
+            <dl>
+                <dt>排序数字</dt>
+                <dd>
+                    <input name="sort_id" type="text"  id="sort_id" class="input small" datatype="n" sucmsg=" " value="@ViewBag.EditModel.sort_id">
+                    <span class="Validform_checktip">*数字，越小越向前</span>
+                </dd>
+            </dl>
+            <dl>
+                <dt>是否隐藏</dt>
+                <dd>
+                    <div class="rule-single-checkbox single-checkbox">
+                        <input type="hidden" id="is_lock" name="is_lock" value="0" />
+                        @if (ViewBag.is_lock == 0)
+                        {
+
+                            <input id="cbIsLock" value="0" style="display: none;" type="checkbox" name="cbIsLock" checked="checked">
+                        }
+                        else
+                        {
+                            <input id="cbIsLock" value="1" style="display: none;" type="checkbox" name="cbIsLock">
+                        }
+                    </div>
+                    <span class="Validform_checktip">*隐藏后不显示在界面导航菜单中。</span>
+                </dd>
+            </dl>
+            <dl>
+                <dt>调用别名</dt>
+                <dd>
+                    <input type="text" id="name" name="name" class="input normal" datatype="/^[a-zA-Z0-9\-\_]{2,50}$/" value="@ViewBag.EditModel.name" errormsg="请填写正确的ID" sucmsg=" " ajaxurl="/Home/NavigationValidate?old_name=@ViewBag.EditModel.name" />
+                    @*<asp:TextBox ID="txtName" runat="server" CssClass="input normal" datatype="/^[a-zA-Z0-9\-\_]{2,50}$/" errormsg="请填写正确的ID" sucmsg=" "></asp:TextBox>*@
+                    <span class="Validform_checktip">权限控制名称，只允许字母、数字、下划线</span>
+                </dd>
+            </dl>
+            <dl>
+                <dt>导航标题</dt>
+                <dd>
+                    <input type="text" id="title" name="title" class="input normal" datatype="*1-100" value="@ViewBag.EditModel.title" sucmsg=" " />
+                    @*<asp:TextBox ID="txtTitle" runat="server" CssClass="input normal" datatype="*1-100" sucmsg=" "></asp:TextBox>*@
+                    <span class="Validform_checktip">*导航中文标题，100字符内</span>
+                </dd>
+            </dl>
+            <dl>
+                <dt>副标题</dt>
+                <dd>
+                    <input type="text" id="sub_title" name="sub_title" class="input normal" value="@ViewBag.EditModel.sub_title" datatype="*0-100" sucmsg=" " />
+                    @*<asp:TextBox ID="txtSubTitle" runat="server" CssClass="input normal" datatype="*0-100" sucmsg=" " />*@
+                    <span class="Validform_checktip">非必填，当导航拥有两个名称时使用</span>
+                </dd>
+            </dl>
+            <dl>
+                <dt>自定义图标</dt>
+                <dd>
+                    <input type="text" id="icon_url" name="icon_url" maxlength="255" value="@ViewBag.EditModel.icon_url" class="input normal upload-path" />
+                    @*<asp:TextBox ID="txtIconUrl" runat="server" maxlength="255" CssClass="input normal upload-path" />*@
+                    <div class="upload-box upload-img"></div>
+                </dd>
+            </dl>
+            <dl>
+                <dt>链接地址</dt>
+                <dd>
+                    <input type="text" id="link_url" name="link_url" maxlength="255" value="@ViewBag.EditModel.link_url" class="input normal" />
+                    @*<asp:TextBox ID="txtLinkUrl" runat="server" maxlength="255" CssClass="input normal" />*@
+                    <span class="Validform_checktip">当前管理目录，有子导航不用填</span>
+                </dd>
+            </dl>
+            <dl>
+                <dt>备注说明</dt>
+                <dd>
+                    <textarea id="remark" name="remark" class="input" TextMode="MultiLine">@ViewBag.EditModel.remark</textarea>
+                    @*<input type="" id="txtRemark" name="txtRemark" class="input" TextMode="MultiLine" />*@
+                    @*<asp:TextBox ID="txtRemark" runat="server" CssClass="input" TextMode="MultiLine"></asp:TextBox>*@
+                    <span class="Validform_checktip">非必填，可为空</span>
+                </dd>
+            </dl>
+            <dl>
+                <dt>权限资源</dt>
+                <dd>
+                    <div class="rule-multi-porp multi-porp">
+                        @foreach (KeyValuePair<string, string> kvp in ViewBag.ActionType)
+                        {
+                            string actionType = ViewBag.EditModel.action_type == null ? "" : ViewBag.EditModel.action_type;
+                            string str = kvp.Value + "(" + kvp.Key + ")";
+                            if (actionType.Contains(kvp.Key))
+                            {
+                                <input name="action_type" type="checkbox" checked="checked" value="@kvp.Key" alt="@kvp.Value" />
+                                <label>@str</label>
+                            }
+                            else
+                            {
+                                <input name="action_type" type="checkbox" value="@kvp.Key" alt="@kvp.Value" />
+                                <label>@str</label>
+                            }
+
+                        }
+                        @*<asp:CheckBoxList ID="cblActionType" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow"></asp:CheckBoxList>*@
+                    </div>
+                </dd>
+            </dl>
+        </div>
+        <!--/内容-->
+        <!--工具栏-->
+        <div class="page-footer">
+            <div class="btn-wrap" style="position: static;">
+                <input type="submit" name="btnSubmit" value="提交保存" id="btnSubmit" class="btn">
+                <input name="btnReturn" type="button" value="返回上一页" class="btn yellow" onclick="javascript:history.back(-1);">
+            </div>
+        </div>
+        <!--/工具栏-->
+    </form>
+</body>
+</html>

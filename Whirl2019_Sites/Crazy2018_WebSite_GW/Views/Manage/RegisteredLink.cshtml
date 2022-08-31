@@ -1,0 +1,227 @@
+﻿@{
+    Layout = null;
+}
+@using Crazy2018_Sys_Common;
+@using Crazy2018_Sys_ViewEntity;
+@model DataResults<TaxlogView>
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <meta charset="UTF-8">
+    <meta name="format-detection" content="telephone=no">
+    <title>注册</title>
+    <link type="text/css" href="~/css/bootstrap.min.css" rel="stylesheet">
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/js/jquery-1.11.2.min.js"></script>
+    <link href="~/css/lyz.calendar.css" rel="stylesheet" type="text/css" />
+    <script src="~/js/lyz.calendar.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="~/css/public.css">
+    <script src="~/js/public.js"></script>
+    <style>
+        .form-control-vpwd {
+            width: 200px;
+            display: inline;
+        }
+    </style>
+    <script type="text/javascript">
+        var obj = {};
+        $(function () {
+            if ($(document.body).outerWidth(true) > 641) {
+                $("#phoneorpc").css("overflow", "visible");
+            } else {
+                $("#phoneorpc").css("overflow", "hidden")
+            }
+            GetUser();
+        });
+        function GetUser() {
+            var data = {};
+            $.ajax({
+                type: "post", url: '/Manage/GetUserInfo',
+                datatype: 'json',
+                data: data,
+                success: function (res) {
+                    if (res) {
+                        //console.log(res);
+                        obj = res
+                        //window.location.href = "/Manage/userIfo"
+                        //$("#userId").text(res.UserId)
+                        //$("#myPhone").text(res.PhoneNum)
+                    }
+                }
+            })
+        }
+        var countdown = 60;
+        function getQueryVariable(variable) {
+            var query = window.location.search.substring(1);
+            var vars = query.split("&");
+            for (var i = 0; i < vars.length; i++) {
+                var pair = vars[i].split("=");
+                if (pair[0] == variable) { return pair[1]; }
+            }
+            return (false);
+        }
+        function settime(obj) {
+            if (countdown == 0) {
+                obj.removeAttribute("disabled");
+                obj.innerHTML="发送验证码";
+                countdown = 60;
+                return;
+            } else {
+                obj.setAttribute("disabled", true);
+                obj.innerHTML="(" + countdown + ")后重发";
+                countdown--;
+            }
+            setTimeout(function () {
+                settime(obj)
+            }, 1000)
+        }
+
+      
+        $(function () {
+            $("#imgObj").click(function () {
+                var _this = this
+               
+                var phone = $("#phone").val();
+                var phonereg = /^0?1[3|4|5|8|7|6][0-9]\d{8}$/;//手机
+                if (!phonereg.test(phone)) {
+                    alert('请填写正确的手机号码')
+                    return false;
+
+                }
+
+                var data = {};
+                data.phoneNum = phone;
+                $.ajax({
+                    type: "post", url: '/Manage/SendCode',
+                    datatype: 'json',
+                    data: data,
+                    success: function (res) {
+
+                        if (res) {
+                            if (res != "手机号码不正确") {
+                                if (res != "当前手机号码已经注册") {
+                                    if (res != "发送失败") {
+                                        settime(_this);
+                                    } else {
+                                        alert(res)
+                                    }
+                                } else {
+                                    alert(res)
+                                }
+                            } else {
+                                alert(res)
+                            }
+                        } else {
+                            alert(res)
+                        }
+                    }
+                })
+            })
+            $("#loginBtn").click(function () {
+
+                var verification = $("#VPwd").val()
+                var myPhone = $("#phone").val()
+                var password = $("#mypassword").val();
+                var passwordreg = /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{8,16}$/;
+                var phonereg = /^0?1[3|4|5|8|7|6][0-9]\d{8}$/;//手机
+
+                var recommend = getQueryVariable("ocode"); //获取推荐码推荐码
+                
+                if (!phonereg.test(myPhone)) {
+                    alert('请填写正确的手机号码')
+                    return false;
+                }
+                if (password.length <= 0) {
+                    alert('请输入密码')
+                    return false;
+                }
+               
+                if (!passwordreg.test(password)) {
+                    alert('密码格式错误，密码由8-16位数字+字母组成')
+                    return false;
+                }
+                if (verification.length <= 0) {
+                    alert("请填写验证码")
+                    return false;
+                }
+                var data = {};
+                data.Phone = myPhone;
+                data.Verification = verification;
+                data.Password = password;
+                data.recommend = recommend;
+                $.ajax({
+                    type: "post", url: '/Manage/RegisterCommit',
+                    datatype: 'json',
+                    data: data,
+                    success: function (res) {
+                        if (res) {
+                            if (res === "注册成功") {
+                                alert("注册成功")
+                                window.location.href = "/Manage/login";
+                            }
+                            else {
+                                alert(res)
+                            }
+                        }
+                    }
+                })
+            });
+            $("#BackBtn").click(function () {
+                window.location.href = "/Manage/userIfo";
+            });
+
+
+        });
+    </script>
+</head>
+<body>
+        <div style="width:40%;margin:auto;margin-top:10%">
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+
+                    <h3 class="panel-title">
+                        <label class="">打炫注册</label>
+                        <input style="float:right" type="button" id="BackBtn" value="返回" class="btn btn-primary btn-sm" />
+
+                    </h3>
+                </div>
+                <div class="panel-body">
+                    <form class="form-horizontal" role="form">
+                        <div class="form-group">
+                            <label for="firstname" class="col-sm-2 control-label">电话</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" name="phone" id="phone"
+                                       placeholder="请输入电话">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="lastname" class="col-sm-2 control-label">密码</label>
+                            <div class="col-sm-10">
+                                <input type="password" class="form-control" name="mypassword" id="mypassword"
+                                       placeholder="请输入密码">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="lastname" class="col-sm-2 control-label">验证码</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control form-control-vpwd" name="VPwd" id="VPwd"
+                                       placeholder="请输入验证码">
+                                <button type="button" id="imgObj" name="imgObj" class="btn btn-info">发送验证码</button>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="button" id="loginBtn" class="btn btn-default">注册</button>
+                            </div>
+                        </div>
+                    </form>
+
+                   
+                </div>
+            </div>
+        </div>
+</body>
+</html>

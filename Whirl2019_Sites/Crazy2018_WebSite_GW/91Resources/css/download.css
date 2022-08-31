@@ -1,0 +1,42 @@
+
+.download-tip {
+    margin-top: 18px;
+}
+
+.download-ios-btn {
+    background: url(../img/ios-btn-bg.png) no-repeat;
+    background-size: 130px 40px;
+    min-width: 259px;
+    text-indent: 48px;
+    min-height: 62px;
+    line-height: 39px;
+    color: #fff;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.download-and-btn {
+    background: url(../img/AZ-btn-bg.png) no-repeat;
+    background-size: 130px 40px;
+    min-width: 259px;
+    text-indent: 48px;
+    line-height: 30px;
+    color: #fff;
+    display: block;
+}
+/*.download-ios-btn:hover{ background:url(../img/ios-btn-bg.png) no-repeat; width:209px; text-indent:38px; height:32px; line-height:30px; color:#fff; display:block; display:block; margin-bottom:15px;}
+.download-and-btn:hover {
+    background: url(../img/AZ-btn-bg.png) no-repeat;
+    width: 109px;
+    text-indent: 38px;
+    height: 32px;
+    line-height: 30px;
+    color: #fff;
+    display: block;
+    display: block;
+}*/
+
+
+
+
+

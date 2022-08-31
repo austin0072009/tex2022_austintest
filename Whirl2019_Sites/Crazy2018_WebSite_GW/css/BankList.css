@@ -1,0 +1,145 @@
+﻿html,
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(48, 49, 51, 255);
+}
+
+.BankListBox {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+header {
+    width: 100%;
+    height: 50px;
+    background-color: rgba(27, 26, 31, 255);
+    color: #FFF;
+    text-align: center;
+    line-height: 45px;
+    position: relative;
+}
+
+.fanhui {
+    position: absolute;
+    top: 0;
+    width: 30px;
+    height: 50px;
+}
+
+    .fanhui img {
+        width: 100%;
+        height: 60%;
+        margin-top: 10px;
+        margin-left: 6px;
+    }
+
+.tianjia {
+    position: absolute;
+    top: 0;
+    right: 6px;
+    width: 30px;
+    height: 50px;
+}
+
+    .tianjia img {
+        width: 100%;
+        height: 60%;
+        margin-top: 10px;
+    }
+
+.bankListCont {
+    /* width: 100%; */
+    position: absolute;
+    width: 100%;
+    top: 55px;
+    bottom: 0;
+    padding: 0;
+    margin: 0;
+    overflow: auto;
+}
+
+    .bankListCont li {
+        display: block;
+        width: 95%;
+        margin: 0% 0% 1% 2.45%;
+        border-radius: 5px;
+        position: relative;
+        overflow: hidden;
+    }
+
+.bankIonfo {
+    width: 100%;
+    height: 5rem;
+    /* background-color: red; */
+    overflow: hidden;
+}
+
+.bank-logo {
+    float: left;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 100%;
+    display: inline-block;
+    margin: 14px 10px 4px 10px;
+    overflow: hidden;
+    background-color: #ffffff;
+    opacity: 0.7;
+}
+
+    .bank-logo img {
+        width: 80%;
+        height: 80%;
+        display: block;
+        margin-top: 4px;
+        margin-left: 4px;
+    }
+
+.bankIonfo-name {
+    display: inline-block;
+    float: left;
+    margin-top: 18px;
+}
+
+    .bankIonfo-name span {
+        display: block;
+        height: 2rem;
+        line-height: 2rem;
+        font-size: 18px;
+        font-weight: 700;
+        color: #fff;
+        position: relative;
+        z-index: 999;
+    }
+
+.bankNumber {
+    float: right;
+    display: inline-block;
+    height: 2rem;
+    margin-right: 10px;
+    position: relative;
+    z-index: 99;
+}
+
+.numberInfo {
+    width: 100%;
+    height: 100%;
+    line-height: 2rem;
+    font-size: 16px;
+    color: #fff;
+    font-weight: 700;
+}
+
+.backImg {
+    position: absolute;
+    left: 33%;
+    top: -4px;
+}

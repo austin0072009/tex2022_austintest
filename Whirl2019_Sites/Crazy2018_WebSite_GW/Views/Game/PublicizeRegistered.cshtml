@@ -1,0 +1,532 @@
+﻿
+@{
+    ViewBag.Title = "PublicizeRegistered";
+}
+
+<!DOCTYPE html>
+<HTML>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="format-detection" content="telephone=no">
+    <meta id="viewport" name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=no,target-densitydpi=medium-dpi" />
+    <link rel="stylesheet" href="~/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/css/PublicizeRegistered.css">
+    <link rel="stylesheet" href="~/css/public.css">
+    <script src="~/js/jquery-1.11.2.min.js"></script>
+    <script src="~/js/public.js"></script>
+    <title>注册</title>
+</head>
+
+<body style="position:relative;">
+    @*<div class="bgheight">
+            <div class="phoneorpc">
+                <div class="registeredBox">
+                    <div class="Account">
+                        <div class="AccountBox">
+                            <div class="AccountLog"></div>
+                            <input type="text" id="MyAccountId" placeholder="请输入您的注册账号!">
+                            <div class="verification"></div>
+                            <div class="verification1"></div>
+                        </div>
+                    </div>
+                    <div class="Account1">
+                        <div class="AccountBox">
+                            <div class="AccountLog1"></div>
+                            <input type="password" id="MyPwd" placeholder="请输入您的注册密码!">
+                            <div class="verification2"></div>
+                            <div class="verification3"></div>
+                        </div>
+                    </div>
+                    <div class="Account1">
+                        <div class="AccountBox">
+                            <div class="AccountLog1"></div>
+                            <input type="password" id="MyPwd1" placeholder="请再次输入您的注册密码!">
+                        </div>
+                    </div>
+                    <div class="BtnBox">
+                        <button class="RegBtn">注 &nbsp;&nbsp; 册</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>*@
+
+    <div class="registeredBox">
+        <div class="Account">
+            <div class="AccountBox">
+                <div class="AccountLog"></div>
+                <input type="text" id="MyAccountId" placeholder="请输入您的注册账号!">
+                <div class="verification"></div>
+                <div class="verification1"></div>
+            </div>
+        </div>
+        <div class="Account1">
+            <div class="AccountBox">
+                <div class="AccountLog1"></div>
+                <input type="password" id="MyPwd" placeholder="请输入您的注册密码!">
+                <div class="verification2"></div>
+                <div class="verification3"></div>
+            </div>
+        </div>
+        <div class="Account2">
+            <div class="AccountBox">
+                <div class="AccountLog1"></div>
+                <input type="password" id="MyPwd1" placeholder="请再次输入您的注册密码!">
+            </div>
+        </div>
+        <div class="BtnBox">
+            @*<button class="RegBtn">注 &nbsp;&nbsp; 册</button>*@
+            <div class="RegBtn">
+                <img src="~/img/queding.png" alt="Alternate Text" />
+            </div>
+        </div>
+    </div>
+    <script>
+        var OldPwd = "";
+        var passwordreg = /[^\w\.\/]/ig;
+        var Account = /[^\w\.\/]/ig
+        //var agentId = "";
+        var showOR = "";
+        $("#MyAccountId").change(function () {
+            var MyAccountId = $(this).val();
+            var MyPwdId = $("#MyPwd").val();
+            var MyPwdId1 = $("#MyPwd1").val();
+            var phonereg = /^0?1[3|4|5|8|7|6][0-9]\d{8}$/;//手机
+            if (MyAccountId.length >= 6 && MyAccountId.length <= 16) {
+                //console.log(MyAccountId)
+                if (!phonereg.test(MyAccountId)) {
+                    if (Account.test(MyAccountId)) {
+                        $(".verification").css({
+                            "display": "none"
+                        })
+                        $(".verification1").css({
+                            "display": "block"
+
+                        })
+                        Bomb3("输入账号不能为中文字符", 2000);
+                        //return false;
+                    } else {
+                        var data = {};
+                        data.userName = MyAccountId
+                        $.ajax({
+                            type: "post", url: '/Game/CheckUserName',
+                            datatype: 'json',
+                            data: data,
+                            async: true,
+                            beforeSend: function () {
+                                load2()
+                                //load();
+                            },
+                            complete: function () {
+                                loadEnd2()
+                                //loadEnd();
+                            },
+                            success: function (res) {
+                                showOR = res
+                                if (res == false) {
+                                    $(".verification").css({
+                                        "display": "block"
+                                    })
+                                    $(".verification1").css({
+                                        "display": "none"
+                                    })
+                                    if (MyAccountId.length <= 0 || MyPwdId.length <= 0 || MyPwdId1.length <= 0) {
+                                        $(".RegBtn").css({
+                                            "background-color": "rgb(185, 185, 185)"
+                                        })
+                                    } else {
+                                        $(".RegBtn").css({
+                                            "background-color": "rgb(102, 51, 153)"
+                                        })
+                                    }
+                                } else {
+                                    $(".verification").css({
+                                        "display": "none"
+                                    })
+                                    $(".verification1").css({
+                                        "display": "block"
+                                    })
+                                    $(".RegBtn").css({
+                                        "background-color": "rgb(185, 185, 185)"
+                                    })
+                                    if (MyAccountId.length <= 0 || MyPwdId.length <= 0 || MyPwdId1.length <= 0) {
+                                        $(".RegBtn").css({
+                                            "background-color": "rgb(185, 185, 185)"
+                                        })
+                                    } else {
+                                        $(".RegBtn").css({
+                                            "background-color": "rgb(102, 51, 153)"
+                                        })
+                                    }
+                                    Bomb3("账号已存在，请重新输入", 2000);
+                                }
+                            }
+                        })
+                    }
+                } else {
+                    var data = {};
+                    data.userName = MyAccountId
+                    $.ajax({
+                        type: "post", url: '/Game/CheckUserName',
+                        datatype: 'json',
+                        data: data,
+                        async: true,
+                        beforeSend: function () {
+                            load2()
+                            //load();
+                        },
+                        complete: function () {
+                            loadEnd2()
+                            //loadEnd();
+                        },
+                        success: function (res) {
+                            showOR = res
+                            if (res == false) {
+                                $(".verification").css({
+                                    "display": "block"
+                                })
+                                $(".verification1").css({
+                                    "display": "none"
+                                })
+                                if (MyAccountId.length <= 0 || MyPwdId.length <= 0 || MyPwdId1.length <= 0) {
+                                    $(".RegBtn").css({
+                                        "background-color": "rgb(185, 185, 185)"
+                                    })
+                                } else {
+                                    $(".RegBtn").css({
+                                        "background-color": "rgb(102, 51, 153)"
+                                    })
+                                }
+                            } else {
+                                $(".verification").css({
+                                    "display": "none"
+                                })
+                                $(".verification1").css({
+                                    "display": "block"
+                                })
+                                $(".RegBtn").css({
+                                    "background-color": "rgb(185, 185, 185)"
+                                })
+                                if (MyAccountId.length <= 0 || MyPwdId.length <= 0 || MyPwdId1.length <= 0) {
+                                    $(".RegBtn").css({
+                                        "background-color": "rgb(185, 185, 185)"
+                                    })
+                                } else {
+                                    $(".RegBtn").css({
+                                        "background-color": "rgb(102, 51, 153)"
+                                    })
+                                }
+                                Bomb3("账号已存在，请重新输入", 2000);
+                            }
+                        }
+                    })
+                }
+            } else {
+                $(".verification").css({
+                    "display": "none"
+                })
+                $(".verification1").css({
+                    "display": "block"
+
+                })
+                Bomb3("账号长度为6到16个字符", 2000);
+            }
+        })
+        //密码改变检测
+        $("#MyPwd").change(function () {
+            var MyPwdId = $(this).val();
+            var MyAccountId = $("#MyAccountId").val();
+            OldPwd = $(this).val();
+            console.log(OldPwd)
+            if (MyPwdId.length >= 8 && MyPwdId.length <= 16) {
+                if (passwordreg.test(MyPwdId)) {
+                    // Bomb("密码格式错误，密码由8-16位数字+字母组成", 1500);
+                    $(".verification3").css({
+                        "display": "none"
+                    });
+                    $(".verification2").css({
+                        "display": "block"
+                    });
+
+
+                    //if (MyPwdId.length >= 8 && MyPwdId.length <= 16) {
+                    //    $(".verification3").css({
+                    //        "display": "none"
+                    //    });
+                    //    $(".verification2").css({
+                    //        "display": "block"
+                    //    });
+                    //    // Bomb3("密码长度为8到16个字符", 2000);
+                    //} else {
+                    //    $(".verification3").css({
+                    //        "display": "block"
+                    //    });
+                    //    $(".verification2").css({
+                    //        "display": "none"
+                    //    });
+                    //    Bomb3("密码长度为8到16个字符", 2000);
+                    //}
+                    //return false;
+                } else {
+                    if (MyPwdId != MyAccountId) {
+                        $(".verification2").css({
+                            "display": "block"
+                        });
+                        $(".verification3").css({
+                            "display": "none"
+                        });
+                    } else {
+                        $(".verification2").css({
+                            "display": "none"
+                        });
+                        $(".verification3").css({
+                            "display": "block"
+                        });
+                        Bomb3("账号密码不能相同", 1500)
+                    }
+                }
+            } else {
+                $(".verification3").css({
+                    "display": "block"
+                });
+                $(".verification2").css({
+                    "display": "none"
+                });
+                Bomb3("密码长度为8到16个字符", 2000);
+            }
+        })
+
+        //账号检测
+        $("#MyAccountId").keyup(function () {
+            var MyAccountId = $(this).val();
+            var MyPwdId = $("#MyPwd").val();
+            var MyPwdId1 = $("#MyPwd1").val();
+            if (MyAccountId.length <= 0) {
+                $(".verification").css({
+                    "display": "none"
+                })
+                $(".verification1").css({
+                    "display": "none"
+                })
+            }
+            if (MyAccountId.length <= 0 || MyPwdId.length <= 0 || MyPwdId1.length <= 0) {
+                $(".RegBtn").css({
+                    "background-color": "rgb(185, 185, 185)"
+                })
+                //Bomb("账号不能为空")
+            } else {
+                $(".RegBtn").css({
+                    "background-color": "rgb(102, 51, 153)"
+                })
+            }
+
+        })
+
+        //密码检测
+        $("#MyPwd").keyup(function () {
+            var MyAccountId = $("#MyAccountId").val();
+            var MyPwdId = $(this).val();
+            var MyPwdId1 = $("#MyPwd1").val();
+            var shoOR = $(".verification1").css("display")
+            if (MyPwdId.length <= 0) {
+                $(".verification2").css({
+                    "display": "none"
+                })
+                $(".verification3").css({
+                    "display": "none"
+                })
+            } else {
+                if (MyPwdId == OldPwd) {
+                    if (passwordreg.test(MyPwdId) || MyPwdId == MyAccountId) {
+                        $(".verification2").css({
+                            "display": "none"
+                        });
+                        $(".verification3").css({
+                            "display": "block"
+                        })
+                        Bomb3("输入密码有误", 1500);
+                    } else {
+                        $(".verification2").css({
+                            "display": "block"
+                        });
+                        $(".verification3").css({
+                            "display": "none"
+                        })
+                    }
+
+                }
+            }
+
+            if (MyPwdId.length <= 0) {
+
+                $(".RegBtn").css({
+                    "background-color": "rgb(185, 185, 185)"
+                })
+                return false;
+            }
+
+            if (MyPwdId1 != MyPwdId) {
+                $(".RegBtn").css({
+                    "background-color": "rgb(185, 185, 185)"
+                })
+            } else {
+                $(".RegBtn").css({
+                    "background-color": "rgb(102, 51, 153)"
+                })
+            }
+
+            if (MyAccountId.length <= 0 || MyPwdId.length <= 0 || MyPwdId1.length <= 0) {
+                $(".RegBtn").css({
+                    "background-color": "rgb(185, 185, 185)"
+                })
+            } else {
+                $(".RegBtn").css({
+                    "background-color": "rgb(102, 51, 153)"
+                })
+            }
+            if (shoOR == "block") {
+                $(".RegBtn").css({
+                    "background-color": "rgb(185, 185, 185)"
+                })
+                return false;
+            }
+            if (MyPwdId != MyPwdId1) {
+                $(".RegBtn").css({
+                    "background-color": "rgb(185, 185, 185)"
+                })
+            } else {
+                $(".RegBtn").css({
+                    "background-color": "rgb(102, 51, 153)"
+                })
+            }
+        })
+
+        //确认密码检测
+        $("#MyPwd1").keyup(function () {
+            var MyAccountId = $("#MyAccountId").val();
+            var MyPwdId = $("#MyPwd").val();
+            var MyPwdId1 = $(this).val();
+            var shoOR = $(".verification1").css("display")
+            if (MyPwdId1.length <= 0) {
+
+                $(".RegBtn").css({
+                    "background-color": "rgb(185, 185, 185)"
+                })
+                return false;
+            }
+
+            if (MyPwdId != MyPwdId1) {
+                $(".RegBtn").css({
+                    "background-color": "rgb(185, 185, 185)"
+                })
+            } else {
+                $(".RegBtn").css({
+                    "background-color": "rgb(102, 51, 153)"
+                })
+            }
+            if (MyPwdId == MyAccountId) {
+                //Bomb("账号密码不能相同", 1500)
+                $(".RegBtn").css({
+                    "background-color": "rgb(185, 185, 185)"
+                })
+                return false;
+            }
+            if (shoOR == "block") {
+                $(".RegBtn").css({
+                    "background-color": "rgb(185, 185, 185)"
+                })
+                return false;
+            }
+        })
+
+        //确认按钮
+        $(".RegBtn").click(function () {
+            //var MyUrl = $("#MyImg")[0].src;
+            //PictureView(MyUrl)
+            var MyAccountId = $("#MyAccountId").val();
+            var MyPwdId = $("#MyPwd").val();
+            var MyPwdId1 = $("#MyPwd1").val();
+            var shoOR = $(".verification1").css("display")
+            //agentId = $("#MyAgentId").val();
+            if (showOR == true) {
+                Bomb3("注册账号已存在，请重新输入", 1500)
+                return false;
+            }
+            if (shoOR == "block") {
+                Bomb3("账号有误不能注册", 1500)
+                return false;
+            }
+            if (MyAccountId.length <= 0) {
+                Bomb3("账号不能为空", 1500)
+                return false;
+            }
+            if (MyPwdId.length <= 0) {
+                Bomb3("密码不能为空", 1500)
+                return false;
+            }
+            if (MyPwdId1.length <= 0) {
+                Bomb3("确认密码不能为空", 1500)
+                return false;
+            }
+            if (MyPwdId != MyPwdId1) {
+                Bomb3("两次输入密码不相同", 1500)
+                return false;
+            }
+
+            //if ($(".RegBtn").css("background-color") == "rgb(102, 51, 153)") {
+            //    if (!passwordreg.test(MyPwdId)) {
+            //        Bomb3("密码格式错误，密码由8-16非中文字符组成", 2000);
+            //        return false;
+            //    }
+            //}
+            if (MyPwdId == MyAccountId) {
+                Bomb3("账号密码不能相同", 1500)
+                $(".RegBtn").css({
+                    "background-color": "rgb(185, 185, 185)"
+                })
+                return false;
+            }
+            var data = {};
+            data.userName = MyAccountId
+            data.passWord = MyPwdId
+            //data.agentId = agentId
+            $.ajax({
+                type: "post", url: '/Game/RegisterGameUser',
+                datatype: 'json',
+                data: data,
+                async: true,
+                beforeSend: function () {
+                    load2()
+                },
+                complete: function () {
+                    loadEnd2()
+                },
+                success: function (res) {
+                    if (res.Code == 0) {
+                        Bomb3("注册成功", 1500);
+                        $("#MyAccountId").val("");
+                        $("#MyPwd").val("");
+                        $("#MyPwd1").val("");
+                        setTimeout(function () {
+                            window.location.href = "/Game/DownloadPage";
+                        }, 1500)
+
+                    } else {
+                        Bomb3(res.Message, 1500);
+                    }
+                }
+            })
+        })
+
+        //$("body").on("click", ".PictureViewBox", function () {
+        //    $(".PictureViewBox").remove()
+        //})
+        $(".verification1").click(function () {
+            $("#MyAccountId").val("");
+            $(this).css({ "display": "none" })
+        })
+    </script>
+</body>
+
+</HTML>

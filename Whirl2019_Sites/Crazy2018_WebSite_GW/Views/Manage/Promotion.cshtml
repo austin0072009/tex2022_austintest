@@ -1,0 +1,47 @@
+﻿
+@{
+    ViewBag.Title = "Promotion";
+}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=640">
+    <meta HTTP-EQUIV="pragma" CONTENT="no-cache">
+    <meta HTTP-EQUIV="Cache-Control" CONTENT="no-cache, must-revalidate">
+    <meta HTTP-EQUIV="expires" CONTENT="0">
+    <title>二维码分享</title>
+    <link type="text/css" href="~/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="~/css/Promotion.css">
+    <script src="~/js/jquery.min.js"></script>
+</head>
+
+<body>
+    <div class="PromotionCont">
+        <img src="" class="PromotionContImg" />
+    </div>
+    <script>
+        $(function () {
+            Getinfo();
+        })
+        function Getinfo() {
+            var data = {};
+            $.ajax({
+                type: "post", url: '/Manage/GetAgentData',
+                datatype: 'json',
+                data: data,
+                success: function (res) {
+                    if (res) {
+                        //console.log(res)
+                        $(".PromotionContImg").attr('src', res.QRPath);
+                    } else {
+                        alert(res);
+                    }
+                }
+            })
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+此文件由 Web 项目的发布/打包过程使用。可以通过编辑此 MSBuild 文件
+自定义此过程的行为。为了解与此相关的更多内容，请访问 https://go.microsoft.com/fwlink/?LinkID=208121。 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <_PublishTargetUrl>D:\Whirl_server1\Whirl_server\Whirl2019_Sites\Crazy2018_WebSite_Pay\bin\Release\Publish</_PublishTargetUrl>
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="ApplicationInsights.config">
+      <publishTime>10/10/2019 09:42:39</publishTime>
+    </File>
+    <File Include="bin/ApplicationInsights.config">
+      <publishTime>10/10/2019 09:42:39</publishTime>
+    </File>
+    <File Include="bin/Autofac.dll">
+      <publishTime>09/15/2019 23:15:59</publishTime>
+    </File>
+    <File Include="bin/Autofac.Integration.Mvc.dll">
+      <publishTime>09/15/2019 23:15:59</publishTime>
+    </File>
+    <File Include="bin/AutoMapper.dll">
+      <publishTime>09/15/2019 23:15:59</publishTime>
+    </File>
+    <File Include="bin/Crazy2018_Pay.dll">
+      <publishTime>11/12/2019 11:25:36</publishTime>
+    </File>
+    <File Include="bin/Crazy2018_Pay.pdb">
+      <publishTime>11/12/2019 11:25:36</publishTime>
+    </File>
+    <File Include="bin/Crazy2018_Sys_Common.dll">
+      <publishTime>11/11/2019 20:32:30</publishTime>
+    </File>
+    <File Include="bin/Crazy2018_Sys_Common.pdb">
+      <publishTime>11/11/2019 20:32:30</publishTime>
+    </File>
+    <File Include="bin/Crazy2018_Sys_DBHelper.dll">
+      <publishTime>11/11/2019 20:32:30</publishTime>
+    </File>
+    <File Include="bin/Crazy2018_Sys_DBHelper.dll.config">
+      <publishTime>10/25/2019 16:44:01</publishTime>
+    </File>
+    <File Include="bin/Crazy2018_Sys_DBHelper.pdb">
+      <publishTime>11/11/2019 20:32:30</publishTime>
+    </File>
+    <File Include="bin/Crazy2018_Sys_Entity.dll">
+      <publishTime>11/07/2019 15:39:39</publishTime>
+    </File>
+    <File Include="bin/Crazy2018_Sys_Entity.pdb">
+      <publishTime>11/07/2019 15:39:39</publishTime>
+    </File>
+    <File Include="bin/Crazy2018_Sys_Interface.dll">
+      <publishTime>11/11/2019 20:32:30</publishTime>
+    </File>
+    <File Include="bin/Crazy2018_Sys_Interface.dll.config">
+      <publishTime>10/10/2019 09:42:39</publishTime>
+    </File>
+    <File Include="bin/Crazy2018_Sys_Interface.pdb">
+      <publishTime>11/11/2019 20:32:30</publishTime>
+    </File>
+    <File Include="bin/Crazy2018_Sys_Service.dll">
+      <publishTime>11/12/2019 10:19:37</publishTime>
+    </File>
+    <File Include="bin/Crazy2018_Sys_Service.dll.config">
+      <publishTime>10/10/2019 09:42:39</publishTime>
+    </File>
+    <File Include="bin/Crazy2018_Sys_Service.pdb">
+      <publishTime>11/12/2019 10:19:37</publishTime>
+    </File>
+    <File Include="bin/Crazy2018_Sys_ViewEntity.dll">
+      <publishTime>11/11/2019 20:32:28</publishTime>
+    </File>
+    <File Include="bin/Crazy2018_Sys_ViewEntity.pdb">
+      <publishTime>11/11/2019 20:32:28</publishTime>
+    </File>
+    <File Include="bin/Crazy2018_WebSite_Pay.dll">
+      <publishTime>11/12/2019 14:07:26</publishTime>
+    </File>
+    <File Include="bin/Crazy2018_WebSite_Pay.pdb">
+      <publishTime>11/12/2019 14:07:26</publishTime>
+    </File>
+    <File Include="bin/EntityFramework.dll">
+      <publishTime>09/15/2019 23:15:59</publishTime>
+    </File>
+    <File Include="bin/EntityFramework.SqlServer.dll">
+      <publishTime>09/15/2019 23:15:59</publishTime>
+    </File>
+    <File Include="bin/LitJson.dll">
+      <publishTime>09/15/2019 23:15:59</publishTime>
+    </File>
+    <File Include="bin/Mehdime.Entity.dll">
+      <publishTime>10/16/2019 18:18:17</publishTime>
+    </File>
+    <File Include="bin/Mehdime.Entity.dll.config">
+      <publishTime>09/15/2019 23:15:59</publishTime>
+    </File>
+    <File Include="bin/Mehdime.Entity.pdb">
+      <publishTime>10/16/2019 18:18:17</publishTime>
+    </File>
+    <File Include="bin/Microsoft.AI.Agent.Intercept.dll">
+      <publishTime>09/15/2019 23:15:59</publishTime>
+    </File>
+    <File Include="bin/Microsoft.AI.DependencyCollector.dll">
+      <publishTime>09/15/2019 23:15:59</publishTime>
+    </File>
+    <File Include="bin/Microsoft.AI.PerfCounterCollector.dll">
+      <publishTime>09/15/2019 23:15:59</publishTime>
+    </File>
+    <File Include="bin/Microsoft.AI.ServerTelemetryChannel.dll">
+      <publishTime>09/15/2019 23:15:59</publishTime>
+    </File>
+    <File Include="bin/Microsoft.AI.Web.dll">
+      <publishTime>09/15/2019 23:15:59</publishTime>
+    </File>
+    <File Include="bin/Microsoft.AI.WindowsServer.dll">
+      <publishTime>09/15/2019 23:15:59</publishTime>
+    </File>
+    <File Include="bin/Microsoft.ApplicationInsights.dll">
+      <publishTime>09/15/2019 23:15:59</publishTime>
+    </File>
+    <File Include="bin/Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll">
+      <publishTime>09/15/2019 23:15:59</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Web.Infrastructure.dll">
+      <publishTime>09/15/2019 23:15:59</publishTime>
+    </File>
+    <File Include="bin/MySql.Data.dll">
+      <publishTime>09/15/2019 23:15:59</publishTime>
+    </File>
+    <File Include="bin/MySql.Data.Entity.EF6.dll">
+      <publishTime>09/15/2019 23:15:59</publishTime>
+    </File>
+    <File Include="bin/Newtonsoft.Json.dll">
+      <publishTime>09/15/2019 23:15:59</publishTime>
+    </File>
+    <File Include="bin/roslyn/csc.exe">
+      <publishTime>09/15/2019 23:15:59</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.Build.Tasks.CodeAnalysis.dll">
+      <publishTime>09/15/2019 23:15:59</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.CodeAnalysis.CSharp.dll">
+      <publishTime>09/15/2019 23:15:59</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.CodeAnalysis.dll">
+      <publishTime>09/15/2019 23:15:59</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.CodeAnalysis.VisualBasic.dll">
+      <publishTime>09/15/2019 23:15:59</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.CSharp.Core.targets">
+      <publishTime>09/15/2019 23:15:59</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.VisualBasic.Core.targets">
+      <publishTime>09/15/2019 23:15:59</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Collections.Immutable.dll">
+      <publishTime>09/15/2019 23:15:59</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Reflection.Metadata.dll">
+      <publishTime>09/15/2019 23:15:59</publishTime>
+    </File>
+    <File Include="bin/roslyn/vbc.exe">
+      <publishTime>09/15/2019 23:15:59</publishTime>
+    </File>
+    <File Include="bin/roslyn/VBCSCompiler.exe">
+      <publishTime>09/15/2019 23:15:59</publishTime>
+    </File>
+    <File Include="bin/roslyn/VBCSCompiler.exe.config">
+      <publishTime>09/15/2019 23:15:59</publishTime>
+    </File>
+    <File Include="bin/System.Web.Helpers.dll">
+      <publishTime>09/15/2019 23:15:59</publishTime>
+    </File>
+    <File Include="bin/System.Web.Mvc.dll">
+      <publishTime>09/15/2019 23:15:59</publishTime>
+    </File>
+    <File Include="bin/System.Web.Razor.dll">
+      <publishTime>09/15/2019 23:15:59</publishTime>
+    </File>
+    <File Include="bin/System.Web.Webpages.Deployment.dll">
+      <publishTime>09/15/2019 23:15:59</publishTime>
+    </File>
+    <File Include="bin/System.Web.Webpages.dll">
+      <publishTime>09/15/2019 23:15:59</publishTime>
+    </File>
+    <File Include="bin/System.Web.Webpages.Razor.dll">
+      <publishTime>09/15/2019 23:15:59</publishTime>
+    </File>
+    <File Include="bin/ThoughtWorks.QRCode.dll">
+      <publishTime>09/15/2019 23:15:59</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/EntityFramework.resources.dll">
+      <publishTime>10/23/2017 13:15:34</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/EntityFramework.SqlServer.resources.dll">
+      <publishTime>10/23/2017 13:15:34</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/System.Web.Helpers.resources.dll">
+      <publishTime>01/28/2015 04:04:32</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/System.Web.Mvc.resources.dll">
+      <publishTime>01/28/2015 04:02:22</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/System.Web.Razor.resources.dll">
+      <publishTime>01/28/2015 04:02:34</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/System.Web.Webpages.Deployment.resources.dll">
+      <publishTime>01/28/2015 04:04:32</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/System.Web.Webpages.Razor.resources.dll">
+      <publishTime>01/28/2015 04:04:32</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/System.Web.Webpages.resources.dll">
+      <publishTime>01/28/2015 04:04:32</publishTime>
+    </File>
+    <File Include="cert/apiclient_cert.p12">
+      <publishTime>09/15/2019 23:15:59</publishTime>
+    </File>
+    <File Include="css/pay.css">
+      <publishTime>09/15/2019 23:15:59</publishTime>
+    </File>
+    <File Include="css/Vpay.css">
+      <publishTime>09/15/2019 23:15:59</publishTime>
+    </File>
+    <File Include="Global.asax">
+      <publishTime>09/15/2019 23:15:59</publishTime>
+    </File>
+    <File Include="img/vpay.jpg">
+      <publishTime>09/15/2019 23:15:59</publishTime>
+    </File>
+    <File Include="js/jquery.min.js">
+      <publishTime>09/15/2019 23:15:59</publishTime>
+    </File>
+    <File Include="packages.config">
+      <publishTime>10/10/2019 09:42:39</publishTime>
+    </File>
+    <File Include="Views/AliPay/ApplyPay.cshtml">
+      <publishTime>09/15/2019 23:15:59</publishTime>
+    </File>
+    <File Include="Views/web.config">
+      <publishTime>09/15/2019 23:15:59</publishTime>
+    </File>
+    <File Include="Views/WeiXin/H5Pay.cshtml">
+      <publishTime>09/15/2019 23:15:59</publishTime>
+    </File>
+    <File Include="Views/WeiXin/Index.cshtml">
+      <publishTime>09/15/2019 23:15:59</publishTime>
+    </File>
+    <File Include="Views/WeiXin/MpCallBack.cshtml">
+      <publishTime>09/15/2019 23:15:59</publishTime>
+    </File>
+    <File Include="Views/WeiXin/QRCodeView.cshtml">
+      <publishTime>09/15/2019 23:15:59</publishTime>
+    </File>
+    <File Include="Web.config">
+      <publishTime>11/12/2019 14:03:44</publishTime>
+    </File>
+  </ItemGroup>
+</Project>

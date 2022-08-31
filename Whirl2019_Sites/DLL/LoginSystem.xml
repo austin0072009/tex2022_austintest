@@ -1,0 +1,886 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>LoginSystem</name>
+    </assembly>
+    <members>
+        <member name="T:LoginSystem.BCache">
+            <summary>
+            缓存类
+            </summary>
+        </member>
+        <member name="F:LoginSystem.BCache.phoneNumCache">
+            <summary>
+            电话号码缓存
+            </summary>
+        </member>
+        <member name="F:LoginSystem.BCache.userIdCache">
+            <summary>
+            用户名缓存
+            </summary>
+        </member>
+        <member name="F:LoginSystem.BCache.lockobj">
+            <summary>
+            静态锁
+            </summary>
+        </member>
+        <member name="M:LoginSystem.BCache.GetPhoneNum(System.String)">
+            <summary>
+            校验手机号是否已存在
+            </summary>
+            <param name="num">手机号</param>
+            <returns>是否存在</returns>
+        </member>
+        <member name="M:LoginSystem.BCache.GetUserId(System.String)">
+            <summary>
+            校验用户名是否已存在
+            </summary>
+            <param name="userId">用户名</param>
+            <returns>是否存在</returns>
+        </member>
+        <member name="M:LoginSystem.BCache.Refresh">
+            <summary>
+            更新缓存
+            </summary>
+        </member>
+        <member name="M:LoginSystem.BLogin.GetMaxId">
+            <summary>
+            得到最大ID
+            </summary>
+        </member>
+        <member name="M:LoginSystem.BLogin.Exists(System.Int32)">
+            <summary>
+            是否存在该记录
+            </summary>
+        </member>
+        <member name="M:LoginSystem.BLogin.Add(LoginSystem.MLogin)">
+            <summary>
+            增加一条数据
+            </summary>
+        </member>
+        <member name="M:LoginSystem.BLogin.Update(LoginSystem.MLogin)">
+            <summary>
+            更新一条数据
+            </summary>
+        </member>
+        <member name="M:LoginSystem.BLogin.Delete(System.Int32)">
+            <summary>
+            删除一条数据
+            </summary>
+        </member>
+        <member name="M:LoginSystem.BLogin.GetModel(System.Int32)">
+            <summary>
+            得到一个对象实体
+            </summary>
+        </member>
+        <member name="M:LoginSystem.BLogin.GetList(System.String)">
+            <summary>
+            获得数据列表
+            </summary>
+        </member>
+        <member name="M:LoginSystem.BLogin.GetModelList(System.String)">
+            <summary>
+            获得数据列表
+            </summary>
+        </member>
+        <member name="M:LoginSystem.BLogin.DataTableToList(System.Data.DataTable)">
+            <summary>
+            获得数据列表
+            </summary>
+        </member>
+        <member name="M:LoginSystem.BLogin.GetAllList">
+            <summary>
+            获得数据列表
+            </summary>
+        </member>
+        <member name="M:LoginSystem.BLogin.GetRecordCount(System.String)">
+            <summary>
+            分页获取数据列表
+            </summary>
+        </member>
+        <member name="M:LoginSystem.BLogin.GetListByPage(System.String,System.String,System.Int32,System.Int32)">
+            <summary>
+            分页获取数据列表
+            </summary>
+        </member>
+        <member name="M:LoginSystem.BLogin.GetList(System.Int32,System.String,System.String)">
+            <summary>
+            获得前几行数据
+            </summary>
+        </member>
+        <member name="M:LoginSystem.BUserMsg.GetMaxId">
+            <summary>
+            得到最大ID
+            </summary>
+        </member>
+        <member name="M:LoginSystem.BUserMsg.Exists(System.Int32)">
+            <summary>
+            是否存在该记录
+            </summary>
+        </member>
+        <member name="M:LoginSystem.BUserMsg.Add(LoginSystem.MUserMsg)">
+            <summary>
+            增加一条数据
+            </summary>
+        </member>
+        <member name="M:LoginSystem.BUserMsg.Update(LoginSystem.MUserMsg)">
+            <summary>
+            更新一条数据
+            </summary>
+        </member>
+        <member name="M:LoginSystem.BUserMsg.Delete(System.Int32)">
+            <summary>
+            删除一条数据
+            </summary>
+        </member>
+        <member name="M:LoginSystem.BUserMsg.GetModel(System.Int32)">
+            <summary>
+            得到一个对象实体
+            </summary>
+        </member>
+        <member name="M:LoginSystem.BUserMsg.GetModel(System.String,System.Int32)">
+            <summary>
+            得到一个对象实体
+            </summary>
+        </member>
+        <member name="M:LoginSystem.BUserMsg.GetList(System.String)">
+            <summary>
+            获得数据列表
+            </summary>
+        </member>
+        <member name="M:LoginSystem.BUserMsg.GetModelList(System.String)">
+            <summary>
+            获得数据列表
+            </summary>
+        </member>
+        <member name="M:LoginSystem.BUserMsg.DataTableToList(System.Data.DataTable)">
+            <summary>
+            获得数据列表
+            </summary>
+        </member>
+        <member name="M:LoginSystem.BUserMsg.GetAllList">
+            <summary>
+            获得数据列表
+            </summary>
+        </member>
+        <member name="M:LoginSystem.BUserMsg.GetRecordCount(System.String)">
+            <summary>
+            分页获取数据列表
+            </summary>
+        </member>
+        <member name="M:LoginSystem.BUserMsg.GetListByPage(System.String,System.String,System.Int32,System.Int32)">
+            <summary>
+            分页获取数据列表
+            </summary>
+        </member>
+        <member name="M:LoginSystem.BUserMsg.GetList(System.Int32,System.String,System.String)">
+            <summary>
+            获得前几行数据
+            </summary>
+        </member>
+        <member name="F:LoginSystem.EffentNextType.None">
+            <summary>
+            对其他语句无任何影响 
+            </summary>
+        </member>
+        <member name="F:LoginSystem.EffentNextType.WhenHaveContine">
+            <summary>
+            当前语句必须为"select count(1) from .."格式，如果存在则继续执行，不存在回滚事务
+            </summary>
+        </member>
+        <member name="F:LoginSystem.EffentNextType.WhenNoHaveContine">
+            <summary>
+            当前语句必须为"select count(1) from .."格式，如果不存在则继续执行，存在回滚事务
+            </summary>
+        </member>
+        <member name="F:LoginSystem.EffentNextType.ExcuteEffectRows">
+            <summary>
+            当前语句影响到的行数必须大于0，否则回滚事务
+            </summary>
+        </member>
+        <member name="F:LoginSystem.EffentNextType.SolicitationEvent">
+            <summary>
+            引发事件-当前语句必须为"select count(1) from .."格式，如果不存在则继续执行，存在回滚事务
+            </summary>
+        </member>
+        <member name="M:LoginSystem.DbHelperSQL.ColumnExists(System.String,System.String)">
+            <summary>
+            判断是否存在某表的某个字段
+            </summary>
+            <param name="tableName">表名称</param>
+            <param name="columnName">列名称</param>
+            <returns>是否存在</returns>
+        </member>
+        <member name="M:LoginSystem.DbHelperSQL.TabExists(System.String)">
+            <summary>
+            表是否存在
+            </summary>
+            <param name="TableName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LoginSystem.DbHelperSQL.ExecuteSql(System.String)">
+            <summary>
+            执行SQL语句，返回影响的记录数
+            </summary>
+            <param name="SQLString">SQL语句</param>
+            <returns>影响的记录数</returns>
+        </member>
+        <member name="M:LoginSystem.DbHelperSQL.ExecuteSql(MySql.Data.MySqlClient.MySqlConnection,MySql.Data.MySqlClient.MySqlTransaction,System.String)">
+            <summary>
+            2012-2-21新增重载，执行SQL语句，返回影响的记录数
+            </summary>
+            <param name="connection">SqlConnection对象</param>
+            <param name="trans">SqlTransaction事件</param>
+            <param name="SQLString">SQL语句</param>
+            <returns>影响的记录数</returns>
+        </member>
+        <member name="M:LoginSystem.DbHelperSQL.ExecuteSqlTran(System.Collections.Generic.List{LoginSystem.CommandInfo},System.Collections.Generic.List{LoginSystem.CommandInfo})">
+            <summary>
+            执行Sql和Oracle滴混合事务
+            </summary>
+            <param name="list">SQL命令行列表</param>
+            <param name="oracleCmdSqlList">Oracle命令行列表</param>
+            <returns>执行结果 0-由于SQL造成事务失败 -1 由于Oracle造成事务失败 1-整体事务执行成功</returns>
+        </member>
+        <member name="M:LoginSystem.DbHelperSQL.ExecuteSqlTran(System.Collections.Generic.List{System.String})">
+            <summary>
+            执行多条SQL语句，实现数据库事务。
+            </summary>
+            <param name="SQLStringList">多条SQL语句</param>		
+        </member>
+        <member name="M:LoginSystem.DbHelperSQL.ExecuteSql(System.String,System.String)">
+            <summary>
+            执行带一个存储过程参数的的SQL语句。
+            </summary>
+            <param name="SQLString">SQL语句</param>
+            <param name="content">参数内容,比如一个字段是格式复杂的文章，有特殊符号，可以通过这个方式添加</param>
+            <returns>影响的记录数</returns>
+        </member>
+        <member name="M:LoginSystem.DbHelperSQL.ExecuteSqlGet(System.String,System.String)">
+            <summary>
+            执行带一个存储过程参数的的SQL语句。
+            </summary>
+            <param name="SQLString">SQL语句</param>
+            <param name="content">参数内容,比如一个字段是格式复杂的文章，有特殊符号，可以通过这个方式添加</param>
+            <returns>影响的记录数</returns>
+        </member>
+        <member name="M:LoginSystem.DbHelperSQL.ExecuteSqlInsertImg(System.String,System.Byte[])">
+            <summary>
+            向数据库里插入图像格式的字段(和上面情况类似的另一种实例)
+            </summary>
+            <param name="strSQL">SQL语句</param>
+            <param name="fs">图像字节,数据库的字段类型为image的情况</param>
+            <returns>影响的记录数</returns>
+        </member>
+        <member name="M:LoginSystem.DbHelperSQL.GetSingle(System.String)">
+            <summary>
+            执行一条计算查询结果语句，返回查询结果（object）。
+            </summary>
+            <param name="SQLString">计算查询结果语句</param>
+            <returns>查询结果（object）</returns>
+        </member>
+        <member name="M:LoginSystem.DbHelperSQL.ExecuteReader(System.String)">
+            <summary>
+            执行查询语句，返回SqlDataReader ( 注意：调用该方法后，一定要对SqlDataReader进行Close )
+            </summary>
+            <param name="strSQL">查询语句</param>
+            <returns>SqlDataReader</returns>
+        </member>
+        <member name="M:LoginSystem.DbHelperSQL.Query(System.String)">
+            <summary>
+            执行查询语句，返回DataSet
+            </summary>
+            <param name="SQLString">查询语句</param>
+            <returns>DataSet</returns>
+        </member>
+        <member name="M:LoginSystem.DbHelperSQL.Query(MySql.Data.MySqlClient.MySqlConnection,MySql.Data.MySqlClient.MySqlTransaction,System.String)">
+            <summary>
+            2012-2-21新增重载，执行查询语句，返回DataSet
+            </summary>
+            <param name="connection">SqlConnection对象</param>
+            <param name="trans">SqlTransaction事务</param>
+            <param name="SQLString">SQL语句</param>
+            <returns>DataSet</returns>
+        </member>
+        <member name="M:LoginSystem.DbHelperSQL.ExecuteSql(System.String,MySql.Data.MySqlClient.MySqlParameter[])">
+            <summary>
+            执行SQL语句，返回影响的记录数
+            </summary>
+            <param name="SQLString">SQL语句</param>
+            <returns>影响的记录数</returns>
+        </member>
+        <member name="M:LoginSystem.DbHelperSQL.ExecuteSql(MySql.Data.MySqlClient.MySqlConnection,MySql.Data.MySqlClient.MySqlTransaction,System.String,MySql.Data.MySqlClient.MySqlParameter[])">
+            <summary>
+            2012-2-29新增重载，执行SQL语句，返回影响的记录数
+            </summary>
+            <param name="connection">SqlConnection对象</param>
+            <param name="trans">SqlTransaction对象</param>
+            <param name="SQLString">SQL语句</param>
+            <returns>影响的记录数</returns>
+        </member>
+        <member name="M:LoginSystem.DbHelperSQL.ExecuteSqlTran(System.Collections.Hashtable)">
+            <summary>
+            执行多条SQL语句，实现数据库事务。
+            </summary>
+            <param name="SQLStringList">SQL语句的哈希表（key为sql语句，value是该语句的SqlParameter[]）</param>
+        </member>
+        <member name="M:LoginSystem.DbHelperSQL.ExecuteSqlTran(System.Collections.Generic.List{LoginSystem.CommandInfo})">
+            <summary>
+            执行多条SQL语句，实现数据库事务。
+            </summary>
+            <param name="SQLStringList">SQL语句的哈希表（key为sql语句，value是该语句的SqlParameter[]）</param>
+        </member>
+        <member name="M:LoginSystem.DbHelperSQL.ExecuteSqlTranWithIndentity(System.Collections.Generic.List{LoginSystem.CommandInfo})">
+            <summary>
+            执行多条SQL语句，实现数据库事务。
+            </summary>
+            <param name="SQLStringList">SQL语句的哈希表（key为sql语句，value是该语句的SqlParameter[]）</param>
+        </member>
+        <member name="M:LoginSystem.DbHelperSQL.ExecuteSqlTranWithIndentity(System.Collections.Hashtable)">
+            <summary>
+            执行多条SQL语句，实现数据库事务。
+            </summary>
+            <param name="SQLStringList">SQL语句的哈希表（key为sql语句，value是该语句的SqlParameter[]）</param>
+        </member>
+        <member name="M:LoginSystem.DbHelperSQL.GetSingle(System.String,MySql.Data.MySqlClient.MySqlParameter[])">
+            <summary>
+            执行一条计算查询结果语句，返回查询结果（object）。
+            </summary>
+            <param name="SQLString">计算查询结果语句</param>
+            <returns>查询结果（object）</returns>
+        </member>
+        <member name="M:LoginSystem.DbHelperSQL.GetSingle(MySql.Data.MySqlClient.MySqlConnection,MySql.Data.MySqlClient.MySqlTransaction,System.String,MySql.Data.MySqlClient.MySqlParameter[])">
+            <summary>
+            2012-2-21新增重载，执行一条计算查询结果语句，返回查询结果（object）。
+            </summary>
+            <param name="connection">SqlConnection对象</param>
+            <param name="trans">SqlTransaction事务</param>
+            <param name="SQLString">计算查询结果语句</param>
+            <returns>查询结果（object）</returns>
+        </member>
+        <member name="M:LoginSystem.DbHelperSQL.ExecuteReader(System.String,MySql.Data.MySqlClient.MySqlParameter[])">
+            <summary>
+            执行查询语句，返回SqlDataReader ( 注意：调用该方法后，一定要对SqlDataReader进行Close )
+            </summary>
+            <param name="strSQL">查询语句</param>
+            <returns>SqlDataReader</returns>
+        </member>
+        <member name="M:LoginSystem.DbHelperSQL.Query(System.String,MySql.Data.MySqlClient.MySqlParameter[])">
+            <summary>
+            执行查询语句，返回DataSet
+            </summary>
+            <param name="SQLString">查询语句</param>
+            <returns>DataSet</returns>
+        </member>
+        <member name="M:LoginSystem.DbHelperSQL.Query(MySql.Data.MySqlClient.MySqlConnection,MySql.Data.MySqlClient.MySqlTransaction,System.String,MySql.Data.MySqlClient.MySqlParameter[])">
+            <summary>
+            2012-2-21新增重载，执行查询语句，返回DataSet
+            </summary>
+            <param name="connection">SqlConnection对象</param>
+            <param name="trans">SqlTransaction事务</param>
+            <param name="SQLString">查询语句</param>
+            <returns>DataSet</returns>
+        </member>
+        <member name="M:LoginSystem.DbHelperSQL.RunProcedure(System.String,System.Data.IDataParameter[])">
+            <summary>
+            执行存储过程，返回SqlDataReader ( 注意：调用该方法后，一定要对SqlDataReader进行Close )
+            </summary>
+            <param name="storedProcName">存储过程名</param>
+            <param name="parameters">存储过程参数</param>
+            <returns>SqlDataReader</returns>
+        </member>
+        <member name="M:LoginSystem.DbHelperSQL.RunProcedure(System.String,System.Data.IDataParameter[],System.String)">
+            <summary>
+            执行存储过程
+            </summary>
+            <param name="storedProcName">存储过程名</param>
+            <param name="parameters">存储过程参数</param>
+            <param name="tableName">DataSet结果中的表名</param>
+            <returns>DataSet</returns>
+        </member>
+        <member name="M:LoginSystem.DbHelperSQL.BuildQueryCommand(MySql.Data.MySqlClient.MySqlConnection,System.String,System.Data.IDataParameter[])">
+            <summary>
+            构建 SqlCommand 对象(用来返回一个结果集，而不是一个整数值)
+            </summary>
+            <param name="connection">数据库连接</param>
+            <param name="storedProcName">存储过程名</param>
+            <param name="parameters">存储过程参数</param>
+            <returns>SqlCommand</returns>
+        </member>
+        <member name="M:LoginSystem.DbHelperSQL.RunProcedure(System.String,System.Data.IDataParameter[],System.Int32@)">
+            <summary>
+            执行存储过程，返回影响的行数		
+            </summary>
+            <param name="storedProcName">存储过程名</param>
+            <param name="parameters">存储过程参数</param>
+            <param name="rowsAffected">影响的行数</param>
+            <returns></returns>
+        </member>
+        <member name="M:LoginSystem.DbHelperSQL.BuildIntCommand(MySql.Data.MySqlClient.MySqlConnection,System.String,System.Data.IDataParameter[])">
+            <summary>
+            创建 SqlCommand 对象实例(用来返回一个整数值)	
+            </summary>
+            <param name="storedProcName">存储过程名</param>
+            <param name="parameters">存储过程参数</param>
+            <returns>SqlCommand 对象实例</returns>
+        </member>
+        <member name="T:LoginSystem.DESLogin">
+            <summary>
+            DES加密/解密类。
+            </summary>
+        </member>
+        <member name="M:LoginSystem.DESLogin.Encrypt(System.String)">
+            <summary>
+            加密
+            </summary>
+            <param name="Text"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LoginSystem.DESLogin.Encrypt(System.String,System.String)">
+            <summary> 
+            加密数据 
+            </summary> 
+            <param name="Text"></param> 
+            <param name="sKey"></param> 
+            <returns></returns> 
+        </member>
+        <member name="M:LoginSystem.DESLogin.Decrypt(System.String)">
+            <summary>
+            解密
+            </summary>
+            <param name="Text"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LoginSystem.DESLogin.Decrypt(System.String,System.String)">
+            <summary> 
+            解密数据 
+            </summary> 
+            <param name="Text"></param> 
+            <param name="sKey"></param> 
+            <returns></returns> 
+        </member>
+        <member name="F:LoginSystem.DLogin.dbHelper">
+            <summary>
+            数据库操作对象
+            </summary>
+        </member>
+        <member name="M:LoginSystem.DLogin.GetMaxId">
+            <summary>
+            得到最大ID
+            </summary>
+        </member>
+        <member name="M:LoginSystem.DLogin.Exists(System.Int32)">
+            <summary>
+            是否存在该记录
+            </summary>
+        </member>
+        <member name="M:LoginSystem.DLogin.Add(LoginSystem.MLogin)">
+            <summary>
+            增加一条数据
+            </summary>
+        </member>
+        <member name="M:LoginSystem.DLogin.Update(LoginSystem.MLogin)">
+            <summary>
+            更新一条数据
+            </summary>
+        </member>
+        <member name="M:LoginSystem.DLogin.Delete(System.Int32)">
+            <summary>
+            删除一条数据
+            </summary>
+        </member>
+        <member name="M:LoginSystem.DLogin.DeleteList(System.String)">
+            <summary>
+            批量删除数据
+            </summary>
+        </member>
+        <member name="M:LoginSystem.DLogin.GetModel(System.Int32)">
+            <summary>
+            得到一个对象实体
+            </summary>
+        </member>
+        <member name="M:LoginSystem.DLogin.DataRowToModel(System.Data.DataRow)">
+            <summary>
+            得到一个对象实体
+            </summary>
+        </member>
+        <member name="M:LoginSystem.DLogin.GetList(System.String)">
+            <summary>
+            获得数据列表
+            </summary>
+        </member>
+        <member name="M:LoginSystem.DLogin.GetRecordCount(System.String)">
+            <summary>
+            获取记录总数
+            </summary>
+        </member>
+        <member name="M:LoginSystem.DLogin.GetListByPage(System.String,System.String,System.Int32,System.Int32)">
+            <summary>
+            分页获取数据列表
+            </summary>
+        </member>
+        <member name="M:LoginSystem.DLogin.GetList(System.Int32,System.String,System.String)">
+            <summary>
+            获得前几行数据
+            </summary>
+        </member>
+        <member name="M:LoginSystem.DLogin.CreateCountingSql(System.String)">
+            <summary>
+            获取记录总数SQL语句
+            </summary>
+            <param name="_safeSql">SQL查询语句</param>
+            <returns>记录总数SQL语句</returns>
+        </member>
+        <member name="F:LoginSystem.DUserMsg.dbHelper">
+            <summary>
+            数据库操作对象
+            </summary>
+        </member>
+        <member name="M:LoginSystem.DUserMsg.GetMaxId">
+            <summary>
+            得到最大ID
+            </summary>
+        </member>
+        <member name="M:LoginSystem.DUserMsg.Exists(System.Int32)">
+            <summary>
+            是否存在该记录
+            </summary>
+        </member>
+        <member name="M:LoginSystem.DUserMsg.Add(LoginSystem.MUserMsg)">
+            <summary>
+            增加一条数据
+            </summary>
+        </member>
+        <member name="M:LoginSystem.DUserMsg.Update(LoginSystem.MUserMsg)">
+            <summary>
+            更新一条数据
+            </summary>
+        </member>
+        <member name="M:LoginSystem.DUserMsg.Delete(System.Int32)">
+            <summary>
+            删除一条数据
+            </summary>
+        </member>
+        <member name="M:LoginSystem.DUserMsg.DeleteList(System.String)">
+            <summary>
+            批量删除数据
+            </summary>
+        </member>
+        <member name="M:LoginSystem.DUserMsg.GetModel(System.Int32)">
+            <summary>
+            得到一个对象实体
+            </summary>
+        </member>
+        <member name="M:LoginSystem.DUserMsg.GetModel(System.String,System.Int32)">
+            <summary>
+            得到一个对象实体
+            </summary>
+        </member>
+        <member name="M:LoginSystem.DUserMsg.DataRowToModel(System.Data.DataRow)">
+            <summary>
+            得到一个对象实体
+            </summary>
+        </member>
+        <member name="M:LoginSystem.DUserMsg.GetList(System.String)">
+            <summary>
+            获得数据列表
+            </summary>
+        </member>
+        <member name="M:LoginSystem.DUserMsg.GetRecordCount(System.String)">
+            <summary>
+            获取记录总数
+            </summary>
+        </member>
+        <member name="M:LoginSystem.DUserMsg.GetListByPage(System.String,System.String,System.Int32,System.Int32)">
+            <summary>
+            分页获取数据列表
+            </summary>
+        </member>
+        <member name="M:LoginSystem.DUserMsg.GetList(System.Int32,System.String,System.String)">
+            <summary>
+            获得前几行数据
+            </summary>
+        </member>
+        <member name="M:LoginSystem.DUserMsg.CreateCountingSql(System.String)">
+            <summary>
+            获取记录总数SQL语句
+            </summary>
+            <param name="_safeSql">SQL查询语句</param>
+            <returns>记录总数SQL语句</returns>
+        </member>
+        <member name="F:LoginSystem.Login.bindPhone_SMS">
+            <summary>
+            注册【通兑币】支付码：【3692】。用于交易卖出验证，请不要把支付码泄露给其他人。如非本人操作，可不用理会！30分钟内有效
+            </summary>
+        </member>
+        <member name="F:LoginSystem.Login.changeLogin_SMS">
+            <summary>
+            账号其他手机登录
+            </summary>
+        </member>
+        <member name="F:LoginSystem.Login.transpassword_SMS">
+            <summary>
+            交易密码
+            </summary>
+        </member>
+        <member name="F:LoginSystem.Login.account">
+            <summary>
+            短信帐号信息
+            </summary>
+        </member>
+        <member name="M:LoginSystem.Login.CreateCode(System.String,System.Int32)">
+            <summary>
+            生成验证码
+            </summary>
+            <param name="phoneNum">手机号</param>
+            <param name="type">验证类型</param>
+            <returns>生成结果</returns>
+        </member>
+        <member name="M:LoginSystem.Login.CheckCode(System.String,System.Int32,System.String)">
+            <summary>
+            校验验证码
+            </summary>
+            <param name="phoneNum">手机号</param>
+            <param name="type">验证类型</param>
+            <param name="code">验证码</param>
+            <returns>验证结果</returns>
+        </member>
+        <member name="M:LoginSystem.Login.CheckUserName(System.String)">
+            <summary>
+            校验用户名
+            </summary>
+            <param name="userId">用户ID</param>
+            <returns>校验结果</returns>
+        </member>
+        <member name="M:LoginSystem.Login.CheckPhoneNum(System.String)">
+            <summary>
+            校验手机号
+            </summary>
+            <param name="phoneNum">手机号</param>
+            <returns>校验结果</returns>
+        </member>
+        <member name="M:LoginSystem.Login.Register(LoginSystem.MLogin)">
+            <summary>
+            注册用户
+            </summary>
+            <param name="user">用户信息</param>
+            <returns></returns>
+        </member>
+        <member name="M:LoginSystem.Login.TryLogin(System.String,System.String)">
+            <summary>
+            尝试登录
+            </summary>
+            <param name="loginAccount">登录帐号（用户名或者手机号）</param>
+            <param name="passWord">登录密码</param>
+            <returns>登录结果</returns>
+        </member>
+        <member name="M:LoginSystem.Login.ChangePassWord(System.String,System.String)">
+            <summary>
+            修改密码
+            </summary>
+            <param name="phoneNum">手机号</param>
+            <param name="passWord">登录密码</param>
+            <returns>修改结果</returns>
+        </member>
+        <member name="F:LoginSystem.MLogin.id">
+            <summary>
+            id
+            </summary>
+        </member>
+        <member name="F:LoginSystem.MLogin.phoneNum">
+            <summary>
+            手机号
+            </summary>
+        </member>
+        <member name="F:LoginSystem.MLogin.passWord">
+            <summary>
+            密码
+            </summary>
+        </member>
+        <member name="F:LoginSystem.MLogin.userId">
+            <summary>
+            用户名
+            </summary>
+        </member>
+        <member name="F:LoginSystem.MLogin.qqNum">
+            <summary>
+            QQ号
+            </summary>
+        </member>
+        <member name="F:LoginSystem.MLogin.email">
+            <summary>
+            邮箱地址
+            </summary>
+        </member>
+        <member name="F:LoginSystem.MLogin.isDelete">
+            <summary>
+            是否删除
+            </summary>
+        </member>
+        <member name="F:LoginSystem.MLogin.modifyTime">
+            <summary>
+            修改时间
+            </summary>
+        </member>
+        <member name="P:LoginSystem.MLogin.Id">
+            <summary>
+            id
+            </summary>
+        </member>
+        <member name="P:LoginSystem.MLogin.PhoneNum">
+            <summary>
+            手机号
+            </summary>
+        </member>
+        <member name="P:LoginSystem.MLogin.PassWord">
+            <summary>
+            登录密码
+            </summary>
+        </member>
+        <member name="P:LoginSystem.MLogin.UserId">
+            <summary>
+            用户名
+            </summary>
+        </member>
+        <member name="P:LoginSystem.MLogin.QqNum">
+            <summary>
+            QQ号
+            </summary>
+        </member>
+        <member name="P:LoginSystem.MLogin.Email">
+            <summary>
+            邮箱
+            </summary>
+        </member>
+        <member name="P:LoginSystem.MLogin.IsDelete">
+            <summary>
+            是否删除
+            </summary>
+        </member>
+        <member name="P:LoginSystem.MLogin.ModifyTime">
+            <summary>
+            修改时间
+            </summary>
+        </member>
+        <member name="F:LoginSystem.MResult`1.result">
+            <summary>
+            请求结果                    
+            </summary>
+        </member>
+        <member name="F:LoginSystem.MResult`1.msg">
+            <summary>
+            结果说明
+            </summary>
+        </member>
+        <member name="F:LoginSystem.MResult`1.data">
+            <summary>
+            数据信息
+            </summary>
+        </member>
+        <member name="P:LoginSystem.MResult`1.Result">
+            <summary>
+            请求结果
+            </summary>
+        </member>
+        <member name="P:LoginSystem.MResult`1.Msg">
+            <summary>
+            结果说明
+            </summary>
+        </member>
+        <member name="P:LoginSystem.MResult`1.Data">
+            <summary>
+            数据信息
+            </summary>
+        </member>
+        <member name="F:LoginSystem.MUserMsg.id">
+            <summary>
+            id
+            </summary>
+        </member>
+        <member name="F:LoginSystem.MUserMsg.userID">
+            <summary>
+            用户名
+            </summary>
+        </member>
+        <member name="F:LoginSystem.MUserMsg.phoneNum">
+            <summary>
+            手机号
+            </summary>
+        </member>
+        <member name="F:LoginSystem.MUserMsg.operType">
+            <summary>
+            操作类型 0注册1找回密码2交易密码
+            </summary>
+        </member>
+        <member name="F:LoginSystem.MUserMsg.verifyCode">
+            <summary>
+            验证码
+            </summary>
+        </member>
+        <member name="F:LoginSystem.MUserMsg.matchTimes">
+            <summary>
+            验证次数
+            </summary>
+        </member>
+        <member name="F:LoginSystem.MUserMsg.addTime">
+            <summary>
+            添加时间
+            </summary>
+        </member>
+        <member name="F:LoginSystem.MUserMsg.modifyTime">
+            <summary>
+            修改时间
+            </summary>
+        </member>
+        <member name="F:LoginSystem.MUserMsg.isDelete">
+            <summary>
+            是否删除
+            </summary>
+        </member>
+        <member name="P:LoginSystem.MUserMsg.Id">
+            <summary>
+            Id
+            </summary>
+        </member>
+        <member name="P:LoginSystem.MUserMsg.UserID">
+            <summary>
+            用户名
+            </summary>
+        </member>
+        <member name="P:LoginSystem.MUserMsg.PhoneNum">
+            <summary>
+            手机号
+            </summary>
+        </member>
+        <member name="P:LoginSystem.MUserMsg.OperType">
+            <summary>
+            操作类型 0注册1找回密码2交易密码
+            </summary>
+        </member>
+        <member name="P:LoginSystem.MUserMsg.VerifyCode">
+            <summary>
+            验证码
+            </summary>
+        </member>
+        <member name="P:LoginSystem.MUserMsg.MatchTimes">
+            <summary>
+            校验次数
+            </summary>
+        </member>
+        <member name="P:LoginSystem.MUserMsg.AddTime">
+            <summary>
+            添加时间
+            </summary>
+        </member>
+        <member name="P:LoginSystem.MUserMsg.ModifyTime">
+            <summary>
+            修改时间
+            </summary>
+        </member>
+        <member name="P:LoginSystem.MUserMsg.IsDelete">
+            <summary>
+            是否删除
+            </summary>
+        </member>
+    </members>
+</doc>

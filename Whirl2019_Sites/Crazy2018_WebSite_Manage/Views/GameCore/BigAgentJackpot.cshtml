@@ -1,0 +1,176 @@
+﻿@using Crazy2018_Sys_Common;
+@using Crazy2018_Sys_ViewEntity;
+@using Crazy2018_Sys_DBHelper;
+@{
+    ViewBag.Title = "代理分保险";
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+}
+@model DataResults<AgentInsurancePoolView>
+<style>
+    th {
+        text-align: center;
+    }
+    .layerbtn {
+        display: inline-block;
+        height: 20px;
+        line-height: 20px;
+        padding: 1px 10px 2px 9px;
+        background-color: #A9A9A9;
+        color: white;
+        white-space: nowrap;
+        text-align: center;
+        font-size: 10px;
+        border: none;
+        border-radius: 2px;
+        cursor: pointer;
+    }
+    .form-control {
+        width: 80%;
+        height: 22px;
+    }
+</style>
+<div class="mainbody">
+    <!--导航栏-->
+    <div class="location">
+        <a href="javascript:history.back(-1);" class="back"><i></i><span>返回上一页</span></a>
+        <a href="/Home/Center" class="home"><i></i><span>首页</span></a>
+        <i class="arrow"></i>
+        <a href="/GameCore/BigAgentJackpot"><span>代理分保险</span></a>
+        <i class="arrow"></i>
+        <span>代理分保险</span>
+    </div>
+    <!--/导航栏-->
+    <!--工具栏-->
+    <div id="floatHead" class="toolbar-wrap">
+        <div class="toolbar">
+            <div class="box-wrap">
+                <a class="menu-btn"></a>
+                <div class="l-list">
+                    <ul class="icon-list">
+                        <li><a class="all" href="javascript:;" onclick="checkAll(this);"><i></i><span>全选</span></a></li>
+                        @*<li>
+                                <a id="btnDelete" class="del"><i></i><span>删除</span></a>
+                            </li>
+                            <li>
+                                <a id="btnadd" class="btn add btn-primary btn-lg" data-toggle="modal" data-target="#myModal"><i></i><span>添加</span></a>
+                            </li>*@
+
+                    </ul>
+                    
+                    <input name="txtKeywords" placeholder="用户id查询" oninput="value=value.replace(/[^\d]/g,'')" type="text" id="txtKeywords" value="@Model.Keywords" class="input">
+
+                    <button type="button" style="height: 28px;padding: 3px 10px;background-color: lightgray;" id="lbtnSearch" class="btn btn-default btn-sm">查询</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="table-container">
+        <table width="100%" border="0" cellspacing="0" cellpadding="0" class="ltable">
+            <tbody>
+                <tr style="text-align:center" class="odd_bg">
+                    <th width="2%">选择</th>
+                    <th width="5%">总代Id</th>
+                    <th width="5%">总代姓名</th>
+                    <th width="5%">应分金额</th>
+                    <th width="5%">操作</th>
+                </tr>
+                @foreach (var item in Model.Data)
+                {
+                <tr class='One'>
+                    <td align="center">
+                        <input type="hidden" name='hidId' id='hidId' value='@item.UserId'>
+                        <span class='checkall' style='vertical-align: middle;'>
+                            <input id='chkId' class='checkall' type='checkbox' name='chkId'>
+                        </span>
+                    </td>
+                    <td align="center">@item.UserId</td>
+                    <td align="center">@item.UName</td>
+
+
+                    <td align="center">@item.Gold.ToString("#0.00")</td>
+                    <td align="center">
+                    
+                        <a class='layerbtn' onclick="BranchBigagent('@item.UserId')" style='background-color:#548B54;'>处理</a>
+                    </td>
+                    
+                </tr>
+
+                }
+            </tbody>
+        </table>
+
+    </div>
+    <!--/列表-->
+    <!--内容底部-->
+    <div class="line20"></div>
+    <div class="pagelist">
+        <div class="l-btns">
+            <span>显示</span><input name="txtPageNum" type="text" value="@Model.PageSize" id="txtPageNum" class="pagenum" onkeydown="return checkNumber(event);"><span>条/页</span>
+        </div>
+        <div id="PageContent" class="default">@Html.Raw(Model.InnerHtml)</div>
+        <input type="hidden" id="PageIndex" name="PageIndex" value="@Model.PageIndex" />
+    </div>
+    <!--/内容底部-->
+    <div style="width:100%;text-align: center;">
+        <span style="display: inline-block;padding: 4px 15px 0px 15px;color: red;font-size:14px;">(注:输入用户Id查询. )</span>
+    </div>
+</div>
+
+
+<script>
+    var ChangeType = 0;
+    var Keywords = $("#txtKeywords");
+    var starttime = "";
+    var endtime = "";
+
+    $(function () {
+
+        $(".pagelist").on('click', 'a', function () {
+            var PageIndex = $("#PageIndex").val();
+            var lkl2 = $(this).text();
+            if (lkl2 == "下一页»") {
+                PageIndex = parseInt(PageIndex) + 1;
+            } else if (lkl2 == "«上一页") {
+                PageIndex = parseInt(PageIndex) - 1;
+            } else {
+                PageIndex = lkl2;
+            }
+
+            window.location.href = "/GameCore/BigAgentJackpot?ChangeType=" + ChangeType + "&PageSize=" + $(this).val() + "&PageIndex=" + PageIndex + "&Keywords=" + Keywords.val() + "&starttime=" + starttime.val() + "&endtime=" + endtime.val();
+        })
+
+        $("#ChangeType").change(function ()
+        {
+            window.location.href = "/GameCore/BigAgentJackpot?ChangeType=" + ChangeType + "&PageSize=" + $("#txtPageNum").val() + "&PageIndex=" + $("#PageIndex").val() + "&starttime=" + starttime.val() + "&endtime=" + endtime.val() + "&Keywords=" + Keywords.val();
+        });
+
+        $("#txtPageNum").change(function () {
+            window.location.href = "/GameCore/BigAgentJackpot?ChangeType=" + ChangeType + "&PageSize=" + $(this).val();
+        })
+        $("#lbtnSearch").click(function () {
+            window.location.href = "/GameCore/BigAgentJackpot?ChangeType=" + ChangeType + "&PageSize=" + $("#txtPageNum").val() + "&PageIndex=" + $("#PageIndex").val() + "&starttime=" + starttime.val() + "&endtime=" + endtime.val() + "&Keywords=" + Keywords.val();
+        });
+
+    })
+
+    function BranchBigagent(userID)
+    {
+        layer.confirm('确定已经给总代分了保险？', {
+            btn: ['确认', '没有'] //按钮
+        }, function () {
+                $.post("/GameCore/BranchBigagent", { userid: userID}, function (data)
+                {
+                    if (data.Code == -1) {
+                        layer.msg(data.Message);
+                    } else {
+                        layer.msg(data.Message);
+                        location.reload();
+                    }
+
+                });  
+        });
+    }
+
+</script>
+

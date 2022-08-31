@@ -1,0 +1,110 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,initial-scale=1.0,user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <title>上线玩家统计</title>
+    <link href="~/scripts/artdialog/ui-dialog.css" rel="stylesheet" type="text/css" />
+    <link href="~/skin/default/style.css" rel="stylesheet" type="text/css" />
+    <link href="~/css/pagination.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="~/scripts/jquery/jquery-1.11.2.min.js"></script>
+    <script type="text/javascript" src="~/scripts/artdialog/dialog-plus-min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="~/js/laymain.js"></script>
+    <script type="text/javascript" charset="utf-8" src="~/js/common.js"></script>
+</head>
+
+<body class="mainbody">
+    <form id="form1" runat="server">
+        <!--导航栏-->
+        <div class="location">
+            <a href="javascript:history.back(-1);" class="back"><i></i><span>返回上一页</span></a>
+            <a href="/Home/Center" class="home"><i></i><span>首页</span></a>
+            <i class="arrow"></i>
+            <span>会员管理</span>
+            <i class="arrow"></i>
+            <span>上线玩家统计列表</span>
+        </div>
+        <!--/导航栏-->
+        <!--工具栏-->
+        <div id="floatHead" class="toolbar-wrap" style="height: 47px;">
+            <div class="toolbar" style="width: 781px;">
+                <div class="box-wrap">
+                    <a class="menu-btn"></a>
+                    <div class="l-list">
+
+                    </div>
+                    <div class="r-list">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--/工具栏-->
+        <!--列表-->
+        <div class="table-container">
+
+            <table width="100%" border="0" cellspacing="0" cellpadding="0" class="ltable">
+                <tbody>
+                    <tr class="odd_bg">
+                        <th style="width:100px;">日期</th>
+                        <th style="width:120px;">当日登陆</th>
+                        <th style="width:120px;">昨日登陆</th>
+                        <th style="width:120px;">最近7天登陆</th>
+                        <th></th>
+                    </tr>
+
+                    <tr>
+                        <td>2017-10-16</td>
+                        <td>2</td>
+                        <td>0</td>
+                        <td>23</td>
+                        <td></td>
+                    </tr>
+
+                    <tr class="odd_bg">
+                        <td>2017-10-13</td>
+                        <td>10</td>
+                        <td>9</td>
+                        <td>23</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>2017-10-12</td>
+                        <td>9</td>
+                        <td>7</td>
+                        <td>15</td>
+                        <td></td>
+                    </tr>
+
+                    <tr class="odd_bg">
+                        <td>2017-10-11</td>
+                        <td>7</td>
+                        <td>0</td>
+                        <td>7</td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+        <!--/列表-->
+        <!--内容底部-->
+        <div class="line20"></div>
+        <div class="pagelist">
+            <div class="l-btns">
+                <span>显示</span><input name="txtPageNum" type="text" value="10" onchange="javascript:setTimeout('__doPostBack(\'txtPageNum\',\'\')', 0)" onkeypress="if (WebForm_TextBoxKeyHandler(event) == false) return false;" id="txtPageNum" class="pagenum" onkeydown="return checkNumber(event);"><span>条/页</span>
+            </div>
+            <div id="PageContent" class="default"></div>
+        </div>
+        <!--/内容底部-->
+    </form>
+</body>
+</html>
+

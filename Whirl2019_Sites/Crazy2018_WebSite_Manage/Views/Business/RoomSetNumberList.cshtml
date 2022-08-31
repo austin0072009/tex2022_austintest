@@ -1,0 +1,259 @@
+﻿
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,initial-scale=1.0,user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <title>批量房间配置信息</title>
+    <link href="../../scripts/artdialog/ui-dialog.css" rel="stylesheet" type="text/css" />
+    <link href="../skin/default/style.css" rel="stylesheet" type="text/css" />
+    <link href="../../css/pagination.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="../../scripts/jquery/jquery-1.11.2.min.js"></script>
+    <script type="text/javascript" src="../../scripts/artdialog/dialog-plus-min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="../js/laymain.js"></script>
+    <script type="text/javascript" charset="utf-8" src="../js/common.js"></script>
+</head>
+<body class="mainbody">
+    <form id="form1" runat="server">
+        <!--导航栏-->
+        <div class="location">
+            <a href="javascript:history.back(-1);" class="back"><i></i><span>返回上一页</span></a>
+            <a href="/Home/Center" class="home"><i></i><span>首页</span></a>
+            <i class="arrow"></i>
+            <a href="/Business/GameList"><span>游戏管理</span></a>
+            <i class="arrow"></i>
+            <span>批量房间配置</span>
+        </div>
+        <!--/导航栏-->
+        <!--工具栏-->
+        <div id="floatHead" class="toolbar-wrap">
+            <div class="toolbar">
+                <div class="l-list">
+                    <ul class="icon-list">
+                        @*<li><a class="add" href="/Business/RoomSetNumber?operation=Add&amp;"><i></i><span>新增配置</span></a></li>*@
+                    </ul>
+                </div>
+                <div class="box-wrap">
+                    <a class="menu-btn"></a>
+                    <div class="r-list">
+                        <input name="txtKeywords" type="text" id="txtKeywords" class="keyword">
+                        <a id="lbtnSearch" class="btn-search" href="javascript:__doPostBack('lbtnSearch','')">查询</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--/工具栏-->
+        <!--列表-->
+        <div class="table-container">
+
+            <table width="100%" border="0" cellspacing="0" cellpadding="0" class="ltable">
+                <thead>
+                    <tr class="odd_bg">
+                        <th>ID</th>
+                        <th>游戏类型</th>
+                        <th>房间名称</th>
+                        <th>底皮</th>
+
+                        <th>持续时间</th>
+                        <th>房间数量</th>
+                        <th>房间人数</th>
+                        <th>围观人数</th>
+                        <th>状态</th>
+                        <th>创建时间</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody id="MyTbody"></tbody>
+            </table>
+
+        </div>
+        <!--/列表-->
+        <!--内容底部-->
+        <div class="line20"></div>
+        <div class="pagelist">
+            <div class="l-btns">
+                <span>显示</span><input name="txtPageNum" type="text" id="txtPageNum" class="pagenum"><span>条/页</span>
+            </div>
+            <div id="PageContent" class="default">
+            </div>
+        </div>
+        <!--/内容底部-->
+        <div style="width:100%;text-align: center;">
+            <span style="display: inline-block;padding: 4px 15px 0px 15px;color: #666;font-size:14px;">(注 : 房间名称)</span>
+        </div>
+        <div>
+        </div>
+    </form>
+    <script>
+        var storagefirst = window.localStorage;
+        var MyPageNum4 = storagefirst["MyPageNum4"];
+        var id = "";
+        var txtPageNum = 10;
+        var Keywords = "";
+        var PageIndex = 1;
+        var operation = "";
+        var text1 = "";
+        if (MyPageNum4 != "" && MyPageNum4 != null) {
+            MyPageNum4 = txtPageNum
+        } else {
+            txtPageNum = txtPageNum
+        }
+        $("#txtPageNum").val(txtPageNum)
+        $("#lbtnSearch").click(function () {
+            var txtKeywords = $("#txtKeywords").val();
+            Keywords = txtKeywords;
+            GetList();
+        })
+        $("#txtPageNum").change(function () {
+            txtPageNum = $("#txtPageNum").val()
+            storagefirst["MyPageNum4"] = txtPageNum
+            PageIndex = 1;
+            ///console.log(txtPageNum)
+            GetList();
+        })
+        $(".pagelist").on('click', 'a', function () {
+            //var lkl = $(this).attr("href");
+            //console.log(lkl)
+            var lkl2 = $(this).text();
+            if (lkl2 == "下一页»") {
+                PageIndex = parseInt(PageIndex) + 1
+                console.log(PageIndex)
+            } else if (lkl2 == "«上一页") {
+                PageIndex = parseInt(PageIndex) - 1
+            } else {
+                PageIndex = lkl2
+            }
+            txtPageNum = $("#txtPageNum").val()
+            GetList()
+        })
+        GetList();
+        function GetList() {
+            var data = {};
+            data.PageSize = txtPageNum;
+            data.PageIndex = PageIndex;
+            data.Keywords = Keywords
+            $.ajax({
+                type: "post", url: '/Business/GetRoomConfigData',
+                datatype: 'json',
+                data: data,
+                success: function (res) {
+                    if (res.Code == 0 && res.Code == "0") {
+                        if (res) {
+                            console.log(res)
+                            $("#MyTbody").empty();
+                            if (res.Data.length > 0) {
+                                console.log(res.Data);
+                                for (var i = 0; i < res.Data.length; i++) {
+                                  
+                                    var str = $("#MyTbody").html();
+                                    str = "<tr class='One'>" +
+                                       "<td align='center'>" + res.Data[i].ID + "</td>" +
+                                       "<td align='center'>" + res.Data[i].gamename + "</td>" +
+                                       "<td align='center'>" + res.Data[i].roomname + "</td>" +
+                                       "<td align='center'>" + res.Data[i].Baseskin + "</td>" +
+                                      // "<td align='center'>" + res.Data[i].Min + "</td>" +
+                                       //"<td align='center'>" + res.Data[i].Max + "</td>" +
+                                       //"<td align='center'>" + res.Data[i].OnlineCount + "</td>" +
+                                       "<td align='center'>" + res.Data[i].LastTime + "：分钟</td>" +
+                                        "<td align='center'>" + res.Data[i].roomnumbermin + "~" + res.Data[i].roomnumbermax + "</td>" +
+                                        "<td align='center'>" + res.Data[i].roompeoplenummin + "~" + res.Data[i].roompeoplenumax + "</td>" +
+                                        "<td align='center'>" + res.Data[i].Lookonnummin + "~" + res.Data[i].Lookonnummax + "</td>" +
+                                        "<td align='center'>" + (res.Data[i].isdelroomset == true ? "关闭" : "开启") + "</td>" +
+                                        "<td align='center'>" + res.Data[i].CreateTime + "</td>" +
+                                       "<td align='center'>" +
+                                          "<a href='/Business/RoomSetNumber?operation=Edit&amp;id=" + res.Data[i].ID + "'>修改&nbsp;</a>" +
+                                        "<a id='DeleteBtn' onclick='DeleteRoomSet(" + res.Data[i].ID +")'>开关&nbsp;" +
+                                          "</a>" +
+                                       "</td>"
+                                    "</tr>"
+                                    $('#MyTbody').append(str);
+                                }
+                            } else {
+                                $("#MyTbody").empty();
+                                var str = $("#MyTbody").html();
+                                str = "<tr class='One'>" +
+                                            "<td align='center'  colspan='8'>没有数据</td>"
+                                "</tr>"
+                                $('#MyTbody').append(str);
+                            }
+                            var sthtml = $("#PageContent").html();
+                            $("#PageContent").empty();
+                            if (res.InnerHtml.length > 0) {
+                                sthtml = res.InnerHtml
+                                $('#PageContent').append(sthtml);
+                            }
+
+                        } else {
+                            alert(res.Message)
+                        }
+                    } else {
+                        alert(res.Message)
+                    }
+                }
+            })
+        }
+        //$("body").on("click", "#DeleteBtn", function () {
+        //    id = $(this).find("#hidId").val();
+        //    // console.log(id)
+        //    GameInfo()
+        //})
+        //function GameInfo() {
+        //    var data = {};
+        //    data.Id = id
+        //    data.Name = "";
+        //    data.BaseRate = "";
+        //    data.gameid = "";
+        //    data.Min = "";
+        //    data.Max = "";
+        //    data.OnlineCount = "";
+        //    data.OpenTableCount = "";
+        //    data.IsEnable = "";
+        //    data.gameType = "";
+        //    data.operation = "Delete"
+        //    $.ajax({
+        //        type: "post", url: '/Business/SaveRoomInfo',
+        //        datatype: 'json',
+        //        data: data,
+        //        success: function (res) {
+        //            //console.log(res)
+        //            if (res.Code == 0 && res.Code == "0") {
+        //                if (res) {
+        //                    alert(res.Message)
+        //                    window.location.reload();
+        //                }
+        //            } else {
+        //                alert(res.Message)
+        //            }
+        //        }
+        //    })
+        //}
+
+        function DeleteRoomSet(setid) {
+            var data = {};
+            data.setid = setid;
+            $.ajax({
+                type: "post", url: '/Business/DeleteRoomSet',
+                datatype: 'json',
+                data: data,
+                success: function (res) {
+                    if (res.success) {
+                       
+                        alert(res.msg)
+                    } else {
+                        alert(res.msg)
+
+                    }
+                }
+            })
+
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,348 @@
+﻿
+@{
+    Layout = null;
+}
+@{
+    ViewBag.Title = "数据统计";
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+}
+<style>
+    .odd_bg th {
+    text-align:center;
+    }
+</style>
+
+    <form id="form1" runat="server">
+        <!--导航栏-->
+        <div class="location">
+            <a href="javascript:history.back(-1);" class="back"><i></i><span>返回上一页</span></a>
+            <a  href="/Home/Center" class="home"><i></i><span>首页</span></a>
+            <i class="arrow"></i>
+            <a href="/Business/GameList"><span>游戏管理</span></a>
+            <i class="arrow"></i>
+            <span>游戏列表</span>
+        </div>
+        <!--/导航栏-->
+        <!--工具栏-->
+        <div id="floatHead" class="toolbar-wrap">
+            <div class="toolbar">
+                <div class="l-list">
+                    <ul class="icon-list">
+                        <li><a class="add" href="/Business/GameEdit"><i></i><span>新增</span></a></li>
+
+                    </ul>
+                    平台游戏：
+                    <select name="platType" id="platType" class="select">
+
+                        <option value="">不限</option>
+                        <option value="0">自有游戏</option>
+                        <option value="1">TP平台</option>
+                        <option value="2">JDB平台</option>
+                    </select>
+                    是否开启：
+                    <select name="isopen" id="isopen" class="select">
+
+                        <option value="">不限</option>
+                        <option value="1">是</option>
+                        <option value="0">否</option>
+                    </select>
+                    <input name="txtKeywords" type="text" id="txtKeywords" class="input">
+                    <button type="button" style="height: 28px;padding: 3px 10px;background-color: lightgray;" id="lbtnSearch" class="btn btn-default btn-sm">查询</button>
+                    @*<div class="" style="left:200px">
+            <input name="txtKeywords" type="text" id="txtKeywords" class="keyword input">
+            <a id="lbtnSearch" class="btn-search">查询</a>
+        </div>*@
+                </div>
+
+
+
+
+
+
+
+            </div>
+        </div>
+        <!--/工具栏-->
+        <!--列表-->
+        <div class="table-container">
+            <table width="100%" border="0" cellspacing="0" cellpadding="0" class="ltable">
+                <thead>
+                    <tr class="odd_bg" style="text-align:center;margin:0 auto">
+                        <th>排序</th>
+                        <th>游戏ID</th>
+                        <th>游戏名称</th>
+                        <th>是否热门</th>
+                        <th>是否启用</th>
+                        <th>平台</th>
+                        <th>游戏类型</th>
+                        <th>是否维护</th>
+                        <th>修改人</th>
+                        <th>修改时间</th>
+                        <th>游戏介绍</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody id="MyTbody">
+                    <tr>
+                        <td align="center">1</td>
+                        <td align="center">401</td>
+                        <td align="center">成都麻将</td>
+                        <td align="center">成都麻将</td>
+                        <td align="center">成都麻将</td>
+                        <td align="center">启用</td>
+                        <td align="center">admin</td>
+                        <td align="center">2017/7/31 11:10:34</td>
+                        <td align="center">
+                            <a href="/Business/GameEdit">修改</a>
+                            <a href="/Business/GameEdit">禁用</a>
+                            <a href="/Business/GameEdit">删除</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+        <!--/列表-->
+        <!--内容底部-->
+        <div class="line20"></div>
+        <div class="pagelist">
+            <div class="l-btns">
+                <span>显示</span><input name="txtPageNum" type="text" id="txtPageNum" class="pagenum"><span>条/页</span>
+            </div>
+            <div id="PageContent" class="default">
+            </div>
+        </div>
+        <!--/内容底部-->
+        <div style="width:100%;text-align: center;">
+            <span style="display: inline-block;padding: 4px 15px 0px 15px;color: #666;font-size:14px;">(注 :检索条件 游戏名字,游戏介绍，游戏规则)</span>
+        </div>
+        <div>
+        </div>
+    </form>
+    <script>
+        var storagefirst = window.localStorage;
+        var MyPageNum8 = storagefirst["MyPageNum8"];
+        var id = "";
+        var txtPageNum = 10;
+        var Keywords = "";
+        var platType = "";
+        var PageIndex = 1;
+        var isopen = "";
+        if (MyPageNum8 != "" && MyPageNum8 != null) {
+            txtPageNum = MyPageNum8
+        } else {
+            txtPageNum = txtPageNum
+        }
+        $("#txtPageNum").val(txtPageNum)
+        $("#lbtnSearch").click(function () {
+            var txtKeywords = $("#txtKeywords").val();
+            Keywords = txtKeywords;
+            var txtplatType = $("#platType").val();
+            platType = txtplatType;
+            isopen = $("#isopen").val();
+            GetList();
+        })
+        $("#txtPageNum").change(function () {
+            txtPageNum = $("#txtPageNum").val()
+            storagefirst["MyPageNum8"] = txtPageNum
+            PageIndex = 1;
+            //console.log(txtPageNum)
+            GetList();
+        })
+        $(".pagelist").on('click', 'a', function () {
+            var lkl2 = $(this).text();
+            if (lkl2 == "下一页»") {
+                PageIndex = parseInt(PageIndex) + 1
+            } else if (lkl2 == "«上一页") {
+                PageIndex = parseInt(PageIndex) - 1
+            } else {
+                PageIndex = lkl2
+            }
+            txtPageNum = $("#txtPageNum").val()
+            GetList()
+        })
+        GetList();
+        function GetList() {
+            var typestr = "";
+            var data = {};
+            data.PageSize = txtPageNum;
+            data.PageIndex = PageIndex;
+            data.Keywords = Keywords;
+            data.platType = platType;
+            data.isopen = isopen;
+            console.log(data);
+            $.ajax({
+                type: "post", url: '/Business/GetGameData',
+                datatype: 'json',
+                data: data,
+                success: function (res) {
+                    if (res) {
+                        console.log(res)
+                        $("#MyTbody").empty();
+                        if (res.Code == 0 && res.Code == "0") {
+                            if (res.Data.length > 0) {
+                                console.log(res
+                                );
+                                for (var i = 0; i < res.Data.length; i++) {
+                                    if (res.Data[i].IsEnable == true) {
+                                        var IsEnable = "<a id='Enableoperation' style='background-color: red;color: #fff; margin: 5px; border-radius: 5px;padding: 5px;'>禁用&nbsp;" +
+                                            "<input type='hidden' name='hidId1' id='hidId1' value=" + res.Data[i].ID + ">" +
+                                            "</a>";
+                                        var IsEnableDesc = "启用"
+                                    } else {
+                                        var IsEnable = "<a id='Enableoperation' style='background-color: #00a1ff;color: #fff; margin: 5px; border-radius: 5px;padding: 5px;'>启用&nbsp;" +
+                                            "<input type='hidden' name='hidId1' id='hidId1' value=" + res.Data[i].ID + ">" +
+                                            "</a>";
+                                        var IsEnableDesc = "禁用"
+                                    }
+                                    if (res.Data[i].type == 2) {
+                                        typestr = "<td align='center'>真人对战</td>";
+
+                                    } else if (res.Data[i].type == 3) {
+                                        typestr = "<td align='center'>欢乐捕鱼</td>";
+
+                                    } else if (res.Data[i].type == 4) {
+                                        typestr = "<td align='center'>电子游戏</td>";
+                                    }
+                                    else {
+                                        typestr = "<td align='center'>电子竞技</td>";
+                                    }
+                                    var ishot = "";
+                                    if (res.Data[i].isHot == "1") ishot = "<td style='color:red;font-weight:700;' align='center'>是</td>";
+                                    else ishot = "<td style='font-weight:500;' align='center'>否</td>";
+                                    
+
+                                    var str = $("#MyTbody").html();
+                                    str = "<tr class='One'>" +
+                                        "<td align='center'>" + res.Data[i].Sort + "</td>" +
+                                        "<td align='center'>" + res.Data[i].ID + "</td>" +
+                                        "<td align='center'>" + res.Data[i].Name + "</td>" + ishot +
+                                        "<td align='center'>" + IsEnableDesc + "</td>" +
+                                        "<td align='center'>" + res.Data[i].platType + "</td>" +
+                                        typestr+
+                                        "<td align='center'>" + res.Data[i].IsRun + "</td>" +
+                                        "<td align='center'>" + res.Data[i].ModifyUser + "</td>" +
+                                        "<td align='center'>" + res.Data[i].CreatTime + "</td>" +
+                                        "<td align='center'>" + res.Data[i].GameIntroduce + "</td>" +
+                                        " <td align='center'>" +
+                                        "<a href='/Business/GameEdit?operation=Edit&amp;id=" + res.Data[i].ID + "'>修改&nbsp;</a>" + IsEnable +
+
+                                        "<a id='DeleteBtn'>删除&nbsp;" +
+                                        "<input type='hidden' name='hidId' id='hidId' value=" + res.Data[i].ID + ">" +
+                                        "</a>" +
+                                        "</td>"
+                                    "</tr>"
+                                    $('#MyTbody').append(str);
+                                }
+                            } else {
+                                $("#MyTbody").empty();
+                                var str = $("#MyTbody").html();
+                                str = "<tr class='One'>" +
+                                    "<td align='center'  colspan='8'>没有数据</td>"
+                                "</tr>"
+                                $('#MyTbody').append(str);
+                            }
+                        } else {
+                            alert(res.Message)
+                        }
+                        var sthtml = $("#PageContent").html();
+                        $("#PageContent").empty();
+                        if (res.InnerHtml.length > 0) {
+                            sthtml = res.InnerHtml
+                            $('#PageContent').append(sthtml);
+                        }
+
+                    } else {
+                        eval(res.Message)
+                    }
+
+                }
+            })
+        }
+        $("body").on("click", "#DeleteBtn", function () {
+            id = $(this).find("#hidId").val();
+            var data = {};
+            data.id = id;
+            $.ajax({
+                type: "post", url: '/Business/DeleteGameInfo',
+                datatype: 'json',
+                data: data,
+                success: function (res) {
+
+                    alert(res.Message);
+                    GameInfo();
+                }
+            })
+          
+        })
+       
+        function GameInfo() {
+            var data = {};
+            data.ID = id
+            data.Name = "";
+            data.GameIntroduce = "";
+            data.GameRule = "";
+            data.IsEnable = "";
+            data.DeleteState = "";
+            data.operation = "Delete"
+            $.ajax({
+                type: "post", url: '/Business/SaveGameInfo',
+                datatype: 'json',
+                data: data,
+                success: function (res) {
+                    // console.log(res)
+                    if (res.Code == 0 && res.Code == "0") {
+                        if (res) {
+                            alert(res.Message)
+                            window.location.reload();
+                        }
+                    } else {
+                        alert(res.Message)
+                    }
+                }
+            })
+        }
+        //禁用启用操作修改
+        $("body").on("click", "#Enableoperation", function () {
+            id = $(this).find("#hidId1").val();
+            var text = $(this).text()
+            //console.log()
+            if (text.trim() == "启用") {
+                operation = "Enable";
+
+
+            } else {
+                operation = "Disable"
+
+            }
+            //console.log(id)
+            GameInfo1()
+        })
+        function GameInfo1() {
+            var data = {};
+            data.ID = id
+            data.Name = "";
+            data.GameIntroduce = "";
+            data.GameRule = "";
+            data.IsEnable = "";
+            data.DeleteState = "";
+            data.operation = operation;
+            $.ajax({
+                type: "post", url: '/Business/SaveGameInfo',
+                datatype: 'json',
+                data: data,
+                success: function (res) {
+                    // console.log(res)
+                    if (res.Code == 0 && res.Code == "0") {
+                        if (res) {
+                            alert(res.Message)
+                            window.location.reload();
+                        }
+                    } else {
+                        alert(res.Message)
+                    }
+                }
+            })
+        }
+    </script>
+

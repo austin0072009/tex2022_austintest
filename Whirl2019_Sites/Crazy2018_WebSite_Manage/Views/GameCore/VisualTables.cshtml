@@ -1,0 +1,563 @@
+﻿
+@{
+    ViewBag.Title = "视讯管理";
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+}
+
+<style>
+    th {
+        text-align: center;
+    }
+
+    .layerbtn {
+        display: inline-block;
+        height: 20px;
+        line-height: 20px;
+        padding: 1px 10px 2px 9px;
+        background-color: #A9A9A9;
+        color: white;
+        white-space: nowrap;
+        text-align: center;
+        font-size: 10px;
+        border: none;
+        border-radius: 2px;
+        cursor: pointer;
+    }
+</style>
+<body>
+
+
+    <div class="mainbody">
+
+        <!--导航栏-->
+        <div class="location">
+            <a href="javascript:history.back(-1);" class="back"><i></i><span>返回上一页</span></a>
+            <a href="/Home/Center" class="home"><i></i><span>首页</span></a>
+            <i class="arrow"></i>
+            <a href="/GameCore/RechargeChannels"><span>视讯管理</span></a>
+            <i class="arrow"></i>
+            <span>视讯管理</span>
+        </div>
+        <!--/导航栏-->
+        <!--工具栏-->
+        <div id="floatHead" class="toolbar-wrap">
+            <div class="toolbar">
+                <div class="box-wrap">
+                    <a class="menu-btn"></a>
+                    <div class="l-list">
+                        <ul class="icon-list">
+                            <li><a class="all" href="javascript:;" onclick="checkAll(this);"><i></i><span>全选</span></a></li>
+                            <li><a data-toggle="modal" data-target="#myModal" class="add" href=""><i></i><span>新增</span></a></li>
+                            <li><a id="btnDelete" class="del"><i></i><span>删除</span></a></li>
+                        </ul>
+                        <input name="txtKeywords" placeholder="视讯id、桌号 查询" type="text" id="txtKeywords" class="input">
+                        <button type="button" style="height: 28px;padding: 3px 10px;background-color: lightgray;" id="lbtnSearch" class="btn btn-default btn-sm">查询</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="table-container">
+            <table width="100%" border="0" cellspacing="0" cellpadding="0" class="ltable">
+                <thead>
+                    <tr style="text-align:center" class="odd_bg">
+                        <th width="5%">操作</th>
+                        <th align="20%">ID</th>
+                        <th align="5%">游戏名称</th>
+                        <th align="5%">视讯地址1</th>
+                        <th align="5%">视讯地址2</th>
+                        <th align="5%">视讯地址3</th>
+                        <th align="5%">游戏状态</th>
+                        <th align="5%">牌位置</th>
+                        <th align="5%">创建时间</th>
+                        <th>操作</th>
+                    </tr>
+
+                </thead>
+                <tbody id="MyTbody"></tbody>
+            </table>
+
+        </div>
+        <!--/列表-->
+        <div class="line20"></div>
+        <div class="pagelist">
+            <div class="l-btns">
+                <span>显示</span><input name="txtPageNum" type="text" id="txtPageNum" class="pagenum"><span>条/页</span>
+            </div>
+            <div id="PageContent" class="default">
+
+            </div>
+        </div>
+        <!--/内容底部-->
+        <div style="width:100%;text-align: center;">
+            <span style="display: inline-block;padding: 4px 15px 0px 15px;color: #666;font-size:14px;">(注 : 1.视讯ID(输全),2.桌位号 )</span>
+        </div>
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                            &times;
+                        </button>
+                        <h4 class="modal-title" id="myModalLabel">
+                            添加视讯
+                        </h4>
+                    </div>
+                    <div class="modal-body" style="width:88%">
+                        <div>
+                            <form role="form">
+                                <div class="form-group">
+                                    <label for="name">游戏桌位号<b style="font-size:11px;color:#A9A9A9;padding-left:20px">1~5的桌位号</b></label>
+                                    <input type="text" id="Mannumber" name="Mannumber" class="form-control" placeholder="桌位号">
+                                </div>
+                                <div class="form-group">
+                                    <label for="GameIdVisual">游戏类型<b style="font-size:11px;color:#A9A9A9;padding-left:20px"></b></label>
+                                    <select id="GameIdVisual" name="GameIdVisual" class="form-control">
+                                        <option value="51">德州扑克</option>
+                                        <option value="52">扯旋</option>
+                                        <option value="401">血战麻将</option>
+                                        <option value="511">德州牛仔</option>
+
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="name">视频地址1</label>
+                                    <input type="text" id="videourl1" name="videourl1" class="form-control" placeholder="请输入视频地址">
+                                </div>
+                                <div class="form-group">
+                                    <label for="name">视频地址2</label>
+                                    <input type="text" id="videourl2" name="videourl2" class="form-control" placeholder="请输入视频地址">
+                                </div>
+                                <div class="form-group">
+                                    <label for="name">视频地址3</label>
+                                    <input type="text" id="videourl3" name="videourl3" class="form-control" placeholder="请输入视频地址">
+                                </div>
+                                <div class="form-group">
+                                    <label for="name">是否启用</label>
+                                    <div class="rule-single-checkbox single-checkbox start">
+                                        <input type="hidden" id="is_lock_start" name="is_lock_start" />
+                                        <input id="switchstart" type="checkbox" name="switchstart">
+                                    </div>
+                                    <span id="labPro"></span>
+                                </div>
+
+                            </form>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">
+                            关闭
+                        </button>
+                        <button type="button" id="submitbtn" class="btn btn-primary">
+                            提交
+                        </button>
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal -->
+        </div>
+        <div class="modal fade" id="myUpdateModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                            &times;
+                        </button>
+                        <h4 class="modal-title" id="myModalLabel">
+                            修改视讯
+                        </h4>
+                    </div>
+                    <div class="modal-body" style="width:88%">
+                        <div>
+                            <form role="form">
+                                <div class="form-group">
+                                    <label for="name">游戏桌位号<b style="font-size:11px;color:#A9A9A9;padding-left:20px">1~5的桌位号</b></label>
+                                    <input type="text" id="UpMannumber" name="UpMannumber" class="form-control " placeholder="桌位号">
+                                </div>
+                                <div class="form-group">
+                                    <label for="UpGameIdVisual">游戏类型<b style="font-size:11px;color:#A9A9A9;padding-left:20px"></b></label>
+                                    <select id="UpGameIdVisual" name="UpGameIdVisual" class="form-control">
+                                        <option value="51">德州扑克</option>
+                                        <option value="52">扯旋</option>
+                                        <option value="401">血战麻将</option>
+                                        <option value="511">德州牛仔</option>
+                                    
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="name">视频地址1</label>
+                                    <input type="text" id="Upvideourl1" name="Upvideourl1" class="form-control" placeholder="请输入视频地址">
+                                </div>
+                                <div class="form-group">
+                                    <label for="name">视频地址2</label>
+                                    <input type="text" id="Upvideourl2" name="Upvideourl2" class="form-control" placeholder="请输入视频地址">
+                                </div>
+                                <div class="form-group">
+                                    <label for="name">视频地址3</label>
+                                    <input type="text" id="Upvideourl3" name="Upvideourl3" class="form-control" placeholder="请输入视频地址">
+                                </div>
+                                <div class="form-group">
+                                    <label for="name">是否启用</label>
+                                    <div class="rule-single-checkbox single-checkbox startup">
+                                        <input type="hidden" id="is_lock_start_up" name="is_lock_start_up" />
+                                        <input id="switchstart" type="checkbox" name="switchstart">
+                                    </div>
+                                    <span id="labPro"></span>
+                                </div>
+
+                            </form>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">
+                            关闭
+                        </button>
+                        <button type="button" id="Updatesubmitbtn" class="btn btn-primary">
+                            提交
+                        </button>
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal -->
+            <input type="hidden" id="visualId" name="visualId" />
+        </div>
+    </div>
+
+</body>
+
+<script>
+   
+    var is_lock;
+    var $isStart = $("#isStart");
+    var storagefirst = window.localStorage;
+    var MytxtPageNum = storagefirst["MytxtPageNum"];
+    var PageIndex = 1;
+    var txtPageNum = 20;
+    var Keywords = "";
+    if (MytxtPageNum != "" && MytxtPageNum != null) {
+        txtPageNum = MytxtPageNum
+    } else {
+        txtPageNum = txtPageNum
+    }
+    GetList();
+    $("#txtPageNum").val(txtPageNum);
+
+    $("#lbtnSearch").click(function () {
+        Keywords = $("#txtKeywords").val();
+        txtPageNum = $("#txtPageNum").val()
+        PageIndex = 1;
+        GetList();
+    })
+    $("#txtPageNum").change(function () {
+        Keywords = $("#txtKeywords").val();
+        txtPageNum = $("#txtPageNum").val();
+        storagefirst["MytxtPageNum"] = txtPageNum
+        PageIndex = 1;
+        GetList();
+    })
+    $("#selectRobot").change(function () {
+        Keywords = $("#txtKeywords").val();
+        txtPageNum = $("#txtPageNum").val();
+        PageIndex = 1;
+        GetList();
+    })
+   
+    function keyLogin(event) {
+        if (event.keyCode == 13)
+            document.getElementById("lbtnSearch").click();
+    }
+
+    $("#PageContent").on("click", "a", function () {
+        var lkl2 = $(this).text();
+
+        if (lkl2 == "下一页»") {
+            PageIndex = parseInt(PageIndex) + 1
+        } else if (lkl2 == "«上一页") {
+            PageIndex = parseInt(PageIndex) - 1
+        } else {
+            PageIndex = lkl2
+        }
+        Keywords = $("#txtKeywords").val();
+        txtPageNum = $("#txtPageNum").val()
+        GetList();
+    })
+
+    $(".start").change(function () {
+        if ($(this).find("a").first().attr("class") == "selected") {
+            $("#is_lock_start").val(1);
+        } else {
+            $("#is_lock_start").val(0);
+        }
+        is_lock = $("#is_lock_start").val();
+
+    });
+    function GetList() {
+        var data = {};
+        data.PageIndex = PageIndex;
+        data.PageSize = txtPageNum;
+        data.Keywords = Keywords;
+        data.isStart = $isStart.val();
+
+        $.ajax({
+            type: "post", url: '/GameCore/GetVideoData',
+            datatype: 'json',
+            data: data,
+            success: function (res) {
+                console.log(res.Data);
+                if (res.Code == "0" && res.Code == 0) {
+                    if (res) {
+
+                        $("#MyTbody").empty();
+                        var str = $("#MyTbody").html();
+                        if (res.Data.length > 0) {
+                            for (var n = 0; n < res.Data.length; n++) {
+                                var opt = "";
+                                var statestr = "";
+                                var tablestatestr = "";
+                              
+                                var obj = res.Data[n].CreatTime;
+                                var date = eval(obj.replace(/\/Date\((\d+)\)\//gi, "new Date($1)"));
+                                var time = date.toLocaleDateString();
+                               
+                                if (res.RoleId == 1 || res.RoleId == 4) {
+                                    opt += "<a class='layerbtn'  style='color: white;' onclick='UpdataViualInfo(" + res.Data[n].ID + ")'>修改" +
+                                        "</a>&nbsp;&nbsp;" +
+                                        "  <a class='layerbtn' style='color: white;' onclick='DeleteVisual(" + res.Data[n].ID + ")'>删除" +
+                                        "</a>";
+                                } else {
+                                    opt += "<a href='#'>无权限</a>";
+                                }
+                                if (res.Data[n].state == 0) {
+                                    statestr = "<a  class='layerbtn' onclick='CloseState(1," + res.Data[n].ID + ")' style='background-color:#548B54;'>开启</a>&nbsp;&nbsp;";
+                                } else {
+                                    statestr = "<a   class='layerbtn' onclick='CloseState(0," + res.Data[n].ID + ")'>关闭</a>&nbsp;&nbsp;";
+                                }
+                                if (res.Data[n].tablestate) {
+                                    tablestatestr = "<td align='center' style='color:#548B54;'>启用</td>&nbsp;&nbsp;";
+                                } else {
+                                    tablestatestr = "<td align='center'>未启用</td>&nbsp;&nbsp;";
+                                }
+
+                                str = "<tr class='visuallist'>" +
+                                    "<td align='center'>" +
+                                    "<span class='checkall' style='vertical-align: middle;'>" +
+                                    "<input id='chkId' class='checkall' type='checkbox' name='chkId'  value='" + res.Data[n].ID + "'>" +
+                                    "<input type='hidden' name='hidId' id='hidId' value='" + res.Data[n].ID + "'>" +
+                                    "</span>" +
+
+                                    "</td>" +
+                                    "<td align='center'>" + res.Data[n].ID + "</td>" +
+                                    "<td align='center'>" + res.Data[n].gameName + "</td>" +
+                                    "<td align='center'>" + res.Data[n].vurl1 + "</td>" +
+                                    "<td align='center'>" + res.Data[n].vurl2 + "</td>" +
+                                    "<td align='center'>" + res.Data[n].vurl3 + "</td>" + tablestatestr+
+                                    "<td align='center'>" + res.Data[n].pakerlist + "</td>" +
+                                    //"<td align='center'>" + res.Data[n].IsDel + "</td>" +
+                                    //"<td align='center'>" + res.Data[n].manNum + "</td>" +
+                                    "<td align='center'>" + time + "</td>" +
+
+
+                                    "<td align='center'>" + statestr+
+                                    opt
+                                "</td>" +
+                                    "</tr>"
+                                $('#MyTbody').append(str);
+                                var sthtml = $("#PageContent").html();
+                                $("#PageContent").empty();
+                                if (res.InnerHtml.length > 0) {
+                                    sthtml = res.InnerHtml
+                                    $('#PageContent').append(sthtml);
+                                }
+                            }
+                        } else {
+                            $("#MyTbody").empty();
+                        }
+                    } else {
+                        eval(res)
+                    }
+                } else {
+                    eval(res)
+                }
+            }
+        })
+    }
+    $("#submitbtn").click(function () {
+      
+        var data = {};
+        data.Mannumber = $("#Mannumber").val();
+        data.videourl1 = $("#videourl1").val();
+        data.videourl2 = $("#videourl2").val();
+        data.videourl3 = $("#videourl3").val();
+        data.gameid = $("#GameIdVisual").val();
+        data.State = is_lock;
+        console.log(data);
+        $.ajax({
+            type: "post", url: '/GameCore/AddVideo',
+            datatype: 'json',
+            data: data,
+            success: function (res) {
+                if (res.success) {
+                    $('#myModal').modal('hide');
+                    layer.msg(res.msg, { icon: 6 });
+                }
+                else {
+                    layer.msg(res.msg, { icon: 6 });
+                    GetList();
+                }
+
+            }
+        });
+    });
+
+    function CloseState(type,sid) {
+        $.ajax({
+            url: "/GameCore/CloseState?id=" + sid + "" + "&type=" + type + "",
+            type: "post",
+            contentType: "application/json",
+            dataType: "json",
+            success: function (data) {
+                if (data.success) {
+                    alert(data.msg);
+                    window.location.href = "/GameCore/VisualTables";
+                } else {
+                    alert(data.msg);
+                }
+            }
+        })
+
+    }
+
+    function DeleteVisual(sid) {
+        $.ajax({
+            url: "/GameCore/DeleteVisual?id=" + sid ,
+            type: "post",
+            contentType: "application/json",
+            dataType: "json",
+            success: function (data) {
+                if (data.success) {
+                    alert(data.msg);
+                    window.location.href = "/GameCore/VisualTables";
+                } else {
+                    alert(data.msg);
+                }
+            }
+        })
+    }
+
+    function UpdataViualInfo(vid) {
+        $("#myUpdateModal").modal("show");
+        data = {};
+        data.Id = vid;
+        $("#visualId").val(vid);
+        $.ajax({
+            type: "post", url: '/GameCore/GetVisualById',
+            datatype: 'json',
+            data: data,
+            success: function (res) {
+                $("#UpGameIdVisual").val(res.gameid);
+                $("#UpMannumber").val(res.manNum);
+                $("#Upvideourl1").val(res.vurl1);
+                $("#Upvideourl2").val(res.vurl2);
+                $("#Upvideourl3").val(res.vurl3);
+                $("#is_lock_start_up").val(res.state ? "0" : "1");
+                if (res.state) {
+                   // $(".startup a:first").addClass("selected");
+                  //  $(".startup a:first").removeAttr("href");
+                }
+            }
+        })
+    }
+
+    $(".startup").change(function () {
+        if ($(this).find("a").first().attr("class") == "selected") {
+            $("#is_lock_start_up").val(1);
+        } else {
+            $("#is_lock_start_up").val(0);
+        }
+    });
+
+    $("#Updatesubmitbtn").click(function () {
+        data = {};
+        data.Id = $("#visualId").val();
+        data.manNum = $("#UpMannumber").val();
+        data.gameid = $("#UpGameIdVisual").val();
+        data.vurl1 = $("#Upvideourl1").val();
+        data.vurl2 =  $("#Upvideourl2").val();
+        data.vurl3 = $("#Upvideourl3").val();
+        data.state = $("#is_lock_start_up").val();
+        $.ajax({
+            type: "post",
+            url:"/GameCore/UpdataVisualInfo",
+            datatype: "json",
+            data: data,
+            success: function (res) {
+                console.log(res);
+                if (res.Code == 0) {
+                    alert(res.Message);
+                    $("#myUpdateModal").modal("hide");
+                    GetList();
+                } else {
+                    alert(res.Message);
+                }
+            }
+        })
+    })
+</script>
+
+<script>
+
+    function ChannelsEnable(type, cid) {
+
+        $.ajax({
+            url: "/GameCore/ChannelsEnable?id=" + cid + "" + "&type=" + type + "",
+            type: "post",
+            contentType: "application/json",
+            dataType: "json",
+            success: function (data) {
+                if (data.success) {
+                    alert(data.msg);
+                    window.location.href = "/GameCore/RechargeChannels";
+                } else {
+                    alert(data.msg);
+                }
+            }
+        })
+    }
+
+    var isExport = 0;
+    var numID = [];//用于储存需要删除的ID
+    $("#btnDelete").click(function () {
+        numID = []
+        var num1 = {};
+        var on1 = $(".visuallist");
+        for (var o = 0; o < on1.length; o++) {
+            var lkl3 = $(on1[o]).find(".checkall")
+            for (var ol = 0; ol < lkl3.length; ol++) {
+                if (lkl3[ol].checked == true) {
+                    var lkl4 = $(on1[o]).find("#hidId").val();
+                    num1.id = lkl4
+                    numID.push(num1.id)
+                }
+            }
+        }
+        var a, b;
+        a = numID;
+        b = a.join(",");
+        console.log(a);
+        console.log(b);
+        var ids = b;
+        console.log(ids);
+        $.ajax({
+            url: "/GameCore/RechargeCDel?ids=" + ids + "",
+            type: "post",
+            contentType: "application/json",
+            dataType: "json",
+            success: function (data) {
+                eval(data);
+                var PageIndex = $("#PageIndex").val();
+
+
+            }
+        })
+    })
+</script>
+

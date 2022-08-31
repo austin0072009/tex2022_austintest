@@ -1,0 +1,267 @@
+﻿@using Crazy2018_Sys_Common;
+@using Crazy2018_Sys_Entity;
+@using Crazy2018_Sys_DBHelper;
+@{
+    ViewBag.Title = "红利发放";
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+}
+<style>
+    .layerbtn {
+        display: inline-block;
+        height: 20px;
+        line-height: 20px;
+        padding: 1px 10px 2px 9px;
+        background-color: #A9A9A9;
+        color: white;
+        white-space: nowrap;
+        text-align: center;
+        font-size: 10px;
+        border: none;
+        border-radius: 2px;
+        cursor: pointer;
+    }
+
+    th {
+        text-align: center;
+    }
+
+    .form-control {
+        width: 80%;
+        height: 24px;
+    }
+</style>
+
+<body onkeydown="keyLogin(event);" class="mainbody">
+    <!--导航栏-->
+    <div class="location">
+        <a href="javascript:history.back(-1);" class="back"><i></i><span>返回上一页</span></a>
+        <a href="/Home/Center" class="home"><i></i><span>首页</span></a>
+        <i class="arrow"></i>
+        <a href="/GameCore/H5winloseLog"><span>H5输赢明细</span></a>
+        <i class="arrow"></i>
+        <span>输赢明细</span>
+    </div>
+    <!--/导航栏-->
+    <!--工具栏-->
+    <div id="floatHead" class="toolbar-wrap">
+        <div class="toolbar">
+            <div class="box-wrap">
+                <a class="menu-btn"></a>
+                <div class="l-list">
+                   
+
+                    <input name="txtKeywords" placeholder="用户id查询" oninput="value=value.replace(/[^\d]/g,'')" type="text" id="txtKeywords" class="input">
+                    <button type="button" style="height: 28px;padding: 3px 10px;background-color: lightgray;" id="lbtnSearch" class="btn btn-default btn-sm">查询</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!--/工具栏-->
+    <!--列表-->
+    <div class="table-container">
+
+        <table width="100%" border="0" cellspacing="0" cellpadding="0" class="ltable">
+            <thead>
+                <tr class="odd_bg">
+                    <th width="30px">选择</th>
+                    <th>游戏ID</th>
+                    <th>游戏名称</th>
+                    <th>玩家ID</th>
+                    <th>玩家名称</th>
+                    <th>盈亏金额</th>
+                    <th>是否分配红利</th>
+                    @*<th>之后金额</th>
+        <th>之前金额</th>*@
+                    <th>时间</th>
+                    @*<th>操作</th>*@
+                </tr>
+            </thead>
+            <tbody id="MyTbody"></tbody>
+        </table>
+
+    </div>
+    <!--/列表-->
+    <!--内容底部-->
+    <div class="line20"></div>
+    <div class="pagelist">
+        <div class="l-btns">
+            <span>显示</span><input name="txtPageNum" type="text" id="txtPageNum" class="pagenum"><span>条/页</span>
+        </div>
+        <div id="PageContent" class="default">
+
+        </div>
+    </div>
+    <input type="hidden" id="uid" name="uid" value="0" />
+    <input type="hidden" id="type" name="type" value="0" />
+    <!--/内容底部-->
+    <div style="width:100%;text-align: center;">
+        <span style="display: inline-block;padding: 4px 15px 0px 15px;color: #666;font-size:14px;">(注 : jdb个人输赢明细)</span>
+    </div>
+
+
+    <script>
+        var storagefirst = window.localStorage;
+        var MytxtPageNum = storagefirst["MytxtPageNum"];
+        var PageIndex = 1;
+        var txtPageNum = 20;
+        var Keywords = "";
+        var rat_list;
+        var coldc_lab;
+        var jackpottoday = 0;
+        var thisgoldg;
+        var nowtype;
+        if (MytxtPageNum != "" && MytxtPageNum != null) {
+            txtPageNum = MytxtPageNum
+        } else {
+            txtPageNum = txtPageNum
+        }
+        GetList();
+        $("#txtPageNum").val(txtPageNum);
+
+        $("#lbtnSearch").click(function () {
+            Keywords = $("#txtKeywords").val();
+            txtPageNum = $("#txtPageNum").val()
+            PageIndex = 1;
+            GetList();
+        })
+        $("#txtPageNum").change(function () {
+            Keywords = $("#txtKeywords").val();
+            txtPageNum = $("#txtPageNum").val();
+            storagefirst["MytxtPageNum"] = txtPageNum
+            PageIndex = 1;
+            GetList();
+        })
+        $("#weektype").change(function () {
+            Keywords = $("#txtKeywords").val();
+            txtPageNum = $("#txtPageNum").val();
+            PageIndex = 1;
+            GetList();
+        });
+
+        function keyLogin(event) {
+            if (event.keyCode == 13)
+                document.getElementById("lbtnSearch").click();
+        }
+
+
+
+        $("#PageContent").on("click", "a", function () {
+            var lkl2 = $(this).text();
+
+            if (lkl2 == "下一页»") {
+                PageIndex = parseInt(PageIndex) + 1
+            } else if (lkl2 == "«上一页") {
+                PageIndex = parseInt(PageIndex) - 1
+            } else {
+                PageIndex = lkl2
+            }
+            Keywords = $("#txtKeywords").val();
+            txtPageNum = $("#txtPageNum").val()
+            GetList();
+        })
+
+        function GetList() {
+            var data = {};
+            data.PageIndex = PageIndex;
+            data.PageSize = txtPageNum;
+            data.Keywords = Keywords;
+
+
+            $.ajax({
+                type: "post", url: '/GameCore/H5winloseLoglist',
+                datatype: 'json',
+                data: data,
+                success: function (res) {
+
+                    if (res.Code == 0) {
+
+                        if (res) {
+                            $("#MyTbody").empty();
+                            var str = $("#MyTbody").html();
+                        
+                            if (res.Data.length > 0) {
+
+
+                                for (var n = 0; n < res.Data.length; n++) {
+                                    var opt = "";
+                                    var ratio = "";
+                                    var rat = "";
+                                    var potratesstr = "";
+
+
+                                    if (res.Data[n].IsRebate==1)
+                                    {
+                                        opt =    " <td align = 'center' style='color:#3276B1'> 是</td>" ;
+
+                                    } else {
+                                        opt =    " <td align = 'center' style='color:#ED9C28'> 否</td>";
+                                    }
+
+                                    str = "<tr>" +
+                                        "<td align='center'>" +
+                                        "<span class='checkall' style='vertical-align: middle;'>" +
+                                        "<input id='rptList_chkId_0' type='checkbox' name='rptList$ctl01$chkId'>" +
+                                        "</span>" +
+                                        "<input type='hidden' name='rptList' id='rptList' value=''>" +
+                                        "</td>" +
+                                        "<td align='center'>" + res.Data[n].GameId + "</td>" +
+                                        "<td align='center'>" + res.Data[n].GameName + "</td>" +
+                                        "<td align='center'>" + res.Data[n].UserId + "</td>" +
+                                        "<td align='center'>" + res.Data[n].UserName + "</td>" +
+                                        "<td align='center'>" + res.Data[n].Gold + "</td>"  + opt +
+                                     
+                                        //"<td align='center'>" + res.Data[n].afterGold + "</td>" +
+                                        //"<td align='center'>" + res.Data[n].beforeGold + "</td>" +
+                                        "<td align='center'>" + res.Data[n].CreateTime + "</td>" +
+                                        "<td align='center'>" +
+
+                                        "</td>" +
+                                        "</tr>";
+                                    $('#MyTbody').append(str);
+                                    var sthtml = $("#PageContent").html();
+                                    $("#PageContent").empty();
+                                    if (res.InnerHtml.length > 0) {
+                                        sthtml = res.InnerHtml
+                                        $('#PageContent').append(sthtml);
+                                    }
+                                }
+                            } else {
+                                $("#MyTbody").empty();
+                            }
+                        } else {
+                            eval(res)
+                        }
+                    } else {
+                        eval(res)
+                    }
+                }
+            })
+
+
+        }
+
+
+
+
+        function BonusGive(uid, gold) {
+            var week = $("#weektype").val();
+            $.ajax({
+                url: "/H5Game/BonusGive?uid=" + uid + "" + "&week=" + week + "",
+                type: "post",
+                contentType: "application/json",
+                dataType: "json",
+                success: function (data) {
+                    if (data.success) {
+                        alert(data.msg);
+                        window.location.href = "/H5Game/H5Bonus";
+                    } else {
+                        alert(data.msg);
+                    }
+                }
+            });
+        }
+
+
+    </script>
+</body>

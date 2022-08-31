@@ -1,0 +1,296 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,initial-scale=1.0,user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <title>ConvertList</title>
+    <link href="~/scripts/artdialog/ui-dialog.css" rel="stylesheet" type="text/css" />
+    <link href="~/skin/default/style.css" rel="stylesheet" type="text/css" />
+    <link href="~/css/pagination.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="~/scripts/jquery/jquery-1.11.2.min.js"></script>
+    <script type="text/javascript" src="~/scripts/artdialog/dialog-plus-min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="~/js/laymain.js"></script>
+    <script type="text/javascript" charset="utf-8" src="~/js/common.js"></script>
+</head>
+<style type="text/css">
+    .StatusChangesBox {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(16, 16, 16, 0.44);
+        display: none;
+    }
+
+    .StatusCont {
+        width: 100%;
+        height: 100%;
+        position: relative;
+    }
+
+    .StatusBox {
+        position: absolute;
+        top: 30%;
+        left: 35%;
+        right: 35%;
+        width: 300px;
+        height: 180px;
+        background-color: #fff;
+        border-radius: 5px;
+    }
+
+    .titleCont {
+        width: 61%;
+        height: 55px;
+        margin: auto;
+        margin-top: 50px;
+    }
+
+        .titleCont dt {
+            float: left;
+            line-height: 35px;
+        }
+
+    .BtnBox {
+        width: 60%;
+        height: 55px;
+        margin: auto;
+    }
+
+    #btnSubmit2 {
+        float: left;
+        margin-top: 15px;
+    }
+
+    #btnSubmit {
+        float: right;
+        margin-top: 15px;
+    }
+</style>
+<body class="mainbody">
+    <form id="form1">
+        <!--导航栏-->
+        <div class="location">
+            <a href="javascript:history.back(-1);" class="back"><i></i><span>返回上一页</span></a>
+            <a href="/Home/Center" class="home"><i></i><span>首页</span></a>
+            <i class="arrow"></i>
+            <a href="/Business/ConvertList"><span>用户联系方式</span></a>
+            <i class="arrow"></i>
+            <span>用户联系列表</span>
+        </div>
+        <!--/导航栏-->
+        <!--工具栏-->
+        <div id="floatHead" class="toolbar-wrap">
+            <div class="toolbar">
+                <div class="box-wrap">
+                    <a class="menu-btn"></a>
+                    <div class="l-list">
+
+                    </div>
+                    <div class="r-list">
+                        <input name="txtKeywords" type="text" id="txtKeywords" class="keyword">
+                        <a id="lbtnSearch" class="btn-search">查询</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--/工具栏-->
+        <!--列表-->
+        <div class="table-container">
+            <table width="100%" border="0" cellspacing="0" cellpadding="0" class="ltable">
+                <thead>
+                    <tr class="odd_bg">
+                        <th>用户ID</th>
+                        <th>姓名</th>
+                        <th>电话</th>
+                        <th>邮编</th>
+                        <th>地址</th>
+                        <th>创建时间</th>
+                        <th>更新时间</th>
+                        <th>备注</th>
+                    </tr>
+                </thead>
+                <tbody id="MyTbody">
+                    @*<tr>
+                            <td align="center">23</td>
+                            <td align="center">1380570</td>
+                            <td align="center">小发发</td>
+                            <td align="center">17760555303</td>
+                            <td align="center">1</td>
+                            <td align="center">李家寨</td>
+                            <td align="center"></td>
+                        </tr>*@
+                </tbody>
+            </table>
+        </div>
+        <!--/列表-->
+        <!--内容底部-->
+        <div class="line20"></div>
+        <div class="pagelist">
+            <div class="l-btns">
+                <span>显示</span><input name="txtPageNum" type="text" id="txtPageNum" class="pagenum"><span>条/页</span>
+            </div>
+            <div id="PageContent" class="default">
+
+            </div>
+        </div>
+        <!--/内容底部-->
+        <div style="width:100%;text-align: center;">
+            <span style="display: inline-block;padding: 4px 15px 0px 15px;color: #666;font-size:14px;">(注 : 检索条件 1.用户ID)</span>
+        </div>
+    </form>
+    @*<div class="StatusChangesBox">
+            <div class="StatusCont">
+                <div class="StatusBox">
+                    <dl class="titleCont">
+                        <dt class="">提现状态:</dt>
+                        <dd>
+                            <select id="CommodityType" class="select">
+                                <option value="0">申请提现</option>
+                                <option value="1">已扣除金币</option>
+                                <option value="2">已提现</option>
+                            </select>
+                        </dd>
+                    </dl>
+                    <div class="BtnBox">
+                        <input name="btnReturn" type="button" value="取消" id="btnSubmit2" class="btn yellow">
+                        <input type="button" name="btnSubmit" value="保存" id="btnSubmit" class="btn">
+                    </div>
+                </div>
+            </div>
+        </div>*@
+    <script>
+        var storagefirst = window.localStorage;
+        var PageNumMemory = storagefirst["PageNumMemory"];
+        var Keywords = ""
+        var PageIndex = 1;
+        var txtPageNum = 10;
+
+        if (PageNumMemory != "" && PageNumMemory != null) {
+            txtPageNum = PageNumMemory
+        } else {
+            txtPageNum = txtPageNum
+        }
+        $("#txtPageNum").val(txtPageNum);
+
+
+        GetWithdrawalsList()
+
+        $("#lbtnSearch").click(function () {
+            Keywords = $("#txtKeywords").val();
+            txtPageNum = $("#txtPageNum").val()
+            PageIndex = 1;
+            GetWithdrawalsList()
+        })
+        $("#txtPageNum").change(function () {
+            Keywords = $("#txtKeywords").val();
+            txtPageNum = $("#txtPageNum").val()
+            storagefirst["PageNumMemory"] = txtPageNum
+            PageIndex = 1;
+            GetWithdrawalsList()
+        })
+
+        $("#PageContent").on("click", "a", function () {
+            var lkl2 = $(this).text();
+            if (lkl2 == "下一页»") {
+                PageIndex = parseInt(PageIndex) + 1
+            } else if (lkl2 == "«上一页") {
+                PageIndex = parseInt(PageIndex) - 1
+            } else {
+                PageIndex = lkl2
+            }
+            Keywords = $("#txtKeywords").val();
+            lweq = $("#selectRobot").val();
+            txtPageNum = $("#txtPageNum").val()
+            GetWithdrawalsList()
+        })
+
+        function GetWithdrawalsList() {
+            var data = {};
+            data.PageIndex = PageIndex;
+            data.PageSize = txtPageNum;
+            data.Keywords = Keywords;
+            $.ajax({
+                type: "post", url: '/Business/GetUserContactData',
+                datatype: 'json',
+                data: data,
+                success: function (res) {
+                    console.log(res)
+                    if (res.Code == "0" && res.Code == 0) {
+
+                        if (res) {
+                            $("#MyTbody").empty();
+                            var str = $("#MyTbody").html();
+                            var sto = "";
+                            var ECont = "";
+                            var isTax = "";
+                            if (res.Data.length > 0) {
+                                for (var n = 0; n < res.Data.length; n++) {
+
+                                    //if (res.Data[n].State == 0) {
+                                    //    sto = "申请提现"
+                                    //} else if (res.Data[n].State == 1) {
+                                    //    sto = "已经扣除金币"
+                                    //} else {
+                                    //    sto = "已提现"
+                                    //}
+
+                                    //if (res.Data[n].State == 2) {
+                                    //    ECont = "已完成"
+                                    //} else {
+                                    //    ECont = "修改编辑"
+                                    //}
+                                    //if (res.Data[n].isTax) {
+                                    //    isTax = "是";
+                                    //}
+                                    //else {
+                                    //    isTax = "否";
+                                    //}
+                                    str = "<tr>" +
+                                                "<td align='center'>" + res.Data[n].UserId + "</td>" +
+                                                "<td align='center'>" + res.Data[n].Name + "</td>" +
+                                                 "<td align='center'>" + res.Data[n].Mobile + "</td>" +
+                                                 "<td align='center'>" + res.Data[n].PostCode + "</td>" +
+                                                 "<td align='center'>" + res.Data[n].Address + "</td>" +
+                                                 "<td align='center'>" + res.Data[n].CreatTime + "</td>" +
+                                                 "<td align='center'>" + res.Data[n].UpdateDate + "</td>" +
+                                                 "<td align='center'>" + res.Data[n].Remark + "</td>" +
+                                           "</tr>"
+                                    $('#MyTbody').append(str);
+                                    var sthtml = $("#PageContent").html();
+                                    $("#PageContent").empty();
+                                    if (res.InnerHtml.length > 0) {
+                                        sthtml = res.InnerHtml
+                                        $('#PageContent').append(sthtml);
+                                    }
+                                }
+                            } else {
+                                var str = $("#MyTbody").html();
+                            }
+                        } else {
+                            eval(res)
+                        }
+                    } else {
+                        eval(res)
+                    }
+                }
+            })
+        }
+        $("#txtKeywords").change(function () {
+            PageIndex = 1;
+            Keywords = $("#txtKeywords").val();
+            lweq = $("#selectRobot").val();
+            txtPageNum = $("#txtPageNum").val()
+            GetWithdrawalsList()
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,186 @@
+﻿@{
+    ViewBag.Title = "我的下级代理";
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+}
+@using Crazy2018_Sys_Common;
+@using Crazy2018_Sys_ViewEntity;
+@using Crazy2018_Sys_ViewEntity.Game;
+@using Crazy2018_Sys_ViewEntity.GameCore;
+
+@model DataResults<tuseragent2019View2>
+<style>
+    th {
+        text-align: center;
+    }
+</style>
+<script>
+    $(function () {
+        $(".pagelist").on('click', 'a', function () {
+            var PageIndex = $("#PageIndex").val();
+            var lkl2 = $(this).text();
+            if (lkl2 == "下一页»") {
+                PageIndex = parseInt(PageIndex) + 1
+            } else if (lkl2 == "«上一页") {
+                PageIndex = parseInt(PageIndex) - 1
+            } else {
+                PageIndex = lkl2
+            }
+            window.location.href = "/GameCore/LowerAgent?Keywords=" + $("#txtKeywords").val() + "&PageSize=" + $(this).val() + "&PageIndex=" + PageIndex + "&userid=";
+        })
+
+        $("#txtPageNum").change(function () {
+            window.location.href = "/GameCore/LowerAgent?Keywords=" + $("#txtKeywords").val() + "&PageSize=" + $(this).val() + "&userid=";
+        })
+        $("#lbtnSearch").click(function () {
+            window.location.href = "/GameCore/LowerAgent?Keywords=" + $("#txtKeywords").val() + "&PageSize=" + $("#txtPageNum").val() + "&userid=";
+        });
+    })
+    function loadUserlowerAgent(agentnum, userid) {
+        if (agentnum == 0) {
+            layer.msg('没有下级代理！', { icon: 4 }); return;
+        }
+        window.location.href = "/GameCore/LowerAgent?Keywords=" + $("#txtKeywords").val() + "&PageSize=" + $("#txtPageNum").val() + "&userid=" + userid;
+
+    }
+
+    function Unbinding(userid) {
+        $.post("/GameCore/MSUnbinding", { userid: userid }, function (data) {
+            layer.msg(data.Message, { icon: 5 });
+            window.location.reload();
+
+        });
+    }
+
+    function InvitaCode(userid)
+    {
+        layer.prompt({ title: '请设置邀请码UserId:' + userid, formType: 2, maxlength: 5 }, function (pass, index) {
+            layer.close(index);
+            if (pass == "") layer.msg('请输入邀请码');
+            var data = {};
+            data.code = pass;
+            data.uid = userid;
+            $.ajax({
+                type: "post", url: '/GameCore/SetInvitaCode',
+                datatype: 'json',
+                data: data,
+                success: function (res) {
+                    alert(res.msg);
+                }
+            });
+        });
+    }
+
+
+    function loadUserlowerAgentMoney(userId) {
+        layer.open({
+            type: 2,
+            area: ['800px', '650px'],
+            fixed: false,
+            maxmin: true,
+            content: '/Gmmgr/AgencyContrib?userid=' + userId
+        });
+    }
+
+</script>
+<div class="mainbody">
+    <form id="form1" runat="server">
+        <!--导航栏-->
+        <div class="location">
+            <a href="javascript:history.back(-1);" class="back"><i></i><span>返回上一页</span></a>
+            <a href="/Home/Center" class="home"><i></i><span>首页</span></a>
+            <i class="arrow"></i>
+            <a href="/GameCore/LowerAgent"><span>代理管理</span></a>
+            <i class="arrow"></i>
+            <span>代理列表</span>
+        </div>
+        <!--/导航栏-->
+        <!--工具栏-->
+        <div id="floatHead" class="toolbar-wrap">
+            <div class="toolbar">
+                <div class="box-wrap">
+                    <a class="menu-btn"></a>
+                    <div class="l-list">
+                        <input name="txtKeywords" placeholder="用户id查询" oninput="value=value.replace(/[^\d]/g,'')" type="text" id="txtKeywords" value="@Model.Keywords" class="input">
+                        <button type="button" style="height: 28px;padding: 3px 10px;background-color: lightgray;" id="lbtnSearch" class="btn btn-default btn-sm">查询</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="table-container">
+            <table width="100%" border="0" cellspacing="0" cellpadding="0" class="ltable">
+                <tbody>
+                    <tr class="odd_bg">
+                        <th width="5%">代理ID</th>
+                        <th align="10%">代理姓名</th>
+                        <th align="5%">代理等级</th>
+                        <th align="20%">父级代理(ID)</th>
+                        <th align="10%">总代理(ID)</th>
+                        <th align="10%">邀请码</th>
+                        <th align="5%">最近一次结算时间</th>
+                        <th align="5%">历史红利</th>
+                        <th align="5%">未领取红利</th>
+                        <th align="5%">赢的流水</th>
+                        <th align="5%">输的流水</th>
+
+                        
+                        <th align="5%">设置邀请码</th>
+                        <th align="5%">代理贡献</th>
+                    </tr>
+                    @foreach (var item in Model.Data)
+                    {
+                        <tr>
+                            <td align="center">@item.UserID</td>
+                            <td align="center">@item.UserName</td>
+                            <td align="center">@item.Agentlevel</td>
+                            <td align="center">@(item.FUserID != 0 ? item.FUserName + "(" + item.FUserID + ")" : item.FUserID.ToString())</td>
+                            <td align="center">@(item.TopUserID != 0 ? item.topUserName + "(" + item.TopUserID + ")" : item.TopUserID.ToString())</td>
+                            <td align="center">@item.Code</td>
+                            <td align="center">@item.lastdealtime</td>
+                            <td align="center">@item.GoldHistoryCommission</td>
+                            <td align="center">@item.GoldCommission</td>
+                            <td align="center">@item.watergoldadd</td>
+                            <td align="center">@item.watergoldreduce</td>
+
+                            <td align="center"><button title="设置特殊邀请码，如无特殊设置请不要随便设置" onclick="InvitaCode('@item.UserID')" type="button" class="btn btn-default btn-xs">
+                                       设置邀请码
+                                       </button></td>
+                           
+                            <td align="center">
+                                <button onclick="loadUserlowerAgent('@item.ChildAgentsEY.Count()','@item.UserID')" type="button" class="btn btn-default btn-xs">
+                                    <span class="badge">@item.ChildAgentsEY.Count()</span>
+                                    代理
+                                </button>
+                            </td>
+                            <td align="center">
+                                <button onclick="loadUserlowerAgentMoney('@item.UserID')" type="button" class="btn btn-default btn-xs">
+                                    查看
+                                </button>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+        </div>
+        <!--/列表-->
+        <!--内容底部-->
+        <div class="line20"></div>
+        <div class="pagelist">
+            <div class="l-btns">
+                <span>显示</span><input name="txtPageNum" type="text" value="@Model.PageSize" id="txtPageNum" class="pagenum" onkeydown="return checkNumber(event);"><span>条/页</span>
+            </div>
+            <div id="PageContent" class="default">@Html.Raw(Model.InnerHtml)</div>
+            <input type="hidden" id="PageIndex" name="PageIndex" value="@Model.PageIndex" />
+
+        </div>
+        <!--/内容底部-->
+        <div style="width:100%;text-align: center;">
+            <span style="display: inline-block;padding: 4px 15px 0px 15px;color: #666;font-size:14px;">(注 : 发送人ID)</span>
+        </div>
+        <div id="code" style="max-height:300px;max-width:300px;" class="code">
+            <img id="codeurl" />
+        </div>
+    </form>
+</div>

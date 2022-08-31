@@ -1,0 +1,218 @@
+﻿
+@{
+    ViewBag.Title = "Activity";
+}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=640">
+    <meta HTTP-EQUIV="pragma" CONTENT="no-cache">
+    <meta HTTP-EQUIV="Cache-Control" CONTENT="no-cache, must-revalidate">
+    <meta HTTP-EQUIV="expires" CONTENT="0">
+    <title>棋牌游戏-活动</title>
+    <!--bootstrap相关-->
+    <script type="text/javascript" src="~/js/jquery.min.js"></script>
+    <link type="text/css" href="~/css/bootstrap.min.css" rel="stylesheet">
+    <!--首页样式表-->
+    <link type="text/css" href="~/css/bulletin.css" rel="stylesheet">
+</head>
+<body ng-app="app" style="font-family:Microsoft YaHei">
+
+    <div id="bgheight" style="background-color:lightgray;background-image: url('/img/GW_bg.jpg'); width: 100%; height: 970px;  background-repeat: no-repeat; background-size: cover; position: relative; z-index: 1;">
+
+        <!--导航条黑色背景-->
+        <div id="yeepay" style="height: 98px;width: 100%;background-color: #3f3028;position: fixed;z-index: 50;filter: alpha(opacity = 80);-moz-opacity: 0.8;-khtml-opacity: 0.8;opacity: 0.8;">
+            <!--头部按钮-->
+            <div ng-controller="indexCtrl" style="width:640px;height:60px;margin:0 auto;z-index: 50">
+
+                <a style="line-height:30px;float:right;text-align: center" id="chonzhi">
+                    <div id="labthree" style="height: 78px;width: 150px;position: relative"></div>
+                    <div style="position: absolute;top: 10px;margin-left: 15px">
+                        <span style="color:#ffbb00;font-size: 30px;">我的金币</span>
+                        <br /><span style="color:#9d7302;font-size:18px">MINEGOLD</span>
+                    </div>
+                </a>
+
+                <a href="/Manage/help" style="line-height:30px;float:right;margin-left:8px;text-align: center">
+                    <div id="labone" style="height: 78px;width: 150px;position: relative"></div>
+                    <div style="position: absolute;top: 10px;margin-left: 15px">
+                        <span style="color:#ffbb00;font-size: 30px;">帮助中心</span>
+                        <br /><span style="color:#9d7302;font-size:18px">HELP</span>
+                    </div>
+                </a>
+
+                <a style="line-height:30px;float:right;margin-left:8px;text-align: center" id="user">
+                    <div id="labtwo" style="height: 78px;width: 150px;position: relative"></div>
+                    <div style="position: absolute;top: 10px;margin-left: 15px">
+                        <span style="color:#ffbb00;font-size: 30px;">个人中心</span>
+                        <br /><span style="color:#9d7302;font-size:18px">PERSONAL</span>
+                    </div>
+                </a>
+
+                <a href="/Manage/Index" style="line-height:30px;float:right;text-align: center">
+                    <div id="labthree" style="height: 78px;width: 150px;position: relative" class="nav_background"></div>
+                    <div style="position: absolute;top: 10px;margin-left: 15px">
+                        <span style="color:#ffbb00;font-size: 30px;">官网首页</span>
+                        <br /><span style="color:#9d7302;font-size:18px">HOME</span>
+                    </div>
+                </a>
+
+            </div>
+
+            <!--下面的线条图-->
+            <div style="width:540px;height:20px;margin:auto;left:0;bottom:0;right:0;top:0px;z-index: 50;">
+                <div style="height:11px;width: 11px;background-image: url('/img/GW_dhfk_001.png');margin-left: 50px;float: left"></div>
+                <div style="height: 2px;width: 150px;background-color:#5f4d2a;float: left;margin-top: 5px;margin-left:-1px"></div>
+
+                <div style="height:11px;width: 11px;background-image: url('/img/GW_dhfk_001.png');float:left;margin-left:-1px"></div>
+                <div style="height: 2px;width: 150px;background-color:#5f4d2a;float: left;margin-top: 5px;margin-left:-1px"></div>
+
+                <div style="height:11px;width: 11px;background-image: url('/img/GW_dhfk_001.png');float:left;margin-left:-1px"></div>
+                <div style="height: 2px;width: 62px;background-color:#5f4d2a;float: left;margin-top: 5px;margin-left:-1px"></div>
+
+                <div style="height: 2px;width: 62px;background-color:#5f4d2a;float: left;margin-top: 5px;margin-left:-1px"></div>
+                <div style="height:11px;width: 11px;background-image: url('/img/GW_dhfk_001.png');float:left;margin-left:-1px"></div>
+            </div>
+        </div>
+        <!--正文-->
+        <div id="phoneorpc" style="width: 640px; height:970px; position: relative; margin: 0px auto; overflow: visible;">
+            <!--以上为ui-view -->
+            <div id="lz_news" style="margin-top:93px;position:absolute;">
+                <div id="lz_news_top">
+                    <div id="lz_news_top_log" style="background-image: url('/img/GW_activity_001.png')"></div>
+                    <div id="lz_news_top_right" style="background-image: url('/img/GW_news_002.png')"></div>
+                    <div class="clear"></div>
+                </div>
+                <div id="lz_line">
+                    <div id="lz_line_1"></div>
+                    <div id="lz_line_2"></div>
+                    <div class="clear"></div>
+                </div>
+                <div id="lz_news_content" style="height: 680px;position: relative">
+                    <div class="lz_news">
+                        <div></div>
+
+                        <div style="border-bottom: dashed 1px #7c7c7c;width:80%;text-align: center;margin-left: 10%">
+                            <div style="text-align: center;width:100%;margin-top: 40px;font-size: 26px;color: #1A9774" class="ng-binding">充值返利</div>
+                            <div style="text-align: center;width:100%;margin-top: 14px;padding-bottom: 16px;color: #7c7c7c;font-size: 18px" ng-bind="data.dispatchTime|date:'yyyy-MM-dd HH:mm:ss'"
+                                 class="ng-binding">2017-12-14 08:00:00</div>
+
+                        </div>
+
+                        <div ng-bind-html="data.content|trustHtml" style="width:90%;margin-left: 5%;text-indent:2em;font-size: 18px;color: #7a7a7a;"
+                             class="ng-binding">
+                            <p>亲爱的玩家们：为了提升广大玩家的游戏体验，我们将从12月14日维护后为大家提供充值活动，凡充值超过200返利50，500返利300，等多档返利活动，多冲多凡，祝所有玩家游戏愉快！</p>
+                        </div>
+
+
+                        <div style="text-align: right;color:#4bc0a5;font-size: 18px;position: absolute;bottom: 40px;right: 26px" class="ng-binding">
+                            《疯狂牛牛》运营团队
+                            <br> 2017年12月14日
+                        </div>
+
+                        <div class="clear"></div>
+                    </div>
+                </div>
+                <div style="background-color: #dcd5c8;width: 100%;padding-bottom: 20px;padding-top: 100px">
+                    <div style="height: 35px;width:490px;margin: 0 auto;background-image: url('/img/GW_kfdhd.png')">
+                        <div style="width: 140px;height:80px;margin: 0 auto;">
+                            <div style="float: left;background-image: url('/img/GW_kfdhtb.png');height: 27px;width: 27px;margin-top: 3px">
+
+                            </div>
+                            <div style="float: right;margin-top: -2px;margin-right: 0px;font-size:14px;color:#867d6d;">
+                                <span>人工客服电话</span>
+                                <br><span>400-000-0000</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="lz_bottom_line" style="margin: 0px;background-image:url('/img/GW_ztyy.png')"></div>
+            </div>
+        </div>
+    </div>
+    <div id="bottom">
+        <div id="bottom_1" style="position:relative;z-index:100;font-size: 18px;margin-top: 38px">
+            <a style="color:white;text-decoration: none" href="/Manage/present">公司介绍</a> |
+            <a style="color:white;text-decoration: none" href="/Manage/output">产品介绍</a> |
+            <!--<span style="color: white" id="BizQQWPA">联系我们</span> |-->
+            <a style="color:white;text-decoration: none" href="/Manage/contact">联系我们</a> |
+            <a style="color:white;text-decoration: none" id="ActivityBtn">活动中心</a> |
+            <a style="color:white;text-decoration: none" id="rewardBtn">推&nbsp;广</a>
+            <!-- |
+            <a style="color:white;text-decoration: none" target="_blank">商务合作</a> -->
+        </div>
+        <div id="bottom_2" style="margin-top: 12px;font-size: 14px;color:#b1bdc8">大地网络网络公司</div>
+        <div id="bottom_3">蜀ICP备17071870号-1&nbsp;【2017】&nbsp;1606-436号Copyright&nbsp;2017&nbsp;版权所有</div>
+        <div class="clear"></div>
+    </div>
+    <script type="text/javascript">
+        var obj = {};
+        $(function () {
+            if ($(document.body).outerWidth(true) > 641) {
+                $("#phoneorpc").css("overflow", "visible");
+            } else {
+                $("#phoneorpc").css("overflow", "hidden")
+            }
+            GetUser()
+        });
+
+        function GetUser() {
+            var data = {};
+            $.ajax({
+                type: "post", url: '/Manage/GetUserInfo',
+                datatype: 'json',
+                data: data,
+                success: function (res) {
+                    if (res) {
+                        console.log(res);
+                        obj = res
+                        //$("#userId").text(res.UserId)
+                        //$("#myPhone").text(res.PhoneNum)
+                    }
+                }
+            })
+        }
+        $(".collapsed").click(function () {
+            var index = $(".panel-default").index(this);
+            $(this).siblings().slideToggle();
+            $(this).parent().siblings().children(".panel-collapse").slideUp();
+        })
+        $("#user").click(function () {
+            //var _sess = window.sessionStorage;
+            //var userMessage = JSON.parse(_sess.getItem("userMessage"));
+            if (obj.UserId) {
+                window.location.href = "/Manage/userIfo";
+            } else {
+                window.location.href = "/Manage/login";
+            }
+        })
+        $("#chonzhi").click(function () {
+            //var _sess = window.sessionStorage;
+            //var userMessage = JSON.parse(_sess.getItem("userMessage"));
+            if (obj.UserId) {
+                window.location.href = "/Manage/RechargePage";
+            } else {
+                window.location.href = "/Manage/login";
+            }
+        })
+        $("#rewardBtn").click(function () {
+            //var _sess = window.sessionStorage;
+            //var userMessage = JSON.parse(_sess.getItem("userMessage"));
+            if (obj.UserId) {
+                window.location.href = "/Manage/JoinEd";
+            } else {
+                window.location.href = "/Manage/login";
+            }
+        })
+        $("#ActivityBtn").click(function () {
+            if (obj.UserId) {
+                window.location.href = "/Manage/ActivityList";
+            } else {
+                window.location.href = "/Manage/login";
+            }
+        })
+    </script>
+</body>
+</html>

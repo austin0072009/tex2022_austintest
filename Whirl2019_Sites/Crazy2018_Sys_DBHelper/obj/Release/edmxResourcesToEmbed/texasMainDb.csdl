@@ -1,0 +1,1518 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="texas_2021Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="texas_2021Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="bankcardentities" EntityType="texas_2021Model.bankcardentities" />
+    <EntitySet Name="banktypeentities" EntityType="texas_2021Model.banktypeentities" />
+    <EntitySet Name="gameuser" EntityType="texas_2021Model.gameuser" />
+    <EntitySet Name="rechargechannels" EntityType="texas_2021Model.rechargechannels" />
+    <EntitySet Name="smsrecord" EntityType="texas_2021Model.smsrecord" />
+    <EntitySet Name="snscenterwhirl_snsuserinfo" EntityType="texas_2021Model.snscenterwhirl_snsuserinfo" />
+    <EntitySet Name="tactivecode" EntityType="texas_2021Model.tactivecode" />
+    <EntitySet Name="tactivity" EntityType="texas_2021Model.tactivity" />
+    <EntitySet Name="tagentgoldlog" EntityType="texas_2021Model.tagentgoldlog" />
+    <EntitySet Name="tauthinfo" EntityType="texas_2021Model.tauthinfo" />
+    <EntitySet Name="tautoeventlog" EntityType="texas_2021Model.tautoeventlog" />
+    <EntitySet Name="tbanklog" EntityType="texas_2021Model.tbanklog" />
+    <EntitySet Name="tbarrage" EntityType="texas_2021Model.tbarrage" />
+    <EntitySet Name="tbemail" EntityType="texas_2021Model.tbemail" />
+    <EntitySet Name="tbetinginfo" EntityType="texas_2021Model.tbetinginfo" />
+    <EntitySet Name="tchatlog" EntityType="texas_2021Model.tchatlog" />
+    <EntitySet Name="tclub" EntityType="texas_2021Model.tclub" />
+    <EntitySet Name="tcluballiance" EntityType="texas_2021Model.tcluballiance" />
+    <EntitySet Name="tclubapplylog" EntityType="texas_2021Model.tclubapplylog" />
+    <EntitySet Name="tclubfundlog" EntityType="texas_2021Model.tclubfundlog" />
+    <EntitySet Name="tclubgoldlog" EntityType="texas_2021Model.tclubgoldlog" />
+    <EntitySet Name="tclubjackpotlog" EntityType="texas_2021Model.tclubjackpotlog" />
+    <EntitySet Name="tclublevel" EntityType="texas_2021Model.tclublevel" />
+    <EntitySet Name="tclubtaxlog" EntityType="texas_2021Model.tclubtaxlog" />
+    <EntitySet Name="tclubusergoldlog" EntityType="texas_2021Model.tclubusergoldlog" />
+    <EntitySet Name="tcollectlog" EntityType="texas_2021Model.tcollectlog" />
+    <EntitySet Name="tcommodity" EntityType="texas_2021Model.tcommodity" />
+    <EntitySet Name="tdiamondchangelog" EntityType="texas_2021Model.tdiamondchangelog" />
+    <EntitySet Name="temail" EntityType="texas_2021Model.temail" />
+    <EntitySet Name="temp_entityhistory" EntityType="texas_2021Model.temp_entityhistory" />
+    <EntitySet Name="temtuseragent" EntityType="texas_2021Model.temtuseragent" />
+    <EntitySet Name="tentitycard" EntityType="texas_2021Model.tentitycard" />
+    <EntitySet Name="tentitycarddetails" EntityType="texas_2021Model.tentitycarddetails" />
+    <EntitySet Name="tentitycardtype" EntityType="texas_2021Model.tentitycardtype" />
+    <EntitySet Name="texchangelog" EntityType="texas_2021Model.texchangelog" />
+    <EntitySet Name="tfeedback" EntityType="texas_2021Model.tfeedback" />
+    <EntitySet Name="tgameinfo" EntityType="texas_2021Model.tgameinfo" />
+    <EntitySet Name="tgamelevelinfo" EntityType="texas_2021Model.tgamelevelinfo" />
+    <EntitySet Name="tgamerax" EntityType="texas_2021Model.tgamerax" />
+    <EntitySet Name="tgamesummary" EntityType="texas_2021Model.tgamesummary" />
+    <EntitySet Name="tgangcardlog" EntityType="texas_2021Model.tgangcardlog" />
+    <EntitySet Name="tgoldchangelog" EntityType="texas_2021Model.tgoldchangelog" />
+    <EntitySet Name="tgoldchangh5game" EntityType="texas_2021Model.tgoldchangh5game" />
+    <EntitySet Name="tgoldstatistics" EntityType="texas_2021Model.tgoldstatistics" />
+    <EntitySet Name="th5winloselog" EntityType="texas_2021Model.th5winloselog" />
+    <EntitySet Name="tinsurjackpotlog" EntityType="texas_2021Model.tinsurjackpotlog" />
+    <EntitySet Name="tjackpot" EntityType="texas_2021Model.tjackpot" />
+    <EntitySet Name="tjackpotaddlog" EntityType="texas_2021Model.tjackpotaddlog" />
+    <EntitySet Name="tjackpotlog" EntityType="texas_2021Model.tjackpotlog" />
+    <EntitySet Name="tjdbwagerlog" EntityType="texas_2021Model.tjdbwagerlog" />
+    <EntitySet Name="tlevellog" EntityType="texas_2021Model.tlevellog" />
+    <EntitySet Name="tnotice" EntityType="texas_2021Model.tnotice" />
+    <EntitySet Name="tonlineinfo" EntityType="texas_2021Model.tonlineinfo" />
+    <EntitySet Name="trank" EntityType="texas_2021Model.trank" />
+    <EntitySet Name="tredenvelopesconfig" EntityType="texas_2021Model.tredenvelopesconfig" />
+    <EntitySet Name="tredenvelopeslog" EntityType="texas_2021Model.tredenvelopeslog" />
+    <EntitySet Name="tredenvelopesreceivelog" EntityType="texas_2021Model.tredenvelopesreceivelog" />
+    <EntitySet Name="tredenvelopestask" EntityType="texas_2021Model.tredenvelopestask" />
+    <EntitySet Name="troomcardtemp" EntityType="texas_2021Model.troomcardtemp" />
+    <EntitySet Name="troomlist" EntityType="texas_2021Model.troomlist" />
+    <EntitySet Name="tserverconfig" EntityType="texas_2021Model.tserverconfig" />
+    <EntitySet Name="tstatisticsgold" EntityType="texas_2021Model.tstatisticsgold" />
+    <EntitySet Name="tsysconfig" EntityType="texas_2021Model.tsysconfig" />
+    <EntitySet Name="ttablegainlog" EntityType="texas_2021Model.ttablegainlog" />
+    <EntitySet Name="ttablehandnumlog" EntityType="texas_2021Model.ttablehandnumlog" />
+    <EntitySet Name="ttablehistorylog" EntityType="texas_2021Model.ttablehistorylog" />
+    <EntitySet Name="ttablelist" EntityType="texas_2021Model.ttablelist" />
+    <EntitySet Name="ttablelog" EntityType="texas_2021Model.ttablelog" />
+    <EntitySet Name="ttableloglist" EntityType="texas_2021Model.ttableloglist" />
+    <EntitySet Name="ttablerecorkmjlog" EntityType="texas_2021Model.ttablerecorkmjlog" />
+    <EntitySet Name="ttableuserlog" EntityType="texas_2021Model.ttableuserlog" />
+    <EntitySet Name="ttaxlog" EntityType="texas_2021Model.ttaxlog" />
+    <EntitySet Name="ttradeinfo" EntityType="texas_2021Model.ttradeinfo" />
+    <EntitySet Name="turntablelevel" EntityType="texas_2021Model.turntablelevel" />
+    <EntitySet Name="turntableprize" EntityType="texas_2021Model.turntableprize" />
+    <EntitySet Name="tuser" EntityType="texas_2021Model.tuser" />
+    <EntitySet Name="tuseragent2019" EntityType="texas_2021Model.tuseragent2019" />
+    <EntitySet Name="tuseragent2020" EntityType="texas_2021Model.tuseragent2020" />
+    <EntitySet Name="tuseragentlog" EntityType="texas_2021Model.tuseragentlog" />
+    <EntitySet Name="tusercontact" EntityType="texas_2021Model.tusercontact" />
+    <EntitySet Name="tusergamehand" EntityType="texas_2021Model.tusergamehand" />
+    <EntitySet Name="tuserinfoex" EntityType="texas_2021Model.tuserinfoex" />
+    <EntitySet Name="tuserjackpot" EntityType="texas_2021Model.tuserjackpot" />
+    <EntitySet Name="tuserprizelog" EntityType="texas_2021Model.tuserprizelog" />
+    <EntitySet Name="tuserrechargelog" EntityType="texas_2021Model.tuserrechargelog" />
+    <EntitySet Name="tusertempgoldlog" EntityType="texas_2021Model.tusertempgoldlog" />
+    <EntitySet Name="tuservipfreecount" EntityType="texas_2021Model.tuservipfreecount" />
+    <EntitySet Name="tuservipinfo" EntityType="texas_2021Model.tuservipinfo" />
+    <EntitySet Name="tvipauth" EntityType="texas_2021Model.tvipauth" />
+    <EntitySet Name="tvipinfo" EntityType="texas_2021Model.tvipinfo" />
+    <EntitySet Name="tvisitlimit" EntityType="texas_2021Model.tvisitlimit" />
+    <EntitySet Name="userranking" EntityType="texas_2021Model.userranking" />
+    <EntitySet Name="userrole" EntityType="texas_2021Model.userrole" />
+  </EntityContainer>
+  <EntityType Name="bankcardentities">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserID" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="UserName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="BankCardID" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="CardType" Type="Int32" />
+    <Property Name="CardName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="BankAddress" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Location" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="IsDel" Type="Boolean" />
+    <Property Name="CreatTime" Type="DateTime" />
+    <Property Name="UserEntity_ID" Type="Int32" />
+  </EntityType>
+  <EntityType Name="banktypeentities">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="BankName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="CardType" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="BinCode" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="IsDel" Type="Boolean" />
+    <Property Name="CreatTime" Type="DateTime" />
+  </EntityType>
+  <EntityType Name="gameuser">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+    <Property Name="NickName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="PassportId" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="RetailId" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="HeadIcon" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Sex" Type="Boolean" />
+    <Property Name="Email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="MobilePhoneNum" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="PassportPwd" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="UserLevel" Type="Int16" />
+    <Property Name="ExpNum" Type="Int32" />
+    <Property Name="LoginNum" Type="Int32" />
+    <Property Name="FinalTime" Type="DateTime" />
+    <Property Name="RecommendedId" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Vip" Type="SByte" />
+    <Property Name="UserStatus" Type="Int32" />
+    <Property Name="MoneyScore" Type="Int32" />
+    <Property Name="Birthday" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="RegisterTime" Type="DateTime" />
+    <Property Name="MobileType" Type="SByte" />
+    <Property Name="IDCards" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="WeixinCode" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="PassportPwdTime" Type="DateTime" />
+    <Property Name="RedEnvCount" Type="Int32" />
+    <Property Name="RedCount" Type="Int32" />
+    <Property Name="ClRedCount" Type="Int32" />
+    <Property Name="alipayName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="alipayNum" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="BankUn" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="BankNum" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="BankName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="bPhone" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="aPhone" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="JlRedCount" Type="Int32" />
+    <Property Name="BankProvince" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="BankCity" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="rechargechannels">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="IP" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="MachineCode" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="MachineType" Type="Int32" />
+    <Property Name="Lat" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Lng" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="CreateTime" Type="DateTime" />
+    <Property Name="ChannelName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="ChannelCode" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="payurl" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="dec" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="minmoney" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="paytype" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="isenable" Type="Boolean" />
+    <Property Name="payname" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="IsDel" Type="Boolean" />
+    <Property Name="CreatTime" Type="DateTime" />
+    <Property Name="serviceList" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="smsrecord">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="SmsType" Type="Int32" />
+    <Property Name="UserId" Type="Int32" />
+    <Property Name="MobilePhoneNum" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="KeyNum" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Result" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Time" Type="DateTime" />
+    <Property Name="DeviceID" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="IP" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="snscenterwhirl_snsuserinfo">
+    <Key>
+      <PropertyRef Name="SID" />
+    </Key>
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+    <Property Name="PassportID" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="PassportPwd" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="DeviceID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="RegType" Type="Int16" />
+    <Property Name="RegTime" Type="DateTime" />
+    <Property Name="RetailID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="RetailUser" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Mobile" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Mail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="PwdType" Type="Int32" />
+    <Property Name="RealName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="IDCards" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="ActiveCode" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="SendActiveDate" Type="DateTime" />
+    <Property Name="ActiveDate" Type="DateTime" />
+    <Property Name="SID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="WeixinCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="tactivecode">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Activecode" Type="Int32" />
+    <Property Name="GenerateUserId" Type="Int32" />
+    <Property Name="UseUserId" Type="Int32" />
+    <Property Name="CreateDate" Type="DateTime" />
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+  </EntityType>
+  <EntityType Name="tactivity">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ImgUrl" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Title" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Content" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="CreateDate" Type="DateTime" />
+  </EntityType>
+  <EntityType Name="tagentgoldlog">
+    <Key>
+      <PropertyRef Name="Idx" />
+    </Key>
+    <Property Name="Idx" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="Int32" />
+    <Property Name="BeforCoin" Type="Double" />
+    <Property Name="ActionCoin" Type="Double" />
+    <Property Name="AfterCoin" Type="Double" />
+    <Property Name="ActionType" Type="Int32" />
+    <Property Name="SourceGameID" Type="Int32" />
+    <Property Name="SourceUserId" Type="Int32" />
+    <Property Name="CreateDate" Type="DateTime" />
+    <Property Name="TableUserLogId" Type="Int64" />
+    <Property Name="IsHandel" Type="Boolean" />
+    <Property Name="C_lv" Type="Int32" />
+    <Property Name="tnum" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="tauthinfo">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="authname" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="authvalue" Type="Int32" />
+  </EntityType>
+  <EntityType Name="tautoeventlog">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EventName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Message" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="CreateDate" Type="DateTime" />
+  </EntityType>
+  <EntityType Name="tbanklog">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="OpDate" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="OpType" Type="Int32" />
+    <Property Name="OpCount" Type="Int32" />
+    <Property Name="UserId" Type="Int32" />
+  </EntityType>
+  <EntityType Name="tbarrage">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="Int32" />
+    <Property Name="BarrageContent" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="CreateTime" Type="DateTime" />
+    <Property Name="BarrageType" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="BarrageMoney" Type="Int32" />
+    <Property Name="tableId" Type="Int32" />
+    <Property Name="RoomId" Type="Int32" />
+  </EntityType>
+  <EntityType Name="tbemail">
+    <Key>
+      <PropertyRef Name="TradeNo" />
+    </Key>
+    <Property Name="TradeNo" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="FromUserId" Type="Int32" />
+    <Property Name="ToUserId" Type="Int32" />
+    <Property Name="MailType" Type="Int32" />
+    <Property Name="Content" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="State" Type="Int32" />
+    <Property Name="CreateDate" Type="DateTime" />
+    <Property Name="Attach" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+    <Property Name="CState" Type="Int32" />
+    <Property Name="IsLook" Type="Boolean" />
+    <Property Name="EmailType" Type="Int32" />
+    <Property Name="Title" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="tbetinginfo">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserID" Type="Int32" />
+    <Property Name="BetCount" Type="Decimal" />
+    <Property Name="GameId" Type="Int32" />
+    <Property Name="CreateTime" Type="DateTime" />
+  </EntityType>
+  <EntityType Name="tchatlog">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="Int32" />
+    <Property Name="BarrageContent" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="CreateTime" Type="DateTime" />
+    <Property Name="BarrageType" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="BarrageMoney" Type="Int32" />
+    <Property Name="tableId" Type="Int32" />
+    <Property Name="RoomId" Type="Int32" />
+    <Property Name="GameId" Type="Int32" />
+  </EntityType>
+  <EntityType Name="tclub">
+    <Key>
+      <PropertyRef Name="idx" />
+    </Key>
+    <Property Name="idx" Type="Int32" Nullable="false" />
+    <Property Name="UserId" Type="Int32" />
+    <Property Name="State" Type="Int32" />
+    <Property Name="CreateDate" Type="DateTime" />
+    <Property Name="childs" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+    <Property Name="Title" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="limitcount" Type="Int32" />
+    <Property Name="search" Type="Boolean" />
+    <Property Name="manager" Type="Boolean" />
+    <Property Name="gold" Type="Int64" />
+    <Property Name="diam" Type="Int64" />
+    <Property Name="applyUserID" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+    <Property Name="Loc" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="lv" Type="Int32" />
+    <Property Name="closeapply" Type="Boolean" />
+    <Property Name="Content" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="applyGoldList" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+    <Property Name="alliancid" Type="Int32" />
+    <Property Name="fundnum" Type="Int64" />
+    <Property Name="apply" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+    <Property Name="tidlist" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+    <Property Name="clubIcon" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="FreeModify" Type="Int32" />
+    <Property Name="inspot" Type="Int64" />
+    <Property Name="jackpot" Type="Int64" />
+    <Property Name="losemax" Type="Int64" />
+    <Property Name="historylose" Type="Int64" />
+  </EntityType>
+  <EntityType Name="tcluballiance">
+    <Key>
+      <PropertyRef Name="idx" />
+    </Key>
+    <Property Name="idx" Type="Int64" Nullable="false" />
+    <Property Name="UserId" Type="Int32" />
+    <Property Name="State" Type="Int32" />
+    <Property Name="CreateDate" Type="DateTime" />
+    <Property Name="childs" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+    <Property Name="Title" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Content" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="limitcount" Type="Int32" />
+    <Property Name="search" Type="Boolean" />
+    <Property Name="manager" Type="Boolean" />
+    <Property Name="gold" Type="Int64" />
+    <Property Name="diam" Type="Int64" />
+    <Property Name="applyclubidx" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+    <Property Name="lv" Type="Int32" />
+    <Property Name="closeapply" Type="Boolean" />
+    <Property Name="clubid" Type="Int32" />
+    <Property Name="IsSupper" Type="Boolean" />
+    <Property Name="jackpot" Type="Int64" />
+    <Property Name="inspot" Type="Int64" />
+  </EntityType>
+  <EntityType Name="tclubapplylog">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="Int32" />
+    <Property Name="applyType" Type="Int32" />
+    <Property Name="Status" Type="Int32" />
+    <Property Name="applyTime" Type="DateTime" />
+    <Property Name="clubId" Type="Int64" />
+    <Property Name="ownClubId" Type="Int32" />
+    <Property Name="message" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="tclubfundlog">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ClubId" Type="Int32" />
+    <Property Name="fnum" Type="Int32" />
+    <Property Name="Price" Type="Int32" />
+    <Property Name="ChangeType" Type="Int32" />
+    <Property Name="UserId" Type="Int32" />
+    <Property Name="CreateTime" Type="DateTime" />
+    <Property Name="BalanNum" Type="Int64" />
+    <Property Name="fundtotal" Type="Int64" />
+  </EntityType>
+  <EntityType Name="tclubgoldlog">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ChangeType" Type="Int32" />
+    <Property Name="BeforeGold" Type="Double" />
+    <Property Name="Gold" Type="Int64" />
+    <Property Name="AfterGold" Type="Int64" />
+    <Property Name="CreateTime" Type="DateTime" />
+    <Property Name="ClubId" Type="Int32" />
+    <Property Name="Remark" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="UserId" Type="Int32" />
+  </EntityType>
+  <EntityType Name="tclubjackpotlog">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="GameId" Type="Int32" />
+    <Property Name="clubid" Type="Int32" />
+    <Property Name="UserId" Type="Int32" />
+    <Property Name="Gold" Type="Int64" />
+    <Property Name="JackpotType" Type="Int32" />
+    <Property Name="tnum" Type="Int32" />
+    <Property Name="CreateTime" Type="DateTime" />
+    <Property Name="allid" Type="Int64" />
+  </EntityType>
+  <EntityType Name="tclublevel">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="type" Type="Int32" />
+    <Property Name="level" Type="Int32" />
+    <Property Name="diamond" Type="Int64" />
+    <Property Name="maxMember" Type="Int32" />
+    <Property Name="maxadmin" Type="Int32" />
+    <Property Name="expireTime" Type="Int32" />
+    <Property Name="CreateTime" Type="DateTime" />
+    <Property Name="levelname" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="tclubtaxlog">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="gameid" Type="Int32" />
+    <Property Name="clubid" Type="Int32" />
+    <Property Name="allid" Type="Int32" />
+    <Property Name="gold" Type="Int64" />
+    <Property Name="totalgold" Type="Int64" />
+    <Property Name="tnum" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="CreateTime" Type="DateTime" />
+  </EntityType>
+  <EntityType Name="tclubusergoldlog">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ClubId" Type="Int32" />
+    <Property Name="UserId" Type="Int32" />
+    <Property Name="BeforeGold" Type="Double" />
+    <Property Name="Gold" Type="Int64" />
+    <Property Name="AfterGold" Type="Int64" />
+    <Property Name="CreateTime" Type="DateTime" />
+    <Property Name="Remark" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="ChangeType" Type="Int32" />
+  </EntityType>
+  <EntityType Name="tcollectlog">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="sceneInfo" Type="String" MaxLength="5000" FixedLength="false" Unicode="false" />
+    <Property Name="sceneUserInfo" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="UserId" Type="Int32" />
+    <Property Name="CreateTime" Type="DateTime" />
+    <Property Name="tnum" Type="Int32" />
+    <Property Name="infoId" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="baserate" Type="Int32" />
+    <Property Name="gNum" Type="Int32" />
+    <Property Name="totalnum" Type="Int32" />
+    <Property Name="WinUserId" Type="Int32" />
+    <Property Name="WinGold" Type="Int64" />
+    <Property Name="seeNum" Type="Int32" />
+    <Property Name="NoGiveupNum" Type="Int32" />
+    <Property Name="maxPoker" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+    <Property Name="OwnSpair" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+    <Property Name="OwnWin" Type="Int64" />
+    <Property Name="preG" Type="Int32" />
+    <Property Name="PlayerList" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+    <Property Name="showCard" Type="Int32" />
+  </EntityType>
+  <EntityType Name="tcommodity">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="introduce" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="exchangeValue" Type="Double" />
+    <Property Name="commodityType" Type="Int32" />
+    <Property Name="url" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="CreateTime" Type="DateTime" />
+    <Property Name="isEnable" Type="Boolean" />
+    <Property Name="commodityvValue" Type="Single" />
+    <Property Name="Discount" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="ClubCount" Type="Int32" />
+    <Property Name="TableCount" Type="Int32" />
+  </EntityType>
+  <EntityType Name="tdiamondchangelog">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="Int32" />
+    <Property Name="BeforeGold" Type="Double" />
+    <Property Name="Gold" Type="Double" />
+    <Property Name="AfterGold" Type="Double" />
+    <Property Name="ChangeType" Type="Int32" />
+    <Property Name="CreateTime" Type="DateTime" />
+    <Property Name="Remark" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="temail">
+    <Key>
+      <PropertyRef Name="TradeNo" />
+    </Key>
+    <Property Name="TradeNo" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="FromUserId" Type="Int32" />
+    <Property Name="ToUserId" Type="Int32" />
+    <Property Name="MailType" Type="Int32" />
+    <Property Name="Content" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="State" Type="Int32" />
+    <Property Name="CreateDate" Type="DateTime" />
+    <Property Name="Attach" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+    <Property Name="CState" Type="Int32" />
+    <Property Name="IsLook" Type="Boolean" />
+    <Property Name="EmailType" Type="Int32" />
+    <Property Name="Title" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="FromUserName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="temp_entityhistory">
+    <Key>
+      <PropertyRef Name="Key" />
+    </Key>
+    <Property Name="Key" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Value" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="temtuseragent">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="UserID" Type="Int32" />
+    <Property Name="UserName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Commission" Type="Int64" />
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserProfit" Type="Int64" />
+    <Property Name="pos1Count" Type="Int32" />
+    <Property Name="pos2Count" Type="Int32" />
+    <Property Name="pos5Count" Type="Int32" />
+    <Property Name="pos10Count" Type="Int32" />
+    <Property Name="pos20Count" Type="Int32" />
+    <Property Name="pos50Count" Type="Int32" />
+    <Property Name="GameId" Type="Int32" />
+  </EntityType>
+  <EntityType Name="tentitycard">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AddName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="CardType" Type="Int32" />
+    <Property Name="CardNum" Type="Int32" />
+    <Property Name="CardPrice" Type="Decimal" />
+    <Property Name="TatolPrice" Type="Decimal" />
+    <Property Name="GoldPrice" Type="Decimal" />
+    <Property Name="CreateTime" Type="DateTime" />
+  </EntityType>
+  <EntityType Name="tentitycarddetails">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tentitycardtype">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AddName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="CardNum" Type="Int32" />
+    <Property Name="CardPrice" Type="Decimal" />
+    <Property Name="TotalPrice" Type="Decimal" />
+    <Property Name="GoldPrice" Type="Decimal" />
+    <Property Name="CreateTime" Type="DateTime" />
+  </EntityType>
+  <EntityType Name="texchangelog">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="CommodityId" Type="Int32" />
+    <Property Name="UserId" Type="Int32" />
+    <Property Name="CreateTime" Type="DateTime" />
+    <Property Name="isHandle" Type="Boolean" />
+    <Property Name="oddNumbers" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="expressNumbers" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="commodityType" Type="Int32" />
+    <Property Name="QRCodeUrl" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="exchangeCount" Type="Int32" />
+  </EntityType>
+  <EntityType Name="tfeedback">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="CreateDate" Type="DateTime" />
+    <Property Name="feedbacktype" Type="Int32" />
+    <Property Name="tel" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="content" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="fileurl" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="tgameinfo">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="modifyUser" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="modifyTime" Type="DateTime" />
+    <Property Name="Sort" Type="Int32" />
+    <Property Name="isHot" Type="Int32" />
+    <Property Name="desc" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="isopen" Type="Boolean" />
+    <Property Name="type" Type="Int32" />
+    <Property Name="gameurl" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="port" Type="Int32" />
+    <Property Name="gameRule" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="icon" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="gameIntroduce" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="isEnable" Type="Boolean" />
+    <Property Name="isEnableDesc" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="deleteState" Type="Boolean" />
+    <Property Name="gameType" Type="Int32" />
+    <Property Name="gameIp" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="gamePort" Type="Int32" />
+    <Property Name="platType" Type="Int32" />
+    <Property Name="jdbType" Type="Int32" />
+    <Property Name="IsRun" Type="Int32" />
+  </EntityType>
+  <EntityType Name="tgamelevelinfo">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Baserate" Type="Int32" />
+    <Property Name="gameid" Type="Int32" />
+    <Property Name="C_min" Type="Int32" />
+    <Property Name="C_max" Type="Int32" />
+    <Property Name="onlineCount" Type="Int32" />
+    <Property Name="openTableCount" Type="Int32" />
+    <Property Name="gametype" Type="Int32" />
+    <Property Name="gametypeDesc" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="isEnable" Type="Int32" />
+    <Property Name="isEnableDesc" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="deleteState" Type="Int32" />
+    <Property Name="modifyUser" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="modifyTime" Type="DateTime" />
+    <Property Name="Description" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="tgamerax">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="gameid" Type="Int32" />
+    <Property Name="levelid" Type="Int32" />
+    <Property Name="rax" Type="Int64" />
+    <Property Name="modifyTime" Type="DateTime" />
+    <Property Name="modifyUser" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="tgamesummary">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="jacketall" Type="Int32" />
+    <Property Name="InsJackpotall" Type="Int32" />
+    <Property Name="robotMoney" Type="Int32" />
+    <Property Name="UserMoney" Type="Int32" />
+    <Property Name="CreateTime" Type="DateTime" />
+  </EntityType>
+  <EntityType Name="tgangcardlog">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TableLogIdx" Type="Int64" />
+    <Property Name="UserID" Type="Int32" />
+    <Property Name="CreateDate" Type="DateTime" />
+    <Property Name="Lng" Type="Single" />
+    <Property Name="Lat" Type="Single" />
+    <Property Name="C_win" Type="Boolean" />
+    <Property Name="Bet" Type="Int64" />
+    <Property Name="IP" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="tgoldchangelog">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="Int32" />
+    <Property Name="BeforeGold" Type="Double" />
+    <Property Name="Gold" Type="Double" />
+    <Property Name="AfterGold" Type="Double" />
+    <Property Name="CreateTime" Type="DateTime" />
+    <Property Name="GameId" Type="Int32" />
+    <Property Name="IsRobot" Type="Boolean" />
+    <Property Name="Remark" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="gamble" Type="Int32" />
+    <Property Name="ChangeType" Type="Int32" />
+    <Property Name="JsonData" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="clubid" Type="Int32" />
+    <Property Name="tnum" Type="Int32" />
+  </EntityType>
+  <EntityType Name="tgoldchangh5game">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="Int32" />
+    <Property Name="GoldType" Type="Int32" />
+    <Property Name="Gold" Type="Decimal" />
+    <Property Name="CreateTime" Type="DateTime" />
+    <Property Name="GameId" Type="Int32" />
+    <Property Name="IsComplete" Type="Int32" />
+  </EntityType>
+  <EntityType Name="tgoldstatistics">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IsRobot" Type="Boolean" />
+    <Property Name="TotalGold" Type="Int64" />
+    <Property Name="CurrentGold" Type="Int64" />
+    <Property Name="LastGold" Type="Int64" />
+    <Property Name="GameId" Type="Int32" />
+    <Property Name="CreateTime" Type="DateTime" />
+    <Property Name="TimeInterval" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Remark" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="th5winloselog">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Gold" Type="Decimal" />
+    <Property Name="GameId" Type="Int32" />
+    <Property Name="IsRebate" Type="Int32" />
+    <Property Name="beforeGold" Type="Decimal" />
+    <Property Name="afterGold" Type="Decimal" />
+    <Property Name="CreateTime" Type="DateTime" />
+    <Property Name="UserId" Type="Int32" />
+  </EntityType>
+  <EntityType Name="tinsurjackpotlog">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="GameId" Type="Int32" />
+    <Property Name="clubid" Type="Int32" />
+    <Property Name="UserId" Type="Int32" />
+    <Property Name="Gold" Type="Int64" />
+    <Property Name="JackpotType" Type="Int32" />
+    <Property Name="tnum" Type="Int32" />
+    <Property Name="CreateTime" Type="DateTime" />
+  </EntityType>
+  <EntityType Name="tjackpot">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="gameid" Type="Int32" />
+    <Property Name="jackpot" Type="Int64" />
+    <Property Name="isEnable" Type="Int32" />
+    <Property Name="isEnableDesc" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="deleteState" Type="Int32" />
+    <Property Name="modifyUser" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="modifyTime" Type="DateTime" />
+    <Property Name="Description" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="pump" Type="Int32" />
+    <Property Name="waterproof" Type="Int32" />
+    <Property Name="historygambleall" Type="Int64" />
+    <Property Name="income" Type="Int64" />
+    <Property Name="rax" Type="Int64" />
+    <Property Name="handsel" Type="Int32" />
+    <Property Name="roomid" Type="Int32" />
+  </EntityType>
+  <EntityType Name="tjackpotaddlog">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="GameId" Type="Int32" />
+    <Property Name="TableID" Type="Int32" />
+    <Property Name="Gold" Type="Int64" />
+    <Property Name="CreateTime" Type="DateTime" />
+    <Property Name="RoomID" Type="Int32" />
+    <Property Name="beforeGold" Type="Int64" />
+    <Property Name="afterGold" Type="Int64" />
+  </EntityType>
+  <EntityType Name="tjackpotlog">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="GameId" Type="Int32" />
+    <Property Name="RoomId" Type="Int32" />
+    <Property Name="UserId" Type="Int32" />
+    <Property Name="Gold" Type="Int64" />
+    <Property Name="JackpotType" Type="Int32" />
+    <Property Name="CreateTime" Type="DateTime" />
+    <Property Name="ChangeType" Type="Int32" />
+    <Property Name="tnum" Type="Int32" />
+    <Property Name="Owner" Type="Int32" />
+    <Property Name="IsSettlement" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="tjdbwagerlog">
+    <Key>
+      <PropertyRef Name="transferId" />
+    </Key>
+    <Property Name="transferId" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="UserId" Type="Int32" />
+    <Property Name="gType" Type="Int32" />
+    <Property Name="mType" Type="Int32" />
+    <Property Name="bet" Type="Double" />
+    <Property Name="win" Type="Double" />
+    <Property Name="netWin" Type="Double" />
+    <Property Name="ipAddress" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="gameDate" Type="DateTime" />
+    <Property Name="CreateTime" Type="DateTime" />
+    <Property Name="IsSuccess" Type="Int32" />
+  </EntityType>
+  <EntityType Name="tlevellog">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="Int32" />
+    <Property Name="leveltype" Type="Int32" />
+    <Property Name="levelTime" Type="DateTime" />
+    <Property Name="Money" Type="Int64" />
+  </EntityType>
+  <EntityType Name="tnotice">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="title" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="content" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+    <Property Name="noticetime" Type="DateTime" />
+    <Property Name="C_author" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="C_type" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="isStart" Type="Int32" />
+    <Property Name="TcPicUrl" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Width" Type="Int32" />
+    <Property Name="Height" Type="Int32" />
+  </EntityType>
+  <EntityType Name="tonlineinfo">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="GameId" Type="Int32" />
+    <Property Name="GameType" Type="Int32" />
+    <Property Name="OnlineCount" Type="Int32" />
+    <Property Name="RoomId" Type="Int32" />
+    <Property Name="CreateTime" Type="DateTime" />
+    <Property Name="GameModel" Type="Int32" />
+    <Property Name="rCount" Type="Int32" />
+  </EntityType>
+  <EntityType Name="trank">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="Int32" Nullable="false" />
+    <Property Name="UserName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="ScoreWin" Type="Int32" />
+    <Property Name="CreateDate" Type="DateTime" />
+    <Property Name="ScoreLost" Type="Int32" />
+    <Property Name="records" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="tredenvelopesconfig">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Money" Type="Decimal" />
+    <Property Name="Rate" Type="Decimal" />
+    <Property Name="TaskType" Type="Int32" />
+    <Property Name="CreateDate" Type="DateTime" />
+  </EntityType>
+  <EntityType Name="tredenvelopeslog">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="Int32" />
+    <Property Name="BeforeCount" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Money" Type="Int32" />
+    <Property Name="CreateDate" Type="DateTime" />
+    <Property Name="TaskType" Type="Int32" />
+  </EntityType>
+  <EntityType Name="tredenvelopesreceivelog">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="Int32" />
+    <Property Name="TaskId" Type="Int64" />
+    <Property Name="Count" Type="Int32" />
+    <Property Name="BeforeCount" Type="Int32" />
+    <Property Name="CreateDate" Type="DateTime" />
+    <Property Name="TaskType" Type="Int32" />
+  </EntityType>
+  <EntityType Name="tredenvelopestask">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TaskName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="TaskType" Type="Int32" />
+    <Property Name="TaskCount" Type="Int32" />
+    <Property Name="RedEnvCount" Type="Int32" />
+    <Property Name="CreateDate" Type="DateTime" />
+  </EntityType>
+  <EntityType Name="troomcardtemp">
+    <Key>
+      <PropertyRef Name="tableNum" />
+    </Key>
+    <Property Name="tableNum" Type="Int32" Nullable="false" />
+    <Property Name="gameid" Type="Int32" />
+    <Property Name="roomid" Type="Int32" />
+    <Property Name="createTime" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="maxCount" Type="Int32" />
+    <Property Name="curCount" Type="Int32" />
+    <Property Name="allUserRecord" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+    <Property Name="ownerId" Type="Int32" />
+    <Property Name="tableStatus" Type="Int32" />
+    <Property Name="tableid" Type="Int32" />
+  </EntityType>
+  <EntityType Name="troomlist">
+    <Key>
+      <PropertyRef Name="Idx" />
+      <PropertyRef Name="Name" />
+    </Key>
+    <Property Name="Idx" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="RoomDescribe" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Gamename" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="GametypeId" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="IsEnable" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Pi" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="PeopleNum" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Autostart" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Duration" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="MinBring" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="IsZm" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="IsQm" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="IsDw" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="IsQcqm" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Createuser" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Createtime" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="modifyUser" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="modifyTime" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="States" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="tserverconfig">
+    <Key>
+      <PropertyRef Name="ServerId" />
+    </Key>
+    <Property Name="ServerId" Type="Int32" Nullable="false" />
+    <Property Name="ServerName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="ServerIP" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="ServerPort" Type="Int32" />
+    <Property Name="InternalIP" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Priority" Type="Int32" />
+  </EntityType>
+  <EntityType Name="tstatisticsgold">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IsRobot" Type="Boolean" />
+    <Property Name="TotalGold" Type="Int64" />
+    <Property Name="CurrentGold" Type="Int64" />
+    <Property Name="LastGold" Type="Int64" />
+    <Property Name="GameId" Type="Int32" />
+    <Property Name="CreateTime" Type="DateTime" />
+    <Property Name="TimeInterval" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Remark" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="tsysconfig">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Key" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Val" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Dec" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="CreateTime" Type="DateTime" />
+  </EntityType>
+  <EntityType Name="ttablegainlog">
+    <Key>
+      <PropertyRef Name="Idx" />
+    </Key>
+    <Property Name="Idx" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MatchCode" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="StartTime" Type="DateTime" />
+    <Property Name="EndTime" Type="DateTime" />
+    <Property Name="gameid" Type="Int32" />
+    <Property Name="C_isover" Type="Boolean" />
+    <Property Name="gcount" Type="Int32" />
+    <Property Name="jackpot" Type="Int32" />
+    <Property Name="ChildAgents" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="ttablehandnumlog">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="pos1Count" Type="Int32" />
+    <Property Name="pos2Count" Type="Int32" />
+    <Property Name="pos5Count" Type="Int32" />
+    <Property Name="pos10Count" Type="Int32" />
+    <Property Name="pos20Count" Type="Int32" />
+    <Property Name="pos50Count" Type="Int32" />
+    <Property Name="GameId" Type="Int32" />
+    <Property Name="CreateTime" Type="DateTime" />
+    <Property Name="UserId" Type="Int32" />
+    <Property Name="UserName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="ttablehistorylog">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="CreatTime" Type="DateTime" />
+    <Property Name="plist" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+    <Property Name="whirltlist" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+    <Property Name="textlist" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+    <Property Name="gameid" Type="Int32" />
+    <Property Name="RoomNum" Type="Int32" />
+    <Property Name="BigEndList" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+    <Property Name="mjlist" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+    <Property Name="bg" Type="Int32" />
+    <Property Name="uids" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="clubid" Type="Int32" />
+    <Property Name="allid" Type="Int32" />
+  </EntityType>
+  <EntityType Name="ttablelist">
+    <Key>
+      <PropertyRef Name="tableNum" />
+    </Key>
+    <Property Name="tableNum" Type="Int32" Nullable="false" />
+    <Property Name="gameid" Type="Int32" />
+    <Property Name="levelid" Type="Int32" />
+    <Property Name="createTime" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="maxCount" Type="Int32" />
+    <Property Name="curCount" Type="Int32" />
+    <Property Name="ownerId" Type="Int32" />
+    <Property Name="tableStatus" Type="Int32" />
+    <Property Name="tableid" Type="Int32" />
+    <Property Name="Duration" Type="Int32" />
+    <Property Name="firstinto" Type="Int32" />
+    <Property Name="baserate" Type="Int32" />
+    <Property Name="password" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="minPlayerCount" Type="Int32" />
+    <Property Name="para" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="data" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="mjpara" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="ClubIdx" Type="Int32" />
+    <Property Name="tname" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="manNum" Type="Int32" />
+    <Property Name="cinto" Type="Boolean" />
+    <Property Name="allId" Type="Int32" />
+  </EntityType>
+  <EntityType Name="ttablelog">
+    <Key>
+      <PropertyRef Name="Idx" />
+    </Key>
+    <Property Name="Idx" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MatchCode" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="StartTime" Type="DateTime" />
+    <Property Name="EndTime" Type="DateTime" />
+    <Property Name="gameid" Type="Int32" />
+    <Property Name="C_isover" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="ttableloglist">
+    <Key>
+      <PropertyRef Name="RoomId" />
+    </Key>
+    <Property Name="RoomId" Type="Int32" Nullable="false" />
+    <Property Name="ulist" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+    <Property Name="tulist" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+    <Property Name="CreatTime" Type="DateTime" />
+    <Property Name="tdlist" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="ttablerecorkmjlog">
+    <Key>
+      <PropertyRef Name="Idx" />
+    </Key>
+    <Property Name="Idx" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="MatchCode" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="CreateTime" Type="DateTime" />
+    <Property Name="actions" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+    <Property Name="HistoryId" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="gameid" Type="Int32" />
+    <Property Name="RecordUser" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+    <Property Name="uids" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="TableInfo" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="ttableuserlog">
+    <Key>
+      <PropertyRef Name="Idx" />
+    </Key>
+    <Property Name="Idx" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TableLogIdx" Type="Int64" />
+    <Property Name="UserID" Type="Int32" />
+    <Property Name="C_pos" Type="Int32" />
+    <Property Name="gold" Type="Decimal" />
+    <Property Name="C_cardList" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+    <Property Name="gameid" Type="Int32" />
+    <Property Name="C_isover" Type="Boolean" />
+    <Property Name="C_isWatch" Type="Int32" />
+    <Property Name="C_win" Type="Boolean" />
+    <Property Name="CreateDate" Type="DateTime" />
+    <Property Name="trendIdx" Type="Int64" />
+    <Property Name="mystake" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Bet" Type="Int64" />
+    <Property Name="TaxString" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="levelid" Type="Int32" />
+    <Property Name="basegamle" Type="Int32" />
+  </EntityType>
+  <EntityType Name="ttaxlog">
+    <Key>
+      <PropertyRef Name="Idx" />
+    </Key>
+    <Property Name="Idx" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="Int32" />
+    <Property Name="BeforCoin" Type="Int64" />
+    <Property Name="ActionCoin" Type="Double" />
+    <Property Name="AfterCoin" Type="Int64" />
+    <Property Name="ActionType" Type="Int32" />
+    <Property Name="SourceGameID" Type="Int32" />
+    <Property Name="SourceUserId" Type="Int32" />
+    <Property Name="CreateDate" Type="DateTime" />
+    <Property Name="TableUserLogId" Type="Int64" />
+    <Property Name="IsHandel" Type="Boolean" />
+    <Property Name="C_lv" Type="Int32" />
+    <Property Name="SourceRoomID" Type="Int32" />
+  </EntityType>
+  <EntityType Name="ttradeinfo">
+    <Key>
+      <PropertyRef Name="TradeNo" />
+    </Key>
+    <Property Name="TradeNo" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="FromUserId" Type="Int32" />
+    <Property Name="ToUserId" Type="Int32" />
+    <Property Name="Coin" Type="Int64" />
+    <Property Name="TaxCoin" Type="Int64" />
+    <Property Name="State" Type="Int32" />
+    <Property Name="CreateDate" Type="DateTime" />
+    <Property Name="TradeType" Type="Int32" />
+    <Property Name="Diamond" Type="Int64" />
+    <Property Name="TaxDiamond" Type="Int64" />
+  </EntityType>
+  <EntityType Name="turntablelevel">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="gold" Type="Int32" />
+  </EntityType>
+  <EntityType Name="turntableprize">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="price" Type="Single" />
+    <Property Name="prizeurl" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="probability" Type="Single" />
+    <Property Name="prizetype" Type="Int32" />
+    <Property Name="levelid" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="tuser">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="Int32" Nullable="false" />
+    <Property Name="wechatName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Gold" Type="Int64" />
+    <Property Name="GoldA" Type="Decimal" />
+    <Property Name="LastLotinTime1" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="LastLotinTime2" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="RegTime" Type="DateTime" />
+    <Property Name="IP" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Desc" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="isRobot" Type="Int32" />
+    <Property Name="Status" Type="Int32" />
+    <Property Name="diamond" Type="Int64" />
+    <Property Name="isagent" Type="Int32" />
+    <Property Name="wechatHeadIcon" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Sex" Type="Int32" />
+    <Property Name="TotalMoney" Type="Decimal" Nullable="false" />
+    <Property Name="totaldiamond" Type="Int64" />
+    <Property Name="lockTime" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="winpercent" Type="Int32" />
+    <Property Name="BankGold" Type="Int64" />
+    <Property Name="vlevel" Type="Int32" />
+    <Property Name="givecount" Type="Int32" />
+    <Property Name="MaxLose" Type="Int64" />
+    <Property Name="MaxWin" Type="Int64" />
+    <Property Name="MaxGold" Type="Int64" />
+    <Property Name="TotalGold" Type="Int64" />
+    <Property Name="showid" Type="Int32" />
+    <Property Name="lat" Type="Single" />
+    <Property Name="lng" Type="Single" />
+    <Property Name="UserPassword" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="IsTp" Type="Int32" />
+    <Property Name="lv" Type="Int32" />
+    <Property Name="IsJdb" Type="Int32" />
+    <Property Name="UpTotalAmount" Type="Int64" />
+    <Property Name="RobotGameid" Type="Int32" />
+    <Property Name="clublist" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="tuseragent2019">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="Int32" Nullable="false" />
+    <Property Name="Lv" Type="Int32" />
+    <Property Name="FUserID" Type="Int32" />
+    <Property Name="GoldHistoryCommission" Type="Double" />
+    <Property Name="GoldCommission" Type="Double" />
+    <Property Name="QRPath" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Code" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="HtmlUrl" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="lastdealtime" Type="DateTime" />
+    <Property Name="watergoldadd" Type="Int64" />
+    <Property Name="watergoldreduce" Type="Int64" />
+    <Property Name="childwater" Type="Int64" />
+    <Property Name="ChildAgents" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+    <Property Name="TopUserID" Type="Int32" />
+    <Property Name="dealCardCount" Type="Int32" />
+    <Property Name="SecondUserID" Type="Int32" />
+    <Property Name="todayCardCount" Type="Int32" />
+    <Property Name="TopUserGoldCommission" Type="Int64" />
+    <Property Name="rate3" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="GoldC_pot" Type="Double" />
+    <Property Name="gameWinCount" Type="Int32" />
+    <Property Name="gameLostCount" Type="Int32" />
+    <Property Name="gameDrawCount" Type="Int32" />
+    <Property Name="WhirlCount" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="TexasCount" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="tuseragent2020">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="Int32" Nullable="false" />
+    <Property Name="Role" Type="Int32" />
+    <Property Name="PartnerID" Type="Int32" />
+    <Property Name="CEOID" Type="Int32" />
+    <Property Name="GoldCHistory" Type="Int64" />
+    <Property Name="GoldC" Type="Double" />
+    <Property Name="GoldCH_P" Type="Int64" />
+    <Property Name="GoldCH_G" Type="Int64" />
+    <Property Name="lastdealtime" Type="DateTime" />
+    <Property Name="ChildAgents" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+    <Property Name="rates" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+    <Property Name="JackpotRate" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+    <Property Name="GoldCH_P_R" Type="Int32" />
+    <Property Name="GoldCH_G_R" Type="Int32" />
+    <Property Name="GoldC_pot" Type="Double" />
+    <Property Name="GoldCH_pot" Type="Double" />
+    <Property Name="GoldCH" Type="Double" />
+    <Property Name="PotRates" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="tuseragentlog">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="Int32" />
+    <Property Name="Gold" Type="Int64" />
+    <Property Name="State" Type="Int32" />
+    <Property Name="CreatTime" Type="DateTime" />
+    <Property Name="Type" Type="Int32" />
+  </EntityType>
+  <EntityType Name="tusercontact">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Mobile" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="PostCode" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Address" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="UserId" Type="Int32" />
+    <Property Name="CreateTime" Type="DateTime" />
+    <Property Name="UpdateTime" Type="DateTime" />
+  </EntityType>
+  <EntityType Name="tusergamehand">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" Nullable="false" MaxLength="36" FixedLength="false" Unicode="false" />
+    <Property Name="UserId" Type="Int32" />
+    <Property Name="clubid" Type="Int32" />
+    <Property Name="pos1Count" Type="Decimal" />
+    <Property Name="pos2Count" Type="Decimal" />
+    <Property Name="pos5Count" Type="Decimal" />
+    <Property Name="pos10Count" Type="Decimal" />
+    <Property Name="pos20Count" Type="Decimal" />
+    <Property Name="pos50Count" Type="Decimal" />
+    <Property Name="CreateTime" Type="DateTime" />
+    <Property Name="gameWinCount" Type="Int32" />
+    <Property Name="gameLostCount" Type="Int32" />
+    <Property Name="gameDrawCount" Type="Int32" />
+    <Property Name="FillingCount" Type="Int32" />
+    <Property Name="dealCardCount" Type="Int32" />
+    <Property Name="todayCardCount" Type="Int32" />
+    <Property Name="lastdealtime" Type="DateTime" />
+    <Property Name="tablenum" Type="Int32" />
+  </EntityType>
+  <EntityType Name="tuserinfoex">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="Int32" Nullable="false" />
+    <Property Name="clubpwd" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="clubProtect" Type="Int32" />
+    <Property Name="Userremark" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+    <Property Name="applyUsers" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+    <Property Name="CreateTime" Type="DateTime" />
+    <Property Name="freeCount" Type="Int32" />
+  </EntityType>
+  <EntityType Name="tuserjackpot">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+    <Property Name="C_jackpot" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+    <Property Name="updatetime" Type="DateTime" />
+    <Property Name="watergoldadd" Type="Int64" />
+    <Property Name="watergoldreduce" Type="Int64" />
+    <Property Name="GoldHistoryCommission" Type="Int64" />
+    <Property Name="HistoryGold" Type="Int64" />
+    <Property Name="AllGoldBack" Type="Int64" />
+    <Property Name="AllGoldAdd" Type="Int64" />
+    <Property Name="C_potRange" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="tuserprizelog">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="userId" Type="Int32" />
+    <Property Name="createtime" Type="DateTime" />
+    <Property Name="prizeid" Type="Int32" />
+    <Property Name="turntableid" Type="Int32" />
+    <Property Name="isgive" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="tuserrechargelog">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="userid" Type="Int32" />
+    <Property Name="money" Type="Decimal" />
+    <Property Name="cointype" Type="Int32" />
+    <Property Name="fromtype" Type="Int32" />
+    <Property Name="fromuserid" Type="Int32" />
+    <Property Name="fromadminid" Type="Int32" />
+    <Property Name="remarks" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="createtime" Type="DateTime" />
+    <Property Name="oldmoney" Type="Decimal" />
+    <Property Name="currmoney" Type="Decimal" />
+    <Property Name="oldGold" Type="Decimal" />
+    <Property Name="currGold" Type="Decimal" />
+  </EntityType>
+  <EntityType Name="tusertempgoldlog">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserID" Type="Int32" Nullable="false" />
+    <Property Name="CurrentGold" Type="Int32" />
+    <Property Name="CreateDate" Type="DateTime" />
+  </EntityType>
+  <EntityType Name="tuservipfreecount">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="userid" Type="Int32" />
+    <Property Name="vipid" Type="Int32" />
+    <Property Name="freecount" Type="Int32" />
+    <Property Name="createtime" Type="DateTime" />
+  </EntityType>
+  <EntityType Name="tuservipinfo">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="userid" Type="Int32" />
+    <Property Name="vipid" Type="Int32" />
+    <Property Name="expiredate" Type="DateTime" />
+    <Property Name="vipLv" Type="Int32" />
+    <Property Name="cTable" Type="Int32" />
+    <Property Name="cClub" Type="Int32" />
+    <Property Name="CreateTime" Type="DateTime" />
+  </EntityType>
+  <EntityType Name="tvipauth">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="vipid" Type="Int32" />
+    <Property Name="authid" Type="Int32" />
+  </EntityType>
+  <EntityType Name="tvipinfo">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="viplevel" Type="Int32" />
+    <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="price" Type="Single" />
+    <Property Name="commodid" Type="Int32" />
+  </EntityType>
+  <EntityType Name="tvisitlimit">
+    <Key>
+      <PropertyRef Name="ipport" />
+    </Key>
+    <Property Name="ipport" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="dateRecord" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+    <Property Name="unitRcord" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+    <Property Name="dateMaxLimit" Type="Int32" />
+    <Property Name="unitMaxLimit" Type="Int32" />
+  </EntityType>
+  <EntityType Name="userranking">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="Int32" Nullable="false" />
+    <Property Name="UserName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Score" Type="Int32" />
+    <Property Name="CreateDate" Type="DateTime" />
+    <Property Name="Items" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="userrole">
+    <Key>
+      <PropertyRef Name="RoleId" />
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="RoleId" Type="Int32" Nullable="false" />
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+    <Property Name="RoleName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="HeadImg" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Sex" Type="Boolean" />
+    <Property Name="LvNum" Type="Int32" />
+    <Property Name="ExperienceNum" Type="Int32" />
+    <Property Name="LifeNum" Type="Int32" />
+    <Property Name="LifeMaxNum" Type="Int32" />
+    <Property Name="pos_x" Type="Int32" />
+    <Property Name="pos_y" Type="Int32" />
+    <Property Name="pos_z" Type="Int32" />
+    <Property Name="scene_name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+  </EntityType>
+</Schema>

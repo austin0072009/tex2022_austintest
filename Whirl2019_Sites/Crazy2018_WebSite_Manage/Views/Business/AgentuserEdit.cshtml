@@ -1,0 +1,298 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,initial-scale=1.0,user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <title>编制会员信息</title>
+    <link href="~/scripts/artdialog/ui-dialog.css" rel="stylesheet" type="text/css" />
+    <link href="~/skin/default/style.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" charset="utf-8" src="~/scripts/jquery/jquery-1.11.2.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="~/scripts/jquery/Validform_v5.3.2_min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="~/scripts/artdialog/dialog-plus-min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="~/js/laymain.js"></script>
+    <script type="text/javascript" charset="utf-8" src="~/js/common.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            //添加按钮(点击绑定)
+            $(".icon-btn").click(function () {
+                var fun = $(this).attr("action");
+                showUrlDialog(fun);
+            });
+        });
+        //创建窗口
+        function showUrlDialog(fun) {
+            var uid = $("#hduserid").val();
+            if (fun == "chargemoney")//充值金币
+            {
+                userCharge(1, uid)
+            }
+            else if (fun == "chargediamond")//充值砖石
+            {
+                userCharge(2, uid)
+            }
+            else if (fun == "setagent")//设置代理
+            {
+                userAgent(uid);
+            }
+            else if (fun == "setrobot")//设置机器人
+            {
+                setUserRobot(uid);
+            }
+            else if (fun == "settime")//锁定账户
+            {
+                setlocktime(uid);
+            }
+            else if (fun == "setwechat") { //修改账户信息
+                setwechat(uid);
+            }
+            else {
+                alert("参数错误");
+            }
+
+        }
+        //充值
+        function userCharge(type, uid) {
+            var des = "充值金币";
+            if (type == 2) {
+                des = "充值砖石";
+            }
+            var d = top.dialog({
+                title: des,
+                width: "550px",
+                url: 'dialog/dialog_charge.aspx?type=' + type + "&uid=" + uid,
+                onclose: function () {
+                    var trHtml = this.returnValue;
+                    if (trHtml.length > 0) {
+                        alert("充值成功");
+                    }
+                }
+            }).showModal();
+        }
+        function userAgent(uid) {
+            var d = top.dialog({
+                title: "设置代理",
+                width: "550px",
+                url: 'dialog/dialog_agent1.aspx?uid=' + uid,
+                onclose: function () {
+                    var trHtml = this.returnValue;
+                    if (trHtml.length > 0) {
+                        alert("设置成功");
+                    }
+                }
+            }).showModal();
+        }
+        function setUserRobot(uid) {
+            var d = top.dialog({
+                title: "设置机器人",
+                width: "550px",
+                url: 'dialog/dialog_robot.aspx?uid=' + uid,
+                onclose: function () {
+                    var trHtml = this.returnValue;
+                    if (trHtml.length > 0) {
+                        alert("设置成功");
+                    }
+                }
+            }).showModal();
+        }
+        function setlocktime(uid) {
+            var d = top.dialog({
+                title: "锁定账户",
+                width: "550px",
+                url: 'dialog/dialog_locktime.aspx?uid=' + uid,
+                onclose: function () {
+                    var trHtml = this.returnValue;
+                    if (trHtml.length > 0) {
+                        alert("账号锁定成功");
+                    }
+                }
+            }).showModal();
+        }
+        function setwechat(uid) {
+            var d = top.dialog({
+                title: "修改账户信息",
+                width: "550px",
+                url: 'dialog/dialog_wechat.aspx?uid=' + uid,
+                onclose: function () {
+                    var trHtml = this.returnValue;
+                    if (trHtml.length > 0) {
+                        alert("修改账户信息成功");
+                    }
+                }
+            }).showModal();
+        }
+    </script>
+</head>
+
+<body class="mainbody">
+    <form method="post" action="./agentuser_edit.aspx" id="form1">
+        <div class="aspNetHidden">
+            <input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUKLTYwMDg4NzU1Ng8WAh4TVmFsaWRhdGVSZXF1ZXN0TW9kZQIBZGTcpz6jE2PSh4yDvlTiJDkceQSSz2TXRtWZYT3HOESekA==">
+        </div>
+
+        <!--导航栏-->
+        <div class="location">
+            <a href="/Business/UserList" class="back"><i></i><span>返回列表页</span></a>
+            <a href="/Home/Center" class="home"><i></i><span>首页</span></a>
+            <i class="arrow"></i>
+            <a href="/Business/UserList"><span>账号列表</span></a>
+            <i class="arrow"></i>
+            <span>编辑会员账号</span>
+        </div>
+        <div class="line10"></div>
+        <!--/导航栏-->
+        <!--内容-->
+        <div id="floatHead" class="content-tab-wrap">
+            <div class="content-tab">
+                <div class="content-tab-ul-wrap">
+                    <div class="tab-title"><span>会员账户信息</span><i></i></div><ul>
+                        <li><a class="selected" href="javascript:;">会员账户信息</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="tab-content">
+            <table>
+                <tbody>
+                    <tr>
+                        <td>
+                            <dl>
+                                <dt>用户ID</dt>
+                                <dd>
+                                    <input type="hidden" id="hduserid" value="0" style="">
+                                    0
+                                </dd>
+                            </dl>
+                        </td>
+                        <td>
+                            <dl>
+                                <dt>账户名</dt>
+                                <dd> </dd>
+                            </dl>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <dl>
+                                <dt>微信名</dt>
+                                <dd></dd>
+                            </dl>
+                        </td>
+                        <td>
+                            <dl>
+                                <dt>注册时间</dt>
+                                <dd></dd>
+                            </dl>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <dl>
+                                <dt>是否代理</dt>
+                                <dd>否</dd>
+                            </dl>
+                        </td>
+                        <td>
+                            <dl>
+                                <dt>最近登陆时间</dt>
+                                <dd></dd>
+                            </dl>
+                        </td>
+                    </tr>
+                    <tr>
+
+                        <td>
+                            <dl>
+                                <dt>锁定时间</dt>
+                                <dd></dd>
+                            </dl>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <dl>
+                                <dt>胜率百分比</dt>
+                                <dd>0</dd>
+                            </dl>
+                        </td>
+                        <td>
+                            <dl>
+                                <dt>机器人等级</dt>
+                                <dd>0</dd>
+                            </dl>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <dl>
+                                <dt>金币数</dt>
+                                <dd>0</dd>
+                            </dl>
+                        </td>
+                        <td>
+                            <dl>
+                                <dt>总充值金币数</dt>
+                                <dd>0</dd>
+                            </dl>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <dl>
+                                <dt>钻石数</dt>
+                                <dd>
+                                    0
+                                </dd>
+                            </dl>
+                        </td>
+                        <td>
+                            <dl>
+                                <dt>总充值钻石数</dt>
+                                <dd>0</dd>
+                            </dl>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <dl>
+                                <dt>头像地址</dt>
+                                <dd>
+
+                                </dd>
+                            </dl>
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <dl>
+                                <dt>操作</dt>
+                                <dd>
+                                    <a class="icon-btn edit" action="setagent"><i></i><span>设置代理</span></a>
+                                </dd>
+                            </dl>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <!--/内容-->
+        <!--工具栏-->
+        <div class="page-footer">
+            <div class="btn-wrap" style="position: static;">
+                <input name="btnReturn" type="button" value="返回上一页" class="btn yellow" onclick="javascript: history.back(-1);">
+            </div>
+        </div>
+        <!--/工具栏-->
+        <div class="aspNetHidden">
+            <input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="3C568C4B">
+        </div>
+    </form>
+</body>
+</html>

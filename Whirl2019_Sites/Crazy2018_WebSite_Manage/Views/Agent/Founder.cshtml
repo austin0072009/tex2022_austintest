@@ -1,0 +1,668 @@
+﻿@using Crazy2018_Sys_Common;
+@using Crazy2018_Sys_Entity;
+@using Crazy2018_Sys_DBHelper;
+@{
+    ViewBag.Title = "创始人合伙人管理";
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+}
+<style>
+    .layerbtn {
+        display: inline-block;
+        height: 20px;
+        line-height: 20px;
+        padding: 1px 10px 2px 9px;
+        background-color: #A9A9A9;
+        color: white;
+        white-space: nowrap;
+        text-align: center;
+        font-size: 10px;
+        border: none;
+        border-radius: 2px;
+        cursor: pointer;
+    }
+
+    th {
+        text-align: center;
+    }
+
+    .form-control {
+        width: 80%;
+        height: 24px;
+    }
+</style>
+
+<body onkeydown="keyLogin(event);" class="mainbody">
+    <!--导航栏-->
+    <div class="location">
+        <a href="javascript:history.back(-1);" class="back"><i></i><span>返回上一页</span></a>
+        <a href="/Home/Center" class="home"><i></i><span>首页</span></a>
+        <i class="arrow"></i>
+        <a href="/Business/UserList"><span>创始人合伙人管理</span></a>
+        <i class="arrow"></i>
+        <span>创始人合伙人列表</span>
+    </div>
+    <!--/导航栏-->
+    <!--工具栏-->
+    <div id="floatHead" class="toolbar-wrap">
+        <div class="toolbar">
+            <div class="box-wrap">
+                <a class="menu-btn"></a>
+                <div class="l-list">
+                    @*<ul class="icon-list">
+                            <li><a data-toggle="modal" data-target="#myModal" class="add" href=""><i></i><span>新增</span></a></li>
+                        </ul>*@
+                    <input name="txtKeywords" placeholder="用户id" type="text" id="txtKeywords" class="input">
+                    <button type="button" style="height: 28px;padding: 3px 10px;background-color: lightgray;" id="lbtnSearch" class="btn btn-default btn-sm">查询</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!--/工具栏-->
+    <!--列表-->
+    <div class="table-container">
+
+        <table width="100%" border="0" cellspacing="0" cellpadding="0" class="ltable">
+            <thead>
+                <tr class="odd_bg">
+                    <th width="30px">选择</th>
+                    <th>用户名称</th>
+                    <th>用户ID</th>
+                    <th>角色名称</th>
+                    <th>奖池分配比例</th>
+                    <th>红利分配比例</th>
+                    <th>奖池抽比比例</th>
+                    <th>平台比例</th>
+                    <th>股东比例</th>
+                    <th>历史收益</th>
+                    <th>未领取收益</th>
+                    <th>结算时间</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody id="MyTbody"></tbody>
+        </table>
+
+    </div>
+    <!--/列表-->
+    <!--内容底部-->
+    <div class="line20"></div>
+    <div class="pagelist">
+        <div class="l-btns">
+            <span>显示</span><input name="txtPageNum" type="text" id="txtPageNum" class="pagenum"><span>条/页</span>
+        </div>
+        <div id="PageContent" class="default">
+
+        </div>
+    </div>
+    <input type="hidden" id="uid" name="uid" value="0" />
+    <input type="hidden" id="type" name="type" value="0" />
+    <!--/内容底部-->
+    <div style="width:100%;text-align: center;">
+        <span style="display: inline-block;padding: 4px 15px 0px 15px;color: #666;font-size:14px;">(注 :1、 合伙人才有第二级、创始人的比例。<br />2、奖池分配比例是相对80%的芒果分的百分比 <br />3、红利分配比例是相对整个流水的2.5%的百分比)</span>
+    </div>
+
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                        &times;
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel">
+                        比例设置
+                    </h4>
+                </div>
+                <div class="modal-body">
+                    <div>
+                        <form role="form">
+                            <div class="form-group">
+                                <label class="JackpotRate" for="name"></label>
+                                <input type="text" id="JackpotRate" name="JackpotRate" class="form-control" oninput ="value=value.replace(/[^\d]/g,'')" placeholder="输入比例 1~100" >
+                                <label class="CEOJackpotRate" for="name"></label>
+                                <input type="text" id="CEOJackpotRate" name="CEOJackpotRate" class="form-control" oninput ="value=value.replace(/[^\d]/g,'')" placeholder="输入比例 1~100" >
+                                <label class="OrignatorJackpotRate" for="name"></label>
+                                <input type="text" id="OrignatorJackpotRate" name="OrignatorJackpotRate" class="form-control" oninput ="value=value.replace(/[^\d]/g,'')" placeholder="输入比例 1~100">
+
+
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">
+                        关闭
+                    </button>
+                    <button type="button" id="submitbtn" class="btn btn-primary">
+                        提交
+                    </button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal -->
+    </div>
+
+    <div class="modal fade" id="myModalForShares" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                        &times;
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel2">
+                        比例设置
+                    </h4>
+                </div>
+                <div class="modal-body">
+                    <div>
+                        <form role="form">
+                            <div class="form-group">
+                                <label for="name">平台股份比例</label>
+                                <input type="text" id="GoldCH_P_R" name="GoldCH_P_R" class="form-control" placeholder="输入比例 1~100">
+                                <label for="name">股东股份比例</label>
+                                <input type="text" id="GoldCH_G_R" name="GoldCH_G_R" class="form-control" placeholder="输入比例 1~100">
+
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">
+                        关闭
+                    </button>
+                    <button type="button" id="submitShares" class="btn btn-primary">
+                        提交
+                    </button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal -->
+    </div>
+
+    <div class="modal fade" id="NowDayJackpot" tabindex="-1" role="dialog" aria-labelledby="NowJackpot" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                        &times;
+                    </button>
+                    <h4 class="modal-title" id="NowJackpot">
+                        今日奖池
+                    </h4>
+                </div>
+                <div class="modal-body">
+                    <div>
+                        <form role="form">
+                            <div class="form-group">
+                                <input type="text" id="TodayJackpot" name="TodayJackpot" class="form-control" placeholder="请输入奖池金额~">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">
+                        关闭
+                    </button>
+                    @*<button type="button" id="updatejackpot" class="btn btn-primary">
+                            修改
+                        </button>*@
+                    <button type="button" id="sendjaclpot" class="btn btn-primary" style="background-color:#de5406bd">
+                        发放
+                    </button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal -->
+    </div>
+
+    <div class="modal fade" id="GrentGBModel" tabindex="-1" role="dialog" aria-labelledby="GBmodel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                        &times;
+                    </button>
+                    <h4 class="modal-title" id="GBmodel">
+                        股东红利
+                    </h4>
+                </div>
+                <div class="modal-body">
+                    <div>
+                        <form role="form">
+                            <div class="form-group">
+                                <label for="name">今日奖池总额</label>
+                                <input type="text" id="SumJackpot" name="SumJackpot" class="form-control" placeholder="请输入金额~">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">
+                        关闭
+                    </button>
+                    <button type="button" id="GBJackpotBtn" class="btn btn-primary" style="background-color:#de5406bd">
+                        发放
+                    </button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal -->
+    </div>
+
+    <script>
+        var storagefirst = window.localStorage;
+        var MytxtPageNum = storagefirst["MytxtPageNum"];
+        var PageIndex = 1;
+        var txtPageNum = 20;
+        var Keywords = "";
+        var rat_list;
+        var coldc_lab;
+        var jackpottoday = 0;
+        var thisgoldg;
+        var nowtype;
+        if (MytxtPageNum != "" && MytxtPageNum != null) {
+            txtPageNum = MytxtPageNum
+        } else {
+            txtPageNum = txtPageNum
+        }
+        GetList();
+        SetJackpot();
+        $("#txtPageNum").val(txtPageNum);
+
+        $("#lbtnSearch").click(function () {
+            Keywords = $("#txtKeywords").val();
+            txtPageNum = $("#txtPageNum").val()
+            PageIndex = 1;
+            GetList();
+        })
+        $("#txtPageNum").change(function () {
+            Keywords = $("#txtKeywords").val();
+            txtPageNum = $("#txtPageNum").val();
+            storagefirst["MytxtPageNum"] = txtPageNum
+            PageIndex = 1;
+            GetList();
+        })
+        $("#selectRobot").change(function () {
+            Keywords = $("#txtKeywords").val();
+            txtPageNum = $("#txtPageNum").val();
+            PageIndex = 1;
+            GetList();
+        });
+
+        $("#submitShares").on("click", function () {
+            var GoldCH_P_R = $("#GoldCH_P_R").val();
+            var GoldCH_G_R = $("#GoldCH_G_R").val();
+            if (GoldCH_P_R == "") {
+                layer.msg("请填写平台占比!", { icon: 1 });
+                return;
+            }
+            if (GoldCH_G_R == "") {
+                layer.msg("请填写股东占比!", { icon: 1 });
+                return;
+            }
+            var data = {};
+            data.GoldCH_P_R = GoldCH_P_R;
+            data.GoldCH_G_R = GoldCH_G_R;
+            data.uid = $("#uid").val();
+
+            $.ajax({
+                type: "post", url: '/Agent/setShares',
+                datatype: 'json',
+                data: data,
+                success: function (res) {
+                    if (res.Code == 0) {
+                        $('#myModalForShares').modal('hide');
+                        layer.msg(res.Message, { icon: 6 });
+                    }
+                    else {
+                        layer.msg(res.Message, { icon: 6 });
+                        GetList();
+                    }
+
+                }
+            });
+        });
+
+        $("#submitbtn").click(function () {
+            
+            var JackpotRate = $("#JackpotRate").val();
+            var CEOJackpotRate = $("#CEOJackpotRate").val();
+            var OrignatorJackpotRate = $("#OrignatorJackpotRate").val();
+          
+            if (JackpotRate == "") {
+                layer.msg("请填写奖池分配比例!", { icon: 1 });
+                return;
+            }
+            if (CEOJackpotRate == "") {
+                layer.msg("请填写奖池分配比例!", { icon: 1 });
+                return;
+            }
+            if (OrignatorJackpotRate == "") {
+                layer.msg("请填写奖池分配比例!", { icon: 1 });
+                return;
+            }
+            if (nowtype == 2) {
+                if (JackpotRate>20) {
+                    layer.msg("分配比例最高为20!", { icon: 1 });
+                    return;
+                }
+                if (CEOJackpotRate > 20) {
+                    layer.msg("分配比例最高为20!", { icon: 1 });
+                    return;
+                }
+                if (OrignatorJackpotRate > 20) {
+                    layer.msg("分配比例最高为20!", { icon: 1 });
+                    return;
+                }
+            }
+            
+            var data = {};
+            data.JackpotRate = JackpotRate;
+            data.CEOJackpotRate = CEOJackpotRate;
+            data.OrignatorJackpotRate = OrignatorJackpotRate;
+            data.uid = $("#uid").val();
+            data.type = $("#type").val();
+            $.ajax({
+                type: "post", url: '/Agent/setJackpotRate',
+                datatype: 'json',
+                data: data,
+                success: function (res) {
+                    if (res.Code == 0) {
+                        $('#myModal').modal('hide');
+                        layer.msg(res.Message, { icon: 6 });
+                    }
+                    else {
+                        layer.msg(res.Message, { icon: 6 });
+                        GetList();
+                    }
+
+                }
+            });
+        });
+        function keyLogin(event) {
+            if (event.keyCode == 13)
+                document.getElementById("lbtnSearch").click();
+        }
+        function setRate(uid, rolname, type) {
+            nowtype = type;
+            $("#submitbtn").attr('disabled', true);
+            $("#uid").val(uid);
+            $("#type").val(type);
+
+            $("#JackpotRate").prop("placeholder", "请输入比例1~100");
+            $("#CEOJackpotRate").attr("placeholder", "请输入比例1~100");
+            $("#OrignatorJackpotRate").attr("placeholder", "请输入比例1~100");
+            if (type == "2") {
+
+
+                $(".JackpotRate").text("合伙人红利分配");
+                $("#JackpotRate").prop("placeholder", "请输入比例1~20");
+                $(".CEOJackpotRate").text("第二级红利分配");
+                $("#CEOJackpotRate").attr("placeholder", "请输入比例1~20");
+                $(".OrignatorJackpotRate").text("创始人红利分配");
+                $("#OrignatorJackpotRate").attr("placeholder", "请输入比例1~20");
+
+            } else if (type == "1") {
+                $(".JackpotRate").text("合伙人奖池分配");
+                $(".CEOJackpotRate").text("第二级奖池分配");
+                $(".OrignatorJackpotRate").text("创始人奖池分配");
+            }
+            else if (type == "3") {
+                $(".JackpotRate").text("合伙人奖池抽比分配");
+                $(".CEOJackpotRate").text("第二级奖池抽比分配");
+                $(".OrignatorJackpotRate").text("创始人奖池抽比分配");
+            }
+
+            $("#myModal").modal("show");
+
+            if (type == "1" && rolname == "合伙人") {
+                $("#submitbtn").attr('disabled', false);
+            }
+            if (type == "2" && rolname == "合伙人") {
+                $("#submitbtn").attr('disabled', false);
+            }
+            if (type == "3" && rolname == "创始人") {
+                $("#submitbtn").attr('disabled', false);
+            }
+        }
+        function setShares(uid) {
+            $("#uid").val(uid);
+            $("#myModalForShares").modal("show");
+        }
+        function ShowJackpot(uid, ratlist,coldc) {
+            $("#uid").val(uid);
+            rat_list = ratlist.split(',');
+            coldc_lab = coldc;
+            $("#NowDayJackpot").modal("show");
+        }
+
+
+        $("#PageContent").on("click", "a", function () {
+            var lkl2 = $(this).text();
+
+            if (lkl2 == "下一页»") {
+                PageIndex = parseInt(PageIndex) + 1
+            } else if (lkl2 == "«上一页") {
+                PageIndex = parseInt(PageIndex) - 1
+            } else {
+                PageIndex = lkl2
+            }
+            Keywords = $("#txtKeywords").val();
+            txtPageNum = $("#txtPageNum").val()
+            GetList();
+        })
+
+        function GetList() {
+            var data = {};
+            data.PageIndex = PageIndex;
+            data.PageSize = txtPageNum;
+            data.Keywords = Keywords;
+            $.ajax({
+                type: "post", url: '/Agent/GetFounderCeo',
+                datatype: 'json',
+                data: data,
+                success: function (res) {
+
+                    if (res.Code == 0) {
+
+                        if (res) {
+                            $("#MyTbody").empty();
+                            var str = $("#MyTbody").html();
+                            if (res.Data.length > 0) {
+
+
+                                for (var n = 0; n < res.Data.length; n++) {
+                                    var opt = "";
+                                    var ratio = "";
+                                    var rat = "";
+                                    var ratiostr = "";
+                                    var ratstr = "";
+                                    var potrates = "";
+                                    var potratesstr = "";
+                                    if (res.Data[n].JackpotRate != "" || res.Data[n].JackpotRate != undefined || res.Data[n].JackpotRate != null) {
+                                        ratiostr = res.Data[n].JackpotRate.replace("[", "").replace("]", "").split(',');
+                                        for (var i = 0; i < ratiostr.length; i++) {
+                                            ratio += ratiostr[i] + "%&nbsp;";
+                                        }
+                                    } else { ratiostr = "0% 0% 0%" }
+                                    if (res.Data[n].rates != "" || res.Data[n].rates != undefined || res.Data[n].rates != null) {
+                                        ratstr = res.Data[n].rates.replace("[", "").replace("]", "").split(",");
+                                        for (var i = 0; i < ratstr.length; i++) {
+                                            rat += ratstr[i] + "%&nbsp;";
+                                        }
+                                    } else { ratstr = "0% 0% 0%" }
+                                    if (res.Data[n].PotRates != "" || res.Data[n].PotRates != undefined || res.Data[n].PotRates != null) {
+
+                                        potrates = res.Data[n].PotRates.replace("[", "").replace("]", "").replace("\"\"", "").split(",");
+                                        if (potrates[0] != "") {
+                                            for (var i = 0; i < potrates.length; i++) {
+                                                potratesstr += potrates[i] + "%&nbsp;";
+                                            }
+                                        } else {
+                                            potratesstr = "0% 0% 0%"
+                                        }
+
+                                    } else { potratesstr = "0% 0% 0%" }
+
+                                    if (res.RoleId == 1 || res.RoleId == 4) { 
+
+                                  
+                                    if (res.Data[n].Role == 8)
+                                    {
+                                        opt += "<a class='layerbtn' onclick=\"setRate('" + res.Data[n].UserID + "','" + res.Data[n].RoloName + "','1')\" style='background-color:#548B54;'>奖池分红</a>" +
+                                            "&nbsp;&nbsp;<a class='layerbtn' onclick=\"setRate('" + res.Data[n].UserID + "','" + res.Data[n].RoloName + "','2')\" style='background-color:#cc3300;'>红利分配</a>";
+                                    }
+                                    opt += "&nbsp;&nbsp;<a class='layerbtn' onclick=\"setShares('" + res.Data[n].UserID + "')\" style='background-color:#99ff66;'>股份设置</a>" +
+                                        //"&nbsp;&nbsp;<a class='layerbtn' onclick=\"setRate('" + res.Data[n].UserID + "','" + res.Data[n].RoloName + "','3')\" style='background-color:#ff9600;'>奖池抽比</a>" +
+                                        //"&nbsp;&nbsp;<a class='layerbtn' onclick=\"ShowJackpot('" + res.Data[n].UserID + "','" + ratstr + "','" + res.Data[n].GoldC+"')\" style='background-color:#ef6e3f;'>当日奖池</a>" +
+                                        "&nbsp;&nbsp;<a class='layerbtn' onclick=\"GBModelShow('" + res.Data[n].UserID + "','" + res.Data[n].GoldCH_G_R + "')\" style='background-color:#3f85ef;'>股东发放</a>";
+                                    } else {
+                                        opt += "<a href='#'>无权限</a>";
+                                    }
+                                    
+                                    str = "<tr>" +
+                                        "<td align='center'>" +
+                                        "<span class='checkall' style='vertical-align: middle;'>" +
+                                        "<input id='rptList_chkId_0' type='checkbox' name='rptList$ctl01$chkId'>" +
+                                        "</span>" +
+                                        "<input type='hidden' name='rptList' id='rptList' value=''>" +
+                                        "</td>" +
+
+                                        "<td align='center'>" + res.Data[n].UserName + "</td>" +
+                                        "<td align='center'>" + res.Data[n].UserID + "</td>" +
+                                        "<td align='center'>" + res.Data[n].RoloName + "</td>" +
+                                        "<td align='center'>" + ratio + "</td>" +
+                                        "<td align='center'>" + rat + "</td>" +
+                                        "<td align='center'>" + potratesstr + "</td>" +// 奖池抽比
+                                        "<td align='center'>" + res.Data[n].GoldCH_P_R + "%</td>" +
+                                        "<td align='center'>" + res.Data[n].GoldCH_G_R + "%</td>" +
+                                        "<td align='center'>" + res.Data[n].GoldCHistory + "</td>" +
+                                        "<td align='center'>" + res.Data[n].GoldC/100 + "</td>" +
+                                        "<td align='center'>" + res.Data[n]._lastdealtime + "</td>" +
+                                        "<td align='center'>" +
+                                        opt
+                                    "</td>" +
+                                        "</tr>";
+                                    $('#MyTbody').append(str);
+                                    var sthtml = $("#PageContent").html();
+                                    $("#PageContent").empty();
+                                    if (res.InnerHtml.length > 0) {
+                                        sthtml = res.InnerHtml
+                                        $('#PageContent').append(sthtml);
+                                    }
+                                }
+                            } else {
+                                $("#MyTbody").empty();
+                            }
+                        } else {
+                            eval(res)
+                        }
+                    } else {
+                        eval(res)
+                    }
+                }
+            })
+
+
+        }
+
+        //获取奖池金额
+        function SetJackpot() {
+            $("#TodayJackpot").val("0");
+            $("#SumJackpot").val("0");
+            //$.ajax({
+            //    type: "post", url: '/GameCore/GetMonthDaytjackpotStatics',
+            //    datatype: 'json',
+            //    data: "",
+            //    success: function (res) {
+            //        if (res != null) {
+            //            $("#TodayJackpot").val(res.TotalJacket);
+            //            jackpottoday = res.TotalJacket;
+            //            $("#SumJackpot").text(res.TotalJacket);
+            //        }
+            //    }
+            //})
+        }
+
+        //分发当日奖池
+        $("#sendjaclpot").click(function () {
+            var JackpotRate = rat_list[0];
+            var CEOJackpotRate = rat_list[1];
+            var OrignatorJackpotRate = rat_list[2];
+            var GoldCJackpot = $("#TodayJackpot").val();
+            if (GoldCJackpot == "" || GoldCJackpot > coldc_lab) {
+                layer.msg("请设置奖池金额,超出最大金额!", { icon: 1 });
+                return;
+            }
+            if (JackpotRate == "") {
+                layer.msg("请填写奖池分配比例!", { icon: 1 });
+                return;
+            }
+            if (CEOJackpotRate == "") {
+                layer.msg("请填写奖池分配比例!", { icon: 1 });
+                return;
+            }
+            if (OrignatorJackpotRate == "") {
+                layer.msg("请填写奖池分配比例!", { icon: 1 });
+                return;
+            }
+
+            var data = {};
+            data.JackpotRate = JackpotRate;
+            data.CEOJackpotRate = CEOJackpotRate;
+            data.OrignatorJackpotRate = OrignatorJackpotRate;
+            data.GoldC = GoldCJackpot;
+            data.uid = $("#uid").val();
+            data.type = 1;
+            $.ajax({
+                type: "post", url: '/Agent/sendJackpot',
+                datatype: 'json',
+                data: data,
+                success: function (res) {
+                    if (res.Code == 0) {
+                        $('#myModal').modal('hide');
+                        layer.msg(res.Message, { icon: 6 });
+                    }
+                    else {
+                        layer.msg(res.Message, { icon: 6 });
+                        GetList();
+                    }
+
+                }
+            });
+
+        })
+
+        function GBModelShow(uid,goldg) {
+            $("#GrentGBModel").modal("show");
+            thisgoldg = goldg;
+        }
+
+        $("#GBJackpotBtn").click(function () {
+            var GoldCJackpot = $("#SumJackpot").val();
+            if (GoldCJackpot == "" ) {
+                layer.msg("请设置奖池金额!", { icon: 1 });
+                return;
+            }
+
+            var data = {};
+            data.GoldC = GoldCJackpot;
+            data.uid = $("#uid").val();
+            data.GoldCH_G_R = thisgoldg;
+            $.ajax({
+                type: "post", url: '/Agent/GrentGBonus',
+                datatype: 'json',
+                data: data,
+                success: function (res) {
+                    if (res.Code == 0) {
+                        $('#myModalForShares').modal('hide');
+                        layer.msg(res.Message, { icon: 6 });
+                    }
+                    else {
+                        layer.msg(res.Message, { icon: 6 });
+                        GetList();
+                    }
+
+                }
+            });
+
+
+        })
+    </script>
+</body>

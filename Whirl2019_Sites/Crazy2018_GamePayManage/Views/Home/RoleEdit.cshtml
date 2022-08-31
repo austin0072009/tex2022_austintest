@@ -1,0 +1,241 @@
+﻿@using Crazy2018_Sys_DBHelper;
+@{
+    Layout = null;
+}
+@model dt_manager_role
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,initial-scale=1.0,user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <title>编辑角色</title>
+    <link href="../../scripts/artdialog/ui-dialog.css" rel="stylesheet" type="text/css" />
+    <link href="../skin/default/style.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="../../scripts/jquery/jquery-1.11.2.min.js"></script>
+    <script type="text/javascript" src="../../scripts/jquery/Validform_v5.3.2_min.js"></script>
+
+    <script type="text/javascript" src="../../scripts/artdialog/dialog-plus-min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="../js/laymain.js"></script>
+    <script type="text/javascript" charset="utf-8" src="../js/common.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $("#btnSubmit").click(function () {
+                var data=getdata();
+                console.log(data);
+                $.ajax({
+                    type: "post", url: '/Home/SaveRole',
+                    datatype: 'json',
+                    data: data,
+                    success: function (res) {
+                        if (res.Code == "0") {
+                            parent.jsprint("保存成功", "/Home/RoleList");
+                        } else {
+                            parent.alert(res.Message);
+                        }
+                    }
+                })
+            });
+            //初始化表单验证
+            $("#form1").initValidform();
+            //是否启用权限
+            if ($("#ddlRoleType").find("option:selected").attr("value") == 1) {
+                $(".border-table").find("input[type='checkbox']").prop("disabled", true);
+            }
+            $("#ddlRoleType").change(function () {
+                if ($(this).find("option:selected").attr("value") == 1) {
+                    $(".border-table").find("input[type='checkbox']").prop("checked", false);
+                    $(".border-table").find("input[type='checkbox']").prop("disabled", true);
+                } else {
+                    $(".border-table").find("input[type='checkbox']").prop("disabled", false);
+                }
+            });
+            //权限全选
+            $("input[name='checkAll']").click(function () {
+                if ($(this).prop("checked") == true) {
+                    $(this).parent().siblings("td").find("input[type='checkbox']").attr("checked", true);
+                } else {
+                    $(this).parent().siblings("td").find("input[type='checkbox']").attr("checked", false);
+                }
+            });
+            $(".checked").click(function () {
+                if ($(this).attr("checked") == "checked") {
+                    $(this).attr("checked", false);
+                } else {
+                    $(this).attr("checked", true);
+                }
+            })
+            function getdata() {
+                var data = {};
+                data.roleId = $("#txtRoleId").val();
+                data.roleType = $("#ddlRoleType").val();
+                data.roleName = $("#txtRoleName").val();
+                data.roleValue = $("#txtRoleValue").val();
+                data.nvaActions = [];
+                //var nvaActions = [];
+                var NvaActions = [];
+                var trList = $("#navtbody").children("tr");
+                for (var i = 0; i < trList.length; i++) {
+                    var NvaAction = {};
+                    var actions = [];
+                    var tdArr = trList.eq(i).find("td")
+                        .each(function () {
+
+                            var temptd = $(this);
+                            if (temptd.attr("class") == "onetd") {
+                                var temp = $(this).find("input");
+                                if (temp.attr("name") == "hId") {
+                                    NvaAction.nvaId = temp.val();
+                                }
+                            }
+                            else {
+                                temptd.find(".cbllist").each(function () {
+                                    var tempv = $(this).find("input").eq(0);
+                                    if (tempv.attr("checked") == "checked") {
+                                        var Taction = {};
+                                        Taction.taction = tempv.val();
+                                        actions.push(Taction);
+                                    }
+
+                                });
+                            }
+                        });
+                    NvaAction.actions = actions;
+                    data.nvaActions.push(NvaAction);
+                }
+                // data.nvaActions = NvaActions;
+                data.nvaActionsStr = JSON.stringify(data.nvaActions);
+                return data;
+            }
+        });
+    </script>
+</head>
+
+<body class="mainbody">
+    <form id="form1">
+        <!--导航栏-->
+        <div class="location">
+            <a href="/Home/RoleList" class="back"><i></i><span>返回列表页</span></a>
+            <a href="/Home/Center" class="home"><i></i><span>首页</span></a>
+            <i class="arrow"></i>
+            <a href="/Home/ManagerList"><span>管理员</span></a>
+            <i class="arrow"></i>
+            <a href="/Home/RoleList"><span>管理角色</span></a>
+            <i class="arrow"></i>
+            <span>编辑角色</span>
+        </div>
+        <div class="line10"></div>
+        <!--/导航栏-->
+        <!--内容-->
+        <div id="floatHead" class="content-tab-wrap">
+            <div class="content-tab">
+                <div class="content-tab-ul-wrap">
+                    <ul>
+                        <li><a class="selected" href="javascript:;">编辑角色信息</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="tab-content">
+            <input type="hidden" id="txtRoleId" value="@Model.id" />
+            <dl>
+                <dt>角色类型</dt>
+                <dd>
+                    <div class="rule-single-select single-select">
+                        <div class="boxwrap"><a class="select-tit" href="javascript:;"><span>请选择类型...</span><i></i></a><div class="select-items"><ul><li class="selected">请选择类型...</li><li>超级用户</li><li>系统用户</li></ul></div><i class="arrow"></i></div>
+                        <select name="ddlRoleType" id="ddlRoleType" datatype="*" errormsg="请选择角色类型！" sucmsg=" " style="display: none;">
+                            <option value="">请选择类型...</option>
+                            @if (Model.role_type == 1)
+                            {
+                                <option value="1" selected="selected">超级用户</option>
+                                <option value="2">系统用户</option>
+                            }
+                            else
+                            {
+                                <option value="2" selected>系统用户</option>
+
+                                <option value="1">超级用户</option>
+                            }
+
+
+
+                        </select>
+                    </div>
+                </dd>
+            </dl>
+            <dl>
+                <dt>角色名称</dt>
+
+                <dd><input name="txtRoleName" type="text" id="txtRoleName" class="input normal" value="@Model.role_name" datatype="*1-100" sucmsg="" /> <span class="Validform_checktip">*角色中文名称，100字符内</span></dd>
+            </dl>
+            <dl>
+                <dt>角色值</dt>
+                <dd><input name="txtRoleValue" type="text" id="txtRoleValue" class="input normal" value="@Model.role_value" datatype="*1-100" sucmsg="" /> <span class="Validform_checktip">*</span></dd>
+            </dl>
+            <dl>
+                <dt>管理权限</dt>
+                <dd>
+                    <table border="0" cellspacing="0" cellpadding="0" class="border-table" width="98%">
+                        <thead>
+                            <tr>
+                                <th width="30%">导航名称</th>
+                                <th>权限分配</th>
+                                <th width="10%">全选</th>
+                            </tr>
+                        </thead>
+                        <tbody id="navtbody">
+
+                            @foreach (var item in ViewBag.navData as List<dt_navigation>)
+                            {
+                                <tr>
+                                    <td class="onetd" style="white-space:nowrap;word-break:break-all;overflow:hidden;">
+                                        <input type="hidden" name="hId" value="@item.id" />
+                                        <input type="hidden" name="hidName" value="@item.name">
+                                        <span class="folder-open"></span>
+                                        @item.title
+                                    </td>
+                                    <td class="twotd">
+                                        @foreach (KeyValuePair<string, string> kvp in ViewBag.ActionType)
+                                        {
+                                            var roleValue = ViewBag.roleValue as List<dt_manager_role_value>;
+                                            string str = kvp.Value + "(" + kvp.Key + ")";
+                                            var temp = roleValue.Where(w => w.action_type.Equals(kvp.Key) && w.nav_name.Equals(item.name)).FirstOrDefault();
+                                            var id = ViewBag.id;
+                                            if (temp != null || id == 1)
+                                            {
+                                                <span id="rptList_cblActionType_0" class="cbllist">
+                                                    <input id="rptList_cblActionType_0_0_0" type="checkbox" class="checked" checked="checked" name="checked" value="@kvp.Key">
+                                                    <label for="rptList_cblActionType_0_0_0">@kvp.Value</label>
+                                                </span>
+                                            }
+                                            else
+                                            {
+                                                <span id="rptList_cblActionType_0" class="cbllist">
+                                                    <input id="rptList_cblActionType_0_0_0" type="checkbox" class="checked" name="rptList$ctl00$cblActionType$0" value="@kvp.Key">
+                                                    <label for="rptList_cblActionType_0_0_0">@kvp.Value</label>
+                                                </span>
+
+                                            }
+                                        }
+                                    </td>
+                                    <td align="center"><input name="checkAll" type="checkbox"></td>
+                                </tr>
+                            }
+
+                    </table>
+                </dd>
+            </dl>
+        </div>
+        <!--/内容-->
+        <!--工具栏-->
+        <div class="page-footer">
+            <div class="btn-wrap" style="position: fixed;">
+                <input type="button" name="btnSubmit" value="提交保存" id="btnSubmit" class="btn">
+                <input name="btnReturn" type="button" value="返回上一页" class="btn yellow" onclick="javascript:history.back(-1);">
+            </div>
+        </div>
+        <!--/工具栏-->
+    </form>
+</body>
+</html>

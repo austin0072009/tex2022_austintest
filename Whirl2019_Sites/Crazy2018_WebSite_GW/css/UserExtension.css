@@ -1,0 +1,25 @@
+﻿html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+}
+
+.UserExtensionBox {
+    width: 100%;
+    height: 100%;
+}
+
+    .UserExtensionBox img {
+        width: 100%;
+        height: 100%;
+        display: block;
+    }
+
+@media (min-width:640px) {
+    .UserExtensionBox img {
+        width:30%;
+        display: block;
+        margin: auto;
+    }
+}

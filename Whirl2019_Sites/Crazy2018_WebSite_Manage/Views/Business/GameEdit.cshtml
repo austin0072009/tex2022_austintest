@@ -1,0 +1,251 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,initial-scale=1.0,user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <title>编辑游戏</title>
+    <link href="~/scripts/artdialog/ui-dialog.css" rel="stylesheet" type="text/css" />
+    <link href="~/skin/default/style.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="~/scripts/jquery/jquery-1.11.2.min.js"></script>
+    <script type="text/javascript" src="~/scripts/jquery/Validform_v5.3.2_min.js"></script>
+
+    <script type="text/javascript" src="~/scripts/artdialog/dialog-plus-min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="~/js/laymain.js"></script>
+    <script type="text/javascript" charset="utf-8" src="~/js/common.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            //初始化表单验证
+            $("#form1").initValidform();
+        });
+    </script>
+</head>
+
+<body class="mainbody">
+    <form id="form1">
+        <!--导航栏-->
+        <div class="location">
+            <a href="/Business/GameList" class="back"><i></i><span>返回列表页</span></a>
+            <a href="/Home/Center " class="home"><i></i><span>首页</span></a>
+            <i class="arrow"></i>
+            <a href="/Business/GameList"><span>游戏管理</span></a>
+            <i class="arrow"></i>
+            <span>编辑游戏</span>
+        </div>
+        <div class="line10"></div>
+        <!--/导航栏-->
+        <!--内容-->
+        <div id="floatHead" class="content-tab-wrap">
+            <div class="content-tab">
+                <div class="content-tab-ul-wrap">
+                    <ul>
+                        <li><a class="selected" href="javascript:;">编辑游戏信息</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+       
+        <div class="tab-content">
+            <dl>
+                <dt>游戏ID</dt>
+                <dd>
+                    <input name="gameid" type="text" id="gameid" class="input normal" datatype="n" nullmsg="请设置游戏ID" errormsg="游戏ID范围是正整数" sucmsg=" " style="width:495px;">
+                    <span class="Validform_checktip">*</span>
+                </dd>
+            </dl>
+            <dl>
+                <dt>游戏名称</dt>
+                <dd>
+                    <input name="name" type="text" id="name" class="input normal" datatype="*2-200" nullmsg="请设置游戏名称" errormsg="" sucmsg=" " style="width:493px;">
+                    <span class="Validform_checktip">*</span>
+                </dd>
+            </dl>
+            <dl>
+                <dt>游戏介绍</dt>
+                <dd>
+                    <input name="gameIntroduce" type="text" id="gameIntroduce" class="input normal" datatype="*2-200" nullmsg="请设置游戏介绍" errormsg="" sucmsg=" " style="width:493px;">
+                    <span class="Validform_checktip">*</span>
+                </dd>
+            </dl>
+            <dl>
+                <dt>游戏规则</dt>
+                <dd>
+                    <textarea name="gameRule" rows="10" cols="20" id="gameRule" class="input normal" datatype="*2-2000" nullmsg="请设置游戏规则" errormsg="" sucmsg=" " style="width:493px;"></textarea>
+                    <span class="Validform_checktip">*</span>
+                </dd>
+            </dl>
+            <dl>
+                <dt>游戏序号</dt>
+                <dd>
+                    <input name="Sort" type="text" id="Sort" class="input normal" datatype="n" nullmsg="请设置游戏序号ID" errormsg="游戏序号范围是正整数" sucmsg="序号范围是正整数 " style="width:495px;">
+                    <span class="Validform_checktip">*</span>
+                </dd>
+            </dl>
+            <dl>
+                <dt>是否启用</dt>
+                <dd>
+                    <select name="isEnable" id="isEnable" class="select">
+                        <option value="1">是</option>
+                        <option value="0">否</option>
+                    </select>
+                </dd>
+            </dl>
+            <dl>
+                <dt>是否热门</dt>
+                <dd>
+                    <select name="isHot" id="isHot" class="select">
+                        <option value="1">是</option>
+                        <option value="0">否</option>
+                    </select>
+                </dd>
+            </dl>
+            <dl>
+                <dt>游戏类型</dt>
+                <dd>
+                    <select name="gametype" id="gametype" class="select">
+                        <option value="2">真人对战</option>
+                        <option value="3">欢乐捕鱼</option>
+                        <option value="4">电子游戏</option>
+                        <option value="5">电子竞技</option>
+                    </select>
+                </dd>
+            </dl>
+            <dl>
+                <dt>是否维护</dt>
+                <dd>
+                    <select name="IsRun" id="IsRun" class="select">
+                        <option value="1">否</option>
+                        <option value="0">是</option>
+
+                    </select>
+                </dd>
+            </dl>
+        </div>
+        <!--/内容-->
+        <!--工具栏-->
+        <div class="page-footer">
+            <div class="btn-wrap" style="position: static;">
+                <input name="btnSubmit" type="button" value="提交保存" id="btnSubmit" class="btn">
+                <input name="btnReturn" type="button" value="返回上一页" class="btn yellow" onclick="javascript: history.back(-1);">
+            </div>
+        </div>
+        <!--/工具栏-->
+    </form>
+    <script>
+        var id = "";
+        var Name = "";
+        var GameIntroduce = "";
+        var GameRule = "";
+        var IsEnable = "";
+        var DeleteState = "";
+        var operation = "Add";
+        var OldId = ""
+        var Sort;
+        var gametype = "";
+        var IsRun = "";
+        var isHot = 0;
+        //  var jdbType = "";
+        $(function () {
+            $("#form1").initValidform();
+            function getURLParameter(name) {
+                return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search) || [null, ''])[1].replace(/\+/g, '%20')) || null;
+            }
+            if (getURLParameter("id") != "" && getURLParameter("id") != null && getURLParameter("operation") != "" && getURLParameter("operation") != null) {
+                id = getURLParameter("id");
+                operation = getURLParameter("operation");
+                if (operation == "Edit") {
+                    OldId = getURLParameter("id")
+                }
+                var data = {};
+                data.id = id;
+                $.ajax({
+                    type: "post", url: '/Business/GetGameInfoById',
+                    datatype: 'json',
+                    data: data,
+                    success: function (res) {
+                        console.log(res)
+                        if (res.Data) {
+                            $("#gameid").val(res.Data.ID)
+                            $("#name").val(res.Data.Name)
+                            $("#gameIntroduce").val(res.Data.GameIntroduce)
+                            $("#gametype").val(res.Data.type);
+                            $("#gameRule").val(res.Data.GameRule);
+                            $("#IsRun").val(res.Data.IsRun);
+                            // $("#jdbType").val(res.Data.jdbType)
+                            $("#Sort").val(res.Data.Sort);
+                            $("#isHot").val(res.Data.isHot);
+
+                            if (res.Data.IsEnable == true) {
+                                $("#isEnable").val("1")
+                            } else if (res.Data.IsEnable == false) {
+                                $("#isEnable").val("0")
+                            }
+                        }
+                    }
+                })
+            } else {
+                id = "";
+            }
+        })
+        $("#btnSubmit").click(function () {
+            id = $("#gameid").val();
+            Name = $("#name").val();
+            GameIntroduce = $("#gameIntroduce").val();
+            gametype = $("#gametype").val();
+            GameRule = $("#gameRule").val();
+            IsEnable = $("#isEnable").val();
+            Sort = $("#Sort").val();
+            IsRun = $("#IsRun").val();
+            isHot = $("#isHot").val();
+            // jdbType = $("#jdbType").val();
+            if ($("#isEnable").val() == "1") {
+                IsEnable = true;
+            } else if ($("#isEnable").val() == "0") {
+                IsEnable = false;
+            }
+            GameInfo();
+        })
+
+        function GameInfo() {
+            var data = {};
+            data.ID = id
+            data.Name = Name;
+            data.GameIntroduce = GameIntroduce;
+            data.type = gametype;
+            data.GameRule = GameRule;
+            data.IsEnable = IsEnable;
+            data.DeleteState = DeleteState;
+            data.operation = operation;
+            data.OldId = OldId;
+            data.Sort = Sort;
+            data.IsRun = IsRun;
+            data.isHot = isHot;
+
+            //data.jdbType = jdbType;
+            $.ajax({
+                type: "post", url: '/Business/SaveGameInfo',
+                datatype: 'json',
+                data: data,
+                success: function (res) {
+                    console.log(res)
+                    if (res.Code == 0 && res.Code == "0") {
+                        if (res) {
+                            window.location.href = '/Business/GameList';
+                            alert(res.Message);
+
+                        }
+                    } else {
+                        alert(res.Message)
+                    }
+                }
+            })
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,191 @@
+﻿html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.JoinEdCont {
+    width: 100%;
+    height: 100%;
+    background-image: url(../img/GW_bg.jpg);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    position: relative;
+    overflow-y: hidden;
+}
+
+#main_box {
+    margin-top: 12%;
+    width: 100%;
+    height: 90%;
+}
+
+#performance_main {
+    width: 90%;
+    height: 90%;
+    background-color: #FEFAEF;
+    border-radius: 8px;
+    margin: auto;
+    position: relative;
+}
+
+#messageCont {
+    position: absolute;
+    top: 10px;
+    left: 0;
+    right: 0;
+    bottom: 10px;
+    overflow: auto;
+}
+
+#message {
+    width: 76%;
+    margin: 0 auto;
+    padding: 1% 1.2%;
+    background: #F4EDD1;
+    border-radius: 8px;
+}
+
+ul, ol, li, dl, dt, dd, h1, h2, h3, h4, h5, p {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+#message li {
+    margin: 10px 0px;
+    font-family: "微软雅黑";
+    font-weight: bold;
+    color: #F85F1C;
+    padding-left: 15px;
+}
+
+.xuanchuan {
+    width: 77%;
+    margin: 5% auto 10%;
+    font-family: "微软雅黑";
+    color: #8F5116;
+    font-weight: bold;
+}
+
+#tuiguang {
+    width: 77%;
+    margin: 25px auto 20px;
+}
+
+    #tuiguang li {
+        font-family: "微软雅黑";
+        color: #8F5116;
+        font-weight: bold;
+    }
+
+        #tuiguang li span {
+            color: #F85F1C;
+        }
+
+#code2 {
+    width: 64%;
+    height: 37px;
+    background-repeat: no-repeat;
+    background-image: url(../img/scewm.png);
+    background-size: 100% 100%;
+    border-radius: 20px;
+    border: 0px;
+    margin-top: 10%;
+    text-align: center;
+}
+
+input, button, select, textarea {
+    outline: none;
+}
+
+
+#jiangli {
+    text-align: center;
+    width: 100%;
+    height: 50px;
+    margin-top: 5%;
+    border-top: 1px dashed #BBB7AE;
+    padding-top: 20px;
+}
+
+    #jiangli a {
+        font-size: 16px;
+        color: #CBB778;
+        text-decoration: underline;
+    }
+
+#mengban {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    background-color: rgba(0,0,0,0.6);
+    z-index: 99;
+    display: none;
+    position: absolute;
+}
+
+#tankuang {
+    width: 450px;
+    height: 30rem;
+    background-image: url(../img/tankuang.jpg);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    border-radius: 10px;
+    margin: auto;
+    margin-top: 15%;
+}
+
+    #tankuang p {
+        text-align: center;
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: #F95E1E;
+        margin-top: 4rem;
+    }
+
+#wanfa {
+    width: 85%;
+    background-color: #F4EDD1;
+    margin: 1.4rem auto 1rem auto;
+    border-radius: 10px;
+    padding: 18px 10px;
+}
+
+    #wanfa span {
+        display: block;
+        font-size: 1rem;
+        margin: 15px 0px;
+        color: #98602D;
+    }
+
+#jieshi {
+    width: 85%;
+    border: 1px dashed #E1D1AF;
+    padding: 8px;
+    border-radius: 10px;
+    margin: 0 auto;
+}
+
+    #jieshi span {
+        display: block;
+        font-size: 0.8rem;
+        color: #E1D1AF;
+    }
+
+.tankuangCont {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.tankuangContOne {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 20px;
+    overflow: auto;
+}

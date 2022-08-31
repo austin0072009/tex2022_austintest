@@ -1,0 +1,222 @@
+﻿html,
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+}
+
+input[type="text"] {
+    -webkit-appearance: none;
+    font-size: 12px;
+}
+
+input[type="radio"]:checked, input[type="checkbox"]:checked {
+    -webkit-appearance: none;
+    border-color: #f67200;
+    background-color: #f67200;
+}
+
+input[type="radio"], input[type="checkbox"] {
+    -webkit-appearance: none;
+    position: relative;
+    width: 14px;
+    height: 14px;
+    border: 1px solid #e6e6e6;
+    -webkit-border-radius: 7px;
+    border-radius: 7px;
+    background-color: #fff;
+    vertical-align: middle;
+}
+
+input[type="checkbox"] {
+    -webkit-appearance: none;
+    position: relative;
+    width: 14px;
+    height: 14px;
+    border: 1px solid #e6e6e6;
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+    background-color: #fff;
+    vertical-align: middle;
+}
+
+.bgheight {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.BntContBox {
+    float: left;
+    width: 20%;
+    height: 100%;
+    border-right: 1px solid #d9d9d9;
+    /*background-color: red;*/
+}
+
+.ContBox {
+    width: 100%;
+    height: 100%;
+    /*background: url(../img/bgtu.png)no-repeat;
+    background-size: 100%100%;*/
+    background-color:#1f2158;
+    position: relative;
+    overflow: hidden;
+    /*background-color: yellow;*/
+}
+
+.MyIdBtn {
+    width: 90%;
+    height: 45px;
+    margin: auto;
+    margin-top: 15px;
+    border-radius: 5px;
+    background-color: #bfb8b8;
+    text-align: center;
+    line-height: 45px;
+    color: #fff;
+}
+
+.MyIdBtn2 {
+    background-color: #8BC34A;
+}
+
+.BrokerageCont {
+    width: 80%;
+    height: 100%;
+    margin: auto;
+    position: relative;
+}
+
+.BrokerageBox {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow: auto;
+}
+
+.content {
+    width: 100%;
+    margin-top: 20px;
+    text-align: center;
+    font-size: 18px;
+    color: #fff;
+}
+
+.content3 {
+    width: 100%;
+    font-size: 18px;
+    text-align: center;
+    color: #fff;
+    margin-top: 10px;
+    color: #FCCF66;
+}
+
+.content4 {
+    width: 90%;
+    font-size: 12px;
+    color: #fff;
+    /* margin-top: 10px; */
+    /* color: #fff; */
+    /* margin: auto; */
+    position: absolute;
+    bottom: 10px;
+    margin-left: 30px;
+}
+
+.content1 {
+    width: 60%;
+    height: 50px;
+    line-height: 50px;
+    font-size: 20px;
+    /* margin: auto; */
+    margin-top: 10px;
+    margin-left: 30%;
+}
+
+.content1Img {
+    width: 70px;
+    height: 50px;
+    display: inline-block;
+    float: left;
+}
+
+    .content1Img img {
+        width: 100%;
+        height: 100%;
+        display: block;
+    }
+
+.unaccalimed {
+    /*width: 190px;*/
+    height: 50px;
+    display: inline-block;
+    float: left;
+    line-height: 50px;
+    margin-left: 15px;
+    color: #fff;
+}
+
+.content2 {
+    width: 100%;
+    height: 55px;
+    line-height: 55px;
+    font-size: 18px;
+    position: relative;
+}
+
+.receiveCont {
+    width: 100%;
+    height: 35px;
+    margin-top: 5px;
+    position: absolute;
+}
+
+.InputBox {
+    width: 65%;
+    height: 100%;
+    border: 1px solid #d9d9d9;
+    border-radius: 5px;
+    display: inline-block;
+}
+
+    .InputBox input {
+        width: 100%;
+        height: 100%;
+        background: none;
+        outline: none;
+        border: 0px;
+        padding-left: 5px;
+        padding-right: 5px;
+        display: block;
+        font-size: 14px;
+    }
+
+#MyMoney {
+    font-size: 30px;
+    color: #fff;
+}
+
+#HistoryMoney {
+    color: #FCCF66;
+}
+
+.BtnBox {
+    width: 100%;
+    margin-top: 8px;
+}
+
+.ContBtn {
+    width: 100px;
+    margin: auto;
+    margin-top: 2%;
+}
+
+    .ContBtn img {
+        width: 100%;
+        top: 100%;
+        display: block;
+    }

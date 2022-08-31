@@ -1,0 +1,172 @@
+﻿
+@{
+    Layout = null;
+}
+
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,initial-scale=1.0,user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <title>金币收支</title>
+    <link href="~/scripts/artdialog/ui-dialog.css" rel="stylesheet" type="text/css" />
+    <link href="~/skin/default/style.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="~/scripts/jquery/jquery-1.11.2.min.js"></script>
+    <script type="text/javascript" src="~/scripts/jquery/Validform_v5.3.2_min.js"></script>
+
+    <script type="text/javascript" src="~/scripts/artdialog/dialog-plus-min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="~/js/laymain.js"></script>
+    <script type="text/javascript" charset="utf-8" src="~/js/common.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            //初始化表单验证
+            $("#form1").initValidform();
+        });
+    </script>
+</head>
+
+<body class="mainbody">
+    <form id="form1">
+        <!--导航栏-->
+        <div class="location">
+            <a href="/Business/StatisticsJackpot" class="back"><i></i><span>返回列表页</span></a>
+            <a href="/Home/Center" class="home"><i></i><span>首页</span></a>
+            <i class="arrow"></i>
+            <a href=""><span>游戏管理</span></a>
+            <i class="arrow"></i>
+            <span>转盘奖品配置</span>
+        </div>
+        <div class="line10"></div>
+        <!--/导航栏-->
+        <!--内容-->
+        <div id="floatHead" class="content-tab-wrap">
+            <div class="content-tab">
+                <div class="content-tab-ul-wrap">
+                    <ul>
+                        <li><a class="selected" href="javascript:;">编辑转盘奖品</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="tab-content">
+            <dl>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+
+                <dt>奖品ID</dt>
+                <dd>
+                    <input name="txttitle" type="text" id="Id" class="input normal" style="width:495px;" >
+                    <span class="Validform_checktip">*</span>
+                </dd>
+            </dl>
+            <dl>
+                <dt>奖品名称</dt>
+                <dd>
+                    <input name="txttitle" type="text" id="Name" class="input normal" style="width:495px;" >
+                    <span class="Validform_checktip">*</span>
+                </dd>
+            </dl>
+            <dl>
+                <dt>奖品价值</dt>
+                <dd>
+                    <input name="txttitle" type="text" id="Price" class="input normal"  style="width:495px;" >
+                    <span class="Validform_checktip">*</span>
+                </dd>
+            </dl>
+            <dl>
+                <dt>奖品图片</dt>
+                <dd>
+                    <input name="txt_type" type="text" id="Prizeurl" class="input normal" style="width:493px;" >
+                    <span class="Validform_checktip">*</span>
+                </dd>
+            </dl>
+            <dl>
+                <dt>奖品类型</dt>
+                <dd>
+                    <input name="txt_type" type="number" id="Prizetype" class="input normal"  style="width:493px;" datatype="/^[0-9]+.?[0-9]*$/" nullmsg="不能为空" errormsg="当前奖池为数字">
+                    <span class="Validform_checktip">*</span>
+                </dd>
+            </dl>
+            <dl>
+                <dt>中奖几率</dt>
+                <dd>
+                    <input name="txt_type" type="number" id="Probability" class="input normal"  style="width:493px;"  datatype="/^[0-9]+.?[0-9]*$/" nullmsg="不能为空" errormsg="彩金为数字">
+                    <span class="Validform_checktip">*</span>
+                </dd>
+            </dl>
+            <dl>
+                <dt>转盘等级</dt>
+                <dd>
+                    <input name="txt_type" type="number" id="Levelid" class="input normal"style="width:493px;" datatype="/^[0-9]+.?[0-9]*$/" nullmsg="不能为空" errormsg="历史总押金为数字">
+                    <span class="Validform_checktip">*</span>
+                </dd>
+            </dl>
+        </div>
+        <!--/内容-->
+        <!--工具栏-->
+        <div class="page-footer">
+            <div class="btn-wrap" style="position: static;">
+                <input type="button" value="提交保存" id="btnSubmit" class="btn">
+                <input name="btnReturn" type="button" value="返回上一页" class="btn yellow" onclick="javascript: history.back(-1);">
+            </div>
+        </div>
+        <!--/工具栏-->
+    </form>
+    <script>
+        var id = "";
+        $(function () {
+            function getURLParameter(name) {
+                return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search) || [null, ''])[1].replace(/\+/g, '%20')) || null;
+            }
+            //DialAwardEdit ? action = Edit & Id=1 & Name=话费 & Price=50 & Prizeurl=http://866an4.top/fordlc/prize/goods1.png&Prizetype=1&Probability=0.1&Levelid=1
+
+            $("#Id").val(getURLParameter("Id"));
+            $("#Name").val(getURLParameter("Name"));
+            $("#Price").val(getURLParameter("Price"))
+            $("#Prizeurl").val(getURLParameter("Prizeurl"))
+            $("#Prizetype").val(getURLParameter("Prizetype"))
+            $("#Probability").val(getURLParameter("Probability"))
+            $("#Levelid").val(getURLParameter("Levelid"))
+        })
+        $(".btn").click(function () {
+            var Id = $("#Id").val();
+            var Name = $("#Name").val();
+            var Price = $("#Price").val()
+            var Prizeurl = $("#Prizeurl").val()
+            var Prizetype = $("#Prizetype").val()
+            var Probability = $("#Probability").val()
+            var Levelid = $("#Levelid").val()
+            //var CardName = $("#CardName").val();
+           // console.log(name, cardNo, bankAddress, Location, userId);
+            var data = {};
+            data.Id = Id;
+            data.Name = Name;
+            data.Price = Price;
+            data.Prizeurl = Prizeurl;
+            data.Prizetype = Prizetype;
+            data.Probability = Probability;
+            data.Levelid = Levelid;
+            $.ajax({
+                type: "post", url: '/Business/SaveDialAward',
+                datatype: 'json',
+                data: data,
+                success: function (res) {
+                    console.log(res)
+                    if (res) {
+                        if (res.Code == 0 || res.Code == "0") {
+                            parent.jsprint(res.Message, "/Business/DialAwardList");
+                        } else {
+                            //parent.jsprint(res.Message, "/Business/StatisticsJackpot");
+                        }
+                    }
+                }
+            })
+        })
+    </script>
+</body>
+</html>

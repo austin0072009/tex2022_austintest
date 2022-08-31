@@ -1,0 +1,222 @@
+﻿
+<style>
+    th {
+        text-align: center;
+    }
+
+    .control-width {
+        padding: 0px 12px;
+        width: 45%;
+    }
+    .form-control {
+    width:80%;
+    }
+</style>
+<div class="mainbody">
+    <form role="form">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="form-group">
+                    <label for="name">卡名称:</label>
+                    <input type="text" class="form-control control-width" id="CardName" name="CardName"
+                           placeholder="卡的名称">
+
+                </div>
+                <div class="form-group">
+                    <label for="name">卡类型:</label>
+                    <div>
+                        <select id="CardType" name="CardType" class="form-control control-width pull-left"></select>  <button id="addcardtype"  class="btn btn-default"  data-toggle="modal" data-target="#Modaltype"><i></i><span>新增类型</span></button>
+
+                    </div>
+                </div>
+           
+
+                <div class="form-group">
+                    <label for="name">有效日期:</label>
+                    <input name="ExpirationTime" class="form-control control-width" type="text" id="ExpirationTime" onclick="laydate()">
+                </div>
+
+
+                <button type="button" id="submitForm" class="btn btn-default">提交并导出</button>
+             
+            
+            </div>
+        </div>
+    </form>
+</div>
+<div class="modal fade" id="Modaltype" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+                <h4 class="modal-title" id="myModalLabel">
+                    添加类型
+                </h4>
+            </div>
+            <div class="modal-body">
+                <form class="bs-example bs-example-form" role="form">
+                    <input type="hidden" value="0" id="Id" />
+                    <div class="form-group">
+                        <label for="name">类型名称</label>
+                        <input type="text" id="Name" name="Name" class="form-control" placeholder="类型名称">
+
+                    </div>
+                    <div class="form-group">
+                        <label for="name">实体卡价格</label>
+                        <select id="CardPrice" name="CardPrice" class="form-control">
+                            <option value="10">10</option>
+                            <option value="20">20</option>
+                            <option value="50">50</option>
+                            <option value="100">100</option>
+                            <option value="200">200</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="name">实体卡数量</label>
+                        <select id="CardNum" name="CardNum" class="form-control">
+                            <option value="10">10</option>
+                            <option value="100">100</option>
+                            <option value="200">200</option>
+                            <option value="500">500</option>
+                            <option value="1000">1000</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="name">游戏币数</label>
+                        <input type="text" id="GoldPrice" name="GoldPrice" class="form-control" placeholder="金币数量">
+                    </div>
+                </form>
+
+            </div>
+            <div class="modal-footer">
+                <button id="FormClose" type="button" class="btn btn-default" data-dismiss="modal">
+                    关闭
+                </button>
+                <button type="button" id="btnFormsubmit" class="btn btn-primary">
+                    提交
+                </button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
+
+<script type="text/javascript">
+    GetCardType();
+    function GetCardType() {
+        $('#CardType').html("");
+        $.ajax({
+            type: "post", url: '/GameCore/GetCardtypelist',
+            datatype: 'json',
+            success: function (res) {
+                var str = "";
+                for (var i = 0; i < res.Data.length; i++) {
+                    str += "<option value='" + res.Data[i].ID + "'>" + res.Data[i].Name + " 金币：" + res.Data[i].GoldPrice + " 数量：" + res.Data[i].CardNum + "</option>"
+                    console.log(res.Data[i]);
+                }
+               
+                $('#CardType').append(str);
+                
+            }
+        });
+    }
+
+
+
+    function VerificationForm()
+    {
+    
+        var CardType = $("#CardType").val();
+      
+        var ExpirationTime = $("#ExpirationTime").val();
+        var CardName = $("#CardName").val();
+        console.log(ExpirationTime);
+        if (CardName == "") {
+            layer.msg("请输入卡的名称"); return false;
+        }
+        if (CardType == "") {
+            layer.msg('请选择卡类型'); return false;
+        }
+      
+        if (ExpirationTime == "") {
+            layer.msg('请输入有效日期'); return false;
+        }
+        return true;
+    }
+
+    $("#submitForm").click(function () {
+
+        var data = {};
+        data.CardName = $("#CardName").val();//名称
+    
+        data.CardType = $("#CardType").val();//卡类型
+  
+        data.ExpirationTime = $("#ExpirationTime").val();//过期时间
+      
+        VerificationForm();
+        $.ajax({
+            type: "post",
+            url: '/GameCore/AddCard',
+            datatype: 'json',
+            data: data,
+            success: function (res) {
+                if (res.success) {
+                   // $('#myModal').modal('hide');
+                    layer.msg(res.msg, { icon: 6 });
+                    ExportData(res.name,res.type);
+                }
+                else {
+                    layer.msg(res.msg, { icon: 6 });
+                  //  GetList();
+                }
+
+            }
+        });
+    });
+
+    $("#ExportData").click(function () {
+        ExportsearchData();
+    });
+    function ExportData(name, type) {
+        isExport = 1;
+        window.open("/GameCore/GetChargeLogExportData?isExport=" + isExport + "&typeid=" + type + "&Keywords=" + name);
+    }
+    
+    $("#CardPrice").change(function () {
+        var cardprice = $("#CardPrice").val();
+        $("#GoldPrice").val(cardprice * 100);
+
+    });
+    ///新增类型
+    $("#btnFormsubmit").click(function () {
+
+        var Name = $("#Name").val();
+        var Id = $("#Id").val();
+        var CardPrice = $("#CardPrice").val();
+        var GoldPrice = $("#GoldPrice").val();
+        var CardNum = $("#CardNum").val();
+        var data = {};
+        data.Name = Name;
+        data.Id = Id;
+        data.GoldPrice = GoldPrice;
+        data.CardPrice = CardPrice;
+        data.CardNum = CardNum;
+        console.log(data);
+        $.ajax({
+            url: "/GameCore/SubmitCardTypEntity",
+            type: "post",
+            data: data,
+            dataType: "json",
+            success: function (data) {
+                layer.msg(data.msg, { icon: 4 });
+                $("#Id").val("0");
+                $('#Modaltype').modal('hide');
+                $('#CardType').html("");
+                GetCardType();
+               
+            }
+        });
+    });
+</script>
+
