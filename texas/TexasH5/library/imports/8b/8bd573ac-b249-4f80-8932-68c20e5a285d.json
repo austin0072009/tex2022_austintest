@@ -1,0 +1,7 @@
+{
+  "__type__": "cc.TextAsset",
+  "_name": "util.d",
+  "_objFlags": 0,
+  "_native": "",
+  "text": "export declare function int2char(n: number): string;\nexport declare function op_and(x: number, y: number): number;\nexport declare function op_or(x: number, y: number): number;\nexport declare function op_xor(x: number, y: number): number;\nexport declare function op_andnot(x: number, y: number): number;\nexport declare function lbit(x: number): number;\nexport declare function cbit(x: number): number;\n"
+}

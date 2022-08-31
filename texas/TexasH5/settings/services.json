@@ -1,0 +1,69 @@
+{
+	"game": {
+		"name": "未知游戏",
+		"appid": "UNKNOW"
+	},
+	"needExecNative": true,
+	"configs": [
+		{
+			"appid": "611646533",
+			"services": [
+				{
+					"service_id": "235",
+					"enable": true
+				}
+			]
+		},
+		{
+			"appid": "UNKNOW"
+		},
+		{
+			"appid": "616485910",
+			"services": [
+				{
+					"service_id": "235",
+					"enable": true
+				}
+			]
+		},
+		{
+			"appid": "UNKNOW"
+		},
+		{
+			"appid": "623031782",
+			"services": [
+				{
+					"service_id": "235",
+					"enable": true
+				}
+			]
+		},
+		{
+			"appid": "UNKNOW"
+		},
+		{
+			"appid": "623404690",
+			"services": [
+				{
+					"service_id": "235",
+					"enable": false
+				}
+			]
+		},
+		{
+			"appid": "UNKNOW"
+		},
+		{
+			"appid": "615055690",
+			"services": [
+				{
+					"service_id": "235",
+					"enable": false
+				}
+			]
+		},
+		{
+			"appid": "UNKNOW"
+		}
+	]
+}

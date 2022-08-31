@@ -1,0 +1,48 @@
+
+kiss.png
+size: 256,256
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+images/1
+  rotate: false
+  xy: 1, 1
+  size: 167, 146
+  orig: 167, 149
+  offset: 0, 3
+  index: -1
+images/2_kiss/zui1
+  rotate: false
+  xy: 1, 149
+  size: 93, 47
+  orig: 93, 47
+  offset: 0, 0
+  index: -1
+images/2_kiss/zui2
+  rotate: false
+  xy: 78, 198
+  size: 93, 27
+  orig: 93, 27
+  offset: 0, 0
+  index: -1
+images/2_kiss/zui
+  rotate: false
+  xy: 1, 198
+  size: 75, 56
+  orig: 75, 56
+  offset: 0, 0
+  index: -1
+images/2_kiss/xin
+  rotate: false
+  xy: 173, 198
+  size: 35, 31
+  orig: 35, 31
+  offset: 0, 0
+  index: -1
+images/00
+  rotate: false
+  xy: 170, 1
+  size: 67, 68
+  orig: 67, 68
+  offset: 0, 0
+  index: -1

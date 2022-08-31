@@ -1,0 +1,28 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "hd_woshou01",
+    "texture": "6dfd2754-f6d4-4d67-a63c-d77b726680bf",
+    "atlas": "",
+    "rect": [
+      2,
+      4,
+      247,
+      244
+    ],
+    "offset": [
+      -2.5,
+      2
+    ],
+    "originalSize": [
+      256,
+      256
+    ],
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

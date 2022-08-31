@@ -1,0 +1,83 @@
+
+hd_jiguanqiang01.png
+size: 256,256
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+fire
+  rotate: true
+  xy: 2, 2
+  size: 30, 53
+  orig: 30, 53
+  offset: 0, 0
+  index: -1
+fire2
+  rotate: false
+  xy: 219, 127
+  size: 29, 36
+  orig: 29, 36
+  offset: 0, 0
+  index: -1
+g1
+  rotate: false
+  xy: 232, 75
+  size: 16, 50
+  orig: 16, 50
+  offset: 0, 0
+  index: -1
+jtl1
+  rotate: false
+  xy: 2, 102
+  size: 113, 152
+  orig: 113, 152
+  offset: 0, 0
+  index: -1
+jtl2
+  rotate: true
+  xy: 201, 46
+  size: 70, 29
+  orig: 70, 29
+  offset: 0, 0
+  index: -1
+jtl3
+  rotate: true
+  xy: 219, 165
+  size: 89, 32
+  orig: 89, 32
+  offset: 0, 0
+  index: -1
+jtl4
+  rotate: true
+  xy: 117, 45
+  size: 71, 82
+  orig: 71, 82
+  offset: 0, 0
+  index: -1
+k1
+  rotate: true
+  xy: 57, 5
+  size: 27, 57
+  orig: 27, 57
+  offset: 0, 0
+  index: -1
+light
+  rotate: false
+  xy: 2, 34
+  size: 100, 66
+  orig: 100, 66
+  offset: 0, 0
+  index: -1
+light2
+  rotate: false
+  xy: 117, 118
+  size: 100, 136
+  orig: 100, 136
+  offset: 0, 0
+  index: -1
+zd1
+  rotate: true
+  xy: 116, 25
+  size: 18, 40
+  orig: 18, 40
+  offset: 0, 0
+  index: -1

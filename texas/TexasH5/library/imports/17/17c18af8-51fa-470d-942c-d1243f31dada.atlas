@@ -1,0 +1,83 @@
+
+jrmn.png
+size: 250,1018
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+body
+  rotate: true
+  xy: 2, 344
+  size: 373, 227
+  orig: 373, 227
+  offset: 0, 0
+  index: -1
+hair
+  rotate: true
+  xy: 2, 78
+  size: 264, 203
+  orig: 264, 203
+  offset: 0, 0
+  index: -1
+head
+  rotate: false
+  xy: 2, 719
+  size: 246, 297
+  orig: 246, 297
+  offset: 0, 0
+  index: -1
+leye
+  rotate: false
+  xy: 128, 2
+  size: 67, 32
+  orig: 67, 32
+  offset: 0, 0
+  index: -1
+leye2
+  rotate: false
+  xy: 128, 36
+  size: 67, 40
+  orig: 67, 40
+  offset: 0, 0
+  index: -1
+ml
+  rotate: true
+  xy: 207, 236
+  size: 69, 23
+  orig: 69, 23
+  offset: 0, 0
+  index: -1
+mouth1
+  rotate: true
+  xy: 197, 3
+  size: 73, 38
+  orig: 73, 38
+  offset: 0, 0
+  index: -1
+mouth2
+  rotate: false
+  xy: 2, 7
+  size: 78, 69
+  orig: 78, 69
+  offset: 0, 0
+  index: -1
+mr
+  rotate: false
+  xy: 82, 13
+  size: 39, 18
+  orig: 39, 18
+  offset: 0, 0
+  index: -1
+reye
+  rotate: false
+  xy: 82, 33
+  size: 44, 43
+  orig: 44, 43
+  offset: 0, 0
+  index: -1
+reye2
+  rotate: false
+  xy: 207, 307
+  size: 34, 35
+  orig: 34, 35
+  offset: 0, 0
+  index: -1

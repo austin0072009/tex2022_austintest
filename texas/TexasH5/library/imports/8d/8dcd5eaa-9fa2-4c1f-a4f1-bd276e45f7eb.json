@@ -1,0 +1,7 @@
+{
+  "__type__": "cc.TextAsset",
+  "_name": "SpinResultsWheel.d",
+  "_objFlags": 0,
+  "_native": "",
+  "text": "import SpinResultsWheelItem from \"./SpinResultsWheeItem\";\nexport default class SpinResultsWheel {\n    private _values;\n    private _finalValue;\n    private _finalPosition;\n    /**\n     * 构造函数\n     * @param values 值\n     * @param finalValue 最终值\n     */\n    constructor(values?: SpinResultsWheelItem[], finalValue?: SpinResultsWheelItem);\n    /**\n     * 获取转盘值\n     */\n    get values(): SpinResultsWheelItem[];\n    /**\n     * 设置转盘值\n     */\n    set values(value: SpinResultsWheelItem[]);\n    /**\n     * 获取最终值\n     */\n    get finalValue(): SpinResultsWheelItem;\n    /**\n     * 设置最终值\n     */\n    set finalValue(value: SpinResultsWheelItem);\n    /**\n     * 获取最终位置\n     */\n    get finalPosition(): number;\n}\n"
+}

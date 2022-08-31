@@ -1,0 +1,7 @@
+{
+  "__type__": "cc.TextAsset",
+  "_name": "SpinResultsEvent.d",
+  "_objFlags": 0,
+  "_native": "",
+  "text": "export default class SpinResultsEvent {\n    private _code;\n    private _value;\n    constructor(code: number, value: number);\n    get code(): number;\n    set code(value: number);\n    get value(): number;\n    set value(value: number);\n}\n"
+}

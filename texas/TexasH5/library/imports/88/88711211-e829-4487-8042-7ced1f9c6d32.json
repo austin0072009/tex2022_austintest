@@ -1,0 +1,7 @@
+{
+  "__type__": "cc.TextAsset",
+  "_name": "base64.d",
+  "_objFlags": 0,
+  "_native": "",
+  "text": "export declare const Base64: {\n    decode(a: string): number[];\n    re: RegExp;\n    unarmor(a: string): number[];\n};\n"
+}

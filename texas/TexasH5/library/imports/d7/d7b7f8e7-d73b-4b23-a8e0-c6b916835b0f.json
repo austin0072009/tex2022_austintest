@@ -1,0 +1,165 @@
+{
+  "__type__": "sp.SkeletonData",
+  "_name": "hongbao",
+  "_objFlags": 0,
+  "_native": "",
+  "_skeletonJson": {
+    "skeleton": {
+      "spine": "3.6.0",
+      "hash": " ",
+      "name": "armatureName"
+    },
+    "bones": [
+      {
+        "scaleX": 0.9,
+        "scaleY": 0.9,
+        "name": "root"
+      },
+      {
+        "name": "hongbao",
+        "parent": "root"
+      },
+      {
+        "name": "骨骼11",
+        "parent": "hongbao"
+      }
+    ],
+    "slots": [
+      {
+        "name": "Bg",
+        "bone": "root"
+      },
+      {
+        "name": "hongbao",
+        "bone": "骨骼11"
+      }
+    ],
+    "skins": {
+      "default": {
+        "hongbao": {
+          "hongbao": {
+            "name": "hongbao",
+            "width": 72,
+            "height": 104
+          },
+          "hongbao2": {
+            "name": "hongbao2",
+            "width": 72,
+            "height": 122,
+            "y": 10.59
+          }
+        }
+      }
+    },
+    "animations": {
+      "23_To": {
+        "bones": {
+          "骨骼11": {
+            "scale": [
+              {
+                "time": 0,
+                "x": 1,
+                "y": 1
+              },
+              {
+                "time": 0.0667,
+                "x": 1.37,
+                "y": 0.67
+              },
+              {
+                "time": 0.1334,
+                "x": 1.05,
+                "y": 1.29
+              },
+              {
+                "time": 0.2334,
+                "x": 1,
+                "y": 1.4
+              },
+              {
+                "time": 0.3001,
+                "x": 1,
+                "y": 1
+              }
+            ]
+          }
+        },
+        "slots": {
+          "hongbao": {
+            "attachment": [
+              {
+                "time": 0,
+                "name": "hongbao"
+              }
+            ],
+            "color": [
+              {
+                "time": 0,
+                "color": "FFFFFFFF"
+              },
+              {
+                "time": 1.0667,
+                "color": "FFFFFFFF"
+              },
+              {
+                "time": 1.2,
+                "color": "FFFFFF00"
+              }
+            ]
+          }
+        }
+      },
+      "23_Fly": {
+        "bones": {
+          "骨骼11": {
+            "rotate": [
+              {
+                "time": 0,
+                "angle": 0
+              },
+              {
+                "time": 0.2,
+                "angle": -180
+              },
+              {
+                "time": 0.4,
+                "angle": 0
+              }
+            ],
+            "shear": [
+              {
+                "time": 0
+              },
+              {
+                "time": 0.2
+              },
+              {
+                "time": 0.4
+              }
+            ]
+          }
+        },
+        "slots": {
+          "hongbao": {
+            "attachment": [
+              {
+                "time": 0,
+                "name": "hongbao"
+              }
+            ]
+          }
+        }
+      }
+    }
+  },
+  "_atlasText": "\nhongbao.png\nsize: 256,128\nformat: RGBA8888\nfilter: Linear,Linear\nrepeat: none\nhongbao\n  rotate: false\n  xy: 75, 1\n  size: 72, 104\n  orig: 72, 104\n  offset: 0, 0\n  index: -1\nhongbao2\n  rotate: false\n  xy: 1, 1\n  size: 72, 122\n  orig: 72, 122\n  offset: 0, 0\n  index: -1\n",
+  "textures": [
+    {
+      "__uuid__": "5e222fdd-de21-43aa-804b-dd0a9f99f371"
+    }
+  ],
+  "textureNames": [
+    "hongbao.png"
+  ],
+  "scale": 1
+}

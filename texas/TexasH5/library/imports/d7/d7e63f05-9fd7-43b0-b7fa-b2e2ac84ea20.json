@@ -1,0 +1,28 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "Lobby_atlas_800pdqz",
+    "texture": "8ebe1033-b80c-4053-b70f-c64bf8233ff0",
+    "atlas": "",
+    "rect": [
+      0,
+      0,
+      1080,
+      2200
+    ],
+    "offset": [
+      0,
+      0
+    ],
+    "originalSize": [
+      1080,
+      2200
+    ],
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

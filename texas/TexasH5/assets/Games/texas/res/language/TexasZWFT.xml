@@ -1,0 +1,510 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <!-- Texas/component/BtnAddLimit/InsUserCard.xml -->
+  <string name="q3d3qil6iby9wix-n50_iby9" mz="userName">大哥哥對</string>
+  <string name="q3d3qil6iby9wix-n53_iby9" mz="toubaoing">正在投保中</string>
+  <!-- Texas/component/BtnAddLimit/btn/ConfirmStartBtn.xml -->
+  <string name="q3d3qil6gbt67z-n1_gbt6" mz="ConfirmStart_Text">開始</string>
+  <!-- Texas/component/BtnAddLimit/btn/btnBaoben.xml -->
+  <string name="q3d3qil6iby9wiv-n3_m986" mz="n3">最小值</string>
+  <!-- Texas/component/BtnAddLimit/btn/btnMaxBaoxian.xml -->
+  <string name="q3d3qil6iby9wiw-n2_m986" mz="n2">最大值</string>
+  <!-- Texas/component/BtnAddLimit/btn/delayAdd.xml -->
+  <string name="q3d3qil6gbt67t-n5_gbt6" mz="Text">免費</string>
+  <!-- Texas/component/BtnAddLimit/btn/delayAdd2.xml -->
+  <string name="q3d3qil6qajgwrw-n7_qajg" mz="InsCntDown">+30s</string>
+  <!-- Texas/component/BtnAddLimit/btn/insuranceInfo.xml -->
+  <string name="q3d3qil6kx8lfi-n3_kx8l" mz="clickSelectText">點擊選擇</string>
+  <string name="q3d3qil6kx8lfi-n9_kx8l" mz="inzhuTxt">主</string>
+  <string name="q3d3qil6kx8lfi-n11_kx8l" mz="PeiLvText">賠率 2.5</string>
+  <string name="q3d3qil6kx8lfi-n12_kx8l" mz="BupaiText">補牌 10</string>
+  <!-- Texas/component/BtnAddLimit/btn/newApply_btn.xml -->
+  <string name="q3d3qil6gbt67y-n1_gbt6" mz="newApply_Text">俱樂部幣請求</string>
+  <!-- Texas/component/BtnAddLimit/btn/newMsg_btn.xml -->
+  <string name="q3d3qil6gbt67x-n1_gbt6" mz="newMsg_Text">新牌局消息</string>
+  <!-- Texas/component/BtnAddLimit/btn/selfEndtimetips.xml -->
+  <string name="q3d3qil6gbt67s-n2_gbt6" mz="selfEndtimetipsText">棄牌
+40</string>
+  <!-- Texas/component/BtnAddLimit/btn/sliderInsAdd.xml -->
+  <string name="q3d3qil6te07co-n6_te07" mz="baobenText">最大值</string>
+  <string name="q3d3qil6te07co-n7_te07" mz="maxText">-保本</string>
+  <!-- Texas/component/Child/BtnInsurancePanel.xml -->
+  <string name="q3d3qil6n9qh79-n17_iby9" mz="n17">投保額：</string>
+  <string name="q3d3qil6n9qh79-n18_iby9" mz="n18">賠付額：</string>
+  <string name="q3d3qil6n9qh79-n19_iby9" mz="n19">賠率：</string>
+  <string name="q3d3qil6n9qh79-n34_iby9" mz="n34">OUTS</string>
+  <string name="q3d3qil6n9qh79-n36_iby9" mz="n36">公共牌：</string>
+  <string name="q3d3qil6n9qh79-n38_iby9" mz="BupaiText">已選：</string>
+  <string name="q3d3qil6n9qh79-n42_iby9" mz="n42">全選</string>
+  <string name="q3d3qil6n9qh79-n61_iby9" mz="baoxianTitle">保險</string>
+  <string name="q3d3qil6n9qh79-n66_iby9" mz="jiangchiText">主池：</string>
+  <string name="q3d3qil6n9qh79-n81_onen" mz="insTimeText">62S</string>
+  <!-- Texas/component/Child/Cards.xml -->
+  <string name="q3d3qil6nsmj6l-n6_nsmj" mz="txttexastype1">同花順</string>
+  <string name="q3d3qil6nsmj6l-n10_fy03" mz="txttexastype2">同花順</string>
+  <!-- Texas/component/Child/insuranceAddPanel.xml -->
+  <string name="q3d3qil6n9qh7f-n21_gbt6" mz="toubaoText">投保額</string>
+  <string name="q3d3qil6n9qh7f-n22_gbt6" mz="peifuText">賠付額</string>
+  <string name="q3d3qil6n9qh7f-n23_gbt6" mz="peilvText">賠率</string>
+  <string name="q3d3qil6n9qh7f-n29_gbt6" mz="bupaiText">OUTS</string>
+  <string name="q3d3qil6n9qh7f-n30_gbt6" mz="gongpaiText">OUTS</string>
+  <!-- Texas/component/Child/insuranceInfo32.xml -->
+  <string name="q3d3qil6kx8lfj-n3_kx8l" mz="clickSelectText32">點擊選擇</string>
+  <string name="q3d3qil6kx8lfj-n11_kx8l" mz="PeiLvText32">賠率 2.5</string>
+  <string name="q3d3qil6kx8lfj-n12_kx8l" mz="BupaiText32">補牌 10</string>
+  <!-- Texas/component/HelpSettingPanel/CardsIntroductionPanel/CardsIntroductionPanel.xml -->
+  <string name="q3d3qil6gbt69l-n2_gbt6" mz="paixingTitle">玩法說明</string>
+  <!-- Texas/component/HelpSettingPanel/CardsIntroductionPanel/TexRuleViewContent.xml -->
+  <string name="q3d3qil6myaewhh-n13_f4ur" mz="texRule1">遊戲規則</string>
+  <string name="q3d3qil6myaewhh-n14_f4ur" mz="texRule2">一、使用道具</string>
+  <string name="q3d3qil6myaewhh-n15_f4ur" mz="texRule3">		一副標準撲克牌去掉大小王后的52張牌進行遊戲。</string>
+  <string name="q3d3qil6myaewhh-n16_f4ur" mz="texRule4">二、遊戲人數</string>
+  <string name="q3d3qil6myaewhh-n17_f4ur" mz="texRule5">		如一般2-8個玩家，個別情況有9個玩家的。</string>
+  <string name="q3d3qil6myaewhh-n18_f4ur" mz="texRule6">三、遊戲目的</string>
+  <string name="q3d3qil6myaewhh-n19_f4ur" mz="texRule7">		贏取其他玩家籌碼。</string>
+  <string name="q3d3qil6myaewhh-n20_f4ur" mz="texRule8">四、下注宗旨</string>
+  <string name="q3d3qil6myaewhh-n21_f4ur" mz="texRule9">		玩家之間同時繼續看牌或比牌需要下同樣注額籌碼，籌碼不足的玩家all-in全下後可以看到底並參與比牌。
+</string>
+  <string name="q3d3qil6myaewhh-n22_f4ur" mz="texRule10">五、發牌下注</string>
+  <string name="q3d3qil6myaewhh-n23_f4ur" mz="texRule11">		    發牌一般分為5個步驟，分別為
+    		Perflop——先下大小盲注，然後給每個玩家發2張底牌，大盲注後面第一個玩家選擇跟注、加注或者蓋牌放棄，按照順時針方向，其他玩家依次表態，大盲注玩家最後表態，如果玩家有加注情況，前面已經跟注的玩家需要再次表態甚至多次表態。
+    		Flop——同時發三張公牌，由小盲注開始（如果小盲注已蓋牌，由後面最近的玩家開始，以此類推），按照順時針方向依次表態，玩家可以選擇下注、加注、或者蓋牌放棄。
+    		Turn——發第4張牌，由小盲注開始，按照順時針方向依次表態。
+   		 River——發第五張牌，由小盲注開始，按照順時針方向依次表態，玩家可以選擇下注、加注、或者蓋牌放棄。
+   		 比牌——經過前面4輪發牌和下注，剩餘的玩家開始亮牌比大小，成牌最大的玩家贏取池底。</string>
+  <string name="q3d3qil6myaewhh-n24_f4ur" mz="texRule12">六、比牌方法</string>
+  <string name="q3d3qil6myaewhh-n25_f4ur" mz="texRule13">		用自己的2張底牌和5張公共牌結合在一起，選出5張牌，不論手中的牌使用幾張（甚至可以不用手中的底牌），湊成最大的成牌，跟其他玩家比大小。比牌先比牌型，大的牌型大於小的牌型，牌型一般分為10種，從大到小為：
+		皇家同花順（royal flush）：由AKQJ10五張組成，並且這5張牌花色相同。
+		同花順(straight flush）：由五張連張同花色的牌組成。
+		4條（four of a kind）：4張同點值的牌加上一張其他任何牌。
+		滿堂紅（full house）（又稱“葫蘆”）：3張同點值加上另外一對。
+		同花（flush）：5張牌花色相同，但是不成順子。
+		順子（straight）：五張牌連張，至少一張花色不同。
+		3條（three of a kind）：三張牌點值相同，其他兩張各異。
+		兩對（two pairs）：兩對加上一個雜牌。
+		一對（one pair）：一對加上3張雜牌。
+		高牌（high card）：不符合上面任何一種牌型的牌型，由單牌且不連續不同花的組成。</string>
+  <string name="q3d3qil6myaewhh-n26_f4ur" mz="texRule14">七、其他說明</string>
+  <string name="q3d3qil6myaewhh-n27_f4ur" mz="texRule15">		特殊說明：A2345 是最小的順子，同花順同理。
+</string>
+  <!-- Texas/component/HelpSettingPanel/CardsIntroductionPanel/buttons/HelpBtn1.xml -->
+  <string name="q3d3qil6myaewhw-n1_myae" mz="n1">牌型提示</string>
+  <string name="q3d3qil6myaewhw-n4_myae" mz="n4">牌型提示</string>
+  <!-- Texas/component/HelpSettingPanel/CardsIntroductionPanel/buttons/HelpBtn2.xml -->
+  <string name="q3d3qil6myaewhx-n1_myae" mz="n1">基本玩法</string>
+  <string name="q3d3qil6myaewhx-n4_myae" mz="n4">基本玩法</string>
+  <!-- Texas/component/HelpSettingPanel/CardsIntroductionPanel/buttons/HelpBtn3.xml -->
+  <string name="q3d3qil6myaewhy-n1_myae" mz="n1">保險說明</string>
+  <string name="q3d3qil6myaewhy-n4_myae" mz="n4">保險說明</string>
+  <!-- Texas/component/HelpSettingPanel/CardsIntroductionPanel/child/CellItem1.xml -->
+  <string name="q3d3qil6f4ur9o-n5_f4ur" mz="n5">皇家同花順</string>
+  <!-- Texas/component/HelpSettingPanel/CardsIntroductionPanel/child/CellItem10.xml -->
+  <string name="q3d3qil6f4ur9x-n5_f4ur" mz="n5">高牌</string>
+  <!-- Texas/component/HelpSettingPanel/CardsIntroductionPanel/child/CellItem2.xml -->
+  <string name="q3d3qil6f4ur9p-n5_f4ur" mz="n5">同花順</string>
+  <!-- Texas/component/HelpSettingPanel/CardsIntroductionPanel/child/CellItem3.xml -->
+  <string name="q3d3qil6f4ur9q-n5_f4ur" mz="n5">四條</string>
+  <!-- Texas/component/HelpSettingPanel/CardsIntroductionPanel/child/CellItem4.xml -->
+  <string name="q3d3qil6f4ur9r-n5_f4ur" mz="n5">葫蘆</string>
+  <!-- Texas/component/HelpSettingPanel/CardsIntroductionPanel/child/CellItem5.xml -->
+  <string name="q3d3qil6f4ur9s-n5_f4ur" mz="n5">同花</string>
+  <!-- Texas/component/HelpSettingPanel/CardsIntroductionPanel/child/CellItem6.xml -->
+  <string name="q3d3qil6f4ur9t-n5_f4ur" mz="n5">順子</string>
+  <!-- Texas/component/HelpSettingPanel/CardsIntroductionPanel/child/CellItem7.xml -->
+  <string name="q3d3qil6f4ur9u-n5_f4ur" mz="n5">三條</string>
+  <!-- Texas/component/HelpSettingPanel/CardsIntroductionPanel/child/CellItem8.xml -->
+  <string name="q3d3qil6f4ur9v-n5_f4ur" mz="n5">兩對</string>
+  <!-- Texas/component/HelpSettingPanel/CardsIntroductionPanel/child/CellItem9.xml -->
+  <string name="q3d3qil6f4ur9w-n5_f4ur" mz="n5">一對</string>
+  <!-- Texas/component/HelpSettingPanel/CardsIntroductionPanel/insTipPanel.xml -->
+  <string name="q3d3qil6f4ur9y-n3_f4ur" mz="insTipTitle">保險說明</string>
+  <!-- Texas/component/HelpSettingPanel/CardsIntroductionPanel/insTipScrollView.xml -->
+  <string name="q3d3qil6qpgpa0-n20_qpgp" mz="bupaiTitle1">補牌</string>
+  <string name="q3d3qil6qpgpa0-n21_qpgp" mz="peilvTitle1">賠率</string>
+  <string name="q3d3qil6qpgpa0-n22_qpgp" mz="bupaiTitle2">補牌</string>
+  <string name="q3d3qil6qpgpa0-n23_qpgp" mz="peilvTitle2">賠率</string>
+  <string name="q3d3qil6qpgpa0-n75_qpgp" mz="peilvTips">以下為背保險賠率</string>
+  <string name="q3d3qil6qpgpa0-n1_qpgp" mz="insTip1">概述</string>
+  <string name="q3d3qil6qpgpa0-n2_qpgp" mz="insTip2">		1.當牌局中玩家全部Allin之後，由當前牌型最大的玩家，獲得購買的機會並彈出保險購買操作提示。</string>
+  <string name="q3d3qil6qpgpa0-n3_qpgp" mz="insTip3">		2.保險超過14張補牌不啟動。</string>
+  <string name="q3d3qil6qpgpa0-n4_qpgp" mz="insTip4">		3.當保險涉及的底池中超過3個玩家的時候，保險不啟動。(2人或者3人時可以買保險)</string>
+  <string name="q3d3qil6qpgpa0-n5_qpgp" mz="insTip5">		4.造成玩家平分的補牌不會計入購買保險的補牌數量，如果河牌存在平分補牌，那麼玩家購買保險的總額不會超過他向底池內投入的總額。</string>
+  <string name="q3d3qil6qpgpa0-n6_qpgp" mz="insTip6">		5.存在多個底池時，可以選擇1個或多個參與的底池購買保險。</string>
+  <string name="q3d3qil6qpgpa0-n7_qpgp" mz="insTip7">		6.牌局內“即時戰績”和“牌局回顧”中均有保險數據顯示，且戰績中會增加保險數據顯示。</string>
+  <string name="q3d3qil6qpgpa0-n8_qpgp" mz="insTip8">		7.翻牌三張不可購買保險，轉牌保險投保額不得超過0.25*底池，河牌保險投保額不得超過0.5*底池。</string>
+  <string name="q3d3qil6qpgpa0-n9_qpgp" mz="insTip9">		8.如果購買了轉牌的保險，那麼系統會強制玩家購買河牌的少量保險，背回轉牌的保險投入。</string>
+  <string name="q3d3qil6qpgpa0-n10_qpgp" mz="insTip10">操作</string>
+  <string name="q3d3qil6qpgpa0-n11_qpgp" mz="insTip11">		1.保本：保險賠付額=玩家投入金額。</string>
+  <string name="q3d3qil6qpgpa0-n12_qpgp" mz="insTip12">		2.點擊底池按鈕可以展開滑動條，選擇需要購買的保險金額。</string>
+  <string name="q3d3qil6qpgpa0-n13_qpgp" mz="insTip13">		3.確定好保險金額後，點擊購買按鈕，即成功購買保險。</string>
+  <string name="q3d3qil6qpgpa0-n14_qpgp" mz="insTip14">		4.存在多個底池時，每個底池均可以分別操作購買。</string>
+  <string name="q3d3qil6qpgpa0-n15_qpgp" mz="insTip15">		5.玩家也可以點擊全部保本來快速購買所有保險。</string>
+  <string name="q3d3qil6qpgpa0-n16_qpgp" mz="insTip16">		6.購買保險消耗的金額從底池中扣除，如果買中，系統會根據賠率，直接賠付到玩家手中；如果沒中，則系統收走購買保險消耗的金額。</string>
+  <string name="q3d3qil6qpgpa0-n17_qpgp" mz="insTip17">概述</string>
+  <!-- Texas/component/HelpSettingPanel/settingpanel/btn/cardType1.xml -->
+  <string name="q3d3qil6gbt68v-n4_gbt6" mz="Label">Toggle</string>
+  <!-- Texas/component/HelpSettingPanel/settingpanel/btn/cardType2.xml -->
+  <string name="q3d3qil6gbt68x-n4_gbt6" mz="Label">Toggle</string>
+  <!-- Texas/component/HelpSettingPanel/settingpanel/btn/cardType3.xml -->
+  <string name="q3d3qil6gbt68y-n4_gbt6" mz="Label">Toggle</string>
+  <!-- Texas/component/HelpSettingPanel/settingpanel/btn/cardType4.xml -->
+  <string name="q3d3qil6gbt68z-n4_gbt6" mz="Label">Toggle</string>
+  <!-- Texas/component/HelpSettingPanel/settingpanel/btn/cardType5.xml -->
+  <string name="q3d3qil6rwi6wub-n4_gbt6" mz="Label">Toggle</string>
+  <!-- Texas/component/HelpSettingPanel/settingpanel/btn/cardsType1.xml -->
+  <string name="q3d3qil6gbt691-n4_gbt6" mz="Label">Toggle</string>
+  <!-- Texas/component/HelpSettingPanel/settingpanel/btn/cardsType2.xml -->
+  <string name="q3d3qil6dsa2wqo-n4_gbt6" mz="Label">Toggle</string>
+  <!-- Texas/component/HelpSettingPanel/settingpanel/content.xml -->
+  <string name="q3d3qil6gbt68o-n1_gbt6" mz="titleText">系統設置</string>
+  <string name="q3d3qil6gbt68o-n2_gbt6" mz="txtMusic">靜音</string>
+  <string name="q3d3qil6gbt68o-n6_gbt6" mz="txtSound">音效</string>
+  <string name="q3d3qil6gbt68o-n9_gbt6" mz="txtIns">保險提示</string>
+  <string name="q3d3qil6gbt68o-n28_rhtq" mz="txtInsTip">(只對本桌有效)</string>
+  <string name="q3d3qil6gbt68o-n12_gbt6" mz="txtLagan">拉杆確認</string>
+  <string name="q3d3qil6gbt68o-n16_gbt6" mz="txtDesktop">桌面風格</string>
+  <string name="q3d3qil6gbt68o-n19_gbt6" mz="txtCard">自定義快捷加注</string>
+  <!-- Texas/component/HelpSettingPanel/settingpanel/jiazhuNumPanel.xml -->
+  <string name="q3d3qil6gbt69i-n1_gbt6" mz="jiazhuTipText">點擊快速加注按鈕
+可自定義加注底池比例</string>
+  <!-- Texas/component/HelpSettingPanel/tool/btn/btnCardTip.xml -->
+  <string name="q3d3qil6gbt68e-n5_gbt6" mz="cardTipText">玩法說明</string>
+  <!-- Texas/component/HelpSettingPanel/tool/btn/btnDaichu.xml -->
+  <string name="q3d3qil6iae0wtt-n5_gbt6" mz="outGoldText">帶出計分</string>
+  <!-- Texas/component/HelpSettingPanel/tool/btn/btnDismiss.xml -->
+  <string name="q3d3qil6gbt68l-n5_gbt6" mz="dismissText">解散房間</string>
+  <!-- Texas/component/HelpSettingPanel/tool/btn/btnExit.xml -->
+  <string name="q3d3qil6gbt68k-n5_gbt6" mz="exitText">返回大廳</string>
+  <!-- Texas/component/HelpSettingPanel/tool/btn/btnHelp.xml -->
+  <string name="q3d3qil6gbt68m-n5_gbt6" mz="addRobitTxt">加機器人</string>
+  <!-- Texas/component/HelpSettingPanel/tool/btn/btnInsTip.xml -->
+  <string name="q3d3qil6gbt68g-n5_gbt6" mz="insTipText">[color=#FFFFFF,#AAE6FF]保險說明[/color]</string>
+  <!-- Texas/component/HelpSettingPanel/tool/btn/btnJiesuan.xml -->
+  <string name="q3d3qil6gbt68j-n5_gbt6" mz="jiesuanText">離桌結算</string>
+  <!-- Texas/component/HelpSettingPanel/tool/btn/btnOnlook.xml -->
+  <string name="q3d3qil6gbt68d-n5_gbt6" mz="onLookText">站起圍觀</string>
+  <!-- Texas/component/HelpSettingPanel/tool/btn/btnRecordScore.xml -->
+  <string name="q3d3qil6gbt68h-n5_gbt6" mz="recordScoreText">補充記分</string>
+  <!-- Texas/component/HelpSettingPanel/tool/btn/btnSet.xml -->
+  <string name="q3d3qil6gbt68f-n5_gbt6" mz="setText">遊戲設置</string>
+  <!-- Texas/component/HelpSettingPanel/tool/btn/btnWaitSeat.xml -->
+  <string name="q3d3qil6gbt68i-n5_gbt6" mz="waitSeatText">申請留座</string>
+  <!-- Texas/component/ImgFreeUser.xml -->
+  <string name="q3d3qil6np6dbr-n7_nsmj" mz="sitDownText">坐下</string>
+  <!-- Texas/component/StatusManager.xml -->
+  <string name="q3d3qil6n9qh6o-n21_n9qh" mz="txtcurtexastype">同花</string>
+  <string name="q3d3qil6n9qh6o-n24_n9qh" mz="txtopentip">防夥牌，等待開牌...</string>
+  <string name="q3d3qil6n9qh6o-n35_gbt6" mz="takeInApplyTxt">請求房主帶入同意中</string>
+  <!-- Texas/component/btns/btn13add.xml -->
+  <string name="q3d3qil6n9qh6s-n2_n9qh" mz="addType">1X</string>
+  <!-- Texas/component/btns/btn14add.xml -->
+  <string name="q3d3qil6n9qh6t-n2_n9qh" mz="addType">1X</string>
+  <!-- Texas/component/btns/btn15add.xml -->
+  <string name="q3d3qil6n9qh6u-n2_n9qh" mz="addType">1X</string>
+  <!-- Texas/component/btns/btnAutoFollow.xml -->
+  <string name="q3d3qil6n9qh76-n1_n9qh" mz="txtAutoFollow">自動
+跟注</string>
+  <!-- Texas/component/btns/btnAutoQiPai.xml -->
+  <string name="q3d3qil6n9qh70-n1_n9qh" mz="txtAutoQiPai">自動讓/丟</string>
+  <!-- Texas/component/btns/btnBackTable.xml -->
+  <string name="q3d3qil6n9qh75-n1_n9qh" mz="txtBackTable">回桌</string>
+  <!-- Texas/component/btns/btnBaoben.xml -->
+  <string name="q3d3qil6n9qh7c-n2_n9qh" mz="txtBaoben1">全部保本</string>
+  <!-- Texas/component/btns/btnFollow.xml -->
+  <string name="q3d3qil6n9qh73-n1_n9qh" mz="txtfollowDynamic">跟</string>
+  <!-- Texas/component/btns/btnInsAllI.xml -->
+  <string name="q3d3qil6qajgwrx-n1_qajg" mz="n1">全部</string>
+  <string name="q3d3qil6qajgwrx-n4_m986" mz="n4">全部</string>
+  <!-- Texas/component/btns/btnInsFen.xml -->
+  <string name="q3d3qil6npvfws2-n1_qajg" mz="n1">分池</string>
+  <string name="q3d3qil6npvfws2-n3_m986" mz="n3">分池</string>
+  <!-- Texas/component/btns/btnInsZhu.xml -->
+  <string name="q3d3qil6tndswry-n1_qajg" mz="n1">主池</string>
+  <string name="q3d3qil6tndswry-n3_m986" mz="n3">主池</string>
+  <!-- Texas/component/btns/btnLeftCards.xml -->
+  <string name="q3d3qil6n9qh77-n1_n9qh" mz="txtLeftCards">看剩
+餘牌</string>
+  <!-- Texas/component/btns/btnManchi.xml -->
+  <string name="q3d3qil6n9qh7d-n2_n9qh" mz="textManchi1">全部保本</string>
+  <!-- Texas/component/btns/btnShowPai.xml -->
+  <string name="q3d3qil6n9qh71-n1_n9qh" mz="txtShowPai">強制
+秀牌</string>
+  <!-- Texas/component/btns/btnXiu.xml -->
+  <string name="q3d3qil6n9qh74-n1_n9qh" mz="xiuText">讓牌</string>
+  <!-- Texas/component/btns/btnallinadd.xml -->
+  <string name="q3d3qil6n9qh78-n1_n9qh" mz="Text">ALLIN</string>
+  <!-- Texas/component/btns/btngiveup.xml -->
+  <string name="q3d3qil6n9qh7b-n2_n9qh" mz="insGiveUpText">放棄</string>
+  <!-- Texas/component/btns/btnqipai.xml -->
+  <string name="q3d3qil6n9qh6y-n1_n9qh" mz="Text">棄牌</string>
+  <!-- Texas/component/btns/fenchi.xml -->
+  <string name="q3d3qil6n9qh7a-n3_n9qh" mz="fenchiTip">請選擇分池</string>
+  <!-- Texas/component/funcBtns/ImageTopBg.xml -->
+  <string name="q3d3qil6gbt682-n1_gbt6" mz="txtWifi">40ms</string>
+  <!-- Texas/component/funcBtns/btnRefresh.xml -->
+  <string name="q3d3qil6gbt685-n1_gbt6" mz="refreshText">異常刷新</string>
+  <!-- Texas/component/globalinfo.xml -->
+  <string name="q3d3qil6i0jb59-n4_i0jb" mz="txtRoomNameMid">房間名：123145646456000</string>
+  <string name="q3d3qil6i0jb59-n10_i0jb" mz="txtRoom">德州撲克(保險延遲看牌)-555555</string>
+  <string name="q3d3qil6i0jb59-n11_i0jb" mz="txtClubName">俱樂部名</string>
+  <string name="q3d3qil6i0jb59-n12_i0jb" mz="txtBase">底皮：104444</string>
+  <string name="q3d3qil6i0jb59-n97_g9ze" mz="txtNexBas">下一次底注</string>
+  <string name="q3d3qil6i0jb59-n13_i0jb" mz="txtPassword">密碼:99999555</string>
+  <string name="q3d3qil6i0jb59-n14_i0jb" mz="txtGameType">房間類型</string>
+  <string name="q3d3qil6i0jb59-n96_g9ze" mz="txtMatchLv">比賽等級1/10</string>
+  <string name="q3d3qil6i0jb59-n98_g9ze" mz="txtNexTime">下一次時間</string>
+  <string name="q3d3qil6i0jb59-n99_g9ze" mz="txtMatchRank">第10名</string>
+  <string name="q3d3qil6i0jb59-n22_i0jb" mz="text">底池：</string>
+  <string name="q3d3qil6i0jb59-n21_i0jb" mz="txtAll">底池：10</string>
+  <string name="q3d3qil6i0jb59-n39_i0jb" mz="txtRound">回合:10</string>
+  <string name="q3d3qil6i0jb59-n40_i0jb" mz="txtAdd">回合:10</string>
+  <string name="q3d3qil6i0jb59-n41_i0jb" mz="txtMoney">回合:10</string>
+  <string name="q3d3qil6i0jb59-n42_i0jb" mz="txtName">回合:10</string>
+  <string name="q3d3qil6i0jb59-n44_i0jb" mz="txtFireDesc">房間6小時不開始將自動解散</string>
+  <string name="q3d3qil6i0jb59-n72_i0jb" mz="vedioCcardTip">等待荷官開牌中...</string>
+  <!-- Texas/component/popupPane/Chat/chatBtns/danmuToggle.xml -->
+  <string name="q3d3qil67wz9wn2-n4_7wz9" mz="danmuLabel1">彈幕 0.2</string>
+  <string name="q3d3qil67wz9wn2-n5_7wz9" mz="danmuLabel">彈幕 0.2</string>
+  <!-- Texas/component/popupPane/Chat/chatBtns/emojToggle.xml -->
+  <string name="q3d3qil67wz9wn3-n4_7wz9" mz="emojLabel1">免費表情</string>
+  <string name="q3d3qil67wz9wn3-n5_7wz9" mz="emojLabel">免費表情</string>
+  <!-- Texas/component/popupPane/Chat/chatBtns/recordToggle.xml -->
+  <string name="q3d3qil67wz9wn4-n4_7wz9" mz="recordLabel1">彈幕記錄</string>
+  <string name="q3d3qil67wz9wn4-n5_7wz9" mz="recordLabel">彈幕記錄</string>
+  <!-- Texas/component/popupPane/Chat/chatPanel.xml -->
+  <string name="q3d3qil67wz9wiy-n4_7wz9-prompt" mz="ChatInputField">請輸入要說的話....</string>
+  <!-- Texas/component/popupPane/Chat/chatRecordCell.xml -->
+  <string name="q3d3qil67wz9wn1-n0_7wz9" mz="Text">大沙發斯蒂芬阿</string>
+  <string name="q3d3qil67wz9wn1-n1_7wz9" mz="Text2">發送到發到發送到發</string>
+  <!-- Texas/component/popupPane/Chat/chatSoundCell.xml -->
+  <string name="q3d3qil67wz9wjf-n0_7wz9" mz="txtChat">不要走，決戰到天亮！</string>
+  <!-- Texas/component/popupPane/Chat/danMuBg.xml -->
+  <string name="q3d3qil6qo23wn6-n6_qo23" mz="danMuTxt">阿斯&lt;img src="ui://Texas/face1" height="50" width="50"&gt;&lt;/img&gt;</string>
+  <!-- Texas/component/popupPane/ChatEmojCell.xml -->
+  <string name="q3d3qil6rhtqe9-n0_rhtq" mz="emojName">熱情女郎</string>
+  <!-- Texas/component/popupPane/JackpotComp/panel1.xml -->
+  <string name="q3d3qil6rhtqfe-n34_rhtq" mz="shedingTitle">各級別彩池數額</string>
+  <!-- Texas/component/popupPane/JackpotComp/panel2.xml -->
+  <string name="q3d3qil6rhtqff-n100_qo23" mz="n100">皇家同花順</string>
+  <string name="q3d3qil6rhtqff-n60_rhtq" mz="type1Per">獲獎比例</string>
+  <string name="q3d3qil6rhtqff-n102_qo23" mz="n102">同花順</string>
+  <string name="q3d3qil6rhtqff-n106_qo23" mz="type2Per">獲獎比例</string>
+  <string name="q3d3qil6rhtqff-n109_qo23" mz="n109">四條</string>
+  <string name="q3d3qil6rhtqff-n113_qo23" mz="type3Per">獲獎比例</string>
+  <string name="q3d3qil6rhtqff-n74_rhtq" mz="txtDesc">當每手牌“盈利數額”達到為10倍大皮
+計入數額默認為1大盲(1大盲封頂)</string>
+  <string name="q3d3qil6rhtqff-n95_qo23" mz="n95">獲獎牌型</string>
+  <string name="q3d3qil6rhtqff-n96_qo23" mz="n96">獲獎比例</string>
+  <!-- Texas/component/popupPane/JackpotComp/panel3.xml -->
+  <string name="q3d3qil6rhtqfh-n82_rhtq" mz="curJcjlTxt">當前獎池獎勵記錄</string>
+  <!-- Texas/component/popupPane/JackpotComp/rewardCell.xml -->
+  <string name="q3d3qil6rhtqfd-n2_rhtq" mz="Text">[color=#FEEC7E,#EDBA3E]2/1[/color]</string>
+  <!-- Texas/component/popupPane/JackpotComp/rewardCellNew.xml -->
+  <string name="q3d3qil6qo23wo6-n22_qo23" mz="Text2">級別彩池</string>
+  <!-- Texas/component/popupPane/JackpotComp/scoreCell.xml -->
+  <string name="q3d3qil6rhtqfg-n84_rhtq" mz="txtName">瀟灑哥</string>
+  <string name="q3d3qil6rhtqfg-n85_rhtq" mz="txtType">四條</string>
+  <!-- Texas/component/popupPane/JackpotComp/type1.xml -->
+  <string name="q3d3qil6rhtqfa-n2_rhtq" mz="jczlLabel_h">獎池總覽</string>
+  <string name="q3d3qil6rhtqfa-n3_rhtq" mz="jczlLabel">獎池總覽</string>
+  <!-- Texas/component/popupPane/JackpotComp/type2.xml -->
+  <string name="q3d3qil6rhtqfb-n2_rhtq" mz="jcLabel_h">獎池</string>
+  <string name="q3d3qil6rhtqfb-n3_rhtq" mz="jcLabel">獎池</string>
+  <!-- Texas/component/popupPane/JackpotComp/type3.xml -->
+  <string name="q3d3qil6rhtqfc-n2_rhtq" mz="jcjlLabel_h">獎池記錄</string>
+  <string name="q3d3qil6rhtqfc-n3_rhtq" mz="jcjlLabel">獎池記錄</string>
+  <!-- Texas/component/popupPane/baalenceUserinfo.xml -->
+  <string name="q3d3qil6ws2afu-n16_ws2a" mz="nameText">女裝大佬</string>
+  <!-- Texas/component/popupPane/balence/InsuranceDetailed.xml -->
+  <string name="q3d3qil6ws2ag2-n5_ws2a" mz="zhanjuTitle_i">保險明細</string>
+  <!-- Texas/component/popupPane/balence/baoxiancell.xml -->
+  <string name="q3d3qil6ws2afz-n5_ws2a" mz="Text">保險池</string>
+  <!-- Texas/component/popupPane/balence/clubCell_c.xml -->
+  <string name="q3d3qil6ws2ag1-n1_ws2a" mz="txtclubName">隨心所欲aaa</string>
+  <!-- Texas/component/popupPane/balence/clubDetailed.xml -->
+  <string name="q3d3qil6ws2ag0-n5_ws2a" mz="zhanjuTitle_c">俱樂部明細</string>
+  <!-- Texas/component/popupPane/balence/clubcell.xml -->
+  <string name="q3d3qil6ws2ag4-n0_ws2a" mz="txtScore">阿的說法是打發斯蒂芬</string>
+  <!-- Texas/component/popupPane/balence/scoreCell2.xml -->
+  <string name="q3d3qil6ws2afy-n46_ws2a" mz="txtUserName">隨心所</string>
+  <string name="q3d3qil6ws2afy-n47_ws2a" mz="txtUserId">ID:123456</string>
+  <string name="q3d3qil6ws2afy-n48_ws2a" mz="txtUserGold">帶入:  200</string>
+  <string name="q3d3qil6ws2afy-n51_ws2a" mz="txtRunAway">逃跑獎勵</string>
+  <!-- Texas/component/popupPane/balence/userCell.xml -->
+  <string name="q3d3qil6ws2ag3-n3_ws2a" mz="txtUserName">隨心所欲</string>
+  <!-- Texas/component/popupPane/balencePanel.xml -->
+  <string name="q3d3qil6qpgpav-n14_ws2a" mz="txtRoomName">房名：德州1-2-10000</string>
+  <string name="q3d3qil6qpgpav-n30_ws2a" mz="allShoushuTitle">總手數:</string>
+  <string name="q3d3qil6qpgpav-n31_ws2a" mz="takeInTitle">總帶入</string>
+  <string name="q3d3qil6qpgpav-n38_ws2a" mz="rankTitle">排名</string>
+  <string name="q3d3qil6qpgpav-n39_ws2a" mz="userTitle">玩家</string>
+  <string name="q3d3qil6qpgpav-n40_ws2a" mz="shoushuTitle">手數</string>
+  <string name="q3d3qil6qpgpav-n41_ws2a" mz="zhanjiTitle">戰績</string>
+  <string name="q3d3qil6qpgpav-n5_ws2a" mz="zhanjuTitle">戰績詳情</string>
+  <string name="q3d3qil6qpgpav-n9_ws2a" mz="huiguBtnText">牌局回顧</string>
+  <string name="q3d3qil6qpgpav-n10_ws2a" mz="clubBtnText">俱樂部明細</string>
+  <!-- Texas/component/popupPane/btn/btnJubao.xml -->
+  <string name="q3d3qil6qo23wno-n2_qo23" mz="n2">舉報</string>
+  <!-- Texas/component/popupPane/btn/btnKanpai.xml -->
+  <string name="q3d3qil6bw4vd1-n1_bw4v" mz="CheckConfirm_txt">看牌</string>
+  <!-- Texas/component/popupPane/btn/btnMyEmoji.xml -->
+  <string name="q3d3qil6qo23wnl-n2_qo23" mz="n2">表情圖示</string>
+  <string name="q3d3qil6qo23wnl-n3_qo23" mz="n3">自己的圖示</string>
+  <!-- Texas/component/popupPane/btn/btnMyEmoji2.xml -->
+  <string name="q3d3qil6qo23wnm-n2_qo23" mz="n2">總表情圖示</string>
+  <string name="q3d3qil6qo23wnm-n3_qo23" mz="n3">總表情圖示</string>
+  <!-- Texas/component/popupPane/btn/btnMyEmoji3.xml -->
+  <string name="q3d3qil6qo23wnn-n2_qo23" mz="n2">VIP表情</string>
+  <string name="q3d3qil6qo23wnn-n3_qo23" mz="n3">VIP表情</string>
+  <!-- Texas/component/popupPane/btn/btnQipai.xml -->
+  <string name="q3d3qil6bw4vd0-n1_bw4v" mz="GiveUpConfirm_txt">棄牌</string>
+  <!-- Texas/component/popupPane/btn/btnRechargeGold.xml -->
+  <string name="q3d3qil6qpgpac-n1_qpgp" mz="title">充值</string>
+  <!-- Texas/component/popupPane/btn/btnTakeGold.xml -->
+  <string name="q3d3qil6qpgpaj-n2_qpgp" mz="TakeGoldText">確   定</string>
+  <!-- Texas/component/popupPane/btn/btnTakeGold2.xml -->
+  <string name="q3d3qil6kcg5wob-n2_qpgp" mz="TakeGoldText">確   定</string>
+  <!-- Texas/component/popupPane/btn/btnTipClose.xml -->
+  <string name="q3d3qil6bw4vd4-n1_bw4v" mz="tipCloseText">放棄</string>
+  <!-- Texas/component/popupPane/btn/btnTipOK.xml -->
+  <string name="q3d3qil6bw4vd3-n1_bw4v" mz="tipOKText">確定</string>
+  <!-- Texas/component/popupPane/btn/btnTipOKClick.xml -->
+  <string name="q3d3qil6bw4vd5-n1_bw4v" mz="tipOKClickText">確定</string>
+  <!-- Texas/component/popupPane/btn/btnrechargeEx.xml -->
+  <string name="q3d3qil6qpgpal-n1_qpgp" mz="rechargeExText">充   值</string>
+  <!-- Texas/component/popupPane/btn/club_Toggle_item.xml -->
+  <string name="q3d3qil6qpgpap-n2_qpgp" mz="Label2">百達裴麗</string>
+  <string name="q3d3qil6qpgpap-n3_qpgp" mz="Label">百達裴麗</string>
+  <!-- Texas/component/popupPane/btn/clubgold_text.xml -->
+  <string name="q3d3qil6qpgpaq-n1_qpgp" mz="clubgold_text">俱樂部幣:</string>
+  <!-- Texas/component/popupPane/btn/vedios.xml -->
+  <string name="q3d3qil6bw4vcy-n3_bw4v" mz="title">不再提醒</string>
+  <!-- Texas/component/popupPane/child/clubToggleGroup.xml -->
+  <string name="q3d3qil6qpgpam-n0_qpgp" mz="clubNotice_txt">通知所屬俱樂部</string>
+  <!-- Texas/component/popupPane/child/lookPlayerCell.xml -->
+  <string name="q3d3qil6qpgpaa-n1_qpgp" mz="txtName">龍少</string>
+  <!-- Texas/component/popupPane/child/playerPanel.xml -->
+  <string name="q3d3qil6qpgpa6-n1_qpgp" mz="TextPlayer">旁觀玩家</string>
+  <string name="q3d3qil6qpgpa6-n7_qpgp" mz="cuopaiTxt">搓牌</string>
+  <!-- Texas/component/popupPane/child/recordCell.xml -->
+  <string name="q3d3qil6qpgpa5-n2_qpgp" mz="txtName">龍少阿</string>
+  <string name="q3d3qil6qpgpa5-n7_qpgp" mz="insNum">保險池</string>
+  <!-- Texas/component/popupPane/confirmHandlePanel.xml -->
+  <string name="q3d3qil6bw4vcw-n3_bw4v" mz="confirmTitle_txt">當前你可以選擇看牌，
+你確定要棄牌?</string>
+  <string name="q3d3qil6bw4vcw-n10_dcxk" mz="tipLabel">大沙發上的</string>
+  <string name="q3d3qil6bw4vcw-n11_8j4f" mz="n11">系統提示</string>
+  <!-- Texas/component/popupPane/historyRoot/child/HisInfoTitleTextBg.xml -->
+  <string name="q3d3qil6l587dh-n2_sddl" mz="HisInfoTitleText"> 詳細過程</string>
+  <!-- Texas/component/popupPane/historyRoot/child/ShowDownTitle.xml -->
+  <string name="q3d3qil6odnie8-n1_sddl" mz="turnName">ShotDown</string>
+  <!-- Texas/component/popupPane/historyRoot/child/historyCell.xml -->
+  <string name="q3d3qil6qxxze0-n3_sddl" mz="txtPos">UTG</string>
+  <string name="q3d3qil6qxxze0-n4_sddl" mz="txtName">阿三大啊啊</string>
+  <string name="q3d3qil6qxxze0-n7_sddl" mz="txtStatus">同花順</string>
+  <string name="q3d3qil6qxxze0-n16_sddl" mz="txtSpecialCard">天牌</string>
+  <string name="q3d3qil6qxxze0-n19_sddl" mz="txtGamble">下注</string>
+  <!-- Texas/component/popupPane/historyRoot/child/insPoolPanel.xml -->
+  <string name="q3d3qil6l587di-n0_sddl" mz="insPooltext">保險池：</string>
+  <!-- Texas/component/popupPane/historyRoot/child/paipu.xml -->
+  <string name="q3d3qil6qxxzdy-n1_sddl" mz="turnName">牌譜</string>
+  <!-- Texas/component/popupPane/historyRoot/child/showDownCell.xml -->
+  <string name="q3d3qil6l587dm-n3_sddl" mz="curPosName">UTG</string>
+  <string name="q3d3qil6l587dm-n4_sddl" mz="txtName">阿三大啊啊</string>
+  <string name="q3d3qil6l587dm-n15_sddl" mz="txtSpecialCard">皇家同花順</string>
+  <!-- Texas/component/popupPane/historyRoot/child/turnInfoCell.xml -->
+  <string name="q3d3qil6l587dp-n1_sddl" mz="curPosName">UTG</string>
+  <string name="q3d3qil6l587dp-n2_sddl" mz="txtName">阿達大都市</string>
+  <string name="q3d3qil6l587dp-n4_sddl" mz="handleTitle">3B</string>
+  <string name="q3d3qil6l587dp-n5_sddl" mz="handleValue">3B</string>
+  <string name="q3d3qil6l587dp-n7_sddl" mz="turnFlodTxt">fold</string>
+  <!-- Texas/component/popupPane/historyRoot/child/turnTitle.xml -->
+  <string name="q3d3qil6qxxze1-n1_sddl" mz="turnName">ShotDown</string>
+  <!-- Texas/component/popupPane/historyRoot/historyPanel.xml -->
+  <string name="q3d3qil6l587d7-n5_sddl" mz="texTextTitle">牌局回顧</string>
+  <string name="q3d3qil6l587d7-n15_iby9" mz="text">獎池</string>
+  <!-- Texas/component/popupPane/historyRoot/jubaoUserItem.xml -->
+  <string name="q3d3qil6dsfdwvd-n6_dsfd" mz="n6">舉報</string>
+  <string name="q3d3qil6dsfdwvd-n7_dsfd" mz="nickname">暱稱暱稱暱稱</string>
+  <!-- Texas/component/popupPane/historyRoot/jubaoUsersPanel.xml -->
+  <string name="q3d3qil6dsfdwvc-n20_dsfd" mz="n20">選擇需要舉報的玩家</string>
+  <string name="q3d3qil6dsfdwvc-n28_w46d-prompt" mz="inputJubao">請輸入舉報原因。</string>
+  <!-- Texas/component/popupPane/jubaoPanel.xml -->
+  <string name="q3d3qil6t7mjwty-n5_t7mj" mz="n21">舉報</string>
+  <string name="q3d3qil6t7mjwty-n31_t7mj" mz="n22">舉報對象</string>
+  <string name="q3d3qil6t7mjwty-n33_t7mj" mz="n9">玩家:</string>
+  <string name="q3d3qil6t7mjwty-n32_t7mj" mz="jb_txtName">Cute bear</string>
+  <string name="q3d3qil6t7mjwty-n34_t7mj" mz="n10">玩家ID:</string>
+  <string name="q3d3qil6t7mjwty-n39_t7mj-prompt" mz="jb_inputType">舉報標題</string>
+  <string name="q3d3qil6t7mjwty-n40_t7mj-prompt" mz="jb_inputContent">清描述您的舉報原因（100字以內）</string>
+  <string name="q3d3qil6t7mjwty-n43_t7mj" mz="n11">溫馨提示：</string>
+  <string name="q3d3qil6t7mjwty-n44_t7mj" mz="jb_TxtNum">1、每日首次舉報費用10金幣，第二次為20金幣，第三次及以上為40金幣，次日0點刷新費用；
+2、舉報成功則返回舉報消耗的金幣，同時官方將審查結果給予一定獎勵。
+3、夥牌請前往牌局回顧進行舉報，其他舉報類型夥牌不予受理！</string>
+  <!-- Texas/component/popupPane/middle.xml -->
+  <string name="q3d3qil6buo8cg-n1_buo8" mz="pjzsTxt">牌局總數</string>
+  <string name="q3d3qil6buo8cg-n5_aakm" mz="zssTxt">總手數</string>
+  <string name="q3d3qil6buo8cg-n7_aakm" mz="winRateTxt">勝率</string>
+  <string name="q3d3qil6buo8cg-n9_aakm" mz="rclTxt">入池率</string>
+  <!-- Texas/component/popupPane/outGoldPanel.xml -->
+  <string name="q3d3qil6iae0wtu-n24_kcg5" mz="n24">帶出記分牌</string>
+  <string name="q3d3qil6iae0wtu-n13_qpgp" mz="n25">帶出記分牌</string>
+  <string name="q3d3qil6iae0wtu-n16_qpgp" mz="n26">最小</string>
+  <string name="q3d3qil6iae0wtu-n17_qpgp" mz="n27">最大</string>
+  <string name="q3d3qil6iae0wtu-n30_iae0" mz="n28">本手結束時，將為您帶出對應的積分牌。</string>
+  <!-- Texas/component/popupPane/pauseview.xml -->
+  <string name="q3d3qil6ysb4wva-n3_bw4v" mz="tipContent">遊戲暫停中...</string>
+  <string name="q3d3qil6ysb4wva-n14_h8sr" mz="n14">系統提示</string>
+  <!-- Texas/component/popupPane/runtimeRecord/runtimeRecord.xml -->
+  <string name="q3d3qil6qpgpa3-n3_qpgp" mz="TextTitle">即時戰績</string>
+  <string name="q3d3qil6qpgpa3-n37_kwne" mz="n37">獎池</string>
+  <string name="q3d3qil6qpgpa3-n6_qpgp" mz="nameTitle">昵稱</string>
+  <string name="q3d3qil6qpgpa3-n8_qpgp" mz="pcountTitle">手數</string>
+  <string name="q3d3qil6qpgpa3-n9_qpgp" mz="takeGoldTitle">帶入</string>
+  <string name="q3d3qil6qpgpa3-n10_qpgp" mz="turnScoreTitle">積分</string>
+  <!-- Texas/component/popupPane/takeGoldPanel.xml -->
+  <string name="q3d3qil6qpgpab-n24_kcg5" mz="txtTitle">補充記分</string>
+  <string name="q3d3qil6qpgpab-n5_qpgp" mz="txtHintDesc">下一手開始為您補充計分牌</string>
+  <string name="q3d3qil6qpgpab-n12_qpgp" mz="textGoldDesc">已帶入/總金幣</string>
+  <string name="q3d3qil6qpgpab-n13_qpgp" mz="takein_txt">帶入記分</string>
+  <string name="q3d3qil6qpgpab-n16_qpgp" mz="takein_min_txt">最小</string>
+  <string name="q3d3qil6qpgpab-n17_qpgp" mz="takein_max_txt">最大</string>
+  <string name="q3d3qil6qpgpab-n28_dszo-prompt" mz="inputPass">請輸入房間密碼</string>
+  <string name="q3d3qil6qpgpab-n31_pj36" mz="n29">餘額：</string>
+  <!-- Texas/component/popupPane/tipview.xml -->
+  <string name="q3d3qil6bw4vd2-n3_bw4v" mz="tipContent">當前你可以選擇看牌，
+你確定要棄牌?</string>
+  <string name="q3d3qil6bw4vd2-n14_h8sr" mz="n14">系統提示</string>
+  <string name="q3d3qil6bw4vd2-n13_dcxk" mz="tipLabel">大沙發上的</string>
+  <!-- Texas/component/popupPane/userInfoBtn/BtnBeizhu.xml -->
+  <string name="q3d3qil6buo8cc-n2_qo23" mz="n2">備註資訊</string>
+  <!-- Texas/component/popupPane/userInfoBtn/forceSitUp_btn.xml -->
+  <string name="q3d3qil6buo8cf-n1_buo8" mz="forceSitUp_Text">強制站起</string>
+  <!-- Texas/component/popupPane/userInfoBtn/give_btn.xml -->
+  <string name="q3d3qil6buo8cb-n1_buo8" mz="give_txt">贈  送</string>
+  <!-- Texas/component/popupPane/userInfoBtn/tick_btn.xml -->
+  <string name="q3d3qil6buo8ce-n1_buo8" mz="tick_Text">踢出牌局</string>
+  <!-- Texas/component/popupPane/userInfoPanel.xml -->
+  <string name="q3d3qil6buo8bt-n5_buo8" mz="txtName">Cute bear</string>
+  <string name="q3d3qil6buo8bt-n18_buo8" mz="txtUserId">ID</string>
+  <string name="q3d3qil6buo8bt-n23_buo8-prompt" mz="inputText">這個傢伙很懶，什麼資訊都沒留下...</string>
+  <string name="q3d3qil6buo8bt-n25_buo8" mz="txtMute">阿斯蒂芬</string>
+  <string name="q3d3qil6buo8bt-n39_qo23" mz="pjzsTxt">牌局總數</string>
+  <string name="q3d3qil6buo8bt-n41_qo23" mz="zssTxt">總手數</string>
+  <string name="q3d3qil6buo8bt-n43_qo23" mz="winRateTxt">遊戲勝率</string>
+  <string name="q3d3qil6buo8bt-n45_qo23" mz="rclTxt">入池率</string>
+  <!-- Texas/component/userinfoCom/bgChat.xml -->
+  <string name="q3d3qil67xz9ei-n55_i0jb" mz="txtChatSound">a</string>
+  <!-- Texas/component/userinfoCom/insBg.xml -->
+  <string name="q3d3qil67xz9eg-n31_i0jb" mz="txtIns">購買中...</string>
+  <!-- Texas/component/userinfoCom/statusbg.xml -->
+  <string name="q3d3qil67xz9ed-n22_i0jb" mz="txtstatus">Straddle</string>
+  <!-- Texas/component/userinfoCom/takeInApplyPanel.xml -->
+  <string name="q3d3qil67xz9ej-n58_nsmj" mz="takeInApplyTxt">請求房主帶入同意中</string>
+  <!-- Texas/component/userinfoCom/userinfo.xml -->
+  <string name="q3d3qil6i0jb6e-n43_i0jb" mz="txtWait">占座中</string>
+  <string name="q3d3qil6i0jb6e-n48_i0jb" mz="txtApply">請求中</string>
+  <!-- Texas/component/userinfoCom/userinfo2.xml -->
+  <string name="q3d3qil6kra7cu-n43_i0jb" mz="txtWait">占座中</string>
+  <string name="q3d3qil6kra7cu-n48_i0jb" mz="txtApply">請求中</string>
+</resources>

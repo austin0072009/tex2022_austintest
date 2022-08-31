@@ -1,0 +1,28 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "Texas_atlas0_2",
+    "texture": "982ed2b3-5444-47ff-bc3f-ea570456ea2a",
+    "atlas": "",
+    "rect": [
+      0,
+      0,
+      2041,
+      2043
+    ],
+    "offset": [
+      -3.5,
+      2.5
+    ],
+    "originalSize": [
+      2048,
+      2048
+    ],
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

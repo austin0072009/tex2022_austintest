@@ -1,0 +1,105 @@
+{
+  "version": "1.1.1",
+  "windows": {
+    "main": {
+      "main": true,
+      "url": "app://editor/index.html",
+      "windowType": "dockable",
+      "x": 0,
+      "y": 0,
+      "width": 1918,
+      "height": 878,
+      "layout": {
+        "type": "dock-v",
+        "children": [
+          {
+            "width": 1902,
+            "height": 762,
+            "type": "dock-h",
+            "children": [
+              {
+                "width": 204,
+                "height": 762,
+                "type": "dock-v",
+                "children": [
+                  {
+                    "width": 204,
+                    "height": 341.90625,
+                    "type": "panel",
+                    "active": 0,
+                    "children": [
+                      "hierarchy"
+                    ]
+                  },
+                  {
+                    "width": 204,
+                    "height": 417.09375,
+                    "type": "panel",
+                    "active": 0,
+                    "children": [
+                      "assets"
+                    ]
+                  }
+                ]
+              },
+              {
+                "width": 304,
+                "height": 762,
+                "type": "panel",
+                "active": 0,
+                "children": [
+                  "inspector"
+                ]
+              },
+              {
+                "width": 1388,
+                "height": 762,
+                "type": "dock-v",
+                "children": [
+                  {
+                    "width": 1388,
+                    "height": 350.375,
+                    "type": "panel",
+                    "active": 0,
+                    "children": [
+                      "scene"
+                    ]
+                  },
+                  {
+                    "width": 1388,
+                    "height": 408.609375,
+                    "type": "panel",
+                    "active": 0,
+                    "children": [
+                      "console",
+                      "timeline",
+                      "game-window"
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "panels": [
+        "hierarchy",
+        "assets",
+        "inspector",
+        "scene",
+        "console",
+        "timeline",
+        "game-window"
+      ]
+    }
+  },
+  "panels": {
+    "preferences": {
+      "x": 991,
+      "y": 319,
+      "width": 600,
+      "height": 565
+    }
+  },
+  "panelLabelWidth": {}
+}

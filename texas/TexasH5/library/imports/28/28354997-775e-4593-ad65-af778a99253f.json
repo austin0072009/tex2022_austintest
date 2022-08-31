@@ -1,0 +1,7 @@
+{
+  "__type__": "cc.TextAsset",
+  "_name": "rsa.d",
+  "_objFlags": 0,
+  "_native": "",
+  "text": "import { BigInteger } from \"./jsbn\";\nexport declare class RSAKey {\n    constructor();\n    doPublic(x: BigInteger): BigInteger;\n    doPrivate(x: BigInteger): BigInteger;\n    setPublic(N: string, E: string): void;\n    encrypt(text: string): string;\n    setPrivate(N: string, E: string, D: string): void;\n    setPrivateEx(N: string, E: string, D: string, P: string, Q: string, DP: string, DQ: string, C: string): void;\n    generate(B: number, E: string): void;\n    decrypt(ctext: string): string;\n    generateAsync(B: number, E: string, callback: () => void): void;\n    sign(text: string, digestMethod: (str: string) => string, digestName: string): string;\n    verify(text: string, signature: string, digestMethod: (str: string) => string): boolean;\n    protected n: BigInteger;\n    protected e: number;\n    protected d: BigInteger;\n    protected p: BigInteger;\n    protected q: BigInteger;\n    protected dmp1: BigInteger;\n    protected dmq1: BigInteger;\n    protected coeff: BigInteger;\n}\n"
+}

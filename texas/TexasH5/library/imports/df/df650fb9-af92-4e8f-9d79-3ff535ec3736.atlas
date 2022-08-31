@@ -1,0 +1,48 @@
+
+zan.png
+size: 256,512
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+images/1
+  rotate: false
+  xy: 1, 1
+  size: 167, 146
+  orig: 167, 149
+  offset: 0, 3
+  index: -1
+images/dd1
+  rotate: false
+  xy: 1, 240
+  size: 188, 72
+  orig: 188, 72
+  offset: 0, 0
+  index: -1
+images/dd2
+  rotate: false
+  xy: 1, 149
+  size: 208, 89
+  orig: 208, 89
+  offset: 0, 0
+  index: -1
+images/4_shou/shou
+  rotate: false
+  xy: 170, 71
+  size: 51, 64
+  orig: 51, 64
+  offset: 0, 0
+  index: -1
+images/00
+  rotate: false
+  xy: 170, 1
+  size: 67, 68
+  orig: 67, 68
+  offset: 0, 0
+  index: -1
+images/4_shou/GG
+  rotate: false
+  xy: 191, 240
+  size: 57, 57
+  orig: 57, 57
+  offset: 0, 0
+  index: -1

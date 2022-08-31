@@ -1,0 +1,7 @@
+{
+  "__type__": "cc.TextAsset",
+  "_name": "SpinResultsGameStatus.d",
+  "_objFlags": 0,
+  "_native": "",
+  "text": "/**\n * 关卡状态\n *\n * @export\n * @enum {number}\n */\nexport declare enum SpinResultsGameStatus {\n    /**\n     * 正常\n     */\n    Normal = 0,\n    /**\n     * 未开放\n     */\n    NotOpen = 1,\n    /**\n     * 禁用\n     */\n    Disabled = 2\n}\n"
+}

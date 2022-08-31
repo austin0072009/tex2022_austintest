@@ -1,0 +1,90 @@
+
+htmm.png
+size: 565,524
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+A1
+  rotate: false
+  xy: 522, 179
+  size: 29, 57
+  orig: 32, 60
+  offset: 1, 2
+  index: -1
+A2
+  rotate: false
+  xy: 522, 122
+  size: 29, 55
+  orig: 31, 60
+  offset: 1, 4
+  index: -1
+body
+  rotate: false
+  xy: 2, 46
+  size: 292, 162
+  orig: 292, 162
+  offset: 0, 0
+  index: -1
+hair
+  rotate: false
+  xy: 272, 295
+  size: 291, 227
+  orig: 291, 227
+  offset: 0, 0
+  index: -1
+head
+  rotate: false
+  xy: 2, 210
+  size: 268, 312
+  orig: 268, 312
+  offset: 0, 0
+  index: -1
+leye
+  rotate: false
+  xy: 2, 5
+  size: 76, 39
+  orig: 76, 39
+  offset: 0, 0
+  index: -1
+love
+  rotate: true
+  xy: 296, 2
+  size: 291, 224
+  orig: 291, 224
+  offset: 0, 0
+  index: -1
+meil
+  rotate: true
+  xy: 272, 222
+  size: 71, 20
+  orig: 71, 20
+  offset: 0, 0
+  index: -1
+meir
+  rotate: true
+  xy: 522, 74
+  size: 46, 32
+  orig: 46, 32
+  offset: 0, 0
+  index: -1
+mouth
+  rotate: false
+  xy: 80, 16
+  size: 65, 28
+  orig: 65, 28
+  offset: 0, 0
+  index: -1
+reye
+  rotate: true
+  xy: 522, 238
+  size: 55, 39
+  orig: 55, 39
+  offset: 0, 0
+  index: -1
+reye2
+  rotate: false
+  xy: 147, 18
+  size: 43, 26
+  orig: 43, 26
+  offset: 0, 0
+  index: -1

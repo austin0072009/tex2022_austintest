@@ -1,0 +1,9 @@
+{
+  "tinyPackageServer": "",
+  "workerPath": "",
+  "separateEngineMode": false,
+  "useCustomCpkPath": false,
+  "outputCpkPath": "",
+  "packFirstScreenRes": false,
+  "deviceOrientation": "landscape"
+}

@@ -1,0 +1,7 @@
+{
+  "__type__": "cc.TextAsset",
+  "_name": "prng4.d",
+  "_objFlags": 0,
+  "_native": "",
+  "text": "export declare class Arcfour {\n    constructor();\n    init(key: number[]): void;\n    next(): number;\n    private i;\n    private j;\n    private S;\n}\nexport declare function prng_newstate(): Arcfour;\nexport declare let rng_psize: number;\n"
+}

@@ -1,0 +1,48 @@
+
+hd_meigui01.png
+size: 256,256
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+light01
+  rotate: false
+  xy: 90, 165
+  size: 70, 65
+  orig: 70, 65
+  offset: 0, 0
+  index: -1
+light02
+  rotate: false
+  xy: 217, 199
+  size: 32, 31
+  orig: 32, 31
+  offset: 0, 0
+  index: -1
+light03
+  rotate: false
+  xy: 162, 180
+  size: 53, 50
+  orig: 53, 50
+  offset: 0, 0
+  index: -1
+rose
+  rotate: false
+  xy: 2, 68
+  size: 80, 76
+  orig: 80, 76
+  offset: 0, 0
+  index: -1
+rose2
+  rotate: false
+  xy: 2, 146
+  size: 86, 84
+  orig: 86, 84
+  offset: 0, 0
+  index: -1
+star
+  rotate: false
+  xy: 2, 2
+  size: 67, 64
+  orig: 67, 64
+  offset: 0, 0
+  index: -1

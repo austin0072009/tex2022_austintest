@@ -1,0 +1,7 @@
+{
+  "__type__": "cc.TextAsset",
+  "_name": "SpinResultsWinType.d",
+  "_objFlags": 0,
+  "_native": "",
+  "text": "export declare enum SpinResultsWinType {\n    None = 0,\n    Normal = 1,\n    Big = 2,\n    Super = 3,\n    Mega = 4\n}\n"
+}

@@ -1,0 +1,10 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var SpinResultsWinType;
+(function (SpinResultsWinType) {
+    SpinResultsWinType[SpinResultsWinType["None"] = 0] = "None";
+    SpinResultsWinType[SpinResultsWinType["Normal"] = 1] = "Normal";
+    SpinResultsWinType[SpinResultsWinType["Big"] = 2] = "Big";
+    SpinResultsWinType[SpinResultsWinType["Super"] = 3] = "Super";
+    SpinResultsWinType[SpinResultsWinType["Mega"] = 4] = "Mega";
+})(SpinResultsWinType = exports.SpinResultsWinType || (exports.SpinResultsWinType = {}));

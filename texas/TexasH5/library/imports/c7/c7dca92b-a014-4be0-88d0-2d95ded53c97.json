@@ -1,0 +1,28 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "Texas_atlas_myaewhn",
+    "texture": "be0b0301-91c6-436b-ae03-74ca68e5a89d",
+    "atlas": "",
+    "rect": [
+      0,
+      0,
+      591,
+      2340
+    ],
+    "offset": [
+      0,
+      0
+    ],
+    "originalSize": [
+      591,
+      2340
+    ],
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

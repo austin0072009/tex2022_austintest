@@ -1,0 +1,7 @@
+{
+  "__type__": "cc.TextAsset",
+  "_name": "rng.d",
+  "_objFlags": 0,
+  "_native": "",
+  "text": "export declare class SecureRandom {\n    nextBytes(ba: number[]): void;\n}\n"
+}

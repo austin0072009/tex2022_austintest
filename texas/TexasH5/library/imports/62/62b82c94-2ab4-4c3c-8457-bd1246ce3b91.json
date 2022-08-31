@@ -1,0 +1,28 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "daoju_laolong",
+    "texture": "618f5f72-968a-4457-9936-f2bc69ddaa31",
+    "atlas": "",
+    "rect": [
+      2,
+      4,
+      505,
+      229
+    ],
+    "offset": [
+      -1.5,
+      9.5
+    ],
+    "originalSize": [
+      512,
+      256
+    ],
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

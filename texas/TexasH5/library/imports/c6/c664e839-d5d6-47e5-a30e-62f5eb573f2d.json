@@ -1,0 +1,28 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "dz loading",
+    "texture": "2ac740fe-f3e1-4588-8193-2602926ce846",
+    "atlas": "",
+    "rect": [
+      0,
+      0,
+      1080,
+      2340
+    ],
+    "offset": [
+      0,
+      0
+    ],
+    "originalSize": [
+      1080,
+      2340
+    ],
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

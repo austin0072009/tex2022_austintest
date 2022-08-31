@@ -1,0 +1,7 @@
+{
+  "__type__": "cc.TextAsset",
+  "_name": "SpinResultsSymbolEvent.d",
+  "_objFlags": 0,
+  "_native": "",
+  "text": "import { SpinResultsEvent } from \".\";\nexport default class SpinResultsSymbolEvent {\n    private _code;\n    private _assets;\n    private _postion;\n    private _events;\n    constructor(code: number, assets: number, position: number, events: SpinResultsEvent[]);\n    get code(): number;\n    get assets(): number;\n    get position(): number;\n    get events(): SpinResultsEvent[];\n}\n"
+}

@@ -1,0 +1,28 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "hd_bingtong01",
+    "texture": "2d13bf89-d8ae-4869-9c2d-b03149e71f1a",
+    "atlas": "",
+    "rect": [
+      2,
+      2,
+      492,
+      249
+    ],
+    "offset": [
+      -8,
+      1.5
+    ],
+    "originalSize": [
+      512,
+      256
+    ],
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

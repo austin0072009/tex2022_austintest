@@ -1,0 +1,7 @@
+{
+  "__type__": "cc.TextAsset",
+  "_name": "SpinResultsCollectible.d",
+  "_objFlags": 0,
+  "_native": "",
+  "text": "export default class SpinResultsCollectible {\n    private _code;\n    private _value;\n    private _maxValue;\n    constructor(code?: number, value?: number, maxValue?: number);\n    /**\n     * 获取编码\n     */\n    get code(): number;\n    /**\n     * 设置编码\n     */\n    set code(value: number);\n    /**\n     * 获取当前值\n     */\n    get value(): number;\n    /**\n     * 设置当前值\n     */\n    set value(value: number);\n    /**\n     * 获取最大值\n     */\n    get maxValue(): number;\n    /**\n     * 设置最大值\n     */\n    set maxValue(value: number);\n}\n"
+}

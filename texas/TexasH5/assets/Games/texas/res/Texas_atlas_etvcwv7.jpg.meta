@@ -1,0 +1,36 @@
+{
+  "ver": "2.3.5",
+  "uuid": "69b4cd9d-86e1-4698-9552-abc851363e03",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 1080,
+  "height": 2340,
+  "platformSettings": {},
+  "subMetas": {
+    "Texas_atlas_etvcwv7": {
+      "ver": "1.0.4",
+      "uuid": "3e83ca06-a781-4ec1-bc7d-57c3076eebe9",
+      "rawTextureUuid": "69b4cd9d-86e1-4698-9552-abc851363e03",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 0,
+      "trimY": 0,
+      "width": 1080,
+      "height": 2340,
+      "rawWidth": 1080,
+      "rawHeight": 2340,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

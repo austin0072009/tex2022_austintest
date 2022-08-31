@@ -1,0 +1,7 @@
+{
+  "__type__": "cc.TextAsset",
+  "_name": "SpinResultsCellReward.d",
+  "_objFlags": 0,
+  "_native": "",
+  "text": "export default class SpinResultsCellReward {\n    code: number;\n    position: number;\n    rewards: number;\n}\n"
+}

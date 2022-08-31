@@ -1,0 +1,1 @@
+{"version":3,"sources":["assets\\Script\\modules\\@mogafa\\utils\\lib\\HttpInterface.ts"],"names":[],"mappings":"","file":"","sourceRoot":"/","sourcesContent":["\n\nexport interface HttpResponse<T> {\n    code: number;\n    data: T;\n    isSuccessful: boolean;\n    message: string;\n}\n"]}

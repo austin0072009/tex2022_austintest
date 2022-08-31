@@ -1,0 +1,7 @@
+{
+  "__type__": "cc.TextAsset",
+  "_name": "SpinResultsBigWinAdAwards.d",
+  "_objFlags": 0,
+  "_native": "",
+  "text": "export default class SpinResultsBigWinAdAwards {\n    private _awardId;\n    private _points;\n    private _coins;\n    private _countdown;\n    constructor(_awardId: string, _points: number, _coins: number, _countdown: number);\n    /**\n     * 奖励ID\n     *\n     * @readonly\n     * @type {string}\n     * @memberof SpinResultsBigWinAdAwards\n     */\n    get awardId(): string;\n    set awardId(value: string);\n    /**\n     * 获得的游戏积分\n     *\n     * @readonly\n     * @type {number}\n     * @memberof SpinResultsUpgrade\n     */\n    get points(): number;\n    set points(value: number);\n    /**\n     * 奖励的金币\n     *\n     * @readonly\n     * @type {number}\n     * @memberof SpinResultsBigWinAdAwards\n     */\n    get coins(): number;\n    set coins(value: number);\n    /**\n     * 弹窗倒计时, 单位秒\n     *\n     * @readonly\n     * @type {number}\n     * @memberof SpinResultsBigWinAdAwards\n     */\n    get countdown(): number;\n    set countdown(value: number);\n}\n"
+}

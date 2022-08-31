@@ -1,0 +1,28 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "hd_jidan01",
+    "texture": "4155e2c8-6072-45a4-8b01-5d6bac1d6d95",
+    "atlas": "",
+    "rect": [
+      2,
+      2,
+      252,
+      232
+    ],
+    "offset": [
+      0,
+      10
+    ],
+    "originalSize": [
+      256,
+      256
+    ],
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

@@ -1,0 +1,898 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <!-- Lobby/components/Community/Authorization.xml -->
+  <string name="ej6bz2yon5n9dj4-n2_n5n9" mz="n2">授權代理</string>
+  <string name="ej6bz2yon5n9dj4-n5_n5n9" mz="agent1Text">1級代理</string>
+  <string name="ej6bz2yon5n9dj4-n6_n5n9" mz="agent2Text">2級代理</string>
+  <string name="ej6bz2yon5n9dj4-n7_n5n9" mz="agent3Text">3級代理</string>
+  <!-- Lobby/components/Community/Community.xml -->
+  <string name="ej6bz2yo9zj390-n53_n5n9" mz="n53">我的社區</string>
+  <string name="ej6bz2yo9zj390-n120_n5n9" mz="n120">請聯係您的上級加入社區！</string>
+  <!-- Lobby/components/Community/ContributionItem.xml -->
+  <string name="ej6bz2yon5n9diz-n2_n5n9" mz="name">name</string>
+  <string name="ej6bz2yon5n9diz-n6_n5n9" mz="gameName">代理</string>
+  <!-- Lobby/components/Community/agentIntroduced.xml -->
+  <string name="ej6bz2yohueddrf-n128_hyfv" mz="n128">聯繫方式</string>
+  <string name="ej6bz2yohueddrf-n117_lr76" mz="n117">可以聯繫你的上級咨詢相關問題！</string>
+  <string name="ej6bz2yohueddrf-n118_lr76" mz="contactText1">微信：vx123456</string>
+  <string name="ej6bz2yohueddrf-n119_lr76" mz="downloadText1">微信：vx123456</string>
+  <string name="ej6bz2yohueddrf-n121_lr76" mz="contactText2">微信：vx123456</string>
+  <string name="ej6bz2yohueddrf-n122_lr76" mz="downloadText2">微信：vx123456</string>
+  <string name="ej6bz2yohueddrf-n124_lr76" mz="contactText3">微信：vx123456</string>
+  <string name="ej6bz2yohueddrf-n125_lr76" mz="downloadText3">微信：vx123456</string>
+  <!-- Lobby/components/Community/btn/Button17.xml -->
+  <string name="ej6bz2yon5n9dj7-n1_n5n9" mz="title">授權</string>
+  <!-- Lobby/components/Community/btn/btn_Contact.xml -->
+  <string name="ej6bz2yola7odro-n55_n5n9" mz="n55">聯繫方式</string>
+  <!-- Lobby/components/Community/btn/btn_Contribution.xml -->
+  <string name="ej6bz2yon5n9dip-n55_n5n9" mz="n55">社區貢獻</string>
+  <!-- Lobby/components/Community/btn/btn_Details.xml -->
+  <string name="ej6bz2yon5n9din-n55_n5n9" mz="n55">社區詳情</string>
+  <!-- Lobby/components/Community/btn/btn_Members.xml -->
+  <string name="ej6bz2yon5n9dio-n55_n5n9" mz="n55">社區成員</string>
+  <!-- Lobby/components/Community/btn/btn_Reward.xml -->
+  <string name="ej6bz2yon5n9diq-n55_n5n9" mz="n55">獎勵説明</string>
+  <!-- Lobby/components/Community/btn/btn_commission.xml -->
+  <string name="ej6bz2yon5n9dir-n1_n5n9" mz="title">提取傭金</string>
+  <!-- Lobby/components/Community/btn/btn_copy.xml -->
+  <string name="ej6bz2yolr76dte-n1_n5n9" mz="title">複製</string>
+  <!-- Lobby/components/Community/btn/btn_detailedquery.xml -->
+  <string name="ej6bz2yotwuzdra-n92_twuz" mz="n92">詳細查詢</string>
+  <!-- Lobby/components/Community/btn/btn_extractRecord.xml -->
+  <string name="ej6bz2yon5n9dis-n88_n5n9" mz="n88">提取記錄</string>
+  <!-- Lobby/components/Community/btn/btn_fundlog.xml -->
+  <string name="ej6bz2yotwuzdr9-n89_twuz" mz="n89">基金記錄</string>
+  <!-- Lobby/components/Community/btn/btn_gameName.xml -->
+  <string name="ej6bz2yon5n9dj2-n113_n5n9" mz="title">德州</string>
+  <!-- Lobby/components/Community/btn/btn_into.xml -->
+  <string name="ej6bz2yotwuzdr7-n1_n5n9" mz="title">轉入</string>
+  <!-- Lobby/components/Community/btn/btn_joinCommunitty.xml -->
+  <string name="ej6bz2yon5n9dj9-n1_n5n9" mz="title">加入</string>
+  <!-- Lobby/components/Community/btn/btn_rollout.xml -->
+  <string name="ej6bz2yotwuzdr8-n1_n5n9" mz="title">轉出</string>
+  <!-- Lobby/components/Community/btn/btn_search.xml -->
+  <string name="ej6bz2yon5n9diu-n1_n5n9" mz="title">搜索</string>
+  <!-- Lobby/components/Community/btn/btn_shequService.xml -->
+  <string name="ej6bz2yor2iydtf-n1_n5n9" mz="title">社區客服</string>
+  <!-- Lobby/components/Community/contributionCom.xml -->
+  <string name="ej6bz2yon5n9dj3-n102_n5n9" mz="n102">昵稱</string>
+  <string name="ej6bz2yon5n9dj3-n103_n5n9" mz="n103">ID</string>
+  <string name="ej6bz2yon5n9dj3-n104_n5n9" mz="n104">時間</string>
+  <string name="ej6bz2yon5n9dj3-n106_n5n9" mz="n106">貢獻</string>
+  <string name="ej6bz2yon5n9dj3-n108_n5n9-0" mz="btn_down">全部遊戲</string>
+  <string name="ej6bz2yon5n9dj3-n108_n5n9-1" mz="btn_down">德州撲克</string>
+  <string name="ej6bz2yon5n9dj3-n108_n5n9-2" mz="btn_down">德州牛仔</string>
+  <string name="ej6bz2yon5n9dj3-n108_n5n9-3" mz="btn_down">宙斯</string>
+  <string name="ej6bz2yon5n9dj3-n108_n5n9-4" mz="btn_down">九綫拉王</string>
+  <string name="ej6bz2yon5n9dj3-n108_n5n9-5" mz="btn_down">水果瑪麗</string>
+  <string name="ej6bz2yon5n9dj3-n108_n5n9-6" mz="btn_down">財神過年</string>
+  <string name="ej6bz2yon5n9dj3-n108_n5n9-7" mz="btn_down">火牛</string>
+  <string name="ej6bz2yon5n9dj3-n108_n5n9-8" mz="btn_down">龍虎</string>
+  <string name="ej6bz2yon5n9dj3-n108_n5n9-9" mz="btn_down">火之女王</string>
+  <string name="ej6bz2yon5n9dj3-n108_n5n9-10" mz="btn_down">忍者</string>
+  <!-- Lobby/components/Community/details.xml -->
+  <string name="ej6bz2yon5n9dit-n64_n5n9" mz="n64">我的社區號</string>
+  <string name="ej6bz2yon5n9dit-n65_n5n9" mz="n65">下級玩家</string>
+  <string name="ej6bz2yon5n9dit-n66_n5n9" mz="n66">今日新增</string>
+  <string name="ej6bz2yon5n9dit-n67_n5n9" mz="n67">今日活躍</string>
+  <string name="ej6bz2yon5n9dit-n81_n5n9" mz="n81">社區基金</string>
+  <!-- Lobby/components/Community/extractCommission.xml -->
+  <string name="ej6bz2yon5n9dj8-n2_n5n9" mz="n2">轉出基金</string>
+  <string name="ej6bz2yon5n9dj8-n14_n5n9" mz="n14">您轉出的金額為:</string>
+  <string name="ej6bz2yon5n9dj8-n16_n5n9" mz="n16">提示:提取的基金請查看餘額</string>
+  <!-- Lobby/components/Community/intoFund.xml -->
+  <string name="ej6bz2yol9dddrc-n2_n5n9" mz="n2">轉入基金</string>
+  <string name="ej6bz2yol9dddrc-n14_n5n9" mz="balanceText">餘額：281288</string>
+  <string name="ej6bz2yol9dddrc-n20_l9dd-prompt" mz="intoGold">請輸入要轉入的金額</string>
+  <!-- Lobby/components/Community/joinCommunity.xml -->
+  <string name="ej6bz2yon5n9djb-n121_n5n9" mz="n121">請輸入您要加入的社區號</string>
+  <!-- Lobby/components/Community/membersCom.xml -->
+  <string name="ej6bz2yon5n9dix-n93_n5n9-prompt" mz="inputIdOrAccent">請輸入玩家ID</string>
+  <string name="ej6bz2yon5n9dix-n96_n5n9" mz="n96">級別</string>
+  <string name="ej6bz2yon5n9dix-n97_n5n9" mz="n97">昵稱</string>
+  <string name="ej6bz2yon5n9dix-n98_n5n9" mz="n98">ID</string>
+  <string name="ej6bz2yon5n9dix-n99_n5n9" mz="n99">加入時間</string>
+  <!-- Lobby/components/Community/membersItem.xml -->
+  <string name="ej6bz2yon5n9div-n1_n5n9" mz="type">代理</string>
+  <!-- Lobby/components/Community/outFund.xml -->
+  <string name="ej6bz2yohueddre-n2_n5n9" mz="n2">轉出基金</string>
+  <string name="ej6bz2yohueddre-n14_n5n9" mz="balanceText">餘額：281288</string>
+  <string name="ej6bz2yohueddre-n20_l9dd-prompt" mz="outGold">請輸入要轉出的金額</string>
+  <!-- Lobby/components/Community/unionContact.xml -->
+  <string name="ej6bz2yola7odrp-n129_hyfv" mz="n129">聯繫方式</string>
+  <string name="ej6bz2yola7odrp-n103_hued" mz="n103">可以聯繫你的上級咨詢相關問題！</string>
+  <string name="ej6bz2yola7odrp-n104_hued" mz="contactText1">微信：vx123456</string>
+  <string name="ej6bz2yola7odrp-n117_lr76" mz="downloadText1">微信：vx123456</string>
+  <string name="ej6bz2yola7odrp-n119_lr76" mz="contactText2">微信：vx123456</string>
+  <string name="ej6bz2yola7odrp-n120_lr76" mz="downloadText2">微信：vx123456</string>
+  <string name="ej6bz2yola7odrp-n122_lr76" mz="contactText3">微信：vx123456</string>
+  <string name="ej6bz2yola7odrp-n123_lr76" mz="downloadText3">微信：vx123456</string>
+  <!-- Lobby/components/ExtractRecord/ExtractRecord.xml -->
+  <string name="ej6bz2yopcpcdku-n19_sasm" mz="n19">基金記錄</string>
+  <string name="ej6bz2yopcpcdku-n44_v8hm" mz="n44">金額</string>
+  <string name="ej6bz2yopcpcdku-n45_v8hm" mz="n45">時間</string>
+  <string name="ej6bz2yopcpcdku-n49_pvwu-0" mz="n49">全部</string>
+  <string name="ej6bz2yopcpcdku-n49_pvwu-1" mz="n49">轉入</string>
+  <string name="ej6bz2yopcpcdku-n49_pvwu-2" mz="n49">轉出</string>
+  <!-- Lobby/components/ExtractRecord/ExtractRecordItem.xml -->
+  <string name="ej6bz2yopcpcdkv-n4_v8hm" mz="n4">轉出</string>
+  <!-- Lobby/components/Withdrawal/TxRecordItem.xml -->
+  <string name="ej6bz2yoq7twdtp-n0_q7tw" mz="time">2021-11-09T15:45:36</string>
+  <string name="ej6bz2yoq7twdtp-n2_q7tw" mz="orderid">T202111302030405527320</string>
+  <string name="ej6bz2yoq7twdtp-n3_q7tw" mz="state">審核中</string>
+  <!-- Lobby/components/Withdrawal/TxRecordPanel.xml -->
+  <string name="ej6bz2yoq7twdtq-n58_q7tw" mz="n58">時間</string>
+  <string name="ej6bz2yoq7twdtq-n59_q7tw" mz="n59">金額</string>
+  <string name="ej6bz2yoq7twdtq-n60_q7tw" mz="n60">訂單號</string>
+  <string name="ej6bz2yoq7twdtq-n61_q7tw" mz="n61">狀態</string>
+  <!-- Lobby/components/Withdrawal/Txsqcom.xml -->
+  <string name="ej6bz2yonl0r79-n52_nl0r" mz="txjinText">您已申請提現金額:[color=#ff0000]{gold=4000}[/color]可稍後進行查詢</string>
+  <!-- Lobby/components/Withdrawal/Withdrawal.xml -->
+  <string name="ej6bz2yok5xj70-n19_sasm" mz="n19">提現</string>
+  <string name="ej6bz2yok5xj70-n22_k5xj" mz="n22">您還未綁定提現,選擇下方提現方式可快速提現</string>
+  <!-- Lobby/components/Withdrawal/bindcard.xml -->
+  <string name="ej6bz2yonl0r7d-n50_nl0r" mz="n50">國      家</string>
+  <string name="ej6bz2yonl0r7d-n51_nl0r" mz="n51">提現方式</string>
+  <string name="ej6bz2yonl0r7d-n52_nl0r" mz="n52">姓      名</string>
+  <string name="ej6bz2yonl0r7d-n53_nl0r" mz="n53">銀行卡號</string>
+  <string name="ej6bz2yonl0r7d-n54_nl0r" mz="n54">銀 行 名</string>
+  <string name="ej6bz2yonl0r7d-n55_nl0r" mz="n55">開戶省市</string>
+  <string name="ej6bz2yonl0r7d-n56_nl0r" mz="n56">開戶支行</string>
+  <string name="ej6bz2yonl0r7d-n69_nl0r-prompt" mz="name">請點擊輸入銀行賬戶名</string>
+  <string name="ej6bz2yonl0r7d-n70_nl0r-prompt" mz="banknum">請點擊輸入銀行卡號</string>
+  <string name="ej6bz2yonl0r7d-n74_nl0r-prompt" mz="Subbranch">請點擊輸入開戶支行</string>
+  <string name="ej6bz2yonl0r7d-n79_i1ae-0" mz="bankname">中國工商銀行</string>
+  <string name="ej6bz2yonl0r7d-n79_i1ae-1" mz="bankname">招商銀行</string>
+  <string name="ej6bz2yonl0r7d-n79_i1ae-2" mz="bankname">中國農業銀行</string>
+  <string name="ej6bz2yonl0r7d-n79_i1ae-3" mz="bankname">中國建設銀行</string>
+  <string name="ej6bz2yonl0r7d-n79_i1ae-4" mz="bankname">中國銀行</string>
+  <string name="ej6bz2yonl0r7d-n79_i1ae-5" mz="bankname">中國民生銀行</string>
+  <string name="ej6bz2yonl0r7d-n79_i1ae-6" mz="bankname">中國光大銀行</string>
+  <string name="ej6bz2yonl0r7d-n79_i1ae-7" mz="bankname">中信銀行</string>
+  <string name="ej6bz2yonl0r7d-n79_i1ae-8" mz="bankname">交通銀行</string>
+  <string name="ej6bz2yonl0r7d-n79_i1ae-9" mz="bankname">興業銀行</string>
+  <string name="ej6bz2yonl0r7d-n79_i1ae-10" mz="bankname">上海浦東發展銀行</string>
+  <string name="ej6bz2yonl0r7d-n79_i1ae-11" mz="bankname">中國人民銀行</string>
+  <string name="ej6bz2yonl0r7d-n79_i1ae-12" mz="bankname">華夏銀行</string>
+  <string name="ej6bz2yonl0r7d-n79_i1ae-13" mz="bankname">深圳發展銀行</string>
+  <string name="ej6bz2yonl0r7d-n80_i1ae-0" mz="country">中國</string>
+  <string name="ej6bz2yonl0r7d-n81_i1ae-0" mz="cardType">銀行卡</string>
+  <!-- Lobby/components/Withdrawal/btn/btn_other.xml -->
+  <string name="ej6bz2yonl0r73-n37_nl0r" mz="n37">其他提現方式</string>
+  <!-- Lobby/components/Withdrawal/btn/btn_record.xml -->
+  <string name="ej6bz2yoq7twdto-n37_nl0r" mz="n37">記錄明細</string>
+  <!-- Lobby/components/Withdrawal/btn/btn_recordNext.xml -->
+  <string name="ej6bz2yoq7twdts-n2_q7tw" mz="n2">下一頁</string>
+  <!-- Lobby/components/Withdrawal/btn/btn_recordUp.xml -->
+  <string name="ej6bz2yoq7twdtt-n2_q7tw" mz="n2">上一頁</string>
+  <!-- Lobby/components/Withdrawal/drawal1.xml -->
+  <string name="ej6bz2yonl0r76-n26_nl0r" mz="n26">到賬銀行:</string>
+  <string name="ej6bz2yonl0r76-n29_nl0r" mz="n29">用戶姓名:</string>
+  <string name="ej6bz2yonl0r76-n31_nl0r" mz="n31">提現金額:</string>
+  <string name="ej6bz2yonl0r76-n32_nl0r-prompt" mz="txGoldNum">請輸入提現金額</string>
+  <string name="ej6bz2yonl0r76-n35_nl0r" mz="n35">輸入金額</string>
+  <string name="ej6bz2yonl0r76-n38_nl0r" mz="n38">提現説明</string>
+  <string name="ej6bz2yonl0r76-n39_nl0r" mz="n39">1.每次提現額金額必須小於10w
+2.24小時內最多提現兩次
+3.進行遊戲到達充值的流水才能提現</string>
+  <!-- Lobby/components/Withdrawal/yzTxsqcom.xml -->
+  <string name="ej6bz2yonl0r7b-n57_nl0r" mz="n57">請輸入支付密碼,以驗證身份</string>
+  <string name="ej6bz2yonl0r7b-n67_m922" mz="n67">請先設置支付密碼,保證安全</string>
+  <!-- Lobby/components/Withdrawal/yzTxsqcom2.xml -->
+  <string name="ej6bz2yoi1aedjo-n57_nl0r" mz="n57">請輸入支付密碼,以驗證身份</string>
+  <string name="ej6bz2yoi1aedjo-n67_m922" mz="n67">請先設置支付密碼,保證安全</string>
+  <!-- Lobby/components/activity/activityItem.xml -->
+  <string name="ej6bz2yodpug9u-n5_9zwv" mz="acTitle">全新火爆遊戲來襲！</string>
+  <string name="ej6bz2yodpug9u-n6_9zwv" mz="acCountent">全新XXX玩法上線啦！海量獎勵，邀請您來體驗！</string>
+  <!-- Lobby/components/bottomBar.xml -->
+  <string name="ej6bz2yonnpa1a-n7_nnpa" mz="n7">活動</string>
+  <string name="ej6bz2yonnpa1a-n8_nnpa" mz="n8">賽事</string>
+  <string name="ej6bz2yonnpa1a-n9_nnpa" mz="n9">大廳</string>
+  <string name="ej6bz2yonnpa1a-n10_nnpa" mz="n10">我的</string>
+  <!-- Lobby/components/btn/btn_createTexas.xml -->
+  <string name="ej6bz2yoh617dpf-n1_n5n9" mz="title">創建桌子</string>
+  <!-- Lobby/components/btn/btn_selectAll.xml -->
+  <string name="ej6bz2yonnpa1c-n5_nnpa" mz="n5">全部</string>
+  <!-- Lobby/components/btn/btn_selectAllamh.xml -->
+  <string name="ej6bz2yonnpa1e-n5_nnpa" mz="n5">AOF</string>
+  <!-- Lobby/components/btn/btn_selectAlldp.xml -->
+  <string name="ej6bz2yonnpa1f-n5_nnpa" mz="n5">短牌</string>
+  <!-- Lobby/components/btn/btn_selectAlldz.xml -->
+  <string name="ej6bz2yonnpa1d-n5_nnpa" mz="n5">德州撲克</string>
+  <!-- Lobby/components/btn/selectLimit/btn_limitAll.xml -->
+  <string name="ej6bz2yonnpa1g-n3_nnpa" mz="n3">全部</string>
+  <!-- Lobby/components/btn/selectLimit/btn_limitEmty.xml -->
+  <string name="ej6bz2yonnpa1h-n3_nnpa" mz="n3">空位</string>
+  <!-- Lobby/components/btn/selectLimit/btn_limitWei.xml -->
+  <string name="ej6bz2yonnpa1i-n3_nnpa" mz="n3">微</string>
+  <!-- Lobby/components/btn/selectLimit/btn_limitda.xml -->
+  <string name="ej6bz2yonnpa1l-n3_nnpa" mz="n3">大</string>
+  <!-- Lobby/components/btn/selectLimit/btn_limitxiao.xml -->
+  <string name="ej6bz2yonnpa1j-n3_nnpa" mz="n3">小</string>
+  <!-- Lobby/components/btn/selectLimit/btn_limitzhong.xml -->
+  <string name="ej6bz2yonnpa1k-n3_nnpa" mz="n3">中</string>
+  <!-- Lobby/components/career/baseData.xml -->
+  <string name="ej6bz2yoo5ldcm-n61_o5ld" mz="n61">總局數</string>
+  <string name="ej6bz2yoo5ldcm-n62_o5ld" mz="n62">場均戰績</string>
+  <string name="ej6bz2yoo5ldcm-n63_o5ld" mz="n63">戰績/百手</string>
+  <string name="ej6bz2yoo5ldcm-n64_o5ld" mz="n64">縂手數</string>
+  <string name="ej6bz2yoo5ldcm-n65_o5ld" mz="n65">場均帶入</string>
+  <string name="ej6bz2yoo5ldcm-n71_o5ld" mz="n71">主動入池率</string>
+  <string name="ej6bz2yoo5ldcm-n72_o5ld" mz="n72">看翻牌率</string>
+  <string name="ej6bz2yoo5ldcm-n73_o5ld" mz="n73">C-BET</string>
+  <string name="ej6bz2yoo5ldcm-n74_o5ld" mz="n74">激進度</string>
+  <string name="ej6bz2yoo5ldcm-n75_o5ld" mz="n75">3 BET</string>
+  <string name="ej6bz2yoo5ldcm-n76_o5ld" mz="n76">加注入池率</string>
+  <!-- Lobby/components/career/btn/Button1.xml -->
+  <string name="ej6bz2yoo5ldc9-n2_o5ld" mz="title">基礎數據</string>
+  <!-- Lobby/components/career/btn/Button2.xml -->
+  <string name="ej6bz2yoo5ldca-n2_o5ld" mz="title">戰績統計</string>
+  <!-- Lobby/components/career/btn/Button3.xml -->
+  <string name="ej6bz2yoo5ldci-n1_o5ld" mz="title">取消</string>
+  <!-- Lobby/components/career/btn/Button4.xml -->
+  <string name="ej6bz2yoo5ldcj-n1_o5ld" mz="title">刪除</string>
+  <!-- Lobby/components/career/btn/btn_aomah.xml -->
+  <string name="ej6bz2yoo5ldc4-n2_o5ld" mz="title">AOF</string>
+  <!-- Lobby/components/career/btn/btn_daboluo.xml -->
+  <string name="ej6bz2yoo5ldc6-n2_o5ld" mz="title">AOF</string>
+  <!-- Lobby/components/career/btn/btn_dezhou.xml -->
+  <string name="ej6bz2yoo5ldc3-n2_o5ld" mz="title">德州撲克</string>
+  <!-- Lobby/components/career/btn/btn_duanpai.xml -->
+  <string name="ej6bz2yoo5ldc5-n2_o5ld" mz="title">短牌</string>
+  <!-- Lobby/components/career/btn/btn_edit.xml -->
+  <string name="ej6bz2yop2zgdph-n1_o5ld" mz="title">編輯</string>
+  <!-- Lobby/components/career/btn/btn_paipu.xml -->
+  <string name="ej6bz2yoo5ldcd-n54_o5ld" mz="n54">牌普收藏</string>
+  <!-- Lobby/components/career/btn/btn_saishi.xml -->
+  <string name="ej6bz2yoo5ldc2-n2_o5ld" mz="title">賽事</string>
+  <!-- Lobby/components/career/btn/btn_syleft.xml -->
+  <string name="ej6bz2yoo5ldc7-n1_k5xj" mz="title">基礎數據</string>
+  <!-- Lobby/components/career/btn/btn_syright.xml -->
+  <string name="ej6bz2yoo5ldc8-n1_k5xj" mz="title">新手福利</string>
+  <!-- Lobby/components/career/cardDerails.xml -->
+  <string name="ej6bz2yoh617dpa-n19_sasm" mz="n19">牌局詳情</string>
+  <string name="ej6bz2yoh617dpa-n87_o5ld" mz="bet">大/小盲:{bet=10/20}</string>
+  <string name="ej6bz2yoh617dpa-n88_o5ld" mz="n88">本局縂手數</string>
+  <string name="ej6bz2yoh617dpa-n89_o5ld" mz="n89">本局最大POT</string>
+  <string name="ej6bz2yoh617dpa-n90_o5ld" mz="n90">本局縂帶入</string>
+  <string name="ej6bz2yoh617dpa-n91_o5ld" mz="n91">保險池</string>
+  <string name="ej6bz2yoh617dpa-n107_o5ld" mz="n107">玩家詳情</string>
+  <!-- Lobby/components/career/cardInfoItem.xml -->
+  <string name="ej6bz2yoo5ldck-n4_o5ld" mz="n4">德州撲克</string>
+  <!-- Lobby/components/career/career.xml -->
+  <string name="ej6bz2yoo5ldc1-n19_sasm" mz="n19">生涯</string>
+  <!-- Lobby/components/career/historyCom/HisInfoTitleTextBg.xml -->
+  <string name="ej6bz2yooolrdq7-n1_wh9o" mz="HisInfoTitleText"> 詳細過程</string>
+  <!-- Lobby/components/career/historyCom/ShowDownTitle.xml -->
+  <string name="ej6bz2yooolrdqf-n1_wh9o" mz="turnName">牌譜</string>
+  <!-- Lobby/components/career/historyCom/historyCell.xml -->
+  <string name="ej6bz2yooolrdq8-n2_wh9o" mz="txtPos">UTG</string>
+  <string name="ej6bz2yooolrdq8-n4_wh9o" mz="txtName">阿斯頓發斯蒂芬</string>
+  <string name="ej6bz2yooolrdq8-n10_wh9o" mz="txtGamble">下注</string>
+  <!-- Lobby/components/career/historyCom/historyPanel.xml -->
+  <string name="ej6bz2yooolrdqa-n6_wh9o" mz="n6">牌局回顧</string>
+  <!-- Lobby/components/career/historyCom/insPoolPanel.xml -->
+  <string name="ej6bz2yooolrdqb-n0_wh9o" mz="insPooltext">保險池：</string>
+  <!-- Lobby/components/career/historyCom/paipu.xml -->
+  <string name="ej6bz2yooolrdqc-n1_wh9o" mz="turnName">牌譜</string>
+  <!-- Lobby/components/career/historyCom/showDownCell.xml -->
+  <string name="ej6bz2yooolrdqd-n2_wh9o" mz="curPosName">UTG</string>
+  <string name="ej6bz2yooolrdqd-n3_wh9o" mz="txtName">阿斯頓發斯蒂芬</string>
+  <!-- Lobby/components/career/historyCom/turnInfoCell.xml -->
+  <string name="ej6bz2yooolrdqi-n1_wh9o" mz="curPosName">UTG</string>
+  <string name="ej6bz2yooolrdqi-n2_wh9o" mz="txtName">阿斯頓發發</string>
+  <string name="ej6bz2yooolrdqi-n5_wh9o" mz="handleTitle">3B</string>
+  <string name="ej6bz2yooolrdqi-n6_wh9o" mz="handleValue">3B</string>
+  <string name="ej6bz2yooolrdqi-n9_wh9o" mz="turnFlodTxt">fold</string>
+  <!-- Lobby/components/career/historyCom/turnTitle.xml -->
+  <string name="ej6bz2yooolrdqj-n1_wh9o" mz="turnName">ShotDown</string>
+  <!-- Lobby/components/career/myCardSpectrum.xml -->
+  <string name="ej6bz2yoo5ldcg-n19_sasm" mz="n19">我的牌譜</string>
+  <string name="ej6bz2yoo5ldcg-n112_o5ld" mz="n112">手牌</string>
+  <string name="ej6bz2yoo5ldcg-n113_o5ld" mz="n113">公共牌</string>
+  <string name="ej6bz2yoo5ldcg-n114_o5ld" mz="n114">盈虧</string>
+  <!-- Lobby/components/career/playItem.xml -->
+  <string name="ej6bz2yoo5ldcf-n2_o5ld" mz="n2">帶入:{gold=1000}</string>
+  <string name="ej6bz2yoo5ldcf-n3_o5ld" mz="n3">手數:{num=1000}</string>
+  <!-- Lobby/components/career/selectPanel.xml -->
+  <string name="ej6bz2yoqj0fdtk-n89_qj0f" mz="n89">請輸入查找桌號</string>
+  <!-- Lobby/components/career/ssData.xml -->
+  <string name="ej6bz2yolp7fdgd-n89_lp7f" mz="n89">比賽次數</string>
+  <string name="ej6bz2yolp7fdgd-n90_lp7f" mz="n90">縂手數</string>
+  <string name="ej6bz2yolp7fdgd-n91_lp7f" mz="n91">錢圈數</string>
+  <string name="ej6bz2yolp7fdgd-n92_lp7f" mz="n92">決賽桌數</string>
+  <string name="ej6bz2yolp7fdgd-n98_lp7f" mz="n98">全部</string>
+  <!-- Lobby/components/career/ssDerails.xml -->
+  <string name="ej6bz2yolp7fdgk-n19_sasm" mz="n19">賽事詳情</string>
+  <string name="ej6bz2yolp7fdgk-n88_o5ld" mz="n88">玩家(100)</string>
+  <string name="ej6bz2yolp7fdgk-n90_o5ld" mz="n90">獎池比例</string>
+  <string name="ej6bz2yolp7fdgk-n91_o5ld" mz="n91">獎勵</string>
+  <string name="ej6bz2yolp7fdgk-n120_lp7f" mz="n120">獲得獎金</string>
+  <string name="ej6bz2yolp7fdgk-n121_lp7f" mz="n121">盈利侷</string>
+  <string name="ej6bz2yolp7fdgk-n122_lp7f" mz="n122">參賽人數</string>
+  <string name="ej6bz2yolp7fdgk-n123_lp7f" mz="n123">縂手數</string>
+  <string name="ej6bz2yolp7fdgk-n124_lp7f" mz="n124">投資回報率</string>
+  <!-- Lobby/components/career/zjinfoItem.xml -->
+  <string name="ej6bz2yoo5ldcn-n5_o5ld" mz="n5">短牌</string>
+  <!-- Lobby/components/createTable/btn/btn_create.xml -->
+  <string name="ej6bz2yoh617dpe-n1_n5n9" mz="title">創建</string>
+  <!-- Lobby/components/createTable/createTable_content.xml -->
+  <string name="ej6bz2yocfulduk-n0_cful" mz="n0">房間名稱</string>
+  <string name="ej6bz2yocfulduk-n2_cful-prompt" mz="nameInput">請輸入房間名稱</string>
+  <string name="ej6bz2yocfulduk-n4_cful" mz="n4">玩家開局人數</string>
+  <string name="ej6bz2yocfulduk-n8_cful" mz="n8">房間人數</string>
+  <string name="ej6bz2yocfulduk-n12_cful" mz="n12">執行時間(分鐘數)</string>
+  <string name="ej6bz2yocfulduk-n16_cful" mz="n16">小盲</string>
+  <string name="ej6bz2yocfulduk-n20_cful" mz="n20">大盲</string>
+  <string name="ej6bz2yocfulduk-n24_cful" mz="n24">前注</string>
+  <string name="ej6bz2yocfulduk-n28_cful" mz="n28">帶入最小金額</string>
+  <string name="ej6bz2yocfulduk-n32_cful" mz="n32">帶入最大金額</string>
+  <string name="ej6bz2yocfulduk-n36_cful" mz="n36">底注</string>
+  <string name="ej6bz2yocfulduk-n40_cful" mz="n40">遊戲模式</string>
+  <string name="ej6bz2yocfulduk-n44_cful" mz="n44">是否開啟保險</string>
+  <string name="ej6bz2yocfulduk-n46_cful-0" mz="baoxian">是</string>
+  <string name="ej6bz2yocfulduk-n46_cful-1" mz="baoxian">否</string>
+  <string name="ej6bz2yocfulduk-n48_cful" mz="n48">AOF最小保留記分倍數</string>
+  <string name="ej6bz2yocfulduk-n50_cful-0" mz="AOF_Times">是</string>
+  <string name="ej6bz2yocfulduk-n50_cful-1" mz="AOF_Times">否</string>
+  <string name="ej6bz2yocfulduk-n52_cful" mz="n52">延時看牌</string>
+  <string name="ej6bz2yocfulduk-n56_cful" mz="n56">好友房密碼</string>
+  <string name="ej6bz2yocfulduk-n58_cful-prompt" mz="fPassword">請輸入4位密碼</string>
+  <string name="ej6bz2yocfulduk-n60_cful" mz="n60">是否限制ios</string>
+  <string name="ej6bz2yocfulduk-n64_cful" mz="n64">是否控制帶入</string>
+  <string name="ej6bz2yocfulduk-n66_cful-0" mz="limitDaiRu">是</string>
+  <string name="ej6bz2yocfulduk-n66_cful-1" mz="limitDaiRu">否</string>
+  <string name="ej6bz2yocfulduk-n68_cful" mz="n68">開啟GPS限制</string>
+  <string name="ej6bz2yocfulduk-n72_cful" mz="n72">開啟IP限制</string>
+  <!-- Lobby/components/createTable/createTable_texas.xml -->
+  <string name="ej6bz2yoo5ldce-n183_h617" mz="n183">創建桌子</string>
+  <!-- Lobby/components/entertainment/btn_left.xml -->
+  <string name="ej6bz2yodpugai-n2_dpug" mz="title">百人遊戲</string>
+  <!-- Lobby/components/entertainment/btn_middle.xml -->
+  <string name="ej6bz2yodpugaj-n2_dpug" mz="title">電子遊戲</string>
+  <!-- Lobby/components/entertainment/btn_right.xml -->
+  <string name="ej6bz2yodpugah-n2_dpug" mz="title">捕魚</string>
+  <!-- Lobby/components/entertainment/entertainment.xml -->
+  <string name="ej6bz2yodpugaf-n32_lpi8" mz="n32">請聯繫您的上級加入社區！</string>
+  <!-- Lobby/components/flowingwater/emailList.xml -->
+  <string name="ej6bz2yodwb6dtm-n7_dwb6" mz="emailName">郵件標題標題標題阿斯頓發</string>
+  <string name="ej6bz2yodwb6dtm-n9_dwb6" mz="emailIntro">內容簡介內容簡介內容簡介內容簡介內容簡介內容簡介內容簡介內容簡介內容簡介內容簡介內容簡介簡介內容簡介簡介內容簡介簡介內容......</string>
+  <!-- Lobby/components/flowingwater/flowingwater.xml -->
+  <string name="ej6bz2yov8hmdk1-n19_sasm" mz="n19">我的流水</string>
+  <string name="ej6bz2yov8hmdk1-n45_v8hm" mz="n45">時間</string>
+  <string name="ej6bz2yov8hmdk1-n46_v8hm" mz="n46">收益</string>
+  <string name="ej6bz2yov8hmdk1-n49_vf67" mz="n49">遊戲名</string>
+  <!-- Lobby/components/flowingwater/gameName.xml -->
+  <string name="ej6bz2yov8hmdk4-n113_n5n9" mz="title">德州</string>
+  <!-- Lobby/components/flowingwater/information.xml -->
+  <string name="ej6bz2yoqszkdqy-n19_sasm" mz="n19">我的消息</string>
+  <!-- Lobby/components/flowingwater/turnoverItem.xml -->
+  <string name="ej6bz2yov8hmdk6-n1_v8hm" mz="n1">帶入</string>
+  <string name="ej6bz2yov8hmdk6-n3_v8hm" mz="n3">德州</string>
+  <!-- Lobby/components/flowingwater/walletRecord.xml -->
+  <string name="ej6bz2yo800pdr3-n19_sasm" mz="n19">我的記錄</string>
+  <string name="ej6bz2yo800pdr3-n45_v8hm" mz="n45">時間</string>
+  <string name="ej6bz2yo800pdr3-n49_vf67" mz="n49">金額</string>
+  <string name="ej6bz2yo800pdr3-n50_800p" mz="n50">類型</string>
+  <string name="ej6bz2yo800pdr3-n51_l4e3-0" mz="gameDown">全部</string>
+  <string name="ej6bz2yo800pdr3-n51_l4e3-1" mz="gameDown">受贈</string>
+  <string name="ej6bz2yo800pdr3-n51_l4e3-2" mz="gameDown">贈送</string>
+  <string name="ej6bz2yo800pdr3-n51_l4e3-3" mz="gameDown">充值</string>
+  <string name="ej6bz2yo800pdr3-n51_l4e3-4" mz="gameDown">提現</string>
+  <!-- Lobby/components/flowingwater/walletRecordItem.xml -->
+  <string name="ej6bz2yo800pdr4-n1_v8hm" mz="n1">帶入</string>
+  <!-- Lobby/components/knapsack/Button7.xml -->
+  <string name="ej6bz2youwx3ddf-n1_uwx3" mz="title">兌換</string>
+  <!-- Lobby/components/knapsack/Button8.xml -->
+  <string name="ej6bz2youwx3ddg-n1_uwx3" mz="title">使用</string>
+  <!-- Lobby/components/knapsack/knapsack.xml -->
+  <string name="ej6bz2youwx3ddc-n19_sasm" mz="n19">背包</string>
+  <!-- Lobby/components/match/btn/Button10.xml -->
+  <string name="ej6bz2yolp7fddv-n2_lp7f" mz="title">盲注表</string>
+  <!-- Lobby/components/match/btn/Button11.xml -->
+  <string name="ej6bz2yolp7fddw-n2_lp7f" mz="title">賽事詳情</string>
+  <!-- Lobby/components/match/btn/Button12.xml -->
+  <string name="ej6bz2yolp7fddy-n2_lp7f" mz="title">獎勵</string>
+  <!-- Lobby/components/match/btn/Button13.xml -->
+  <string name="ej6bz2yolp7fddz-n2_lp7f" mz="title">玩家信息</string>
+  <!-- Lobby/components/match/match.xml -->
+  <string name="ej6bz2yo10dedd2-n26_lp7f" mz="matchJackpot">¥</string>
+  <!-- Lobby/components/match/matchDerails.xml -->
+  <string name="ej6bz2yolp7fddl-n19_sasm" mz="n19">賽事詳情</string>
+  <!-- Lobby/components/match/matchItem.xml -->
+  <string name="ej6bz2yo10dedd3-n7_10ded" mz="state">報名中</string>
+  <string name="ej6bz2yo10dedd3-n8_10ded" mz="name">免費常規賽</string>
+  <!-- Lobby/components/match/mzTable.xml -->
+  <string name="ej6bz2yolp7fde4-n50_lp7f" mz="n50">級別</string>
+  <string name="ej6bz2yolp7fde4-n52_lp7f" mz="n52">前注</string>
+  <string name="ej6bz2yolp7fde4-n54_lp7f" mz="n54">小盲</string>
+  <string name="ej6bz2yolp7fde4-n55_lp7f" mz="n55">大盲</string>
+  <!-- Lobby/components/match/playInfo.xml -->
+  <string name="ej6bz2yolp7fde2-n46_lp7f" mz="playcsnum">參賽人數:{pnum=0}</string>
+  <string name="ej6bz2yolp7fde2-n48_lp7f" mz="playercsrc">參賽人次:{pnum=1000}</string>
+  <string name="ej6bz2yolp7fde2-n50_lp7f" mz="n50">排名</string>
+  <string name="ej6bz2yolp7fde2-n52_lp7f" mz="n52">記分牌</string>
+  <string name="ej6bz2yolp7fde2-n54_p2zg" mz="n54">玩家昵稱</string>
+  <!-- Lobby/components/match/ssInfo.xml -->
+  <string name="ej6bz2yolp7fdeb-n61_lp7f" mz="n61">報名人數</string>
+  <string name="ej6bz2yolp7fdeb-n62_lp7f" mz="n62">最低參賽人數</string>
+  <string name="ej6bz2yolp7fdeb-n63_lp7f" mz="n63">牌桌人數</string>
+  <string name="ej6bz2yolp7fdeb-n64_lp7f" mz="n64">漲盲時間</string>
+  <string name="ej6bz2yolp7fdeb-n66_lp7f" mz="n66">復活次數</string>
+  <string name="ej6bz2yolp7fdeb-n67_lp7f" mz="n67">報名費</string>
+  <string name="ej6bz2yolp7fdeb-n68_lp7f" mz="n68">當前獎池</string>
+  <string name="ej6bz2yolp7fdeb-n69_lp7f" mz="n69">初始籌碼</string>
+  <string name="ej6bz2yolp7fdeb-n70_lp7f" mz="n70">延時報名</string>
+  <string name="ej6bz2yolp7fdeb-n75_lp7f" mz="zmTime">{s=0}秒</string>
+  <string name="ej6bz2yolp7fdeb-n83_lp7f" mz="n83">賽事説明</string>
+  <string name="ej6bz2yolp7fdeb-n84_lp7f" mz="n84">簡單、刺激、零買入,無門檻賽事等你來贏,歡迎踴躍參與!</string>
+  <string name="ej6bz2yolp7fdeb-n89_lp7f" mz="n89">比賽進行中:{time=00:12:00}</string>
+  <!-- Lobby/components/match/tip.xml -->
+  <string name="ej6bz2yopkzgdl2-n65_pkzg" mz="n65">參加賽事</string>
+  <string name="ej6bz2yopkzgdl2-n68_pkzg" mz="n68">報名本賽事您需要花費</string>
+  <string name="ej6bz2yopkzgdl2-n71_pkzg" mz="n71">本場賽事[color=#ff0000]無法取消報名[/color]是否確認報名?</string>
+  <!-- Lobby/components/match/winCom.xml -->
+  <string name="ej6bz2yolp7fde1-n46_lp7f" mz="winjack1">當前獎池:{jackpot=0}</string>
+  <string name="ej6bz2yolp7fde1-n48_lp7f" mz="winper1">獎勵人數:{pnum=1000}</string>
+  <string name="ej6bz2yolp7fde1-n50_lp7f" mz="n50">名次</string>
+  <string name="ej6bz2yolp7fde1-n51_lp7f" mz="n51">獎池比例</string>
+  <string name="ej6bz2yolp7fde1-n52_lp7f" mz="n52">獎池獎金</string>
+  <string name="ej6bz2yolp7fde1-n54_oolr" mz="n54">獎勵</string>
+  <string name="ej6bz2yolp7fde1-n55_oolr" mz="n55">獎勵比例</string>
+  <!-- Lobby/components/match/winCom1.xml -->
+  <string name="ej6bz2yolp7fde7-n46_lp7f" mz="n46">當前獎池:{jackpot=0}</string>
+  <string name="ej6bz2yolp7fde7-n48_lp7f" mz="n48">獎勵人數:{pnum=1000}</string>
+  <string name="ej6bz2yolp7fde7-n50_lp7f" mz="n50">名次</string>
+  <string name="ej6bz2yolp7fde7-n52_lp7f" mz="n52">獎勵</string>
+  <!-- Lobby/components/match/winCom2.xml -->
+  <string name="ej6bz2yolp7fde9-n46_lp7f" mz="n46">當前獎池:{jackpot=0}</string>
+  <string name="ej6bz2yolp7fde9-n48_lp7f" mz="n48">獎勵人數:{pnum=1000}</string>
+  <string name="ej6bz2yolp7fde9-n50_lp7f" mz="n50">名次</string>
+  <string name="ej6bz2yolp7fde9-n52_lp7f" mz="n52">獎勵</string>
+  <string name="ej6bz2yolp7fde9-n54_lp7f" mz="n54">獎勵比例</string>
+  <!-- Lobby/components/me/SetPayPassword.xml -->
+  <string name="ej6bz2yok9eedul-n69_k9ee" mz="n69">設置支付密碼</string>
+  <string name="ej6bz2yok9eedul-n61_9zj3-prompt" mz="newPayPwd">支付密碼</string>
+  <string name="ej6bz2yok9eedul-n62_9zj3-prompt" mz="newPayPwd2">請再次輸入密碼</string>
+  <string name="ej6bz2yok9eedul-n64_9zj3" mz="n64">密碼為6位數字</string>
+  <string name="ej6bz2yok9eedul-n65_9zj3" mz="n65">請再次輸入密碼</string>
+  <!-- Lobby/components/me/allbtn.xml -->
+  <string name="ej6bz2yoxnxnco-n22_sasm" mz="n22">我的社區</string>
+  <string name="ej6bz2yoxnxnco-n23_sasm" mz="n23">我的生涯</string>
+  <string name="ej6bz2yoxnxnco-n24_sasm" mz="n24">我的消息</string>
+  <string name="ej6bz2yoxnxnco-n25_sasm" mz="n25">我的分享</string>
+  <string name="ej6bz2yoxnxnco-n26_sasm" mz="n26">我的背包</string>
+  <string name="ej6bz2yoxnxnco-n27_sasm" mz="n27">我的設置</string>
+  <!-- Lobby/components/me/btn/Button22.xml -->
+  <string name="ej6bz2yomckvdks-n1_mckv" mz="title">編輯</string>
+  <!-- Lobby/components/me/btn/Button23.xml -->
+  <string name="ej6bz2yomckvdkt-n1_mckv" mz="title">複製</string>
+  <!-- Lobby/components/me/btn/btn_Collect.xml -->
+  <string name="ej6bz2yosasm2w-n1_sasm" mz="title">領取</string>
+  <!-- Lobby/components/me/btn/btn_Quest.xml -->
+  <string name="ej6bz2yosasm34-n3_sasm" mz="title">任務中心</string>
+  <!-- Lobby/components/me/btn/btn_complete.xml -->
+  <string name="ej6bz2yosasm2x-n1_sasm" mz="title">去完成</string>
+  <!-- Lobby/components/me/btn/btn_cz.xml -->
+  <string name="ej6bz2yosasm2s-n1_sasm" mz="title">充值</string>
+  <!-- Lobby/components/me/btn/btn_tx.xml -->
+  <string name="ej6bz2yosasm2t-n1_sasm" mz="title">提現</string>
+  <!-- Lobby/components/me/btn/btn_zz.xml -->
+  <string name="ej6bz2yosasm2u-n1_sasm" mz="title">轉賬</string>
+  <!-- Lobby/components/me/me.xml -->
+  <string name="ej6bz2yosasm2q-n20_sasm" mz="n20">餘額:</string>
+  <!-- Lobby/components/me/questItem.xml -->
+  <string name="ej6bz2yonl0r72-n7_j7kh" mz="btn_Completed">已完成</string>
+  <!-- Lobby/components/me/walletBtn.xml -->
+  <string name="ej6bz2yo800pdr5-n35_800p" mz="n35">錢包記錄</string>
+  <!-- Lobby/components/modifyLoginPwd/modifyLoginPwd.xml -->
+  <string name="ej6bz2yo9zj38l-n19_sasm" mz="n19">修改登錄密碼</string>
+  <string name="ej6bz2yo9zj38l-n50_9zj3-prompt" mz="oldPwd">舊密碼</string>
+  <string name="ej6bz2yo9zj38l-n51_9zj3-prompt" mz="newPwd">新密碼</string>
+  <string name="ej6bz2yo9zj38l-n52_9zj3-prompt" mz="newPwd1">請再次輸入新密碼</string>
+  <string name="ej6bz2yo9zj38l-n53_9zj3" mz="n53">輸入您的舊密碼</string>
+  <string name="ej6bz2yo9zj38l-n54_9zj3" mz="n54">請輸入新密碼</string>
+  <string name="ej6bz2yo9zj38l-n55_9zj3" mz="n55">請再次輸入新密碼</string>
+  <!-- Lobby/components/modifyPlayPwd/ForgetPlaypwd.xml -->
+  <string name="ej6bz2yo9zj38p-n61_9zj3-prompt" mz="newPayPwd">新支付密碼</string>
+  <string name="ej6bz2yo9zj38p-n62_9zj3-prompt" mz="newPayPwd2">請再次輸入新密碼</string>
+  <string name="ej6bz2yo9zj38p-n64_9zj3" mz="n64">新密碼為6個字元</string>
+  <string name="ej6bz2yo9zj38p-n65_9zj3" mz="n65">請再次輸入新密碼</string>
+  <string name="ej6bz2yo9zj38p-n76_ukyu-prompt" mz="phoneRegCode">請輸入驗證碼</string>
+  <string name="ej6bz2yo9zj38p-n80_lvf5-prompt" mz="emailForgetNum">請輸入郵箱地址</string>
+  <string name="ej6bz2yo9zj38p-n74_ukyu-prompt" mz="phoneAccount">請輸入手機號碼</string>
+  <!-- Lobby/components/modifyPlayPwd/btn_code.xml -->
+  <string name="ej6bz2youkyudus-n1_fyuw" mz="title">發送驗證碼</string>
+  <!-- Lobby/components/modifyPlayPwd/btn_emailgetPwd.xml -->
+  <string name="ej6bz2yolvf5dv1-n3_fyuw" mz="title">郵箱找回密碼</string>
+  <!-- Lobby/components/modifyPlayPwd/btn_phonegetPwd.xml -->
+  <string name="ej6bz2yolvf5dv2-n3_fyuw" mz="title">手機找回密碼</string>
+  <!-- Lobby/components/modifyPlayPwd/btn_wjpwd.xml -->
+  <string name="ej6bz2yo9zj38o-n58_9zj3" mz="n58">忘記支付密碼?</string>
+  <!-- Lobby/components/modifyPlayPwd/modifyPlayPwd.xml -->
+  <string name="ej6bz2yo9zj38n-n19_sasm" mz="n19">修改支付密碼</string>
+  <string name="ej6bz2yo9zj38n-n50_9zj3-prompt" mz="oldplaypwd">舊密碼</string>
+  <string name="ej6bz2yo9zj38n-n51_9zj3-prompt" mz="newplaypwd">新密碼</string>
+  <string name="ej6bz2yo9zj38n-n52_9zj3-prompt" mz="newplaypwd2">請再次輸入新密碼</string>
+  <string name="ej6bz2yo9zj38n-n53_9zj3" mz="n53">輸入您的舊密碼</string>
+  <string name="ej6bz2yo9zj38n-n54_9zj3" mz="n54">新密碼為6個字元</string>
+  <string name="ej6bz2yo9zj38n-n55_9zj3" mz="n55">請再次輸入新密碼</string>
+  <!-- Lobby/components/myinfo/Button19.xml -->
+  <string name="ej6bz2yof772djy-n2_f772" mz="title">選擇頭像</string>
+  <!-- Lobby/components/myinfo/Button20.xml -->
+  <string name="ej6bz2yof772djz-n2_f772" mz="title">頭像框</string>
+  <!-- Lobby/components/myinfo/btn_boy.xml -->
+  <string name="ej6bz2yozaoxdgy-n2_zaox" mz="title">男</string>
+  <!-- Lobby/components/myinfo/btn_girl.xml -->
+  <string name="ej6bz2yozaoxdgz-n2_zaox" mz="title">女</string>
+  <!-- Lobby/components/myinfo/btn_infosave.xml -->
+  <string name="ej6bz2yozaoxdhw-n1_zaox" mz="title">保存</string>
+  <!-- Lobby/components/myinfo/goldTip.xml -->
+  <string name="ej6bz2yozaoxdhx-n58_zaox" mz="n58">溫馨提示</string>
+  <string name="ej6bz2yozaoxdhx-n59_zaox" mz="n59">本次修改昵稱將消耗您金幣100(如金幣餘額不足,請及時充值哦!)</string>
+  <!-- Lobby/components/myinfo/myinfo.xml -->
+  <string name="ej6bz2yozaoxdgx-n19_sasm" mz="n19">個人資訊</string>
+  <string name="ej6bz2yozaoxdgx-n47_zaox" mz="n47">修改昵稱將消耗100金幣,首次修改免費</string>
+  <string name="ej6bz2yozaoxdgx-n48_zaox" mz="n48">性別:</string>
+  <!-- Lobby/components/myinfo/nogoldTip.xml -->
+  <string name="ej6bz2yozaoxdhy-n58_zaox" mz="n58">溫馨提示</string>
+  <string name="ej6bz2yozaoxdhy-n59_zaox" mz="n59">您的金幣不足修改昵稱失敗是否去充值?</string>
+  <!-- Lobby/components/myinfo/topHead.xml -->
+  <string name="ej6bz2yozaoxdh2-n43_zaox" mz="n43">自定義</string>
+  <!-- Lobby/components/redPacket/itemTitle.xml -->
+  <string name="ej6bz2yoplnlduc-n0_plnl" mz="n0">暱稱</string>
+  <string name="ej6bz2yoplnlduc-n1_plnl" mz="n1">ID</string>
+  <string name="ej6bz2yoplnlduc-n2_plnl" mz="n2">金額</string>
+  <string name="ej6bz2yoplnlduc-n3_plnl" mz="n3">完成度</string>
+  <string name="ej6bz2yoplnlduc-n4_plnl" mz="n4">狀態</string>
+  <!-- Lobby/components/redPacket/redPacketItem.xml -->
+  <string name="ej6bz2yoplnldua-n8_oh6k" mz="statusText">已領取</string>
+  <!-- Lobby/components/redPacket/redPacketLayer.xml -->
+  <string name="ej6bz2yoplnldu7-n20_oh6k" mz="receivegold">已領取：5000</string>
+  <string name="ej6bz2yoplnldu7-n21_oh6k" mz="noreceivegold">未領取：5000</string>
+  <!-- Lobby/components/removeEmail.xml -->
+  <string name="ej6bz2yot47udtu-n1_t47u" mz="title">刪除郵件</string>
+  <!-- Lobby/components/roomItem.xml -->
+  <string name="ej6bz2yonnpa1m-n8_nnpa" mz="n8">點擊進入</string>
+  <string name="ej6bz2yonnpa1m-n19_800p" mz="n19">德州</string>
+  <string name="ej6bz2yonnpa1m-n20_800p" mz="n20">AOF</string>
+  <string name="ej6bz2yonnpa1m-n21_800p" mz="n21">短牌</string>
+  <string name="ej6bz2yonnpa1m-n23_hp6m" mz="friend">友</string>
+  <!-- Lobby/components/setting/Privacy.xml -->
+  <string name="ej6bz2yomckvdke-n19_sasm" mz="n19">隱私政策</string>
+  <!-- Lobby/components/setting/PrivacyLabel.xml -->
+  <string name="ej6bz2yomckvdkf-n24_hy4f" mz="n24">根據法律、法規的相關規定，為保障網絡遊戲用戶（下稱“用戶”）的隱私權，規範對網絡遊戲用戶個人資訊的利用，特製定本政策（簡稱“隱私條款”）。
+</string>
+  <string name="ej6bz2yomckvdkf-n25_mckv" mz="n25">請用戶仔細閱讀以下全部內容。如用戶不同意本政策的任意內容，請不要注冊或使用我司的服務。如用戶通過進入注冊程式並勾選“我同意網絡遊戲用戶隱私權保護和個人資訊利用政策”，即表示用戶與桂林我司科技股份有限公司已達成協議，自願接受本政策的所有內容。此後，用戶不得以未閱讀本政策的內容作任何形式的抗辯。</string>
+  <string name="ej6bz2yomckvdkf-n26_mckv" mz="n26">一、尊重用戶個人隱私是我司的一項基本政策。“隱私”是指用戶在注冊我司賬號時提供給我司的用戶個人身份資訊，包括用戶注冊資料中的姓名、個人有效身份證件號碼、聯系方式、家庭住址等。我司一貫積極地採取技術與管理等合理措施保障用戶賬號的安全、有效；我司將善意使用收集的資訊，採取各項有效且必要的措施以保護用戶的隱私安全，並使用商業上合理的安全技術措施來保護用戶的隱私不被未經授權的訪問、使用或洩漏。
+</string>
+  <string name="ej6bz2yomckvdkf-n27_mckv" mz="n27">二、因業務所需，我司承諾將善意保護、使用其個人資訊，我司將不會向任何其他方公開或共用用戶注冊資料的中的姓名、個人有效身份證件號碼、聯系方式、家庭住址等個人身份資訊，但下列情況除外：
+</string>
+  <string name="ej6bz2yomckvdkf-n28_mckv" mz="n28">（1）用戶或用戶監護人授權我司披露的；
+
+（2）有關法律要求我司披露的；
+
+（3）司法機關或行政機關基於法定程式要求我司提供的；
+
+（4）我司為了維護自己合法權益而向用戶提起訴訟或者仲裁時；
+
+（5）應用戶監護人的合法要求而提供用戶個人身份資訊時。
+</string>
+  <string name="ej6bz2yomckvdkf-n29_mckv" mz="n29">三、我們收集的資訊
+
+在您使用我平臺服務服務的過程中，我平臺服務會按照如下方式收集您在使用服務時主動提供的或因為使用服務而產生的資訊，用以向您提供、優化我們的服務以及保障您的賬戶安全：</string>
+  <string name="ej6bz2yomckvdkf-n30_mckv" mz="n30">1. 當您注冊或使用我公司服務服務時，我們會收集您的手機號資訊、網絡身份標識資訊及個人常用設備資訊，用於標記您為我公司遊戲服務的用戶。
+</string>
+  <string name="ej6bz2yomckvdkf-n31_mckv" mz="n31">2. 我平臺會在獲得您同意或您主動提供的情況下收集您的實名身份資訊。
+</string>
+  <string name="ej6bz2yomckvdkf-n32_mckv" mz="n32">3.為保障您正常使用我們的服務，維護產品基礎功能的正常運行，優化產品性能，提升您的遊戲體驗並保障您的賬號安全，我們會收集您的設備類型和版本、系統版本、IP地址、應用ID、網絡類型等資訊。
+</string>
+  <string name="ej6bz2yomckvdkf-n33_mckv" mz="n33">4.當您使用我平臺服務服務時，我們會收集您的遊戲日誌資訊，例如登錄日誌、物品日誌、遊戲對局資訊等，以便您能夠在客戶端查看您的曆史記錄，同時用於運營統計分析、客服投訴處理及其他安全分析，並為提升您的更好的體驗。
+</string>
+  <string name="ej6bz2yomckvdkf-n34_mckv" mz="n34">5.當您使用我平臺服務產品的消費功能時，我們會收集您的充值記錄、消費記錄等資訊，以便您查詢您的交易記錄，同時盡最大程度保護您的虛擬物品安全。充值記錄、消費記錄屬於敏感資訊，收集上述資訊為實現我平臺服務產品的消費功能所必須，否則將無法完成交易。
+</string>
+  <string name="ej6bz2yomckvdkf-n35_mckv" mz="n35">6. 為保障您的賬號安全，營造公平、健康及安全的遊戲環境，我們會收集您的識別資訊、硬體及操作系統資訊、進程及APP崩潰記錄等資訊，以用於打擊破壞遊戲公平環境或幹擾、破壞遊戲服務正常進行的行為（如用於檢測盜版、掃描外掛、防止作弊等）。
+</string>
+  <string name="ej6bz2yomckvdkf-n36_mckv" mz="n36">7.請您理解，我們向您提供的功能和服務是不斷更新和發展的，如果某一功能或服務未在前述說明中且收集了您的資訊，我們會通過頁面提示、交互流程、網站公告等方式另行向您說明資訊收集的內容、範圍和目的，以征得您的同意。
+</string>
+  <string name="ej6bz2yomckvdkf-n37_mckv" mz="n37">
+四、我們存儲的資訊
+
+1.資訊存儲的方式和期限
+
+我們會通過安全的方式存儲您的資訊，包括本地存儲（例如利用APP進行數據緩存）、數據庫和服務器日誌。
+
+一般情況下，我們只會在為實現服務目的所必需的時間內或法律法規規定的條件下存儲您的個人資訊。
+</string>
+  <string name="ej6bz2yomckvdkf-n38_mckv" mz="n38">2.資訊存儲的地域
+
+我們會按照法律法規規定，將境內收集的用戶個人資訊存儲於中國境內。
+</string>
+  <string name="ej6bz2yomckvdkf-n39_mckv" mz="n39">3.產品或服務停止運營時的通知
+
+當我們的產品或服務發生停止運營的情況時，我們將根據相關法律法規規定進行公告通知，並依法保障您的合法權益。
+</string>
+  <string name="ej6bz2yomckvdkf-n40_mckv" mz="n40">五、我們如何使用資訊
+
+我們嚴格遵守法律法規的規定以及與用戶的約定，按照本指引及《我公司遊戲服務許可及服務協議》、《老K隱私政策》所述使用收集的資訊，以向您提供更為優質的服務。
+</string>
+  <string name="ej6bz2yomckvdkf-n41_mckv" mz="n41">1.資訊使用規則
+
+我們會按照如下規則使用收集的資訊：</string>
+  <string name="ej6bz2yomckvdkf-n42_mckv" mz="n42">1) 我們會根據我們收集的資訊向您提供各項功能與服務，包括基礎遊戲功能、玩家互動功能、消費功能等；
+</string>
+  <string name="ej6bz2yomckvdkf-n43_mckv" mz="n43">2) 我們會根據您的等級、偏好、習慣、消費等特徵為您提供服務，包括基於特徵您推薦您可能感興趣的活動、比賽、促銷等推廣內容。
+</string>
+  <string name="ej6bz2yomckvdkf-n44_mckv" mz="n44">3) 我們會根據您使用我平臺服務產品的頻率和情況、故障資訊、性能資訊等分析我們產品的運行情況，以確保服務的安全性，並優化我們的產品，提高我們的服務質量。我們不會將我們存儲在分析軟件中的資訊與您提供的個人身份資訊相結合。
+</string>
+  <string name="ej6bz2yomckvdkf-n45_mckv" mz="n45">2.定向推送活動的規則
+
+我們會根據您的遊戲等級、偏好、習慣、消費等特徵為您提供個性化的推廣內容，例如向您推薦您可能喜歡的遊戲皮膚。我們可能會視遊戲產品具體情況為您提供相關權限，以便您可以通過相關設置降低推薦內容與您的相關性/退出此類個性化推送。
+
+</string>
+  <string name="ej6bz2yomckvdkf-n46_mckv" mz="n46">六、您的權利
+
+在您使用我平臺服務服務期間，我們可能會視產品具體情況為您提供相應的操作設置，以便您可以查詢、刪除、更正或撤回您的相關個人資訊，您可參考相應產品的具體指引進行操作。此外，我們還設置了投訴舉報管道，您的意見將會得到及時的處理。
+</string>
+  <string name="ej6bz2yomckvdkf-n47_mckv" mz="n47">七、變更
+
+我們可能會適時對本指引進行修訂。當本指引的條款發生變更時，我們會在版本更新時以適當的方式向您提示變更後的指引。請您仔細閱讀變更後的隱私保護指引或指引內容，您繼續使用我公司遊戲服務表示您同意我們按照更新後的隱私保護指引收集、處理或使用您的個人資訊。
+</string>
+  <string name="ej6bz2yomckvdkf-n48_mckv" mz="n48">八、其他
+
+特別提示：本政策僅適用於使用我平臺的網絡用戶，若本政策與《服務條款》中相關條款不一致的，以本政策約定為准。
+</string>
+  <string name="ej6bz2yomckvdkf-n49_mckv" mz="n49">九、聯系我們
+
+當您有其他的投訴、建議、未成年人個人資訊相關問題時，請通過客服與我們聯系。我們將盡快審核所涉問題，並在驗證您的用戶身份後的十五天內予以回複。</string>
+  <!-- Lobby/components/setting/aboutUs.xml -->
+  <string name="ej6bz2yomckvdkc-n19_sasm" mz="n19">關於我們</string>
+  <string name="ej6bz2yomckvdkc-n41_hy4f" mz="n41">“Poker Space”是一款建立在多平臺，多產品，多區域，多玩法基礎上的軟件，致力於為德州撲克愛好者提供一個公平、公正、健康的德撲興趣社區，讓廣大德州撲克的粉絲在“Poker Space”中切磋交流，提高技術，真正體會到棋牌運動的魅力。
+
+</string>
+  <string name="ej6bz2yomckvdkc-n42_mckv" mz="n42">非經“Poker Space”授權開發並正式發布的其他任何由本“軟件”衍生的軟件均屬非法，下載、安裝、使用此類軟件，將可能導致不可預知的風險，由此產生的一切法律責任與糾紛一概與“Poker Space”無關。我們將會在用戶的每次對局中收取參與對局的一定量的手續費用，手續費用根據房間的級別設置。</string>
+  <string name="ej6bz2yomckvdkc-n43_mckv" mz="n43">公平：
+
+“poker Space”的洗牌演算法，以及隨機數生成器（RNG）與2019年10月通過了行業最嚴格的獨立認證機構 Gaming Laboratories In-temational(GLI)的測試，符合撲克遊戲對於隨機性的要求，保證每一位玩家都享有公平公正的遊戲環境。</string>
+  <string name="ej6bz2yomckvdkc-n44_mckv" mz="n44">合規：
+
+“Poker Space”總部設在馬耳他，位於新加坡的數據中心面向亞太地區，同時持有多個合法的博彩牌照【FSC】【MAG】【PAGCOR】，在各個區域同時建立有接入中心，保證各個區域玩家的遊戲速度和隱私保護。</string>
+  <!-- Lobby/components/setting/btn/btn_cancel.xml -->
+  <string name="ej6bz2yomckvdki-n1_fyuw" mz="title">取消</string>
+  <!-- Lobby/components/setting/btn/btn_confirm.xml -->
+  <string name="ej6bz2yomckvdkj-n1_fyuw" mz="title">確認</string>
+  <!-- Lobby/components/setting/btn/btn_setSou.xml -->
+  <string name="ej6bz2yo9zj383-n5_9zj3" mz="n5">音效</string>
+  <!-- Lobby/components/setting/btn/btn_setaboutme.xml -->
+  <string name="ej6bz2yo9zj388-n5_9zj3" mz="n5">關於我們</string>
+  <!-- Lobby/components/setting/btn/btn_setbgMusic.xml -->
+  <string name="ej6bz2yo9zj382-n5_9zj3" mz="n5">背景音樂</string>
+  <!-- Lobby/components/setting/btn/btn_setlanguage.xml -->
+  <string name="ej6bz2yo9zj386-n5_9zj3" mz="n5">語言設置</string>
+  <string name="ej6bz2yo9zj386-n7_9zj3" mz="n7">簡體中文</string>
+  <!-- Lobby/components/setting/btn/btn_setlogPwd.xml -->
+  <string name="ej6bz2yo9zj384-n5_9zj3" mz="n5">修改登錄密碼</string>
+  <!-- Lobby/components/setting/btn/btn_setplayPwd.xml -->
+  <string name="ej6bz2yo9zj385-n5_9zj3" mz="n5">修改支付密碼</string>
+  <!-- Lobby/components/setting/btn/btn_setreturn.xml -->
+  <string name="ej6bz2yo9zj38b-n5_9zj3" mz="n5">退出</string>
+  <!-- Lobby/components/setting/btn/btn_setver.xml -->
+  <string name="ej6bz2yo9zj38a-n5_9zj3" mz="n5">當前版本</string>
+  <!-- Lobby/components/setting/btn/btn_setys.xml -->
+  <string name="ej6bz2yo9zj389-n5_9zj3" mz="n5">隱私政策</string>
+  <!-- Lobby/components/setting/confirmsetLanguage.xml -->
+  <string name="ej6bz2yomckvdkd-n25_fyuw" mz="n25">語言更換</string>
+  <string name="ej6bz2yomckvdkd-n28_fyuw" mz="yuyanque">當前語言即將由"[color=#ff0000]{1=繁體中文}[/color]"→"[color=#ff0000]{2=簡體中文}[/color]"是否確認切換?</string>
+  <!-- Lobby/components/setting/language/ftzw.xml -->
+  <string name="ej6bz2yomckvdkl-n3_fyuw" mz="title">繁體中文</string>
+  <!-- Lobby/components/setting/setLanguage.xml -->
+  <string name="ej6bz2yomckvdkg-n32_mm8n" mz="btn_jtzw">簡體中文</string>
+  <string name="ej6bz2yomckvdkg-n33_mm8n" mz="btn_yinyu">英語</string>
+  <string name="ej6bz2yomckvdkg-n34_mm8n" mz="btn_ry">日本語</string>
+  <string name="ej6bz2yomckvdkg-n3_fyuw" mz="n3">語言設定</string>
+  <string name="ej6bz2yomckvdkg-n31_hy4f" mz="n31">語言設定</string>
+  <!-- Lobby/components/setting/setting.xml -->
+  <string name="ej6bz2yo9zj37y-n19_sasm" mz="n19">設置</string>
+  <string name="ej6bz2yo9zj37y-n39_9zj3" mz="n39">遊戲設置</string>
+  <string name="ej6bz2yo9zj37y-n40_9zj3" mz="n40">其他</string>
+  <!-- Lobby/components/share/btn_copylink.xml -->
+  <string name="ej6bz2yo9zj393-n1_9zj3" mz="title">複製鏈接</string>
+  <!-- Lobby/components/share/share.xml -->
+  <string name="ej6bz2yotbepam-n43_9zj3" mz="shareUrl">{host=www.baidu.com}</string>
+  <string name="ej6bz2yotbepam-n50_9dck" mz="n50">社區號:</string>
+  <!-- Lobby/components/top.xml -->
+  <string name="ej6bz2yonnpa19-n9_nl0r" mz="vip">VIP{vip=0}</string>
+  <!-- Lobby/components/topup/Virtual/Virtual.xml -->
+  <string name="ej6bz2yok5xj5v-n6_k5xj" mz="n6">USDT轉賬/購買</string>
+  <string name="ej6bz2yok5xj5v-n7_k5xj" mz="n7">限制充值金額200-20000</string>
+  <string name="ej6bz2yok5xj5v-n8_k5xj" mz="n8">預計到賬時間5分鐘</string>
+  <!-- Lobby/components/topup/Virtual/VirtualDerails.xml -->
+  <string name="ej6bz2yok5xj5w-n9_k5xj" mz="n9">請輸入或選擇充值金額</string>
+  <string name="ej6bz2yok5xj5w-n19_k5xj" mz="n19">溫馨提示:
+1,進行貨幣轉賬第三方平臺方或收取一定手續費,具體以錢包頁面提示爲準.
+2,由於數字貨幣交易的特殊性,貨幣轉換率實時變動,以最新爲主.
+3,轉賬成功後需等待5-10分鐘處理時間,若10分鐘未到賬請聯係在綫客服咨詢.
+4,請以最新付款資訊爲準.</string>
+  <!-- Lobby/components/topup/Virtual/help1.xml -->
+  <string name="ej6bz2yok5xj63-n32_k5xj" mz="n32">幫助介面</string>
+  <!-- Lobby/components/topup/Virtual/help2.xml -->
+  <string name="ej6bz2yok5xj64-n33_k5xj" mz="n33">幫助介面</string>
+  <!-- Lobby/components/topup/Virtual/help3.xml -->
+  <string name="ej6bz2yok5xj65-n34_k5xj" mz="n34">幫助介面</string>
+  <!-- Lobby/components/topup/Virtual/help4.xml -->
+  <string name="ej6bz2yok5xj66-n35_k5xj" mz="n35">幫助介面</string>
+  <!-- Lobby/components/topup/Virtual/help5.xml -->
+  <string name="ej6bz2yok5xj67-n36_k5xj" mz="n36">幫助介面</string>
+  <!-- Lobby/components/topup/bankcard/bankcard.xml -->
+  <string name="ej6bz2yok5xj5t-n6_k5xj" mz="n6">銀行卡</string>
+  <string name="ej6bz2yok5xj5t-n7_k5xj" mz="n7">限制充值金額100-50000</string>
+  <string name="ej6bz2yok5xj5t-n8_k5xj" mz="n8">預計到賬時間10分鐘</string>
+  <!-- Lobby/components/topup/bankcard/bankcardDerails.xml -->
+  <string name="ej6bz2yok5xj5u-n9_k5xj" mz="n9">請輸入或選擇充值金額</string>
+  <!-- Lobby/components/topup/topup.xml -->
+  <string name="ej6bz2yok5xj5f-n19_sasm" mz="n19">支付</string>
+  <!-- Lobby/components/topup/vip/kufu1.xml -->
+  <string name="ej6bz2yok5xj5z-n21_k5xj" mz="n21">金牌客服1</string>
+  <!-- Lobby/components/topup/vip/kufu2.xml -->
+  <string name="ej6bz2yok5xj60-n22_k5xj" mz="n22">金牌客服2</string>
+  <!-- Lobby/components/topup/vip/viptop.xml -->
+  <string name="ej6bz2yok5xj5x-n6_k5xj" mz="n6">VIP充值</string>
+  <string name="ej6bz2yok5xj5x-n7_k5xj" mz="n7">限制充值金額100-50000</string>
+  <string name="ej6bz2yok5xj5x-n8_k5xj" mz="n8">預計到賬時間10分鐘</string>
+  <!-- Lobby/components/topup/zfb/btn_zfbtype0.xml -->
+  <string name="ej6bz2yok5xj5i-n1_k5xj" mz="title">支付寶H5</string>
+  <!-- Lobby/components/topup/zfb/btn_zfbtype1.xml -->
+  <string name="ej6bz2yok5xj5j-n1_k5xj" mz="title">支付寶掃碼</string>
+  <!-- Lobby/components/topup/zfb/btn_zfbtype2.xml -->
+  <string name="ej6bz2yok5xj5k-n1_k5xj" mz="title">支付寶話費</string>
+  <!-- Lobby/components/topup/zfb/btn_zfbtype3.xml -->
+  <string name="ej6bz2yok5xj5l-n1_k5xj" mz="title">支付寶原生</string>
+  <!-- Lobby/components/topup/zfb/zfb.xml -->
+  <string name="ej6bz2yok5xj5g-n6_k5xj" mz="n6">支付寶</string>
+  <string name="ej6bz2yok5xj5g-n7_k5xj" mz="n7">限制充值金額100-100000</string>
+  <string name="ej6bz2yok5xj5g-n8_k5xj" mz="n8">預計到賬時間10分鐘</string>
+  <!-- Lobby/components/topup/zfb/zfbDerails.xml -->
+  <string name="ej6bz2yok5xj5h-n3_k5xj" mz="n3">請選擇支付方式</string>
+  <string name="ej6bz2yok5xj5h-n9_k5xj" mz="n9">請輸入或選擇充值金額</string>
+  <!-- Lobby/components/transfer/btn/btn_checkName.xml -->
+  <string name="ej6bz2yosasm3z-n1_sasm" mz="title">檢測用戶名</string>
+  <!-- Lobby/components/transfer/btn/btn_max.xml -->
+  <string name="ej6bz2yosasm40-n1_sasm" mz="title">MAX</string>
+  <!-- Lobby/components/transfer/transfer.xml -->
+  <string name="ej6bz2yosasm35-n12_sasm" mz="n12">接收人ID</string>
+  <string name="ej6bz2yosasm35-n13_sasm" mz="n13">贈送金額</string>
+  <string name="ej6bz2yosasm35-n14_sasm-prompt" mz="sendId">請點擊輸入接收人ID</string>
+  <string name="ej6bz2yosasm35-n19_sasm" mz="n19">轉賬</string>
+  <!-- Lobby/components/transfer/transferTip.xml -->
+  <string name="ej6bz2yosasm49-n26_sasm" mz="n26">您即將轉賬給</string>
+  <string name="ej6bz2yosasm49-n28_sasm" mz="playId">玩家  I D: [color=#ff0000]{id=456789123}[/color]</string>
+  <string name="ej6bz2yosasm49-n29_sasm" mz="playname">玩家名稱: [color=#ff0000]{name=456789123}[/color]</string>
+  <!-- Lobby/components/update/sure_btn.xml -->
+  <string name="ej6bz2yooo0ydq6-n4_oo0y" mz="tipText">更新完成</string>
+  <!-- Lobby/components/update/updateLayer.xml -->
+  <string name="ej6bz2yooo0ydq0-n6_oo0y" mz="progressText">1019kb/128391kb</string>
+  <!-- Lobby/components/vip/Button25.xml -->
+  <string name="ej6bz2yoi3ksdp5-n2_i3ks" mz="title">領
+取
+</string>
+  <!-- Lobby/components/vip/ConfirmAdress.xml -->
+  <string name="ej6bz2yoip22dpl-n273_ptch" mz="n273">收貨人:</string>
+  <string name="ej6bz2yoip22dpl-n274_ptch" mz="n274">手機號碼:</string>
+  <string name="ej6bz2yoip22dpl-n275_ptch" mz="n275">詳細地址:</string>
+  <!-- Lobby/components/vip/ConfirmOrder.xml -->
+  <string name="ej6bz2yoptchdol-n287_ptch" mz="user">收貨人: {per=}</string>
+  <string name="ej6bz2yoptchdol-n288_ptch" mz="phone">手機號碼:{phone = }</string>
+  <string name="ej6bz2yoptchdol-n289_ptch" mz="address">詳細地址: {address=}</string>
+  <string name="ej6bz2yoptchdol-n292_ptch" mz="goodsName">name</string>
+  <string name="ej6bz2yoptchdol-n293_ptch" mz="goodsjf">積分:{sou=10000}</string>
+  <string name="ej6bz2yoptchdol-n302_ip22" mz="n302">系統提示</string>
+  <string name="ej6bz2yoptchdol-n305_ip22" mz="exgoodsName">已成功兌換物品:{name=月賽門票}</string>
+  <string name="ej6bz2yoptchdol-n304_ip22" mz="createTime">創建時間:{time=}</string>
+  <string name="ej6bz2yoptchdol-n306_ip22" mz="orderNum">訂單號:{order=123456789}</string>
+  <!-- Lobby/components/vip/btn/btn_EditName.xml -->
+  <string name="ej6bz2yo9zj39l-n52_9zj3" mz="n52">編輯</string>
+  <!-- Lobby/components/vip/btn/btn_copyid.xml -->
+  <string name="ej6bz2yo9zj39k-n52_9zj3" mz="n52">複製</string>
+  <!-- Lobby/components/vip/btn/btn_vipderails.xml -->
+  <string name="ej6bz2youfcadop-n147_ptch" mz="n0">VIP詳情</string>
+  <!-- Lobby/components/vip/btn/btn_vipxq.xml -->
+  <string name="ej6bz2yoptchdoo-n56_9zj3" mz="vipxq">點擊查看詳情</string>
+  <!-- Lobby/components/vip/btn/goods.xml -->
+  <string name="ej6bz2yoptchdo1-n1_ptch" mz="title">全部物品</string>
+  <!-- Lobby/components/vip/btn/goodsName.xml -->
+  <string name="ej6bz2yoptchdo3-n3_ptch" mz="title">全部物品</string>
+  <!-- Lobby/components/vip/btn/goodsdropdown.xml -->
+  <string name="ej6bz2yoptchdo2-n117_n5n9-0" mz="list">全部物品</string>
+  <string name="ej6bz2yoptchdo2-n117_n5n9-1" mz="list">遊戲物品</string>
+  <string name="ej6bz2yoptchdo2-n117_n5n9-2" mz="list">實物物品</string>
+  <!-- Lobby/components/vip/changeAddress.xml -->
+  <string name="ej6bz2yoip22dpm-n287_ip22" mz="n287">修改地址</string>
+  <!-- Lobby/components/vip/exchangeItem.xml -->
+  <string name="ej6bz2yoptchdok-n2_ptch" mz="name">name</string>
+  <string name="ej6bz2yoptchdok-n3_ptch" mz="order">訂單號:{order=123456789}</string>
+  <string name="ej6bz2yoptchdok-n4_ptch" mz="time">創建時間:{time=2022}</string>
+  <string name="ej6bz2yoptchdok-n5_ptch" mz="souce">{jf=200}積分</string>
+  <string name="ej6bz2yoptchdok-n6_ptch" mz="state">成功</string>
+  <!-- Lobby/components/vip/exidAdress.xml -->
+  <string name="ej6bz2yoptchdoi-n273_ptch" mz="n273">收貨人:</string>
+  <string name="ej6bz2yoptchdoi-n274_ptch" mz="n274">手機號碼:</string>
+  <string name="ej6bz2yoptchdoi-n275_ptch" mz="n275">詳細地址:</string>
+  <string name="ej6bz2yoptchdoi-n281_ptch-prompt" mz="userName">請輸入收貨人姓名</string>
+  <string name="ej6bz2yoptchdoi-n282_ptch-prompt" mz="phone">請輸入手機號碼</string>
+  <string name="ej6bz2yoptchdoi-n284_eckf" mz="addresslabel">請輸入收貨地址</string>
+  <!-- Lobby/components/vip/shopping/Button24.xml -->
+  <string name="ej6bz2yoptchdo5-n1_ptch" mz="title">兌換</string>
+  <!-- Lobby/components/vip/shopping/exchenged.xml -->
+  <string name="ej6bz2yoptchdo8-n269_ptch" mz="n269">兌換記錄</string>
+  <!-- Lobby/components/vip/shopping/setaddress.xml -->
+  <string name="ej6bz2yoptchdo7-n271_ptch" mz="n271">設置地址</string>
+  <!-- Lobby/components/vip/shopping/shoppingItem.xml -->
+  <string name="ej6bz2yoptchdo4-n8_ptch" mz="name">金幣</string>
+  <string name="ej6bz2yoptchdo4-n9_ptch" mz="discount">{zk=9.5折}</string>
+  <string name="ej6bz2yoptchdo4-n10_ptch" mz="oldSoucre">{jf=200}積分</string>
+  <string name="ej6bz2yoptchdo4-n11_ptch" mz="nowSoucre">{zf=100}積分</string>
+  <!-- Lobby/components/vip/shoppingTip.xml -->
+  <string name="ej6bz2yoptchdom-n280_ptch" mz="n280">系統提示</string>
+  <string name="ej6bz2yoptchdom-n281_ptch" mz="nowNumTip">消耗:{yj=2000}積分</string>
+  <string name="ej6bz2yoptchdom-n282_ptch" mz="integralNum">原價:{jf=2000}積分</string>
+  <string name="ej6bz2yoptchdom-n283_ptch" mz="goodsName">兌換物品:{name=月賽門票}</string>
+  <string name="ej6bz2yoptchdom-n284_ptch" mz="orderNum">訂單號:{order=123456789}</string>
+  <string name="ej6bz2yoptchdom-n286_ufca" mz="n286">對不起,您的積分不足無法兌換該物品</string>
+  <!-- Lobby/components/vip/vip.xml -->
+  <string name="ej6bz2yo9zj39i-n48_9zj3" mz="id">ID:{id=1123456}</string>
+  <!-- Lobby/components/vip/vipDerails.xml -->
+  <string name="ej6bz2yoptchdnh-n175_ptch" mz="n175">VIP等級</string>
+  <string name="ej6bz2yoptchdnh-n176_ptch" mz="n176">所需經驗</string>
+  <string name="ej6bz2yoptchdnh-n177_ptch" mz="n177">免費提款次數</string>
+  <string name="ej6bz2yoptchdnh-n178_ptch" mz="n178">單筆提現金額</string>
+  <string name="ej6bz2yoptchdnh-n179_ptch" mz="n179">晉級禮金</string>
+  <string name="ej6bz2yoptchdnh-n180_ptch" mz="n180">每月禮金</string>
+  <string name="ej6bz2yoptchdnh-n182_ptch" mz="n182">VIP0</string>
+  <string name="ej6bz2yoptchdnh-n185_ptch" mz="onetx0">無</string>
+  <string name="ej6bz2yoptchdnh-n186_ptch" mz="jjgold0">無</string>
+  <string name="ej6bz2yoptchdnh-n187_ptch" mz="mygold0">無</string>
+  <string name="ej6bz2yoptchdnh-n189_ptch" mz="n189">VIP1</string>
+  <string name="ej6bz2yoptchdnh-n195_ptch" mz="n195">VIP2</string>
+  <string name="ej6bz2yoptchdnh-n201_ptch" mz="n201">VIP3</string>
+  <string name="ej6bz2yoptchdnh-n207_ptch" mz="n207">VIP4</string>
+  <string name="ej6bz2yoptchdnh-n213_ptch" mz="n213">VIP5</string>
+  <string name="ej6bz2yoptchdnh-n219_ptch" mz="n219">VIP6</string>
+  <string name="ej6bz2yoptchdnh-n225_ptch" mz="n225">VIP7</string>
+  <string name="ej6bz2yoptchdnh-n231_ptch" mz="n231">VIP8</string>
+  <string name="ej6bz2yoptchdnh-n237_ptch" mz="n237">VIP9</string>
+  <string name="ej6bz2yoptchdnh-n256_ptch" mz="n256">[color=#26a17b][b]1.普通標準:[/b][/color]會員的累計充值達到相應的級別要求，即可在當日及時普及相應的VIP等級.</string>
+  <string name="ej6bz2yoptchdnh-n257_ptch" mz="n257">[color=#26a17b][b]2.普通順序:[/b][/color]VIP等級達到相應的要求會自動升級,但VIP等級不可越級升級.</string>
+  <string name="ej6bz2yoptchdnh-n258_ptch" mz="n258">[color=#26a17b][b]3.每月禮金:[/b][/color]會員在上個月有過至少1次大於或等於每月禮金金額的存款.即可在當月2號獲得當前相應VIP等級的每月禮金.(每月禮金1倍流水即可提款).</string>
+  <string name="ej6bz2yoptchdnh-n260_ptch" mz="n260">[color=#26a17b][b]4.升級禮盒:[/b][/color]升級禮金在會員達到升級條件後即可領取,每個級別的升級禮金每位會員僅能獲得1次.每日淩晨02:00後派發前日參與投注存款升級的會員.(升級禮金1倍流水即可提款)</string>
+  <!-- Lobby/components/vip/vipShopping.xml -->
+  <string name="ej6bz2yoptchdnl-n264_ptch" mz="nowintegral">當前VIP積分:{integral=200}</string>
+  <string name="ej6bz2yoptchdnl-n265_ptch" mz="nowdiscount">當前VIP折扣:{zk=9.5折}</string>
+  <string name="ej6bz2yoptchdnl-n266_ptch-0" mz="btn_goods">全部物品</string>
+  <string name="ej6bz2yoptchdnl-n266_ptch-1" mz="btn_goods">遊戲物品</string>
+  <string name="ej6bz2yoptchdnl-n266_ptch-2" mz="btn_goods">實物物品</string>
+  <!-- Lobby/components/vip/vipwin.xml -->
+  <string name="ej6bz2youfcadot-n31_ufca" mz="vipLevel">VIP{level=0}</string>
+  <string name="ej6bz2youfcadot-n32_ufca" mz="userName">name</string>
+  <string name="ej6bz2youfcadot-n33_ufca" mz="Experience">當前VIP經驗值:{exp=0}</string>
+  <string name="ej6bz2youfcadot-n34_ufca" mz="Integral">當前VIP積分:{inter=0}</string>
+  <string name="ej6bz2youfcadot-n39_ufca" mz="n39">每日免費提款次數</string>
+  <string name="ej6bz2youfcadot-n41_ufca" mz="n41">單筆限制提現金額</string>
+  <string name="ej6bz2youfcadot-n43_ufca" mz="n43">晉級禮金</string>
+  <string name="ej6bz2youfcadot-n45_ufca" mz="n45">每月禮金(2號發放)</string>
+  <string name="ej6bz2youfcadot-n46_ufca" mz="discount">{zk=9.8}{z=折}</string>
+  <string name="ej6bz2youfcadot-n47_ufca" mz="n47">VIP專屬折扣</string>
+  <string name="ej6bz2youfcadot-n48_ufca" mz="n48">V3</string>
+  <string name="ej6bz2youfcadot-n58_ufca" mz="n58">V0</string>
+  <string name="ej6bz2youfcadot-n59_ufca" mz="n59">V1</string>
+  <string name="ej6bz2youfcadot-n60_ufca" mz="n60">V2</string>
+  <string name="ej6bz2youfcadot-n61_ufca" mz="n61">V4</string>
+  <string name="ej6bz2youfcadot-n62_ufca" mz="n62">V5</string>
+  <string name="ej6bz2youfcadot-n63_ufca" mz="n63">V6</string>
+  <string name="ej6bz2youfcadot-n64_ufca" mz="n64">V7</string>
+  <string name="ej6bz2youfcadot-n65_ufca" mz="n65">V8</string>
+  <string name="ej6bz2youfcadot-n66_ufca" mz="n66">V9</string>
+  <!-- Lobby/components/welfare/btn_left.xml -->
+  <string name="ej6bz2yok5xj4k-n1_k5xj" mz="title">超值福利</string>
+  <!-- Lobby/components/welfare/btn_right.xml -->
+  <string name="ej6bz2yok5xj4l-n1_k5xj" mz="title">新手福利</string>
+</resources>

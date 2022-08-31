@@ -1,0 +1,28 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "boli",
+    "texture": "b6e19ae9-4673-478e-9962-b6e1af250bbc",
+    "atlas": "",
+    "rect": [
+      1,
+      1,
+      112,
+      112
+    ],
+    "offset": [
+      -7,
+      7
+    ],
+    "originalSize": [
+      128,
+      128
+    ],
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

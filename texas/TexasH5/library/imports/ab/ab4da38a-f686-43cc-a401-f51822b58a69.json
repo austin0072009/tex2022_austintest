@@ -1,0 +1,28 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "pokerlogo",
+    "texture": "788e3a21-2921-47ee-b7f0-dc8a32f1107d",
+    "atlas": "",
+    "rect": [
+      1,
+      2,
+      2591,
+      2138
+    ],
+    "offset": [
+      -0.5,
+      -0.5
+    ],
+    "originalSize": [
+      2594,
+      2141
+    ],
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

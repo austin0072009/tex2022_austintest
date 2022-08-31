@@ -1,0 +1,28 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "Tuoxie",
+    "texture": "6cb47ea3-074e-4a6b-a19d-bc1fc61f9871",
+    "atlas": "",
+    "rect": [
+      1,
+      1,
+      186,
+      254
+    ],
+    "offset": [
+      -34,
+      0
+    ],
+    "originalSize": [
+      256,
+      256
+    ],
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

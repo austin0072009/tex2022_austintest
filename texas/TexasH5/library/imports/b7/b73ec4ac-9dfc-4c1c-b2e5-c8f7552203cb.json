@@ -1,0 +1,7 @@
+{
+  "__type__": "cc.TextAsset",
+  "_name": "SpinResultsRankInfo.d",
+  "_objFlags": 0,
+  "_native": "",
+  "text": "export default class SpinResultsRankInfo {\n    private _userId;\n    private _name;\n    private _headImageUrl;\n    private _headFrameImageUrl;\n    private _point;\n    private _number;\n    constructor(userId: number, name: string, headImageUrl: string, headFrameImageUrl: string, point: number, num: number);\n    get userId(): number;\n    set userId(value: number);\n    get name(): string;\n    set name(value: string);\n    get headImageUrl(): string;\n    set headImageUrl(value: string);\n    get headFrameImageUrl(): string;\n    set headFrameImageUrl(value: string);\n    get point(): number;\n    set point(value: number);\n    get number(): number;\n    set number(value: number);\n}\n"
+}

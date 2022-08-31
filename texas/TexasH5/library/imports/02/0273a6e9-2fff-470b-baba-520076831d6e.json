@@ -1,0 +1,28 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "tipbg",
+    "texture": "dc3ea9ab-1c73-4c03-a1ce-90310d8ea9c4",
+    "atlas": "",
+    "rect": [
+      0,
+      0,
+      1014,
+      767
+    ],
+    "offset": [
+      0,
+      0
+    ],
+    "originalSize": [
+      1014,
+      767
+    ],
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

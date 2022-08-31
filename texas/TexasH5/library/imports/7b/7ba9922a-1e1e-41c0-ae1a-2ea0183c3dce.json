@@ -1,0 +1,7 @@
+{
+  "__type__": "cc.TextAsset",
+  "_name": "jsbnbase64.d",
+  "_objFlags": 0,
+  "_native": "",
+  "text": "export declare function hex2b64(h: string): string;\nexport declare function b64tohex(s: string): string;\nexport declare function b64toBA(s: string): number[];\n"
+}

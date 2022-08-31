@@ -1,0 +1,7 @@
+{
+  "__type__": "cc.TextAsset",
+  "_name": "SpinResultsColumn.d",
+  "_objFlags": 0,
+  "_native": "",
+  "text": "import SpinResultCell from \"./SpinResultsCell\";\nexport default class SpinResultsColumn {\n    private _cells;\n    private _codes;\n    private _stopCodes;\n    private _replaceCodes;\n    private _isHoldWin;\n    constructor(cells?: SpinResultCell[], isHoldWin?: boolean);\n    get cells(): SpinResultCell[];\n    set cells(value: SpinResultCell[]);\n    private getReplaceCodes;\n    get codes(): number[];\n    get isHoldWin(): boolean;\n    set isHoldWin(value: boolean);\n    get replaceCodes(): number[][];\n    get stopCodes(): number[];\n}\n"
+}

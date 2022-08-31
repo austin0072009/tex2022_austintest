@@ -1,0 +1,36 @@
+{
+  "ver": "2.3.5",
+  "uuid": "b63f8cf9-7d3d-4d3d-9768-84aa14a312af",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 2048,
+  "height": 2048,
+  "platformSettings": {},
+  "subMetas": {
+    "Lobby_atlas0_4": {
+      "ver": "1.0.4",
+      "uuid": "1a5006ab-d08c-43c0-bbd5-0d888357bc36",
+      "rawTextureUuid": "b63f8cf9-7d3d-4d3d-9768-84aa14a312af",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": -8,
+      "offsetY": 11.5,
+      "trimX": 0,
+      "trimY": 0,
+      "width": 2032,
+      "height": 2025,
+      "rawWidth": 2048,
+      "rawHeight": 2048,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

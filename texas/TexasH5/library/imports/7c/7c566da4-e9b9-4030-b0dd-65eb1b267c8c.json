@@ -1,0 +1,7 @@
+{
+  "__type__": "cc.TextAsset",
+  "_name": "SpinResultsConst.d",
+  "_objFlags": 0,
+  "_native": "",
+  "text": "export default class SpinResultConst {\n    static NO_MOCK_CODE: number;\n}\n"
+}

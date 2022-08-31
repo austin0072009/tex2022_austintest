@@ -1,0 +1,7 @@
+{
+  "__type__": "cc.TextAsset",
+  "_name": "SpinResultsTour.d",
+  "_objFlags": 0,
+  "_native": "",
+  "text": "import SpinResultsRankInfo from \"./SpinResultsRankInfo\";\nexport default class SpinResultsTour {\n    private _status;\n    private _countdown;\n    private _totalMinutes;\n    private _award;\n    private _mine;\n    private _myPrev;\n    private _ranks;\n    constructor(status: number, countdown: number, totalMinutes: number, award: number[], mine: SpinResultsRankInfo, myPrev: SpinResultsRankInfo, ranks: SpinResultsRankInfo[]);\n    get status(): number;\n    set status(value: number);\n    get countdown(): number;\n    set countdown(value: number);\n    get totalMinutes(): number;\n    set totalMinutes(value: number);\n    get award(): number[];\n    set award(value: number[]);\n    get mine(): SpinResultsRankInfo;\n    set mine(value: SpinResultsRankInfo);\n    get myPrev(): SpinResultsRankInfo;\n    set myPrev(value: SpinResultsRankInfo);\n    get ranks(): SpinResultsRankInfo[];\n    set ranks(value: SpinResultsRankInfo[]);\n}\n"
+}

@@ -1,0 +1,168 @@
+{
+  "__type__": "cc.JsonAsset",
+  "_name": "serverlist",
+  "_objFlags": 0,
+  "_native": "",
+  "json": {
+    "apksite": "http://106.13.205.208:90/DownloadPage.html",
+    "ipasite": "http://106.13.205.208:90/DownloadPage.html",
+    "AppVersion": "1.1.5",
+    "IpaVersion": "1.0.1",
+    "TrueVer": "1.0.0",
+    "ResVersion": 0,
+    "IpaResVersion": 0,
+    "key": "4$",
+    "review": false,
+    "wechatsdk": false,
+    "experience": 0,
+    "encrypt": "1",
+    "webcheck": "0",
+    "serviceUrl": "",
+    "downloadurl": "http://106.13.205.208:90/DownloadPage.html",
+    "hotupdate_url": "http://resources.xhhfs.com",
+    "home_url": "http://192.168.2.16:8010/serverlist.json",
+    "serverlist": [
+      {
+        "idx": 108,
+        "url": "192.168.1.6",
+        "port": 9001,
+        "open": false,
+        "random": 100,
+        "status": 0,
+        "apiAdress": "http://106.12.117.217:81/",
+        "homeAdress": "http://106.12.117.217/",
+        "api2": "http://106.12.117.217:82/",
+        "interstatus": 1
+      },
+      {
+        "idx": 301,
+        "url": "106.13.222.130",
+        "port": 9001,
+        "open": true,
+        "random": 100,
+        "status": 1,
+        "apiAdress": "http://www.danqinake.com/",
+        "homeAdress": "http://pt.danqinake.com",
+        "api2": "http://www.danqinake.com/",
+        "interstatus": 1
+      },
+      {
+        "idx": 102,
+        "url": "192.168.2.16",
+        "port": 9001,
+        "open": true,
+        "random": 100,
+        "status": 1,
+        "apiAdress": "http://192.168.2.16/",
+        "homeAdress": "http://192.168.2.16/",
+        "api2": "http://192.168.2.16/",
+        "interstatus": 0
+      },
+      {
+        "idx": 201,
+        "url": "106.13.222.130",
+        "port": 10002,
+        "open": false,
+        "random": 100,
+        "status": 0,
+        "apiAdress": "http://106.13.222.130:91",
+        "homeAdress": "http://106.13.222.130/",
+        "api2": "http://106.13.222.130:82/",
+        "interstatus": 1
+      }
+    ],
+    "UpdateUrl": [
+      {
+        "idx": 102,
+        "url": "http://fir.im/1111",
+        "port": 9000,
+        "open": true,
+        "random": 100
+      },
+      {
+        "idx": 102,
+        "url": "http://fir.im/1110",
+        "port": 9000,
+        "open": true,
+        "random": 100
+      }
+    ],
+    "ResServer": [
+      {
+        "idx": 102,
+        "url": "http://106.13.207.246:8801/fordlc/resources/",
+        "port": 0,
+        "open": true,
+        "random": 100
+      },
+      {
+        "idx": 102,
+        "url": "http://106.13.207.246:8801/fordlc/resources/",
+        "port": 0,
+        "open": true,
+        "random": 100
+      }
+    ],
+    "gamereslist": [
+      {
+        "id": 0,
+        "version": "1.0.0",
+        "lastver": "1.0.0"
+      },
+      {
+        "id": 51,
+        "version": "1.0.0",
+        "lastver": "1.0.0"
+      },
+      {
+        "id": 254,
+        "version": "1.0.0",
+        "lastver": "1.0.0"
+      },
+      {
+        "id": 92,
+        "version": "1.0.0",
+        "lastver": "1.0.0"
+      },
+      {
+        "id": 91,
+        "version": "1.0.0",
+        "lastver": "1.0.0"
+      },
+      {
+        "id": 258,
+        "version": "1.0.0",
+        "lastver": "1.0.0"
+      },
+      {
+        "id": 4096,
+        "version": "1.0.0",
+        "lastver": "1.0.0"
+      },
+      {
+        "id": 21,
+        "version": "1.0.0",
+        "lastver": "1.0.0"
+      },
+      {
+        "id": 54,
+        "version": "1.0.0",
+        "lastver": "1.0.0"
+      },
+      {
+        "id": 201,
+        "version": "1.0.0",
+        "lastver": "1.0.0"
+      },
+      {
+        "id": 104,
+        "version": "1.0.0",
+        "lastver": "1.0.0"
+      }
+    ],
+    "TrustList": [
+      "0.0.0.0",
+      "192.168.0.0"
+    ]
+  }
+}

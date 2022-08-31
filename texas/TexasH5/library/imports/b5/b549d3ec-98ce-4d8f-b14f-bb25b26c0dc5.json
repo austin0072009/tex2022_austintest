@@ -1,0 +1,7 @@
+{
+  "__type__": "cc.TextAsset",
+  "_name": "SpinResultsSymbol.d",
+  "_objFlags": 0,
+  "_native": "",
+  "text": "export default class SpinResultsSymbol {\n    private _code;\n    private _assets;\n    private _position;\n    constructor(code?: number, assets?: number, position?: number);\n    /**\n     * 获取结果棋子编码\n     */\n    get code(): number;\n    /**\n     * 设置结果棋子编码\n     *\n     */\n    set code(value: number);\n    /**\n     * 获取棋子上的资产（比如金币数、freespin次数）\n     */\n    get assets(): number;\n    /**\n     * 设置棋子上的资产（比如金币数、freespin次数）\n     */\n    set assets(value: number);\n    /**\n     * 获取棋子位置\n     */\n    get position(): number;\n    /**\n     * 设置棋子位置\n     */\n    set position(value: number);\n}\n"
+}

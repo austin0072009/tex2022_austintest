@@ -1,0 +1,20 @@
+{
+  "ver": "1.1.2",
+  "uuid": "2cbd5aba-6d23-4226-8558-2cebb4d65ab2",
+  "isBundle": true,
+  "bundleName": "GameCommon",
+  "priority": "10",
+  "compressionType": {
+    "wechatgame": "subpackage",
+    "baidugame": "subpackage",
+    "xiaomi": "subpackage",
+    "quickgame": "subpackage",
+    "qgame": "subpackage",
+    "huawei": "subpackage",
+    "cocos-runtime": "subpackage"
+  },
+  "optimizeHotUpdate": {},
+  "inlineSpriteFrames": {},
+  "isRemoteBundle": {},
+  "subMetas": {}
+}

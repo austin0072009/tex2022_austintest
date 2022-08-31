@@ -1,0 +1,90 @@
+
+mhsg.png
+size: 874,272
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+body
+  rotate: false
+  xy: 588, 78
+  size: 284, 192
+  orig: 284, 192
+  offset: 0, 0
+  index: -1
+hair1
+  rotate: false
+  xy: 335, 40
+  size: 251, 230
+  orig: 251, 230
+  offset: 0, 0
+  index: -1
+hair2
+  rotate: true
+  xy: 588, 2
+  size: 74, 143
+  orig: 74, 143
+  offset: 0, 0
+  index: -1
+hair3
+  rotate: true
+  xy: 545, 13
+  size: 25, 33
+  orig: 25, 33
+  offset: 0, 0
+  index: -1
+head
+  rotate: true
+  xy: 2, 20
+  size: 250, 331
+  orig: 250, 331
+  offset: 0, 0
+  index: -1
+leye
+  rotate: false
+  xy: 335, 5
+  size: 62, 33
+  orig: 62, 33
+  offset: 0, 0
+  index: -1
+lm
+  rotate: false
+  xy: 399, 14
+  size: 59, 24
+  orig: 59, 24
+  offset: 0, 0
+  index: -1
+mouth
+  rotate: false
+  xy: 733, 37
+  size: 85, 39
+  orig: 85, 39
+  offset: 0, 0
+  index: -1
+mouth2
+  rotate: false
+  xy: 733, 7
+  size: 71, 28
+  orig: 71, 28
+  offset: 0, 0
+  index: -1
+reye
+  rotate: false
+  xy: 460, 2
+  size: 44, 36
+  orig: 44, 36
+  offset: 0, 0
+  index: -1
+rh
+  rotate: true
+  xy: 820, 34
+  size: 42, 46
+  orig: 44, 48
+  offset: 1, 1
+  index: -1
+rm
+  rotate: false
+  xy: 506, 11
+  size: 37, 27
+  orig: 37, 27
+  offset: 0, 0
+  index: -1

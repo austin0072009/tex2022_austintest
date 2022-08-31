@@ -1,0 +1,28 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "hd_zhuaji01",
+    "texture": "e3ea67aa-aa8f-46b6-9f17-e11178c6c721",
+    "atlas": "",
+    "rect": [
+      4,
+      3,
+      250,
+      249
+    ],
+    "offset": [
+      1,
+      0.5
+    ],
+    "originalSize": [
+      256,
+      256
+    ],
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

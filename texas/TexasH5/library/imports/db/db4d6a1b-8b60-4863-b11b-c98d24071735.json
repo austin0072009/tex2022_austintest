@@ -1,0 +1,851 @@
+{
+  "__type__": "sp.SkeletonData",
+  "_name": "pokerlogo",
+  "_objFlags": 0,
+  "_native": "",
+  "_skeletonJson": {
+    "skeleton": {
+      "hash": "K+dIxmgK7sVyCvf+ouNNpTAN9ho",
+      "spine": "3.8.75",
+      "x": -636.43,
+      "y": -746.49,
+      "width": 1281.59,
+      "height": 1224.92,
+      "images": "",
+      "audio": ""
+    },
+    "bones": [
+      {
+        "name": "root"
+      },
+      {
+        "name": "poker",
+        "parent": "root",
+        "x": 4.37,
+        "y": -136.21,
+        "scaleX": 4.3592,
+        "scaleY": 4.3592
+      },
+      {
+        "name": "logo",
+        "parent": "root",
+        "x": 0.22,
+        "y": 44.58
+      }
+    ],
+    "slots": [
+      {
+        "name": "poker",
+        "bone": "poker",
+        "attachment": "logoani00060"
+      },
+      {
+        "name": "logo",
+        "bone": "logo",
+        "attachment": "logo"
+      }
+    ],
+    "skins": [
+      {
+        "name": "default",
+        "attachments": {
+          "logo": {
+            "logo": {
+              "x": 0.5,
+              "width": 369,
+              "height": 418
+            }
+          },
+          "poker": {
+            "logoani00000": {
+              "y": 0.5,
+              "width": 294,
+              "height": 281
+            },
+            "logoani00001": {
+              "y": 0.5,
+              "width": 294,
+              "height": 281
+            },
+            "logoani00002": {
+              "y": 0.5,
+              "width": 294,
+              "height": 281
+            },
+            "logoani00003": {
+              "y": 0.5,
+              "width": 294,
+              "height": 281
+            },
+            "logoani00004": {
+              "y": 0.5,
+              "width": 294,
+              "height": 281
+            },
+            "logoani00005": {
+              "y": 0.5,
+              "width": 294,
+              "height": 281
+            },
+            "logoani00006": {
+              "y": 0.5,
+              "width": 294,
+              "height": 281
+            },
+            "logoani00007": {
+              "y": 0.5,
+              "width": 294,
+              "height": 281
+            },
+            "logoani00008": {
+              "y": 0.5,
+              "width": 294,
+              "height": 281
+            },
+            "logoani00009": {
+              "y": 0.5,
+              "width": 294,
+              "height": 281
+            },
+            "logoani00010": {
+              "y": 0.5,
+              "width": 294,
+              "height": 281
+            },
+            "logoani00011": {
+              "y": 0.5,
+              "width": 294,
+              "height": 281
+            },
+            "logoani00012": {
+              "y": 0.5,
+              "width": 294,
+              "height": 281
+            },
+            "logoani00013": {
+              "y": 0.5,
+              "width": 294,
+              "height": 281
+            },
+            "logoani00014": {
+              "y": 0.5,
+              "width": 294,
+              "height": 281
+            },
+            "logoani00015": {
+              "y": 0.5,
+              "width": 294,
+              "height": 281
+            },
+            "logoani00016": {
+              "y": 0.5,
+              "width": 294,
+              "height": 281
+            },
+            "logoani00017": {
+              "y": 0.5,
+              "width": 294,
+              "height": 281
+            },
+            "logoani00018": {
+              "y": 0.5,
+              "width": 294,
+              "height": 281
+            },
+            "logoani00019": {
+              "y": 0.5,
+              "width": 294,
+              "height": 281
+            },
+            "logoani00020": {
+              "y": 0.5,
+              "width": 294,
+              "height": 281
+            },
+            "logoani00021": {
+              "y": 0.5,
+              "width": 294,
+              "height": 281
+            },
+            "logoani00022": {
+              "y": 0.5,
+              "width": 294,
+              "height": 281
+            },
+            "logoani00023": {
+              "y": 0.5,
+              "width": 294,
+              "height": 281
+            },
+            "logoani00024": {
+              "y": 0.5,
+              "width": 294,
+              "height": 281
+            },
+            "logoani00025": {
+              "y": 0.5,
+              "width": 294,
+              "height": 281
+            },
+            "logoani00026": {
+              "y": 0.5,
+              "width": 294,
+              "height": 281
+            },
+            "logoani00027": {
+              "y": 0.5,
+              "width": 294,
+              "height": 281
+            },
+            "logoani00028": {
+              "y": 0.5,
+              "width": 294,
+              "height": 281
+            },
+            "logoani00029": {
+              "y": 0.5,
+              "width": 294,
+              "height": 281
+            },
+            "logoani00030": {
+              "y": 0.5,
+              "width": 294,
+              "height": 281
+            },
+            "logoani00031": {
+              "y": 0.5,
+              "width": 294,
+              "height": 281
+            },
+            "logoani00032": {
+              "y": 0.5,
+              "width": 294,
+              "height": 281
+            },
+            "logoani00033": {
+              "y": 0.5,
+              "width": 294,
+              "height": 281
+            },
+            "logoani00034": {
+              "y": 0.5,
+              "width": 294,
+              "height": 281
+            },
+            "logoani00035": {
+              "y": 0.5,
+              "width": 294,
+              "height": 281
+            },
+            "logoani00036": {
+              "y": 0.5,
+              "width": 294,
+              "height": 281
+            },
+            "logoani00037": {
+              "y": 0.5,
+              "width": 294,
+              "height": 281
+            },
+            "logoani00038": {
+              "y": 0.5,
+              "width": 294,
+              "height": 281
+            },
+            "logoani00039": {
+              "y": 0.5,
+              "width": 294,
+              "height": 281
+            },
+            "logoani00040": {
+              "y": 0.5,
+              "width": 294,
+              "height": 281
+            },
+            "logoani00041": {
+              "y": 0.5,
+              "width": 294,
+              "height": 281
+            },
+            "logoani00042": {
+              "y": 0.5,
+              "width": 294,
+              "height": 281
+            },
+            "logoani00043": {
+              "y": 0.5,
+              "width": 294,
+              "height": 281
+            },
+            "logoani00044": {
+              "y": 0.5,
+              "width": 294,
+              "height": 281
+            },
+            "logoani00045": {
+              "y": 0.5,
+              "width": 294,
+              "height": 281
+            },
+            "logoani00046": {
+              "y": 0.5,
+              "width": 294,
+              "height": 281
+            },
+            "logoani00047": {
+              "y": 0.5,
+              "width": 294,
+              "height": 281
+            },
+            "logoani00048": {
+              "y": 0.5,
+              "width": 294,
+              "height": 281
+            },
+            "logoani00049": {
+              "y": 0.5,
+              "width": 294,
+              "height": 281
+            },
+            "logoani00050": {
+              "y": 0.5,
+              "width": 294,
+              "height": 281
+            },
+            "logoani00051": {
+              "y": 0.5,
+              "width": 294,
+              "height": 281
+            },
+            "logoani00052": {
+              "y": 0.5,
+              "width": 294,
+              "height": 281
+            },
+            "logoani00053": {
+              "y": 0.5,
+              "width": 294,
+              "height": 281
+            },
+            "logoani00054": {
+              "y": 0.5,
+              "width": 294,
+              "height": 281
+            },
+            "logoani00055": {
+              "y": 0.5,
+              "width": 294,
+              "height": 281
+            },
+            "logoani00056": {
+              "y": 0.5,
+              "width": 294,
+              "height": 281
+            },
+            "logoani00057": {
+              "y": 0.5,
+              "width": 294,
+              "height": 281
+            },
+            "logoani00058": {
+              "y": 0.5,
+              "width": 294,
+              "height": 281
+            },
+            "logoani00059": {
+              "y": 0.5,
+              "width": 294,
+              "height": 281
+            },
+            "logoani00060": {
+              "y": 0.5,
+              "width": 294,
+              "height": 281
+            },
+            "logoani00061": {
+              "y": 0.5,
+              "width": 294,
+              "height": 281
+            },
+            "logoani00062": {
+              "y": 0.5,
+              "width": 294,
+              "height": 281
+            },
+            "logoani00063": {
+              "y": 0.5,
+              "width": 294,
+              "height": 281
+            },
+            "logoani00064": {
+              "y": 0.5,
+              "width": 294,
+              "height": 281
+            },
+            "logoani00065": {
+              "y": 0.5,
+              "width": 294,
+              "height": 281
+            },
+            "logoani00066": {
+              "y": 0.5,
+              "width": 294,
+              "height": 281
+            },
+            "logoani00067": {
+              "y": 0.5,
+              "width": 294,
+              "height": 281
+            },
+            "logoani00068": {
+              "y": 0.5,
+              "width": 294,
+              "height": 281
+            },
+            "logoani00069": {
+              "y": 0.5,
+              "width": 294,
+              "height": 281
+            },
+            "logoani00070": {
+              "y": 0.5,
+              "width": 294,
+              "height": 281
+            },
+            "logoani00071": {
+              "y": 0.5,
+              "width": 294,
+              "height": 281
+            },
+            "logoani00072": {
+              "y": 0.5,
+              "width": 294,
+              "height": 281
+            },
+            "logoani00073": {
+              "y": 0.5,
+              "width": 294,
+              "height": 281
+            },
+            "logoani00074": {
+              "y": 0.5,
+              "width": 294,
+              "height": 281
+            },
+            "logoani00075": {
+              "y": 0.5,
+              "width": 294,
+              "height": 281
+            },
+            "logoani00076": {
+              "y": 0.5,
+              "width": 294,
+              "height": 281
+            },
+            "logoani00077": {
+              "y": 0.5,
+              "width": 294,
+              "height": 281
+            },
+            "logoani00078": {
+              "y": 0.5,
+              "width": 294,
+              "height": 281
+            },
+            "logoani00079": {
+              "y": 0.5,
+              "width": 294,
+              "height": 281
+            },
+            "logoani00080": {
+              "y": 0.5,
+              "width": 294,
+              "height": 281
+            },
+            "logoani00081": {
+              "y": 0.5,
+              "width": 294,
+              "height": 281
+            },
+            "logoani00082": {
+              "y": 0.5,
+              "width": 294,
+              "height": 281
+            }
+          }
+        }
+      }
+    ],
+    "animations": {
+      "animation": {
+        "slots": {
+          "logo": {
+            "color": [
+              {
+                "color": "ffffff00",
+                "curve": "stepped"
+              },
+              {
+                "time": 4,
+                "color": "ffffff00"
+              },
+              {
+                "time": 5,
+                "color": "ffffffff"
+              }
+            ]
+          },
+          "poker": {
+            "attachment": [
+              {
+                "name": "logoani00000"
+              },
+              {
+                "time": 0.0667,
+                "name": "logoani00001"
+              },
+              {
+                "time": 0.1333,
+                "name": "logoani00002"
+              },
+              {
+                "time": 0.2,
+                "name": "logoani00003"
+              },
+              {
+                "time": 0.2667,
+                "name": "logoani00004"
+              },
+              {
+                "time": 0.3333,
+                "name": "logoani00005"
+              },
+              {
+                "time": 0.4,
+                "name": "logoani00006"
+              },
+              {
+                "time": 0.4667,
+                "name": "logoani00007"
+              },
+              {
+                "time": 0.5333,
+                "name": "logoani00008"
+              },
+              {
+                "time": 0.6,
+                "name": "logoani00009"
+              },
+              {
+                "time": 0.6667,
+                "name": "logoani00010"
+              },
+              {
+                "time": 0.7333,
+                "name": "logoani00011"
+              },
+              {
+                "time": 0.8,
+                "name": "logoani00012"
+              },
+              {
+                "time": 0.8667,
+                "name": "logoani00013"
+              },
+              {
+                "time": 0.9333,
+                "name": "logoani00014"
+              },
+              {
+                "time": 1,
+                "name": "logoani00015"
+              },
+              {
+                "time": 1.0667,
+                "name": "logoani00016"
+              },
+              {
+                "time": 1.1333,
+                "name": "logoani00017"
+              },
+              {
+                "time": 1.2,
+                "name": "logoani00018"
+              },
+              {
+                "time": 1.2667,
+                "name": "logoani00019"
+              },
+              {
+                "time": 1.3333,
+                "name": "logoani00020"
+              },
+              {
+                "time": 1.4,
+                "name": "logoani00021"
+              },
+              {
+                "time": 1.4667,
+                "name": "logoani00022"
+              },
+              {
+                "time": 1.5333,
+                "name": "logoani00023"
+              },
+              {
+                "time": 1.6,
+                "name": "logoani00024"
+              },
+              {
+                "time": 1.6667,
+                "name": "logoani00025"
+              },
+              {
+                "time": 1.7333,
+                "name": "logoani00026"
+              },
+              {
+                "time": 1.8,
+                "name": "logoani00027"
+              },
+              {
+                "time": 1.8667,
+                "name": "logoani00028"
+              },
+              {
+                "time": 1.9333,
+                "name": "logoani00029"
+              },
+              {
+                "time": 2,
+                "name": "logoani00030"
+              },
+              {
+                "time": 2.0667,
+                "name": "logoani00031"
+              },
+              {
+                "time": 2.1333,
+                "name": "logoani00032"
+              },
+              {
+                "time": 2.2,
+                "name": "logoani00033"
+              },
+              {
+                "time": 2.2667,
+                "name": "logoani00034"
+              },
+              {
+                "time": 2.3333,
+                "name": "logoani00035"
+              },
+              {
+                "time": 2.4,
+                "name": "logoani00036"
+              },
+              {
+                "time": 2.4667,
+                "name": "logoani00037"
+              },
+              {
+                "time": 2.5333,
+                "name": "logoani00038"
+              },
+              {
+                "time": 2.6,
+                "name": "logoani00039"
+              },
+              {
+                "time": 2.6667,
+                "name": "logoani00040"
+              },
+              {
+                "time": 2.7333,
+                "name": "logoani00041"
+              },
+              {
+                "time": 2.8,
+                "name": "logoani00042"
+              },
+              {
+                "time": 2.8667,
+                "name": "logoani00043"
+              },
+              {
+                "time": 2.9333,
+                "name": "logoani00044"
+              },
+              {
+                "time": 3,
+                "name": "logoani00045"
+              },
+              {
+                "time": 3.0667,
+                "name": "logoani00046"
+              },
+              {
+                "time": 3.1333,
+                "name": "logoani00047"
+              },
+              {
+                "time": 3.2,
+                "name": "logoani00048"
+              },
+              {
+                "time": 3.2667,
+                "name": "logoani00049"
+              },
+              {
+                "time": 3.3333,
+                "name": "logoani00050"
+              },
+              {
+                "time": 3.4,
+                "name": "logoani00051"
+              },
+              {
+                "time": 3.4667,
+                "name": "logoani00052"
+              },
+              {
+                "time": 3.5333,
+                "name": "logoani00053"
+              },
+              {
+                "time": 3.6,
+                "name": "logoani00054"
+              },
+              {
+                "time": 3.6667,
+                "name": "logoani00055"
+              },
+              {
+                "time": 3.7333,
+                "name": "logoani00056"
+              },
+              {
+                "time": 3.8,
+                "name": "logoani00057"
+              },
+              {
+                "time": 3.8667,
+                "name": "logoani00058"
+              },
+              {
+                "time": 3.9333,
+                "name": "logoani00059"
+              },
+              {
+                "time": 4,
+                "name": "logoani00060"
+              },
+              {
+                "time": 4.0667,
+                "name": "logoani00061"
+              },
+              {
+                "time": 4.1333,
+                "name": "logoani00062"
+              },
+              {
+                "time": 4.2,
+                "name": "logoani00063"
+              },
+              {
+                "time": 4.2667,
+                "name": "logoani00064"
+              },
+              {
+                "time": 4.3333,
+                "name": "logoani00065"
+              },
+              {
+                "time": 4.4,
+                "name": "logoani00066"
+              },
+              {
+                "time": 4.4667,
+                "name": "logoani00067"
+              },
+              {
+                "time": 4.5333,
+                "name": "logoani00068"
+              },
+              {
+                "time": 4.6,
+                "name": "logoani00069"
+              },
+              {
+                "time": 4.6667,
+                "name": "logoani00070"
+              },
+              {
+                "time": 4.7333,
+                "name": "logoani00071"
+              },
+              {
+                "time": 4.8,
+                "name": "logoani00072"
+              },
+              {
+                "time": 4.8667,
+                "name": "logoani00073"
+              },
+              {
+                "time": 4.9333,
+                "name": "logoani00074"
+              },
+              {
+                "time": 5,
+                "name": "logoani00075"
+              },
+              {
+                "time": 5.0667,
+                "name": "logoani00076"
+              },
+              {
+                "time": 5.1333,
+                "name": "logoani00077"
+              },
+              {
+                "time": 5.2,
+                "name": "logoani00078"
+              },
+              {
+                "time": 5.2667,
+                "name": "logoani00079"
+              },
+              {
+                "time": 5.3333,
+                "name": "logoani00080"
+              },
+              {
+                "time": 5.4,
+                "name": "logoani00081"
+              },
+              {
+                "time": 5.4667,
+                "name": "logoani00082"
+              },
+              {
+                "time": 5.5333,
+                "name": null
+              }
+            ]
+          }
+        }
+      }
+    }
+  },
+  "_atlasText": "\npokerlogo.png\nsize: 2594,2141\nformat: RGBA8888\nfilter: Linear,Linear\nrepeat: none\nlogo\n  rotate: false\n  xy: 2, 1721\n  size: 369, 418\n  orig: 369, 418\n  offset: 0, 0\n  index: -1\nlogoani00000\n  rotate: false\n  xy: 2510, 948\n  size: 77, 190\n  orig: 294, 281\n  offset: 104, 34\n  index: -1\nlogoani00001\n  rotate: true\n  xy: 2031, 73\n  size: 79, 191\n  orig: 294, 281\n  offset: 104, 33\n  index: -1\nlogoani00002\n  rotate: true\n  xy: 1335, 10\n  size: 83, 193\n  orig: 294, 281\n  offset: 104, 32\n  index: -1\nlogoani00003\n  rotate: true\n  xy: 2, 2\n  size: 102, 197\n  orig: 294, 281\n  offset: 96, 31\n  index: -1\nlogoani00004\n  rotate: true\n  xy: 1835, 248\n  size: 114, 205\n  orig: 294, 281\n  offset: 85, 29\n  index: -1\nlogoani00005\n  rotate: false\n  xy: 2405, 1140\n  size: 121, 206\n  orig: 294, 281\n  offset: 82, 28\n  index: -1\nlogoani00006\n  rotate: true\n  xy: 1586, 6\n  size: 144, 213\n  orig: 294, 281\n  offset: 70, 27\n  index: -1\nlogoani00007\n  rotate: false\n  xy: 2436, 1392\n  size: 156, 218\n  orig: 294, 281\n  offset: 68, 26\n  index: -1\nlogoani00008\n  rotate: true\n  xy: 2336, 487\n  size: 167, 230\n  orig: 294, 281\n  offset: 67, 21\n  index: -1\nlogoani00009\n  rotate: true\n  xy: 2328, 315\n  size: 170, 235\n  orig: 294, 281\n  offset: 64, 21\n  index: -1\nlogoani00010\n  rotate: false\n  xy: 2336, 892\n  size: 172, 236\n  orig: 294, 281\n  offset: 63, 21\n  index: -1\nlogoani00011\n  rotate: true\n  xy: 1592, 152\n  size: 202, 237\n  orig: 294, 281\n  offset: 46, 20\n  index: -1\nlogoani00012\n  rotate: true\n  xy: 1842, 364\n  size: 208, 239\n  orig: 294, 281\n  offset: 41, 20\n  index: -1\nlogoani00013\n  rotate: true\n  xy: 1595, 356\n  size: 210, 238\n  orig: 294, 281\n  offset: 39, 21\n  index: -1\nlogoani00014\n  rotate: true\n  xy: 2083, 154\n  size: 221, 239\n  orig: 294, 281\n  offset: 34, 20\n  index: -1\nlogoani00015\n  rotate: true\n  xy: 2084, 377\n  size: 225, 242\n  orig: 294, 281\n  offset: 32, 19\n  index: -1\nlogoani00016\n  rotate: true\n  xy: 2091, 604\n  size: 225, 243\n  orig: 294, 281\n  offset: 30, 19\n  index: -1\nlogoani00017\n  rotate: true\n  xy: 1343, 330\n  size: 232, 247\n  orig: 294, 281\n  offset: 27, 18\n  index: -1\nlogoani00018\n  rotate: true\n  xy: 1338, 95\n  size: 233, 246\n  orig: 294, 281\n  offset: 26, 18\n  index: -1\nlogoani00019\n  rotate: false\n  xy: 2091, 831\n  size: 243, 249\n  orig: 294, 281\n  offset: 22, 16\n  index: -1\nlogoani00020\n  rotate: false\n  xy: 1848, 825\n  size: 241, 250\n  orig: 294, 281\n  offset: 24, 15\n  index: -1\nlogoani00021\n  rotate: false\n  xy: 1595, 568\n  size: 245, 251\n  orig: 294, 281\n  offset: 21, 15\n  index: -1\nlogoani00022\n  rotate: false\n  xy: 1343, 564\n  size: 250, 255\n  orig: 294, 281\n  offset: 19, 14\n  index: -1\nlogoani00023\n  rotate: false\n  xy: 1341, 821\n  size: 251, 256\n  orig: 294, 281\n  offset: 18, 13\n  index: -1\nlogoani00024\n  rotate: false\n  xy: 1084, 819\n  size: 255, 257\n  orig: 294, 281\n  offset: 17, 13\n  index: -1\nlogoani00025\n  rotate: false\n  xy: 1077, 19\n  size: 256, 259\n  orig: 294, 281\n  offset: 17, 12\n  index: -1\nlogoani00026\n  rotate: false\n  xy: 819, 547\n  size: 260, 260\n  orig: 294, 281\n  offset: 15, 12\n  index: -1\nlogoani00027\n  rotate: false\n  xy: 1368, 1344\n  size: 262, 263\n  orig: 294, 281\n  offset: 13, 12\n  index: -1\nlogoani00028\n  rotate: true\n  xy: 1632, 1341\n  size: 266, 262\n  orig: 294, 281\n  offset: 12, 12\n  index: -1\nlogoani00029\n  rotate: false\n  xy: 809, 14\n  size: 266, 261\n  orig: 294, 281\n  offset: 11, 12\n  index: -1\nlogoani00030\n  rotate: false\n  xy: 1627, 1077\n  size: 265, 262\n  orig: 294, 281\n  offset: 12, 12\n  index: -1\nlogoani00031\n  rotate: false\n  xy: 2276, 1612\n  size: 268, 262\n  orig: 294, 281\n  offset: 11, 12\n  index: -1\nlogoani00032\n  rotate: false\n  xy: 1465, 1609\n  size: 267, 263\n  orig: 294, 281\n  offset: 11, 12\n  index: -1\nlogoani00033\n  rotate: true\n  xy: 809, 277\n  size: 267, 262\n  orig: 294, 281\n  offset: 12, 12\n  index: -1\nlogoani00034\n  rotate: false\n  xy: 267, 16\n  size: 269, 262\n  orig: 294, 281\n  offset: 10, 12\n  index: -1\nlogoani00035\n  rotate: false\n  xy: 2166, 1348\n  size: 268, 262\n  orig: 294, 281\n  offset: 11, 12\n  index: -1\nlogoani00036\n  rotate: false\n  xy: 1734, 1612\n  size: 269, 262\n  orig: 294, 281\n  offset: 10, 12\n  index: -1\nlogoani00037\n  rotate: false\n  xy: 1896, 1082\n  size: 267, 263\n  orig: 294, 281\n  offset: 12, 12\n  index: -1\nlogoani00038\n  rotate: false\n  xy: 538, 281\n  size: 269, 263\n  orig: 294, 281\n  offset: 12, 12\n  index: -1\nlogoani00039\n  rotate: true\n  xy: 819, 809\n  size: 267, 263\n  orig: 294, 281\n  offset: 12, 12\n  index: -1\nlogoani00040\n  rotate: false\n  xy: 2005, 1612\n  size: 269, 262\n  orig: 294, 281\n  offset: 12, 12\n  index: -1\nlogoani00041\n  rotate: false\n  xy: 549, 1078\n  size: 270, 263\n  orig: 294, 281\n  offset: 11, 12\n  index: -1\nlogoani00042\n  rotate: false\n  xy: 2288, 1876\n  size: 271, 263\n  orig: 294, 281\n  offset: 10, 12\n  index: -1\nlogoani00043\n  rotate: false\n  xy: 373, 1609\n  size: 271, 263\n  orig: 294, 281\n  offset: 11, 12\n  index: -1\nlogoani00044\n  rotate: false\n  xy: 646, 1609\n  size: 271, 263\n  orig: 294, 281\n  offset: 11, 12\n  index: -1\nlogoani00045\n  rotate: false\n  xy: 919, 1609\n  size: 271, 263\n  orig: 294, 281\n  offset: 11, 12\n  index: -1\nlogoani00046\n  rotate: false\n  xy: 2, 1188\n  size: 272, 264\n  orig: 294, 281\n  offset: 10, 12\n  index: -1\nlogoani00047\n  rotate: true\n  xy: 2, 380\n  size: 272, 263\n  orig: 294, 281\n  offset: 10, 12\n  index: -1\nlogoani00048\n  rotate: false\n  xy: 1466, 1876\n  size: 272, 263\n  orig: 294, 281\n  offset: 10, 12\n  index: -1\nlogoani00049\n  rotate: true\n  xy: 2, 106\n  size: 272, 263\n  orig: 294, 281\n  offset: 10, 12\n  index: -1\nlogoani00050\n  rotate: false\n  xy: 1740, 1876\n  size: 272, 263\n  orig: 294, 281\n  offset: 10, 12\n  index: -1\nlogoani00051\n  rotate: false\n  xy: 1192, 1609\n  size: 271, 263\n  orig: 294, 281\n  offset: 10, 12\n  index: -1\nlogoani00052\n  rotate: false\n  xy: 2014, 1876\n  size: 272, 263\n  orig: 294, 281\n  offset: 10, 12\n  index: -1\nlogoani00053\n  rotate: false\n  xy: 276, 1343\n  size: 271, 264\n  orig: 294, 281\n  offset: 10, 12\n  index: -1\nlogoani00054\n  rotate: false\n  xy: 275, 546\n  size: 270, 263\n  orig: 294, 281\n  offset: 11, 12\n  index: -1\nlogoani00055\n  rotate: false\n  xy: 1896, 1347\n  size: 268, 263\n  orig: 294, 281\n  offset: 12, 12\n  index: -1\nlogoani00056\n  rotate: false\n  xy: 1091, 1079\n  size: 267, 263\n  orig: 294, 281\n  offset: 12, 12\n  index: -1\nlogoani00057\n  rotate: false\n  xy: 538, 16\n  size: 269, 263\n  orig: 294, 281\n  offset: 12, 12\n  index: -1\nlogoani00058\n  rotate: false\n  xy: 822, 1344\n  size: 271, 263\n  orig: 294, 281\n  offset: 10, 12\n  index: -1\nlogoani00059\n  rotate: false\n  xy: 1095, 1344\n  size: 271, 263\n  orig: 294, 281\n  offset: 10, 12\n  index: -1\nlogoani00060\n  rotate: false\n  xy: 276, 1078\n  size: 271, 263\n  orig: 294, 281\n  offset: 10, 12\n  index: -1\nlogoani00061\n  rotate: false\n  xy: 547, 546\n  size: 270, 263\n  orig: 294, 281\n  offset: 10, 12\n  index: -1\nlogoani00062\n  rotate: false\n  xy: 267, 280\n  size: 269, 264\n  orig: 294, 281\n  offset: 10, 12\n  index: -1\nlogoani00063\n  rotate: false\n  xy: 549, 1343\n  size: 271, 264\n  orig: 294, 281\n  offset: 9, 12\n  index: -1\nlogoani00064\n  rotate: false\n  xy: 647, 1874\n  size: 271, 265\n  orig: 294, 281\n  offset: 10, 12\n  index: -1\nlogoani00065\n  rotate: false\n  xy: 2, 921\n  size: 271, 265\n  orig: 294, 281\n  offset: 9, 12\n  index: -1\nlogoani00066\n  rotate: false\n  xy: 2, 1454\n  size: 272, 265\n  orig: 294, 281\n  offset: 9, 12\n  index: -1\nlogoani00067\n  rotate: false\n  xy: 920, 1874\n  size: 271, 265\n  orig: 294, 281\n  offset: 9, 12\n  index: -1\nlogoani00068\n  rotate: false\n  xy: 2, 654\n  size: 271, 265\n  orig: 294, 281\n  offset: 10, 12\n  index: -1\nlogoani00069\n  rotate: false\n  xy: 373, 1874\n  size: 272, 265\n  orig: 294, 281\n  offset: 9, 12\n  index: -1\nlogoani00070\n  rotate: false\n  xy: 1193, 1874\n  size: 271, 265\n  orig: 294, 281\n  offset: 10, 12\n  index: -1\nlogoani00071\n  rotate: false\n  xy: 275, 811\n  size: 270, 265\n  orig: 294, 281\n  offset: 10, 12\n  index: -1\nlogoani00072\n  rotate: false\n  xy: 547, 811\n  size: 270, 265\n  orig: 294, 281\n  offset: 10, 12\n  index: -1\nlogoani00073\n  rotate: false\n  xy: 822, 1078\n  size: 267, 264\n  orig: 294, 281\n  offset: 12, 12\n  index: -1\nlogoani00074\n  rotate: false\n  xy: 1360, 1079\n  size: 265, 263\n  orig: 294, 281\n  offset: 13, 12\n  index: -1\nlogoani00075\n  rotate: true\n  xy: 1073, 280\n  size: 265, 263\n  orig: 294, 281\n  offset: 13, 12\n  index: -1\nlogoani00076\n  rotate: false\n  xy: 1081, 547\n  size: 260, 260\n  orig: 294, 281\n  offset: 15, 13\n  index: -1\nlogoani00077\n  rotate: false\n  xy: 1594, 821\n  size: 252, 254\n  orig: 294, 281\n  offset: 20, 15\n  index: -1\nlogoani00078\n  rotate: false\n  xy: 1842, 574\n  size: 240, 245\n  orig: 294, 281\n  offset: 24, 19\n  index: -1\nlogoani00079\n  rotate: true\n  xy: 2166, 1130\n  size: 216, 237\n  orig: 294, 281\n  offset: 37, 20\n  index: -1\nlogoani00080\n  rotate: false\n  xy: 2336, 656\n  size: 209, 234\n  orig: 294, 281\n  offset: 39, 21\n  index: -1\nlogoani00081\n  rotate: true\n  xy: 1831, 66\n  size: 180, 198\n  orig: 294, 281\n  offset: 54, 34\n  index: -1\nlogoani00082\n  rotate: true\n  xy: 2324, 135\n  size: 178, 200\n  orig: 294, 281\n  offset: 51, 34\n  index: -1\n",
+  "textures": [
+    {
+      "__uuid__": "788e3a21-2921-47ee-b7f0-dc8a32f1107d"
+    }
+  ],
+  "textureNames": [
+    "pokerlogo.png"
+  ],
+  "scale": 1
+}

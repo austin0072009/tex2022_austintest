@@ -1,0 +1,28 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "kiss",
+    "texture": "e0d717c3-a0c4-46dd-b57c-7c1f4c77b6a6",
+    "atlas": "",
+    "rect": [
+      1,
+      1,
+      236,
+      253
+    ],
+    "offset": [
+      -9,
+      0.5
+    ],
+    "originalSize": [
+      256,
+      256
+    ],
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

@@ -1,0 +1,1 @@
+{"version":3,"sources":["assets\\Script\\modules\\@mogafa\\fairygui-component\\lib\\analytics\\commonEventParameter.ts"],"names":[],"mappings":"","file":"","sourceRoot":"/","sourcesContent":["import EventParameter from \"./EventParameter\";\n\nexport default interface CommonEventParameter {\n    toEventParameters(...parameterNames: string[]): EventParameter[];\n}\n"]}

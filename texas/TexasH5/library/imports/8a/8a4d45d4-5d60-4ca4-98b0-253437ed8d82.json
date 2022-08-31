@@ -1,0 +1,7 @@
+{
+  "__type__": "cc.TextAsset",
+  "_name": "SpinResultsEventCode.d",
+  "_objFlags": 0,
+  "_native": "",
+  "text": "export declare enum SpinResultsEventCode {\n    Free = 10000,\n    Bonus = 20000,\n    Respin = 30000,\n    OneMore = 40000\n}\n"
+}

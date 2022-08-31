@@ -1,0 +1,1 @@
+{"version":3,"sources":["assets\\Script\\modules\\@mogafa\\slots\\lib\\SymbolBoard\\SymbolBoardConst.ts"],"names":[],"mappings":";;;;;;;AAAa,QAAA,gBAAgB,GAAG;IAC5B,iBAAiB,EAAE,GAAG;IACtB,wBAAwB,EAAE,OAAO;CACpC,CAAC","file":"","sourceRoot":"/","sourcesContent":["export const SymbolBoardConst = {\n    FINAL_CODE_OFFSET: 100,\n    HOLD_WIN_INTERVAL_OFFSET: 1000000,\n};\n"]}

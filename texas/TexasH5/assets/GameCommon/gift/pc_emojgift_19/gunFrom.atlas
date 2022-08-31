@@ -1,0 +1,41 @@
+
+gunFrom.png
+size: 128,256
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+images/5_gun/5_qiang
+  rotate: false
+  xy: 1, 104
+  size: 108, 101
+  orig: 108, 101
+  offset: 0, 0
+  index: -1
+images/5_gun/5_qiang2
+  rotate: false
+  xy: 1, 1
+  size: 113, 101
+  orig: 113, 101
+  offset: 0, 0
+  index: -1
+images/5_gun/5_dk2
+  rotate: false
+  xy: 35, 207
+  size: 32, 30
+  orig: 32, 30
+  offset: 0, 0
+  index: -1
+images/5_gun/5_dk
+  rotate: false
+  xy: 111, 104
+  size: 15, 21
+  orig: 15, 21
+  offset: 0, 0
+  index: -1
+images/5_gun/5_huo
+  rotate: false
+  xy: 1, 207
+  size: 32, 31
+  orig: 32, 31
+  offset: 0, 0
+  index: -1

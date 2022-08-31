@@ -1,0 +1,28 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "jrmn",
+    "texture": "7f1de965-4cd9-4b25-900d-2aed280b1bbb",
+    "atlas": "",
+    "rect": [
+      3,
+      3,
+      244,
+      1012
+    ],
+    "offset": [
+      0,
+      0
+    ],
+    "originalSize": [
+      250,
+      1018
+    ],
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "ver": "1.1.2",
+  "uuid": "79c36cbb-69fc-4a96-bd44-b5719b9500d0",
+  "isBundle": true,
+  "bundleName": "texas",
+  "priority": 1,
+  "compressionType": {},
+  "optimizeHotUpdate": {},
+  "inlineSpriteFrames": {},
+  "isRemoteBundle": {},
+  "subMetas": {}
+}

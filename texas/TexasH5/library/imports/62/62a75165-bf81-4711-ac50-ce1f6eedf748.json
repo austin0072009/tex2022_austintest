@@ -1,0 +1,28 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "hd_meigui01",
+    "texture": "0aa8f03a-c873-4662-b13b-616ad584dfc6",
+    "atlas": "",
+    "rect": [
+      2,
+      5,
+      246,
+      225
+    ],
+    "offset": [
+      -3,
+      10.5
+    ],
+    "originalSize": [
+      256,
+      256
+    ],
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

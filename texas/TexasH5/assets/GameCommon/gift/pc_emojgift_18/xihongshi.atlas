@@ -1,0 +1,41 @@
+
+xihongshi.png
+size: 128,256
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+images/00
+  rotate: false
+  xy: 1, 76
+  size: 67, 68
+  orig: 67, 68
+  offset: 0, 0
+  index: -1
+images/7_xihongshi/7_bie
+  rotate: false
+  xy: 1, 1
+  size: 86, 73
+  orig: 86, 73
+  offset: 0, 0
+  index: -1
+images/7_xihongshi/7_eye
+  rotate: false
+  xy: 70, 76
+  size: 32, 16
+  orig: 32, 16
+  offset: 0, 0
+  index: -1
+images/7_xihongshi/7_xhs
+  rotate: false
+  xy: 62, 146
+  size: 50, 50
+  orig: 50, 50
+  offset: 0, 0
+  index: -1
+images/7_xihongshi/7_xhs2
+  rotate: false
+  xy: 1, 146
+  size: 59, 50
+  orig: 59, 50
+  offset: 0, 0
+  index: -1

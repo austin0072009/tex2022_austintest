@@ -1,0 +1,28 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "hd_jiguanqiang01",
+    "texture": "7dc823ac-b5ec-41ff-9421-a78314449a95",
+    "atlas": "",
+    "rect": [
+      2,
+      4,
+      248,
+      250
+    ],
+    "offset": [
+      -2,
+      -1
+    ],
+    "originalSize": [
+      256,
+      256
+    ],
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

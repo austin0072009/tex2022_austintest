@@ -1,0 +1,394 @@
+{
+  "__type__": "sp.SkeletonData",
+  "_name": "Tuoxie",
+  "_objFlags": 0,
+  "_native": "",
+  "_skeletonJson": {
+    "skeleton": {
+      "spine": "3.6.0",
+      "hash": " ",
+      "name": "armatureName"
+    },
+    "bones": [
+      {
+        "scaleX": 0.9,
+        "scaleY": 0.9,
+        "name": "root"
+      },
+      {
+        "x": 326.92,
+        "y": 332.97,
+        "rotation": 2.11,
+        "name": "Tuoxie",
+        "parent": "root"
+      },
+      {
+        "x": -1.98,
+        "y": 4.59,
+        "rotation": 21.97,
+        "name": "Tuoxie2",
+        "parent": "Tuoxie"
+      },
+      {
+        "x": 2.62,
+        "y": -6.07,
+        "rotation": 21.97,
+        "name": "Xieyin",
+        "parent": "Tuoxie"
+      },
+      {
+        "x": -338.96,
+        "y": -320.71,
+        "scaleX": 1.48,
+        "scaleY": 1.48,
+        "name": "骨骼",
+        "parent": "Tuoxie"
+      }
+    ],
+    "slots": [
+      {
+        "name": "Bg",
+        "bone": "root"
+      },
+      {
+        "name": "xg7877",
+        "bone": "骨骼",
+        "blend": "additive"
+      },
+      {
+        "name": "Xieyin",
+        "bone": "Xieyin"
+      },
+      {
+        "name": "Xieyin2",
+        "bone": "Xieyin"
+      },
+      {
+        "name": "Tuoxie",
+        "bone": "Tuoxie2"
+      }
+    ],
+    "skins": {
+      "default": {
+        "Xieyin2": {
+          "Xieyin": {
+            "name": "Xieyin",
+            "width": 93,
+            "height": 137,
+            "x": -2.9,
+            "y": 6.62,
+            "rotation": -24.08
+          }
+        },
+        "Xieyin": {
+          "Xieyin": {
+            "name": "Xieyin",
+            "width": 93,
+            "height": 137,
+            "x": -2.9,
+            "y": 6.62,
+            "rotation": -24.08
+          }
+        },
+        "xg7877": {
+          "xg7877": {
+            "name": "xg7877",
+            "width": 115,
+            "height": 115
+          }
+        },
+        "Tuoxie": {
+          "Tuoxie": {
+            "name": "Tuoxie",
+            "width": 91,
+            "height": 136,
+            "x": -2.6,
+            "y": -4.94,
+            "rotation": -24.08
+          }
+        }
+      }
+    },
+    "animations": {
+      "21_To": {
+        "bones": {
+          "Tuoxie2": {
+            "translate": [
+              {
+                "time": 0
+              },
+              {
+                "time": 0.0333,
+                "x": 7.59,
+                "y": 2.26
+              },
+              {
+                "time": 0.1333
+              },
+              {
+                "time": 0.2666,
+                "curve": [
+                  0.25,
+                  0,
+                  1,
+                  0.83
+                ]
+              },
+              {
+                "time": 0.9999,
+                "x": -6.62,
+                "y": -180.25
+              }
+            ],
+            "scale": [
+              {
+                "time": 0,
+                "x": 1,
+                "y": 1
+              },
+              {
+                "time": 0.0333,
+                "x": 0.94,
+                "y": 0.94
+              },
+              {
+                "time": 0.1333,
+                "x": 1,
+                "y": 1
+              }
+            ]
+          },
+          "Xieyin": {
+            "translate": [
+              {
+                "time": 0,
+                "x": 1.41,
+                "y": -0.41
+              }
+            ]
+          },
+          "Tuoxie": {
+            "translate": [
+              {
+                "time": 0,
+                "x": -332.05,
+                "y": -338
+              }
+            ]
+          },
+          "骨骼": {
+            "translate": [
+              {
+                "time": 0,
+                "curve": [
+                  0.125,
+                  0,
+                  0.875,
+                  1
+                ],
+                "x": 344.26,
+                "y": 325.55
+              },
+              {
+                "time": 0.0667,
+                "x": 337.83,
+                "y": 319.58
+              }
+            ],
+            "scale": [
+              {
+                "time": 0,
+                "curve": [
+                  0.125,
+                  0,
+                  0.875,
+                  1
+                ],
+                "x": 0.51,
+                "y": 0.51
+              },
+              {
+                "time": 0.0667,
+                "curve": [
+                  0.25,
+                  0,
+                  0.75,
+                  1
+                ],
+                "x": 1.56,
+                "y": 1.56
+              },
+              {
+                "time": 0.2,
+                "x": 0,
+                "y": 0
+              }
+            ]
+          }
+        },
+        "slots": {
+          "Tuoxie": {
+            "attachment": [
+              {
+                "time": 0,
+                "name": "Tuoxie"
+              }
+            ],
+            "color": [
+              {
+                "time": 0,
+                "color": "FFFFFFFF"
+              },
+              {
+                "time": 0.8333,
+                "color": "FFFFFFFF"
+              },
+              {
+                "time": 1,
+                "color": "FFFFFF00"
+              }
+            ]
+          },
+          "Xieyin": {
+            "attachment": [
+              {
+                "time": 0,
+                "name": "Xieyin"
+              }
+            ],
+            "color": [
+              {
+                "time": 0,
+                "color": "FFFFFFFF"
+              },
+              {
+                "time": 0.7667,
+                "color": "FFFFFFFF"
+              },
+              {
+                "time": 1,
+                "color": "FFFFFF00"
+              }
+            ]
+          },
+          "Xieyin2": {
+            "attachment": [
+              {
+                "time": 0,
+                "name": "Xieyin"
+              }
+            ],
+            "color": [
+              {
+                "time": 0,
+                "color": "FFFFFFFF"
+              },
+              {
+                "time": 0.7667,
+                "color": "FFFFFFFF"
+              },
+              {
+                "time": 1,
+                "color": "FFFFFF00"
+              }
+            ]
+          },
+          "xg7877": {
+            "attachment": [
+              {
+                "time": 0,
+                "name": "xg7877"
+              }
+            ],
+            "color": [
+              {
+                "time": 0,
+                "color": "FFFFFFFF"
+              },
+              {
+                "time": 0.0667,
+                "color": "FFFFFFBA"
+              },
+              {
+                "time": 0.2,
+                "color": "FFFFFF00"
+              }
+            ]
+          }
+        }
+      },
+      "21_Fly": {
+        "bones": {
+          "Tuoxie": {
+            "translate": [
+              {
+                "time": 0,
+                "x": -332.05,
+                "y": -338
+              }
+            ],
+            "rotate": [
+              {
+                "time": 0,
+                "angle": 0
+              },
+              {
+                "time": 0.1,
+                "angle": -93.17
+              },
+              {
+                "time": 0.2,
+                "angle": 176.83
+              },
+              {
+                "time": 0.3,
+                "angle": 88.17
+              },
+              {
+                "time": 0.4,
+                "angle": 0
+              }
+            ],
+            "shear": [
+              {
+                "time": 0
+              },
+              {
+                "time": 0.1
+              },
+              {
+                "time": 0.2
+              },
+              {
+                "time": 0.3
+              },
+              {
+                "time": 0.4
+              }
+            ]
+          }
+        },
+        "slots": {
+          "Tuoxie": {
+            "attachment": [
+              {
+                "time": 0,
+                "name": "Tuoxie"
+              }
+            ]
+          }
+        }
+      }
+    }
+  },
+  "_atlasText": "\nTuoxie.png\nsize: 256,256\nformat: RGBA8888\nfilter: Linear,Linear\nrepeat: none\nxg7877\n  rotate: false\n  xy: 1, 1\n  size: 115, 115\n  orig: 115, 115\n  offset: 0, 0\n  index: -1\nXieyin\n  rotate: false\n  xy: 1, 118\n  size: 93, 137\n  orig: 93, 137\n  offset: 0, 0\n  index: -1\nTuoxie\n  rotate: false\n  xy: 96, 118\n  size: 91, 136\n  orig: 91, 136\n  offset: 0, 0\n  index: -1\n",
+  "textures": [
+    {
+      "__uuid__": "6cb47ea3-074e-4a6b-a19d-bc1fc61f9871"
+    }
+  ],
+  "textureNames": [
+    "Tuoxie.png"
+  ],
+  "scale": 1
+}

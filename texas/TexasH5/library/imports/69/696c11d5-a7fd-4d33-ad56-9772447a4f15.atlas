@@ -1,0 +1,55 @@
+
+yan.png
+size: 128,256
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+smok1
+  rotate: false
+  xy: 1, 241
+  size: 100, 12
+  orig: 100, 12
+  offset: 0, 0
+  index: -1
+smok2
+  rotate: false
+  xy: 103, 218
+  size: 9, 12
+  orig: 9, 12
+  offset: 0, 0
+  index: -1
+hj2
+  rotate: false
+  xy: 103, 194
+  size: 20, 22
+  orig: 20, 22
+  offset: 0, 0
+  index: -1
+hj4
+  rotate: false
+  xy: 1, 194
+  size: 32, 45
+  orig: 32, 45
+  offset: 0, 0
+  index: -1
+huoji1
+  rotate: false
+  xy: 1, 1
+  size: 125, 110
+  orig: 125, 110
+  offset: 0, 0
+  index: -1
+hj3
+  rotate: false
+  xy: 1, 113
+  size: 97, 79
+  orig: 97, 79
+  offset: 0, 0
+  index: -1
+smoke00
+  rotate: false
+  xy: 35, 194
+  size: 36, 36
+  orig: 36, 36
+  offset: 0, 0
+  index: -1

@@ -1,0 +1,7 @@
+{
+  "__type__": "cc.TextAsset",
+  "_name": "SpinResultsFreeTrigger.d",
+  "_objFlags": 0,
+  "_native": "",
+  "text": "import { SpinResultsGameMode } from \"./SpinResultsGameMode\";\nimport SpinResultsWheel from \"./SpinResultsWheel\";\nimport SpinResultChoice from \"./SpinResultChoice\";\n// import { SpinResultsEvent } from \".\";\nexport default class SpinResultsFreeTrigger {\n    private _gameMode;\n    private _count;\n    private _total;\n    private _wheels;\n    private _choices;\n    private _events;\n    constructor(gameMode?: SpinResultsGameMode, count?: number, total?: number, wheels?: SpinResultsWheel[], choices?: func[], events?: SpinResultsEvent[]);\n    /**\n     * 获取游戏类型\n     */\n    get gameMode(): SpinResultsGameMode;\n    /**\n     * 设置游戏类型\n     */\n    set gameMode(value: SpinResultsGameMode);\n    /**\n     * 获取次数\n     */\n    get count(): number;\n    /**\n     * 设置次数\n     */\n    set count(value: number);\n    /**\n     * 获取总次数\n     */\n    get total(): number;\n    /**\n     * 设置总次数\n     */\n    set total(value: number);\n    /**\n     * 获取转盘（比如小猪转棋盘数和wild列数）\n     */\n    get wheels(): SpinResultsWheel[];\n    /**\n     * 设置转盘\n     */\n    set wheels(value: SpinResultsWheel[]);\n    /**\n     * 获取选择（比如宙斯选择freespin次数）\n     */\n    get choices(): SpinResultChoice[];\n    /**\n     * 设置选择\n     */\n    set choices(value: SpinResultChoice[]);\n    /**\n     * 获取事件（比如埃及free spin转盘翻倍）\n     */\n    get events(): func[];\n    /**\n     * 设置事件\n     */\n    set events(value: func[]);\n}\n"
+}

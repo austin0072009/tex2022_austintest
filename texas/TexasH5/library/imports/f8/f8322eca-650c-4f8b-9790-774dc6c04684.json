@@ -1,0 +1,7 @@
+{
+  "__type__": "cc.TextAsset",
+  "_name": "SpinResultsLevel.d",
+  "_objFlags": 0,
+  "_native": "",
+  "text": "import SpinResultsUpgrade from \"./SpinResultsUpgrade\";\nexport default class SpinResultsLevel {\n    private _level;\n    private _currentValue;\n    private _totalValue;\n    private _upgrade;\n    constructor(level: number, currentValue: number, totalValue: number, upgrade: SpinResultsUpgrade);\n    get level(): number;\n    set level(value: number);\n    get currentValue(): number;\n    set currentValue(value: number);\n    get totalValue(): number;\n    set totalValue(value: number);\n    get upgrade(): SpinResultsUpgrade;\n    set upgrade(value: SpinResultsUpgrade);\n}\n"
+}

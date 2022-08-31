@@ -1,0 +1,909 @@
+{
+  "__type__": "sp.SkeletonData",
+  "_name": "yan",
+  "_objFlags": 0,
+  "_native": "",
+  "_skeletonJson": {
+    "skeleton": {
+      "spine": "3.6.0",
+      "hash": " ",
+      "name": "armatureName"
+    },
+    "bones": [
+      {
+        "scaleX": 0.9,
+        "scaleY": 0.9,
+        "name": "root"
+      },
+      {
+        "name": "yan",
+        "parent": "root"
+      },
+      {
+        "name": "骨骼7",
+        "parent": "yan"
+      },
+      {
+        "name": "骨骼6",
+        "parent": "yan"
+      },
+      {
+        "x": -16.87,
+        "scaleX": -1.046,
+        "scaleY": 1.046,
+        "name": "骨骼2",
+        "parent": "yan"
+      },
+      {
+        "x": 18.95,
+        "name": "骨骼4",
+        "parent": "yan"
+      },
+      {
+        "x": -33.53,
+        "y": 45.26,
+        "name": "hj2",
+        "parent": "骨骼4"
+      },
+      {
+        "x": -16.34,
+        "y": 56.77,
+        "name": "hj3",
+        "parent": "骨骼4"
+      },
+      {
+        "x": -73,
+        "y": 34.93,
+        "scaleX": 1.2,
+        "scaleY": 1.2,
+        "name": "hj4",
+        "parent": "骨骼4"
+      },
+      {
+        "x": -50.82,
+        "name": "骨骼3",
+        "parent": "骨骼2"
+      },
+      {
+        "x": 73,
+        "y": -34.93,
+        "name": "骨骼5",
+        "parent": "hj4"
+      }
+    ],
+    "slots": [
+      {
+        "name": "Bg",
+        "bone": "root"
+      },
+      {
+        "name": "smok1",
+        "bone": "骨骼2"
+      },
+      {
+        "name": "smok2",
+        "bone": "骨骼3",
+        "color": "FF2121FF",
+        "blend": "additive"
+      },
+      {
+        "name": "hj2",
+        "bone": "hj2"
+      },
+      {
+        "name": "hj4",
+        "bone": "骨骼5",
+        "blend": "additive"
+      },
+      {
+        "name": "huoji1",
+        "bone": "骨骼4"
+      },
+      {
+        "name": "hj3",
+        "bone": "hj3"
+      },
+      {
+        "name": "smoke00",
+        "bone": "骨骼6",
+        "blend": "additive"
+      },
+      {
+        "name": "smoke0",
+        "bone": "骨骼7",
+        "blend": "additive"
+      }
+    ],
+    "skins": {
+      "default": {
+        "huoji1": {
+          "huoji1": {
+            "name": "huoji1",
+            "width": 125,
+            "height": 110
+          }
+        },
+        "hj4": {
+          "hj4": {
+            "name": "hj4",
+            "width": 32,
+            "height": 45,
+            "x": -82.29,
+            "y": 50.7
+          }
+        },
+        "hj2": {
+          "hj2": {
+            "name": "hj2",
+            "width": 20,
+            "height": 22,
+            "x": 3.8,
+            "y": 7.95
+          }
+        },
+        "smoke00": {
+          "smoke00": {
+            "name": "smoke00",
+            "width": 36,
+            "height": 36
+          }
+        },
+        "smok2": {
+          "smok2": {
+            "name": "smok2",
+            "width": 9,
+            "height": 12
+          }
+        },
+        "smoke0": {
+          "smoke00": {
+            "name": "smoke00",
+            "width": 36,
+            "height": 36
+          }
+        },
+        "smok1": {
+          "smok1": {
+            "name": "smok1",
+            "width": 100,
+            "height": 12
+          }
+        },
+        "hj3": {
+          "hj3": {
+            "name": "hj3",
+            "width": 97,
+            "height": 79,
+            "x": -29.97,
+            "y": 43.93
+          }
+        }
+      }
+    },
+    "animations": {
+      "20_To": {
+        "bones": {
+          "骨骼2": {
+            "rotate": [
+              {
+                "time": 0,
+                "angle": -9.54
+              },
+              {
+                "time": 0.3,
+                "angle": 0
+              }
+            ],
+            "shear": [
+              {
+                "time": 0
+              },
+              {
+                "time": 0.3
+              }
+            ]
+          },
+          "hj2": {
+            "rotate": [
+              {
+                "time": 0,
+                "curve": "stepped",
+                "angle": 99.54
+              },
+              {
+                "time": 0.4,
+                "angle": 99.54
+              },
+              {
+                "time": 0.5,
+                "angle": -15.19
+              },
+              {
+                "time": 0.6,
+                "curve": "stepped",
+                "angle": -8.62
+              },
+              {
+                "time": 1.5333,
+                "angle": -8.62
+              },
+              {
+                "time": 1.6333,
+                "angle": 99.54
+              }
+            ],
+            "shear": [
+              {
+                "time": 0,
+                "curve": "stepped"
+              },
+              {
+                "time": 0.4
+              },
+              {
+                "time": 0.5
+              },
+              {
+                "time": 0.6,
+                "curve": "stepped"
+              },
+              {
+                "time": 1.5333
+              },
+              {
+                "time": 1.6333
+              }
+            ]
+          },
+          "骨骼4": {
+            "translate": [
+              {
+                "time": 0,
+                "x": 106.76,
+                "y": -22.15
+              },
+              {
+                "time": 0.1333,
+                "curve": "stepped",
+                "x": 104.55,
+                "y": -33.22
+              },
+              {
+                "time": 0.5333,
+                "curve": "stepped",
+                "x": 104.55,
+                "y": -33.22
+              },
+              {
+                "time": 0.7333,
+                "curve": "stepped",
+                "x": 60.25,
+                "y": -43.41
+              },
+              {
+                "time": 1.6666,
+                "x": 60.25,
+                "y": -43.41
+              },
+              {
+                "time": 1.6999,
+                "x": 104.1,
+                "y": -38.54
+              }
+            ],
+            "rotate": [
+              {
+                "time": 0,
+                "angle": 44.85
+              },
+              {
+                "time": 0.3667,
+                "angle": 44.85
+              },
+              {
+                "time": 0.4334,
+                "curve": [
+                  0.25,
+                  0,
+                  0.75,
+                  1
+                ],
+                "angle": -35.46
+              },
+              {
+                "time": 0.5334,
+                "curve": "stepped",
+                "angle": -14.81
+              },
+              {
+                "time": 1.5334,
+                "angle": -14.81
+              },
+              {
+                "time": 1.6001,
+                "angle": 20.45
+              },
+              {
+                "time": 1.6668,
+                "angle": -4.41
+              },
+              {
+                "time": 1.7001,
+                "angle": -4.41
+              },
+              {
+                "time": 2.5001,
+                "angle": -16.75
+              }
+            ],
+            "scale": [
+              {
+                "time": 0,
+                "x": 0.62,
+                "y": 0.62
+              }
+            ],
+            "shear": [
+              {
+                "time": 0
+              },
+              {
+                "time": 0.3667
+              },
+              {
+                "time": 0.4334,
+                "curve": [
+                  0.25,
+                  0,
+                  0.75,
+                  1
+                ]
+              },
+              {
+                "time": 0.5334,
+                "curve": "stepped"
+              },
+              {
+                "time": 1.5334
+              },
+              {
+                "time": 1.6001
+              },
+              {
+                "time": 1.6668
+              },
+              {
+                "time": 1.7001
+              },
+              {
+                "time": 2.5001
+              }
+            ]
+          },
+          "hj3": {
+            "rotate": [
+              {
+                "time": 0,
+                "curve": "stepped",
+                "angle": 99.54
+              },
+              {
+                "time": 0.4,
+                "angle": 99.54
+              },
+              {
+                "time": 0.5,
+                "angle": -15.19
+              },
+              {
+                "time": 0.6,
+                "curve": "stepped",
+                "angle": -8.62
+              },
+              {
+                "time": 1.5333,
+                "angle": -8.62
+              },
+              {
+                "time": 1.6333,
+                "angle": 99.54
+              }
+            ],
+            "shear": [
+              {
+                "time": 0,
+                "curve": "stepped"
+              },
+              {
+                "time": 0.4
+              },
+              {
+                "time": 0.5
+              },
+              {
+                "time": 0.6,
+                "curve": "stepped"
+              },
+              {
+                "time": 1.5333
+              },
+              {
+                "time": 1.6333
+              }
+            ]
+          },
+          "hj4": {
+            "scale": [
+              {
+                "time": 0,
+                "curve": "stepped",
+                "x": 0,
+                "y": 0
+              },
+              {
+                "time": 0.4,
+                "x": 0,
+                "y": 0
+              },
+              {
+                "time": 0.5,
+                "x": 1,
+                "y": 1
+              },
+              {
+                "time": 0.6,
+                "x": 0.8,
+                "y": 0.8
+              },
+              {
+                "time": 0.7,
+                "x": 1,
+                "y": 1
+              },
+              {
+                "time": 0.8,
+                "x": 0.8,
+                "y": 0.8
+              },
+              {
+                "time": 0.8667,
+                "x": 1,
+                "y": 1
+              },
+              {
+                "time": 0.9667,
+                "x": 0.8,
+                "y": 0.8
+              },
+              {
+                "time": 1.0334,
+                "x": 1,
+                "y": 1
+              },
+              {
+                "time": 1.1334,
+                "x": 0.8,
+                "y": 0.8
+              },
+              {
+                "time": 1.2001,
+                "x": 1,
+                "y": 1
+              },
+              {
+                "time": 1.2668,
+                "x": 0.8,
+                "y": 0.8
+              },
+              {
+                "time": 1.3668,
+                "x": 1,
+                "y": 1
+              },
+              {
+                "time": 1.4668,
+                "x": 0.8,
+                "y": 0.8
+              },
+              {
+                "time": 1.5668,
+                "x": 0,
+                "y": 0
+              }
+            ]
+          },
+          "骨骼6": {
+            "translate": [
+              {
+                "time": 0,
+                "curve": "stepped",
+                "x": 32.49,
+                "y": 0.46
+              },
+              {
+                "time": 0.8,
+                "x": 32.49,
+                "y": 0.46
+              },
+              {
+                "time": 2.5,
+                "x": 32.49,
+                "y": 68.05
+              }
+            ],
+            "scale": [
+              {
+                "time": 0,
+                "curve": "stepped",
+                "x": 0,
+                "y": 0
+              },
+              {
+                "time": 0.8,
+                "x": 0,
+                "y": 0
+              },
+              {
+                "time": 2.5,
+                "x": 2.62,
+                "y": 2.62
+              }
+            ]
+          },
+          "骨骼7": {
+            "translate": [
+              {
+                "time": 0,
+                "x": -85.79,
+                "y": 0.46
+              },
+              {
+                "time": 1.2,
+                "x": 31.44,
+                "y": 0.46
+              },
+              {
+                "time": 1.8333,
+                "x": 31.44,
+                "y": 0.46
+              },
+              {
+                "time": 2.5,
+                "x": 34.39,
+                "y": 22.78
+              }
+            ],
+            "scale": [
+              {
+                "time": 0,
+                "x": 0,
+                "y": 0
+              },
+              {
+                "time": 1.2,
+                "x": 0,
+                "y": 0
+              },
+              {
+                "time": 1.8333,
+                "x": 1.03,
+                "y": 1.03
+              },
+              {
+                "time": 2.5,
+                "x": 1.26,
+                "y": 1.26
+              }
+            ]
+          },
+          "yan": {
+            "scale": [
+              {
+                "time": 0,
+                "x": 0.62,
+                "y": 0.62
+              }
+            ]
+          }
+        },
+        "slots": {
+          "hj2": {
+            "attachment": [
+              {
+                "time": 0,
+                "name": "hj2"
+              }
+            ],
+            "color": [
+              {
+                "time": 0,
+                "color": "FFFFFF00"
+              },
+              {
+                "time": 0.1,
+                "color": "FFFFFF00"
+              },
+              {
+                "time": 0.1333,
+                "curve": "stepped",
+                "color": "FFFFFFFF"
+              },
+              {
+                "time": 1.7,
+                "color": "FFFFFFFF"
+              },
+              {
+                "time": 1.7333,
+                "color": "FFFFFF00"
+              },
+              {
+                "time": 2.5,
+                "color": "FFFFFFFF"
+              }
+            ]
+          },
+          "hj3": {
+            "attachment": [
+              {
+                "time": 0,
+                "name": "hj3"
+              }
+            ],
+            "color": [
+              {
+                "time": 0,
+                "color": "FFFFFF00"
+              },
+              {
+                "time": 0.1,
+                "color": "FFFFFF00"
+              },
+              {
+                "time": 0.1333,
+                "curve": "stepped",
+                "color": "FFFFFFFF"
+              },
+              {
+                "time": 1.7,
+                "color": "FFFFFFFF"
+              },
+              {
+                "time": 1.7333,
+                "color": "FFFFFF00"
+              },
+              {
+                "time": 2.5,
+                "color": "FFFFFFFF"
+              }
+            ]
+          },
+          "hj4": {
+            "attachment": [
+              {
+                "time": 0,
+                "name": "hj4"
+              }
+            ],
+            "color": [
+              {
+                "time": 0,
+                "color": "FFFFFF00"
+              },
+              {
+                "time": 0.1,
+                "color": "FFFFFF00"
+              },
+              {
+                "time": 0.1333,
+                "curve": "stepped",
+                "color": "FFFFFFFF"
+              },
+              {
+                "time": 1.7,
+                "color": "FFFFFFFF"
+              },
+              {
+                "time": 1.7333,
+                "color": "FFFFFF00"
+              },
+              {
+                "time": 2.5,
+                "color": "FFFFFFFF"
+              }
+            ]
+          },
+          "huoji1": {
+            "attachment": [
+              {
+                "time": 0,
+                "name": "huoji1"
+              }
+            ],
+            "color": [
+              {
+                "time": 0,
+                "color": "FFFFFF00"
+              },
+              {
+                "time": 0.1,
+                "color": "FFFFFF00"
+              },
+              {
+                "time": 0.1333,
+                "curve": "stepped",
+                "color": "FFFFFFFF"
+              },
+              {
+                "time": 1.7,
+                "color": "FFFFFFFF"
+              },
+              {
+                "time": 1.7333,
+                "color": "FFFFFF00"
+              },
+              {
+                "time": 2.5,
+                "color": "FFFFFFFF"
+              }
+            ]
+          },
+          "smok1": {
+            "attachment": [
+              {
+                "time": 0,
+                "name": "smok1"
+              }
+            ],
+            "color": [
+              {
+                "time": 0,
+                "color": "FFFFFFFF"
+              },
+              {
+                "time": 2.3,
+                "color": "FFFFFFFF"
+              },
+              {
+                "time": 2.5,
+                "color": "FFFFFF00"
+              }
+            ]
+          },
+          "smok2": {
+            "attachment": [
+              {
+                "time": 0,
+                "name": "smok2"
+              }
+            ],
+            "color": [
+              {
+                "time": 0,
+                "color": "FF1F1F00"
+              },
+              {
+                "time": 0.7333,
+                "color": "FF1F1F00"
+              },
+              {
+                "time": 0.9333,
+                "curve": "stepped",
+                "color": "FF1F1FFF"
+              },
+              {
+                "time": 2.3666,
+                "color": "FF1F1FFF"
+              },
+              {
+                "time": 2.4999,
+                "color": "FF1F1F00"
+              }
+            ]
+          },
+          "smoke00": {
+            "attachment": [
+              {
+                "time": 0,
+                "name": "smoke00"
+              }
+            ],
+            "color": [
+              {
+                "time": 0,
+                "color": "FFFFFFB0"
+              },
+              {
+                "time": 1.7333,
+                "color": "FFFFFFB0"
+              },
+              {
+                "time": 2.5,
+                "color": "FFFFFF00"
+              }
+            ]
+          },
+          "smoke0": {
+            "attachment": [
+              {
+                "time": 0,
+                "name": "smoke00"
+              }
+            ],
+            "color": [
+              {
+                "time": 0,
+                "color": "FFFFFF00"
+              },
+              {
+                "time": 1.2,
+                "color": "FFFFFFB0"
+              },
+              {
+                "time": 2.3333,
+                "color": "FFFFFF8F"
+              },
+              {
+                "time": 2.5,
+                "color": "FFFFFF00"
+              }
+            ]
+          }
+        }
+      },
+      "20_Fly": {
+        "bones": {
+          "骨骼2": {
+            "rotate": [
+              {
+                "time": 0,
+                "angle": -9.54
+              }
+            ],
+            "shear": [
+              {
+                "time": 0
+              }
+            ]
+          },
+          "yan": {
+            "scale": [
+              {
+                "time": 0,
+                "x": 0.62,
+                "y": 0.62
+              }
+            ]
+          }
+        },
+        "slots": {
+          "smok1": {
+            "attachment": [
+              {
+                "time": 0,
+                "name": "smok1"
+              }
+            ]
+          },
+          "smok2": {
+            "color": [
+              {
+                "time": 0,
+                "color": "FFFFFFFF"
+              }
+            ]
+          }
+        }
+      }
+    }
+  },
+  "_atlasText": "\nyan.png\nsize: 128,256\nformat: RGBA8888\nfilter: Linear,Linear\nrepeat: none\nsmok1\n  rotate: false\n  xy: 1, 241\n  size: 100, 12\n  orig: 100, 12\n  offset: 0, 0\n  index: -1\nsmok2\n  rotate: false\n  xy: 103, 218\n  size: 9, 12\n  orig: 9, 12\n  offset: 0, 0\n  index: -1\nhj2\n  rotate: false\n  xy: 103, 194\n  size: 20, 22\n  orig: 20, 22\n  offset: 0, 0\n  index: -1\nhj4\n  rotate: false\n  xy: 1, 194\n  size: 32, 45\n  orig: 32, 45\n  offset: 0, 0\n  index: -1\nhuoji1\n  rotate: false\n  xy: 1, 1\n  size: 125, 110\n  orig: 125, 110\n  offset: 0, 0\n  index: -1\nhj3\n  rotate: false\n  xy: 1, 113\n  size: 97, 79\n  orig: 97, 79\n  offset: 0, 0\n  index: -1\nsmoke00\n  rotate: false\n  xy: 35, 194\n  size: 36, 36\n  orig: 36, 36\n  offset: 0, 0\n  index: -1\n",
+  "textures": [
+    {
+      "__uuid__": "02342d4d-3785-4ab2-8b05-e4b2ae0f89c6"
+    }
+  ],
+  "textureNames": [
+    "yan.png"
+  ],
+  "scale": 1
+}

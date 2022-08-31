@@ -1,0 +1,7 @@
+{
+  "__type__": "cc.TextAsset",
+  "_name": "SpinResultsGameMode.d",
+  "_objFlags": 0,
+  "_native": "",
+  "text": "/**\n * 游戏模式\n */\nexport declare enum SpinResultsGameMode {\n    /**\n     * 普通模式\n     */\n    Normal = 0,\n    /**\n     * freespin模式\n     */\n    FreeSpin = 1,\n    /**\n     * respin模式\n     */\n    Respin = 2,\n    /**\n     * bonus模式\n     */\n    Bonus = 3,\n    /**\n     * OneMore模式\n     */\n    OneMore = 4\n}\n"
+}

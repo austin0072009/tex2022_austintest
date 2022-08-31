@@ -1,0 +1,76 @@
+{
+    "packageUrl": "http://resources.xhhfs.com/",
+    "forceIncludeAllGameToApk": false,
+    "games": [
+        {
+            "id": "0",
+            "name": "大厅",
+            "dir": "",
+            "version": "1.0.1",
+            "includeApk": false
+        },
+        {
+            "id": "2",
+            "name": "ninjaVSsamurai",
+            "dir": "ninjaVSsamurai",
+            "version": "1.0.1",
+            "includeApk": false
+        },
+        {
+            "id": "3",
+            "name": "slotdt",
+            "dir": "slotdt",
+            "version": "1.0.1",
+            "includeApk": false
+        },
+        {
+            "id": "4",
+            "name": "TexasCowboy",
+            "dir": "TexasCowboy",
+            "version": "1.0.1",
+            "includeApk": false
+        },
+        {
+            "id": "6",
+            "name": "nineline",
+            "dir": "nineline",
+            "version": "1.0.1",
+            "includeApk": false
+        },
+        {
+            "id": "7",
+            "name": "slotFireQueen",
+            "dir": "slotFireQueen",
+            "version": "1.0.1",
+            "includeApk": false
+        },
+        {
+            "id": "8",
+            "name": "slotfruit",
+            "dir": "slotfruit",
+            "version": "1.0.1",
+            "includeApk": false
+        },
+        {
+            "id": "9",
+            "name": "slotrq",
+            "dir": "slotrq",
+            "version": "1.0.1",
+            "includeApk": false
+        },
+        {
+            "id": "10",
+            "name": "WildHerd",
+            "dir": "WildHerd",
+            "version": "1.0.1",
+            "includeApk": false
+        },
+        {
+            "id": "11",
+            "name": "zues",
+            "dir": "zues",
+            "version": "1.0.1",
+            "includeApk": false
+        }
+    ]
+}

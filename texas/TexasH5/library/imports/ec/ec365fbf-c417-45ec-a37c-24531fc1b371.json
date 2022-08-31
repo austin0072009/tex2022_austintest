@@ -1,0 +1,7 @@
+{
+  "__type__": "cc.TextAsset",
+  "_name": "index.d",
+  "_objFlags": 0,
+  "_native": "",
+  "text": "/*\n * @Author: 田鑫\n * @Date: 2020-04-02 10:54:41\n * @LastEditors: 田鑫\n * @LastEditTime: 2020-04-20 15:27:03\n * @Version: CocosCreator V2.2.2\n * @Description:\n */\n\ntype T = Window & typeof globalThis;\ninterface Window extends T {\n\t[key: string]: any;\n}\n"
+}

@@ -1,0 +1,48 @@
+
+hd_jidan01.png
+size: 256,256
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+egg0
+  rotate: false
+  xy: 2, 2
+  size: 50, 66
+  orig: 50, 66
+  offset: 0, 0
+  index: -1
+egg1
+  rotate: false
+  xy: 84, 98
+  size: 50, 38
+  orig: 50, 38
+  offset: 0, 0
+  index: -1
+egg2
+  rotate: false
+  xy: 2, 70
+  size: 80, 66
+  orig: 80, 66
+  offset: 0, 0
+  index: -1
+egg4
+  rotate: false
+  xy: 2, 138
+  size: 150, 96
+  orig: 150, 96
+  offset: 0, 0
+  index: -1
+egg5
+  rotate: false
+  xy: 154, 149
+  size: 100, 85
+  orig: 100, 85
+  offset: 0, 0
+  index: -1
+egg6
+  rotate: false
+  xy: 54, 44
+  size: 20, 24
+  orig: 20, 24
+  offset: 0, 0
+  index: -1

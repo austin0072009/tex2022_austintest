@@ -1,0 +1,7 @@
+{
+  "__type__": "cc.TextAsset",
+  "_name": "int10.d",
+  "_objFlags": 0,
+  "_native": "",
+  "text": "export declare class Int10 {\n    constructor(value?: string | number);\n    mulAdd(m: number, c: number): void;\n    sub(c: number): void;\n    toString(base?: number): string;\n    valueOf(): number;\n    simplify(): number | this;\n    private buf;\n}\n"
+}

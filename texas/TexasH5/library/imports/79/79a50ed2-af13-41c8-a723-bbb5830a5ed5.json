@@ -1,0 +1,28 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "daoju_daquan",
+    "texture": "435a4025-7f8f-44e6-a2bb-7a1e073487b4",
+    "atlas": "",
+    "rect": [
+      2,
+      2,
+      1014,
+      2043
+    ],
+    "offset": [
+      -3,
+      0.5
+    ],
+    "originalSize": [
+      1024,
+      2048
+    ],
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

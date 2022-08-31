@@ -1,0 +1,28 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "htmm",
+    "texture": "71a9439d-6c76-4bf7-b15d-e03da82df5a2",
+    "atlas": "",
+    "rect": [
+      3,
+      2,
+      559,
+      519
+    ],
+    "offset": [
+      0,
+      0.5
+    ],
+    "originalSize": [
+      565,
+      524
+    ],
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

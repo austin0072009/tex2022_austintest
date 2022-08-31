@@ -1,0 +1,7 @@
+{
+  "__type__": "cc.TextAsset",
+  "_name": "SpinResultChoice.d",
+  "_objFlags": 0,
+  "_native": "",
+  "text": "export default class SpinResultChoice {\n    private _questions;\n    private _answer;\n    constructor(questions?: number[]);\n    get questions(): number[];\n    set questions(value: number[]);\n    get answer(): number;\n    set answer(value: number);\n}\n"
+}

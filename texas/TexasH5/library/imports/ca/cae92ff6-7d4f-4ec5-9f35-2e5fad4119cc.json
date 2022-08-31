@@ -1,0 +1,7 @@
+{
+  "__type__": "cc.TextAsset",
+  "_name": "SpinResultsWheeItem.d",
+  "_objFlags": 0,
+  "_native": "",
+  "text": "/**\n * 转盘选项\n *\n * @class SpinResultsWheelItem\n */\nexport default class SpinResultsWheelItem {\n    _value: number;\n    _assets: number;\n    /**\n     * Creates an instance of SpinResultsWheelItem.\n     * @param {number} value 值\n     * @param {number} assets 资产\n     * @memberof SpinResultsWheelItem\n     */\n    constructor(value: number, assets: number);\n    /**\n     * 获取值\n     *\n     * @type {number}\n     * @memberof SpinResultsWheelItem\n     */\n    get value(): number;\n    /**\n     * 设置值\n     *\n     * @memberof SpinResultsWheelItem\n     */\n    set value(value: number);\n    /**\n     * 获取资产\n     *\n     * @type {number}\n     * @memberof SpinResultsWheelItem\n     */\n    get assets(): number;\n    /**\n     * 设置资产\n     *\n     * @memberof SpinResultsWheelItem\n     */\n    set assets(value: number);\n}\n"
+}

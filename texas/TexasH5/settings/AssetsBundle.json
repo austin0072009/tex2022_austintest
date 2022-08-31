@@ -1,0 +1,28 @@
+{
+    "packageSaveDir": "HotUpdate",
+    "isDebug": true,
+    "mainPack": {
+        "name": "gamehall",
+        "zhName": "主包",
+        "version": "1.0.8",
+        "packageUrl": "http://lltyu-roaring-v2.oss-cn-chengdu.aliyuncs.com/Local",
+        "zipImport": true,
+        "zipRawassets": false,
+        "isPrivate": false,
+        "type": "HOT_UPDATE"
+    },
+    "subpackArr": [
+        {
+            "name": "games_common",
+            "zhName": "子游戏公用资源",
+            "version": "0.0.2",
+            "zipImport": false,
+            "zipRawassets": false,
+            "isPrivate": true,
+            "type": "REMOTE",
+            "resDirs": [
+                "assets/resources/Games/Common"
+            ]
+        }
+    ]
+}

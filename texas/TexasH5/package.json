@@ -1,0 +1,29 @@
+{
+    "name": "roaring",
+    "version": "0.0.1",
+    "private": false,
+    "main": "./dist",
+    "scripts": {
+        "tsc": "node_modules/.bin/tsc",
+        "build": "npm run tsc",
+        "utils": "cd components/mogafa/utils && rimraf dist && npm i && npm i typescript --save-dev && npm run tsc && npm link",
+        "fgui": "cd components/mogafa/Component && rimraf dist && npm i && npm i typescript && npm link @mogafa/utils && npm run tsc && npm link",
+        "slots": "cd components/mogafa/Slots && rimraf dist && npm i && npm i typescript && npm link @mogafa/utils && npm link @mogafa/fairygui-component && npm run tsc && npm link",
+        "pkgs": "npm run utils && npm run fgui && npm run slots && npm link @mogafa/utils && npm link @mogafa/fairygui-component && npm link @mogafa/slots",
+        "links": "npm i && npm link @mogafa/utils && npm link @mogafa/fairygui-component && npm link @mogafa/slots && npm link @slotsmaster/ui-common",
+        "smui": "cd components/slotsmaster/uicommon && rimraf dist && npm i && npm i typescript --save-dev && npm run tsc && npm link",
+        "smpkgs": "npm run smui",
+        "devenv": "cpy ./config/config.dev.ts --rename=config.ts  ./assets/Script/config/",
+        "testenv": "cpy ./config/config.test.ts --rename=config.ts  ./assets/Script/config/",
+        "localenv": "cpy ./config/config.local.ts --rename=config.ts  ./assets/Script/config/",
+        "rebuild": "npm run pkgs && npm run smui && npm run links"
+    },
+    "dependencies": {
+        "@cmgp/spin-result": "0.0.47",
+        "class-transformer": "^0.2.3",
+        "inversify": "^5.0.1",
+        "reflect-metadata": "^0.1.13",
+        "rimraf": "^3.0.2",
+        "typescript": "^3.8.3"
+    }
+}

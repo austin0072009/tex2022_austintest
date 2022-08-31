@@ -1,0 +1,27 @@
+
+Tuoxie.png
+size: 256,256
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+xg7877
+  rotate: false
+  xy: 1, 1
+  size: 115, 115
+  orig: 115, 115
+  offset: 0, 0
+  index: -1
+Xieyin
+  rotate: false
+  xy: 1, 118
+  size: 93, 137
+  orig: 93, 137
+  offset: 0, 0
+  index: -1
+Tuoxie
+  rotate: false
+  xy: 96, 118
+  size: 91, 136
+  orig: 91, 136
+  offset: 0, 0
+  index: -1

@@ -1,0 +1,7 @@
+{
+  "__type__": "cc.TextAsset",
+  "_name": "MogafaExtensions.d",
+  "_objFlags": 0,
+  "_native": "",
+  "text": "declare namespace fgui {\n    interface GObject {\n        asMogafaNumberField(): MogafaNumberField;\n    }\n}\n"
+}

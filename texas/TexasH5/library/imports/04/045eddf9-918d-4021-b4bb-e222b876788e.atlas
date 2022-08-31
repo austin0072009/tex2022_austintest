@@ -1,0 +1,34 @@
+
+boli.png
+size: 128,128
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+images/9_boli/9_boli
+  rotate: false
+  xy: 1, 1
+  size: 60, 63
+  orig: 60, 63
+  offset: 0, 0
+  index: -1
+images/9_boli/9_s
+  rotate: false
+  xy: 1, 66
+  size: 52, 47
+  orig: 52, 47
+  offset: 0, 0
+  index: -1
+images/9_boli/9_0
+  rotate: false
+  xy: 63, 1
+  size: 50, 68
+  orig: 50, 68
+  offset: 0, 0
+  index: -1
+images/9_boli/9_1
+  rotate: false
+  xy: 55, 71
+  size: 15, 25
+  orig: 15, 25
+  offset: 0, 0
+  index: -1

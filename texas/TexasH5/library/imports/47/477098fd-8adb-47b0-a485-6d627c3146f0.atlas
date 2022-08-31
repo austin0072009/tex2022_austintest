@@ -1,0 +1,13 @@
+
+gunto.png
+size: 64,32
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+images/5_gun/5_dk2
+  rotate: false
+  xy: 1, 1
+  size: 32, 30
+  orig: 32, 30
+  offset: 0, 0
+  index: -1

@@ -1,0 +1,160 @@
+
+hd_maobi01.png
+size: 1024,512
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+brush01
+  rotate: true
+  xy: 562, 472
+  size: 37, 196
+  orig: 37, 196
+  offset: 0, 0
+  index: -1
+fireworks01
+  rotate: false
+  xy: 725, 434
+  size: 36, 36
+  orig: 36, 36
+  offset: 0, 0
+  index: -1
+fireworks02
+  rotate: false
+  xy: 562, 392
+  size: 80, 78
+  orig: 80, 78
+  offset: 0, 0
+  index: -1
+fireworks03
+  rotate: false
+  xy: 476, 114
+  size: 80, 78
+  orig: 80, 78
+  offset: 0, 0
+  index: -1
+fx01
+  rotate: false
+  xy: 2, 352
+  size: 138, 157
+  orig: 138, 157
+  offset: 0, 0
+  index: -1
+fx010
+  rotate: false
+  xy: 282, 34
+  size: 138, 157
+  orig: 138, 157
+  offset: 0, 0
+  index: -1
+fx02
+  rotate: false
+  xy: 2, 193
+  size: 138, 157
+  orig: 138, 157
+  offset: 0, 0
+  index: -1
+fx03
+  rotate: false
+  xy: 142, 352
+  size: 138, 157
+  orig: 138, 157
+  offset: 0, 0
+  index: -1
+fx04
+  rotate: false
+  xy: 2, 34
+  size: 138, 157
+  orig: 138, 157
+  offset: 0, 0
+  index: -1
+fx05
+  rotate: false
+  xy: 142, 193
+  size: 138, 157
+  orig: 138, 157
+  offset: 0, 0
+  index: -1
+fx06
+  rotate: false
+  xy: 282, 352
+  size: 138, 157
+  orig: 138, 157
+  offset: 0, 0
+  index: -1
+fx07
+  rotate: false
+  xy: 142, 34
+  size: 138, 157
+  orig: 138, 157
+  offset: 0, 0
+  index: -1
+fx08
+  rotate: false
+  xy: 282, 193
+  size: 138, 157
+  orig: 138, 157
+  offset: 0, 0
+  index: -1
+fx09
+  rotate: false
+  xy: 422, 352
+  size: 138, 157
+  orig: 138, 157
+  offset: 0, 0
+  index: -1
+t01
+  rotate: true
+  xy: 760, 477
+  size: 32, 70
+  orig: 32, 70
+  offset: 0, 0
+  index: -1
+t02
+  rotate: false
+  xy: 422, 43
+  size: 52, 149
+  orig: 52, 149
+  offset: 0, 0
+  index: -1
+t03
+  rotate: true
+  xy: 562, 361
+  size: 29, 70
+  orig: 29, 70
+  offset: 0, 0
+  index: -1
+t04
+  rotate: false
+  xy: 476, 73
+  size: 59, 39
+  orig: 59, 39
+  offset: 0, 0
+  index: -1
+t041
+  rotate: false
+  xy: 644, 392
+  size: 44, 78
+  orig: 44, 78
+  offset: 0, 0
+  index: -1
+t05
+  rotate: false
+  xy: 690, 425
+  size: 33, 45
+  orig: 33, 45
+  offset: 0, 0
+  index: -1
+t06
+  rotate: true
+  xy: 2, 2
+  size: 30, 114
+  orig: 30, 114
+  offset: 0, 0
+  index: -1
+t07
+  rotate: false
+  xy: 422, 194
+  size: 137, 156
+  orig: 137, 156
+  offset: 0, 0
+  index: -1

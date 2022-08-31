@@ -1,0 +1,7 @@
+{
+  "__type__": "cc.TextAsset",
+  "_name": "SpinResultsGameWheel.d",
+  "_objFlags": 0,
+  "_native": "",
+  "text": "import { SpinResultsWheel } from \"./SpinResultsWheel\";\nexport default class SpinResultsGameWheel {\n    private _winCoins;\n    private _totalCoins;\n    private _productId;\n    private _productCode;\n    private _productPrice;\n    private _awardCollectId;\n    private _wheel;\n    constructor(wheel: SpinResultsWheel, winCoins: number, totalCoins: number, productId: string, productCode: string, productPrice: number, awardCollectId: string);\n    get winCoins(): number;\n    set winCoins(value: number);\n    get totalCoins(): number;\n    set totalCoins(value: number);\n    get productId(): string;\n    set productId(value: string);\n    get productCode(): string;\n    set productCode(value: string);\n    get productPrice(): number;\n    set productPrice(value: number);\n    get awardCollectId(): string;\n    set awardCollectId(value: string);\n    get wheel(): SpinResultsWheel;\n    set wheel(value: SpinResultsWheel);\n}\n"
+}

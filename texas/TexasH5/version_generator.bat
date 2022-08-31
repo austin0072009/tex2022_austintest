@@ -1,0 +1,2 @@
+node version_generator.js
+pause

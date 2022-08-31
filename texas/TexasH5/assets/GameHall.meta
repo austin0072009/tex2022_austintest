@@ -1,0 +1,20 @@
+{
+  "ver": "1.1.2",
+  "uuid": "208f6158-657f-4c90-bbbe-f69546c957a0",
+  "isBundle": true,
+  "bundleName": "gameHall",
+  "priority": "7",
+  "compressionType": {
+    "android": "default"
+  },
+  "optimizeHotUpdate": {
+    "android": false
+  },
+  "inlineSpriteFrames": {
+    "android": false
+  },
+  "isRemoteBundle": {
+    "android": false
+  },
+  "subMetas": {}
+}

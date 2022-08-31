@@ -1,0 +1,7 @@
+{
+  "__type__": "cc.TextAsset",
+  "_name": "SpinResultsCard.d",
+  "_objFlags": 0,
+  "_native": "",
+  "text": "export default class SpinResultsCard {\n    private _id;\n    private _imageUrl;\n    private _isNew;\n    private _count;\n    constructor(_id: string, _imageUrl: string, _isNew: boolean, _count: number);\n    /**\n     * 卡牌ID\n     *\n     * @readonly\n     * @type {string}\n     * @memberof SpinResultsCard\n     */\n    get id(): string;\n    set id(value: string);\n    /**\n     * 卡牌图片地址\n     *\n     * @readonly\n     * @type {string}\n     * @memberof SpinResultsCard\n     */\n    get imageUrl(): string;\n    set imageUrl(value: string);\n    /**\n     * 是否是新出现的卡牌\n     *\n     * @readonly\n     * @type {boolean}\n     * @memberof SpinResultsCard\n     */\n    get isNewCard(): boolean;\n    set isNewCard(value: boolean);\n    /**\n     * 持有数量\n     *\n     * @readonly\n     * @type {number}\n     * @memberof SpinResultsCard\n     */\n    get cardCount(): number;\n    set cardCount(value: number);\n}\n"
+}

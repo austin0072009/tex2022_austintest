@@ -1,0 +1,7 @@
+{
+  "__type__": "cc.TextAsset",
+  "_name": "MessageID.pb.d",
+  "_objFlags": 0,
+  "_native": "",
+  "text": "/** Namespace proto. */\nexport namespace proto {\n\n    /** MsgID enum. */\n    enum MsgID {\n        ERROR_MSG = 0,\n        C2R_Login = 10001,\n        R2C_Login = 10002,\n        C2G_LoginGate = 10003,\n        G2C_LoginGate = 10004,\n        G2C_TestHotfixMessage = 10005,\n        C2M_TestActorRequest = 10006,\n        M2C_TestActorResponse = 10007,\n        PlayerInfo = 10008,\n        C2G_PlayerInfo = 10009,\n        G2C_PlayerInfo = 10010,\n        C2SS_ActorRPCRequest = 101,\n        SS2C_ActorRPCReply = 102,\n        SS2C_ActorMessage = 103,\n        BroadcastInfo = 104,\n        C2SS_ActorMessage = 105,\n        C2M_TestRequest = 106,\n        M2C_TestResponse = 107,\n        Actor_TransferRequest = 108,\n        Actor_TransferResponse = 109,\n        C2G_EnterMap = 110,\n        G2C_EnterMap = 111,\n        UnitInfo = 112,\n        M2C_CreateUnits = 113,\n        Frame_ClickMap = 114,\n        M2C_PathfindingResult = 115,\n        C2R_Ping = 116,\n        R2C_Ping = 117,\n        G2C_Test = 118,\n        C2M_Reload = 119,\n        M2C_Reload = 120,\n        SS2C_BaseNotify = 121,\n        C2G_Heartbeat = 122,\n        G2C_Heartbeat = 123\n    }\n}\n"
+}

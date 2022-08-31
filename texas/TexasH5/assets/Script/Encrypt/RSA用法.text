@@ -1,0 +1,34 @@
+        let PRIVATE_KEY = `-----BEGIN RSA PRIVATE KEY-----
+        MIICWwIBAAKBgQC8nNKt9lJdwwFKzRp0D2wPtUcXwMj2t8smhUmLvTTiomej11bg
+        xf75I4zxIq4sjYE8yyzoWXjrJ2dbakDPFlQxH1kC1mVCBrA1HGAJ8EULyVk52Uu3
+        MbpW5rCPGUh5gqpSCgVuzvO8ij5UxOxgPZMXH/xH/43PcCfTyWQOIliHHwIDAQAB
+        AoGAZ9/CU5ZN5F9qDcUJZZO8wqXmYlmFFANCuZM8Xt40CwDALUaCDUZd1t3SWFbu
+        L5E69L08nTXxVyibTogk6yfz8yrxp18ckT8XbtgNor0MFMPxku7Rg14r14ha4fg5
+        172FjyH5PI0jJfVwKKLl2cUjzHzEuTyHsXLChjWDrplE8/ECQQDt3okMMaxGGPpY
+        1jKxKDojdio3Bh32A0FoVCXHZQ/K/7pp4qRYfDY28dzv4e+/ZmmpCWEfSLRoebWR
+        l2bFMkInAkEAyv0oetOYgbj4a+kl6GW9wKcZedNcXX1SiGFRO2Quybj1J4NpheGz
+        /A570zUXOR13WYiWiMRHiLZcLidtLMtGSQJAMOH2kAb1PEKN0AvUxwtZR0hVTJF5
+        PsFUg7gnO17NbA45pODqnTSJf6kcmj94IYFOXWqMBv3N9VptscnHWOcHKQJAXpko
+        WkVuF1Zqf2/CONHhYnz9RGcZ7n/PDLu9rZ38qAnIRkfZz4jl5huh3UYqsnVm/5TG
+        AqrmY3II94FsQanh8QJAWX+12fOhCY490btr0nvlReroyci1obEm/73NHZIKSW8l
+        U5bkherW3VXhwjdQHiDlN4EJTe3HooCA2Qa7Zu21CA==
+        -----END RSA PRIVATE KEY-----`;
+        let PUBLIC_KEY = `-----BEGIN PUBLIC KEY-----
+        MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC8nNKt9lJdwwFKzRp0D2wPtUcX
+        wMj2t8smhUmLvTTiomej11bgxf75I4zxIq4sjYE8yyzoWXjrJ2dbakDPFlQxH1kC
+        1mVCBrA1HGAJ8EULyVk52Uu3MbpW5rCPGUh5gqpSCgVuzvO8ij5UxOxgPZMXH/xH
+        /43PcCfTyWQOIliHHwIDAQAB
+        -----END PUBLIC KEY-----`;
+
+        let encryptor = new JSEncrypt({ default_key_size: "1024" }); // RSA加密器
+        encryptor.setPublicKey(PUBLIC_KEY);
+
+        let decryptor = new JSEncrypt({ default_key_size: "1024" }); // RSA解密器
+        decryptor.setPrivateKey(PRIVATE_KEY);
+
+        let dataString = JSON.stringify(str);//要加密的字符串
+        let encryptedStr = encryptor.encrypt(dataString);
+        console.log("加密后:", JSON.stringify(encryptedStr));
+
+        let dataString2 = decryptor.decrypt(JSON.stringify(encryptedStr));//得到解密之后的文本
+        console.log("解密后:", JSON.stringify(dataString2));
