@@ -1,0 +1,61 @@
+{
+	"apksite":"https://fir.im/1111",
+	"ipasite":"http://fir.im/0000",
+	"AppVersion":"1.0.0",
+	"ResVersion":11,
+	"key":"4$",
+	"review":false,
+	"wechatsdk":false,
+	"experience":0,
+	"encrypt":"1",
+	"serverlist":
+	[
+		{"idx":102, "url":"192.168.5.199", "port":9001, "open":false, "random":100, "status":0,"apiAdress":"http://47.103.37.52:81","homeAdress":"http://47.103.37.52"},
+		{"idx":103, "url":"192.168.1.5", "port":9001, "open":false, "random":100, "status":0,"apiAdress":"http://47.103.37.52:81","homeAdress":"http://47.103.37.52"},
+		{"idx":105, "url":"192.168.0.113", "port":9001, "open":false, "random":100, "status":0},		
+		{"idx":106, "url":"192.168.0.20", "port":9001, "open":true, "random":100, "status":0,"apiAdress":"http://192.168.0.20:81","homeAdress":"http://192.168.0.20"},
+		{"idx":109, "url":"192.168.0.113", "port":9002, "open":false, "random":100, "status":0},
+		{"idx":201, "url":"47.103.37.52", "port":9002, "open":true, "random":100, "status":1,"apiAdress":"http://47.103.37.52:80","homeAdress":"http://47.103.37.52"},
+		{"idx":202, "url":"47.103.37.52", "port":9001, "open":true, "random":100, "status":0,"apiAdress":"http://47.103.37.52:81","homeAdress":"http://47.103.37.52"},
+		{"idx":203, "url":"47.103.37.52", "port":9001, "open":true, "random":100, "status":2,"apiAdress":"http://47.103.37.52:81","homeAdress":"http://47.103.37.52"}
+		
+		
+	],
+	"UpdateUrl":
+	[
+		{"idx":102, "url":"http://fir.im/1111", "port":9000, "open":true,  "random":100},
+		{"idx":102, "url":"http://fir.im/1110", "port":9000, "open":true,  "random":100}
+	],
+	"ResServer": 
+	[ 
+		{"idx":102, "url":"http://47.103.37.52/fordlc/resources/", "port":0, "open":true,  "random":100},
+		{"idx":102, "url":"http://47.103.37.52/fordlc/resources/", "port":0, "open":true,  "random":100}
+	],
+	"gamereslist": 
+	[
+		{"id":0, "version":11, "lastver":0},
+		{"id":4, "version":100, "lastver":0},
+		{"id":5, "version":100, "lastver":0},
+		{"id":13, "version":100, "lastver":0},
+		{"id":25, "version":100, "lastver":0},
+		{"id":31, "version":100, "lastver":0},
+		{"id":32, "version":100, "lastver":0},
+		{"id":41, "version":100, "lastver":0},
+		{"id":42, "version":100, "lastver":0},
+		{"id":43, "version":100, "lastver":0},
+		{"id":51, "version":100, "lastver":0},
+		{"id":81, "version":100, "lastver":0},
+		{"id":97, "version":100, "lastver":0},
+		{"id":101, "version":100, "lastver":0},
+		{"id":102, "version":100, "lastver":0},
+		{"id":171, "version":100, "lastver":0},
+		{"id":172, "version":100, "lastver":0},
+		{"id":211, "version":100, "lastver":0},
+		{"id":259, "version":100, "lastver":0},
+		{"id":281, "version":100, "lastver":0},
+		{"id":401, "version":100, "lastver":0},
+		{"id":402, "version":100, "lastver":0},
+		{"id":1000, "version":100, "lastver":0}
+	],
+	"TrustList":["0.0.0.0","192.168.0.0"]
+}

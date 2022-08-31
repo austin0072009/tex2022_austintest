@@ -1,0 +1,370 @@
+syntax = "proto3";
+package ETModel;
+
+message C2SS_ActorRPCRequest // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 93;
+	string request = 1;
+}
+
+message SS2C_ActorRPCReply // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+}
+
+message SS2C_ActorMessage // IActorMessage
+{
+	int32 RpcId = 90;
+	int64 ActorId = 93;
+    repeated BroadcastInfo Info = 1;
+}
+
+message BroadcastInfo
+{
+	int64 UnitId  = 1;
+
+	string Message = 2;
+}
+
+message C2SS_ActorMessage // IActorLocationMessage
+{
+	int32 RpcId = 90;
+	int64 ActorId = 93;
+    string Message = 94;
+}
+
+message C2M_TestRequest // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 93;
+	string request = 1;
+}
+
+message M2C_TestResponse // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	string response = 1;
+}
+
+message Actor_TransferRequest // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 93;
+	int32 MapIndex = 1;
+}
+
+message Actor_TransferResponse // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+}
+
+message C2G_EnterMap // IRequest
+{
+	int32 RpcId = 90;
+}
+
+message G2C_EnterMap // IResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	// 自己的unit id
+	int64 UnitId = 1;
+	// 所有的unit
+	repeated UnitInfo Units = 2;
+}
+
+message UnitInfo
+{
+	int64 UnitId  = 1;
+
+	float X = 2;
+	float Y = 3;
+	float Z = 4;
+}
+
+message M2C_CreateUnits // IActorMessage
+{
+	int32 RpcId = 90;
+	int64 ActorId = 93;
+    repeated UnitInfo Units = 1;
+} 
+
+
+message C2R_Ping // IRequest
+{
+	int32 RpcId = 90;
+}
+
+message R2C_Ping // IResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+}
+
+message G2C_Test // IMessage
+{
+}
+
+message C2M_Reload // IRequest
+{
+	int32 RpcId = 90;
+	string Account = 1;
+	string Password = 2;
+}
+
+message M2C_Reload // IResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+}
+
+
+message SS2C_BaseNotify // IActorMessage
+{
+	int32 RpcId = 90;
+	int64 ActorId = 93;
+    string data = 94;
+}
+
+message C2G_Heartbeat // IMessage
+{
+	int32 RpcId = 90; 
+}
+
+message G2C_Heartbeat // IMessage
+{
+	int32 RpcId = 90; 
+	int32 ServerTime=91;
+}
+
+//////////////////////////////////捕鱼/////////////////////////////////////////////////////////
+
+/// <summary>
+/// 进入FJ后开始推送鱼的信息
+/// </summary>
+message SS2C_ActorPushFishMessage // IActorMessage
+{
+	int32 RpcId = 90;
+	int64 ActorId = 93;
+	/// <summary>
+	/// fresh gate
+	/// </summary>
+	bool fg = 1;
+	/// <summary>
+	/// 生成鱼 的数据列表
+	/// </summary>
+	repeated FishPOD fl=2; 
+}
+
+/// <summary>
+/// 生成 鱼的协议
+/// </summary> 
+message FishPOD
+{
+	/// <summary>
+	/// 鱼的全局唯一guidarr
+	/// </summary>
+	repeated int32 g=1;
+
+	/// <summary>
+	/// 鱼ID(0-24)fishid
+	/// </summary>
+	int32 f=2;
+
+	/// <summary>
+	/// 鱼路径PathID(1-150)
+	/// </summary>
+	int32 p=3;
+	/// <summary>
+	/// 分组ID
+	/// </summary>
+	int32 groupid=4;
+	/// <summary>
+	/// 鱼出生的时间 born time
+	/// </summary>
+	repeated uint64 bt=5;
+	/// <summary>
+	/// 鱼死亡的时间 
+	/// </summary>
+	repeated uint64 dt=6;
+	/// <summary>
+	/// buff
+	/// </summary>
+	FishBuff buf=7;
+	/// <summary>
+	/// 鱼标记
+	/// </summary>
+	SpecialFishFlag fg=8;
+}
+
+/// <summary>
+/// 对应FishPOD的buff鱼的协议
+/// </summary> 
+message FishBuff
+{
+	/// <summary>
+	/// 鱼的全局唯一guidarr
+	/// </summary>
+	int32 g=1;
+	/// <summary>
+	/// 类型1.gold加倍，2.加速度移动一半，3.鱼王，4.道具掉落,5.显示鱼泡泡
+	/// </summary>
+	int32 t=2;
+	/// <summary>
+	/// 对应类型的值
+	/// </summary>
+	int32 v=3; 
+}
+
+enum SpecialFishFlag
+{
+	NULL = 0;
+	/// <summary>
+	/// 金玉满堂
+	/// </summary>
+	JinYuManTang = 1;
+	/// <summary>
+	/// 一石三鱼
+	/// </summary>
+	YiShiSanYu = 2;
+	/// <summary>
+	/// 一箭双雕
+	/// </summary>
+	YiJianShuangDiao = 3;
+	/// <summary>
+	/// 大闹天空
+	/// </summary>
+	DaNaoTianGong = 4;
+	/// <summary>
+	/// 闪电连锁
+	/// </summary>
+	ShanDianLianSuo = 5;
+}
+
+message CC2S_ActorKillFishRequest // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 93;
+	/// <summary>
+	///_lanucheruid 
+	/// </summary>
+	int32 uid=1; 
+	/// <summary>
+	/// 鱼的全局唯一ID
+	/// </summary>
+	int32 fuid=2; 
+	//房间ID
+	int32 levelid = 3;
+	//桌子ID
+	int32 tableid = 4;
+}
+
+message SS2C_ActorKillFishResponse // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	/// <summary>
+	/// 鱼的全局唯一ID
+	/// </summary>
+	int32 gid=1;
+
+	/// <summary>
+	/// 玩家当前gold
+	/// </summary>
+	int32 g=2;
+
+	/// <summary>
+	/// 杀死鱼的奖励（_kill=false时为0）
+	/// </summary>
+	int32 fg=3;
+
+	/// <summary>
+	/// 是否杀死鱼
+	/// </summary>
+	bool k=4;
+}
+
+ /// <summary>
+/// 发送炮弹信息给其他玩家
+/// </summary>
+message SS2C_ActorPushShootMessage // IActorMessage
+{
+	int32 RpcId = 90;
+	int64 ActorId = 93;
+	/// <summary>
+	/// 玩家当前gold
+	/// </summary>
+	int64 g=1;
+
+	/// <summary>
+	///      
+	/// </summary>
+	int32 uid=2;
+	/// <summary>
+	/// 炮台类型ID
+	/// </summary>
+	int32 bid=3;
+	/// <summary>
+	/// 炮台 发射器 lancher的id
+	/// </summary>
+	int32 lid=4;
+
+	/// <summary>
+	/// 炮弹从哪个位置发射出去的
+	/// </summary>
+	int32 p=5;
+
+	/// <summary>
+	/// 炮弹发射的目标点
+	/// </summary>
+	int32 x=6;
+	int32 y=7;
+}
+
+
+/// <summary>
+/// 发射炮炮的请求
+/// </summary>
+message CC2S_ActorShootFishRequest // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 93;
+	int32 tid = 1;
+	int32 rid = 2;
+	/// <summary>
+	/// 炮台类型ID
+	/// </summary>
+	int32 bid = 3;
+	/// <summary>
+	///  lv id 等级ID
+	/// </summary>
+	int32 lid = 4;
+
+	/// <summary>
+	/// 炮弹从哪个位置发射出去的 1,2,3,4
+	/// </summary>
+	int32 p = 5;
+
+	/// <summary>
+	/// 炮弹发射的目标点 屏幕坐标
+	/// </summary>
+	int32 x = 6;
+	int32 y = 7;
+}
+message SS2C_ActorShootFishResponse // IActorLocationResponse
+{ 
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+}

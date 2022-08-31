@@ -1,0 +1,122 @@
+[
+  {
+    "key": "whi_userid",
+    "_val": "2000001",
+    "desc": "人人旋的开房机器人，但没有机器人的标识"
+  },
+  {
+    "key": "tax_rate",
+    "_val": "0.05",
+    "desc": "红利系统收税，5%"
+  },
+  {
+    "key": "gold_eachtable",
+    "_val": "100",
+    "desc": "房卡每局收费，100"
+  },
+  {
+    "key": "tax_generalagent",
+    "_val": "0.01",
+    "desc": "总代收税，1%"
+  },
+  {
+    "key": "tax_previous",
+    "_val": "0.01",
+    "desc": "上级分成，1%"
+  },
+  {
+    "key": "taxrc_generalagent",
+    "_val": "0.1",
+    "desc": "房卡总代收税，10%"
+  },
+  {
+    "key": "taxrc_previous",
+    "_val": "0.2",
+    "desc": "房卡上级分成，20%"
+  },
+  {
+    "key": "tax_area",
+    "_val": "20",
+    "desc": "大区代理10%，配置值表示tax的20% 全给出去"
+  },
+  {
+    "key": "tax_p1",
+    "_val": "60",
+    "desc": "一级代理收60%，配置值表示tax的60%"
+  },
+  {
+    "key": "tax_p2",
+    "_val": "12",
+    "desc": "二级代理收12%，配置值表示tax的12%"
+  },
+  {
+    "key": "tax_p3",
+    "_val": "8",
+    "desc": "三级代理收8%，配置值表示tax的8%"
+  },
+  {
+    "key": "statistics_interval",
+    "_val": "60",
+    "desc": "统计时间间隔单位分钟"
+  },
+  {
+    "key": "notice_gold_rate",
+    "_val": "100",
+    "desc": "显示玩家赢取的金币公告,底分*50倍"
+  },
+  {
+    "key": "trial_play",
+    "_val": "false",
+    "desc": "是否是试玩服"
+  },
+  {
+    "key": "give_gold",
+    "_val": "2000",
+    "desc": "每日登陆赠送的金币"
+  },
+  {
+    "key": "jackpotshow",
+    "_val": "20",
+    "desc": "奖池百比进入系统税收"
+  },
+  {
+    "key": "jackpotlv3",
+    "_val": "10",
+    "desc": "总奖池-显示奖池的10% 的盟主CEO创始人30% 平台60%"
+  },
+  {
+    "key": "jackpotceo3",
+    "_val": "30",
+    "desc": "总奖池-显示奖池的10% 的盟主CEO创始人30% 平台60%"
+  },
+  {
+    "key": "generatId",
+    "_val": "1010",
+    "desc": "总代ID 默认他下面全部开启代理"
+  },
+  {
+    "key": "mjtax_rate",
+    "_val": "0.03",
+    "desc": "mj红利系统收税，3%"
+  },
+  {
+    "key": "mjtax_rateshare",
+    "_val": "20",
+    "desc": "红利系统收税系统保留，20%"
+  },
+  {
+    "key": "reden_time1",
+    "_val": "11:00-13:00",
+    "desc": "红包领取时间段1"
+  },
+  {
+    "key": "reden_time2",
+    "_val": "18:00-20:00",
+    "desc": "红包领取时间段2"
+  },
+  {
+    "key": "texboy_userid",
+    "_val": "10530",
+    "desc": "德州牛仔坐庄器人，但没有机器人的标识"
+  }
+]

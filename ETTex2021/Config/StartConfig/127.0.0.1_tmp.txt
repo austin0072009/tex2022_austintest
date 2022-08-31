@@ -1,0 +1,36 @@
+{ "_t" : "StartConfig", "_id" : NumberLong("96832366182401"), "C" : [{ "_t" : "InnerConfig", "Address" : "127.0.0.1:20001" }, { "_t" : "OuterConfig","ws" : "127.0.0.1:10001", "ws2" : "127.0.0.1:10001", "Address" : "127.0.0.1:9001", "Address2" : "127.0.0.1:9001" }], "AppId" : 1, "AppType" : "Manager", "ServerIP" : "*", "para":"401" }
+{ "_t" : "StartConfig", "_id" : NumberLong("96832366182402"), "C" : [{ "_t" : "InnerConfig", "Address" : "127.0.0.1:20002" }, { "_t" : "OuterConfig", "ws" : "127.0.0.1:10002", "ws2" : "127.0.0.1:10002", "Address" : "127.0.0.1:9002", "Address2" : "127.0.0.1:9002" }], "AppId" : 2, "AppType" : "Realm", "ServerIP" : "*", "para":"401" }
+{ "_t" : "StartConfig", "_id" : NumberLong("98565723062316"), "C" : [{ "_t" : "InnerConfig", "Address" : "127.0.0.1:20003" }], "AppId" : 3, "AppType" : "RedisDB", "ServerIP" : "*", "para":"401" }
+{ "_t" : "StartConfig", "_id" : NumberLong("98565862653976"), "C" : [{ "_t" : "InnerConfig", "Address" : "127.0.0.1:20004" }], "AppId" : 4, "AppType" : "Location", "ServerIP" : "*", "para":"401" }
+{ "_t" : "StartConfig", "_id" : NumberLong("96832366182403"), "C" : [{ "_t" : "InnerConfig", "Address" : "127.0.0.1:20006" }, { "_t" : "OuterConfig", "ws" : "127.0.0.1:10006", "ws2" : "127.0.0.1:10006", "Address" : "127.0.0.1:9006", "Address2" : "127.0.0.1:9006" }], "AppId" : 6, "AppType" : "Gate", "ServerIP" : "*", "para":"401" }
+{ "_t" : "StartConfig", "_id" : NumberLong("98565723062318"), "C" : [{ "_t" : "InnerConfig", "Address" : "127.0.0.1:20008" }], "AppId" : 8, "AppType" : "Map", "ServerIP" : "*", "para":"10086" } 
+{ "_t" : "StartConfig", "_id" : NumberLong("98565723062310"), "C" : [{ "_t" : "InnerConfig", "Address" : "127.0.0.1:20010" }], "AppId" : 10, "AppType" : "ScutGame", "ServerIP" : "*", "para":"21." } 
+{ "_t" : "StartConfig", "_id" : NumberLong("98565723062311"), "C" : [{ "_t" : "InnerConfig", "Address" : "127.0.0.1:20011" }], "AppId" : 11, "AppType" : "ScutGame", "ServerIP" : "*", "para":"51." }
+{ "_t" : "StartConfig", "_id" : NumberLong("98565723062312"), "C" : [{ "_t" : "InnerConfig", "Address" : "127.0.0.1:20012" }], "AppId" : 12, "AppType" : "ScutGame", "ServerIP" : "*", "para":"52." }
+{ "_t" : "StartConfig", "_id" : NumberLong("98565723062313"), "C" : [{ "_t" : "InnerConfig", "Address" : "127.0.0.1:20013" }], "AppId" : 13, "AppType" : "ScutGame", "ServerIP" : "*", "para":"91." } 
+{ "_t" : "StartConfig", "_id" : NumberLong("98565723062314"), "C" : [{ "_t" : "InnerConfig", "Address" : "127.0.0.1:20014" }], "AppId" : 14, "AppType" : "ScutGame", "ServerIP" : "*", "para":"92." }
+{ "_t" : "StartConfig", "_id" : NumberLong("98565723062315"), "C" : [{ "_t" : "InnerConfig", "Address" : "127.0.0.1:20015" }], "AppId" : 15, "AppType" : "ScutGame", "ServerIP" : "*", "para":"201." }
+
+{ "_t" : "StartConfig", "_id" : NumberLong("98565716062315"), "C" : [{ "_t" : "InnerConfig", "Address" : "127.0.0.1:20016" }], "AppId" : 16, "AppType" : "ScutGame", "ServerIP" : "*", "para":"202." }
+{ "_t" : "StartConfig", "_id" : NumberLong("98565717062315"), "C" : [{ "_t" : "InnerConfig", "Address" : "127.0.0.1:20017" }], "AppId" : 17, "AppType" : "ScutGame", "ServerIP" : "*", "para":"252." }
+{ "_t" : "StartConfig", "_id" : NumberLong("98565718062315"), "C" : [{ "_t" : "InnerConfig", "Address" : "127.0.0.1:20018" }], "AppId" : 18, "AppType" : "ScutGame", "ServerIP" : "*", "para":"254." }
+{ "_t" : "StartConfig", "_id" : NumberLong("98565719062315"), "C" : [{ "_t" : "InnerConfig", "Address" : "127.0.0.1:20019" }], "AppId" : 19, "AppType" : "ScutGame", "ServerIP" : "*", "para":"255." }
+{ "_t" : "StartConfig", "_id" : NumberLong("98565720062315"), "C" : [{ "_t" : "InnerConfig", "Address" : "127.0.0.1:20020" }], "AppId" : 20, "AppType" : "ScutGame", "ServerIP" : "*", "para":"256." }
+{ "_t" : "StartConfig", "_id" : NumberLong("98565721062315"), "C" : [{ "_t" : "InnerConfig", "Address" : "127.0.0.1:20021" }], "AppId" : 21, "AppType" : "ScutGame", "ServerIP" : "*", "para":"257." }
+{ "_t" : "StartConfig", "_id" : NumberLong("98565722062315"), "C" : [{ "_t" : "InnerConfig", "Address" : "127.0.0.1:20022" }], "AppId" : 22, "AppType" : "ScutGame", "ServerIP" : "*", "para":"258." }
+{ "_t" : "StartConfig", "_id" : NumberLong("98565723062315"), "C" : [{ "_t" : "InnerConfig", "Address" : "127.0.0.1:20023" }], "AppId" : 23, "AppType" : "ScutGame", "ServerIP" : "*", "para":"1000." }
+{ "_t" : "StartConfig", "_id" : NumberLong("98565724062315"), "C" : [{ "_t" : "InnerConfig", "Address" : "127.0.0.1:20024" }], "AppId" : 24, "AppType" : "ScutGame", "ServerIP" : "*", "para":"4096." }
+{ "_t" : "StartConfig", "_id" : NumberLong("98565725062315"), "C" : [{ "_t" : "InnerConfig", "Address" : "127.0.0.1:20025" }], "AppId" : 25, "AppType" : "ScutGame", "ServerIP" : "*", "para":"301." }
+{ "_t" : "StartConfig", "_id" : NumberLong("98565726062315"), "C" : [{ "_t" : "InnerConfig", "Address" : "127.0.0.1:20026" }], "AppId" : 26, "AppType" : "ScutGame", "ServerIP" : "*", "para":"501." }
+{ "_t" : "StartConfig", "_id" : NumberLong("98565727062315"), "C" : [{ "_t" : "InnerConfig", "Address" : "127.0.0.1:20027" }], "AppId" : 27, "AppType" : "ScutGame", "ServerIP" : "*", "para":"502." }
+{ "_t" : "StartConfig", "_id" : NumberLong("98565728062315"), "C" : [{ "_t" : "InnerConfig", "Address" : "127.0.0.1:20028" }], "AppId" : 28, "AppType" : "ScutGame", "ServerIP" : "*", "para":"503." }
+{ "_t" : "StartConfig", "_id" : NumberLong("98565729062315"), "C" : [{ "_t" : "InnerConfig", "Address" : "127.0.0.1:20029" }], "AppId" : 29, "AppType" : "ScutGame", "ServerIP" : "*", "para":"504." }
+{ "_t" : "StartConfig", "_id" : NumberLong("98565730062315"), "C" : [{ "_t" : "InnerConfig", "Address" : "127.0.0.1:20030" }], "AppId" : 30, "AppType" : "ScutGame", "ServerIP" : "*", "para":"505." }
+{ "_t" : "StartConfig", "_id" : NumberLong("98565731062315"), "C" : [{ "_t" : "InnerConfig", "Address" : "127.0.0.1:20031" }], "AppId" : 31, "AppType" : "ScutGame", "ServerIP" : "*", "para":"506." }
+{ "_t" : "StartConfig", "_id" : NumberLong("98565732062315"), "C" : [{ "_t" : "InnerConfig", "Address" : "127.0.0.1:20032" }], "AppId" : 32, "AppType" : "ScutGame", "ServerIP" : "*", "para":"302." }
+{ "_t" : "StartConfig", "_id" : NumberLong("98565733062315"), "C" : [{ "_t" : "InnerConfig", "Address" : "127.0.0.1:20033" }], "AppId" : 33, "AppType" : "ScutGame", "ServerIP" : "*", "para":"8002." }
+{ "_t" : "StartConfig", "_id" : NumberLong("98565734062315"), "C" : [{ "_t" : "InnerConfig", "Address" : "127.0.0.1:20034" }], "AppId" : 34, "AppType" : "ScutGame", "ServerIP" : "*", "para":"8003." }
+{ "_t" : "StartConfig", "_id" : NumberLong("98565735062315"), "C" : [{ "_t" : "InnerConfig", "Address" : "127.0.0.1:20035" }], "AppId" : 35, "AppType" : "ScutGame", "ServerIP" : "*", "para":"104." }
+{ "_t" : "StartConfig", "_id" : NumberLong("98565736062315"), "C" : [{ "_t" : "InnerConfig", "Address" : "127.0.0.1:20036" }], "AppId" : 36, "AppType" : "ScutGame", "ServerIP" : "*", "para":"54." }
+
+

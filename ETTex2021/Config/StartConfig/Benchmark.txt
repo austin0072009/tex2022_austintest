@@ -1,0 +1,2 @@
+{ "_t" : "StartConfig", "C" : [{ "_t" : "OuterConfig", "ws" : "127.0.0.1:10002", "ws2" : "106.13.222.130:10002", "Address" : "127.0.0.1:9002", "Address2" : "106.13.222.130:9002" }, { "_t" : "InnerConfig", "Address" : "127.0.0.1:20000" }], "AppId" : 1, "AppType" : "Manager", "ServerIP" : "*" }
+{ "_t" : "StartConfig", "C" : [{ "_t" : "ClientConfig", "Address" : "127.0.0.1:10002" }], "AppId" : 2, "AppType" : "Benchmark", "ServerIP" : "*" }

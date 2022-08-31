@@ -1,0 +1,236 @@
+version: '3'
+services:
+  gameserver-all:
+    container_name: game_all
+    build: /root/GameServer
+    image: etgameserver:5.0
+    ports:
+      - "10002:10002"
+      - "8080:8080"
+    volumes:
+      - /root/GameServer/Bin:/App
+      - /root/GameServer/Config:/Config
+      - /root/GameServer/Logs_all:/Logs
+      - /root/GameServer/GameLog_all:/GameLog
+    networks:
+      gameserverip:
+        ipv4_address: 172.31.1.8
+    command: dotnet App.dll --appId=1 --appType=ScutGame --config=../Config/StartConfig/LocalAllServer.txt
+  # gameserver-91001:
+    # container_name: game_91001
+    # build: /root/GameServer
+    # image: etgameserver:5.0
+    # ports:
+      # - "20007:20007"
+    # volumes:
+      # - /root/GameServer/publish:/App
+      # - /root/GameServer/Config:/Config
+      # - /root/GameServer/Logs_91001:/Logs
+      # - /root/GameServer/GameLog_91001:/GameLog
+    # networks:
+      # gameserverip:
+        # ipv4_address: 172.31.1.9
+    # command: dotnet App.dll --appId=7 --appType=ScutGame --config=../Config/StartConfig/127.0.0.1.txt
+  # gameserver-91002:
+    # container_name: game_91002
+    # build: /root/GameServer
+    # image: etgameserver:5.0
+    # ports:
+      # - "20008:20008"
+    # volumes:
+      # - /root/GameServer/publish:/App
+      # - /root/GameServer/Config:/Config
+      # - /root/GameServer/Logs_91002:/Logs
+      # - /root/GameServer/GameLog_91002:/GameLog
+    # networks:
+      # gameserverip:
+        # ipv4_address: 172.31.1.10
+    # command: dotnet App.dll --appId=8 --appType=ScutGame --config=../Config/StartConfig/127.0.0.1.txt
+  # gameserver-91003:
+    # container_name: game_91003
+    # build: /root/GameServer
+    # image: etgameserver:5.0
+    # ports:
+      # - "20009:20009"
+    # volumes:
+      # - /root/GameServer/publish:/App
+      # - /root/GameServer/Config:/Config
+      # - /root/GameServer/Logs_91003:/Logs
+      # - /root/GameServer/GameLog_91003:/GameLog
+    # networks:
+      # gameserverip:
+        # ipv4_address: 172.31.1.11
+    # command: dotnet App.dll --appId=9 --appType=ScutGame --config=../Config/StartConfig/127.0.0.1.txt
+  # gameserver-91004:
+    # container_name: game_91004
+    # build: /root/GameServer
+    # image: etgameserver:5.0
+    # ports:
+      # - "20010:20010"
+    # volumes:
+      # - /root/GameServer/publish:/App
+      # - /root/GameServer/Config:/Config
+      # - /root/GameServer/Logs_91004:/Logs
+      # - /root/GameServer/GameLog_91004:/GameLog
+    # networks:
+      # gameserverip:
+        # ipv4_address: 172.31.1.12
+    # command: dotnet App.dll --appId=10 --appType=ScutGame --config=../Config/StartConfig/127.0.0.1.txt
+  # gameserver-map:
+    # container_name: game_map
+    # build: /root/GameServer
+    # image: etgameserver:5.0
+    # ports:
+      # - "20006:20006"
+      # - "8080:8080"
+    # volumes:
+      # - /root/GameServer/publish:/App
+      # - /root/GameServer/Config:/Config
+      # - /root/GameServer/Logs_map:/Logs
+    # networks:
+      # gameserverip:
+        # ipv4_address: 172.31.1.8
+    # command: dotnet App.dll --appId=6 --appType=Map --config=../Config/StartConfig/127.0.0.1.txt
+  # gameserver-redis:
+    # container_name: redisdb
+    # build: /root/GameServer
+    # image: etgameserver:5.0
+    # ports:
+      # - "20003:20003"
+    # volumes:
+      # - /root/GameServer/publish:/App
+      # - /root/GameServer/Config:/Config
+      # - /root/GameServer/Logs_redis:/Logs
+    # networks:
+      # gameserverip:
+        # ipv4_address: 172.31.1.5
+    # command: dotnet App.dll --appId=3 --appType=RedisDB --config=../Config/StartConfig/127.0.0.1.txt
+  # game-location:
+    # container_name: location
+    # build: /root/GameServer
+    # image: etgameserver:5.0
+    # ports:
+      # - "20004:20004"
+    # volumes:
+      # - /root/GameServer/publish:/App
+      # - /root/GameServer/Config:/Config
+      # - /root/GameServer/Logs_location:/Logs
+    # networks:
+      # gameserverip:
+        # ipv4_address: 172.31.1.6
+    # command: dotnet App.dll --appId=4 --appType=Location --config=../Config/StartConfig/127.0.0.1.txt
+  # game-gate:
+    # container_name: gate
+    # build: /root/GameServer
+    # image: etgameserver:5.0
+    # ports:
+      # - "8881:8881"
+      # - "20005:20005"
+      # - "10006:10006"
+    # volumes:
+      # - /root/GameServer/publish:/App
+      # - /root/GameServer/Config:/Config
+      # - /root/GameServer/Logs_gate:/Logs
+    # networks:
+      # gameserverip:
+        # ipv4_address: 172.31.1.7
+    # command: dotnet App.dll --appId=5 --appType=Gate --config=../Config/StartConfig/127.0.0.1.txt
+  # game-realm:
+    # container_name: reaml
+    # build: /root/GameServer
+    # image: etgameserver:5.0
+    # ports:
+      # - "8880:8880"
+      # - "20012:20012"
+      # - "10002:10002"
+    # volumes:
+      # - /root/GameServer/publish:/App
+      # - /root/GameServer/Config:/Config
+      # - /root/GameServer/Logs_reaml:/Logs
+    # networks:
+      # gameserverip:
+        # ipv4_address: 172.31.1.4
+    # command: dotnet App.dll --appId=2 --appType=Realm --config=../Config/StartConfig/127.0.0.1.txt
+  web-webgm:
+    container_name: gm
+    build: /root/GM
+    image: webgm:5.0
+    ports:
+      - "81:80"
+    volumes:
+      - /root/GM:/App
+    networks:
+      gameserverip:
+        ipv4_address: 172.31.1.13
+  web-websgm:
+    container_name: sgm
+    build: /root/SGM
+    image: websgm:5.0
+    ports:
+      - "8088:80"
+    volumes:
+      - /root/SGM:/App
+    networks:
+      gameserverip:
+        ipv4_address: 172.31.1.15
+  web-webapi:
+    container_name: webapi
+    build: /root/API
+    image: webapi:5.0
+    ports:
+      - "8001:8001"
+    volumes:
+      - /root/API:/App
+      - /root/API/logs:/APP/logs
+    networks:
+      gameserverip:
+        ipv4_address: 172.31.1.14
+  nginx:
+    container_name: nginx
+    image: "nginx:latest"
+    ports:
+      - "80:80"
+    volumes:
+      - /root/nginx/conf/nginx.conf:/etc/nginx/nginx.conf
+      - /root/nginx/conf.d:/etc/nginx/conf.d
+      - /root/nginx/log:/var/log/nginx
+      - /root/www:/www
+      - /root/GameResources:/GameResources
+    networks:
+      gameserverip:
+        ipv4_address: 172.31.1.3
+  redis:
+    container_name: redis
+    image: "redis:latest"
+    ports:
+      - "6379:6379"
+    networks:
+      gameserverip:
+        ipv4_address: 172.31.1.2
+    command: redis-server --port 6379 --requirepass abc123qwe  --appendonly yes
+  mysql:
+    container_name: mysql
+    image: "mysql:5.7"
+    ports:
+      - "3306:3306"
+    volumes:
+     - /root/mysql:/var/lib/mysql            #将容器中运行的mysql数据保存到宿主机，防止容器删除后数据丢失
+     - /root/mysql.conf.d:/etc/mysql/mysql.conf.d
+    # - ./init:/docker-entrypoint-initdb.d    #/docker-entrypoint-initdb.d/这是数据库提供的初始化目录，数据库在启动时会默认执行当期目录下的以.sql或者.sh结尾的文件。
+    environment:
+      MYSQL_ROOT_PASSWORD: kkroot123456                #数据库初始话为root用户设置的默认密码
+      MYSQL_DATABASE: h5game_2022                 #数据库名
+      MYSQL_USER: kktest                          #自定义数据库的用户，权限只作用于MYSQL_DATABASE配置的数据库
+      MYSQL_PASSWORD: kkroot123456                   #自定义数据库的用户，权限只作用于MYSQL_DATABASE配置的数据库
+    restart: on-failure                    	  #重启条件
+    networks:
+      gameserverip:
+        ipv4_address: 172.31.1.202
+networks:
+  gameserverip:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.31.1.0/24
+          gateway: 172.31.1.1

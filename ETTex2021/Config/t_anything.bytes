@@ -1,0 +1,232 @@
+[
+  {
+    "key": "bull100_userid1001",
+    "_val": "60783",
+    "desc": "handred bulls 的系统号，机器人，但没有机器人的标识"
+  },
+  {
+    "key": "bull100_userid1002",
+    "_val": "60783",
+    "desc": "handred bulls 的系统号，机器人，但没有机器人的标识"
+  },
+  {
+    "key": "bull100_userid1003",
+    "_val": "60783",
+    "desc": "handred bulls 的系统号，机器人，但没有机器人的标识"
+  },
+  {
+    "key": "td100_userid1021",
+    "_val": "60839",
+    "desc": "handred bulls 的系统号，机器人，但没有机器人的标识"
+  },
+  {
+    "key": "td100_userid1022",
+    "_val": "60839",
+    "desc": "handred bulls 的系统号，机器人，但没有机器人的标识"
+  },
+  {
+    "key": "td100_userid1023",
+    "_val": "60839",
+    "desc": "handred bulls 的系统号，机器人，但没有机器人的标识"
+  },
+  {
+    "key": "bcbm_userid80031",
+    "_val": "10952",
+    "desc": "handred bulls 的系统号，机器人，但没有机器人的标识"
+  },
+  {
+    "key": "bcbm_userid80032",
+    "_val": "10984",
+    "desc": "handred bulls 的系统号，机器人，但没有机器人的标识"
+  },
+  {
+    "key": "dance_userid80021",
+    "_val": "11086",
+    "desc": "handred bulls 的系统号，机器人，但没有机器人的标识"
+  },
+  {
+    "key": "dance_userid80022",
+    "_val": "11147",
+    "desc": "handred bulls 的系统号，机器人，但没有机器人的标识"
+  },
+  {
+    "key": "tax_rate",
+    "_val": "0.05",
+    "desc": "红利系统收税，5%"
+  },
+  {
+    "key": "gold_eachtable",
+    "_val": "100",
+    "desc": "房卡每局收费，100"
+  },
+  {
+    "key": "tax_generalagent",
+    "_val": "0.01",
+    "desc": "总代收税，1%"
+  },
+  {
+    "key": "tax_previous",
+    "_val": "0.01",
+    "desc": "上级分成，1%"
+  },
+  {
+    "key": "taxrc_generalagent",
+    "_val": "0.1",
+    "desc": "房卡总代收税，10%"
+  },
+  {
+    "key": "taxrc_previous",
+    "_val": "0.2",
+    "desc": "房卡上级分成，20%"
+  },
+  {
+    "key": "tax_area",
+    "_val": "20",
+    "desc": "大区代理10%，配置值表示tax的20% 全给出去"
+  },
+  {
+    "key": "tax_p1",
+    "_val": "60",
+    "desc": "一级代理收60%，配置值表示tax的60%"
+  },
+  {
+    "key": "tax_p2",
+    "_val": "12",
+    "desc": "二级代理收12%，配置值表示tax的12%"
+  },
+  {
+    "key": "tax_p3",
+    "_val": "8",
+    "desc": "三级代理收8%，配置值表示tax的8%"
+  },
+  {
+    "key": "mjtax_area",
+    "_val": "18",
+    "desc": "大区代理10%，配置值表示tax的20% 全给出去"
+  },
+  {
+    "key": "mjtax_p1",
+    "_val": "36",
+    "desc": "一级代理收60%，配置值表示tax的60%"
+  },
+  {
+    "key": "mjtax_p2",
+    "_val": "7.2",
+    "desc": "二级代理收12%，配置值表示tax的12%"
+  },
+  {
+    "key": "mjtax_p3",
+    "_val": "4.8",
+    "desc": "三级代理收8%，配置值表示tax的8%"
+  },
+  {
+    "key": "statistics_interval",
+    "_val": "60",
+    "desc": "统计时间间隔单位分钟"
+  },
+  {
+    "key": "notice_gold_rate",
+    "_val": "1",
+    "desc": "显示玩家赢取的金币公告,底分*50倍"
+  },
+  {
+    "key": "trial_play",
+    "_val": "false",
+    "desc": "是否是试玩服"
+  },
+  {
+    "key": "give_gold",
+    "_val": "2000",
+    "desc": "每日登陆赠送的金币"
+  },
+  {
+    "key": "jackpotshow",
+    "_val": "100",
+    "desc": "奖池百比进入系统税收"
+  },
+  {
+    "key": "jackpotlv3",
+    "_val": "10",
+    "desc": "总奖池-显示奖池的10% 的创始人第二级合伙人30% 平台60%"
+  },
+  {
+    "key": "jackpotceo3",
+    "_val": "30",
+    "desc": "总奖池-显示奖池的10% 的创始人第二级合伙人30% 平台60%"
+  },
+  {
+    "key": "generatId",
+    "_val": "1010",
+    "desc": "总代ID 默认他下面全部开启代理"
+  },
+  {
+    "key": "mjtax_rate",
+    "_val": "0.04",
+    "desc": "mj红利系统收税，3%"
+  },
+  {
+    "key": "mjtax_rateshare",
+    "_val": "65",
+    "desc": "拿65%来分，系统保留35%"
+  },
+  {
+    "key": "slot_rate",
+    "_val": "0.03",
+    "desc": "SLOT游戏分红比例3%"
+  },
+  {
+    "key": "thitax_rateshare",
+    "_val": "40",
+    "desc": "拿40%来分，系统保留60%"
+  },
+  {
+    "key": "textax_rateshare",
+    "_val": "100",
+    "desc": "拿100%来分，系统保留0%"
+  },
+  {
+    "key": "agent_rateshare",
+    "_val": "90",
+    "desc": "系統拿90%来分，系统保留10%"
+  },
+  {
+    "key": "reden_time1",
+    "_val": "11:00-13:00",
+    "desc": "红包领取时间段1"
+  },
+  {
+    "key": "reden_time2",
+    "_val": "16:00-23:00",
+    "desc": "红包领取时间段2"
+  },
+  {
+    "key": "texboy_userid",
+    "_val": "10530",
+    "desc": "德州牛仔坐庄器人，但没有机器人的标识"
+  },
+  {
+    "key": "compete_switch",
+    "_val": "0",
+    "desc": "比赛开关"
+  },
+  {
+    "key": "task_switch",
+    "_val": "1",
+    "desc": "任务开关"
+  },
+  {
+    "key": "club_switch",
+    "_val": "0",
+    "desc": "club开关"
+  },
+  {
+    "key": "signin_continue",
+    "_val": "0",
+    "desc": "非连续签到是否重记"
+  },
+  {
+    "key": "push_jackpot",
+    "_val": "0",
+    "desc": "是否给大厅推送奖池信息"
+  }
+]

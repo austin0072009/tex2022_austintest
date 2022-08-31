@@ -1,0 +1,12 @@
+{
+  "profiles": {
+    "Server.App": {
+      "commandName": "Project",
+      "commandLineArgs": "--appId=1 --appType=AllServer --config=../Config/StartConfig/LocalTestAllServer.txt",
+      "workingDirectory": "../../Bin"
+    },
+    "Docker": {
+      "commandName": "Docker"
+    }
+  }
+}

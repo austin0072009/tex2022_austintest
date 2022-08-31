@@ -1,0 +1,36 @@
+﻿
+2. path  ConfigLoader.cs   "..\\Config\\"
+3. BaseSendDataServer
+4. no Action,BaseCluster  Dir 
+5. AccountHelper.cs  去GameSession   SnsManager.LoginByMobile换异步方法  GetDevice    LoginAC   LoginByMobile   DecodePwd  
+ 
+
+7.OnApplicationFocus unity etscoket 重连
+8.CommonRobotManager 里不能再调用basehelper 需要直接调用basebrigehelper. 
+9.FactoryCommon 放到了Lobby中调用
+
+10. BaseHelper.cs AddUserLoginLog 未处理
+11.FactoryBaseHelper.cs  GM相关未处理
+12. 优化 BaseHelper.GetARobot() 需要修改为一次性获取多个
+
+13. 邮件领取会有bug======================= 
+15. basetable 中timer处理==================================
+16. ttableRecordMJLogEx 中DB操作
+
+20.EnterTableWatch EnterTableWatchRe  三个游戏需要手动添加await
+21.三个游戏的sleepex 要加await
+22. GetRedEnvelopesLog 需要放到basehelper中=================
+100.//红包清0 放redis中执行  机器一个小时反转一次放到 redis中  每天更新一次排行榜 每天更新一次当日收益 每天增加一次免费次数
+101.  ThreadEx.Sleep 需要手动加上await
+
+ttableLogEx.cs需要规范到RedisDB中   tjackpotlogEx.cs写数据 库的方法需要规范到RedisDB中   
+BandUserCard IsExistenceCardByuserid  ChenkCard GetRechargeChannels  要规范到RedisDB中
+GetAgentGoldLog GetAgentSendGoldLog
+ 
+
+大厅状态管理
+
+tCommonlogEx =============================
+201.AgreeClub ,ApplyGold, AgreeGold,AgreeAlliance, Apply====================CommonSendDataServer.instance.AutoSendData(imList); LobbySendDataServer
+202. 所有直接读取的数据的方法 DbConnectionProvider=============================
+203.  DismissTableGM ============================= 

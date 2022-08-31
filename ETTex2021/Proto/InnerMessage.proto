@@ -1,0 +1,766 @@
+syntax = "proto3";
+package ETModel;
+
+message RedisDB_RPCRequest // IRequest
+{
+  int32 RpcId = 90;
+  string Message = 1;
+}
+
+message RedisDB_RPCResponse // IResponse
+{
+  int32 RpcId = 90;
+  int32 Error = 91;
+  string Message = 92;
+}
+
+/// <summary>
+/// 传送unit
+/// </summary>
+message M2M_TrasferUnitRequest // IRequest
+{
+  int32 RpcId = 90;
+  Unit Unit = 1;
+}
+
+message M2M_TrasferUnitResponse // IResponse
+{
+  int32 RpcId = 90;
+  int32 Error = 91;
+  string Message = 92;
+
+  int64 InstanceId = 1;
+}
+
+message M2A_Reload // IRequest
+{
+  int32 RpcId = 90;
+}
+
+message A2M_Reload // IResponse
+{
+  int32 RpcId = 90;
+  int32 Error = 91;
+  string Message = 92;
+}
+
+message G2G_LockRequest // IRequest
+{
+  int32 RpcId = 90;
+  int64 Id = 1;
+  string Address = 2;
+}
+
+message G2G_LockResponse // IResponse
+{
+  int32 RpcId = 90;
+  int32 Error = 91;
+  string Message = 92;
+}
+
+message G2G_LockReleaseRequest // IRequest
+{
+  int32 RpcId = 90;
+  int64 Id = 1;
+  string Address = 2;
+}
+
+message G2G_LockReleaseResponse // IResponse
+{
+  int32 RpcId = 90;
+  int32 Error = 91;
+  string Message = 92;
+}
+
+message DBSaveRequest // IRequest
+{
+  int32 RpcId = 90;
+
+  string CollectionName = 1;
+  ComponentWithId Component = 2;
+}
+
+message DBSaveBatchResponse // IResponse
+{
+  int32 RpcId = 90;
+  int32 Error = 91;
+  string Message = 92;
+}
+
+message DBSaveBatchRequest // IRequest
+{
+  int32 RpcId = 90;
+
+  string CollectionName = 1;
+  repeated ComponentWithId Components = 2;
+}
+
+message DBSaveResponse // IResponse
+{
+  int32 RpcId = 90;
+  int32 Error = 91;
+  string Message = 92;
+}
+
+message DBQueryRequest // IRequest
+{
+  int32 RpcId = 90;
+  int64 Id = 1;
+  string CollectionName = 2;
+}
+
+message DBQueryResponse // IResponse
+{
+  int32 RpcId = 90;
+  int32 Error = 91;
+  string Message = 92;
+
+  ComponentWithId Component = 1;
+}
+
+message DBQueryBatchRequest // IRequest
+{
+  int32 RpcId = 90;
+  string CollectionName = 1;
+  repeated int64 IdList = 2;
+}
+
+message DBQueryBatchResponse // IResponse
+{
+  int32 RpcId = 90;
+  int32 Error = 91;
+  string Message = 92;
+
+  repeated ComponentWithId Components = 1;
+}
+
+message DBQueryJsonRequest // IRequest
+{
+  int32 RpcId = 90;
+  string CollectionName = 1;
+  string Json = 2;
+}
+
+message DBQueryJsonResponse // IResponse
+{
+  int32 RpcId = 90;
+  int32 Error = 91;
+  string Message = 92;
+
+  repeated ComponentWithId Components = 1;
+}
+
+message ObjectAddRequest // IRequest
+{
+  int32 RpcId = 90;
+  int64 Key = 1;
+  int64 InstanceId = 2;
+}
+
+message ObjectAddResponse // IResponse
+{
+  int32 RpcId = 90;
+  int32 Error = 91;
+  string Message = 92;
+}
+
+message ObjectRemoveRequest // IRequest
+{
+  int32 RpcId = 90;
+  int64 Key = 1;
+}
+
+message ObjectRemoveResponse // IResponse
+{
+  int32 RpcId = 90;
+  int32 Error = 91;
+  string Message = 92;
+}
+
+message ObjectLockRequest // IRequest
+{
+  int32 RpcId = 90;
+  int64 Key = 1;
+  int64 InstanceId = 2;
+  int32 Time = 3;
+}
+
+message ObjectLockResponse // IResponse
+{
+  int32 RpcId = 90;
+  int32 Error = 91;
+  string Message = 92;
+}
+
+message ObjectUnLockRequest // IRequest
+{
+  int32 RpcId = 90;
+  int64 Key = 1;
+  int64 OldInstanceId = 2;
+  int64 InstanceId = 3;
+}
+
+message ObjectUnLockResponse // IResponse
+{
+  int32 RpcId = 90;
+  int32 Error = 91;
+  string Message = 92;
+}
+
+message ObjectGetRequest // IRequest
+{
+  int32 RpcId = 90;
+  int64 Key = 1;
+}
+
+message ObjectGetResponse // IResponse
+{
+  int32 RpcId = 90;
+  int32 Error = 91;
+  string Message = 92;
+
+  int64 InstanceId = 1;
+}
+
+message R2G_GetLoginKey // IRequest
+{
+  int32 RpcId = 90;
+  string Account = 1;
+}
+
+message G2R_GetLoginKey // IResponse
+{
+  int32 RpcId = 90;
+  int32 Error = 91;
+  string Message = 92;
+
+  int64 Key = 1;
+}
+
+message G2M_CreateUnit // IRequest
+{
+  int32 RpcId = 90;
+  int64 PlayerId = 1;
+  int64 GateSessionId = 2;
+  string ClientAddress = 3;
+}
+
+message M2G_CreateUnit // IResponse
+{
+  int32 RpcId = 90;
+  int32 Error = 91;
+  string Message = 92;
+
+  // 自己的unit id
+  int64 UnitId = 1;
+  // 所有的unit
+  repeated UnitInfo Units = 2;
+}
+
+message G2M_SessionDisconnect // IActorLocationMessage
+{
+  int32 RpcId = 90;
+  int64 ActorId = 94;
+  int32 Type = 95;
+}
+
+message G2SS_RequestMessage // IRequest
+{
+  int32 RpcId = 90;
+  int64 PlayerId = 1;
+  int64 GateSessionId = 2;
+  string Message = 3;
+}
+
+message SS2G_ReplyMessage // IResponse
+{
+  int32 RpcId = 90;
+  int32 Error = 91;
+  string Message = 92;
+  int64 PlayerId = 1;
+}
+
+message RedisDB_LoginRequestMessage // IRequest
+{
+  int32 RpcId = 90;
+  string pid = 91;
+  string pwd = 92;
+  
+  string ChannelID = 92;
+  
+}
+
+message RedisDB_LoginReplyMessage // IResponse
+{
+  int32 RpcId = 90;
+  int32 Error = 91;
+  string Message = 92;
+  int32 UserID = 93;
+}
+
+message RedisDB_GetTRequest // IRequest
+{
+  int32 RpcId = 90;
+  int64 idx = 91;
+  int32 personal = 92;
+  string TName = 93;
+}
+
+message RedisDB_GetTReply // IResponse
+{
+  int32 RpcId = 90;
+  int32 Error = 91;
+  string Message = 92;
+}
+
+message RedisDB_GetListTRequest // IRequest
+{
+  int32 RpcId = 90;
+  string TName = 93;
+  int32 personal = 94;
+  string exp = 95;
+}
+
+message RedisDB_GetListTReply // IResponse
+{
+  int32 RpcId = 90;
+  int32 Error = 91;
+  string Message = 92;
+}
+
+message RedisDB_ReloadRequest // IRequest
+{
+  int32 RpcId = 90;
+  string TName = 93;
+  int32 personal = 94;
+}
+
+message RedisDB_ReloadReply // IResponse
+{
+  int32 RpcId = 90;
+  int32 Error = 91;
+  string Message = 92;
+}
+
+message RedisDB_AddorUpateRequest // IRequest
+{
+  int32 RpcId = 90;
+  string data = 92;
+  string TName = 93;
+  int32 personal = 94;
+}
+
+message RedisDB_AddorUpateReply // IResponse
+{
+  int32 RpcId = 90;
+  int32 Error = 91;
+  string Message = 92;
+}
+
+message RedisDB_WriteTRequest // IRequest
+{
+  int32 RpcId = 90;
+  string data = 92;
+  string TName = 93;
+  int32 needreturn = 94;
+}
+
+message RedisDB_WriteTReply // IResponse
+{
+  int32 RpcId = 90;
+  int32 Error = 91;
+  string Message = 92;
+}
+message RedisDB_DeleteTRequest // IRequest
+{
+  int32 RpcId = 90;
+  string data = 92;
+  string TName = 93;
+  int32 personal = 94;
+}
+
+message RedisDB_DeleteTReply // IResponse
+{
+  int32 RpcId = 90;
+  int32 Error = 91;
+  string Message = 92;
+}
+
+message US_GetRequest // IRequest
+{
+  int32 RpcId = 90;
+  int32 userid = 94;
+  int32 istry = 95;
+}
+
+message US_GetReply // IResponse
+{
+  int32 RpcId = 90;
+  int32 Error = 91;
+  string Message = 92;
+}
+
+message US_AddOrUpdateRequest // IRequest
+{
+  int32 RpcId = 90;
+  string data = 95;
+}
+
+message US_AddOrUpdateReply // IResponse
+{
+  int32 RpcId = 90;
+  int32 Error = 91;
+  string Message = 92;
+}
+
+message DB_CommonFunRequest // IRequest
+{
+  int32 RpcId = 90;
+  string funname = 94;
+  string para = 95;
+}
+
+message DB_CommonFunReply // IResponse
+{
+  int32 RpcId = 90;
+  int32 Error = 91;
+  string Message = 92;
+}
+
+message DB_CommonFun2Request // IRequest
+{
+  int32 RpcId = 90;
+  int32 Error = 91;
+  string funname = 94;
+  string para1 = 95;
+  string para2 = 96;
+}
+
+message DB_CommonFun2Reply // IResponse
+{
+  int32 RpcId = 90;
+  int32 Error = 91;
+  string Message = 92;
+}
+
+message DB_CommonFun3Request // IRequest
+{
+  int32 RpcId = 90;
+  string funname = 94;
+  string para1 = 95;
+  string para2 = 96;
+  string para3 = 96;
+}
+
+message DB_CommonFun3Reply // IResponse
+{
+  int32 RpcId = 90;
+  int32 Error = 91;
+  string Message = 92;
+}
+
+message RedisDB_GetListTAllRequest // IRequest
+{
+  int32 RpcId = 90;
+  string TName = 93;
+}
+
+message RedisDB_GetListTAllReply // IResponse
+{
+  int32 RpcId = 90;
+  int32 Error = 91;
+  string Message = 92;
+}
+
+message Robot_AddOrUpdateRequest // IRequest
+{
+  int32 RpcId = 90;
+  string data = 95;
+}
+
+message Robot_AddOrUpdateReply // IResponse
+{
+  int32 RpcId = 90;
+  int32 Error = 91;
+  string Message = 92;
+}
+
+message Lobby_CommonFunRequest // IRequest
+{
+  int32 RpcId = 90;
+  int32 _g = 93;
+  string funname = 94;
+  string para = 95;
+}
+
+message Lobby_CommonFunReply // IResponse
+{
+  int32 RpcId = 90;
+  int32 Error = 91;
+  string Message = 92;
+}
+
+message Lobby_CommonFun2Request // IRequest
+{
+  int32 RpcId = 90;
+  int32 UserID = 92;
+  int32 _g = 93;
+  string funname = 94;
+  string para = 95;
+}
+
+message Lobby_CommonFun2Reply // IResponse
+{
+  int32 RpcId = 90;
+  int32 Error = 91;
+  string Message = 92;
+}
+
+/// <summary>
+/// 传送unit
+/// </summary>
+message SG2M_GetUnitResponse // IRequest
+{
+  int32 RpcId = 90;
+  int32 userid = 91;
+}
+
+message M2SG_GetUnitResponse // IResponse
+{
+  int32 RpcId = 90;
+  int32 Error = 91;
+  string Message = 92;
+
+  Unit _unit = 93;
+}
+
+message RedisDB_CommonTRequest // IRequest
+{
+  int32 RpcId = 90;
+  string data = 92;
+  string TName = 93;
+  int32 needret = 94;
+  string funname = 95;
+}
+
+message RedisDB_CommonTReply // IResponse
+{
+  int32 RpcId = 90;
+  int32 Error = 91;
+  string Message = 92;
+}
+
+message RedisDB_UpdateTIncreRequest // IRequest
+{
+  int32 RpcId = 90;
+  string TName = 92;
+  string FName = 93;
+  int64 addval = 94;
+  string PName = 95;
+  int64 pval = 96;
+}
+
+message RedisDB_UpdateTIncreReply // IResponse
+{
+  int32 RpcId = 90;
+  int32 Error = 91;
+  string Message = 92;
+  int64 val = 95;
+}
+
+message GlobalInfoRequest // IRequest
+{
+  int32 RpcId = 90;
+  string Message = 92;
+}
+
+message GlobalInfoReply // IResponse
+{
+  int32 RpcId = 90;
+  int32 Error = 91;
+  string Message = 92;
+}
+
+message RedisDB_UpdateDataRequest // IRequest
+{
+  int32 RpcId = 90;
+  string TName = 91;
+  string Message = 92;
+  bytes Content = 93;
+}
+
+message RedisDB_UpdateDataReply // IResponse
+{
+  int32 RpcId = 90;
+  int32 Error = 91;
+  string Message = 92;
+  bytes Content = 93;
+}
+
+message RedisDB_RatailUserRequset // IRequest
+{
+  int32 RpcId = 90;
+  int64 ActorId = 91;
+  // 0:登录进入游戏 1:离开游戏 2:转额
+  int32 Type = 1;
+  int32 RetailID = 2;
+  int32 UserID = 3;
+  string RetailUser = 4;
+  string UserName = 5;
+  string PassportId = 6;
+  int64 Gold = 7;
+  int32 Ratio = 8;
+  //订单ID
+  string TransID = 9;
+}
+message RedisDB_RatailUserReply // IResponse
+{
+  int32 RpcId = 90;
+  int32 Error = 91;
+  string Message = 92;
+  int64 lGold = 1;
+}
+
+message ComponentComplateMessage // IRequest
+{
+  int32 RpcId = 90;
+  string Message = 91;
+  int32 appid = 92;
+  int32 gameid = 93;
+  int32 apptype = 94;
+}
+message G2G_GetPlayerRequest // IRequest
+{
+  int32 RpcId = 90;
+  int64 GateSessionId = 91;
+  string Message = 92;
+  int64 UserID = 93;
+  int64 UnitID = 94;
+}
+message G2G_GetPlayerResponse // IResponse
+{
+  int32 RpcId = 90;
+  int32 Error = 91;
+  string Message = 92;
+  Player player = 93;
+}
+message Any2G_DisponseSession // IRequest
+{
+  int32 RpcId = 90;
+  int64 GateSessionId = 91;
+  string Message = 92;
+}
+
+message RedisDB_AgentRequest // IRequest
+{
+  int32 RpcId = 90;
+  string Message = 92;
+}
+message RedisDB_AgentResponse //IResponse
+{
+  int32 RpcId = 90;
+  int32 Error = 91;
+  string Message = 92;
+}
+message RedisDB_TaskRequest // IRequest
+{
+  int32 RpcId = 90;
+  string Message = 92;
+}
+message RedisDB_TaskResponse //IResponse
+{
+  int32 RpcId = 90;
+  int32 Error = 91;
+  string Message = 92;
+}
+message CompeteRequest // IRequest
+{
+  int32 RpcId = 90;
+  string Message = 92;
+}
+message CompeteResponse // IResponse
+{
+  int32 RpcId = 90;
+  int32 Error = 91;
+  string Message = 92;
+}
+message R2M_CacheSyncRequest // IRequest
+{
+  int32 RpcId = 90;
+  string TName = 91;
+  int32 key = 92;
+  bytes Content = 93;
+}
+message M2S_CacheSyncRequest // IRequest
+{
+  int32 RpcId = 90;
+  string TName = 91;
+  int32 key = 92;
+  bytes Content = 93;
+}
+message Any2S_USSyncRequest //IRequest
+{
+  int32 RpcId = 90;
+  string status = 91;
+}
+message Any2M_USSyncRequest //IRequest
+{	  
+  int32 RpcId = 90;
+  string status = 91;
+}
+message A2A_AppInfoRequest //IRequest
+{
+  int32 RpcId = 90;
+  string Message = 92;
+}
+message A2A_AppInfoResponse //IResponse
+{  
+  int32 RpcId = 90;
+  int32 Error = 91;
+  string Message = 92;
+}
+
+
+message Lobby2game_DealDataExRequest // IRequest
+{
+  int32 RpcId = 90;
+  int32 UserID = 92;
+  int32 _g = 93;
+  string para = 95;
+}
+
+message Lobby2game_DealDataExReply // IResponse
+{
+  int32 RpcId = 90;
+  int32 Error = 91;
+  string Message = 92;
+}
+
+message Lobby2game_ApplyExitTableRequest // IRequest
+{
+  int32 RpcId = 90;
+  int32 UserID = 92;
+  int32 _g = 93;
+  int32 tableid = 95;
+}
+
+message Lobby2game_ApplyExitTableReply // IResponse
+{
+  int32 RpcId = 90;
+  int32 Error = 91;
+  string Message = 92;
+}
+
+message RedisDB_LoginSnsUserRequestMessage // IRequest
+{
+  int32 RpcId = 90;
+  string pid = 91; 
+  
+}
+message RedisDB_LoginSnsUserReplyMessage // IResponse
+{
+  int32 RpcId = 90;
+  int32 Error = 91;
+  string Message = 92;
+  int32 UserID = 93;
+}
